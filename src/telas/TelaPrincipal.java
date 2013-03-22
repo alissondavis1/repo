@@ -436,12 +436,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         File arquivoPdf = boletoViewer.getPdfAsFile("MeuPrimeiroBoleto.pdf");
         
-        Desktop desktop = Desktop.getDesktop();
-        try {
-            desktop.open(arquivoPdf);
-        } catch (IOException ex) {
-            Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
-        }
+//        Desktop desktop = Desktop.getDesktop();
+//        try {
+//            desktop.open(arquivoPdf);
+//        } catch (IOException ex) {
+//            Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+//        }
 
     }//GEN-LAST:event_jButton3ActionPerformed
 
