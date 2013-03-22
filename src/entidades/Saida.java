@@ -29,12 +29,12 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "saidas", catalog = "acal", schema = "")
 @XmlRootElement
-//@NamedQueries({
-//    @NamedQuery(name = "Saidas.findAll", query = "SELECT s FROM Saidas s"),
-//    @NamedQuery(name = "Saidas.findById", query = "SELECT s FROM Saidas s WHERE s.id = :id"),
-//    @NamedQuery(name = "Saidas.findByValor", query = "SELECT s FROM Saidas s WHERE s.valor = :valor"),
-//    @NamedQuery(name = "Saidas.findByData", query = "SELECT s FROM Saidas s WHERE s.data = :data"),
-//    @NamedQuery(name = "Saidas.findByFavorecido", query = "SELECT s FROM Saidas s WHERE s.favorecido = :favorecido")})
+@NamedQueries({
+    @NamedQuery(name = "Saidas.findAll", query = "SELECT s FROM Saidas s"),
+    @NamedQuery(name = "Saidas.findById", query = "SELECT s FROM Saidas s WHERE s.id = :id"),
+    @NamedQuery(name = "Saidas.findByValor", query = "SELECT s FROM Saidas s WHERE s.valor = :valor"),
+    @NamedQuery(name = "Saidas.findByData", query = "SELECT s FROM Saidas s WHERE s.data = :data"),
+    @NamedQuery(name = "Saidas.findByFavorecido", query = "SELECT s FROM Saidas s WHERE s.favorecido = :favorecido")})
 public class Saida implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
