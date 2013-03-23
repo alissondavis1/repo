@@ -35,11 +35,20 @@ import javax.xml.bind.annotation.XmlTransient;
 //    @NamedQuery(name = "CategoriaSocio.findByTaxaSocio", query = "SELECT c FROM CategoriaSocio c WHERE c.taxaSocio = :taxaSocio")})
 public class CategoriaSocio implements Serializable {
     private static final long serialVersionUID = 1L;
+    
+    
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "Id")
     private Integer id;
+    
+    
+    private String teste;
+    
+    
+    
     @Basic(optional = false)
     @Column(name = "Nome")
     private String nome;
@@ -55,7 +64,9 @@ public class CategoriaSocio implements Serializable {
 
     public CategoriaSocio() {
     }
-
+     
+    
+        
     public CategoriaSocio(Integer id) {
         this.id = id;
     }
