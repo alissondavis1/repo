@@ -24,6 +24,13 @@ import org.hibernate.cfg.Configuration;
  */
 public class DaoCategoriaSocio implements CategoriaSocioInterface{
 
+    public String TestaCommit()
+    
+    
+    {
+        return "metodo comitado";
+    
+    }
     @Override
     public void AdicionarCategoria(CategoriaSocio categoria) {
         
