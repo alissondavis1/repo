@@ -11,7 +11,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Lob;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -22,37 +21,33 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author alexandre
  */
 @Entity
-@Table(name = "contrato")
+@Table(name = "usuarios")
 @XmlRootElement
 //@NamedQueries({
-//    @NamedQuery(name = "Contrato.findAll", query = "SELECT c FROM Contrato c"),
-//    @NamedQuery(name = "Contrato.findById", query = "SELECT c FROM Contrato c WHERE c.id = :id")})
-public class Contrato implements Serializable {
+//    @NamedQuery(name = "Usuarios.findAll", query = "SELECT u FROM Usuarios u"),
+//    @NamedQuery(name = "Usuarios.findById", query = "SELECT u FROM Usuarios u WHERE u.id = :id"),
+//    @NamedQuery(name = "Usuarios.findByNome", query = "SELECT u FROM Usuarios u WHERE u.nome = :nome"),
+//    @NamedQuery(name = "Usuarios.findBySenha", query = "SELECT u FROM Usuarios u WHERE u.senha = :senha")})
+public class Usuarios implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "id")
+    @Column(name = "Id")
     private Integer id;
     @Basic(optional = false)
-    @Lob
-    @Column(name = "nome")
+    @Column(name = "Nome")
     private String nome;
     @Basic(optional = false)
-    @Lob
-    @Column(name = "Descricao")
-    private String descricao;
-    @Lob
-    @Column(name = "Corpo")
-    private String corpo;
+    @Column(name = "senha")
+    private String senha;
 
-    public Contrato() {
+    public Usuarios() {
     }
 
-    public Contrato(String nome, String descricao, String corpo) {
+    public Usuarios(String nome, String senha) {
         this.nome = nome;
-        this.descricao = descricao;
-        this.corpo = corpo;
+        this.senha = senha;
     }
 
     public Integer getId() {
@@ -67,20 +62,12 @@ public class Contrato implements Serializable {
         this.nome = nome;
     }
 
-    public String getDescricao() {
-        return descricao;
+    public String getSenha() {
+        return senha;
     }
 
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
-
-    public String getCorpo() {
-        return corpo;
-    }
-
-    public void setCorpo(String corpo) {
-        this.corpo = corpo;
+    public void setSenha(String senha) {
+        this.senha = senha;
     }
 
     @Override
@@ -93,10 +80,10 @@ public class Contrato implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Contrato)) {
+        if (!(object instanceof Usuarios)) {
             return false;
         }
-        Contrato other = (Contrato) object;
+        Usuarios other = (Usuarios) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -105,7 +92,7 @@ public class Contrato implements Serializable {
 
     @Override
     public String toString() {
-        return "entidades.Contrato[ id=" + id + " ]";
+        return "entidades.Usuarios[ id=" + id + " ]";
     }
     
 }

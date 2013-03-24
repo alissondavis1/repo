@@ -26,7 +26,7 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author alexandre
  */
 @Entity
-@Table(name = "categoria_socio", catalog = "acal", schema = "")
+@Table(name = "categoria_socio")
 @XmlRootElement
 //@NamedQueries({
 //    @NamedQuery(name = "CategoriaSocio.findAll", query = "SELECT c FROM CategoriaSocio c"),
@@ -34,28 +34,19 @@ import javax.xml.bind.annotation.XmlTransient;
 //    @NamedQuery(name = "CategoriaSocio.findByNome", query = "SELECT c FROM CategoriaSocio c WHERE c.nome = :nome"),
 //    @NamedQuery(name = "CategoriaSocio.findByTaxaSocio", query = "SELECT c FROM CategoriaSocio c WHERE c.taxaSocio = :taxaSocio")})
 public class CategoriaSocio implements Serializable {
+    
     private static final long serialVersionUID = 1L;
-    
-    
-    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "Id")
     private Integer id;
-    
-    
-    private String teste;
-    
-    
-    
     @Basic(optional = false)
     @Column(name = "Nome")
     private String nome;
     @Basic(optional = false)
     @Column(name = "taxa Socio")
     private int taxaSocio;
-    @Basic(optional = false)
     @Lob
     @Column(name = "Descricao")
     private String descricao;
@@ -64,26 +55,19 @@ public class CategoriaSocio implements Serializable {
 
     public CategoriaSocio() {
     }
-     
-    
-        
-    public CategoriaSocio(Integer id) {
-        this.id = id;
-    }
 
-    public CategoriaSocio(Integer id, String nome, int taxaSocio, String descricao) {
-        this.id = id;
+    public CategoriaSocio(String nome, int taxaSocio, String descricao, List<Socio> socioList) {
         this.nome = nome;
         this.taxaSocio = taxaSocio;
         this.descricao = descricao;
+        this.socioList = socioList;
     }
+
+  
+
 
     public Integer getId() {
         return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
     }
 
     public String getNome() {

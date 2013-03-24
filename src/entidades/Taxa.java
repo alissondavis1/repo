@@ -26,7 +26,7 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author alexandre
  */
 @Entity
-@Table(name = "taxas", catalog = "acal", schema = "")
+@Table(name = "taxas")
 @XmlRootElement
 //@NamedQueries({
 //    @NamedQuery(name = "Taxas.findAll", query = "SELECT t FROM Taxas t"),
@@ -44,40 +44,31 @@ public class Taxa implements Serializable {
     @Basic(optional = false)
     @Column(name = "Nome")
     private String nome;
-    @Basic(optional = false)
     @Column(name = "Descricao")
     private String descricao;
     @Basic(optional = false)
     @Column(name = "Valor")
     private double valor;
-    @Basic(optional = false)
     @Lob
     @Column(name = "Observacao")
     private String observacao;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idtaxa")
-    private List<Conta> contasList;
+    private List<Conta> contaList;
 
     public Taxa() {
     }
 
-    public Taxa(Integer id) {
-        this.id = id;
-    }
-
-    public Taxa(Integer id, String nome, String descricao, double valor, String observacao) {
-        this.id = id;
+    public Taxa(String nome, String descricao, double valor, String observacao, List<Conta> contaList) {
         this.nome = nome;
         this.descricao = descricao;
         this.valor = valor;
         this.observacao = observacao;
+        this.contaList = contaList;
     }
+
 
     public Integer getId() {
         return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
     }
 
     public String getNome() {
@@ -113,12 +104,12 @@ public class Taxa implements Serializable {
     }
 
     @XmlTransient
-    public List<Conta> getContasList() {
-        return contasList;
+    public List<Conta> getContaList() {
+        return contaList;
     }
 
-    public void setContasList(List<Conta> contasList) {
-        this.contasList = contasList;
+    public void setContaList(List<Conta> contaList) {
+        this.contaList = contaList;
     }
 
     @Override

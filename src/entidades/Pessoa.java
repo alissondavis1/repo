@@ -32,7 +32,7 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author alexandre
  */
 @Entity
-@Table(name = "pessoa", catalog = "acal", schema = "")
+@Table(name = "pessoa")
 @XmlRootElement
 //@NamedQueries({
 //    @NamedQuery(name = "Pessoa.findAll", query = "SELECT p FROM Pessoa p"),
@@ -71,66 +71,47 @@ public class Pessoa implements Serializable {
     @Basic(optional = false)
     @Column(name = "Sobrenome")
     private String sobrenome;
-    @Basic(optional = true)
     @Column(name = "Apelido")
     private String apelido;
-    @Basic(optional = false)
     @Column(name = "Numero")
-    private int numero;
-    @Basic(optional = true)
+    private Integer numero;
     @Column(name = "Bairro")
     private String bairro;
-    @Basic(optional = true)
     @Column(name = "Cidade")
     private String cidade;
-    @Basic(optional = true)
     @Column(name = "Uf")
     private String uf;
-    @Basic(optional = true)
     @Column(name = "Cep")
     private String cep;
-    @Basic(optional = true)
     @Column(name = "Telefone")
     private String telefone;
-    @Basic(optional = true)
     @Column(name = "Email")
     private String email;
-    @Basic(optional = true)
     @Column(name = "Data_nasc")
     @Temporal(TemporalType.TIMESTAMP)
     private Date datanasc;
-    @Basic(optional = true)
     @Column(name = "Sexo")
     private String sexo;
-    @Basic(optional = true)
     @Column(name = "Cpf")
-    private int cpf;
-    @Basic(optional = true)
+    private Integer cpf;
     @Column(name = "Rg_numero")
-    private int rgnumero;
-    @Basic(optional = true)
+    private Integer rgnumero;
     @Column(name = "Rg_expedidor")
     private String rgexpedidor;
-    @Basic(optional = true)
     @Column(name = "Rg_emissao")
     @Temporal(TemporalType.DATE)
     private Date rgemissao;
-    @Basic(optional = true)
     @Column(name = "Nome_mae")
     private String nomemae;
-    @Basic(optional = true)
     @Column(name = "Nome_pai")
     private String nomepai;
-    @Basic(optional = true)
     @Column(name = "Numero_matricula")
-    private int numeromatricula;
-    @Basic(optional = true)
+    private Integer numeromatricula;
+    @Basic(optional = false)
     @Column(name = "Status")
     private boolean status;
-    @Basic(optional = true)
     @Column(name = "Categoria_socio")
-    private int categoriasocio;
-    @Basic(optional = true)
+    private Integer categoriasocio;
     @Lob
     @Column(name = "Observacoes")
     private String observacoes;
@@ -145,12 +126,7 @@ public class Pessoa implements Serializable {
     public Pessoa() {
     }
 
-    public Pessoa(Integer id) {
-        this.id = id;
-    }
-
-    public Pessoa(Integer id, String nome, String sobrenome, String apelido, int numero, String bairro, String cidade, String uf, String cep, String telefone, String email, Date datanasc, String sexo, int cpf, int rgnumero, String rgexpedidor, Date rgemissao, String nomemae, String nomepai, int numeromatricula, boolean status, int categoriasocio, String observacoes) {
-        this.id = id;
+    public Pessoa(String nome, String sobrenome, String apelido, Integer numero, String bairro, String cidade, String uf, String cep, String telefone, String email, Date datanasc, String sexo, Integer cpf, Integer rgnumero, String rgexpedidor, Date rgemissao, String nomemae, String nomepai, Integer numeromatricula, boolean status, Integer categoriasocio, String observacoes, Endereco idEndereco, List<Funcionario> funcionarioList, Socio socio) {
         this.nome = nome;
         this.sobrenome = sobrenome;
         this.apelido = apelido;
@@ -173,8 +149,12 @@ public class Pessoa implements Serializable {
         this.status = status;
         this.categoriasocio = categoriasocio;
         this.observacoes = observacoes;
+        this.idEndereco = idEndereco;
+        this.funcionarioList = funcionarioList;
+        this.socio = socio;
     }
 
+  
     public Integer getId() {
         return id;
     }
@@ -207,11 +187,11 @@ public class Pessoa implements Serializable {
         this.apelido = apelido;
     }
 
-    public int getNumero() {
+    public Integer getNumero() {
         return numero;
     }
 
-    public void setNumero(int numero) {
+    public void setNumero(Integer numero) {
         this.numero = numero;
     }
 
@@ -279,19 +259,19 @@ public class Pessoa implements Serializable {
         this.sexo = sexo;
     }
 
-    public int getCpf() {
+    public Integer getCpf() {
         return cpf;
     }
 
-    public void setCpf(int cpf) {
+    public void setCpf(Integer cpf) {
         this.cpf = cpf;
     }
 
-    public int getRgnumero() {
+    public Integer getRgnumero() {
         return rgnumero;
     }
 
-    public void setRgnumero(int rgnumero) {
+    public void setRgnumero(Integer rgnumero) {
         this.rgnumero = rgnumero;
     }
 
@@ -327,11 +307,11 @@ public class Pessoa implements Serializable {
         this.nomepai = nomepai;
     }
 
-    public int getNumeromatricula() {
+    public Integer getNumeromatricula() {
         return numeromatricula;
     }
 
-    public void setNumeromatricula(int numeromatricula) {
+    public void setNumeromatricula(Integer numeromatricula) {
         this.numeromatricula = numeromatricula;
     }
 
@@ -343,11 +323,11 @@ public class Pessoa implements Serializable {
         this.status = status;
     }
 
-    public int getCategoriasocio() {
+    public Integer getCategoriasocio() {
         return categoriasocio;
     }
 
-    public void setCategoriasocio(int categoriasocio) {
+    public void setCategoriasocio(Integer categoriasocio) {
         this.categoriasocio = categoriasocio;
     }
 

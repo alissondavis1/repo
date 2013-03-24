@@ -27,15 +27,15 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author alexandre
  */
 @Entity
-@Table(name = "cheques", catalog = "acal", schema = "")
+@Table(name = "cheques")
 @XmlRootElement
 //@NamedQueries({
-//    @NamedQuery(name = "Cheques.findAll", query = "SELECT c FROM Cheques c"),
-//    @NamedQuery(name = "Cheques.findById", query = "SELECT c FROM Cheques c WHERE c.id = :id"),
-//    @NamedQuery(name = "Cheques.findByValor", query = "SELECT c FROM Cheques c WHERE c.valor = :valor"),
-//    @NamedQuery(name = "Cheques.findByNumero", query = "SELECT c FROM Cheques c WHERE c.numero = :numero"),
-//    @NamedQuery(name = "Cheques.findByDatavencimento", query = "SELECT c FROM Cheques c WHERE c.datavencimento = :datavencimento"),
-//    @NamedQuery(name = "Cheques.findByDatapagamento", query = "SELECT c FROM Cheques c WHERE c.datapagamento = :datapagamento")})
+//    @NamedQuery(name = "Cheque.findAll", query = "SELECT c FROM Cheque c"),
+//    @NamedQuery(name = "Cheque.findById", query = "SELECT c FROM Cheque c WHERE c.id = :id"),
+//    @NamedQuery(name = "Cheque.findByValor", query = "SELECT c FROM Cheque c WHERE c.valor = :valor"),
+//    @NamedQuery(name = "Cheque.findByNumero", query = "SELECT c FROM Cheque c WHERE c.numero = :numero"),
+//    @NamedQuery(name = "Cheque.findByDatavencimento", query = "SELECT c FROM Cheque c WHERE c.datavencimento = :datavencimento"),
+//    @NamedQuery(name = "Cheque.findByDatapagamento", query = "SELECT c FROM Cheque c WHERE c.datapagamento = :datapagamento")})
 public class Cheque implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -53,11 +53,9 @@ public class Cheque implements Serializable {
     @Column(name = "Data_vencimento")
     @Temporal(TemporalType.TIMESTAMP)
     private Date datavencimento;
-    @Basic(optional = false)
     @Column(name = "Data_pagamento")
     @Temporal(TemporalType.TIMESTAMP)
     private Date datapagamento;
-    @Basic(optional = false)
     @Lob
     @Column(name = "observacoes")
     private String observacoes;
@@ -71,25 +69,19 @@ public class Cheque implements Serializable {
     public Cheque() {
     }
 
-    public Cheque(Integer id) {
-        this.id = id;
-    }
-
-    public Cheque(Integer id, float valor, int numero, Date datavencimento, Date datapagamento, String observacoes) {
-        this.id = id;
+    public Cheque(float valor, int numero, Date datavencimento, Date datapagamento, String observacoes, MotivoDespesa idMotivodespeza, Funcionario idFuncionario) {
         this.valor = valor;
         this.numero = numero;
         this.datavencimento = datavencimento;
         this.datapagamento = datapagamento;
         this.observacoes = observacoes;
+        this.idMotivodespeza = idMotivodespeza;
+        this.idFuncionario = idFuncionario;
     }
 
+ 
     public Integer getId() {
         return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
     }
 
     public float getValor() {
@@ -170,7 +162,7 @@ public class Cheque implements Serializable {
 
     @Override
     public String toString() {
-        return "entidades.Cheques[ id=" + id + " ]";
+        return "entidades.Cheque[ id=" + id + " ]";
     }
     
 }

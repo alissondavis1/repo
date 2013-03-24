@@ -27,14 +27,14 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author alexandre
  */
 @Entity
-@Table(name = "saidas", catalog = "acal", schema = "")
+@Table(name = "saidas")
 @XmlRootElement
 //@NamedQueries({
-//    @NamedQuery(name = "Saidas.findAll", query = "SELECT s FROM Saidas s"),
-//    @NamedQuery(name = "Saidas.findById", query = "SELECT s FROM Saidas s WHERE s.id = :id"),
-//    @NamedQuery(name = "Saidas.findByValor", query = "SELECT s FROM Saidas s WHERE s.valor = :valor"),
-//    @NamedQuery(name = "Saidas.findByData", query = "SELECT s FROM Saidas s WHERE s.data = :data"),
-//    @NamedQuery(name = "Saidas.findByFavorecido", query = "SELECT s FROM Saidas s WHERE s.favorecido = :favorecido")})
+//    @NamedQuery(name = "Saida.findAll", query = "SELECT s FROM Saida s"),
+//    @NamedQuery(name = "Saida.findById", query = "SELECT s FROM Saida s WHERE s.id = :id"),
+//    @NamedQuery(name = "Saida.findByValor", query = "SELECT s FROM Saida s WHERE s.valor = :valor"),
+//    @NamedQuery(name = "Saida.findByData", query = "SELECT s FROM Saida s WHERE s.data = :data"),
+//    @NamedQuery(name = "Saida.findByFavorecido", query = "SELECT s FROM Saida s WHERE s.favorecido = :favorecido")})
 public class Saida implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -52,7 +52,6 @@ public class Saida implements Serializable {
     @Basic(optional = false)
     @Column(name = "Favorecido")
     private String favorecido;
-    @Basic(optional = false)
     @Lob
     @Column(name = "Observacao")
     private String observacao;
@@ -66,25 +65,20 @@ public class Saida implements Serializable {
     public Saida() {
     }
 
-    public Saida(Integer id) {
-        this.id = id;
-    }
-
-    public Saida(Integer id, float valor, Date data, String favorecido, String observacao) {
-        this.id = id;
+    public Saida(float valor, Date data, String favorecido, String observacao, Funcionario idfuncionario, MotivoDespesa idmotivosaida) {
         this.valor = valor;
         this.data = data;
         this.favorecido = favorecido;
         this.observacao = observacao;
+        this.idfuncionario = idfuncionario;
+        this.idmotivosaida = idmotivosaida;
     }
 
+  
     public Integer getId() {
         return id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public float getValor() {
         return valor;
@@ -156,7 +150,7 @@ public class Saida implements Serializable {
 
     @Override
     public String toString() {
-        return "entidades.Saidas[ id=" + id + " ]";
+        return "entidades.Saida[ id=" + id + " ]";
     }
     
 }

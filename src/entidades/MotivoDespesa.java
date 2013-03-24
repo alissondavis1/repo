@@ -26,13 +26,17 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author alexandre
  */
 @Entity
-@Table(name = "motivosaidas", catalog = "acal", schema = "")
+@Table(name = "motivosaidas")
 @XmlRootElement
 //@NamedQueries({
-//    @NamedQuery(name = "Motivosaidas.findAll", query = "SELECT m FROM Motivosaidas m"),
-//    @NamedQuery(name = "Motivosaidas.findById", query = "SELECT m FROM Motivosaidas m WHERE m.id = :id"),
-//    @NamedQuery(name = "Motivosaidas.findByNome", query = "SELECT m FROM Motivosaidas m WHERE m.nome = :nome")})
+//    @NamedQuery(name = "MotivoDespesa.findAll", query = "SELECT m FROM MotivoDespesa m"),
+//    @NamedQuery(name = "MotivoDespesa.findById", query = "SELECT m FROM MotivoDespesa m WHERE m.id = :id"),
+//    @NamedQuery(name = "MotivoDespesa.findByNome", query = "SELECT m FROM MotivoDespesa m WHERE m.nome = :nome")})
 public class MotivoDespesa implements Serializable {
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idMotivodespeza")
+    private List<Cheque> chequeList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idmotivosaida")
+    private List<Saida> saidaList;
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -51,9 +55,9 @@ public class MotivoDespesa implements Serializable {
     @Column(name = "Observacao")
     private String observacao;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idMotivodespeza")
-    private List<Cheque> chequesList;
+    private Cheque cheque;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idmotivosaida")
-    private List<Saida> saidasList;
+    private Saida saida;
 
     public MotivoDespesa() {
     }
@@ -62,19 +66,12 @@ public class MotivoDespesa implements Serializable {
         this.id = id;
     }
 
-    public MotivoDespesa(Integer id, String nome, String descricao, String observacao) {
-        this.id = id;
+    public MotivoDespesa(String nome, String descricao, String observacao, Cheque cheque, Saida saida) {
         this.nome = nome;
         this.descricao = descricao;
         this.observacao = observacao;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
+        this.cheque = cheque;
+        this.saida = saida;
     }
 
     public String getNome() {
@@ -100,24 +97,26 @@ public class MotivoDespesa implements Serializable {
     public void setObservacao(String observacao) {
         this.observacao = observacao;
     }
-
+    
     @XmlTransient
-    public List<Cheque> getChequesList() {
-        return chequesList;
+    public Cheque getCheque() {
+        return cheque;
     }
 
-    public void setChequesList(List<Cheque> chequesList) {
-        this.chequesList = chequesList;
+    public void setCheque(Cheque cheque) {
+        this.cheque = cheque;
     }
-
+    
     @XmlTransient
-    public List<Saida> getSaidasList() {
-        return saidasList;
+    public Saida getSaida() {
+        return saida;
     }
 
-    public void setSaidasList(List<Saida> saidasList) {
-        this.saidasList = saidasList;
+    public void setSaida(Saida saida) {
+        this.saida = saida;
     }
+
+ 
 
     @Override
     public int hashCode() {
@@ -141,7 +140,25 @@ public class MotivoDespesa implements Serializable {
 
     @Override
     public String toString() {
-        return "entidades.Motivosaidas[ id=" + id + " ]";
+        return "entidades.MotivoDespesa[ id=" + id + " ]";
+    }
+
+    @XmlTransient
+    public List<Cheque> getChequeList() {
+        return chequeList;
+    }
+
+    public void setChequeList(List<Cheque> chequeList) {
+        this.chequeList = chequeList;
+    }
+
+    @XmlTransient
+    public List<Saida> getSaidaList() {
+        return saidaList;
+    }
+
+    public void setSaidaList(List<Saida> saidaList) {
+        this.saidaList = saidaList;
     }
     
 }

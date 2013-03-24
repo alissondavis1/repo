@@ -18,6 +18,8 @@
     <class>entidades.Saida</class>
     <class>entidades.MotivoEntrada</class>
     <class>entidades.MotivoDespesa</class>
+    <class>entidades.Taxas</class>
+    <class>entidades.Usuarios</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/acal?zeroDateTimeBehavior=convertToNull"/>
       <property name="javax.persistence.jdbc.password" value="123"/>

@@ -32,7 +32,7 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author alexandre
  */
 @Entity
-@Table(name = "socio", catalog = "acal", schema = "")
+@Table(name = "socio")
 @XmlRootElement
 //@NamedQueries({
 //    @NamedQuery(name = "Socio.findAll", query = "SELECT s FROM Socio s"),
@@ -52,23 +52,22 @@ public class Socio implements Serializable {
     @Column(name = "Data_matricula")
     @Temporal(TemporalType.TIMESTAMP)
     private Date datamatricula;
-    @Basic(optional = false)
     @Column(name = "Data_aprovacao")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dataaprovacao;
     @Basic(optional = false)
     @Column(name = "Numero_socio")
     private int numerosocio;
-    @Basic(optional = false)
     @Column(name = "data_Vence")
     @Temporal(TemporalType.DATE)
     private Date dataVence;
-    @Basic(optional = false)
     @Lob
     @Column(name = "Observacao")
     private String observacao;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idnumerosocio")
-    private List<Conta> contasList;
+    private List<Conta> contaList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idCedente")
+    private List<Entrada> entradasList;
     @JoinColumn(name = "Id_categorira_socio", referencedColumnName = "Id")
     @ManyToOne(optional = false)
     private CategoriaSocio idcategorirasocio;
@@ -79,26 +78,23 @@ public class Socio implements Serializable {
     public Socio() {
     }
 
-    public Socio(Integer id) {
-        this.id = id;
-    }
-
-    public Socio(Integer id, Date datamatricula, Date dataaprovacao, int numerosocio, Date dataVence, String observacao) {
+    public Socio(Integer id, Date datamatricula, Date dataaprovacao, int numerosocio, Date dataVence, String observacao, List<Conta> contaList, List<Entrada> entradasList, CategoriaSocio idcategorirasocio, Pessoa idpessoa) {
         this.id = id;
         this.datamatricula = datamatricula;
         this.dataaprovacao = dataaprovacao;
         this.numerosocio = numerosocio;
         this.dataVence = dataVence;
         this.observacao = observacao;
+        this.contaList = contaList;
+        this.entradasList = entradasList;
+        this.idcategorirasocio = idcategorirasocio;
+        this.idpessoa = idpessoa;
     }
 
     public Integer getId() {
         return id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public Date getDatamatricula() {
         return datamatricula;
@@ -141,12 +137,21 @@ public class Socio implements Serializable {
     }
 
     @XmlTransient
-    public List<Conta> getContasList() {
-        return contasList;
+    public List<Conta> getContaList() {
+        return contaList;
     }
 
-    public void setContasList(List<Conta> contasList) {
-        this.contasList = contasList;
+    public void setContaList(List<Conta> contaList) {
+        this.contaList = contaList;
+    }
+
+    @XmlTransient
+    public List<Entrada> getEntradasList() {
+        return entradasList;
+    }
+
+    public void setEntradasList(List<Entrada> entradasList) {
+        this.entradasList = entradasList;
     }
 
     public CategoriaSocio getIdcategorirasocio() {

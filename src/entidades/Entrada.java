@@ -12,7 +12,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -25,16 +27,13 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author alexandre
  */
 @Entity
-@Table(name = "entradas", catalog = "acal", schema = "")
+@Table(name = "entradas")
 @XmlRootElement
 //@NamedQueries({
 //    @NamedQuery(name = "Entradas.findAll", query = "SELECT e FROM Entradas e"),
 //    @NamedQuery(name = "Entradas.findById", query = "SELECT e FROM Entradas e WHERE e.id = :id"),
 //    @NamedQuery(name = "Entradas.findByValor", query = "SELECT e FROM Entradas e WHERE e.valor = :valor"),
-//    @NamedQuery(name = "Entradas.findByData", query = "SELECT e FROM Entradas e WHERE e.data = :data"),
-//    @NamedQuery(name = "Entradas.findByIdMotivo", query = "SELECT e FROM Entradas e WHERE e.idMotivo = :idMotivo"),
-//    @NamedQuery(name = "Entradas.findByIdCedente", query = "SELECT e FROM Entradas e WHERE e.idCedente = :idCedente"),
-//    @NamedQuery(name = "Entradas.findByIdFuncionario", query = "SELECT e FROM Entradas e WHERE e.idFuncionario = :idFuncionario")})
+//    @NamedQuery(name = "Entradas.findByData", query = "SELECT e FROM Entradas e WHERE e.data = :data")})
 public class Entrada implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -49,43 +48,33 @@ public class Entrada implements Serializable {
     @Column(name = "data")
     @Temporal(TemporalType.DATE)
     private Date data;
-    @Basic(optional = false)
-    @Column(name = "id_motivo")
-    private int idMotivo;
-    @Basic(optional = false)
-    @Column(name = "id_cedente")
-    private int idCedente;
-    @Basic(optional = false)
-    @Column(name = "id_funcionario")
-    private int idFuncionario;
-    @Basic(optional = false)
     @Lob
     @Column(name = "observacao")
     private String observacao;
+    @JoinColumn(name = "id_funcionario", referencedColumnName = "Id")
+    @ManyToOne(optional = false)
+    private Funcionario idFuncionario;
+    @JoinColumn(name = "id_cedente", referencedColumnName = "Id")
+    @ManyToOne(optional = false)
+    private Socio idCedente;
+    @JoinColumn(name = "id_motivo", referencedColumnName = "Id")
+    @ManyToOne(optional = false)
+    private MotivoEntrada idMotivo;
 
     public Entrada() {
     }
 
-    public Entrada(Integer id) {
-        this.id = id;
-    }
-
-    public Entrada(Integer id, float valor, Date data, int idMotivo, int idCedente, int idFuncionario, String observacao) {
-        this.id = id;
+    public Entrada(float valor, Date data, String observacao, Funcionario idFuncionario, Socio idCedente, MotivoEntrada idMotivo) {
         this.valor = valor;
         this.data = data;
-        this.idMotivo = idMotivo;
-        this.idCedente = idCedente;
-        this.idFuncionario = idFuncionario;
         this.observacao = observacao;
+        this.idFuncionario = idFuncionario;
+        this.idCedente = idCedente;
+        this.idMotivo = idMotivo;
     }
 
     public Integer getId() {
         return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
     }
 
     public float getValor() {
@@ -104,36 +93,36 @@ public class Entrada implements Serializable {
         this.data = data;
     }
 
-    public int getIdMotivo() {
-        return idMotivo;
-    }
-
-    public void setIdMotivo(int idMotivo) {
-        this.idMotivo = idMotivo;
-    }
-
-    public int getIdCedente() {
-        return idCedente;
-    }
-
-    public void setIdCedente(int idCedente) {
-        this.idCedente = idCedente;
-    }
-
-    public int getIdFuncionario() {
-        return idFuncionario;
-    }
-
-    public void setIdFuncionario(int idFuncionario) {
-        this.idFuncionario = idFuncionario;
-    }
-
     public String getObservacao() {
         return observacao;
     }
 
     public void setObservacao(String observacao) {
         this.observacao = observacao;
+    }
+
+    public Funcionario getIdFuncionario() {
+        return idFuncionario;
+    }
+
+    public void setIdFuncionario(Funcionario idFuncionario) {
+        this.idFuncionario = idFuncionario;
+    }
+
+    public Socio getIdCedente() {
+        return idCedente;
+    }
+
+    public void setIdCedente(Socio idCedente) {
+        this.idCedente = idCedente;
+    }
+
+    public MotivoEntrada getIdMotivo() {
+        return idMotivo;
+    }
+
+    public void setIdMotivo(MotivoEntrada idMotivo) {
+        this.idMotivo = idMotivo;
     }
 
     @Override

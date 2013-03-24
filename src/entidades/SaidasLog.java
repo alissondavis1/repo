@@ -24,7 +24,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author alexandre
  */
 @Entity
-@Table(name = "saidas_log", catalog = "acal", schema = "")
+@Table(name = "saidas_log")
 @XmlRootElement
 //@NamedQueries({
 //    @NamedQuery(name = "SaidasLog.findAll", query = "SELECT s FROM SaidasLog s"),
@@ -70,12 +70,7 @@ public class SaidasLog implements Serializable {
     public SaidasLog() {
     }
 
-    public SaidasLog(Integer id) {
-        this.id = id;
-    }
-
-    public SaidasLog(Integer id, double valor, Date data, int idMotivoSaida, int idSocio, int idFuncionario, Date dataTransacao, String tipo) {
-        this.id = id;
+    public SaidasLog(double valor, Date data, int idMotivoSaida, int idSocio, int idFuncionario, Date dataTransacao, String tipo) {
         this.valor = valor;
         this.data = data;
         this.idMotivoSaida = idMotivoSaida;
@@ -85,13 +80,12 @@ public class SaidasLog implements Serializable {
         this.tipo = tipo;
     }
 
+    
     public Integer getId() {
         return id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+  
 
     public double getValor() {
         return valor;

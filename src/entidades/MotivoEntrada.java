@@ -5,7 +5,9 @@
 package entidades;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,21 +16,25 @@ import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
  * @author alexandre
  */
 @Entity
-@Table(name = "motivoentradas", catalog = "acal", schema = "")
+@Table(name = "motivoentradas")
 @XmlRootElement
 //@NamedQueries({
-//    @NamedQuery(name = "Motivoentradas.findAll", query = "SELECT m FROM Motivoentradas m"),
-//    @NamedQuery(name = "Motivoentradas.findById", query = "SELECT m FROM Motivoentradas m WHERE m.id = :id"),
-//    @NamedQuery(name = "Motivoentradas.findByNome", query = "SELECT m FROM Motivoentradas m WHERE m.nome = :nome")})
+//    @NamedQuery(name = "MotivoEntrada.findAll", query = "SELECT m FROM MotivoEntrada m"),
+//    @NamedQuery(name = "MotivoEntrada.findById", query = "SELECT m FROM MotivoEntrada m WHERE m.id = :id"),
+//    @NamedQuery(name = "MotivoEntrada.findByNome", query = "SELECT m FROM MotivoEntrada m WHERE m.nome = :nome")})
 public class MotivoEntrada implements Serializable {
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idMotivo")
+    private List<Entrada> entradaList;
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,35 +44,28 @@ public class MotivoEntrada implements Serializable {
     @Basic(optional = false)
     @Column(name = "Nome")
     private String nome;
-    @Basic(optional = false)
     @Lob
     @Column(name = "Descricao")
     private String descricao;
-    @Basic(optional = false)
     @Lob
     @Column(name = "Observacao")
     private String observacao;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idMotivo")
+    private Entrada entradas;
 
     public MotivoEntrada() {
     }
 
-    public MotivoEntrada(Integer id) {
-        this.id = id;
-    }
-
-    public MotivoEntrada(Integer id, String nome, String descricao, String observacao) {
-        this.id = id;
+    public MotivoEntrada(String nome, String descricao, String observacao, Entrada entradas) {
         this.nome = nome;
         this.descricao = descricao;
         this.observacao = observacao;
+        this.entradas = entradas;
     }
 
+   
     public Integer getId() {
         return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
     }
 
     public String getNome() {
@@ -93,6 +92,15 @@ public class MotivoEntrada implements Serializable {
         this.observacao = observacao;
     }
 
+    @XmlTransient
+    public Entrada getEntradas() {
+        return entradas;
+    }
+
+    public void setEntradasList(Entrada entradas) {
+        this.entradas = entradas;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -115,7 +123,16 @@ public class MotivoEntrada implements Serializable {
 
     @Override
     public String toString() {
-        return "entidades.Motivoentradas[ id=" + id + " ]";
+        return "entidades.MotivoEntrada[ id=" + id + " ]";
+    }
+
+    @XmlTransient
+    public List<Entrada> getEntradaList() {
+        return entradaList;
+    }
+
+    public void setEntradaList(List<Entrada> entradaList) {
+        this.entradaList = entradaList;
     }
     
 }

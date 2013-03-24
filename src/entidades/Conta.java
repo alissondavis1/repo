@@ -26,15 +26,15 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author alexandre
  */
 @Entity
-@Table(name = "contas", catalog = "acal", schema = "")
+@Table(name = "contas")
 @XmlRootElement
 //@NamedQueries({
-//    @NamedQuery(name = "Contas.findAll", query = "SELECT c FROM Contas c"),
-//    @NamedQuery(name = "Contas.findById", query = "SELECT c FROM Contas c WHERE c.id = :id"),
-//    @NamedQuery(name = "Contas.findByTaxarelogio", query = "SELECT c FROM Contas c WHERE c.taxarelogio = :taxarelogio"),
-//    @NamedQuery(name = "Contas.findByDatapag", query = "SELECT c FROM Contas c WHERE c.datapag = :datapag"),
-//    @NamedQuery(name = "Contas.findByDatavence", query = "SELECT c FROM Contas c WHERE c.datavence = :datavence"),
-//    @NamedQuery(name = "Contas.findByObservacoes", query = "SELECT c FROM Contas c WHERE c.observacoes = :observacoes")})
+//    @NamedQuery(name = "Conta.findAll", query = "SELECT c FROM Conta c"),
+//    @NamedQuery(name = "Conta.findById", query = "SELECT c FROM Conta c WHERE c.id = :id"),
+//    @NamedQuery(name = "Conta.findByTaxarelogio", query = "SELECT c FROM Conta c WHERE c.taxarelogio = :taxarelogio"),
+//    @NamedQuery(name = "Conta.findByDatapag", query = "SELECT c FROM Conta c WHERE c.datapag = :datapag"),
+//    @NamedQuery(name = "Conta.findByDatavence", query = "SELECT c FROM Conta c WHERE c.datavence = :datavence"),
+//    @NamedQuery(name = "Conta.findByObservacoes", query = "SELECT c FROM Conta c WHERE c.observacoes = :observacoes")})
 public class Conta implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -42,10 +42,9 @@ public class Conta implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
-    @Basic(optional = false)
+    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Column(name = "Taxa_relogio")
-    private double taxarelogio;
-    @Basic(optional = false)
+    private Double taxarelogio;
     @Column(name = "Data_pag")
     @Temporal(TemporalType.TIMESTAMP)
     private Date datapag;
@@ -53,9 +52,8 @@ public class Conta implements Serializable {
     @Column(name = "Data_vence")
     @Temporal(TemporalType.TIMESTAMP)
     private Date datavence;
-    @Basic(optional = false)
     @Column(name = "Observacoes")
-    private int observacoes;
+    private Integer observacoes;
     @JoinColumn(name = "Id_taxa", referencedColumnName = "Id")
     @ManyToOne(optional = false)
     private Taxa idtaxa;
@@ -66,31 +64,26 @@ public class Conta implements Serializable {
     public Conta() {
     }
 
-    public Conta(Integer id) {
-        this.id = id;
-    }
-
-    public Conta(Integer id, double taxarelogio, Date datapag, Date datavence, int observacoes) {
-        this.id = id;
+    public Conta(Double taxarelogio, Date datapag, Date datavence, Integer observacoes, Taxa idtaxa, Socio idnumerosocio) {
         this.taxarelogio = taxarelogio;
         this.datapag = datapag;
         this.datavence = datavence;
         this.observacoes = observacoes;
+        this.idtaxa = idtaxa;
+        this.idnumerosocio = idnumerosocio;
     }
 
+  
     public Integer getId() {
         return id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
-    public double getTaxarelogio() {
+    public Double getTaxarelogio() {
         return taxarelogio;
     }
 
-    public void setTaxarelogio(double taxarelogio) {
+    public void setTaxarelogio(Double taxarelogio) {
         this.taxarelogio = taxarelogio;
     }
 
@@ -110,11 +103,11 @@ public class Conta implements Serializable {
         this.datavence = datavence;
     }
 
-    public int getObservacoes() {
+    public Integer getObservacoes() {
         return observacoes;
     }
 
-    public void setObservacoes(int observacoes) {
+    public void setObservacoes(Integer observacoes) {
         this.observacoes = observacoes;
     }
 
@@ -156,7 +149,7 @@ public class Conta implements Serializable {
 
     @Override
     public String toString() {
-        return "entidades.Contas[ id=" + id + " ]";
+        return "entidades.Conta[ id=" + id + " ]";
     }
     
 }

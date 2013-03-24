@@ -31,7 +31,7 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author alexandre
  */
 @Entity
-@Table(name = "funcionario", catalog = "acal", schema = "")
+@Table(name = "funcionario")
 @XmlRootElement
 //@NamedQueries({
 //    @NamedQuery(name = "Funcionario.findAll", query = "SELECT f FROM Funcionario f"),
@@ -65,35 +65,31 @@ public class Funcionario implements Serializable {
     @Column(name = "Observacao")
     private String observacao;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idFuncionario")
-    private List<Cheque> chequesList;
+    private List<Cheque> chequeList;
     @JoinColumn(name = "Id_pessoa", referencedColumnName = "Id")
     @ManyToOne(optional = false)
     private Pessoa idpessoa;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idfuncionario")
-    private List<Saida> saidasList;
+    private List<Saida> saidaList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idFuncionario")
+    private List<Entrada> entradasList;
 
     public Funcionario() {
     }
 
-    public Funcionario(Integer id) {
-        this.id = id;
-    }
-
-    public Funcionario(Integer id, String cargo, float salario, Date dataContratacao, int matricula, String observacao) {
-        this.id = id;
+    public Funcionario(String cargo, float salario, Date dataContratacao, int matricula, String observacao, List<Cheque> chequeList, Pessoa idpessoa, List<Saida> saidaList, List<Entrada> entradasList) {
         this.cargo = cargo;
         this.salario = salario;
         this.dataContratacao = dataContratacao;
         this.matricula = matricula;
         this.observacao = observacao;
+        this.chequeList = chequeList;
+        this.idpessoa = idpessoa;
+        this.saidaList = saidaList;
+        this.entradasList = entradasList;
     }
-
     public Integer getId() {
         return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
     }
 
     public String getCargo() {
@@ -137,12 +133,12 @@ public class Funcionario implements Serializable {
     }
 
     @XmlTransient
-    public List<Cheque> getChequesList() {
-        return chequesList;
+    public List<Cheque> getChequeList() {
+        return chequeList;
     }
 
-    public void setChequesList(List<Cheque> chequesList) {
-        this.chequesList = chequesList;
+    public void setChequeList(List<Cheque> chequeList) {
+        this.chequeList = chequeList;
     }
 
     public Pessoa getIdpessoa() {
@@ -154,12 +150,21 @@ public class Funcionario implements Serializable {
     }
 
     @XmlTransient
-    public List<Saida> getSaidasList() {
-        return saidasList;
+    public List<Saida> getSaidaList() {
+        return saidaList;
     }
 
-    public void setSaidasList(List<Saida> saidasList) {
-        this.saidasList = saidasList;
+    public void setSaidaList(List<Saida> saidaList) {
+        this.saidaList = saidaList;
+    }
+
+    @XmlTransient
+    public List<Entrada> getEntradasList() {
+        return entradasList;
+    }
+
+    public void setEntradasList(List<Entrada> entradasList) {
+        this.entradasList = entradasList;
     }
 
     @Override
