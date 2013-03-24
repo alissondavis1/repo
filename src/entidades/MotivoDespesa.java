@@ -5,9 +5,7 @@
 package entidades;
 
 import java.io.Serializable;
-import java.util.List;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,10 +14,8 @@ import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -33,10 +29,6 @@ import javax.xml.bind.annotation.XmlTransient;
 //    @NamedQuery(name = "MotivoDespesa.findById", query = "SELECT m FROM MotivoDespesa m WHERE m.id = :id"),
 //    @NamedQuery(name = "MotivoDespesa.findByNome", query = "SELECT m FROM MotivoDespesa m WHERE m.nome = :nome")})
 public class MotivoDespesa implements Serializable {
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idMotivodespeza")
-    private List<Cheque> chequeList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idmotivosaida")
-    private List<Saida> saidaList;
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -54,25 +46,22 @@ public class MotivoDespesa implements Serializable {
     @Lob
     @Column(name = "Observacao")
     private String observacao;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idMotivodespeza")
-    private Cheque cheque;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idmotivosaida")
-    private Saida saida;
 
     public MotivoDespesa() {
     }
 
-    public MotivoDespesa(Integer id) {
-        this.id = id;
-    }
-
-    public MotivoDespesa(String nome, String descricao, String observacao, Cheque cheque, Saida saida) {
+    public MotivoDespesa(String nome, String descricao, String observacao) {
         this.nome = nome;
         this.descricao = descricao;
         this.observacao = observacao;
-        this.cheque = cheque;
-        this.saida = saida;
     }
+
+ 
+
+    public Integer getId() {
+        return id;
+    }
+
 
     public String getNome() {
         return nome;
@@ -97,26 +86,6 @@ public class MotivoDespesa implements Serializable {
     public void setObservacao(String observacao) {
         this.observacao = observacao;
     }
-    
-    @XmlTransient
-    public Cheque getCheque() {
-        return cheque;
-    }
-
-    public void setCheque(Cheque cheque) {
-        this.cheque = cheque;
-    }
-    
-    @XmlTransient
-    public Saida getSaida() {
-        return saida;
-    }
-
-    public void setSaida(Saida saida) {
-        this.saida = saida;
-    }
-
- 
 
     @Override
     public int hashCode() {
@@ -141,24 +110,6 @@ public class MotivoDespesa implements Serializable {
     @Override
     public String toString() {
         return "entidades.MotivoDespesa[ id=" + id + " ]";
-    }
-
-    @XmlTransient
-    public List<Cheque> getChequeList() {
-        return chequeList;
-    }
-
-    public void setChequeList(List<Cheque> chequeList) {
-        this.chequeList = chequeList;
-    }
-
-    @XmlTransient
-    public List<Saida> getSaidaList() {
-        return saidaList;
-    }
-
-    public void setSaidaList(List<Saida> saidaList) {
-        this.saidaList = saidaList;
     }
     
 }

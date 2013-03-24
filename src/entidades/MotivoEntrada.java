@@ -5,9 +5,7 @@
 package entidades;
 
 import java.io.Serializable;
-import java.util.List;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,10 +14,8 @@ import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -28,13 +24,11 @@ import javax.xml.bind.annotation.XmlTransient;
 @Entity
 @Table(name = "motivoentradas")
 @XmlRootElement
-//@NamedQueries({
-//    @NamedQuery(name = "MotivoEntrada.findAll", query = "SELECT m FROM MotivoEntrada m"),
-//    @NamedQuery(name = "MotivoEntrada.findById", query = "SELECT m FROM MotivoEntrada m WHERE m.id = :id"),
-//    @NamedQuery(name = "MotivoEntrada.findByNome", query = "SELECT m FROM MotivoEntrada m WHERE m.nome = :nome")})
+@NamedQueries({
+    @NamedQuery(name = "MotivoEntrada.findAll", query = "SELECT m FROM MotivoEntrada m"),
+    @NamedQuery(name = "MotivoEntrada.findById", query = "SELECT m FROM MotivoEntrada m WHERE m.id = :id"),
+    @NamedQuery(name = "MotivoEntrada.findByNome", query = "SELECT m FROM MotivoEntrada m WHERE m.nome = :nome")})
 public class MotivoEntrada implements Serializable {
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idMotivo")
-    private List<Entrada> entradaList;
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -50,24 +44,20 @@ public class MotivoEntrada implements Serializable {
     @Lob
     @Column(name = "Observacao")
     private String observacao;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idMotivo")
-    private Entrada entradas;
 
     public MotivoEntrada() {
     }
 
-    public MotivoEntrada(String nome, String descricao, String observacao, Entrada entradas) {
+    public MotivoEntrada(String nome, String descricao, String observacao) {
         this.nome = nome;
         this.descricao = descricao;
         this.observacao = observacao;
-        this.entradas = entradas;
     }
 
-   
+
     public Integer getId() {
         return id;
     }
-
     public String getNome() {
         return nome;
     }
@@ -90,15 +80,6 @@ public class MotivoEntrada implements Serializable {
 
     public void setObservacao(String observacao) {
         this.observacao = observacao;
-    }
-
-    @XmlTransient
-    public Entrada getEntradas() {
-        return entradas;
-    }
-
-    public void setEntradasList(Entrada entradas) {
-        this.entradas = entradas;
     }
 
     @Override
@@ -124,15 +105,6 @@ public class MotivoEntrada implements Serializable {
     @Override
     public String toString() {
         return "entidades.MotivoEntrada[ id=" + id + " ]";
-    }
-
-    @XmlTransient
-    public List<Entrada> getEntradaList() {
-        return entradaList;
-    }
-
-    public void setEntradaList(List<Entrada> entradaList) {
-        this.entradaList = entradaList;
     }
     
 }
