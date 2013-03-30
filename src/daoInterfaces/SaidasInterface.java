@@ -15,9 +15,9 @@ import java.util.List;
  */
 public interface SaidasInterface {
     
-    public void NovaSaida(Saida saida);
-    public void AlterarEntrada(Saida saida);
-    public void ApagarEntrada(Saida saida);
+    public void AdicionarSaida(Saida saida);
+    public void AlterarSaida  (Saida saida);
+    public void ApagarSaida   (Saida saida);
     
     public float SomaSaidas();
     public List<Saida> SaidasPorFuncionario(int IdFuncionario);

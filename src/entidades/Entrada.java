@@ -5,6 +5,7 @@
 package entidades;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -27,13 +28,13 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author alexandre
  */
 @Entity
-@Table(name = "entradas")
+@Table(name = "entrada")
 @XmlRootElement
-//@NamedQueries({
-//    @NamedQuery(name = "Entradas.findAll", query = "SELECT e FROM Entradas e"),
-//    @NamedQuery(name = "Entradas.findById", query = "SELECT e FROM Entradas e WHERE e.id = :id"),
-//    @NamedQuery(name = "Entradas.findByValor", query = "SELECT e FROM Entradas e WHERE e.valor = :valor"),
-//    @NamedQuery(name = "Entradas.findByData", query = "SELECT e FROM Entradas e WHERE e.data = :data")})
+@NamedQueries({
+    @NamedQuery(name = "Entrada.findAll", query = "SELECT e FROM Entrada e"),
+    @NamedQuery(name = "Entrada.findById", query = "SELECT e FROM Entrada e WHERE e.id = :id"),
+    @NamedQuery(name = "Entrada.findByData", query = "SELECT e FROM Entrada e WHERE e.data = :data"),
+    @NamedQuery(name = "Entrada.findByValor", query = "SELECT e FROM Entrada e WHERE e.valor = :valor")})
 public class Entrada implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -42,47 +43,45 @@ public class Entrada implements Serializable {
     @Column(name = "id")
     private Integer id;
     @Basic(optional = false)
-    @Column(name = "valor")
-    private float valor;
-    @Basic(optional = false)
     @Column(name = "data")
     @Temporal(TemporalType.DATE)
     private Date data;
     @Lob
     @Column(name = "observacao")
     private String observacao;
-    @JoinColumn(name = "id_funcionario", referencedColumnName = "Id")
+    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
+    @Basic(optional = false)
+    @Column(name = "valor")
+    private BigDecimal valor;
+    @JoinColumn(name = "idFuncionario", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Funcionario idFuncionario;
-    @JoinColumn(name = "id_cedente", referencedColumnName = "Id")
+    @JoinColumn(name = "idCedente", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Socio idCedente;
-    @JoinColumn(name = "id_motivo", referencedColumnName = "Id")
+    @JoinColumn(name = "idMotivoEntrada", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    private MotivoEntrada idMotivo;
+    private MotivoEntrada idMotivoEntrada;
 
     public Entrada() {
     }
 
-    public Entrada(float valor, Date data, String observacao, Funcionario idFuncionario, Socio idCedente, MotivoEntrada idMotivo) {
-        this.valor = valor;
+    public Entrada(Integer id) {
+        this.id = id;
+    }
+
+    public Entrada(Integer id, Date data, BigDecimal valor) {
+        this.id = id;
         this.data = data;
-        this.observacao = observacao;
-        this.idFuncionario = idFuncionario;
-        this.idCedente = idCedente;
-        this.idMotivo = idMotivo;
+        this.valor = valor;
     }
 
     public Integer getId() {
         return id;
     }
 
-    public float getValor() {
-        return valor;
-    }
-
-    public void setValor(float valor) {
-        this.valor = valor;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public Date getData() {
@@ -101,6 +100,14 @@ public class Entrada implements Serializable {
         this.observacao = observacao;
     }
 
+    public BigDecimal getValor() {
+        return valor;
+    }
+
+    public void setValor(BigDecimal valor) {
+        this.valor = valor;
+    }
+
     public Funcionario getIdFuncionario() {
         return idFuncionario;
     }
@@ -117,12 +124,12 @@ public class Entrada implements Serializable {
         this.idCedente = idCedente;
     }
 
-    public MotivoEntrada getIdMotivo() {
-        return idMotivo;
+    public MotivoEntrada getIdMotivoEntrada() {
+        return idMotivoEntrada;
     }
 
-    public void setIdMotivo(MotivoEntrada idMotivo) {
-        this.idMotivo = idMotivo;
+    public void setIdMotivoEntrada(MotivoEntrada idMotivoEntrada) {
+        this.idMotivoEntrada = idMotivoEntrada;
     }
 
     @Override
@@ -147,7 +154,7 @@ public class Entrada implements Serializable {
 
     @Override
     public String toString() {
-        return "entidades.Entradas[ id=" + id + " ]";
+        return "entidades.Entrada[ id=" + id + " ]";
     }
     
 }

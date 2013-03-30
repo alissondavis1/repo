@@ -12,20 +12,18 @@ import java.util.List;
  *
  * @author alexandre
  */
-public interface ChequesInterfaces {
+public interface ChequesInterface {
     
-    public void NovoCheque   (Cheque cheque);
+    public void AdicionarCheque(Cheque cheque);
     public void ApagarCheque   (Cheque cheque);
     public void AtualizarCheque(Cheque cheque);
   
+    public Cheque       ChequesId(int idCheque);
     public List<Cheque> ChequesAbertos(Date data);
-    public List<Cheque> ChequesAbertosClientes(int id);
-    public List<Cheque> ChequesAbertosClientes(String nome);
+    public List<Cheque> ChequesAbertosClientesPorIdClinete(int id);
+    public List<Cheque> ChequesAbertosClientesPorNomeCliente(String nome);
   
-    public List<Cheque> ChequesVencidosPorCliente(Date data);
-    public List<Cheque> ChequesVencidosPorMotivo(Date data, int id);
-    public List<Cheque> ChequesVencidasPorClientePorMotivo(Date data, int motivo);
-    
+    public List<Cheque> ChequesVencidosPorCliente(Date data); 
     public List<Cheque> ChequesTotalAbertas();
     public List<Cheque> ChequesSomaPorData(Date dataInicial, Date dataFinal);
 

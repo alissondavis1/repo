@@ -5,9 +5,9 @@
 package entidades;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.List;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -26,57 +26,55 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author alexandre
  */
 @Entity
-@Table(name = "taxas")
+@Table(name = "taxa")
 @XmlRootElement
-//@NamedQueries({
-//    @NamedQuery(name = "Taxas.findAll", query = "SELECT t FROM Taxas t"),
-//    @NamedQuery(name = "Taxas.findById", query = "SELECT t FROM Taxas t WHERE t.id = :id"),
-//    @NamedQuery(name = "Taxas.findByNome", query = "SELECT t FROM Taxas t WHERE t.nome = :nome"),
-//    @NamedQuery(name = "Taxas.findByDescricao", query = "SELECT t FROM Taxas t WHERE t.descricao = :descricao"),
-//    @NamedQuery(name = "Taxas.findByValor", query = "SELECT t FROM Taxas t WHERE t.valor = :valor")})
+@NamedQueries({
+    @NamedQuery(name = "Taxa.findAll", query = "SELECT t FROM Taxa t"),
+    @NamedQuery(name = "Taxa.findById", query = "SELECT t FROM Taxa t WHERE t.id = :id"),
+    @NamedQuery(name = "Taxa.findByDescricao", query = "SELECT t FROM Taxa t WHERE t.descricao = :descricao"),
+    @NamedQuery(name = "Taxa.findByNome", query = "SELECT t FROM Taxa t WHERE t.nome = :nome"),
+    @NamedQuery(name = "Taxa.findByValor", query = "SELECT t FROM Taxa t WHERE t.valor = :valor")})
 public class Taxa implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "Id")
+    @Column(name = "id")
     private Integer id;
-    @Basic(optional = false)
-    @Column(name = "Nome")
-    private String nome;
-    @Column(name = "Descricao")
+    @Column(name = "descricao")
     private String descricao;
     @Basic(optional = false)
-    @Column(name = "Valor")
-    private double valor;
+    @Column(name = "nome")
+    private String nome;
     @Lob
-    @Column(name = "Observacao")
+    @Column(name = "observacao")
     private String observacao;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idtaxa")
-    private List<Conta> contaList;
+    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
+    @Basic(optional = false)
+    @Column(name = "valor")
+    private BigDecimal valor;
+    @OneToMany(mappedBy = "taxasId")
+    private List<CategoriaSocio> categoriaSocioList;
 
     public Taxa() {
     }
 
-    public Taxa(String nome, String descricao, double valor, String observacao, List<Conta> contaList) {
-        this.nome = nome;
-        this.descricao = descricao;
-        this.valor = valor;
-        this.observacao = observacao;
-        this.contaList = contaList;
+    public Taxa(Integer id) {
+        this.id = id;
     }
 
+    public Taxa(Integer id, String nome, BigDecimal valor) {
+        this.id = id;
+        this.nome = nome;
+        this.valor = valor;
+    }
 
     public Integer getId() {
         return id;
     }
 
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getDescricao() {
@@ -87,12 +85,12 @@ public class Taxa implements Serializable {
         this.descricao = descricao;
     }
 
-    public double getValor() {
-        return valor;
+    public String getNome() {
+        return nome;
     }
 
-    public void setValor(double valor) {
-        this.valor = valor;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     public String getObservacao() {
@@ -103,13 +101,21 @@ public class Taxa implements Serializable {
         this.observacao = observacao;
     }
 
-    @XmlTransient
-    public List<Conta> getContaList() {
-        return contaList;
+    public BigDecimal getValor() {
+        return valor;
     }
 
-    public void setContaList(List<Conta> contaList) {
-        this.contaList = contaList;
+    public void setValor(BigDecimal valor) {
+        this.valor = valor;
+    }
+
+    @XmlTransient
+    public List<CategoriaSocio> getCategoriaSocioList() {
+        return categoriaSocioList;
+    }
+
+    public void setCategoriaSocioList(List<CategoriaSocio> categoriaSocioList) {
+        this.categoriaSocioList = categoriaSocioList;
     }
 
     @Override
@@ -134,7 +140,7 @@ public class Taxa implements Serializable {
 
     @Override
     public String toString() {
-        return "entidades.Taxas[ id=" + id + " ]";
+        return "entidades.Taxa[ id=" + id + " ]";
     }
     
 }

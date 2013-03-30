@@ -10,7 +10,7 @@ import java.util.List;
  *
  * @author netservidor
  */
-public interface MotivoEntradaInterface {
+public interface MotivoEntradasInterface {
     
     public void InserirMotivoEntrada        (MotivoEntrada motivo);
     public void ApagarMotivoEntrada         (MotivoEntrada motivo);

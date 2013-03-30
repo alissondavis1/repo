@@ -1,25 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
-  <persistence-unit name="acal2000PU" transaction-type="RESOURCE_LOCAL">
+  <persistence-unit name="acal2002PU" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-    <class>entidades.ContasMensais</class>
-    <class>entidades.Contrato</class>
+    <class>entidades.Usuario</class>
+    <class>entidades.Contas</class>
     <class>entidades.EntradasLog</class>
-    <class>entidades.SaidasLog</class>
-    <class>entidades.CategoriaSocio</class>
-    <class>entidades.Funcionario</class>
-    <class>entidades.Socio</class>
+    <class>entidades.Saidas</class>
     <class>entidades.Pessoa</class>
-    <class>entidades.Cheque</class>
-    <class>entidades.Conta</class>
-    <class>entidades.Endereco</class>
-    <class>entidades.Entrada</class>
-    <class>entidades.Taxa</class>
-    <class>entidades.Saida</class>
-    <class>entidades.MotivoEntrada</class>
-    <class>entidades.MotivoDespesa</class>
     <class>entidades.Taxas</class>
-    <class>entidades.Usuarios</class>
+    <class>entidades.Socio</class>
+    <class>entidades.CategoriaSocio</class>
+    <class>entidades.Motivosaidas</class>
+    <class>entidades.Contrato</class>
+    <class>entidades.Enderecos</class>
+    <class>entidades.Funcionario</class>
+    <class>entidades.Cheques</class>
+    <class>entidades.SaidasLog</class>
+    <class>entidades.Entradas</class>
+    <class>entidades.Motivoentradas</class>
+    <class>entidades.Endereco</class>
+    <class>entidades.MotivoEntrada</class>
+    <class>entidades.Cheque</class>
+    <class>entidades.Saida</class>
+    <class>entidades.Taxa</class>
+    <class>entidades.Entrada</class>
+    <class>entidades.Conta</class>
+    <class>entidades.MotivoDespesa</class>
+    <class>entidades.Categoriasocio</class>
+    <class>entidades.Saidaslog</class>
+    <class>entidades.Entradaslog</class>
+    <class>entidades.Chequeslog</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/acal?zeroDateTimeBehavior=convertToNull"/>
       <property name="javax.persistence.jdbc.password" value="123"/>

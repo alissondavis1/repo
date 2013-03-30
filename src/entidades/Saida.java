@@ -5,6 +5,7 @@
 package entidades;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -27,65 +28,62 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author alexandre
  */
 @Entity
-@Table(name = "saidas")
+@Table(name = "saida")
 @XmlRootElement
-//@NamedQueries({
-//    @NamedQuery(name = "Saida.findAll", query = "SELECT s FROM Saida s"),
-//    @NamedQuery(name = "Saida.findById", query = "SELECT s FROM Saida s WHERE s.id = :id"),
-//    @NamedQuery(name = "Saida.findByValor", query = "SELECT s FROM Saida s WHERE s.valor = :valor"),
-//    @NamedQuery(name = "Saida.findByData", query = "SELECT s FROM Saida s WHERE s.data = :data"),
-//    @NamedQuery(name = "Saida.findByFavorecido", query = "SELECT s FROM Saida s WHERE s.favorecido = :favorecido")})
+@NamedQueries({
+    @NamedQuery(name = "Saida.findAll", query = "SELECT s FROM Saida s"),
+    @NamedQuery(name = "Saida.findById", query = "SELECT s FROM Saida s WHERE s.id = :id"),
+    @NamedQuery(name = "Saida.findByData", query = "SELECT s FROM Saida s WHERE s.data = :data"),
+    @NamedQuery(name = "Saida.findByValor", query = "SELECT s FROM Saida s WHERE s.valor = :valor"),
+    @NamedQuery(name = "Saida.findByFavorecido", query = "SELECT s FROM Saida s WHERE s.favorecido = :favorecido")})
 public class Saida implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "Id")
+    @Column(name = "id")
     private Integer id;
     @Basic(optional = false)
-    @Column(name = "Valor")
-    private float valor;
-    @Basic(optional = false)
-    @Column(name = "Data")
+    @Column(name = "data")
     @Temporal(TemporalType.TIMESTAMP)
     private Date data;
-    @Basic(optional = false)
-    @Column(name = "Favorecido")
-    private String favorecido;
     @Lob
-    @Column(name = "Observacao")
+    @Column(name = "observacao")
     private String observacao;
-    @JoinColumn(name = "Id_funcionario", referencedColumnName = "Id")
-    @ManyToOne(optional = false)
-    private Funcionario idfuncionario;
-    @JoinColumn(name = "Id_motivo_saida", referencedColumnName = "Id")
+    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
+    @Basic(optional = false)
+    @Column(name = "valor")
+    private BigDecimal valor;
+    @Basic(optional = false)
+    @Column(name = "favorecido")
+    private String favorecido;
+    @JoinColumn(name = "idmotivosaida", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private MotivoDespesa idmotivosaida;
+    @JoinColumn(name = "idfuncionario", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private Funcionario idfuncionario;
 
     public Saida() {
     }
 
-    public Saida(float valor, Date data, String favorecido, String observacao, Funcionario idfuncionario, MotivoDespesa idmotivosaida) {
-        this.valor = valor;
-        this.data = data;
-        this.favorecido = favorecido;
-        this.observacao = observacao;
-        this.idfuncionario = idfuncionario;
-        this.idmotivosaida = idmotivosaida;
+    public Saida(Integer id) {
+        this.id = id;
     }
 
-  
+    public Saida(Integer id, Date data, BigDecimal valor, String favorecido) {
+        this.id = id;
+        this.data = data;
+        this.valor = valor;
+        this.favorecido = favorecido;
+    }
+
     public Integer getId() {
         return id;
     }
 
-
-    public float getValor() {
-        return valor;
-    }
-
-    public void setValor(float valor) {
-        this.valor = valor;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public Date getData() {
@@ -96,14 +94,6 @@ public class Saida implements Serializable {
         this.data = data;
     }
 
-    public String getFavorecido() {
-        return favorecido;
-    }
-
-    public void setFavorecido(String favorecido) {
-        this.favorecido = favorecido;
-    }
-
     public String getObservacao() {
         return observacao;
     }
@@ -112,12 +102,20 @@ public class Saida implements Serializable {
         this.observacao = observacao;
     }
 
-    public Funcionario getIdfuncionario() {
-        return idfuncionario;
+    public BigDecimal getValor() {
+        return valor;
     }
 
-    public void setIdfuncionario(Funcionario idfuncionario) {
-        this.idfuncionario = idfuncionario;
+    public void setValor(BigDecimal valor) {
+        this.valor = valor;
+    }
+
+    public String getFavorecido() {
+        return favorecido;
+    }
+
+    public void setFavorecido(String favorecido) {
+        this.favorecido = favorecido;
     }
 
     public MotivoDespesa getIdmotivosaida() {
@@ -126,6 +124,14 @@ public class Saida implements Serializable {
 
     public void setIdmotivosaida(MotivoDespesa idmotivosaida) {
         this.idmotivosaida = idmotivosaida;
+    }
+
+    public Funcionario getIdfuncionario() {
+        return idfuncionario;
+    }
+
+    public void setIdfuncionario(Funcionario idfuncionario) {
+        this.idfuncionario = idfuncionario;
     }
 
     @Override

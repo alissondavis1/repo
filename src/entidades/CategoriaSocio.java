@@ -13,7 +13,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -26,48 +28,57 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author alexandre
  */
 @Entity
-@Table(name = "categoria_socio")
+@Table(name = "categoriasocio")
 @XmlRootElement
-//@NamedQueries({
-//    @NamedQuery(name = "CategoriaSocio.findAll", query = "SELECT c FROM CategoriaSocio c"),
-//    @NamedQuery(name = "CategoriaSocio.findById", query = "SELECT c FROM CategoriaSocio c WHERE c.id = :id"),
-//    @NamedQuery(name = "CategoriaSocio.findByNome", query = "SELECT c FROM CategoriaSocio c WHERE c.nome = :nome"),
-//    @NamedQuery(name = "CategoriaSocio.findByTaxaSocio", query = "SELECT c FROM CategoriaSocio c WHERE c.taxaSocio = :taxaSocio")})
+@NamedQueries({
+    @NamedQuery(name = "CategoriaSocio.findAll", query = "SELECT c FROM CategoriaSocio c"),
+    @NamedQuery(name = "CategoriaSocio.findById", query = "SELECT c FROM CategoriaSocio c WHERE c.id = :id"),
+    @NamedQuery(name = "CategoriaSocio.findByNome", query = "SELECT c FROM CategoriaSocio c WHERE c.nome = :nome")})
 public class CategoriaSocio implements Serializable {
-    
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "Id")
+    @Column(name = "id")
     private Integer id;
-    @Basic(optional = false)
-    @Column(name = "Nome")
-    private String nome;
-    @Basic(optional = false)
-    @Column(name = "taxa Socio")
-    private int taxaSocio;
     @Lob
-    @Column(name = "Descricao")
+    @Column(name = "descricao")
     private String descricao;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idcategorirasocio")
+    @Basic(optional = false)
+    @Column(name = "nome")
+    private String nome;
+    @JoinColumn(name = "taxasId", referencedColumnName = "id")
+    @ManyToOne
+    private Taxa taxasId;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idCategoriaSocio")
     private List<Socio> socioList;
 
     public CategoriaSocio() {
     }
 
-    public CategoriaSocio(String nome, int taxaSocio, String descricao, List<Socio> socioList) {
-        this.nome = nome;
-        this.taxaSocio = taxaSocio;
-        this.descricao = descricao;
-        this.socioList = socioList;
+    public CategoriaSocio(Integer id) {
+        this.id = id;
     }
 
-  
-
+    public CategoriaSocio(Integer id, String nome) {
+        this.id = id;
+        this.nome = nome;
+    }
 
     public Integer getId() {
         return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 
     public String getNome() {
@@ -78,20 +89,12 @@ public class CategoriaSocio implements Serializable {
         this.nome = nome;
     }
 
-    public int getTaxaSocio() {
-        return taxaSocio;
+    public Taxa getTaxasId() {
+        return taxasId;
     }
 
-    public void setTaxaSocio(int taxaSocio) {
-        this.taxaSocio = taxaSocio;
-    }
-
-    public String getDescricao() {
-        return descricao;
-    }
-
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
+    public void setTaxasId(Taxa taxasId) {
+        this.taxasId = taxasId;
     }
 
     @XmlTransient

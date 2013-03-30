@@ -21,37 +21,47 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author alexandre
  */
 @Entity
-@Table(name = "usuarios")
+@Table(name = "usuario")
 @XmlRootElement
-//@NamedQueries({
-//    @NamedQuery(name = "Usuarios.findAll", query = "SELECT u FROM Usuarios u"),
-//    @NamedQuery(name = "Usuarios.findById", query = "SELECT u FROM Usuarios u WHERE u.id = :id"),
-//    @NamedQuery(name = "Usuarios.findByNome", query = "SELECT u FROM Usuarios u WHERE u.nome = :nome"),
-//    @NamedQuery(name = "Usuarios.findBySenha", query = "SELECT u FROM Usuarios u WHERE u.senha = :senha")})
-public class Usuarios implements Serializable {
+@NamedQueries({
+    @NamedQuery(name = "Usuario.findAll", query = "SELECT u FROM Usuario u"),
+    @NamedQuery(name = "Usuario.findById", query = "SELECT u FROM Usuario u WHERE u.id = :id"),
+    @NamedQuery(name = "Usuario.findByNome", query = "SELECT u FROM Usuario u WHERE u.nome = :nome"),
+    @NamedQuery(name = "Usuario.findBySenha", query = "SELECT u FROM Usuario u WHERE u.senha = :senha"),
+    @NamedQuery(name = "Usuario.findByNivel", query = "SELECT u FROM Usuario u WHERE u.nivel = :nivel")})
+public class Usuario implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "Id")
+    @Column(name = "id")
     private Integer id;
     @Basic(optional = false)
-    @Column(name = "Nome")
+    @Column(name = "nome")
     private String nome;
-    @Basic(optional = false)
     @Column(name = "senha")
     private String senha;
+    @Column(name = "nivel")
+    private int nivel;
 
-    public Usuarios() {
+    public Usuario() {
     }
 
-    public Usuarios(String nome, String senha) {
+    public Usuario(Integer id) {
+        this.id = id;
+    }
+
+    public Usuario(Integer id, String nome) {
+        this.id = id;
         this.nome = nome;
-        this.senha = senha;
     }
 
     public Integer getId() {
         return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getNome() {
@@ -70,6 +80,14 @@ public class Usuarios implements Serializable {
         this.senha = senha;
     }
 
+    public int getNivel() {
+        return nivel;
+    }
+
+    public void setNivel(int nivel) {
+        this.nivel = nivel;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -80,10 +98,10 @@ public class Usuarios implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Usuarios)) {
+        if (!(object instanceof Usuario)) {
             return false;
         }
-        Usuarios other = (Usuarios) object;
+        Usuario other = (Usuario) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -92,7 +110,7 @@ public class Usuarios implements Serializable {
 
     @Override
     public String toString() {
-        return "entidades.Usuarios[ id=" + id + " ]";
+        return "entidades.Usuario[ id=" + id + " ]";
     }
     
 }

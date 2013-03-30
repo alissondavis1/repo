@@ -34,90 +34,66 @@ import javax.xml.bind.annotation.XmlTransient;
 @Entity
 @Table(name = "socio")
 @XmlRootElement
-//@NamedQueries({
-//    @NamedQuery(name = "Socio.findAll", query = "SELECT s FROM Socio s"),
-//    @NamedQuery(name = "Socio.findById", query = "SELECT s FROM Socio s WHERE s.id = :id"),
-//    @NamedQuery(name = "Socio.findByDatamatricula", query = "SELECT s FROM Socio s WHERE s.datamatricula = :datamatricula"),
-//    @NamedQuery(name = "Socio.findByDataaprovacao", query = "SELECT s FROM Socio s WHERE s.dataaprovacao = :dataaprovacao"),
-//    @NamedQuery(name = "Socio.findByNumerosocio", query = "SELECT s FROM Socio s WHERE s.numerosocio = :numerosocio"),
-//    @NamedQuery(name = "Socio.findByDataVence", query = "SELECT s FROM Socio s WHERE s.dataVence = :dataVence")})
+@NamedQueries({
+    @NamedQuery(name = "Socio.findAll", query = "SELECT s FROM Socio s"),
+    @NamedQuery(name = "Socio.findById", query = "SELECT s FROM Socio s WHERE s.id = :id"),
+    @NamedQuery(name = "Socio.findByDataVence", query = "SELECT s FROM Socio s WHERE s.dataVence = :dataVence"),
+    @NamedQuery(name = "Socio.findByDataAprovacao", query = "SELECT s FROM Socio s WHERE s.dataAprovacao = :dataAprovacao"),
+    @NamedQuery(name = "Socio.findByDataMatricula", query = "SELECT s FROM Socio s WHERE s.dataMatricula = :dataMatricula"),
+    @NamedQuery(name = "Socio.findByNumeroSocio", query = "SELECT s FROM Socio s WHERE s.numeroSocio = :numeroSocio")})
 public class Socio implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "Id")
+    @Column(name = "id")
     private Integer id;
-    @Basic(optional = false)
-    @Column(name = "Data_matricula")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date datamatricula;
-    @Column(name = "Data_aprovacao")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date dataaprovacao;
-    @Basic(optional = false)
-    @Column(name = "Numero_socio")
-    private int numerosocio;
-    @Column(name = "data_Vence")
+    @Column(name = "dataVence")
     @Temporal(TemporalType.DATE)
     private Date dataVence;
+    @Column(name = "dataAprovacao")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date dataAprovacao;
+    @Basic(optional = false)
+    @Column(name = "dataMatricula")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date dataMatricula;
+    @Basic(optional = false)
+    @Column(name = "numeroSocio")
+    private int numeroSocio;
     @Lob
-    @Column(name = "Observacao")
+    @Column(name = "observacao")
     private String observacao;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idnumerosocio")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idNumeroSocio")
     private List<Conta> contaList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idCedente")
-    private List<Entrada> entradasList;
-    @JoinColumn(name = "Id_categorira_socio", referencedColumnName = "Id")
+    @JoinColumn(name = "idCategoriaSocio", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    private CategoriaSocio idcategorirasocio;
-    @JoinColumn(name = "Id_pessoa", referencedColumnName = "Id")
+    private CategoriaSocio idCategoriaSocio;
+    @JoinColumn(name = "idPessoa", referencedColumnName = "id")
     @OneToOne(optional = false)
-    private Pessoa idpessoa;
+    private Pessoa idPessoa;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idCedente")
+    private List<Entrada> entradaList;
 
     public Socio() {
     }
 
-    public Socio(Integer id, Date datamatricula, Date dataaprovacao, int numerosocio, Date dataVence, String observacao, List<Conta> contaList, List<Entrada> entradasList, CategoriaSocio idcategorirasocio, Pessoa idpessoa) {
+    public Socio(Integer id) {
         this.id = id;
-        this.datamatricula = datamatricula;
-        this.dataaprovacao = dataaprovacao;
-        this.numerosocio = numerosocio;
-        this.dataVence = dataVence;
-        this.observacao = observacao;
-        this.contaList = contaList;
-        this.entradasList = entradasList;
-        this.idcategorirasocio = idcategorirasocio;
-        this.idpessoa = idpessoa;
+    }
+
+    public Socio(Integer id, Date dataMatricula, int numeroSocio) {
+        this.id = id;
+        this.dataMatricula = dataMatricula;
+        this.numeroSocio = numeroSocio;
     }
 
     public Integer getId() {
         return id;
     }
 
-
-    public Date getDatamatricula() {
-        return datamatricula;
-    }
-
-    public void setDatamatricula(Date datamatricula) {
-        this.datamatricula = datamatricula;
-    }
-
-    public Date getDataaprovacao() {
-        return dataaprovacao;
-    }
-
-    public void setDataaprovacao(Date dataaprovacao) {
-        this.dataaprovacao = dataaprovacao;
-    }
-
-    public int getNumerosocio() {
-        return numerosocio;
-    }
-
-    public void setNumerosocio(int numerosocio) {
-        this.numerosocio = numerosocio;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public Date getDataVence() {
@@ -126,6 +102,30 @@ public class Socio implements Serializable {
 
     public void setDataVence(Date dataVence) {
         this.dataVence = dataVence;
+    }
+
+    public Date getDataAprovacao() {
+        return dataAprovacao;
+    }
+
+    public void setDataAprovacao(Date dataAprovacao) {
+        this.dataAprovacao = dataAprovacao;
+    }
+
+    public Date getDataMatricula() {
+        return dataMatricula;
+    }
+
+    public void setDataMatricula(Date dataMatricula) {
+        this.dataMatricula = dataMatricula;
+    }
+
+    public int getNumeroSocio() {
+        return numeroSocio;
+    }
+
+    public void setNumeroSocio(int numeroSocio) {
+        this.numeroSocio = numeroSocio;
     }
 
     public String getObservacao() {
@@ -145,29 +145,29 @@ public class Socio implements Serializable {
         this.contaList = contaList;
     }
 
+    public CategoriaSocio getIdCategoriaSocio() {
+        return idCategoriaSocio;
+    }
+
+    public void setIdCategoriaSocio(CategoriaSocio idCategoriaSocio) {
+        this.idCategoriaSocio = idCategoriaSocio;
+    }
+
+    public Pessoa getIdPessoa() {
+        return idPessoa;
+    }
+
+    public void setIdPessoa(Pessoa idPessoa) {
+        this.idPessoa = idPessoa;
+    }
+
     @XmlTransient
-    public List<Entrada> getEntradasList() {
-        return entradasList;
+    public List<Entrada> getEntradaList() {
+        return entradaList;
     }
 
-    public void setEntradasList(List<Entrada> entradasList) {
-        this.entradasList = entradasList;
-    }
-
-    public CategoriaSocio getIdcategorirasocio() {
-        return idcategorirasocio;
-    }
-
-    public void setIdcategorirasocio(CategoriaSocio idcategorirasocio) {
-        this.idcategorirasocio = idcategorirasocio;
-    }
-
-    public Pessoa getIdpessoa() {
-        return idpessoa;
-    }
-
-    public void setIdpessoa(Pessoa idpessoa) {
-        this.idpessoa = idpessoa;
+    public void setEntradaList(List<Entrada> entradaList) {
+        this.entradaList = entradaList;
     }
 
     @Override

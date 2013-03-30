@@ -5,7 +5,9 @@
 package entidades;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,54 +16,64 @@ import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
  * @author alexandre
  */
 @Entity
-@Table(name = "motivosaidas")
+@Table(name = "motivodespesa")
 @XmlRootElement
-//@NamedQueries({
-//    @NamedQuery(name = "MotivoDespesa.findAll", query = "SELECT m FROM MotivoDespesa m"),
-//    @NamedQuery(name = "MotivoDespesa.findById", query = "SELECT m FROM MotivoDespesa m WHERE m.id = :id"),
-//    @NamedQuery(name = "MotivoDespesa.findByNome", query = "SELECT m FROM MotivoDespesa m WHERE m.nome = :nome")})
+@NamedQueries({
+    @NamedQuery(name = "MotivoDespesa.findAll", query = "SELECT m FROM MotivoDespesa m"),
+    @NamedQuery(name = "MotivoDespesa.findById", query = "SELECT m FROM MotivoDespesa m WHERE m.id = :id"),
+    @NamedQuery(name = "MotivoDespesa.findByNome", query = "SELECT m FROM MotivoDespesa m WHERE m.nome = :nome")})
 public class MotivoDespesa implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "Id")
+    @Column(name = "id")
     private Integer id;
     @Basic(optional = false)
-    @Column(name = "Nome")
+    @Column(name = "nome")
     private String nome;
     @Basic(optional = false)
     @Lob
-    @Column(name = "Descricao")
+    @Column(name = "descricao")
     private String descricao;
-    @Basic(optional = false)
     @Lob
-    @Column(name = "Observacao")
+    @Column(name = "observacao")
     private String observacao;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idmotivosaida")
+    private List<Saida> saidaList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idMotivoDespesa")
+    private List<Cheque> chequeList;
 
     public MotivoDespesa() {
     }
 
-    public MotivoDespesa(String nome, String descricao, String observacao) {
-        this.nome = nome;
-        this.descricao = descricao;
-        this.observacao = observacao;
+    public MotivoDespesa(Integer id) {
+        this.id = id;
     }
 
- 
+    public MotivoDespesa(Integer id, String nome, String descricao) {
+        this.id = id;
+        this.nome = nome;
+        this.descricao = descricao;
+    }
 
     public Integer getId() {
         return id;
     }
 
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public String getNome() {
         return nome;
@@ -85,6 +97,24 @@ public class MotivoDespesa implements Serializable {
 
     public void setObservacao(String observacao) {
         this.observacao = observacao;
+    }
+
+    @XmlTransient
+    public List<Saida> getSaidaList() {
+        return saidaList;
+    }
+
+    public void setSaidaList(List<Saida> saidaList) {
+        this.saidaList = saidaList;
+    }
+
+    @XmlTransient
+    public List<Cheque> getChequeList() {
+        return chequeList;
+    }
+
+    public void setChequeList(List<Cheque> chequeList) {
+        this.chequeList = chequeList;
     }
 
     @Override

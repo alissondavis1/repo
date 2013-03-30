@@ -4,8 +4,7 @@
  */
 package dao;
 
-import entidades.Saida;
-import entidades.Taxa;
+import entidades.Conta;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -16,20 +15,18 @@ import org.hibernate.cfg.Configuration;
  *
  * @author alexandre
  */
-public class DaoTaxa {
-   
-    public void NovaTaxa(Taxa taxa) {
-    
-        Configuration cfg = new AnnotationConfiguration(); 
+public class DaoContrato {
+     public void NovoContrato(Object object) {
         
+        Configuration cfg = new AnnotationConfiguration(); 
         cfg.configure("hibernate.cfg.xml");
         SessionFactory sf = cfg.buildSessionFactory(); 
+        
         Session session = sf.openSession(); 
-
         Transaction tx = session.beginTransaction();
        
          try{
-            session.save(taxa); 
+            session.save(object); 
             tx.commit();
             System.out.println("Salvo com sucesso");
         }
@@ -41,6 +38,7 @@ public class DaoTaxa {
         finally
         {
             session.close(); 
-        }
+        }    
+
     }
 }

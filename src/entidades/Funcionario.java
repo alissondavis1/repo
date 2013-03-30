@@ -33,63 +33,67 @@ import javax.xml.bind.annotation.XmlTransient;
 @Entity
 @Table(name = "funcionario")
 @XmlRootElement
-//@NamedQueries({
-//    @NamedQuery(name = "Funcionario.findAll", query = "SELECT f FROM Funcionario f"),
-//    @NamedQuery(name = "Funcionario.findById", query = "SELECT f FROM Funcionario f WHERE f.id = :id"),
-//    @NamedQuery(name = "Funcionario.findByCargo", query = "SELECT f FROM Funcionario f WHERE f.cargo = :cargo"),
-//    @NamedQuery(name = "Funcionario.findBySalario", query = "SELECT f FROM Funcionario f WHERE f.salario = :salario"),
-//    @NamedQuery(name = "Funcionario.findByDataContratacao", query = "SELECT f FROM Funcionario f WHERE f.dataContratacao = :dataContratacao"),
-//    @NamedQuery(name = "Funcionario.findByMatricula", query = "SELECT f FROM Funcionario f WHERE f.matricula = :matricula")})
+@NamedQueries({
+    @NamedQuery(name = "Funcionario.findAll", query = "SELECT f FROM Funcionario f"),
+    @NamedQuery(name = "Funcionario.findById", query = "SELECT f FROM Funcionario f WHERE f.id = :id"),
+    @NamedQuery(name = "Funcionario.findByCargo", query = "SELECT f FROM Funcionario f WHERE f.cargo = :cargo"),
+    @NamedQuery(name = "Funcionario.findByDataContratacao", query = "SELECT f FROM Funcionario f WHERE f.dataContratacao = :dataContratacao"),
+    @NamedQuery(name = "Funcionario.findByMatricula", query = "SELECT f FROM Funcionario f WHERE f.matricula = :matricula"),
+    @NamedQuery(name = "Funcionario.findBySalario", query = "SELECT f FROM Funcionario f WHERE f.salario = :salario")})
 public class Funcionario implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "Id")
+    @Column(name = "id")
     private Integer id;
     @Basic(optional = false)
-    @Column(name = "Cargo")
+    @Column(name = "cargo")
     private String cargo;
     @Basic(optional = false)
-    @Column(name = "Salario")
-    private float salario;
-    @Basic(optional = false)
-    @Column(name = "DataContratacao")
+    @Column(name = "dataContratacao")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dataContratacao;
     @Basic(optional = false)
-    @Column(name = "Matricula")
+    @Column(name = "matricula")
     private int matricula;
-    @Basic(optional = false)
     @Lob
-    @Column(name = "Observacao")
+    @Column(name = "observacao")
     private String observacao;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idFuncionario")
-    private List<Cheque> chequeList;
-    @JoinColumn(name = "Id_pessoa", referencedColumnName = "Id")
-    @ManyToOne(optional = false)
-    private Pessoa idpessoa;
+    @Basic(optional = false)
+    @Column(name = "salario")
+    private float salario;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idfuncionario")
     private List<Saida> saidaList;
+    @JoinColumn(name = "idPessoa", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private Pessoa idPessoa;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idFuncionario")
-    private List<Entrada> entradasList;
+    private List<Entrada> entradaList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idFuncionario")
+    private List<Cheque> chequeList;
 
     public Funcionario() {
     }
 
-    public Funcionario(String cargo, float salario, Date dataContratacao, int matricula, String observacao, List<Cheque> chequeList, Pessoa idpessoa, List<Saida> saidaList, List<Entrada> entradasList) {
+    public Funcionario(Integer id) {
+        this.id = id;
+    }
+
+    public Funcionario(Integer id, String cargo, Date dataContratacao, int matricula, float salario) {
+        this.id = id;
         this.cargo = cargo;
-        this.salario = salario;
         this.dataContratacao = dataContratacao;
         this.matricula = matricula;
-        this.observacao = observacao;
-        this.chequeList = chequeList;
-        this.idpessoa = idpessoa;
-        this.saidaList = saidaList;
-        this.entradasList = entradasList;
+        this.salario = salario;
     }
+
     public Integer getId() {
         return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getCargo() {
@@ -98,14 +102,6 @@ public class Funcionario implements Serializable {
 
     public void setCargo(String cargo) {
         this.cargo = cargo;
-    }
-
-    public float getSalario() {
-        return salario;
-    }
-
-    public void setSalario(float salario) {
-        this.salario = salario;
     }
 
     public Date getDataContratacao() {
@@ -132,21 +128,12 @@ public class Funcionario implements Serializable {
         this.observacao = observacao;
     }
 
-    @XmlTransient
-    public List<Cheque> getChequeList() {
-        return chequeList;
+    public float getSalario() {
+        return salario;
     }
 
-    public void setChequeList(List<Cheque> chequeList) {
-        this.chequeList = chequeList;
-    }
-
-    public Pessoa getIdpessoa() {
-        return idpessoa;
-    }
-
-    public void setIdpessoa(Pessoa idpessoa) {
-        this.idpessoa = idpessoa;
+    public void setSalario(float salario) {
+        this.salario = salario;
     }
 
     @XmlTransient
@@ -158,13 +145,30 @@ public class Funcionario implements Serializable {
         this.saidaList = saidaList;
     }
 
-    @XmlTransient
-    public List<Entrada> getEntradasList() {
-        return entradasList;
+    public Pessoa getIdPessoa() {
+        return idPessoa;
     }
 
-    public void setEntradasList(List<Entrada> entradasList) {
-        this.entradasList = entradasList;
+    public void setIdPessoa(Pessoa idPessoa) {
+        this.idPessoa = idPessoa;
+    }
+
+    @XmlTransient
+    public List<Entrada> getEntradaList() {
+        return entradaList;
+    }
+
+    public void setEntradaList(List<Entrada> entradaList) {
+        this.entradaList = entradaList;
+    }
+
+    @XmlTransient
+    public List<Cheque> getChequeList() {
+        return chequeList;
+    }
+
+    public void setChequeList(List<Cheque> chequeList) {
+        this.chequeList = chequeList;
     }
 
     @Override

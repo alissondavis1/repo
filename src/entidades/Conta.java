@@ -5,6 +5,7 @@
 package entidades;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -13,6 +14,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -26,15 +28,15 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author alexandre
  */
 @Entity
-@Table(name = "contas")
+@Table(name = "conta")
 @XmlRootElement
-//@NamedQueries({
-//    @NamedQuery(name = "Conta.findAll", query = "SELECT c FROM Conta c"),
-//    @NamedQuery(name = "Conta.findById", query = "SELECT c FROM Conta c WHERE c.id = :id"),
-//    @NamedQuery(name = "Conta.findByTaxarelogio", query = "SELECT c FROM Conta c WHERE c.taxarelogio = :taxarelogio"),
-//    @NamedQuery(name = "Conta.findByDatapag", query = "SELECT c FROM Conta c WHERE c.datapag = :datapag"),
-//    @NamedQuery(name = "Conta.findByDatavence", query = "SELECT c FROM Conta c WHERE c.datavence = :datavence"),
-//    @NamedQuery(name = "Conta.findByObservacoes", query = "SELECT c FROM Conta c WHERE c.observacoes = :observacoes")})
+@NamedQueries({
+    @NamedQuery(name = "Conta.findAll", query = "SELECT c FROM Conta c"),
+    @NamedQuery(name = "Conta.findById", query = "SELECT c FROM Conta c WHERE c.id = :id"),
+    @NamedQuery(name = "Conta.findByDataPag", query = "SELECT c FROM Conta c WHERE c.dataPag = :dataPag"),
+    @NamedQuery(name = "Conta.findByDataVence", query = "SELECT c FROM Conta c WHERE c.dataVence = :dataVence"),
+    @NamedQuery(name = "Conta.findByTaxaSocio", query = "SELECT c FROM Conta c WHERE c.taxaSocio = :taxaSocio"),
+    @NamedQuery(name = "Conta.findByTaxaRelogio", query = "SELECT c FROM Conta c WHERE c.taxaRelogio = :taxaRelogio")})
 public class Conta implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -42,89 +44,91 @@ public class Conta implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
-    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
-    @Column(name = "Taxa_relogio")
-    private Double taxarelogio;
-    @Column(name = "Data_pag")
+    @Column(name = "dataPag")
     @Temporal(TemporalType.TIMESTAMP)
-    private Date datapag;
+    private Date dataPag;
     @Basic(optional = false)
-    @Column(name = "Data_vence")
+    @Column(name = "dataVence")
     @Temporal(TemporalType.TIMESTAMP)
-    private Date datavence;
-    @Column(name = "Observacoes")
-    private Integer observacoes;
-    @JoinColumn(name = "Id_taxa", referencedColumnName = "Id")
+    private Date dataVence;
+    @Lob
+    @Column(name = "observacoes")
+    private String observacoes;
+    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
+    @Column(name = "taxaSocio")
+    private BigDecimal taxaSocio;
+    @Column(name = "taxaRelogio")
+    private Double taxaRelogio;
+    @JoinColumn(name = "idNumeroSocio", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    private Taxa idtaxa;
-    @JoinColumn(name = "Id_numero_socio", referencedColumnName = "Id")
-    @ManyToOne(optional = false)
-    private Socio idnumerosocio;
+    private Socio idNumeroSocio;
 
     public Conta() {
     }
 
-    public Conta(Double taxarelogio, Date datapag, Date datavence, Integer observacoes, Taxa idtaxa, Socio idnumerosocio) {
-        this.taxarelogio = taxarelogio;
-        this.datapag = datapag;
-        this.datavence = datavence;
-        this.observacoes = observacoes;
-        this.idtaxa = idtaxa;
-        this.idnumerosocio = idnumerosocio;
+    public Conta(Integer id) {
+        this.id = id;
     }
 
-  
+    public Conta(Integer id, Date dataVence) {
+        this.id = id;
+        this.dataVence = dataVence;
+    }
+
     public Integer getId() {
         return id;
     }
 
-
-    public Double getTaxarelogio() {
-        return taxarelogio;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public void setTaxarelogio(Double taxarelogio) {
-        this.taxarelogio = taxarelogio;
+    public Date getDataPag() {
+        return dataPag;
     }
 
-    public Date getDatapag() {
-        return datapag;
+    public void setDataPag(Date dataPag) {
+        this.dataPag = dataPag;
     }
 
-    public void setDatapag(Date datapag) {
-        this.datapag = datapag;
+    public Date getDataVence() {
+        return dataVence;
     }
 
-    public Date getDatavence() {
-        return datavence;
+    public void setDataVence(Date dataVence) {
+        this.dataVence = dataVence;
     }
 
-    public void setDatavence(Date datavence) {
-        this.datavence = datavence;
-    }
-
-    public Integer getObservacoes() {
+    public String getObservacoes() {
         return observacoes;
     }
 
-    public void setObservacoes(Integer observacoes) {
+    public void setObservacoes(String observacoes) {
         this.observacoes = observacoes;
     }
 
-    public Taxa getIdtaxa() {
-        return idtaxa;
+    public BigDecimal getTaxaSocio() {
+        return taxaSocio;
     }
 
-    public void setIdtaxa(Taxa idtaxa) {
-        this.idtaxa = idtaxa;
+    public void setTaxaSocio(BigDecimal taxaSocio) {
+        this.taxaSocio = taxaSocio;
     }
 
-    public Socio getIdnumerosocio() {
-        return idnumerosocio;
+    public Double getTaxaRelogio() {
+        return taxaRelogio;
     }
 
-    public void setIdnumerosocio(Socio idnumerosocio) {
-        this.idnumerosocio = idnumerosocio;
+    public void setTaxaRelogio(Double taxaRelogio) {
+        this.taxaRelogio = taxaRelogio;
+    }
+
+    public Socio getIdNumeroSocio() {
+        return idNumeroSocio;
+    }
+
+    public void setIdNumeroSocio(Socio idNumeroSocio) {
+        this.idNumeroSocio = idNumeroSocio;
     }
 
     @Override

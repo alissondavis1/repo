@@ -13,9 +13,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -28,58 +26,55 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author alexandre
  */
 @Entity
-@Table(name = "cheque")
+@Table(name = "chequeslog")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Cheque.findAll", query = "SELECT c FROM Cheque c"),
-    @NamedQuery(name = "Cheque.findById", query = "SELECT c FROM Cheque c WHERE c.id = :id"),
-    @NamedQuery(name = "Cheque.findByDataPagamento", query = "SELECT c FROM Cheque c WHERE c.dataPagamento = :dataPagamento"),
-    @NamedQuery(name = "Cheque.findByDataVencimento", query = "SELECT c FROM Cheque c WHERE c.dataVencimento = :dataVencimento"),
-    @NamedQuery(name = "Cheque.findByNumero", query = "SELECT c FROM Cheque c WHERE c.numero = :numero"),
-    @NamedQuery(name = "Cheque.findByValor", query = "SELECT c FROM Cheque c WHERE c.valor = :valor")})
-public class Cheque implements Serializable {
+    @NamedQuery(name = "Chequeslog.findAll", query = "SELECT c FROM Chequeslog c"),
+    @NamedQuery(name = "Chequeslog.findById", query = "SELECT c FROM Chequeslog c WHERE c.id = :id"),
+    @NamedQuery(name = "Chequeslog.findByIdOriginal", query = "SELECT c FROM Chequeslog c WHERE c.idOriginal = :idOriginal"),
+    @NamedQuery(name = "Chequeslog.findByDataPagamento", query = "SELECT c FROM Chequeslog c WHERE c.dataPagamento = :dataPagamento"),
+    @NamedQuery(name = "Chequeslog.findByDataVencimento", query = "SELECT c FROM Chequeslog c WHERE c.dataVencimento = :dataVencimento"),
+    @NamedQuery(name = "Chequeslog.findByDataAlteracao", query = "SELECT c FROM Chequeslog c WHERE c.dataAlteracao = :dataAlteracao"),
+    @NamedQuery(name = "Chequeslog.findByNumero", query = "SELECT c FROM Chequeslog c WHERE c.numero = :numero"),
+    @NamedQuery(name = "Chequeslog.findByValor", query = "SELECT c FROM Chequeslog c WHERE c.valor = :valor"),
+    @NamedQuery(name = "Chequeslog.findByIdFuncionarioAlteracao", query = "SELECT c FROM Chequeslog c WHERE c.idFuncionarioAlteracao = :idFuncionarioAlteracao"),
+    @NamedQuery(name = "Chequeslog.findByTipo", query = "SELECT c FROM Chequeslog c WHERE c.tipo = :tipo")})
+public class Chequeslog implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
+    @Column(name = "idOriginal")
+    private Integer idOriginal;
     @Column(name = "dataPagamento")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dataPagamento;
-    @Basic(optional = false)
     @Column(name = "dataVencimento")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dataVencimento;
-    @Basic(optional = false)
+    @Column(name = "dataAlteracao")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date dataAlteracao;
     @Column(name = "numero")
-    private int numero;
+    private Integer numero;
     @Lob
     @Column(name = "observacoes")
     private String observacoes;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
-    @Basic(optional = false)
     @Column(name = "valor")
     private BigDecimal valor;
-    @JoinColumn(name = "idFuncionario", referencedColumnName = "id")
-    @ManyToOne(optional = false)
-    private Funcionario idFuncionario;
-    @JoinColumn(name = "idMotivoDespesa", referencedColumnName = "id")
-    @ManyToOne(optional = false)
-    private MotivoDespesa idMotivoDespesa;
+    @Column(name = "idFuncionarioAlteracao")
+    private Integer idFuncionarioAlteracao;
+    @Column(name = "tipo")
+    private String tipo;
 
-    public Cheque() {
+    public Chequeslog() {
     }
 
-    public Cheque(Integer id) {
+    public Chequeslog(Integer id) {
         this.id = id;
-    }
-
-    public Cheque(Integer id, Date dataVencimento, int numero, BigDecimal valor) {
-        this.id = id;
-        this.dataVencimento = dataVencimento;
-        this.numero = numero;
-        this.valor = valor;
     }
 
     public Integer getId() {
@@ -88,6 +83,14 @@ public class Cheque implements Serializable {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Integer getIdOriginal() {
+        return idOriginal;
+    }
+
+    public void setIdOriginal(Integer idOriginal) {
+        this.idOriginal = idOriginal;
     }
 
     public Date getDataPagamento() {
@@ -106,11 +109,19 @@ public class Cheque implements Serializable {
         this.dataVencimento = dataVencimento;
     }
 
-    public int getNumero() {
+    public Date getDataAlteracao() {
+        return dataAlteracao;
+    }
+
+    public void setDataAlteracao(Date dataAlteracao) {
+        this.dataAlteracao = dataAlteracao;
+    }
+
+    public Integer getNumero() {
         return numero;
     }
 
-    public void setNumero(int numero) {
+    public void setNumero(Integer numero) {
         this.numero = numero;
     }
 
@@ -130,20 +141,20 @@ public class Cheque implements Serializable {
         this.valor = valor;
     }
 
-    public Funcionario getIdFuncionario() {
-        return idFuncionario;
+    public Integer getIdFuncionarioAlteracao() {
+        return idFuncionarioAlteracao;
     }
 
-    public void setIdFuncionario(Funcionario idFuncionario) {
-        this.idFuncionario = idFuncionario;
+    public void setIdFuncionarioAlteracao(Integer idFuncionarioAlteracao) {
+        this.idFuncionarioAlteracao = idFuncionarioAlteracao;
     }
 
-    public MotivoDespesa getIdMotivoDespesa() {
-        return idMotivoDespesa;
+    public String getTipo() {
+        return tipo;
     }
 
-    public void setIdMotivoDespesa(MotivoDespesa idMotivoDespesa) {
-        this.idMotivoDespesa = idMotivoDespesa;
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 
     @Override
@@ -156,10 +167,10 @@ public class Cheque implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Cheque)) {
+        if (!(object instanceof Chequeslog)) {
             return false;
         }
-        Cheque other = (Cheque) object;
+        Chequeslog other = (Chequeslog) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -168,7 +179,7 @@ public class Cheque implements Serializable {
 
     @Override
     public String toString() {
-        return "entidades.Cheque[ id=" + id + " ]";
+        return "entidades.Chequeslog[ id=" + id + " ]";
     }
     
 }

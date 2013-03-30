@@ -11,9 +11,9 @@ import java.util.List;
  *
  * @author netservidor
  */
-public interface MotivoDespesaInterface {
+public interface MotivoDespesasInterface {
      
-    public void InserirMotivoEntrada        (MotivoDespesa motivo);
+    public void AdicionarMotivoEntrada        (MotivoDespesa motivo);
     public void ApagarMotivoEntrada         (MotivoDespesa motivo);
     public void AlterarMotivoEntrada        (MotivoDespesa motivo);
     

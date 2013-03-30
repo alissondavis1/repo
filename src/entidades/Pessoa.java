@@ -34,149 +34,115 @@ import javax.xml.bind.annotation.XmlTransient;
 @Entity
 @Table(name = "pessoa")
 @XmlRootElement
-//@NamedQueries({
-//    @NamedQuery(name = "Pessoa.findAll", query = "SELECT p FROM Pessoa p"),
-//    @NamedQuery(name = "Pessoa.findById", query = "SELECT p FROM Pessoa p WHERE p.id = :id"),
-//    @NamedQuery(name = "Pessoa.findByNome", query = "SELECT p FROM Pessoa p WHERE p.nome = :nome"),
-//    @NamedQuery(name = "Pessoa.findBySobrenome", query = "SELECT p FROM Pessoa p WHERE p.sobrenome = :sobrenome"),
-//    @NamedQuery(name = "Pessoa.findByApelido", query = "SELECT p FROM Pessoa p WHERE p.apelido = :apelido"),
-//    @NamedQuery(name = "Pessoa.findByNumero", query = "SELECT p FROM Pessoa p WHERE p.numero = :numero"),
-//    @NamedQuery(name = "Pessoa.findByBairro", query = "SELECT p FROM Pessoa p WHERE p.bairro = :bairro"),
-//    @NamedQuery(name = "Pessoa.findByCidade", query = "SELECT p FROM Pessoa p WHERE p.cidade = :cidade"),
-//    @NamedQuery(name = "Pessoa.findByUf", query = "SELECT p FROM Pessoa p WHERE p.uf = :uf"),
-//    @NamedQuery(name = "Pessoa.findByCep", query = "SELECT p FROM Pessoa p WHERE p.cep = :cep"),
-//    @NamedQuery(name = "Pessoa.findByTelefone", query = "SELECT p FROM Pessoa p WHERE p.telefone = :telefone"),
-//    @NamedQuery(name = "Pessoa.findByEmail", query = "SELECT p FROM Pessoa p WHERE p.email = :email"),
-//    @NamedQuery(name = "Pessoa.findByDatanasc", query = "SELECT p FROM Pessoa p WHERE p.datanasc = :datanasc"),
-//    @NamedQuery(name = "Pessoa.findBySexo", query = "SELECT p FROM Pessoa p WHERE p.sexo = :sexo"),
-//    @NamedQuery(name = "Pessoa.findByCpf", query = "SELECT p FROM Pessoa p WHERE p.cpf = :cpf"),
-//    @NamedQuery(name = "Pessoa.findByRgnumero", query = "SELECT p FROM Pessoa p WHERE p.rgnumero = :rgnumero"),
-//    @NamedQuery(name = "Pessoa.findByRgexpedidor", query = "SELECT p FROM Pessoa p WHERE p.rgexpedidor = :rgexpedidor"),
-//    @NamedQuery(name = "Pessoa.findByRgemissao", query = "SELECT p FROM Pessoa p WHERE p.rgemissao = :rgemissao"),
-//    @NamedQuery(name = "Pessoa.findByNomemae", query = "SELECT p FROM Pessoa p WHERE p.nomemae = :nomemae"),
-//    @NamedQuery(name = "Pessoa.findByNomepai", query = "SELECT p FROM Pessoa p WHERE p.nomepai = :nomepai"),
-//    @NamedQuery(name = "Pessoa.findByNumeromatricula", query = "SELECT p FROM Pessoa p WHERE p.numeromatricula = :numeromatricula"),
-//    @NamedQuery(name = "Pessoa.findByStatus", query = "SELECT p FROM Pessoa p WHERE p.status = :status"),
-//    @NamedQuery(name = "Pessoa.findByCategoriasocio", query = "SELECT p FROM Pessoa p WHERE p.categoriasocio = :categoriasocio")})
+@NamedQueries({
+    @NamedQuery(name = "Pessoa.findAll", query = "SELECT p FROM Pessoa p"),
+    @NamedQuery(name = "Pessoa.findById", query = "SELECT p FROM Pessoa p WHERE p.id = :id"),
+    @NamedQuery(name = "Pessoa.findByApelido", query = "SELECT p FROM Pessoa p WHERE p.apelido = :apelido"),
+    @NamedQuery(name = "Pessoa.findByBairro", query = "SELECT p FROM Pessoa p WHERE p.bairro = :bairro"),
+    @NamedQuery(name = "Pessoa.findByCategoriaSocio", query = "SELECT p FROM Pessoa p WHERE p.categoriaSocio = :categoriaSocio"),
+    @NamedQuery(name = "Pessoa.findByCep", query = "SELECT p FROM Pessoa p WHERE p.cep = :cep"),
+    @NamedQuery(name = "Pessoa.findByCidade", query = "SELECT p FROM Pessoa p WHERE p.cidade = :cidade"),
+    @NamedQuery(name = "Pessoa.findByCpf", query = "SELECT p FROM Pessoa p WHERE p.cpf = :cpf"),
+    @NamedQuery(name = "Pessoa.findByDataNasc", query = "SELECT p FROM Pessoa p WHERE p.dataNasc = :dataNasc"),
+    @NamedQuery(name = "Pessoa.findByEmail", query = "SELECT p FROM Pessoa p WHERE p.email = :email"),
+    @NamedQuery(name = "Pessoa.findByNome", query = "SELECT p FROM Pessoa p WHERE p.nome = :nome"),
+    @NamedQuery(name = "Pessoa.findByNomeMae", query = "SELECT p FROM Pessoa p WHERE p.nomeMae = :nomeMae"),
+    @NamedQuery(name = "Pessoa.findByNomePai", query = "SELECT p FROM Pessoa p WHERE p.nomePai = :nomePai"),
+    @NamedQuery(name = "Pessoa.findByNumero", query = "SELECT p FROM Pessoa p WHERE p.numero = :numero"),
+    @NamedQuery(name = "Pessoa.findByNumeroMatricula", query = "SELECT p FROM Pessoa p WHERE p.numeroMatricula = :numeroMatricula"),
+    @NamedQuery(name = "Pessoa.findByRgEmissao", query = "SELECT p FROM Pessoa p WHERE p.rgEmissao = :rgEmissao"),
+    @NamedQuery(name = "Pessoa.findByRgExpedidor", query = "SELECT p FROM Pessoa p WHERE p.rgExpedidor = :rgExpedidor"),
+    @NamedQuery(name = "Pessoa.findByRgNumero", query = "SELECT p FROM Pessoa p WHERE p.rgNumero = :rgNumero"),
+    @NamedQuery(name = "Pessoa.findBySexo", query = "SELECT p FROM Pessoa p WHERE p.sexo = :sexo"),
+    @NamedQuery(name = "Pessoa.findBySobrenome", query = "SELECT p FROM Pessoa p WHERE p.sobrenome = :sobrenome"),
+    @NamedQuery(name = "Pessoa.findByStatus", query = "SELECT p FROM Pessoa p WHERE p.status = :status"),
+    @NamedQuery(name = "Pessoa.findByTelefone", query = "SELECT p FROM Pessoa p WHERE p.telefone = :telefone"),
+    @NamedQuery(name = "Pessoa.findByUf", query = "SELECT p FROM Pessoa p WHERE p.uf = :uf")})
 public class Pessoa implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "Id")
+    @Column(name = "id")
     private Integer id;
-    @Basic(optional = false)
-    @Column(name = "Nome")
-    private String nome;
-    @Basic(optional = false)
-    @Column(name = "Sobrenome")
-    private String sobrenome;
-    @Column(name = "Apelido")
+    @Column(name = "apelido")
     private String apelido;
-    @Column(name = "Numero")
-    private Integer numero;
-    @Column(name = "Bairro")
+    @Column(name = "bairro")
     private String bairro;
-    @Column(name = "Cidade")
-    private String cidade;
-    @Column(name = "Uf")
-    private String uf;
-    @Column(name = "Cep")
+    @Column(name = "categoriaSocio")
+    private Integer categoriaSocio;
+    @Column(name = "cep")
     private String cep;
-    @Column(name = "Telefone")
-    private String telefone;
+    @Column(name = "cidade")
+    private String cidade;
+    @Column(name = "cpf")
+    private Integer cpf;
+    @Column(name = "dataNasc")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date dataNasc;
     @Column(name = "Email")
     private String email;
-    @Column(name = "Data_nasc")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date datanasc;
-    @Column(name = "Sexo")
-    private String sexo;
-    @Column(name = "Cpf")
-    private Integer cpf;
-    @Column(name = "Rg_numero")
-    private Integer rgnumero;
-    @Column(name = "Rg_expedidor")
-    private String rgexpedidor;
-    @Column(name = "Rg_emissao")
-    @Temporal(TemporalType.DATE)
-    private Date rgemissao;
-    @Column(name = "Nome_mae")
-    private String nomemae;
-    @Column(name = "Nome_pai")
-    private String nomepai;
-    @Column(name = "Numero_matricula")
-    private Integer numeromatricula;
     @Basic(optional = false)
-    @Column(name = "Status")
-    private boolean status;
-    @Column(name = "Categoria_socio")
-    private Integer categoriasocio;
+    @Column(name = "nome")
+    private String nome;
+    @Column(name = "nomeMae")
+    private String nomeMae;
+    @Column(name = "nomePai")
+    private String nomePai;
+    @Column(name = "numero")
+    private Integer numero;
+    @Column(name = "numeroMatricula")
+    private Integer numeroMatricula;
     @Lob
-    @Column(name = "Observacoes")
+    @Column(name = "observacoes")
     private String observacoes;
-    @JoinColumn(name = "Id_Endereco", referencedColumnName = "Id")
+    @Column(name = "rgEmissao")
+    @Temporal(TemporalType.DATE)
+    private Date rgEmissao;
+    @Column(name = "rgExpedidor")
+    private String rgExpedidor;
+    @Column(name = "rgNumero")
+    private Integer rgNumero;
+    @Column(name = "sexo")
+    private String sexo;
+    @Basic(optional = false)
+    @Column(name = "sobrenome")
+    private String sobrenome;
+    @Basic(optional = false)
+    @Column(name = "status")
+    private boolean status;
+    @Column(name = "telefone")
+    private String telefone;
+    @Column(name = "uf")
+    private String uf;
+    @JoinColumn(name = "idEndereco", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Endereco idEndereco;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idpessoa")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idPessoa")
     private List<Funcionario> funcionarioList;
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "idpessoa")
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "idPessoa")
     private Socio socio;
 
     public Pessoa() {
     }
 
-    public Pessoa(String nome, String sobrenome, String apelido, Integer numero, String bairro, String cidade, String uf, String cep, String telefone, String email, Date datanasc, String sexo, Integer cpf, Integer rgnumero, String rgexpedidor, Date rgemissao, String nomemae, String nomepai, Integer numeromatricula, boolean status, Integer categoriasocio, String observacoes, Endereco idEndereco, List<Funcionario> funcionarioList, Socio socio) {
-        this.nome = nome;
-        this.sobrenome = sobrenome;
-        this.apelido = apelido;
-        this.numero = numero;
-        this.bairro = bairro;
-        this.cidade = cidade;
-        this.uf = uf;
-        this.cep = cep;
-        this.telefone = telefone;
-        this.email = email;
-        this.datanasc = datanasc;
-        this.sexo = sexo;
-        this.cpf = cpf;
-        this.rgnumero = rgnumero;
-        this.rgexpedidor = rgexpedidor;
-        this.rgemissao = rgemissao;
-        this.nomemae = nomemae;
-        this.nomepai = nomepai;
-        this.numeromatricula = numeromatricula;
-        this.status = status;
-        this.categoriasocio = categoriasocio;
-        this.observacoes = observacoes;
-        this.idEndereco = idEndereco;
-        this.funcionarioList = funcionarioList;
-        this.socio = socio;
+    public Pessoa(Integer id) {
+        this.id = id;
     }
 
-  
+    public Pessoa(Integer id, String nome, String sobrenome, boolean status) {
+        this.id = id;
+        this.nome = nome;
+        this.sobrenome = sobrenome;
+        this.status = status;
+    }
+
     public Integer getId() {
         return id;
     }
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getSobrenome() {
-        return sobrenome;
-    }
-
-    public void setSobrenome(String sobrenome) {
-        this.sobrenome = sobrenome;
     }
 
     public String getApelido() {
@@ -187,14 +153,6 @@ public class Pessoa implements Serializable {
         this.apelido = apelido;
     }
 
-    public Integer getNumero() {
-        return numero;
-    }
-
-    public void setNumero(Integer numero) {
-        this.numero = numero;
-    }
-
     public String getBairro() {
         return bairro;
     }
@@ -203,20 +161,12 @@ public class Pessoa implements Serializable {
         this.bairro = bairro;
     }
 
-    public String getCidade() {
-        return cidade;
+    public Integer getCategoriaSocio() {
+        return categoriaSocio;
     }
 
-    public void setCidade(String cidade) {
-        this.cidade = cidade;
-    }
-
-    public String getUf() {
-        return uf;
-    }
-
-    public void setUf(String uf) {
-        this.uf = uf;
+    public void setCategoriaSocio(Integer categoriaSocio) {
+        this.categoriaSocio = categoriaSocio;
     }
 
     public String getCep() {
@@ -227,36 +177,12 @@ public class Pessoa implements Serializable {
         this.cep = cep;
     }
 
-    public String getTelefone() {
-        return telefone;
+    public String getCidade() {
+        return cidade;
     }
 
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public Date getDatanasc() {
-        return datanasc;
-    }
-
-    public void setDatanasc(Date datanasc) {
-        this.datanasc = datanasc;
-    }
-
-    public String getSexo() {
-        return sexo;
-    }
-
-    public void setSexo(String sexo) {
-        this.sexo = sexo;
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
     }
 
     public Integer getCpf() {
@@ -267,52 +193,108 @@ public class Pessoa implements Serializable {
         this.cpf = cpf;
     }
 
-    public Integer getRgnumero() {
-        return rgnumero;
+    public Date getDataNasc() {
+        return dataNasc;
     }
 
-    public void setRgnumero(Integer rgnumero) {
-        this.rgnumero = rgnumero;
+    public void setDataNasc(Date dataNasc) {
+        this.dataNasc = dataNasc;
     }
 
-    public String getRgexpedidor() {
-        return rgexpedidor;
+    public String getEmail() {
+        return email;
     }
 
-    public void setRgexpedidor(String rgexpedidor) {
-        this.rgexpedidor = rgexpedidor;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public Date getRgemissao() {
-        return rgemissao;
+    public String getNome() {
+        return nome;
     }
 
-    public void setRgemissao(Date rgemissao) {
-        this.rgemissao = rgemissao;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
-    public String getNomemae() {
-        return nomemae;
+    public String getNomeMae() {
+        return nomeMae;
     }
 
-    public void setNomemae(String nomemae) {
-        this.nomemae = nomemae;
+    public void setNomeMae(String nomeMae) {
+        this.nomeMae = nomeMae;
     }
 
-    public String getNomepai() {
-        return nomepai;
+    public String getNomePai() {
+        return nomePai;
     }
 
-    public void setNomepai(String nomepai) {
-        this.nomepai = nomepai;
+    public void setNomePai(String nomePai) {
+        this.nomePai = nomePai;
     }
 
-    public Integer getNumeromatricula() {
-        return numeromatricula;
+    public Integer getNumero() {
+        return numero;
     }
 
-    public void setNumeromatricula(Integer numeromatricula) {
-        this.numeromatricula = numeromatricula;
+    public void setNumero(Integer numero) {
+        this.numero = numero;
+    }
+
+    public Integer getNumeroMatricula() {
+        return numeroMatricula;
+    }
+
+    public void setNumeroMatricula(Integer numeroMatricula) {
+        this.numeroMatricula = numeroMatricula;
+    }
+
+    public String getObservacoes() {
+        return observacoes;
+    }
+
+    public void setObservacoes(String observacoes) {
+        this.observacoes = observacoes;
+    }
+
+    public Date getRgEmissao() {
+        return rgEmissao;
+    }
+
+    public void setRgEmissao(Date rgEmissao) {
+        this.rgEmissao = rgEmissao;
+    }
+
+    public String getRgExpedidor() {
+        return rgExpedidor;
+    }
+
+    public void setRgExpedidor(String rgExpedidor) {
+        this.rgExpedidor = rgExpedidor;
+    }
+
+    public Integer getRgNumero() {
+        return rgNumero;
+    }
+
+    public void setRgNumero(Integer rgNumero) {
+        this.rgNumero = rgNumero;
+    }
+
+    public String getSexo() {
+        return sexo;
+    }
+
+    public void setSexo(String sexo) {
+        this.sexo = sexo;
+    }
+
+    public String getSobrenome() {
+        return sobrenome;
+    }
+
+    public void setSobrenome(String sobrenome) {
+        this.sobrenome = sobrenome;
     }
 
     public boolean getStatus() {
@@ -323,20 +305,20 @@ public class Pessoa implements Serializable {
         this.status = status;
     }
 
-    public Integer getCategoriasocio() {
-        return categoriasocio;
+    public String getTelefone() {
+        return telefone;
     }
 
-    public void setCategoriasocio(Integer categoriasocio) {
-        this.categoriasocio = categoriasocio;
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
     }
 
-    public String getObservacoes() {
-        return observacoes;
+    public String getUf() {
+        return uf;
     }
 
-    public void setObservacoes(String observacoes) {
-        this.observacoes = observacoes;
+    public void setUf(String uf) {
+        this.uf = uf;
     }
 
     public Endereco getIdEndereco() {

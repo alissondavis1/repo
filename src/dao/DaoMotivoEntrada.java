@@ -6,7 +6,7 @@ package dao;
 
 import entidades.MotivoDespesa;
 import entidades.MotivoEntrada;
-import daoInterfaces.MotivoEntradaInterface;
+import daoInterfaces.MotivoEntradasInterface;
 import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.Query;
@@ -20,7 +20,7 @@ import org.hibernate.cfg.Configuration;
  *
  * @author Alexandre
  */
-public class DaoMotivoEntrada implements MotivoEntradaInterface{
+public class DaoMotivoEntrada implements MotivoEntradasInterface{
 
     @Override
     public void InserirMotivoEntrada(MotivoEntrada motivo) {

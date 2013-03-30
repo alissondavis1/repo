@@ -5,6 +5,7 @@
 package daoInterfaces;
 
 import entidades.Entrada;
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
@@ -14,14 +15,16 @@ import java.util.List;
  */
 public interface EntradasInterface {
     
-    public void NovaEntrada   (Entrada entrada);
-    public void ApagarEntrada (Entrada entrada);
-    public void AlterarEntrada(Entrada entrada);
+    public void AdicionarEntrada(Entrada entrada);
+    public void ApagarEntrada   (Entrada entrada);
+    public void AlterarEntrada  (Entrada entrada);
    
-    public float SomarEntrada();
-    public float SomarEntradaFuncionario();
-    public float SomarEntradaFuncionarioPorData();
-            
+    public BigDecimal SomarEntrada();
+    public BigDecimal SomarEntradaPorFuncionario();
+    public BigDecimal SomarEntradaPorData(Date datainicio, Date datafim);
+    public BigDecimal SomarEntradaPorFuncionarioPorData(Date datainicio, Date datafim);
+    
+    public Entrada       EntradaPorId(int id);
     public List<Entrada> EntradaPorFuncionario(int IdFuncionario);
     public List<Entrada> EntradaPorData (Date DataInicial, Date DataFinal);
     public List<Entrada> EntradaPorValor(int MaxValor,int MinValor);

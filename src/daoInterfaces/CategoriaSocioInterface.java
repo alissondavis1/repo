@@ -20,5 +20,5 @@ public interface CategoriaSocioInterface {
     
     public List<CategoriaSocio> BuscarCategoria(String nome);
     public List<CategoriaSocio> BuscarTodasCategorias();
-        
+    public CategoriaSocio       BuscarCategoriaSocioPorId();    
 }

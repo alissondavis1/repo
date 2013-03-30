@@ -3,56 +3,64 @@
  * and open the template in the editor.
  */
 package dao;
- 
-import entidades.Endereco;
-import daoInterfaces.EnderecosInterface;
-import java.util.ArrayList;
-/**
- *
- * @author Alexandre
- */
+
+import daoInterfaces.UsuariosInterface;
+import entidades.Usuario;
 import java.util.List;
-import org.hibernate.Query;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.hibernate.cfg.AnnotationConfiguration;
-import org.hibernate.cfg.Configuration;
+import util.HibernateUtil;
+
 /**
  *
- * @author Alexandre
+ * @author alexandre
  */
-public class DaoEndereco implements EnderecosInterface{
+public class DaoUsuario implements UsuariosInterface {
 
     @Override
-    public void AdicionarEndereco(Endereco endereco) {
+    public void AdcionarUsuario(Usuario usuario) {
+       Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction tx = session.beginTransaction();
+       
+         try{
+            session.save(usuario); 
+            tx.commit();
+            System.out.println("Salvo com sucesso");  
+        }
+        catch(Exception e)
+        {
+            System.out.println("Erro ao iniciar a sessao para persistencia " + e);
+            tx.rollback();
+        }
+        finally
+        {
+            session.close(); 
+        }  
+    }
+
+    @Override
+    public void AlterarUsuario(Usuario usuario) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void ApagarEndereco(Endereco endereco) {
+    public void ApagarUsuario(Usuario usuario) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void AlterarEndereco(Endereco endereco) {
+    public Usuario ListarPorId(int id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public List<Endereco> BuscarEnderecoNome(String nome) {
+    public List<Usuario> ListarUsuario() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public List<Endereco> BuscarTodosEnderecos() {
+    public List<Usuario> ListarUsuarioPorNome() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
-    @Override
-    public List<Endereco> BuscarTodosPorId(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-   
+    
 }

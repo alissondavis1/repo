@@ -11,12 +11,13 @@ import java.util.List;
  *
  * @author alexandre
  */
-public interface TaxasInterfaces {
+public interface TaxasInterface {
     
-    public void NovaTaxa   (Taxa taxa);
-    public void ApagarTaxa (Taxa taxa);
-    public void AlterarTaxa(Taxa taxa);
+    public void AdicionarTaxa(Taxa taxa);
+    public void ApagarTaxa   (Taxa taxa);
+    public void AlterarTaxa  (Taxa taxa);
     
+    public Taxa       TaxaPorId(int id);
     public List<Taxa> TaxasPorNome(String nome);
     public List<Taxa> TaxasTodas  ();
     

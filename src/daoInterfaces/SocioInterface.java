@@ -14,9 +14,9 @@ import java.util.List;
  */
 public interface SocioInterface {
     
-    public void NovoSocio   (Socio socio);
-    public void AlterarSocio(Socio socio);
-    public void ApagarSocio (Socio socio);
+    public void AdicionarSocio   (Socio socio);
+    public void AlterarSocio     (Socio socio);
+    public void ApagarSocio      (Socio socio);
    
     public List<Socio> SociosPorNome(String nome);
     public List<Socio> SocioPorRua(String Rua);

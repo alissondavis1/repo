@@ -24,9 +24,9 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "contrato")
 @XmlRootElement
-//@NamedQueries({
-//    @NamedQuery(name = "Contrato.findAll", query = "SELECT c FROM Contrato c"),
-//    @NamedQuery(name = "Contrato.findById", query = "SELECT c FROM Contrato c WHERE c.id = :id")})
+@NamedQueries({
+    @NamedQuery(name = "Contrato.findAll", query = "SELECT c FROM Contrato c"),
+    @NamedQuery(name = "Contrato.findById", query = "SELECT c FROM Contrato c WHERE c.id = :id")})
 public class Contrato implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -34,37 +34,45 @@ public class Contrato implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
+    @Lob
+    @Column(name = "corpo")
+    private String corpo;
+    @Basic(optional = false)
+    @Lob
+    @Column(name = "descricao")
+    private String descricao;
     @Basic(optional = false)
     @Lob
     @Column(name = "nome")
     private String nome;
-    @Basic(optional = false)
-    @Lob
-    @Column(name = "Descricao")
-    private String descricao;
-    @Lob
-    @Column(name = "Corpo")
-    private String corpo;
 
     public Contrato() {
     }
 
-    public Contrato(String nome, String descricao, String corpo) {
-        this.nome = nome;
+    public Contrato(Integer id) {
+        this.id = id;
+    }
+
+    public Contrato(Integer id, String descricao, String nome) {
+        this.id = id;
         this.descricao = descricao;
-        this.corpo = corpo;
+        this.nome = nome;
     }
 
     public Integer getId() {
         return id;
     }
 
-    public String getNome() {
-        return nome;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public String getCorpo() {
+        return corpo;
+    }
+
+    public void setCorpo(String corpo) {
+        this.corpo = corpo;
     }
 
     public String getDescricao() {
@@ -75,12 +83,12 @@ public class Contrato implements Serializable {
         this.descricao = descricao;
     }
 
-    public String getCorpo() {
-        return corpo;
+    public String getNome() {
+        return nome;
     }
 
-    public void setCorpo(String corpo) {
-        this.corpo = corpo;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     @Override

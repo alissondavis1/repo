@@ -11,11 +11,11 @@ import java.util.List;
  *
  * @author netservidor
  */
-public interface FuncionarioInterface {
+public interface FuncionariosInterface {
     
-   public void NovoFuncionario(Funcionario funcionario);
-   public void ApagarFuncionario (Funcionario funcionario);
-   public void AlterarFuncionario(Funcionario funcionario);
+   public void AdicionarFuncionario(Funcionario funcionario);
+   public void ApagarFuncionario   (Funcionario funcionario);
+   public void AlterarFuncionario  (Funcionario funcionario);
    
    public Funcionario BuscarFuncionarioCpf(double Cpf); 
    public List<Funcionario> BuscarFuncionario(String nome);

@@ -14,20 +14,20 @@ import java.util.List;
  */
 public interface ContasInterface {
    
-    public void NovaConta(Conta conta);
-    public void ApagarConta(Conta conta);
-    public void AtualizarConta(Conta conta);
+    public void AdicionarConta (Conta conta);
+    public void ApagarConta    (Conta conta);
+    public void AtualizarConta (Conta conta);
   
+    public Conta       ContasPorId(int id);
     public List<Conta> ContasAbertas(Date data);
     public List<Conta> ContasAbertasCliente(int id);
     public List<Conta> ContasAbertasCliente(String nome);
     public List<Conta> ContasVencidas(Date data);
-    public List<Conta> ContasVencidasPorCliente(Date data, int id);
-    public List<Conta> ContasVencidasPorCliente(Date data);
+    public List<Conta> ContasVencidasPorCliente(Date data, int id); 
     public List<Conta> ContasVencidasPorCliente(Date data, String nome) ;
-    
     public List<Conta> ContasTotalAbertas();
     public List<Conta> ContaSomaPorData(Date dataInicial, Date dataFinal);
     public List<Conta> ContasPorRua(int IdRua);
+    
     
 }
