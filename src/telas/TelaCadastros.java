@@ -5,7 +5,9 @@
 package telas;
 
 import dao.DaoEndereco;
+import dao.DaoPessoa;
 import entidades.Endereco;
+import entidades.Pessoa;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.ImageIcon;
@@ -91,7 +93,7 @@ public class TelaCadastros extends javax.swing.JFrame {
         jTextFieldFuncionarioRgnumero = new javax.swing.JTextField();
         jTextFieldFuncionarioOrgaoExpedidor = new javax.swing.JTextField();
         jTextFieldFuncionarioDatadeemissao = new javax.swing.JTextField();
-        jButton4 = new javax.swing.JButton();
+        jButtonFuncionarioPesquisar = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jComboBoxFuncionarioLograduro = new javax.swing.JComboBox();
         jLabel8 = new javax.swing.JLabel();
@@ -244,6 +246,12 @@ public class TelaCadastros extends javax.swing.JFrame {
 
             jLabel5.setText("Nome");
 
+            jTextFieldFuncionarioNome.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    jTextFieldFuncionarioNomeActionPerformed(evt);
+                }
+            });
+
             jLabel7.setText("Apelido");
 
             jLabel4.setText("Telefone");
@@ -277,7 +285,12 @@ public class TelaCadastros extends javax.swing.JFrame {
 
             jLabel27.setText("Nome do Pai");
 
-            jButton4.setText("Pesquisar");
+            jButtonFuncionarioPesquisar.setText("Pesquisar");
+            jButtonFuncionarioPesquisar.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    jButtonFuncionarioPesquisarActionPerformed(evt);
+                }
+            });
 
             javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
             jPanel2.setLayout(jPanel2Layout);
@@ -302,7 +315,7 @@ public class TelaCadastros extends javax.swing.JFrame {
                         .addGroup(jPanel2Layout.createSequentialGroup()
                             .addComponent(jTextFieldFuncionarioNome, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(jButton4)
+                            .addComponent(jButtonFuncionarioPesquisar)
                             .addGap(0, 0, Short.MAX_VALUE)))
                     .addGap(54, 54, 54)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -362,7 +375,7 @@ public class TelaCadastros extends javax.swing.JFrame {
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(jLabel5)
                                 .addComponent(jTextFieldFuncionarioNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jButton4))
+                                .addComponent(jButtonFuncionarioPesquisar))
                             .addGap(8, 8, 8)
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(jLabel6)
@@ -952,6 +965,38 @@ public class TelaCadastros extends javax.swing.JFrame {
         editableTextFields(true);
     }//GEN-LAST:event_jButtonFuncionarioNovoActionPerformed
 
+    private void jTextFieldFuncionarioNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldFuncionarioNomeActionPerformed
+       
+        String nome = jTextFieldFuncionarioNome.getText();
+        if(nome.matches("\\w+\\s\\w+")){
+         ArrayList<Pessoa> pessoa =(ArrayList)  new DaoPessoa().BuscarPessoaNome(jTextFieldFuncionarioNome.getText());
+         if(!pessoa.isEmpty()){
+             
+             
+         }else{
+             
+             JOptionPane.showMessageDialog(null,"Funcionário não encontrado");
+         }
+         
+        }else{
+            
+            JOptionPane.showMessageDialog(this, "Para fazer uma pesquisa por nome é necessário digitar o sobrenome");
+        }
+        
+    }//GEN-LAST:event_jTextFieldFuncionarioNomeActionPerformed
+
+    private void jButtonFuncionarioPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFuncionarioPesquisarActionPerformed
+         String nome = jTextFieldFuncionarioNome.getText();
+        if(nome.matches("\\w+\\s\\w+")){
+        //new DaoPessoa().BuscarPessoaNome(jTextFieldFuncionarioNome.getText());
+        }else{
+            
+            JOptionPane.showMessageDialog(this, "Para fazer uma pesquisa por nome é necessário digitar o sobrenome");
+        }
+        
+    
+    }//GEN-LAST:event_jButtonFuncionarioPesquisarActionPerformed
+
     
     private void editableTextFields(boolean editable){
         
@@ -1032,11 +1077,11 @@ public class TelaCadastros extends javax.swing.JFrame {
     private javax.persistence.EntityManager acal2000PUEntityManager;
     private java.util.List<entidades.Endereco> enderecoList;
     private javax.persistence.Query enderecoQuery;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButtonFuncionarioApagar;
     private javax.swing.JButton jButtonFuncionarioCancelar;
     private javax.swing.JButton jButtonFuncionarioEditar;
     private javax.swing.JButton jButtonFuncionarioNovo;
+    private javax.swing.JButton jButtonFuncionarioPesquisar;
     private javax.swing.JButton jButtonFuncionarioSalvar;
     private javax.swing.JComboBox jComboBox2;
     private javax.swing.JComboBox jComboBoxFuncionarioLograduro;
