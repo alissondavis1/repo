@@ -493,7 +493,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         try {
             Properties p = new Properties();
             p.put("logoString", "ACAL2000");
-            com.jtattoo.plaf.luna.LunaLookAndFeel.setTheme(p);
+            com.jtattoo.plaf.mcwin.McWinLookAndFeel.setTheme(p);
            
             javax.swing.UIManager.setLookAndFeel(new com.jtattoo.plaf.mcwin.McWinLookAndFeel());
             /* Create and display the form */

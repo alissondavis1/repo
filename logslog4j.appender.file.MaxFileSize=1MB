@@ -1,0 +1,78 @@
+23:38:49,604  INFO Version:15 - Hibernate Annotations 3.3.1.GA
+23:38:49,647  INFO Environment:514 - Hibernate 3.2.5
+23:38:49,657  INFO Environment:547 - hibernate.properties not found
+23:38:49,669  INFO Environment:681 - Bytecode provider name : cglib
+23:38:49,686  INFO Environment:598 - using JDK 1.4 java.sql.Timestamp handling
+23:38:49,905  INFO Version:15 - Hibernate EntityManager 3.3.2.GA
+23:44:42,614  INFO Version:15 - Hibernate Annotations 3.3.1.GA
+23:44:42,648  INFO Environment:514 - Hibernate 3.2.5
+23:44:42,659  INFO Environment:547 - hibernate.properties not found
+23:44:42,665  INFO Environment:681 - Bytecode provider name : cglib
+23:44:42,677  INFO Environment:598 - using JDK 1.4 java.sql.Timestamp handling
+23:44:42,822  INFO Version:15 - Hibernate EntityManager 3.3.2.GA
+00:07:14,590  INFO Version:15 - Hibernate Annotations 3.3.1.GA
+00:07:14,629  INFO Environment:514 - Hibernate 3.2.5
+00:07:14,642  INFO Environment:547 - hibernate.properties not found
+00:07:14,650  INFO Environment:681 - Bytecode provider name : cglib
+00:07:14,661  INFO Environment:598 - using JDK 1.4 java.sql.Timestamp handling
+00:07:14,825  INFO Version:15 - Hibernate EntityManager 3.3.2.GA
+00:07:27,187  WARN PersistenceXmlLoader:256 - Warning parsing XML: XML InputStream(2) schema_reference.4: Falha ao ler o documento do esquema 'http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd' porque 1) não foi possível encontrar o documento; 2) não foi possível ler o documento; 3) o elemento-raiz do documento não é <xsd:schema>.
+00:07:27,224  WARN PersistenceXmlLoader:256 - Warning parsing XML: XML InputStream(3) schema_reference.4: Falha ao ler o documento do esquema 'http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd' porque 1) não foi possível encontrar o documento; 2) não foi possível ler o documento; 3) o elemento-raiz do documento não é <xsd:schema>.
+00:07:27,228  WARN PersistenceXmlLoader:256 - Warning parsing XML: XML InputStream(4) schema_reference.4: Falha ao ler o documento do esquema 'http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd' porque 1) não foi possível encontrar o documento; 2) não foi possível ler o documento; 3) o elemento-raiz do documento não é <xsd:schema>.
+00:07:27,232  WARN PersistenceXmlLoader:256 - Warning parsing XML: XML InputStream(5) schema_reference.4: Falha ao ler o documento do esquema 'http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd' porque 1) não foi possível encontrar o documento; 2) não foi possível ler o documento; 3) o elemento-raiz do documento não é <xsd:schema>.
+00:07:27,236  WARN PersistenceXmlLoader:256 - Warning parsing XML: XML InputStream(6) schema_reference.4: Falha ao ler o documento do esquema 'http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd' porque 1) não foi possível encontrar o documento; 2) não foi possível ler o documento; 3) o elemento-raiz do documento não é <xsd:schema>.
+00:07:27,240  WARN PersistenceXmlLoader:256 - Warning parsing XML: XML InputStream(7) schema_reference.4: Falha ao ler o documento do esquema 'http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd' porque 1) não foi possível encontrar o documento; 2) não foi possível ler o documento; 3) o elemento-raiz do documento não é <xsd:schema>.
+00:07:27,245  WARN PersistenceXmlLoader:256 - Warning parsing XML: XML InputStream(8) schema_reference.4: Falha ao ler o documento do esquema 'http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd' porque 1) não foi possível encontrar o documento; 2) não foi possível ler o documento; 3) o elemento-raiz do documento não é <xsd:schema>.
+00:07:27,252  WARN PersistenceXmlLoader:256 - Warning parsing XML: XML InputStream(9) schema_reference.4: Falha ao ler o documento do esquema 'http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd' porque 1) não foi possível encontrar o documento; 2) não foi possível ler o documento; 3) o elemento-raiz do documento não é <xsd:schema>.
+00:07:27,256  WARN PersistenceXmlLoader:256 - Warning parsing XML: XML InputStream(10) schema_reference.4: Falha ao ler o documento do esquema 'http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd' porque 1) não foi possível encontrar o documento; 2) não foi possível ler o documento; 3) o elemento-raiz do documento não é <xsd:schema>.
+00:07:27,259  WARN PersistenceXmlLoader:256 - Warning parsing XML: XML InputStream(11) schema_reference.4: Falha ao ler o documento do esquema 'http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd' porque 1) não foi possível encontrar o documento; 2) não foi possível ler o documento; 3) o elemento-raiz do documento não é <xsd:schema>.
+00:07:27,263  WARN PersistenceXmlLoader:256 - Warning parsing XML: XML InputStream(12) schema_reference.4: Falha ao ler o documento do esquema 'http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd' porque 1) não foi possível encontrar o documento; 2) não foi possível ler o documento; 3) o elemento-raiz do documento não é <xsd:schema>.
+00:07:27,266  WARN PersistenceXmlLoader:256 - Warning parsing XML: XML InputStream(13) schema_reference.4: Falha ao ler o documento do esquema 'http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd' porque 1) não foi possível encontrar o documento; 2) não foi possível ler o documento; 3) o elemento-raiz do documento não é <xsd:schema>.
+00:07:27,269  WARN PersistenceXmlLoader:256 - Warning parsing XML: XML InputStream(14) schema_reference.4: Falha ao ler o documento do esquema 'http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd' porque 1) não foi possível encontrar o documento; 2) não foi possível ler o documento; 3) o elemento-raiz do documento não é <xsd:schema>.
+00:07:27,273  WARN PersistenceXmlLoader:256 - Warning parsing XML: XML InputStream(15) schema_reference.4: Falha ao ler o documento do esquema 'http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd' porque 1) não foi possível encontrar o documento; 2) não foi possível ler o documento; 3) o elemento-raiz do documento não é <xsd:schema>.
+00:07:27,277  WARN PersistenceXmlLoader:256 - Warning parsing XML: XML InputStream(16) schema_reference.4: Falha ao ler o documento do esquema 'http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd' porque 1) não foi possível encontrar o documento; 2) não foi possível ler o documento; 3) o elemento-raiz do documento não é <xsd:schema>.
+00:07:27,333  WARN PersistenceXmlLoader:256 - Warning parsing XML: XML InputStream(17) schema_reference.4: Falha ao ler o documento do esquema 'http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd' porque 1) não foi possível encontrar o documento; 2) não foi possível ler o documento; 3) o elemento-raiz do documento não é <xsd:schema>.
+00:07:27,340  WARN PersistenceXmlLoader:256 - Warning parsing XML: XML InputStream(18) schema_reference.4: Falha ao ler o documento do esquema 'http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd' porque 1) não foi possível encontrar o documento; 2) não foi possível ler o documento; 3) o elemento-raiz do documento não é <xsd:schema>.
+00:07:27,346  WARN PersistenceXmlLoader:256 - Warning parsing XML: XML InputStream(19) schema_reference.4: Falha ao ler o documento do esquema 'http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd' porque 1) não foi possível encontrar o documento; 2) não foi possível ler o documento; 3) o elemento-raiz do documento não é <xsd:schema>.
+00:07:27,350  WARN PersistenceXmlLoader:256 - Warning parsing XML: XML InputStream(20) schema_reference.4: Falha ao ler o documento do esquema 'http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd' porque 1) não foi possível encontrar o documento; 2) não foi possível ler o documento; 3) o elemento-raiz do documento não é <xsd:schema>.
+00:07:27,356  WARN PersistenceXmlLoader:256 - Warning parsing XML: XML InputStream(21) schema_reference.4: Falha ao ler o documento do esquema 'http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd' porque 1) não foi possível encontrar o documento; 2) não foi possível ler o documento; 3) o elemento-raiz do documento não é <xsd:schema>.
+00:07:27,360  WARN PersistenceXmlLoader:256 - Warning parsing XML: XML InputStream(22) schema_reference.4: Falha ao ler o documento do esquema 'http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd' porque 1) não foi possível encontrar o documento; 2) não foi possível ler o documento; 3) o elemento-raiz do documento não é <xsd:schema>.
+00:07:27,366  WARN PersistenceXmlLoader:256 - Warning parsing XML: XML InputStream(23) schema_reference.4: Falha ao ler o documento do esquema 'http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd' porque 1) não foi possível encontrar o documento; 2) não foi possível ler o documento; 3) o elemento-raiz do documento não é <xsd:schema>.
+00:07:27,373  WARN PersistenceXmlLoader:256 - Warning parsing XML: XML InputStream(24) schema_reference.4: Falha ao ler o documento do esquema 'http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd' porque 1) não foi possível encontrar o documento; 2) não foi possível ler o documento; 3) o elemento-raiz do documento não é <xsd:schema>.
+00:07:27,376  WARN PersistenceXmlLoader:256 - Warning parsing XML: XML InputStream(25) schema_reference.4: Falha ao ler o documento do esquema 'http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd' porque 1) não foi possível encontrar o documento; 2) não foi possível ler o documento; 3) o elemento-raiz do documento não é <xsd:schema>.
+00:07:27,381  WARN PersistenceXmlLoader:256 - Warning parsing XML: XML InputStream(26) schema_reference.4: Falha ao ler o documento do esquema 'http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd' porque 1) não foi possível encontrar o documento; 2) não foi possível ler o documento; 3) o elemento-raiz do documento não é <xsd:schema>.
+00:07:27,389  WARN PersistenceXmlLoader:256 - Warning parsing XML: XML InputStream(27) schema_reference.4: Falha ao ler o documento do esquema 'http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd' porque 1) não foi possível encontrar o documento; 2) não foi possível ler o documento; 3) o elemento-raiz do documento não é <xsd:schema>.
+00:07:27,393  WARN PersistenceXmlLoader:256 - Warning parsing XML: XML InputStream(28) schema_reference.4: Falha ao ler o documento do esquema 'http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd' porque 1) não foi possível encontrar o documento; 2) não foi possível ler o documento; 3) o elemento-raiz do documento não é <xsd:schema>.
+00:07:27,398  WARN PersistenceXmlLoader:256 - Warning parsing XML: XML InputStream(29) schema_reference.4: Falha ao ler o documento do esquema 'http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd' porque 1) não foi possível encontrar o documento; 2) não foi possível ler o documento; 3) o elemento-raiz do documento não é <xsd:schema>.
+00:07:27,404  WARN PersistenceXmlLoader:256 - Warning parsing XML: XML InputStream(30) schema_reference.4: Falha ao ler o documento do esquema 'http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd' porque 1) não foi possível encontrar o documento; 2) não foi possível ler o documento; 3) o elemento-raiz do documento não é <xsd:schema>.
+00:07:27,410  WARN PersistenceXmlLoader:256 - Warning parsing XML: XML InputStream(31) schema_reference.4: Falha ao ler o documento do esquema 'http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd' porque 1) não foi possível encontrar o documento; 2) não foi possível ler o documento; 3) o elemento-raiz do documento não é <xsd:schema>.
+00:07:27,416  WARN PersistenceXmlLoader:256 - Warning parsing XML: XML InputStream(32) schema_reference.4: Falha ao ler o documento do esquema 'http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd' porque 1) não foi possível encontrar o documento; 2) não foi possível ler o documento; 3) o elemento-raiz do documento não é <xsd:schema>.
+00:07:27,422  WARN PersistenceXmlLoader:256 - Warning parsing XML: XML InputStream(33) schema_reference.4: Falha ao ler o documento do esquema 'http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd' porque 1) não foi possível encontrar o documento; 2) não foi possível ler o documento; 3) o elemento-raiz do documento não é <xsd:schema>.
+00:07:27,428  WARN PersistenceXmlLoader:256 - Warning parsing XML: XML InputStream(34) schema_reference.4: Falha ao ler o documento do esquema 'http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd' porque 1) não foi possível encontrar o documento; 2) não foi possível ler o documento; 3) o elemento-raiz do documento não é <xsd:schema>.
+00:07:27,439  WARN PersistenceXmlLoader:256 - Warning parsing XML: XML InputStream(35) schema_reference.4: Falha ao ler o documento do esquema 'http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd' porque 1) não foi possível encontrar o documento; 2) não foi possível ler o documento; 3) o elemento-raiz do documento não é <xsd:schema>.
+00:07:27,445  WARN PersistenceXmlLoader:256 - Warning parsing XML: XML InputStream(36) schema_reference.4: Falha ao ler o documento do esquema 'http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd' porque 1) não foi possível encontrar o documento; 2) não foi possível ler o documento; 3) o elemento-raiz do documento não é <xsd:schema>.
+00:07:27,453  WARN PersistenceXmlLoader:256 - Warning parsing XML: XML InputStream(37) schema_reference.4: Falha ao ler o documento do esquema 'http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd' porque 1) não foi possível encontrar o documento; 2) não foi possível ler o documento; 3) o elemento-raiz do documento não é <xsd:schema>.
+15:56:14,774  INFO Version:15 - Hibernate Annotations 3.3.1.GA
+15:56:14,818  INFO Environment:514 - Hibernate 3.2.5
+15:56:14,831  INFO Environment:547 - hibernate.properties not found
+15:56:14,838  INFO Environment:681 - Bytecode provider name : cglib
+15:56:14,852  INFO Environment:598 - using JDK 1.4 java.sql.Timestamp handling
+15:56:15,028  INFO Version:15 - Hibernate EntityManager 3.3.2.GA
+16:11:38,486  INFO Version:15 - Hibernate Annotations 3.3.1.GA
+16:11:38,523  INFO Environment:514 - Hibernate 3.2.5
+16:11:38,535  INFO Environment:547 - hibernate.properties not found
+16:11:38,543  INFO Environment:681 - Bytecode provider name : cglib
+16:11:38,554  INFO Environment:598 - using JDK 1.4 java.sql.Timestamp handling
+16:11:38,736  INFO Version:15 - Hibernate EntityManager 3.3.2.GA
+16:18:39,770  INFO Version:15 - Hibernate Annotations 3.3.1.GA
+16:18:39,808  INFO Environment:514 - Hibernate 3.2.5
+16:18:39,820  INFO Environment:547 - hibernate.properties not found
+16:18:39,827  INFO Environment:681 - Bytecode provider name : cglib
+16:18:39,838  INFO Environment:598 - using JDK 1.4 java.sql.Timestamp handling
+16:18:40,028  INFO Version:15 - Hibernate EntityManager 3.3.2.GA
+16:20:08,313  INFO Version:15 - Hibernate Annotations 3.3.1.GA
+16:20:08,352  INFO Environment:514 - Hibernate 3.2.5
+16:20:08,364  INFO Environment:547 - hibernate.properties not found
+16:20:08,370  INFO Environment:681 - Bytecode provider name : cglib
+16:20:08,381  INFO Environment:598 - using JDK 1.4 java.sql.Timestamp handling
+16:20:08,517  INFO Version:15 - Hibernate EntityManager 3.3.2.GA
