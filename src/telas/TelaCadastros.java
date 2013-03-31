@@ -4,11 +4,10 @@
  */
 package telas;
 
-import dao.DaoEndereco;
 import dao.DaoPessoa;
 import entidades.Endereco;
 import entidades.Pessoa;
-import java.util.ArrayList;
+import java.text.SimpleDateFormat;
 import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -967,29 +966,42 @@ public class TelaCadastros extends javax.swing.JFrame {
 
     private void jTextFieldFuncionarioNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldFuncionarioNomeActionPerformed
        
-        /*
+        
         String nome = jTextFieldFuncionarioNome.getText();
         if(nome.matches("\\w+\\s\\w+")){
-         ArrayList<Pessoa> pessoa =(ArrayList)  new DaoPessoa().BuscarPessoaNome(jTextFieldFuncionarioNome.getText());
-         if(!pessoa.isEmpty()){
+         Pessoa pessoa = new DaoPessoa().BuscarPessoaNome(jTextFieldFuncionarioNome.getText());
+         if(pessoa != null){
+             
+             preencherAbaFuncionarios(pessoa);
+            
              
              
          }else{
              
              JOptionPane.showMessageDialog(null,"Funcionário não encontrado");
+             jTextFieldFuncionarioNome.setText("");
          }
          
         }else{
             
             JOptionPane.showMessageDialog(this, "Para fazer uma pesquisa por nome é necessário digitar o sobrenome");
         }
-        */
+        
     }//GEN-LAST:event_jTextFieldFuncionarioNomeActionPerformed
 
     private void jButtonFuncionarioPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFuncionarioPesquisarActionPerformed
          String nome = jTextFieldFuncionarioNome.getText();
         if(nome.matches("\\w+\\s\\w+")){
-        //new DaoPessoa().BuscarPessoaNome(jTextFieldFuncionarioNome.getText());
+             Pessoa pessoa = new DaoPessoa().BuscarPessoaNome(jTextFieldFuncionarioNome.getText());
+         if(pessoa != null){
+             
+             
+         }else{
+             
+             JOptionPane.showMessageDialog(null,"Funcionário não encontrado");
+             jTextFieldFuncionarioNome.setText("");
+         }
+       
         }else{
             
             JOptionPane.showMessageDialog(this, "Para fazer uma pesquisa por nome é necessário digitar o sobrenome");
@@ -1031,6 +1043,18 @@ public class TelaCadastros extends javax.swing.JFrame {
         jButtonFuncionarioSalvar.setEnabled(editable);
     }
     
+    private void preencherAbaFuncionarios(Pessoa pessoa){
+        
+        
+         jTextFieldFuncionarioID.setText(String.valueOf(pessoa.getId()));
+         jTextFieldFuncionarioSobrenome.setText(pessoa.getSobrenome());
+         jTextFieldFuncionarioApelido.setText(pessoa.getApelido());
+         jTextFieldFuncionarioTelefone.setText(pessoa.getTelefone());
+         jTextFieldFuncionarioEmail.setText(pessoa.getEmail());
+         jTextFieldFuncionarioDataNascimento.setText( SimpleDateFormat.getDateInstance().format(pessoa.getDataNasc()));
+         
+        
+    }
     /**
      * @param args the command line arguments
      */

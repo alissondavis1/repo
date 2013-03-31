@@ -96,3 +96,454 @@
 08:37:21,691  INFO Environment:681 - Bytecode provider name : cglib
 08:37:21,699  INFO Environment:598 - using JDK 1.4 java.sql.Timestamp handling
 08:37:21,914  INFO Version:15 - Hibernate EntityManager 3.3.2.GA
+10:51:31,393  INFO Version:15 - Hibernate Annotations 3.3.1.GA
+10:51:31,419  INFO Environment:514 - Hibernate 3.2.5
+10:51:31,428  INFO Environment:547 - hibernate.properties not found
+10:51:31,433  INFO Environment:681 - Bytecode provider name : cglib
+10:51:31,440  INFO Environment:598 - using JDK 1.4 java.sql.Timestamp handling
+10:51:31,546  INFO Configuration:1426 - configuring from resource: /hibernate.cfg.xml
+10:51:31,548  INFO Configuration:1403 - Configuration resource: /hibernate.cfg.xml
+11:05:39,903  INFO Version:15 - Hibernate Annotations 3.3.1.GA
+11:05:39,941  INFO Environment:514 - Hibernate 3.2.5
+11:05:39,961  INFO Environment:547 - hibernate.properties not found
+11:05:39,980  INFO Environment:681 - Bytecode provider name : cglib
+11:05:39,993  INFO Environment:598 - using JDK 1.4 java.sql.Timestamp handling
+11:05:40,115  INFO Version:15 - Hibernate EntityManager 3.3.2.GA
+11:05:59,297  INFO Configuration:1426 - configuring from resource: /hibernate.cfg.xml
+11:05:59,299  INFO Configuration:1403 - Configuration resource: /hibernate.cfg.xml
+11:16:22,302  INFO Version:15 - Hibernate Annotations 3.3.1.GA
+11:16:22,345  INFO Environment:514 - Hibernate 3.2.5
+11:16:22,385  INFO Environment:547 - hibernate.properties not found
+11:16:22,402  INFO Environment:681 - Bytecode provider name : cglib
+11:16:22,420  INFO Environment:598 - using JDK 1.4 java.sql.Timestamp handling
+11:16:22,581  INFO Version:15 - Hibernate EntityManager 3.3.2.GA
+11:19:02,498  INFO Version:15 - Hibernate Annotations 3.3.1.GA
+11:19:02,525  INFO Environment:514 - Hibernate 3.2.5
+11:19:02,533  INFO Environment:547 - hibernate.properties not found
+11:19:02,538  INFO Environment:681 - Bytecode provider name : cglib
+11:19:02,544  INFO Environment:598 - using JDK 1.4 java.sql.Timestamp handling
+11:19:02,647  INFO Configuration:1426 - configuring from resource: /hibernate.cfg.xml
+11:19:02,649  INFO Configuration:1403 - Configuration resource: /hibernate.cfg.xml
+11:19:54,524  INFO Version:15 - Hibernate Annotations 3.3.1.GA
+11:19:54,551  INFO Environment:514 - Hibernate 3.2.5
+11:19:54,558  INFO Environment:547 - hibernate.properties not found
+11:19:54,563  INFO Environment:681 - Bytecode provider name : cglib
+11:19:54,570  INFO Environment:598 - using JDK 1.4 java.sql.Timestamp handling
+11:19:54,698  INFO Configuration:1426 - configuring from resource: /hibernate.cfg.xml
+11:19:54,700  INFO Configuration:1403 - Configuration resource: /hibernate.cfg.xml
+11:20:19,616  INFO Version:15 - Hibernate Annotations 3.3.1.GA
+11:20:19,716  INFO Environment:514 - Hibernate 3.2.5
+11:20:19,729  INFO Environment:547 - hibernate.properties not found
+11:20:19,745  INFO Environment:681 - Bytecode provider name : cglib
+11:20:19,755  INFO Environment:598 - using JDK 1.4 java.sql.Timestamp handling
+11:20:19,876  INFO Version:15 - Hibernate EntityManager 3.3.2.GA
+11:20:34,555  INFO Configuration:1426 - configuring from resource: /hibernate.cfg.xml
+11:20:34,557  INFO Configuration:1403 - Configuration resource: /hibernate.cfg.xml
+11:20:34,683  INFO Configuration:1541 - Configured SessionFactory: null
+11:20:34,840  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Categoriasocio
+11:20:34,859  INFO QueryBinder:64 - Binding Named query: Categoriasocio.findAll => SELECT c FROM Categoriasocio c
+11:20:34,860  INFO QueryBinder:64 - Binding Named query: Categoriasocio.findById => SELECT c FROM Categoriasocio c WHERE c.id = :id
+11:20:34,862  INFO QueryBinder:64 - Binding Named query: Categoriasocio.findByNome => SELECT c FROM Categoriasocio c WHERE c.nome = :nome
+11:20:34,864  INFO QueryBinder:64 - Binding Named query: Categoriasocio.findByTaxasId => SELECT c FROM Categoriasocio c WHERE c.taxasId = :taxasId
+11:20:34,922  INFO EntityBinder:424 - Bind entity entidades.Categoriasocio on table categoriasocio
+11:20:35,059  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Cheque
+11:20:35,060  INFO QueryBinder:64 - Binding Named query: Cheque.findAll => SELECT c FROM Cheque c
+11:20:35,062  INFO QueryBinder:64 - Binding Named query: Cheque.findById => SELECT c FROM Cheque c WHERE c.id = :id
+11:20:35,063  INFO QueryBinder:64 - Binding Named query: Cheque.findByDataPagamento => SELECT c FROM Cheque c WHERE c.dataPagamento = :dataPagamento
+11:20:35,065  INFO QueryBinder:64 - Binding Named query: Cheque.findByDataVencimento => SELECT c FROM Cheque c WHERE c.dataVencimento = :dataVencimento
+11:20:35,094  INFO QueryBinder:64 - Binding Named query: Cheque.findByNumero => SELECT c FROM Cheque c WHERE c.numero = :numero
+11:20:35,096  INFO QueryBinder:64 - Binding Named query: Cheque.findByValor => SELECT c FROM Cheque c WHERE c.valor = :valor
+11:20:35,098  INFO EntityBinder:424 - Bind entity entidades.Cheque on table cheque
+11:20:35,133  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Chequeslog
+11:20:35,135  INFO QueryBinder:64 - Binding Named query: Chequeslog.findAll => SELECT c FROM Chequeslog c
+11:20:35,137  INFO QueryBinder:64 - Binding Named query: Chequeslog.findById => SELECT c FROM Chequeslog c WHERE c.id = :id
+11:20:35,139  INFO QueryBinder:64 - Binding Named query: Chequeslog.findByIdOriginal => SELECT c FROM Chequeslog c WHERE c.idOriginal = :idOriginal
+11:20:35,140  INFO QueryBinder:64 - Binding Named query: Chequeslog.findByDataPagamento => SELECT c FROM Chequeslog c WHERE c.dataPagamento = :dataPagamento
+11:20:35,142  INFO QueryBinder:64 - Binding Named query: Chequeslog.findByDataVencimento => SELECT c FROM Chequeslog c WHERE c.dataVencimento = :dataVencimento
+11:20:35,145  INFO QueryBinder:64 - Binding Named query: Chequeslog.findByDataAlteracao => SELECT c FROM Chequeslog c WHERE c.dataAlteracao = :dataAlteracao
+11:20:35,147  INFO QueryBinder:64 - Binding Named query: Chequeslog.findByNumero => SELECT c FROM Chequeslog c WHERE c.numero = :numero
+11:20:35,149  INFO QueryBinder:64 - Binding Named query: Chequeslog.findByValor => SELECT c FROM Chequeslog c WHERE c.valor = :valor
+11:20:35,151  INFO QueryBinder:64 - Binding Named query: Chequeslog.findByIdFuncionarioAlteracao => SELECT c FROM Chequeslog c WHERE c.idFuncionarioAlteracao = :idFuncionarioAlteracao
+11:20:35,153  INFO QueryBinder:64 - Binding Named query: Chequeslog.findByTipo => SELECT c FROM Chequeslog c WHERE c.tipo = :tipo
+11:20:35,155  INFO EntityBinder:424 - Bind entity entidades.Chequeslog on table chequeslog
+11:20:35,166  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Conta
+11:20:35,167  INFO QueryBinder:64 - Binding Named query: Conta.findAll => SELECT c FROM Conta c
+11:20:35,168  INFO QueryBinder:64 - Binding Named query: Conta.findById => SELECT c FROM Conta c WHERE c.id = :id
+11:20:35,170  INFO QueryBinder:64 - Binding Named query: Conta.findByDataPag => SELECT c FROM Conta c WHERE c.dataPag = :dataPag
+11:20:35,172  INFO QueryBinder:64 - Binding Named query: Conta.findByDataVence => SELECT c FROM Conta c WHERE c.dataVence = :dataVence
+11:20:35,174  INFO QueryBinder:64 - Binding Named query: Conta.findByTaxaSocio => SELECT c FROM Conta c WHERE c.taxaSocio = :taxaSocio
+11:20:35,175  INFO QueryBinder:64 - Binding Named query: Conta.findByTaxaRelogio => SELECT c FROM Conta c WHERE c.taxaRelogio = :taxaRelogio
+11:20:35,186  INFO EntityBinder:424 - Bind entity entidades.Conta on table conta
+11:20:35,209  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Contrato
+11:20:35,212  INFO QueryBinder:64 - Binding Named query: Contrato.findAll => SELECT c FROM Contrato c
+11:20:35,214  INFO QueryBinder:64 - Binding Named query: Contrato.findById => SELECT c FROM Contrato c WHERE c.id = :id
+11:20:35,215  INFO EntityBinder:424 - Bind entity entidades.Contrato on table contrato
+11:20:35,224  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Endereco
+11:20:35,225  INFO QueryBinder:64 - Binding Named query: Endereco.findAll => SELECT e FROM Endereco e
+11:20:35,226  INFO QueryBinder:64 - Binding Named query: Endereco.findById => SELECT e FROM Endereco e WHERE e.id = :id
+11:20:35,227  INFO QueryBinder:64 - Binding Named query: Endereco.findByTipo => SELECT e FROM Endereco e WHERE e.tipo = :tipo
+11:20:35,228  INFO QueryBinder:64 - Binding Named query: Endereco.findByNome => SELECT e FROM Endereco e WHERE e.nome = :nome
+11:20:35,230  INFO EntityBinder:424 - Bind entity entidades.Endereco on table endereco
+11:20:35,236  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Entrada
+11:20:35,238  INFO QueryBinder:64 - Binding Named query: Entrada.findAll => SELECT e FROM Entrada e
+11:20:35,239  INFO QueryBinder:64 - Binding Named query: Entrada.findById => SELECT e FROM Entrada e WHERE e.id = :id
+11:20:35,241  INFO QueryBinder:64 - Binding Named query: Entrada.findByData => SELECT e FROM Entrada e WHERE e.data = :data
+11:20:35,242  INFO QueryBinder:64 - Binding Named query: Entrada.findByValor => SELECT e FROM Entrada e WHERE e.valor = :valor
+11:20:35,244  INFO EntityBinder:424 - Bind entity entidades.Entrada on table entrada
+11:20:35,251  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Entradaslog
+11:20:35,251  INFO QueryBinder:64 - Binding Named query: Entradaslog.findAll => SELECT e FROM Entradaslog e
+11:20:35,252  INFO QueryBinder:64 - Binding Named query: Entradaslog.findById => SELECT e FROM Entradaslog e WHERE e.id = :id
+11:20:35,254  INFO QueryBinder:64 - Binding Named query: Entradaslog.findByIdOriginal => SELECT e FROM Entradaslog e WHERE e.idOriginal = :idOriginal
+11:20:35,255  INFO QueryBinder:64 - Binding Named query: Entradaslog.findByDataOriginal => SELECT e FROM Entradaslog e WHERE e.dataOriginal = :dataOriginal
+11:20:35,257  INFO QueryBinder:64 - Binding Named query: Entradaslog.findByDataAlteracao => SELECT e FROM Entradaslog e WHERE e.dataAlteracao = :dataAlteracao
+11:20:35,259  INFO QueryBinder:64 - Binding Named query: Entradaslog.findByValor => SELECT e FROM Entradaslog e WHERE e.valor = :valor
+11:20:35,260  INFO QueryBinder:64 - Binding Named query: Entradaslog.findByIdCedente => SELECT e FROM Entradaslog e WHERE e.idCedente = :idCedente
+11:20:35,262  INFO QueryBinder:64 - Binding Named query: Entradaslog.findByIdFuncionario => SELECT e FROM Entradaslog e WHERE e.idFuncionario = :idFuncionario
+11:20:35,263  INFO QueryBinder:64 - Binding Named query: Entradaslog.findByIdMotivoEntrada => SELECT e FROM Entradaslog e WHERE e.idMotivoEntrada = :idMotivoEntrada
+11:20:35,265  INFO QueryBinder:64 - Binding Named query: Entradaslog.findByTipo => SELECT e FROM Entradaslog e WHERE e.tipo = :tipo
+11:20:35,266  INFO QueryBinder:64 - Binding Named query: Entradaslog.findByIdFuncionarioAlteracao => SELECT e FROM Entradaslog e WHERE e.idFuncionarioAlteracao = :idFuncionarioAlteracao
+11:20:35,270  INFO EntityBinder:424 - Bind entity entidades.Entradaslog on table entradaslog
+11:20:35,281  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Funcionario
+11:20:35,282  INFO QueryBinder:64 - Binding Named query: Funcionario.findAll => SELECT f FROM Funcionario f
+11:20:35,283  INFO QueryBinder:64 - Binding Named query: Funcionario.findById => SELECT f FROM Funcionario f WHERE f.id = :id
+11:20:35,284  INFO QueryBinder:64 - Binding Named query: Funcionario.findByCargo => SELECT f FROM Funcionario f WHERE f.cargo = :cargo
+11:20:35,287  INFO QueryBinder:64 - Binding Named query: Funcionario.findByDataContratacao => SELECT f FROM Funcionario f WHERE f.dataContratacao = :dataContratacao
+11:20:35,288  INFO QueryBinder:64 - Binding Named query: Funcionario.findByMatricula => SELECT f FROM Funcionario f WHERE f.matricula = :matricula
+11:20:35,289  INFO QueryBinder:64 - Binding Named query: Funcionario.findBySalario => SELECT f FROM Funcionario f WHERE f.salario = :salario
+11:20:35,290  INFO EntityBinder:424 - Bind entity entidades.Funcionario on table funcionario
+11:20:35,299  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Motivodespesa
+11:20:35,301  INFO QueryBinder:64 - Binding Named query: Motivodespesa.findAll => SELECT m FROM Motivodespesa m
+11:20:35,302  INFO QueryBinder:64 - Binding Named query: Motivodespesa.findById => SELECT m FROM Motivodespesa m WHERE m.id = :id
+11:20:35,303  INFO QueryBinder:64 - Binding Named query: Motivodespesa.findByNome => SELECT m FROM Motivodespesa m WHERE m.nome = :nome
+11:20:35,304  INFO EntityBinder:424 - Bind entity entidades.Motivodespesa on table motivodespesa
+11:20:35,312  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Motivoentrada
+11:20:35,313  INFO QueryBinder:64 - Binding Named query: Motivoentrada.findAll => SELECT m FROM Motivoentrada m
+11:20:35,314  INFO QueryBinder:64 - Binding Named query: Motivoentrada.findById => SELECT m FROM Motivoentrada m WHERE m.id = :id
+11:20:35,315  INFO QueryBinder:64 - Binding Named query: Motivoentrada.findByNome => SELECT m FROM Motivoentrada m WHERE m.nome = :nome
+11:20:35,316  INFO EntityBinder:424 - Bind entity entidades.Motivoentrada on table motivoentrada
+11:20:35,325  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Pessoa
+11:20:35,327  INFO QueryBinder:64 - Binding Named query: Pessoa.findAll => SELECT p FROM Pessoa p
+11:20:35,328  INFO QueryBinder:64 - Binding Named query: Pessoa.findById => SELECT p FROM Pessoa p WHERE p.id = :id
+11:20:35,329  INFO QueryBinder:64 - Binding Named query: Pessoa.findByNome => SELECT p FROM Pessoa p WHERE p.nome = :nome
+11:20:35,329  INFO QueryBinder:64 - Binding Named query: Pessoa.findBySobrenome => SELECT p FROM Pessoa p WHERE p.sobrenome = :sobrenome
+11:20:35,330  INFO QueryBinder:64 - Binding Named query: Pessoa.findByCategoriaSocio => SELECT p FROM Pessoa p WHERE p.categoriaSocio = :categoriaSocio
+11:20:35,331  INFO QueryBinder:64 - Binding Named query: Pessoa.findByStatus => SELECT p FROM Pessoa p WHERE p.status = :status
+11:20:35,332  INFO QueryBinder:64 - Binding Named query: Pessoa.findByApelido => SELECT p FROM Pessoa p WHERE p.apelido = :apelido
+11:20:35,333  INFO QueryBinder:64 - Binding Named query: Pessoa.findByBairro => SELECT p FROM Pessoa p WHERE p.bairro = :bairro
+11:20:35,334  INFO QueryBinder:64 - Binding Named query: Pessoa.findByCep => SELECT p FROM Pessoa p WHERE p.cep = :cep
+11:20:35,335  INFO QueryBinder:64 - Binding Named query: Pessoa.findByCidade => SELECT p FROM Pessoa p WHERE p.cidade = :cidade
+11:20:35,336  INFO QueryBinder:64 - Binding Named query: Pessoa.findByCpf => SELECT p FROM Pessoa p WHERE p.cpf = :cpf
+11:20:35,338  INFO QueryBinder:64 - Binding Named query: Pessoa.findByDataNasc => SELECT p FROM Pessoa p WHERE p.dataNasc = :dataNasc
+11:20:35,340  INFO QueryBinder:64 - Binding Named query: Pessoa.findByEmail => SELECT p FROM Pessoa p WHERE p.email = :email
+11:20:35,341  INFO QueryBinder:64 - Binding Named query: Pessoa.findByNomeMae => SELECT p FROM Pessoa p WHERE p.nomeMae = :nomeMae
+11:20:35,342  INFO QueryBinder:64 - Binding Named query: Pessoa.findByNomePai => SELECT p FROM Pessoa p WHERE p.nomePai = :nomePai
+11:20:35,343  INFO QueryBinder:64 - Binding Named query: Pessoa.findByNumeroMatricula => SELECT p FROM Pessoa p WHERE p.numeroMatricula = :numeroMatricula
+11:20:35,344  INFO QueryBinder:64 - Binding Named query: Pessoa.findByRgEmissao => SELECT p FROM Pessoa p WHERE p.rgEmissao = :rgEmissao
+11:20:35,345  INFO QueryBinder:64 - Binding Named query: Pessoa.findByRgExpedidor => SELECT p FROM Pessoa p WHERE p.rgExpedidor = :rgExpedidor
+11:20:35,346  INFO QueryBinder:64 - Binding Named query: Pessoa.findByRgNumero => SELECT p FROM Pessoa p WHERE p.rgNumero = :rgNumero
+11:20:35,346  INFO QueryBinder:64 - Binding Named query: Pessoa.findBySexo => SELECT p FROM Pessoa p WHERE p.sexo = :sexo
+11:20:35,347  INFO QueryBinder:64 - Binding Named query: Pessoa.findByTelefone => SELECT p FROM Pessoa p WHERE p.telefone = :telefone
+11:20:35,348  INFO QueryBinder:64 - Binding Named query: Pessoa.findByUf => SELECT p FROM Pessoa p WHERE p.uf = :uf
+11:20:35,349  INFO EntityBinder:424 - Bind entity entidades.Pessoa on table pessoa
+11:20:35,375  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Saida
+11:20:35,376  INFO QueryBinder:64 - Binding Named query: Saida.findAll => SELECT s FROM Saida s
+11:20:35,376  INFO QueryBinder:64 - Binding Named query: Saida.findById => SELECT s FROM Saida s WHERE s.id = :id
+11:20:35,377  INFO QueryBinder:64 - Binding Named query: Saida.findByData => SELECT s FROM Saida s WHERE s.data = :data
+11:20:35,378  INFO QueryBinder:64 - Binding Named query: Saida.findByValor => SELECT s FROM Saida s WHERE s.valor = :valor
+11:20:35,379  INFO QueryBinder:64 - Binding Named query: Saida.findByFavorecido => SELECT s FROM Saida s WHERE s.favorecido = :favorecido
+11:20:35,380  INFO EntityBinder:424 - Bind entity entidades.Saida on table saida
+11:20:35,387  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Saidaslog
+11:20:35,388  INFO QueryBinder:64 - Binding Named query: Saidaslog.findAll => SELECT s FROM Saidaslog s
+11:20:35,389  INFO QueryBinder:64 - Binding Named query: Saidaslog.findById => SELECT s FROM Saidaslog s WHERE s.id = :id
+11:20:35,390  INFO QueryBinder:64 - Binding Named query: Saidaslog.findByIdoriginal => SELECT s FROM Saidaslog s WHERE s.idoriginal = :idoriginal
+11:20:35,390  INFO QueryBinder:64 - Binding Named query: Saidaslog.findByDataoriginal => SELECT s FROM Saidaslog s WHERE s.dataoriginal = :dataoriginal
+11:20:35,391  INFO QueryBinder:64 - Binding Named query: Saidaslog.findByDataalteracao => SELECT s FROM Saidaslog s WHERE s.dataalteracao = :dataalteracao
+11:20:35,392  INFO QueryBinder:64 - Binding Named query: Saidaslog.findByValor => SELECT s FROM Saidaslog s WHERE s.valor = :valor
+11:20:35,393  INFO QueryBinder:64 - Binding Named query: Saidaslog.findByFavorecido => SELECT s FROM Saidaslog s WHERE s.favorecido = :favorecido
+11:20:35,425  INFO QueryBinder:64 - Binding Named query: Saidaslog.findByIdfuncionario => SELECT s FROM Saidaslog s WHERE s.idfuncionario = :idfuncionario
+11:20:35,427  INFO QueryBinder:64 - Binding Named query: Saidaslog.findByIdFuncionarioAltercao => SELECT s FROM Saidaslog s WHERE s.idFuncionarioAltercao = :idFuncionarioAltercao
+11:20:35,427  INFO QueryBinder:64 - Binding Named query: Saidaslog.findByIdmotivosaida => SELECT s FROM Saidaslog s WHERE s.idmotivosaida = :idmotivosaida
+11:20:35,428  INFO QueryBinder:64 - Binding Named query: Saidaslog.findByTipo => SELECT s FROM Saidaslog s WHERE s.tipo = :tipo
+11:20:35,429  INFO EntityBinder:424 - Bind entity entidades.Saidaslog on table saidaslog
+11:20:35,438  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Socio
+11:20:35,439  INFO QueryBinder:64 - Binding Named query: Socio.findAll => SELECT s FROM Socio s
+11:20:35,440  INFO QueryBinder:64 - Binding Named query: Socio.findById => SELECT s FROM Socio s WHERE s.id = :id
+11:20:35,441  INFO QueryBinder:64 - Binding Named query: Socio.findByDataVence => SELECT s FROM Socio s WHERE s.dataVence = :dataVence
+11:20:35,442  INFO QueryBinder:64 - Binding Named query: Socio.findByDataAprovacao => SELECT s FROM Socio s WHERE s.dataAprovacao = :dataAprovacao
+11:20:35,443  INFO QueryBinder:64 - Binding Named query: Socio.findByDataMatricula => SELECT s FROM Socio s WHERE s.dataMatricula = :dataMatricula
+11:20:35,443  INFO QueryBinder:64 - Binding Named query: Socio.findByNumeroSocio => SELECT s FROM Socio s WHERE s.numeroSocio = :numeroSocio
+11:20:35,444  INFO EntityBinder:424 - Bind entity entidades.Socio on table socio
+11:20:35,455  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Taxa
+11:20:35,456  INFO QueryBinder:64 - Binding Named query: Taxa.findAll => SELECT t FROM Taxa t
+11:20:35,457  INFO QueryBinder:64 - Binding Named query: Taxa.findById => SELECT t FROM Taxa t WHERE t.id = :id
+11:20:35,458  INFO QueryBinder:64 - Binding Named query: Taxa.findByNome => SELECT t FROM Taxa t WHERE t.nome = :nome
+11:20:35,459  INFO QueryBinder:64 - Binding Named query: Taxa.findByDescricao => SELECT t FROM Taxa t WHERE t.descricao = :descricao
+11:20:35,460  INFO QueryBinder:64 - Binding Named query: Taxa.findByValor => SELECT t FROM Taxa t WHERE t.valor = :valor
+11:20:35,460  INFO EntityBinder:424 - Bind entity entidades.Taxa on table taxa
+11:20:35,467  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Usuario
+11:20:35,468  INFO QueryBinder:64 - Binding Named query: Usuario.findAll => SELECT u FROM Usuario u
+11:20:35,470  INFO QueryBinder:64 - Binding Named query: Usuario.findById => SELECT u FROM Usuario u WHERE u.id = :id
+11:20:35,480  INFO QueryBinder:64 - Binding Named query: Usuario.findByNome => SELECT u FROM Usuario u WHERE u.nome = :nome
+11:20:35,481  INFO QueryBinder:64 - Binding Named query: Usuario.findBySenha => SELECT u FROM Usuario u WHERE u.senha = :senha
+11:20:35,482  INFO QueryBinder:64 - Binding Named query: Usuario.findByNivel => SELECT u FROM Usuario u WHERE u.nivel = :nivel
+11:20:35,483  INFO EntityBinder:424 - Bind entity entidades.Usuario on table usuario
+11:20:35,668  INFO CollectionBinder:651 - Mapping collection: entidades.Categoriasocio.socioList -> socio
+11:20:35,673  INFO CollectionBinder:651 - Mapping collection: entidades.Endereco.pessoaList -> pessoa
+11:20:35,674  INFO CollectionBinder:651 - Mapping collection: entidades.Funcionario.chequeList -> cheque
+11:20:35,675  INFO CollectionBinder:651 - Mapping collection: entidades.Funcionario.entradaList -> entrada
+11:20:35,676  INFO CollectionBinder:651 - Mapping collection: entidades.Funcionario.saidaList -> saida
+11:20:35,676  INFO CollectionBinder:651 - Mapping collection: entidades.Motivodespesa.chequeList -> cheque
+11:20:35,677  INFO CollectionBinder:651 - Mapping collection: entidades.Motivodespesa.saidaList -> saida
+11:20:35,678  INFO CollectionBinder:651 - Mapping collection: entidades.Motivoentrada.entradaList -> entrada
+11:20:35,679  INFO CollectionBinder:651 - Mapping collection: entidades.Pessoa.funcionarioList -> funcionario
+11:20:35,716  INFO CollectionBinder:651 - Mapping collection: entidades.Pessoa.socioList -> socio
+11:20:35,716  INFO CollectionBinder:651 - Mapping collection: entidades.Socio.contaList -> conta
+11:20:35,717  INFO CollectionBinder:651 - Mapping collection: entidades.Socio.entradaList -> entrada
+11:20:35,720  INFO AnnotationConfiguration:365 - Hibernate Validator not found: ignoring
+11:20:35,743  INFO DriverManagerConnectionProvider:41 - Using Hibernate built-in connection pool (not for production use!)
+11:20:35,743  INFO DriverManagerConnectionProvider:42 - Hibernate connection pool size: 20
+11:20:35,744  INFO DriverManagerConnectionProvider:45 - autocommit mode: false
+11:20:35,745  INFO DriverManagerConnectionProvider:80 - using driver: com.mysql.jdbc.Driver at URL: jdbc:mysql://localhost:3306/acal?zeroDateTimeBehavior=convertToNull
+11:20:35,746  INFO DriverManagerConnectionProvider:86 - connection properties: {user=root, password=****}
+11:20:35,780  INFO SettingsFactory:89 - RDBMS: MySQL, version: 5.5.28
+11:20:35,780  INFO SettingsFactory:90 - JDBC driver: MySQL-AB JDBC Driver, version: mysql-connector-java-5.1.18 ( Revision: tonci.grgin@oracle.com-20110930151701-jfj14ddfq48ifkfq )
+11:20:35,807  INFO Dialect:152 - Using dialect: org.hibernate.dialect.MySQLDialect
+11:20:35,816  INFO TransactionFactoryFactory:31 - Using default transaction strategy (direct JDBC transactions)
+11:20:35,820  INFO TransactionManagerLookupFactory:33 - No TransactionManagerLookup configured (in JTA environment, use of read-write or transactional second-level cache is not recommended)
+11:20:35,821  INFO SettingsFactory:143 - Automatic flush during beforeCompletion(): disabled
+11:20:35,821  INFO SettingsFactory:147 - Automatic session close at end of transaction: disabled
+11:20:35,822  INFO SettingsFactory:154 - JDBC batch size: 15
+11:20:35,822  INFO SettingsFactory:157 - JDBC batch updates for versioned data: disabled
+11:20:35,824  INFO SettingsFactory:162 - Scrollable result sets: enabled
+11:20:35,825  INFO SettingsFactory:170 - JDBC3 getGeneratedKeys(): enabled
+11:20:35,825  INFO SettingsFactory:178 - Connection release mode: auto
+11:20:35,827  INFO SettingsFactory:202 - Maximum outer join fetch depth: 2
+11:20:35,828  INFO SettingsFactory:205 - Default batch fetch size: 1
+11:20:35,828  INFO SettingsFactory:209 - Generate SQL with comments: enabled
+11:20:35,829  INFO SettingsFactory:213 - Order SQL updates by primary key: disabled
+11:20:35,829  INFO SettingsFactory:217 - Order SQL inserts for batching: disabled
+11:20:35,830  INFO SettingsFactory:386 - Query translator: org.hibernate.hql.ast.ASTQueryTranslatorFactory
+11:20:35,834  INFO ASTQueryTranslatorFactory:24 - Using ASTQueryTranslatorFactory
+11:20:35,835  INFO SettingsFactory:225 - Query language substitutions: {}
+11:20:35,835  INFO SettingsFactory:230 - JPA-QL strict compliance: disabled
+11:20:35,835  INFO SettingsFactory:235 - Second-level cache: enabled
+11:20:35,836  INFO SettingsFactory:239 - Query cache: disabled
+11:20:35,836  INFO SettingsFactory:373 - Cache provider: org.hibernate.cache.NoCacheProvider
+11:20:35,837  INFO SettingsFactory:254 - Optimize cache for minimal puts: disabled
+11:20:35,838  INFO SettingsFactory:263 - Structured second-level cache entries: disabled
+11:20:35,850  INFO SettingsFactory:283 - Echoing all SQL to stdout
+11:20:35,850  INFO SettingsFactory:290 - Statistics: disabled
+11:20:35,851  INFO SettingsFactory:294 - Deleted entity synthetic identifier rollback: disabled
+11:20:35,853  INFO SettingsFactory:309 - Default entity-mode: pojo
+11:20:35,854  INFO SettingsFactory:313 - Named query checking : enabled
+11:20:35,910  INFO SessionFactoryImpl:161 - building session factory
+11:20:36,791  INFO SessionFactoryObjectFactory:82 - Not binding factory to JNDI, no JNDI name configured
+11:20:37,680 TRACE StringType:133 - binding 'Alisson Davis' to parameter: 1
+11:23:50,455  INFO Version:15 - Hibernate Annotations 3.3.1.GA
+11:23:50,534  INFO Environment:514 - Hibernate 3.2.5
+11:23:50,544  INFO Environment:547 - hibernate.properties not found
+11:23:50,558  INFO Environment:681 - Bytecode provider name : cglib
+11:23:50,566  INFO Environment:598 - using JDK 1.4 java.sql.Timestamp handling
+11:23:50,724  INFO Version:15 - Hibernate EntityManager 3.3.2.GA
+11:24:03,723  INFO Configuration:1426 - configuring from resource: /hibernate.cfg.xml
+11:24:03,724  INFO Configuration:1403 - Configuration resource: /hibernate.cfg.xml
+11:24:03,874  INFO Configuration:1541 - Configured SessionFactory: null
+11:24:04,075  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Categoriasocio
+11:24:04,096  INFO QueryBinder:64 - Binding Named query: Categoriasocio.findAll => SELECT c FROM Categoriasocio c
+11:24:04,097  INFO QueryBinder:64 - Binding Named query: Categoriasocio.findById => SELECT c FROM Categoriasocio c WHERE c.id = :id
+11:24:04,101  INFO QueryBinder:64 - Binding Named query: Categoriasocio.findByNome => SELECT c FROM Categoriasocio c WHERE c.nome = :nome
+11:24:04,104  INFO QueryBinder:64 - Binding Named query: Categoriasocio.findByTaxasId => SELECT c FROM Categoriasocio c WHERE c.taxasId = :taxasId
+11:24:04,175  INFO EntityBinder:424 - Bind entity entidades.Categoriasocio on table categoriasocio
+11:24:04,364  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Cheque
+11:24:04,365  INFO QueryBinder:64 - Binding Named query: Cheque.findAll => SELECT c FROM Cheque c
+11:24:04,397  INFO QueryBinder:64 - Binding Named query: Cheque.findById => SELECT c FROM Cheque c WHERE c.id = :id
+11:24:04,399  INFO QueryBinder:64 - Binding Named query: Cheque.findByDataPagamento => SELECT c FROM Cheque c WHERE c.dataPagamento = :dataPagamento
+11:24:04,420  INFO QueryBinder:64 - Binding Named query: Cheque.findByDataVencimento => SELECT c FROM Cheque c WHERE c.dataVencimento = :dataVencimento
+11:24:04,429  INFO QueryBinder:64 - Binding Named query: Cheque.findByNumero => SELECT c FROM Cheque c WHERE c.numero = :numero
+11:24:04,433  INFO QueryBinder:64 - Binding Named query: Cheque.findByValor => SELECT c FROM Cheque c WHERE c.valor = :valor
+11:24:04,436  INFO EntityBinder:424 - Bind entity entidades.Cheque on table cheque
+11:24:04,478  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Chequeslog
+11:24:04,480  INFO QueryBinder:64 - Binding Named query: Chequeslog.findAll => SELECT c FROM Chequeslog c
+11:24:04,482  INFO QueryBinder:64 - Binding Named query: Chequeslog.findById => SELECT c FROM Chequeslog c WHERE c.id = :id
+11:24:04,483  INFO QueryBinder:64 - Binding Named query: Chequeslog.findByIdOriginal => SELECT c FROM Chequeslog c WHERE c.idOriginal = :idOriginal
+11:24:04,485  INFO QueryBinder:64 - Binding Named query: Chequeslog.findByDataPagamento => SELECT c FROM Chequeslog c WHERE c.dataPagamento = :dataPagamento
+11:24:04,486  INFO QueryBinder:64 - Binding Named query: Chequeslog.findByDataVencimento => SELECT c FROM Chequeslog c WHERE c.dataVencimento = :dataVencimento
+11:24:04,487  INFO QueryBinder:64 - Binding Named query: Chequeslog.findByDataAlteracao => SELECT c FROM Chequeslog c WHERE c.dataAlteracao = :dataAlteracao
+11:24:04,488  INFO QueryBinder:64 - Binding Named query: Chequeslog.findByNumero => SELECT c FROM Chequeslog c WHERE c.numero = :numero
+11:24:04,489  INFO QueryBinder:64 - Binding Named query: Chequeslog.findByValor => SELECT c FROM Chequeslog c WHERE c.valor = :valor
+11:24:04,490  INFO QueryBinder:64 - Binding Named query: Chequeslog.findByIdFuncionarioAlteracao => SELECT c FROM Chequeslog c WHERE c.idFuncionarioAlteracao = :idFuncionarioAlteracao
+11:24:04,492  INFO QueryBinder:64 - Binding Named query: Chequeslog.findByTipo => SELECT c FROM Chequeslog c WHERE c.tipo = :tipo
+11:24:04,493  INFO EntityBinder:424 - Bind entity entidades.Chequeslog on table chequeslog
+11:24:04,504  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Conta
+11:24:04,505  INFO QueryBinder:64 - Binding Named query: Conta.findAll => SELECT c FROM Conta c
+11:24:04,507  INFO QueryBinder:64 - Binding Named query: Conta.findById => SELECT c FROM Conta c WHERE c.id = :id
+11:24:04,508  INFO QueryBinder:64 - Binding Named query: Conta.findByDataPag => SELECT c FROM Conta c WHERE c.dataPag = :dataPag
+11:24:04,510  INFO QueryBinder:64 - Binding Named query: Conta.findByDataVence => SELECT c FROM Conta c WHERE c.dataVence = :dataVence
+11:24:04,511  INFO QueryBinder:64 - Binding Named query: Conta.findByTaxaSocio => SELECT c FROM Conta c WHERE c.taxaSocio = :taxaSocio
+11:24:04,513  INFO QueryBinder:64 - Binding Named query: Conta.findByTaxaRelogio => SELECT c FROM Conta c WHERE c.taxaRelogio = :taxaRelogio
+11:24:04,567  INFO EntityBinder:424 - Bind entity entidades.Conta on table conta
+11:24:04,623  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Contrato
+11:24:04,626  INFO QueryBinder:64 - Binding Named query: Contrato.findAll => SELECT c FROM Contrato c
+11:24:04,631  INFO QueryBinder:64 - Binding Named query: Contrato.findById => SELECT c FROM Contrato c WHERE c.id = :id
+11:24:04,632  INFO EntityBinder:424 - Bind entity entidades.Contrato on table contrato
+11:24:04,640  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Endereco
+11:24:04,641  INFO QueryBinder:64 - Binding Named query: Endereco.findAll => SELECT e FROM Endereco e
+11:24:04,642  INFO QueryBinder:64 - Binding Named query: Endereco.findById => SELECT e FROM Endereco e WHERE e.id = :id
+11:24:04,643  INFO QueryBinder:64 - Binding Named query: Endereco.findByTipo => SELECT e FROM Endereco e WHERE e.tipo = :tipo
+11:24:04,644  INFO QueryBinder:64 - Binding Named query: Endereco.findByNome => SELECT e FROM Endereco e WHERE e.nome = :nome
+11:24:04,649  INFO EntityBinder:424 - Bind entity entidades.Endereco on table endereco
+11:24:04,654  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Entrada
+11:24:04,656  INFO QueryBinder:64 - Binding Named query: Entrada.findAll => SELECT e FROM Entrada e
+11:24:04,657  INFO QueryBinder:64 - Binding Named query: Entrada.findById => SELECT e FROM Entrada e WHERE e.id = :id
+11:24:04,658  INFO QueryBinder:64 - Binding Named query: Entrada.findByData => SELECT e FROM Entrada e WHERE e.data = :data
+11:24:04,659  INFO QueryBinder:64 - Binding Named query: Entrada.findByValor => SELECT e FROM Entrada e WHERE e.valor = :valor
+11:24:04,660  INFO EntityBinder:424 - Bind entity entidades.Entrada on table entrada
+11:24:04,667  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Entradaslog
+11:24:04,669  INFO QueryBinder:64 - Binding Named query: Entradaslog.findAll => SELECT e FROM Entradaslog e
+11:24:04,670  INFO QueryBinder:64 - Binding Named query: Entradaslog.findById => SELECT e FROM Entradaslog e WHERE e.id = :id
+11:24:04,671  INFO QueryBinder:64 - Binding Named query: Entradaslog.findByIdOriginal => SELECT e FROM Entradaslog e WHERE e.idOriginal = :idOriginal
+11:24:04,672  INFO QueryBinder:64 - Binding Named query: Entradaslog.findByDataOriginal => SELECT e FROM Entradaslog e WHERE e.dataOriginal = :dataOriginal
+11:24:04,673  INFO QueryBinder:64 - Binding Named query: Entradaslog.findByDataAlteracao => SELECT e FROM Entradaslog e WHERE e.dataAlteracao = :dataAlteracao
+11:24:04,674  INFO QueryBinder:64 - Binding Named query: Entradaslog.findByValor => SELECT e FROM Entradaslog e WHERE e.valor = :valor
+11:24:04,675  INFO QueryBinder:64 - Binding Named query: Entradaslog.findByIdCedente => SELECT e FROM Entradaslog e WHERE e.idCedente = :idCedente
+11:24:04,676  INFO QueryBinder:64 - Binding Named query: Entradaslog.findByIdFuncionario => SELECT e FROM Entradaslog e WHERE e.idFuncionario = :idFuncionario
+11:24:04,677  INFO QueryBinder:64 - Binding Named query: Entradaslog.findByIdMotivoEntrada => SELECT e FROM Entradaslog e WHERE e.idMotivoEntrada = :idMotivoEntrada
+11:24:04,678  INFO QueryBinder:64 - Binding Named query: Entradaslog.findByTipo => SELECT e FROM Entradaslog e WHERE e.tipo = :tipo
+11:24:04,679  INFO QueryBinder:64 - Binding Named query: Entradaslog.findByIdFuncionarioAlteracao => SELECT e FROM Entradaslog e WHERE e.idFuncionarioAlteracao = :idFuncionarioAlteracao
+11:24:04,681  INFO EntityBinder:424 - Bind entity entidades.Entradaslog on table entradaslog
+11:24:04,689  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Funcionario
+11:24:04,690  INFO QueryBinder:64 - Binding Named query: Funcionario.findAll => SELECT f FROM Funcionario f
+11:24:04,691  INFO QueryBinder:64 - Binding Named query: Funcionario.findById => SELECT f FROM Funcionario f WHERE f.id = :id
+11:24:04,692  INFO QueryBinder:64 - Binding Named query: Funcionario.findByCargo => SELECT f FROM Funcionario f WHERE f.cargo = :cargo
+11:24:04,694  INFO QueryBinder:64 - Binding Named query: Funcionario.findByDataContratacao => SELECT f FROM Funcionario f WHERE f.dataContratacao = :dataContratacao
+11:24:04,695  INFO QueryBinder:64 - Binding Named query: Funcionario.findByMatricula => SELECT f FROM Funcionario f WHERE f.matricula = :matricula
+11:24:04,696  INFO QueryBinder:64 - Binding Named query: Funcionario.findBySalario => SELECT f FROM Funcionario f WHERE f.salario = :salario
+11:24:04,696  INFO EntityBinder:424 - Bind entity entidades.Funcionario on table funcionario
+11:24:04,707  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Motivodespesa
+11:24:04,709  INFO QueryBinder:64 - Binding Named query: Motivodespesa.findAll => SELECT m FROM Motivodespesa m
+11:24:04,711  INFO QueryBinder:64 - Binding Named query: Motivodespesa.findById => SELECT m FROM Motivodespesa m WHERE m.id = :id
+11:24:04,712  INFO QueryBinder:64 - Binding Named query: Motivodespesa.findByNome => SELECT m FROM Motivodespesa m WHERE m.nome = :nome
+11:24:04,713  INFO EntityBinder:424 - Bind entity entidades.Motivodespesa on table motivodespesa
+11:24:04,720  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Motivoentrada
+11:24:04,722  INFO QueryBinder:64 - Binding Named query: Motivoentrada.findAll => SELECT m FROM Motivoentrada m
+11:24:04,722  INFO QueryBinder:64 - Binding Named query: Motivoentrada.findById => SELECT m FROM Motivoentrada m WHERE m.id = :id
+11:24:04,723  INFO QueryBinder:64 - Binding Named query: Motivoentrada.findByNome => SELECT m FROM Motivoentrada m WHERE m.nome = :nome
+11:24:04,725  INFO EntityBinder:424 - Bind entity entidades.Motivoentrada on table motivoentrada
+11:24:04,732  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Pessoa
+11:24:04,734  INFO QueryBinder:64 - Binding Named query: Pessoa.findAll => SELECT p FROM Pessoa p
+11:24:04,735  INFO QueryBinder:64 - Binding Named query: Pessoa.findById => SELECT p FROM Pessoa p WHERE p.id = :id
+11:24:04,736  INFO QueryBinder:64 - Binding Named query: Pessoa.findByNome => SELECT p FROM Pessoa p WHERE p.nome = :nome
+11:24:04,737  INFO QueryBinder:64 - Binding Named query: Pessoa.findBySobrenome => SELECT p FROM Pessoa p WHERE p.sobrenome = :sobrenome
+11:24:04,738  INFO QueryBinder:64 - Binding Named query: Pessoa.findByCategoriaSocio => SELECT p FROM Pessoa p WHERE p.categoriaSocio = :categoriaSocio
+11:24:04,738  INFO QueryBinder:64 - Binding Named query: Pessoa.findByStatus => SELECT p FROM Pessoa p WHERE p.status = :status
+11:24:04,739  INFO QueryBinder:64 - Binding Named query: Pessoa.findByApelido => SELECT p FROM Pessoa p WHERE p.apelido = :apelido
+11:24:04,740  INFO QueryBinder:64 - Binding Named query: Pessoa.findByBairro => SELECT p FROM Pessoa p WHERE p.bairro = :bairro
+11:24:04,741  INFO QueryBinder:64 - Binding Named query: Pessoa.findByCep => SELECT p FROM Pessoa p WHERE p.cep = :cep
+11:24:04,742  INFO QueryBinder:64 - Binding Named query: Pessoa.findByCidade => SELECT p FROM Pessoa p WHERE p.cidade = :cidade
+11:24:04,742  INFO QueryBinder:64 - Binding Named query: Pessoa.findByCpf => SELECT p FROM Pessoa p WHERE p.cpf = :cpf
+11:24:04,743  INFO QueryBinder:64 - Binding Named query: Pessoa.findByDataNasc => SELECT p FROM Pessoa p WHERE p.dataNasc = :dataNasc
+11:24:04,744  INFO QueryBinder:64 - Binding Named query: Pessoa.findByEmail => SELECT p FROM Pessoa p WHERE p.email = :email
+11:24:04,745  INFO QueryBinder:64 - Binding Named query: Pessoa.findByNomeMae => SELECT p FROM Pessoa p WHERE p.nomeMae = :nomeMae
+11:24:04,746  INFO QueryBinder:64 - Binding Named query: Pessoa.findByNomePai => SELECT p FROM Pessoa p WHERE p.nomePai = :nomePai
+11:24:04,747  INFO QueryBinder:64 - Binding Named query: Pessoa.findByNumeroMatricula => SELECT p FROM Pessoa p WHERE p.numeroMatricula = :numeroMatricula
+11:24:04,748  INFO QueryBinder:64 - Binding Named query: Pessoa.findByRgEmissao => SELECT p FROM Pessoa p WHERE p.rgEmissao = :rgEmissao
+11:24:04,749  INFO QueryBinder:64 - Binding Named query: Pessoa.findByRgExpedidor => SELECT p FROM Pessoa p WHERE p.rgExpedidor = :rgExpedidor
+11:24:04,750  INFO QueryBinder:64 - Binding Named query: Pessoa.findByRgNumero => SELECT p FROM Pessoa p WHERE p.rgNumero = :rgNumero
+11:24:04,751  INFO QueryBinder:64 - Binding Named query: Pessoa.findBySexo => SELECT p FROM Pessoa p WHERE p.sexo = :sexo
+11:24:04,752  INFO QueryBinder:64 - Binding Named query: Pessoa.findByTelefone => SELECT p FROM Pessoa p WHERE p.telefone = :telefone
+11:24:04,753  INFO QueryBinder:64 - Binding Named query: Pessoa.findByUf => SELECT p FROM Pessoa p WHERE p.uf = :uf
+11:24:04,754  INFO EntityBinder:424 - Bind entity entidades.Pessoa on table pessoa
+11:24:04,772  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Saida
+11:24:04,773  INFO QueryBinder:64 - Binding Named query: Saida.findAll => SELECT s FROM Saida s
+11:24:04,774  INFO QueryBinder:64 - Binding Named query: Saida.findById => SELECT s FROM Saida s WHERE s.id = :id
+11:24:04,775  INFO QueryBinder:64 - Binding Named query: Saida.findByData => SELECT s FROM Saida s WHERE s.data = :data
+11:24:04,775  INFO QueryBinder:64 - Binding Named query: Saida.findByValor => SELECT s FROM Saida s WHERE s.valor = :valor
+11:24:04,776  INFO QueryBinder:64 - Binding Named query: Saida.findByFavorecido => SELECT s FROM Saida s WHERE s.favorecido = :favorecido
+11:24:04,778  INFO EntityBinder:424 - Bind entity entidades.Saida on table saida
+11:24:04,784  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Saidaslog
+11:24:04,785  INFO QueryBinder:64 - Binding Named query: Saidaslog.findAll => SELECT s FROM Saidaslog s
+11:24:04,786  INFO QueryBinder:64 - Binding Named query: Saidaslog.findById => SELECT s FROM Saidaslog s WHERE s.id = :id
+11:24:04,787  INFO QueryBinder:64 - Binding Named query: Saidaslog.findByIdoriginal => SELECT s FROM Saidaslog s WHERE s.idoriginal = :idoriginal
+11:24:04,788  INFO QueryBinder:64 - Binding Named query: Saidaslog.findByDataoriginal => SELECT s FROM Saidaslog s WHERE s.dataoriginal = :dataoriginal
+11:24:04,789  INFO QueryBinder:64 - Binding Named query: Saidaslog.findByDataalteracao => SELECT s FROM Saidaslog s WHERE s.dataalteracao = :dataalteracao
+11:24:04,790  INFO QueryBinder:64 - Binding Named query: Saidaslog.findByValor => SELECT s FROM Saidaslog s WHERE s.valor = :valor
+11:24:04,791  INFO QueryBinder:64 - Binding Named query: Saidaslog.findByFavorecido => SELECT s FROM Saidaslog s WHERE s.favorecido = :favorecido
+11:24:04,791  INFO QueryBinder:64 - Binding Named query: Saidaslog.findByIdfuncionario => SELECT s FROM Saidaslog s WHERE s.idfuncionario = :idfuncionario
+11:24:04,792  INFO QueryBinder:64 - Binding Named query: Saidaslog.findByIdFuncionarioAltercao => SELECT s FROM Saidaslog s WHERE s.idFuncionarioAltercao = :idFuncionarioAltercao
+11:24:04,793  INFO QueryBinder:64 - Binding Named query: Saidaslog.findByIdmotivosaida => SELECT s FROM Saidaslog s WHERE s.idmotivosaida = :idmotivosaida
+11:24:04,795  INFO QueryBinder:64 - Binding Named query: Saidaslog.findByTipo => SELECT s FROM Saidaslog s WHERE s.tipo = :tipo
+11:24:04,796  INFO EntityBinder:424 - Bind entity entidades.Saidaslog on table saidaslog
+11:24:04,805  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Socio
+11:24:04,849  INFO QueryBinder:64 - Binding Named query: Socio.findAll => SELECT s FROM Socio s
+11:24:04,850  INFO QueryBinder:64 - Binding Named query: Socio.findById => SELECT s FROM Socio s WHERE s.id = :id
+11:24:04,851  INFO QueryBinder:64 - Binding Named query: Socio.findByDataVence => SELECT s FROM Socio s WHERE s.dataVence = :dataVence
+11:24:04,852  INFO QueryBinder:64 - Binding Named query: Socio.findByDataAprovacao => SELECT s FROM Socio s WHERE s.dataAprovacao = :dataAprovacao
+11:24:04,853  INFO QueryBinder:64 - Binding Named query: Socio.findByDataMatricula => SELECT s FROM Socio s WHERE s.dataMatricula = :dataMatricula
+11:24:04,855  INFO QueryBinder:64 - Binding Named query: Socio.findByNumeroSocio => SELECT s FROM Socio s WHERE s.numeroSocio = :numeroSocio
+11:24:04,857  INFO EntityBinder:424 - Bind entity entidades.Socio on table socio
+11:24:04,869  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Taxa
+11:24:04,870  INFO QueryBinder:64 - Binding Named query: Taxa.findAll => SELECT t FROM Taxa t
+11:24:04,871  INFO QueryBinder:64 - Binding Named query: Taxa.findById => SELECT t FROM Taxa t WHERE t.id = :id
+11:24:04,872  INFO QueryBinder:64 - Binding Named query: Taxa.findByNome => SELECT t FROM Taxa t WHERE t.nome = :nome
+11:24:04,873  INFO QueryBinder:64 - Binding Named query: Taxa.findByDescricao => SELECT t FROM Taxa t WHERE t.descricao = :descricao
+11:24:04,874  INFO QueryBinder:64 - Binding Named query: Taxa.findByValor => SELECT t FROM Taxa t WHERE t.valor = :valor
+11:24:04,914  INFO EntityBinder:424 - Bind entity entidades.Taxa on table taxa
+11:24:04,920  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Usuario
+11:24:04,921  INFO QueryBinder:64 - Binding Named query: Usuario.findAll => SELECT u FROM Usuario u
+11:24:04,922  INFO QueryBinder:64 - Binding Named query: Usuario.findById => SELECT u FROM Usuario u WHERE u.id = :id
+11:24:04,933  INFO QueryBinder:64 - Binding Named query: Usuario.findByNome => SELECT u FROM Usuario u WHERE u.nome = :nome
+11:24:04,934  INFO QueryBinder:64 - Binding Named query: Usuario.findBySenha => SELECT u FROM Usuario u WHERE u.senha = :senha
+11:24:04,935  INFO QueryBinder:64 - Binding Named query: Usuario.findByNivel => SELECT u FROM Usuario u WHERE u.nivel = :nivel
+11:24:04,936  INFO EntityBinder:424 - Bind entity entidades.Usuario on table usuario
+11:24:05,113  INFO CollectionBinder:651 - Mapping collection: entidades.Categoriasocio.socioList -> socio
+11:24:05,118  INFO CollectionBinder:651 - Mapping collection: entidades.Endereco.pessoaList -> pessoa
+11:24:05,119  INFO CollectionBinder:651 - Mapping collection: entidades.Funcionario.chequeList -> cheque
+11:24:05,120  INFO CollectionBinder:651 - Mapping collection: entidades.Funcionario.entradaList -> entrada
+11:24:05,121  INFO CollectionBinder:651 - Mapping collection: entidades.Funcionario.saidaList -> saida
+11:24:05,122  INFO CollectionBinder:651 - Mapping collection: entidades.Motivodespesa.chequeList -> cheque
+11:24:05,122  INFO CollectionBinder:651 - Mapping collection: entidades.Motivodespesa.saidaList -> saida
+11:24:05,123  INFO CollectionBinder:651 - Mapping collection: entidades.Motivoentrada.entradaList -> entrada
+11:24:05,124  INFO CollectionBinder:651 - Mapping collection: entidades.Pessoa.funcionarioList -> funcionario
+11:24:05,124  INFO CollectionBinder:651 - Mapping collection: entidades.Pessoa.socioList -> socio
+11:24:05,125  INFO CollectionBinder:651 - Mapping collection: entidades.Socio.contaList -> conta
+11:24:05,126  INFO CollectionBinder:651 - Mapping collection: entidades.Socio.entradaList -> entrada
+11:24:05,129  INFO AnnotationConfiguration:365 - Hibernate Validator not found: ignoring
+11:24:05,152  INFO DriverManagerConnectionProvider:41 - Using Hibernate built-in connection pool (not for production use!)
+11:24:05,153  INFO DriverManagerConnectionProvider:42 - Hibernate connection pool size: 20
+11:24:05,154  INFO DriverManagerConnectionProvider:45 - autocommit mode: false
+11:24:05,155  INFO DriverManagerConnectionProvider:80 - using driver: com.mysql.jdbc.Driver at URL: jdbc:mysql://localhost:3306/acal?zeroDateTimeBehavior=convertToNull
+11:24:05,155  INFO DriverManagerConnectionProvider:86 - connection properties: {user=root, password=****}
+11:24:05,188  INFO SettingsFactory:89 - RDBMS: MySQL, version: 5.5.28
+11:24:05,188  INFO SettingsFactory:90 - JDBC driver: MySQL-AB JDBC Driver, version: mysql-connector-java-5.1.18 ( Revision: tonci.grgin@oracle.com-20110930151701-jfj14ddfq48ifkfq )
+11:24:05,215  INFO Dialect:152 - Using dialect: org.hibernate.dialect.MySQLDialect
+11:24:05,223  INFO TransactionFactoryFactory:31 - Using default transaction strategy (direct JDBC transactions)
+11:24:05,227  INFO TransactionManagerLookupFactory:33 - No TransactionManagerLookup configured (in JTA environment, use of read-write or transactional second-level cache is not recommended)
+11:24:05,228  INFO SettingsFactory:143 - Automatic flush during beforeCompletion(): disabled
+11:24:05,229  INFO SettingsFactory:147 - Automatic session close at end of transaction: disabled
+11:24:05,230  INFO SettingsFactory:154 - JDBC batch size: 15
+11:24:05,230  INFO SettingsFactory:157 - JDBC batch updates for versioned data: disabled
+11:24:05,232  INFO SettingsFactory:162 - Scrollable result sets: enabled
+11:24:05,233  INFO SettingsFactory:170 - JDBC3 getGeneratedKeys(): enabled
+11:24:05,233  INFO SettingsFactory:178 - Connection release mode: auto
+11:24:05,236  INFO SettingsFactory:202 - Maximum outer join fetch depth: 2
+11:24:05,236  INFO SettingsFactory:205 - Default batch fetch size: 1
+11:24:05,297  INFO SettingsFactory:209 - Generate SQL with comments: enabled
+11:24:05,298  INFO SettingsFactory:213 - Order SQL updates by primary key: disabled
+11:24:05,299  INFO SettingsFactory:217 - Order SQL inserts for batching: disabled
+11:24:05,299  INFO SettingsFactory:386 - Query translator: org.hibernate.hql.ast.ASTQueryTranslatorFactory
+11:24:05,303  INFO ASTQueryTranslatorFactory:24 - Using ASTQueryTranslatorFactory
+11:24:05,304  INFO SettingsFactory:225 - Query language substitutions: {}
+11:24:05,305  INFO SettingsFactory:230 - JPA-QL strict compliance: disabled
+11:24:05,305  INFO SettingsFactory:235 - Second-level cache: enabled
+11:24:05,306  INFO SettingsFactory:239 - Query cache: disabled
+11:24:05,306  INFO SettingsFactory:373 - Cache provider: org.hibernate.cache.NoCacheProvider
+11:24:05,307  INFO SettingsFactory:254 - Optimize cache for minimal puts: disabled
+11:24:05,307  INFO SettingsFactory:263 - Structured second-level cache entries: disabled
+11:24:05,315  INFO SettingsFactory:283 - Echoing all SQL to stdout
+11:24:05,316  INFO SettingsFactory:290 - Statistics: disabled
+11:24:05,316  INFO SettingsFactory:294 - Deleted entity synthetic identifier rollback: disabled
+11:24:05,318  INFO SettingsFactory:309 - Default entity-mode: pojo
+11:24:05,319  INFO SettingsFactory:313 - Named query checking : enabled
+11:24:05,371  INFO SessionFactoryImpl:161 - building session factory
+11:24:06,544  INFO SessionFactoryObjectFactory:82 - Not binding factory to JNDI, no JNDI name configured
+11:24:07,426 TRACE StringType:133 - binding 'Alisson Davis' to parameter: 1
