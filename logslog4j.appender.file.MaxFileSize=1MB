@@ -6523,3 +6523,15 @@
 13:30:51,125 TRACE IntegerType:133 - binding '5' to parameter: 1
 13:30:51,129 TRACE StringType:172 - returning 'Roberio' as column: nome5_0_
 13:30:51,130 TRACE StringType:172 - returning 'BECO' as column: tipo5_0_
+13:53:03,259  INFO Version:15 - Hibernate Annotations 3.3.1.GA
+13:53:03,313  INFO Environment:514 - Hibernate 3.2.5
+13:53:03,328  INFO Environment:547 - hibernate.properties not found
+13:53:03,335  INFO Environment:681 - Bytecode provider name : cglib
+13:53:03,346  INFO Environment:598 - using JDK 1.4 java.sql.Timestamp handling
+13:53:03,490  INFO Version:15 - Hibernate EntityManager 3.3.2.GA
+14:53:11,308  INFO Version:15 - Hibernate Annotations 3.3.1.GA
+14:53:11,343  INFO Environment:514 - Hibernate 3.2.5
+14:53:11,361  INFO Environment:547 - hibernate.properties not found
+14:53:11,377  INFO Environment:681 - Bytecode provider name : cglib
+14:53:11,393  INFO Environment:598 - using JDK 1.4 java.sql.Timestamp handling
+14:53:11,511  INFO Version:15 - Hibernate EntityManager 3.3.2.GA
