@@ -6,17 +6,8 @@ package dao;
 
 import daoInterfaces.ContasInterface;
 import entidades.Conta;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import org.hibernate.Query;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
-import org.hibernate.cfg.AnnotationConfiguration;
-import org.hibernate.cfg.Configuration;
-import java.text.SimpleDateFormat;
-
 /**
  *
  * @author Alexandre

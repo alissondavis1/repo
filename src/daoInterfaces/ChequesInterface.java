@@ -19,7 +19,7 @@ public interface ChequesInterface {
     public void AtualizarCheque(Cheque cheque);
   
     public Cheque       ChequesId(int idCheque);
-    public List<Cheque> ChequesAbertos(Date data);
+    public List<Cheque> ChequesAbertos(Date dataIni, Date dataFim);
     public List<Cheque> ChequesAbertosClientesPorIdClinete(int id);
     public List<Cheque> ChequesAbertosClientesPorNomeCliente(String nome);
   

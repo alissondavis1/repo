@@ -20,10 +20,9 @@ public interface PessoasInterface {
     public void ApagarPessoa   (Pessoa pessoa);
     public void AlterarPessoa  (Pessoa pessoa);
     
-    public List<Pessoa> BuscarPessoaId(int id);
-    public List<Pessoa> BuscarPessoaNome(String nome);
+    public Pessoa BuscarPessoaId(int id);
+    public Pessoa BuscarPessoaNome(String nome);
+    public Pessoa       BuscarPessoaCpf(String Cpf);
     public List<Pessoa> BuscarTodos();
-    public Pessoa       BuscarPessoaCpf(double Cpf);
-    
       
 }

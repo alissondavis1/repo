@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b4e706a1-06fb-40fe-a7d6-a8cf094e634f">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     relatorio_contas_abertas.`Numero_Conta` AS relatorio_contas_abertas_Numero_Conta,
+     relatorio_contas_abertas.`Vencimento` AS relatorio_contas_abertas_Vencimento,
+     relatorio_contas_abertas.`TaxaSocio` AS relatorio_contas_abertas_TaxaSocio,
+     relatorio_contas_abertas.`taxaRelogio` AS relatorio_contas_abertas_taxaRelogio,
+     relatorio_contas_abertas.`nome` AS relatorio_contas_abertas_nome,
+     relatorio_contas_abertas.`cpf` AS relatorio_contas_abertas_cpf,
+     relatorio_contas_abertas.`categoria` AS relatorio_contas_abertas_categoria
+FROM
+     `relatorio_contas_abertas` relatorio_contas_abertas]]>
+	</queryString>
+	<field name="relatorio_contas_abertas_Numero_Conta" class="java.lang.Integer"/>
+	<field name="relatorio_contas_abertas_Vencimento" class="java.sql.Timestamp"/>
+	<field name="relatorio_contas_abertas_TaxaSocio" class="java.lang.Integer"/>
+	<field name="relatorio_contas_abertas_taxaRelogio" class="java.math.BigDecimal"/>
+	<field name="relatorio_contas_abertas_nome" class="java.lang.String"/>
+	<field name="relatorio_contas_abertas_cpf" class="java.lang.String"/>
+	<field name="relatorio_contas_abertas_categoria" class="java.lang.String"/>
+	<group name="relatorio_contas_abertas_Numero_Conta">
+		<groupExpression><![CDATA[$F{relatorio_contas_abertas_Numero_Conta}]]></groupExpression>
+		<groupHeader>
+			<band height="33">
+				<staticText>
+					<reportElement uuid="57391d81-d611-41a9-9716-1eef45923593" mode="Opaque" x="0" y="0" width="100" height="32" forecolor="#666666" backcolor="#E6E6E6"/>
+					<textElement>
+						<font size="12"/>
+					</textElement>
+					<text><![CDATA[relatorio_contas_abertas_Numero_Conta]]></text>
+				</staticText>
+				<line>
+					<reportElement uuid="52c88fb8-a9fe-4453-8e5b-603bfa2ae572" x="-20" y="32" width="595" height="1" forecolor="#666666"/>
+				</line>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<group name="relatorio_contas_abertas_nome">
+		<groupExpression><![CDATA[$F{relatorio_contas_abertas_nome}]]></groupExpression>
+		<groupHeader>
+			<band height="32">
+				<staticText>
+					<reportElement uuid="c7dff4bb-41ac-4ff2-b581-ac0d2e1a340d" x="0" y="0" width="100" height="20" forecolor="#666666"/>
+					<textElement>
+						<font size="12"/>
+					</textElement>
+					<text><![CDATA[relatorio_contas_abertas_nome]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="72">
+			<frame>
+				<reportElement uuid="4ce4d8e9-efdd-4214-9165-199de97a52f0" mode="Opaque" x="-20" y="-20" width="595" height="92" backcolor="#006699"/>
+				<staticText>
+					<reportElement uuid="645ef763-a2b4-40d2-8799-f583d1e75611" x="20" y="20" width="234" height="43" forecolor="#FFFFFF"/>
+					<textElement>
+						<font size="34" isBold="true"/>
+					</textElement>
+					<text><![CDATA[TITLE]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="34426888-db8c-435c-8ce0-6a88a906f6f4" x="395" y="43" width="180" height="20" forecolor="#FFFFFF"/>
+					<textElement textAlignment="Right">
+						<font size="14" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Add a description here]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="13"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="21">
+			<line>
+				<reportElement uuid="878cf884-0fd5-48fc-a765-36126a70e2da" x="-20" y="20" width="595" height="1" forecolor="#666666"/>
+			</line>
+			<staticText>
+				<reportElement uuid="bebd308f-a075-424f-bd04-17da2d5e606f" mode="Opaque" x="222" y="0" width="111" height="20" forecolor="#006699" backcolor="#E6E6E6"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[relatorio_contas_abertas_taxaRelogio]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="750bf1e3-deef-46c5-86c9-ca40be8a8b66" mode="Opaque" x="333" y="0" width="111" height="20" forecolor="#006699" backcolor="#E6E6E6"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[relatorio_contas_abertas_cpf]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="7114acf0-cdf9-4d1c-99fe-a5aa7a5001dc" mode="Opaque" x="444" y="0" width="111" height="20" forecolor="#006699" backcolor="#E6E6E6"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[relatorio_contas_abertas_categoria]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20">
+			<line>
+				<reportElement uuid="94dea6f2-f5a6-4c47-b65e-98464af007fa" positionType="FixRelativeToBottom" x="0" y="19" width="555" height="1"/>
+			</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="64e5db93-60b7-451e-93e9-6225ea040652" x="0" y="0" width="111" height="20"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{relatorio_contas_abertas_Vencimento}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="a7d12dd5-dce4-40f3-8bdf-aa7c60db4f98" x="111" y="0" width="111" height="20"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{relatorio_contas_abertas_TaxaSocio}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="c1b71a3f-9742-4dd5-9797-1d5e3fa40bbf" x="222" y="0" width="111" height="20"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{relatorio_contas_abertas_taxaRelogio}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="72a2e0c9-5265-49ff-87c1-ad6fc743a18a" x="333" y="0" width="111" height="20"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{relatorio_contas_abertas_cpf}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="8e208bb2-f38a-4480-b5b8-340eba5b17e6" x="444" y="0" width="111" height="20"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{relatorio_contas_abertas_categoria}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="17">
+			<textField>
+				<reportElement uuid="0ad2bc1b-a378-4a25-a376-49f9538843be" mode="Opaque" x="0" y="4" width="515" height="13" backcolor="#E6E6E6"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement uuid="4e557f48-4850-402b-b274-944324fedd79" mode="Opaque" x="515" y="4" width="40" height="13" backcolor="#E6E6E6"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement uuid="9b413c34-c750-453d-a2e4-6933bfc23fc5" x="0" y="4" width="100" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>

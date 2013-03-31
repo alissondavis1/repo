@@ -6,8 +6,10 @@ package dao;
 
 import daoInterfaces.CategoriaSocioInterface;
 import entidades.CategoriaSocio;
+import entidades.Pessoa;
 import java.util.ArrayList;
 import java.util.List;
+import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -40,6 +42,7 @@ public class DaoCategoriaSocio implements CategoriaSocioInterface {
             session.close(); 
         }    
     }
+    
     @Override
     public void ApagarCategoria(CategoriaSocio categoria) {
        
@@ -85,41 +88,89 @@ public class DaoCategoriaSocio implements CategoriaSocioInterface {
     }
 
     @Override
-    public List<CategoriaSocio> BuscarCategoria(String nome) {
+    public CategoriaSocio BuscarCategoria(String nome) {
         
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        Transaction tx = session.beginTransaction();
-        
-        List<CategoriaSocio> lista = new ArrayList<>();
+        CategoriaSocio categoriaSocio = null;
+        Session sessao = null; 
+        Query query = null;
+        Transaction trasacao = null;
         
         try{
-            String HQL_QUERY="from CategoriaSocio c where c.nome = :nome ";
-            Query query = session.createQuery(HQL_QUERY);
-            query.setParameter("nome",nome);
-            
-            lista = query.list();
-            tx.commit(); 
+           Session session = HibernateUtil.getSessionFactory().openSession();
+           Transaction tx = session.beginTransaction();
+           query = sessao.createQuery("from Pessoa where nome = :nome");
+           query.setParameter("nome", nome);
+           categoriaSocio = (CategoriaSocio) query.uniqueResult();
+           trasacao.commit(); 
            
         }
-        catch(Exception e)
+        catch(HibernateException e)
         {
             System.out.println(e);
-            tx.rollback();
+            trasacao.rollback();
         }
         finally
         {
-             session.close();
+             sessao.close();
         }  
-    return lista;
+    return categoriaSocio;
     }
 
     @Override
     public List<CategoriaSocio> BuscarTodasCategorias() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+        List<CategoriaSocio> categoriaSocio = null;
+        Session sessao = null; 
+        Query query = null;
+        Transaction trasacao = null;
+        
+        try{
+           Session session = HibernateUtil.getSessionFactory().openSession();
+           Transaction tx = session.beginTransaction();
+           query = sessao.createQuery("from CategoriaSocio order by nome");
+           categoriaSocio =  query.list();
+           trasacao.commit(); 
+           
+        }
+        catch(HibernateException e)
+        {
+            System.out.println(e);
+            trasacao.rollback();
+        }
+        finally
+        {
+             sessao.close();
+        }  
+    return categoriaSocio;
     }
+    
 
     @Override
-    public CategoriaSocio BuscarCategoriaSocioPorId() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public CategoriaSocio BuscarCategoriaSocioPorId(int id) {
+        
+        CategoriaSocio categoriaSocio = null;
+        Session sessao = null; 
+        Query query = null;
+        Transaction trasacao = null;
+        
+        try{
+           Session session = HibernateUtil.getSessionFactory().openSession();
+           Transaction tx = session.beginTransaction();
+           query = sessao.createQuery("from Pessoa where id = :id");
+           query.setParameter("id", id);
+           categoriaSocio =(CategoriaSocio) query.uniqueResult();
+           trasacao.commit(); 
+        }
+        catch(HibernateException e)
+        {
+            System.out.println(e);
+            trasacao.rollback();
+        }
+        finally
+        {
+             sessao.close();
+        }  
+    return categoriaSocio;
+       
     }
 }

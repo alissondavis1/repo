@@ -14,9 +14,9 @@ import java.util.List;
  */
 public interface ContratoInterface {
     
-    public Contrato AdcionarContrato  (Contrato contrato);
-    public Contrato ApagarCategoria   (Contrato contrato);
-    public Contrato AtualizarCategoria(Contrato contrato);
+    public void AdcionarContrato  (Contrato contrato);
+    public void ApagarCategoria   (Contrato contrato);
+    public void AtualizarCategoria(Contrato contrato);
     
     public List<Contrato> BuscarContrato(Contrato contrato);
     

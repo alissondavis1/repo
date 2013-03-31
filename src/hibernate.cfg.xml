@@ -10,7 +10,6 @@
     <property name="show_sql">true</property>
     <property name="hibernate.format_sql">true</property>
     <property name="use_sql_comments">true</property>
-    
     <mapping class="entidades.CategoriaSocio"/>
     <mapping class="entidades.Cheque"/>
     <mapping class="entidades.Chequeslog"/>
@@ -28,6 +27,5 @@
     <mapping class="entidades.Socio"/>
     <mapping class="entidades.Taxa"/>
     <mapping class="entidades.Usuario"/>
-    
   </session-factory>
 </hibernate-configuration>

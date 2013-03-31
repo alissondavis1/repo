@@ -4,8 +4,10 @@
  */
 package dao;
 
+import daoInterfaces.TaxasInterface;
 import entidades.Saida;
 import entidades.Taxa;
+import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -16,9 +18,10 @@ import org.hibernate.cfg.Configuration;
  *
  * @author alexandre
  */
-public class DaoTaxa {
+public class DaoTaxa implements TaxasInterface {
    
-    public void NovaTaxa(Taxa taxa) {
+    @Override
+    public void AdicionarTaxa(Taxa taxa) {
     
         Configuration cfg = new AnnotationConfiguration(); 
         
@@ -42,5 +45,31 @@ public class DaoTaxa {
         {
             session.close(); 
         }
+    }
+
+ 
+    @Override
+    public void ApagarTaxa(Taxa taxa) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void AlterarTaxa(Taxa taxa) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Taxa TaxaPorId(int id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<Taxa> TaxasPorNome(String nome) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<Taxa> TaxasTodas() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
