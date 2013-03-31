@@ -12,11 +12,15 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JProgressBar;
 import javax.swing.JWindow;
 import javax.swing.UnsupportedLookAndFeelException;
+import org.hibernate.Hibernate;
+import org.hibernate.Session;
 import org.netbeans.lib.awtextra.AbsoluteConstraints;
 import org.netbeans.lib.awtextra.AbsoluteLayout;
+import util.HibernateUtil;
 
 
 public class Splash extends JWindow{
@@ -52,10 +56,17 @@ public class Splash extends JWindow{
                     
                     progress.setValue(i);
                     i++;
-                    try {    
-                        sleep(30);
-                    } catch (InterruptedException ex) {
+                   
+                    try {   
+                       
+                  
+                    
+                       
+                        sleep(60);
+                    } catch (Exception ex) {
+                  
                         Logger.getLogger(Splash.class.getName()).log(Level.SEVERE, null, ex);
+                        System.exit(1);
                     }
                 }
                 new TelaPrincipal().setVisible(true);
@@ -74,6 +85,40 @@ public class Splash extends JWindow{
         
     }
     
+    private  void testarConexao1(){
+        
+        
+        new Thread(){
+            public void run(){
+            Session session= null;
+            try{
+            
+            progress.setString("Testando Conexão com o Banco");
+            session = HibernateUtil.getSessionFactory().openSession();
+           
+        }catch(Exception e){
+            
+            JOptionPane.showMessageDialog(null, "Erro de conexão ao banco de dados");
+            
+        }finally{
+            if(session != null){
+                session.close();
+            }
+            
+        }
+            
+            progress.setString("Conexão bem sucedida...");
+                
+           
+            }
+            
+            
+        }.start();
+        
+    }
+    
+    
+    
     public static void main(String[] args) {
         
         try {
@@ -86,7 +131,9 @@ public class Splash extends JWindow{
         } catch (UnsupportedLookAndFeelException ex) {
             Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         }
-        new Splash();
+       
+        
+        new Splash().testarConexao1();
         
         
         
