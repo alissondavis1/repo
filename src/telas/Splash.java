@@ -21,23 +21,23 @@ import org.netbeans.lib.awtextra.AbsoluteLayout;
 
 public class Splash extends JWindow{
     
-     AbsoluteConstraints absBarra, absImage, absTexto;
+     AbsoluteConstraints absBarra, absImage;
      AbsoluteLayout absl;
      ImageIcon image;
      JLabel label, texto;
      JProgressBar progress;
     public Splash(){
         
-        absBarra = new AbsoluteConstraints(0,290);
+        absBarra = new AbsoluteConstraints(0,480);
         absImage = new AbsoluteConstraints(0,0);
-        absTexto = new AbsoluteConstraints(0,250);
+        
         absl = new AbsoluteLayout();
         label = new JLabel();
-        image = new ImageIcon("img/automacao.png");
+        image = new ImageIcon("img/acal.jpg");
         label.setIcon(image);
         progress = new JProgressBar();
-        progress.setPreferredSize(new Dimension(300,20));
-        progress.setBackground(Color.orange);
+        progress.setPreferredSize(new Dimension(794,20));
+        progress.setBackground(Color.GREEN);
         progress.setString("Carregando");
         progress.setStringPainted(true);
         setLayout(absl);
@@ -65,8 +65,8 @@ public class Splash extends JWindow{
             
             
         }.start();
-        setLocation(((Toolkit.getDefaultToolkit().getScreenSize().width  / 3) - (this.getWidth() / 3)),   
-        ((Toolkit.getDefaultToolkit().getScreenSize().height / 3) - (this.getHeight() / 3)));  
+        setLocation(Toolkit.getDefaultToolkit().getScreenSize().width/5 ,   
+        Toolkit.getDefaultToolkit().getScreenSize().height/5 );  
         pack();
         setVisible(true);
         
