@@ -154,7 +154,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jPanel1.setLayout(new java.awt.GridBagLayout());
 
-        jButton4.setIcon(new ImageIcon("src/img/logoff.jpg"));
+        jButton4.setIcon(new ImageIcon(getClass().getResource("/img/logoff.jpg")));
         jButton4.setText("Logoff");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
@@ -165,7 +165,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(10, 18, 0, 0);
         jPanel1.add(jButton4, gridBagConstraints);
 
-        jButton2.setIcon(new ImageIcon("src/img/relatorios.png"));
+        jButton2.setIcon(new ImageIcon(getClass().getResource("/img/relatorios.png")));
         jButton2.setText("Relatórios");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -181,7 +181,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(10, 18, 0, 0);
         jPanel1.add(jButton2, gridBagConstraints);
 
-        jButton3.setIcon(new ImageIcon("src/img/caixa.png"));
+        jButton3.setIcon(new ImageIcon(getClass().getResource("/img/caixa.png")));
         jButton3.setText("Caixa");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -197,7 +197,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(10, 18, 0, 0);
         jPanel1.add(jButton3, gridBagConstraints);
 
-        jButton1.setIcon(new ImageIcon("src/img/cadastros.png"));
+        jButton1.setIcon(new ImageIcon(getClass().getResource("/img/cadastros.png")));
         jButton1.setText("Cadastros");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

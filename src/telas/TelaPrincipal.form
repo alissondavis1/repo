@@ -213,7 +213,7 @@
         <Component class="javax.swing.JButton" name="jButton4">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="new ImageIcon(&quot;src/img/logoff.jpg&quot;)" type="code"/>
+              <Connection code="new ImageIcon(getClass().getResource(&quot;/img/logoff.jpg&quot;))" type="code"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Logoff"/>
           </Properties>
@@ -226,7 +226,7 @@
         <Component class="javax.swing.JButton" name="jButton2">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="new ImageIcon(&quot;src/img/relatorios.png&quot;)" type="code"/>
+              <Connection code="new ImageIcon(getClass().getResource(&quot;/img/relatorios.png&quot;))" type="code"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Relat&#xf3;rios"/>
           </Properties>
@@ -242,7 +242,7 @@
         <Component class="javax.swing.JButton" name="jButton3">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="new ImageIcon(&quot;src/img/caixa.png&quot;)" type="code"/>
+              <Connection code="new ImageIcon(getClass().getResource(&quot;/img/caixa.png&quot;))" type="code"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Caixa"/>
           </Properties>
@@ -258,7 +258,7 @@
         <Component class="javax.swing.JButton" name="jButton1">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="new ImageIcon(&quot;src/img/cadastros.png&quot;)" type="code"/>
+              <Connection code="new ImageIcon(getClass().getResource(&quot;/img/cadastros.png&quot;))" type="code"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Cadastros"/>
           </Properties>

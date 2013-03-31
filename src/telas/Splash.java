@@ -33,7 +33,7 @@ public class Splash extends JWindow{
         
         absl = new AbsoluteLayout();
         label = new JLabel();
-        image = new ImageIcon("img/acal.jpg");
+        image = new ImageIcon(getClass().getResource("/img/acal.jpg"));
         label.setIcon(image);
         progress = new JProgressBar();
         progress.setPreferredSize(new Dimension(794,20));
