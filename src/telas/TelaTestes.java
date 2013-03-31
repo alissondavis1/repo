@@ -4,7 +4,9 @@
  */
 package telas;
 
+import dao.DaoPessoa;
 import dao.DaoUsuario;
+import entidades.Pessoa;
 import entidades.Usuario;
 
 
@@ -75,13 +77,12 @@ public class TelaTestes extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Usuario usuario = new Usuario();
-        usuario.setNome("alexandre");
-        usuario.setSenha("1234");
-        usuario.setNivel(1); 
+       
+        DaoPessoa dp = new DaoPessoa();
+        Pessoa p = new Pessoa();
         
-        DaoUsuario d = new DaoUsuario();
-        d.AdcionarUsuario(usuario);
+        p=dp.BuscarNomeCompleto("AlIsSoN DaVis");
+        System.out.println(p.getNome()+" "+ p.getSobrenome());
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
