@@ -18,7 +18,7 @@ public interface CategoriaSocioInterface {
     public void ApagarCategoria   (CategoriaSocio categoria);
     public void AtualizarCategoria(CategoriaSocio categoria);
     
-    public CategoriaSocio BuscarCategoria(String nome);
+    public CategoriaSocio       BuscarCategoria(String nome);
+    public CategoriaSocio       BuscarCategoriaSocioPorId(int id);
     public List<CategoriaSocio> BuscarTodasCategorias();
-    public CategoriaSocio       BuscarCategoriaSocioPorId(int id);    
 }

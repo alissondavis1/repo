@@ -30,6 +30,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Usuario.findBySenha", query = "SELECT u FROM Usuario u WHERE u.senha = :senha"),
     @NamedQuery(name = "Usuario.findByNivel", query = "SELECT u FROM Usuario u WHERE u.nivel = :nivel")})
 public class Usuario implements Serializable {
+    @Column(name = "nivel")
+    private Integer nivel;
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -41,8 +43,6 @@ public class Usuario implements Serializable {
     private String nome;
     @Column(name = "senha")
     private String senha;
-    @Column(name = "nivel")
-    private int nivel;
 
     public Usuario() {
     }
@@ -80,14 +80,6 @@ public class Usuario implements Serializable {
         this.senha = senha;
     }
 
-    public int getNivel() {
-        return nivel;
-    }
-
-    public void setNivel(int nivel) {
-        this.nivel = nivel;
-    }
-
     @Override
     public int hashCode() {
         int hash = 0;
@@ -111,6 +103,14 @@ public class Usuario implements Serializable {
     @Override
     public String toString() {
         return "entidades.Usuario[ id=" + id + " ]";
+    }
+
+    public Integer getNivel() {
+        return nivel;
+    }
+
+    public void setNivel(Integer nivel) {
+        this.nivel = nivel;
     }
     
 }

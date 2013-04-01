@@ -18,7 +18,7 @@ public interface FuncionariosInterface {
    public void AlterarFuncionario  (Funcionario funcionario);
    
    public Funcionario BuscarFuncionarioCpf(double Cpf); 
-   public List<Funcionario> BuscarFuncionario(String nome);
+   public Funcionario BuscarFuncionario(String nome);
    public List<Funcionario> BuscarFuncionarios();
    
    

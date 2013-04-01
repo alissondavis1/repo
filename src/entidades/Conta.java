@@ -38,6 +38,9 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Conta.findByTaxaSocio", query = "SELECT c FROM Conta c WHERE c.taxaSocio = :taxaSocio"),
     @NamedQuery(name = "Conta.findByTaxaRelogio", query = "SELECT c FROM Conta c WHERE c.taxaRelogio = :taxaRelogio")})
 public class Conta implements Serializable {
+    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
+    @Column(name = "taxaRelogio")
+    private BigDecimal taxaRelogio;
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -57,8 +60,6 @@ public class Conta implements Serializable {
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Column(name = "taxaSocio")
     private BigDecimal taxaSocio;
-    @Column(name = "taxaRelogio")
-    private Double taxaRelogio;
     @JoinColumn(name = "idNumeroSocio", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Socio idNumeroSocio;
@@ -115,14 +116,6 @@ public class Conta implements Serializable {
         this.taxaSocio = taxaSocio;
     }
 
-    public Double getTaxaRelogio() {
-        return taxaRelogio;
-    }
-
-    public void setTaxaRelogio(Double taxaRelogio) {
-        this.taxaRelogio = taxaRelogio;
-    }
-
     public Socio getIdNumeroSocio() {
         return idNumeroSocio;
     }
@@ -154,6 +147,14 @@ public class Conta implements Serializable {
     @Override
     public String toString() {
         return "entidades.Conta[ id=" + id + " ]";
+    }
+
+    public BigDecimal getTaxaRelogio() {
+        return taxaRelogio;
+    }
+
+    public void setTaxaRelogio(BigDecimal taxaRelogio) {
+        this.taxaRelogio = taxaRelogio;
     }
     
 }

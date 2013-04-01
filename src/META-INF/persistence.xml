@@ -30,6 +30,15 @@
     <class>entidades.Saidaslog</class>
     <class>entidades.Entradaslog</class>
     <class>entidades.Chequeslog</class>
+    <class>entidades.SomaContasPagasPorPessoa</class>
+    <class>entidades.RelatorioContas</class>
+    <class>entidades.RelatorioEntradas</class>
+    <class>entidades.SaidaFuncionario</class>
+    <class>entidades.ContasSocioTaxa</class>
+    <class>entidades.SomaContasAbertasPorPessoa</class>
+    <class>entidades.Contaslog</class>
+    <class>entidades.RelatorioSocioAtivos</class>
+    <class>entidades.RelatorioContasAbertas</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/acal?zeroDateTimeBehavior=convertToNull"/>
       <property name="javax.persistence.jdbc.password" value="123"/>

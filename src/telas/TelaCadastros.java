@@ -967,6 +967,7 @@ public class TelaCadastros extends javax.swing.JFrame {
 
     private void jTextFieldFuncionarioNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldFuncionarioNomeActionPerformed
        
+        /*
         String nome = jTextFieldFuncionarioNome.getText();
         if(nome.matches("\\w+\\s\\w+")){
          ArrayList<Pessoa> pessoa =(ArrayList)  new DaoPessoa().BuscarPessoaNome(jTextFieldFuncionarioNome.getText());
@@ -982,7 +983,7 @@ public class TelaCadastros extends javax.swing.JFrame {
             
             JOptionPane.showMessageDialog(this, "Para fazer uma pesquisa por nome é necessário digitar o sobrenome");
         }
-        
+        */
     }//GEN-LAST:event_jTextFieldFuncionarioNomeActionPerformed
 
     private void jButtonFuncionarioPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFuncionarioPesquisarActionPerformed

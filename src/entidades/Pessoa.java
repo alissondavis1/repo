@@ -59,6 +59,8 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Pessoa.findByTelefone", query = "SELECT p FROM Pessoa p WHERE p.telefone = :telefone"),
     @NamedQuery(name = "Pessoa.findByUf", query = "SELECT p FROM Pessoa p WHERE p.uf = :uf")})
 public class Pessoa implements Serializable {
+    @Column(name = "cpf")
+    private String cpf;
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -75,8 +77,6 @@ public class Pessoa implements Serializable {
     private String cep;
     @Column(name = "cidade")
     private String cidade;
-    @Column(name = "cpf")
-    private Integer cpf;
     @Column(name = "dataNasc")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dataNasc;
@@ -183,14 +183,6 @@ public class Pessoa implements Serializable {
 
     public void setCidade(String cidade) {
         this.cidade = cidade;
-    }
-
-    public Integer getCpf() {
-        return cpf;
-    }
-
-    public void setCpf(Integer cpf) {
-        this.cpf = cpf;
     }
 
     public Date getDataNasc() {
@@ -369,6 +361,14 @@ public class Pessoa implements Serializable {
     @Override
     public String toString() {
         return "entidades.Pessoa[ id=" + id + " ]";
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
     }
     
 }

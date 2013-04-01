@@ -35,6 +35,8 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Taxa.findByNome", query = "SELECT t FROM Taxa t WHERE t.nome = :nome"),
     @NamedQuery(name = "Taxa.findByValor", query = "SELECT t FROM Taxa t WHERE t.valor = :valor")})
 public class Taxa implements Serializable {
+    @OneToMany(mappedBy = "taxaSocio")
+    private List<Conta> contaList;
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -141,6 +143,15 @@ public class Taxa implements Serializable {
     @Override
     public String toString() {
         return "entidades.Taxa[ id=" + id + " ]";
+    }
+
+    @XmlTransient
+    public List<Conta> getContaList() {
+        return contaList;
+    }
+
+    public void setContaList(List<Conta> contaList) {
+        this.contaList = contaList;
     }
     
 }

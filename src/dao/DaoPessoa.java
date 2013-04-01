@@ -14,16 +14,18 @@ public class DaoPessoa implements PessoasInterface {
 
     @Override
     public void AdicionarPessoa(Pessoa pessoa) {
-       
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        Transaction tx = session.beginTransaction();
+      
+        Session session = null;
+        Transaction tx = null;
         
         try{
+            session = HibernateUtil.getSessionFactory().openSession();
+            tx = session.beginTransaction();
             session.save(pessoa); 
             tx.commit();
             System.out.println("Salvo com sucesso");  
         }
-        catch(Exception e)
+        catch(HibernateException e)
         {
             System.out.println("Erro ao iniciar a sessao para persistencia " + e);
             tx.rollback();
@@ -37,15 +39,17 @@ public class DaoPessoa implements PessoasInterface {
     @Override
     public void ApagarPessoa(Pessoa pessoa) {
         
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        Transaction tx = session.beginTransaction();
+        Session session = null;
+        Transaction tx = null;
         
         try{
+            session = HibernateUtil.getSessionFactory().openSession();
+            tx = session.beginTransaction();
             session.delete(pessoa); 
             tx.commit();
             System.out.println("Salvo com sucesso");  
         }
-        catch(Exception e)
+        catch(HibernateException e)
         {
             System.out.println("Erro ao iniciar a sessao para persistencia " + e);
             tx.rollback();
@@ -59,10 +63,12 @@ public class DaoPessoa implements PessoasInterface {
     @Override
     public void AlterarPessoa(Pessoa pessoa) {
         
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        Transaction tx = session.beginTransaction();
+        Session session = null;
+        Transaction tx = null;
         
         try{
+            session = HibernateUtil.getSessionFactory().openSession();
+            tx = session.beginTransaction();
             session.saveOrUpdate(pessoa); 
             tx.commit();
             System.out.println("Salvo com sucesso");  

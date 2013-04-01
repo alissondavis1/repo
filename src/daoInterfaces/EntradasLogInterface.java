@@ -4,7 +4,7 @@
  */
 package daoInterfaces;
 
-import entidades.EntradasLog;
+import entidades.Entradaslog;
 import java.util.List;
 /**
  *
@@ -12,8 +12,8 @@ import java.util.List;
  */
 public interface EntradasLogInterface {
    
-    public      EntradasLog  BuscarEntradasLogPorId();
-    public List<EntradasLog> BuscarEntradaLog(String nome);
-    public List<EntradasLog> BuscarTodasEntradasLog();
+    public      Entradaslog  BuscarEntradasLogPorId();
+    public List<Entradaslog> BuscarEntradaLog(String nome);
+    public List<Entradaslog> BuscarTodasEntradasLog();
      
 }
