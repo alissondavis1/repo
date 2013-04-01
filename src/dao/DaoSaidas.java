@@ -6,15 +6,12 @@ package dao;
 
 import entidades.Saida;
 import daoInterfaces.SaidasInterface;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import org.hibernate.Query;
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.hibernate.cfg.AnnotationConfiguration;
-import org.hibernate.cfg.Configuration;
+import util.HibernateUtil;
 
 /**
  *
@@ -24,17 +21,74 @@ public class DaoSaidas implements SaidasInterface{
 
     @Override
     public void AdicionarSaida(Saida saida) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       
+        Session sessao = null;
+        Transaction transcao = null;
+       
+         try{
+            sessao = HibernateUtil.getSessionFactory().openSession();
+            transcao = sessao.beginTransaction();    
+            sessao.save(saida); 
+            transcao.commit();
+            System.out.println("Salvo com sucesso");  
+        }
+        catch(HibernateException e)
+        {
+            System.out.println("Erro ao iniciar a sessao para persistencia " + e);
+            transcao.rollback();
+        }
+        finally
+        {
+            sessao.close(); 
+        }  
     }
 
     @Override
     public void AlterarSaida(Saida saida) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       
+        Session sessao = null;
+        Transaction transcao = null;
+       
+         try{
+            sessao = HibernateUtil.getSessionFactory().openSession();
+            transcao = sessao.beginTransaction();    
+            sessao.saveOrUpdate(saida); 
+            transcao.commit();
+            System.out.println("Salvo com sucesso");  
+        }
+        catch(HibernateException e)
+        {
+            System.out.println("Erro ao iniciar a sessao para persistencia " + e);
+            transcao.rollback();
+        }
+        finally
+        {
+            sessao.close(); 
+        } 
     }
 
     @Override
     public void ApagarSaida(Saida saida) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+        Session sessao = null;
+        Transaction transcao = null;
+       
+         try{
+            sessao = HibernateUtil.getSessionFactory().openSession();
+            transcao = sessao.beginTransaction();    
+            sessao.delete(saida); 
+            transcao.commit();
+            System.out.println("Salvo com sucesso");  
+        }
+        catch(HibernateException e)
+        {
+            System.out.println("Erro ao iniciar a sessao para persistencia " + e);
+            transcao.rollback();
+        }
+        finally
+        {
+            sessao.close(); 
+        } 
     }
 
     @Override

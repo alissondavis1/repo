@@ -4,17 +4,15 @@
  */
 package dao;
 
-import entidades.Motivodespesa;
 import entidades.Motivoentrada;
 import daoInterfaces.MotivoEntradasInterface;
 import java.util.ArrayList;
 import java.util.List;
+import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.hibernate.cfg.AnnotationConfiguration;
-import org.hibernate.cfg.Configuration;
+import util.HibernateUtil;
 
 /**
  *
@@ -23,111 +21,103 @@ import org.hibernate.cfg.Configuration;
 public class DaoMotivoEntrada implements MotivoEntradasInterface{
 
     @Override
-    public void InserirMotivoEntrada(Motivoentrada motivo) {
-        Configuration cfg = new AnnotationConfiguration(); 
+    public void AdicionarMotivoEntrada(Motivoentrada motivo) {
         
-        cfg.configure("hibernate.cfg.xml");
-        SessionFactory sf = cfg.buildSessionFactory(); 
-        Session session = sf.openSession(); 
-
-        Transaction tx = session.beginTransaction();
-       
-         try{
-            session.save(motivo); 
-            tx.commit();
-            System.out.println("Salvo com sucesso");
+        Session sessao= null;
+        Transaction transacao = null;
+        
+        try{
+            sessao = HibernateUtil.getSessionFactory().openSession();
+            transacao = sessao.beginTransaction();
+            sessao.save(motivo); 
+            transacao.commit();
+            System.out.println("Salvo com sucesso");  
         }
-        catch(Exception e)
+        catch(HibernateException e)
         {
             System.out.println("Erro ao iniciar a sessao para persistencia " + e);
-            tx.rollback();
+            transacao.rollback();
         }
         finally
         {
-            session.close(); 
-        }
+            sessao.close(); 
+        }      
     }
 
     @Override
     public void ApagarMotivoEntrada(Motivoentrada motivo) {
-        Configuration cfg = new AnnotationConfiguration(); 
+      
+        Session sessao= null;
+        Transaction transacao = null;
         
-        cfg.configure("hibernate.cfg.xml");
-        SessionFactory sf = cfg.buildSessionFactory(); 
-        Session session = sf.openSession(); 
-
-        Transaction tx = session.beginTransaction();
-       
-         try{
-            session.delete(motivo); 
-            tx.commit();
-            System.out.println("Salvo com sucesso");
+        try{
+            sessao = HibernateUtil.getSessionFactory().openSession();
+            transacao = sessao.beginTransaction();
+            sessao.delete(motivo); 
+            transacao.commit();
+            System.out.println("Salvo com sucesso");  
         }
-        catch(Exception e)
+        catch(HibernateException e)
         {
             System.out.println("Erro ao iniciar a sessao para persistencia " + e);
-            tx.rollback();
+            transacao.rollback();
         }
         finally
         {
-            session.close(); 
-        }
+            sessao.close(); 
+        }      
     }
-
+    
     @Override
     public void AlterarMotivoEntrada(Motivoentrada motivo) {
-       Configuration cfg = new AnnotationConfiguration(); 
-        
-        cfg.configure("hibernate.cfg.xml");
-        SessionFactory sf = cfg.buildSessionFactory(); 
-        Session session = sf.openSession(); 
-
-        Transaction tx = session.beginTransaction();
        
-         try{
-            session.saveOrUpdate(motivo); 
-            tx.commit();
-            System.out.println("Salvo com sucesso");
+        Session sessao= null;
+        Transaction transacao = null;
+        
+        try{
+            sessao = HibernateUtil.getSessionFactory().openSession();
+            transacao = sessao.beginTransaction();
+            sessao.saveOrUpdate(motivo); 
+            transacao.commit();
+            System.out.println("Salvo com sucesso");  
         }
-        catch(Exception e)
+        catch(HibernateException e)
         {
             System.out.println("Erro ao iniciar a sessao para persistencia " + e);
-            tx.rollback();
+            transacao.rollback();
         }
         finally
         {
-            session.close(); 
-        }
+            sessao.close(); 
+        }      
     }
-
+    
     @Override
     public List<Motivoentrada> BuscarMotivo(String nome) {
         
-        Configuration cfg = new AnnotationConfiguration(); 
-        cfg.configure("hibernate.cfg.xml");
-        SessionFactory sf = cfg.buildSessionFactory(); 
-        Session session = sf.openSession();
-        Transaction tx = session.beginTransaction();
-        
+        Session sessao= null;
+        Transaction transacao = null;
         List<Motivoentrada> lista = new ArrayList<>();
        
         try{
+            sessao = HibernateUtil.getSessionFactory().openSession();
+            transacao = sessao.beginTransaction();
             String HQL_QUERY="FROM MotivoEntrada m where  lower(m.nome) like lower(:nome) order by nome";
-            Query query = session.createQuery(HQL_QUERY);
+            Query query = sessao.createQuery(HQL_QUERY);
             query.setParameter("nome",'%'+nome+'%' );
             
             lista = query.list();
-            tx.commit(); 
+            transacao.commit(); 
        
         }
-        catch(Exception e)
+        catch(HibernateException e)
         {
             System.out.println(e);
-            tx.rollback();
+            transacao.rollback();
         }
         finally
         {
-             session.close();
+             sessao.close();
         }  
     return lista;
     }
@@ -135,29 +125,27 @@ public class DaoMotivoEntrada implements MotivoEntradasInterface{
     @Override
     public List<Motivoentrada> BuscarTodosMotivos() {
         
-        Configuration cfg = new AnnotationConfiguration(); 
-        cfg.configure("hibernate.cfg.xml");
-        SessionFactory sf = cfg.buildSessionFactory(); 
-        Session session = sf.openSession();
-        Transaction tx = session.beginTransaction();
-        
+        Session sessao= null;
+        Transaction transacao = null;
         List<Motivoentrada> lista = new ArrayList<>();
        
         try{
+            sessao = HibernateUtil.getSessionFactory().openSession();
+            transacao = sessao.beginTransaction();
             String HQL_QUERY="FROM MotivoDespesa order by nome";
-            Query query = session.createQuery(HQL_QUERY);       
+            Query query = sessao.createQuery(HQL_QUERY);       
             lista = query.list();
-            tx.commit(); 
+            transacao.commit(); 
        
         }
-        catch(Exception e)
+        catch(HibernateException e)
         {
             System.out.println(e);
-            tx.rollback();
+            transacao.rollback();
         }
         finally
         {
-             session.close();
+             sessao.close();
         }  
     return lista;
     }

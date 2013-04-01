@@ -5,57 +5,88 @@
 package dao;
 
 import daoInterfaces.TaxasInterface;
-import entidades.Saida;
 import entidades.Taxa;
 import java.util.List;
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.hibernate.cfg.AnnotationConfiguration;
-import org.hibernate.cfg.Configuration;
+import util.HibernateUtil;
+
 
 /**
  *
  * @author alexandre
  */
 public class DaoTaxa implements TaxasInterface {
-   
+
     @Override
     public void AdicionarTaxa(Taxa taxa) {
-    
-        Configuration cfg = new AnnotationConfiguration(); 
         
-        cfg.configure("hibernate.cfg.xml");
-        SessionFactory sf = cfg.buildSessionFactory(); 
-        Session session = sf.openSession(); 
-
-        Transaction tx = session.beginTransaction();
+        Session sessao = null;
+        Transaction transcao = null;
        
          try{
-            session.save(taxa); 
-            tx.commit();
-            System.out.println("Salvo com sucesso");
+            sessao = HibernateUtil.getSessionFactory().openSession();
+            transcao = sessao.beginTransaction();    
+            sessao.save(taxa); 
+            transcao.commit();
+            System.out.println("Salvo com sucesso");  
         }
-        catch(Exception e)
+        catch(HibernateException e)
         {
             System.out.println("Erro ao iniciar a sessao para persistencia " + e);
-            tx.rollback();
+            transcao.rollback();
         }
         finally
         {
-            session.close(); 
-        }
+            sessao.close(); 
+        }  
     }
 
- 
     @Override
     public void ApagarTaxa(Taxa taxa) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+      Session sessao = null;
+        Transaction transcao = null;
+       
+         try{
+            sessao = HibernateUtil.getSessionFactory().openSession();
+            transcao = sessao.beginTransaction();    
+            sessao.delete(taxa); 
+            transcao.commit();
+            System.out.println("Salvo com sucesso");  
+        }
+        catch(HibernateException e)
+        {
+            System.out.println("Erro ao iniciar a sessao para persistencia " + e);
+            transcao.rollback();
+        }
+        finally
+        {
+            sessao.close(); 
+        } 
     }
 
     @Override
     public void AlterarTaxa(Taxa taxa) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+         Session sessao = null;
+        Transaction transcao = null;
+       
+         try{
+            sessao = HibernateUtil.getSessionFactory().openSession();
+            transcao = sessao.beginTransaction();    
+            sessao.saveOrUpdate(taxa); 
+            transcao.commit();
+            System.out.println("Salvo com sucesso");  
+        }
+        catch(HibernateException e)
+        {
+            System.out.println("Erro ao iniciar a sessao para persistencia " + e);
+            transcao.rollback();
+        }
+        finally
+        {
+            sessao.close(); 
+        } 
     }
 
     @Override
@@ -72,4 +103,6 @@ public class DaoTaxa implements TaxasInterface {
     public List<Taxa> TaxasTodas() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+   
+    
 }

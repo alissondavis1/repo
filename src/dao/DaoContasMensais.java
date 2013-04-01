@@ -8,6 +8,10 @@ import daoInterfaces.ContasInterface;
 import entidades.Conta;
 import java.util.Date;
 import java.util.List;
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+import util.HibernateUtil;
 /**
  *
  * @author Alexandre
@@ -16,17 +20,74 @@ public class DaoContasMensais implements ContasInterface {
 
     @Override
     public void AdicionarConta(Conta conta) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       
+        Session sessao = null;
+        Transaction transacao = null;
+       
+         try{
+            sessao = HibernateUtil.getSessionFactory().openSession();
+            transacao = sessao.beginTransaction();
+            sessao.save(conta); 
+            transacao.commit();
+            System.out.println("Salvo com sucesso");  
+        }
+        catch(HibernateException e)
+        {
+            System.out.println("Erro ao iniciar a sessao para persistencia " + e);
+            transacao.rollback();
+        }
+        finally
+        {
+            sessao.close(); 
+        }    
     }
 
     @Override
     public void ApagarConta(Conta conta) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+         
+        Session sessao = null;
+        Transaction transacao = null;
+       
+         try{
+            sessao = HibernateUtil.getSessionFactory().openSession();
+            transacao = sessao.beginTransaction();
+            sessao.delete(conta); 
+            transacao.commit();
+            System.out.println("Salvo com sucesso");  
+        }
+        catch(HibernateException e)
+        {
+            System.out.println("Erro ao iniciar a sessao para persistencia " + e);
+            transacao.rollback();
+        }
+        finally
+        {
+            sessao.close(); 
+        } 
     }
 
     @Override
     public void AtualizarConta(Conta conta) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+        Session sessao = null;
+        Transaction transacao = null;
+       
+         try{
+            sessao = HibernateUtil.getSessionFactory().openSession();
+            transacao = sessao.beginTransaction();
+            sessao.saveOrUpdate(conta); 
+            transacao.commit();
+            System.out.println("Salvo com sucesso");  
+        }
+        catch(HibernateException e)
+        {
+            System.out.println("Erro ao iniciar a sessao para persistencia " + e);
+            transacao.rollback();
+        }
+        finally
+        {
+            sessao.close(); 
+        } 
     }
 
     @Override
@@ -78,7 +139,5 @@ public class DaoContasMensais implements ContasInterface {
     public List<Conta> ContasPorRua(int IdRua) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
-  
-    
+   
 }

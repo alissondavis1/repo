@@ -153,7 +153,8 @@ public class DaoCheque implements ChequesInterface {
 
     @Override
     public List<Cheque> ChequesAbertosClientesPorIdClinete(int id) {
-       List<Cheque> cheque = null;
+    
+        List<Cheque> cheque = null;
         Session sessao = null; 
         Query query = null;
         Transaction tx = null;
@@ -239,7 +240,8 @@ public class DaoCheque implements ChequesInterface {
 
     @Override
     public List<Cheque> ChequesTotalAbertas() {
-     List<Cheque> cheque = null;
+     
+        List<Cheque> cheque = null;
         Session sessao = null; 
         Query query = null;
         Transaction tx = null;
@@ -266,7 +268,8 @@ public class DaoCheque implements ChequesInterface {
 
     @Override
     public List<Cheque> ChequesSomaPorData(Date dataInicial, Date dataFinal) {
-      List<Cheque> cheque = null;
+      
+        List<Cheque> cheque = null;
         Session sessao = null; 
         Query query = null;
         Transaction tx = null;

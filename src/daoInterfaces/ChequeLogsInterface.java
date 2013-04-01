@@ -13,7 +13,8 @@ import java.util.List;
  */
 public interface ChequeLogsInterface {
     
+    public Chequeslog       BuscarChequeLogPorId(int id);
     public List<Chequeslog> BuscarChequeLog(String nome);
     public List<Chequeslog> BuscarTodosChequesLog();
-    public Chequeslog       BuscarChequeLogPorId();    
+        
 }

@@ -8,11 +8,13 @@ import daoInterfaces.ContratoInterface;
 import entidades.Conta;
 import entidades.Contrato;
 import java.util.List;
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.AnnotationConfiguration;
 import org.hibernate.cfg.Configuration;
+import util.HibernateUtil;
 
 /**
  *
@@ -23,36 +25,72 @@ public class DaoContrato implements ContratoInterface{
     @Override    
     public void AdcionarContrato(Contrato contrato) {
         
-        Configuration cfg = new AnnotationConfiguration(); 
-        cfg.configure("hibernate.cfg.xml");
-        SessionFactory sf = cfg.buildSessionFactory(); 
-        
-        Session session = sf.openSession(); 
-        Transaction tx = session.beginTransaction();
+       Session sessao = null;
+       Transaction transcao = null;
        
          try{
-            session.save(contrato); 
-            tx.commit();
-            System.out.println("Salvo com sucesso");
+            sessao = HibernateUtil.getSessionFactory().openSession();
+            transcao = sessao.beginTransaction();    
+            sessao.save(contrato); 
+            transcao.commit();
+            System.out.println("Salvo com sucesso");  
         }
-        catch(Exception e)
+        catch(HibernateException e)
         {
             System.out.println("Erro ao iniciar a sessao para persistencia " + e);
-            tx.rollback();
+            transcao.rollback();
         }
         finally
         {
-            session.close(); 
-        }   
+            sessao.close(); 
+        } 
     }
     @Override
     public  void ApagarCategoria(Contrato contrato) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       
+        Session sessao = null;
+        Transaction transcao = null;
+       
+         try{
+            sessao = HibernateUtil.getSessionFactory().openSession();
+            transcao = sessao.beginTransaction();    
+            sessao.delete(contrato); 
+            transcao.commit();
+            System.out.println("Salvo com sucesso");  
+        }
+        catch(HibernateException e)
+        {
+            System.out.println("Erro ao iniciar a sessao para persistencia " + e);
+            transcao.rollback();
+        }
+        finally
+        {
+            sessao.close(); 
+        } 
     }
 
     @Override
     public void AtualizarCategoria(Contrato contrato) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+   
+        Session sessao = null;
+       Transaction transcao = null;
+       
+         try{
+            sessao = HibernateUtil.getSessionFactory().openSession();
+            transcao = sessao.beginTransaction();    
+            sessao.saveOrUpdate(contrato); 
+            transcao.commit();
+            System.out.println("Salvo com sucesso");  
+        }
+        catch(HibernateException e)
+        {
+            System.out.println("Erro ao iniciar a sessao para persistencia " + e);
+            transcao.rollback();
+        }
+        finally
+        {
+            sessao.close(); 
+        } 
     }
 
     @Override

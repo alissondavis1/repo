@@ -12,7 +12,7 @@ import java.util.List;
  */
 public interface MotivoEntradasInterface {
     
-    public void InserirMotivoEntrada        (Motivoentrada motivo);
+    public void AdicionarMotivoEntrada      (Motivoentrada motivo);
     public void ApagarMotivoEntrada         (Motivoentrada motivo);
     public void AlterarMotivoEntrada        (Motivoentrada motivo);
   

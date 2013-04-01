@@ -15,7 +15,7 @@ import util.HibernateUtil;
 
 /**
  *
- * @author Alexandre
+ * @author Alexandre 
  */
 public class DaoCategoriaSocio implements CategoriaSocioInterface {
  
@@ -46,10 +46,12 @@ public class DaoCategoriaSocio implements CategoriaSocioInterface {
     @Override
     public void ApagarCategoria(Categoriasocio categoria) {
        
-        Session sessao = HibernateUtil.getSessionFactory().openSession();
-        Transaction transacao = sessao.beginTransaction();
+        Session sessao = null;
+        Transaction transacao = null;
        
          try{
+            sessao = HibernateUtil.getSessionFactory().openSession();
+            transacao = sessao.beginTransaction();
             sessao.delete(categoria); 
             transacao.commit();
             System.out.println("Salvo com sucesso");  
@@ -72,7 +74,7 @@ public class DaoCategoriaSocio implements CategoriaSocioInterface {
         Transaction transacao = null;
        
          try{
-             sessao = HibernateUtil.getSessionFactory().openSession();
+            sessao = HibernateUtil.getSessionFactory().openSession();
             transacao = sessao.beginTransaction();
             sessao.saveOrUpdate(categoria); 
             transacao.commit();
@@ -90,7 +92,7 @@ public class DaoCategoriaSocio implements CategoriaSocioInterface {
     }
 
     @Override
-    public Categoriasocio BuscarCategoria(String nome) {
+    public Categoriasocio BuscarCategoriaPorNome(String nome) {
         
         Categoriasocio categoriaSocio = null;
         Session sessao = null; 
@@ -98,6 +100,7 @@ public class DaoCategoriaSocio implements CategoriaSocioInterface {
         Transaction transacao = null;
         
         try{
+           
            sessao = HibernateUtil.getSessionFactory().openSession();
            transacao = sessao.beginTransaction();
            query = sessao.createQuery("from Pessoa where nome = :nome");

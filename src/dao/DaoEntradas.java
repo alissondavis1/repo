@@ -9,12 +9,10 @@ import daoInterfaces.EntradasInterface;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
-import org.hibernate.Query;
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.hibernate.cfg.AnnotationConfiguration;
-import org.hibernate.cfg.Configuration;
+import util.HibernateUtil;
 
 /**
  *
@@ -24,17 +22,73 @@ public class DaoEntradas implements EntradasInterface {
 
     @Override
     public void AdicionarEntrada(Entrada entrada) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+        Session sessao = null;
+        Transaction transcao = null;
+       
+         try{
+            sessao = HibernateUtil.getSessionFactory().openSession();
+            transcao = sessao.beginTransaction();    
+            sessao.save(entrada); 
+            transcao.commit();
+            System.out.println("Salvo com sucesso");  
+        }
+        catch(HibernateException e)
+        {
+            System.out.println("Erro ao iniciar a sessao para persistencia " + e);
+            transcao.rollback();
+        }
+        finally
+        {
+            sessao.close(); 
+        }
     }
 
     @Override
     public void ApagarEntrada(Entrada entrada) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+        Session sessao = null;
+        Transaction transcao = null;
+       
+         try{
+            sessao = HibernateUtil.getSessionFactory().openSession();
+            transcao = sessao.beginTransaction();    
+            sessao.delete(entrada); 
+            transcao.commit();
+            System.out.println("Salvo com sucesso");  
+        }
+        catch(HibernateException e)
+        {
+            System.out.println("Erro ao iniciar a sessao para persistencia " + e);
+            transcao.rollback();
+        }
+        finally
+        {
+            sessao.close(); 
+        }
     }
 
     @Override
     public void AlterarEntrada(Entrada entrada) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       Session sessao = null;
+        Transaction transcao = null;
+       
+         try{
+            sessao = HibernateUtil.getSessionFactory().openSession();
+            transcao = sessao.beginTransaction();    
+            sessao.saveOrUpdate(entrada); 
+            transcao.commit();
+            System.out.println("Salvo com sucesso");  
+        }
+        catch(HibernateException e)
+        {
+            System.out.println("Erro ao iniciar a sessao para persistencia " + e);
+            transcao.rollback();
+        }
+        finally
+        {
+            sessao.close(); 
+        }
     }
 
     @Override

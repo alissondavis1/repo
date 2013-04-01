@@ -7,9 +7,11 @@ package dao;
 import daoInterfaces.UsuariosInterface;
 import entidades.Usuario;
 import java.util.List;
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import util.HibernateUtil;
+
 
 /**
  *
@@ -19,34 +21,76 @@ public class DaoUsuario implements UsuariosInterface {
 
     @Override
     public void AdcionarUsuario(Usuario usuario) {
-       Session session = HibernateUtil.getSessionFactory().openSession();
-        Transaction tx = session.beginTransaction();
+        
+        Session sessao = null;
+        Transaction transcao = null;
        
          try{
-            session.save(usuario); 
-            tx.commit();
+            sessao = HibernateUtil.getSessionFactory().openSession();
+            transcao = sessao.beginTransaction();    
+            sessao.save(usuario); 
+            transcao.commit();
             System.out.println("Salvo com sucesso");  
         }
-        catch(Exception e)
+        catch(HibernateException e)
         {
             System.out.println("Erro ao iniciar a sessao para persistencia " + e);
-            tx.rollback();
+            transcao.rollback();
         }
         finally
         {
-            session.close(); 
+            sessao.close(); 
         }  
     }
 
     @Override
     public void AlterarUsuario(Usuario usuario) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+       
+        Session sessao = null;
+        Transaction transcao = null;
+       
+         try{
+            sessao = HibernateUtil.getSessionFactory().openSession();
+            transcao = sessao.beginTransaction();    
+            sessao.saveOrUpdate(usuario); 
+            transcao.commit();
+            System.out.println("Salvo com sucesso");  
+        }
+        catch(HibernateException e)
+        {
+            System.out.println("Erro ao iniciar a sessao para persistencia " + e);
+            transcao.rollback();
+        }
+        finally
+        {
+            sessao.close(); 
+        }  
+     }
 
     @Override
     public void ApagarUsuario(Usuario usuario) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+      
+        Session sessao = null;
+        Transaction transcao = null;
+       
+         try{
+            sessao = HibernateUtil.getSessionFactory().openSession();
+            transcao = sessao.beginTransaction();    
+            sessao.delete(usuario); 
+            transcao.commit();
+            System.out.println("Salvo com sucesso");  
+        }
+        catch(HibernateException e)
+        {
+            System.out.println("Erro ao iniciar a sessao para persistencia " + e);
+            transcao.rollback();
+        }
+        finally
+        {
+            sessao.close(); 
+        }  
     }
+    
 
     @Override
     public Usuario ListarPorId(int id) {
@@ -62,5 +106,9 @@ public class DaoUsuario implements UsuariosInterface {
     public List<Usuario> ListarUsuarioPorNome() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
     
-}
+    
+    }
+
+    
