@@ -24,10 +24,12 @@ public class DaoCategoriaSocio implements CategoriaSocioInterface {
     @Override
     public void AdicionarCategoria(CategoriaSocio categoria) {
         
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        Transaction tx = session.beginTransaction();
+        Session session = null;
+        Transaction tx = null;
        
          try{
+            session = HibernateUtil.getSessionFactory().openSession();
+            tx = session.beginTransaction();
             session.save(categoria); 
             tx.commit();
             System.out.println("Salvo com sucesso");  
@@ -68,10 +70,12 @@ public class DaoCategoriaSocio implements CategoriaSocioInterface {
     @Override
     public void AtualizarCategoria(CategoriaSocio categoria) {
        
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        Transaction tx = session.beginTransaction();
+        Session session =  null;
+        Transaction tx = null;
        
          try{
+             session = HibernateUtil.getSessionFactory().openSession();
+            tx = session.beginTransaction();
             session.saveOrUpdate(categoria); 
             tx.commit();
             System.out.println("Salvo com sucesso");  

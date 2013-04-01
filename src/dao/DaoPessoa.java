@@ -15,48 +15,48 @@ public class DaoPessoa implements PessoasInterface {
     @Override
     public void AdicionarPessoa(Pessoa pessoa) {
       
-        Session session = null;
-        Transaction tx = null;
+        Session sessao= null;
+        Transaction transacao = null;
         
         try{
-            session = HibernateUtil.getSessionFactory().openSession();
-            tx = session.beginTransaction();
-            session.save(pessoa); 
-            tx.commit();
+            sessao = HibernateUtil.getSessionFactory().openSession();
+            transacao = sessao.beginTransaction();
+            sessao.save(pessoa); 
+            transacao.commit();
             System.out.println("Salvo com sucesso");  
         }
         catch(HibernateException e)
         {
             System.out.println("Erro ao iniciar a sessao para persistencia " + e);
-            tx.rollback();
+            transacao.rollback();
         }
         finally
         {
-            session.close(); 
+            sessao.close(); 
         }      
     }
 
     @Override
     public void ApagarPessoa(Pessoa pessoa) {
         
-        Session session = null;
-        Transaction tx = null;
+        Session sessao = null;
+        Transaction transacao = null;
         
         try{
-            session = HibernateUtil.getSessionFactory().openSession();
-            tx = session.beginTransaction();
-            session.delete(pessoa); 
-            tx.commit();
+            sessao = HibernateUtil.getSessionFactory().openSession();
+            transacao = sessao.beginTransaction();
+            sessao.delete(pessoa); 
+            transacao.commit();
             System.out.println("Salvo com sucesso");  
         }
         catch(HibernateException e)
         {
             System.out.println("Erro ao iniciar a sessao para persistencia " + e);
-            tx.rollback();
+            transacao.rollback();
         }
         finally
         {
-            session.close(); 
+            sessao.close(); 
         }      
     }
 
@@ -90,21 +90,21 @@ public class DaoPessoa implements PessoasInterface {
         Pessoa pessoa = null;
         Session sessao = null; 
         Query query = null;
-        Transaction trasacao = null;
+        Transaction transacao = null;
         
         try{
-           Session session = HibernateUtil.getSessionFactory().openSession();
-           Transaction tx = session.beginTransaction();
+           sessao = HibernateUtil.getSessionFactory().openSession();
+           transacao = sessao.beginTransaction();
            query = sessao.createQuery("from Pessoa where id = :id");
            query.setParameter("id",id);
            pessoa = (Pessoa)query.uniqueResult();
-           trasacao.commit(); 
+           transacao.commit(); 
            
         }
         catch(HibernateException e)
         {
             System.out.println(e);
-            trasacao.rollback();
+            transacao.rollback();
         }
         finally
         {
@@ -119,21 +119,21 @@ public class DaoPessoa implements PessoasInterface {
         Pessoa pessoa = null;
         Session sessao = null; 
         Query query = null;
-        Transaction trasacao = null;
+        Transaction transacao = null;
         
         try{
-           Session session = HibernateUtil.getSessionFactory().openSession();
-           Transaction tx = session.beginTransaction();
+           sessao = HibernateUtil.getSessionFactory().openSession();
+           transacao = sessao.beginTransaction();
            query = sessao.createQuery("from Pessoa where nome = :nome");
            query.setParameter("nome",nome);
            pessoa = (Pessoa)query.uniqueResult();
-           trasacao.commit(); 
+           transacao.commit(); 
            
         }
         catch(HibernateException e)
         {
             System.out.println(e);
-            trasacao.rollback();
+            transacao.rollback();
         }
         finally
         {
@@ -148,21 +148,21 @@ public class DaoPessoa implements PessoasInterface {
         Pessoa pessoa = null;
         Session sessao = null; 
         Query query = null;
-        Transaction trasacao = null;
+        Transaction transacao = null;
         
         try{
-           Session session = HibernateUtil.getSessionFactory().openSession();
-           Transaction tx = session.beginTransaction();
+           sessao = HibernateUtil.getSessionFactory().openSession();
+           transacao = sessao.beginTransaction();
            query = sessao.createQuery("from Pessoa where cpf = :cpf");
            query.setParameter("cpf",cpf);
            pessoa = (Pessoa)query.uniqueResult();
-           trasacao.commit(); 
+           transacao.commit(); 
            
         }
         catch(HibernateException e)
         {
             System.out.println(e);
-            trasacao.rollback();
+            transacao.rollback();
         }
         finally
         {
@@ -177,21 +177,21 @@ public class DaoPessoa implements PessoasInterface {
         Pessoa pessoa = null;
         Session sessao = null; 
         Query query = null;
-        Transaction trasacao = null;
+        Transaction transacao = null;
         
         List<Pessoa> lista = null;
         
         try{
-           Session session = HibernateUtil.getSessionFactory().openSession();
-           Transaction tx = session.beginTransaction();
+           sessao = HibernateUtil.getSessionFactory().openSession();
+           transacao = sessao.beginTransaction();
            query = sessao.createQuery("from Pessoa");
            lista = query.list();
-           trasacao.commit();    
+           transacao.commit();    
         }
         catch(HibernateException e)
         {
             System.out.println(e);
-            trasacao.rollback();
+            transacao.rollback();
         }
         finally
         {

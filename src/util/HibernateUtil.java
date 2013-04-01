@@ -18,12 +18,11 @@ public class HibernateUtil {
     private static final SessionFactory sessionFactory;
     
     static {
-        try {
-           
-            sessionFactory = new AnnotationConfiguration().configure().buildSessionFactory();
+        try {   
+        sessionFactory = new AnnotationConfiguration().configure().buildSessionFactory();
         } catch (Throwable ex) {
            System.err.println("Initial SessionFactory creation failed." + ex);
-            throw new ExceptionInInitializerError(ex);
+           throw new ExceptionInInitializerError(ex);
         }
    }
     
