@@ -83,7 +83,36 @@ public class DaoPessoa implements PessoasInterface {
             session.close(); 
         }      
     }
-
+    @Override
+    public Pessoa BuscarNomeCompleto(String nomeCompleto){
+        
+        Pessoa pessoa = null;
+        Session sessao = null; 
+        Query query = null;
+        Transaction transacao = null;
+        
+        try{
+           sessao = HibernateUtil.getSessionFactory().openSession();
+           transacao = sessao.beginTransaction();
+           query = sessao.createQuery
+          ("from Pessoa p where\n" +
+          "lower(concat(p.nome,' ', p.sobrenome)) = lower(:nomeCompleto)");
+           query.setParameter("nomeCompleto",nomeCompleto);
+           pessoa = (Pessoa)query.uniqueResult();
+           transacao.commit(); 
+           
+        }
+        catch(HibernateException e)
+        {
+            System.out.println(e);
+            transacao.rollback();
+        }
+        finally
+        {
+             sessao.close();
+        }  
+    return pessoa;
+    }  
     @Override
     public Pessoa BuscarPessoaId(int id) {
        

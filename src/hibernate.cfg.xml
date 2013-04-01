@@ -10,7 +10,7 @@
     <property name="show_sql">true</property>
     <property name="hibernate.format_sql">true</property>
     <property name="use_sql_comments">true</property>
-    <mapping class="entidades.CategoriaSocio"/>
+    <mapping class="entidades.Categoriasocio"/>
     <mapping class="entidades.Cheque"/>
     <mapping class="entidades.Chequeslog"/>
     <mapping class="entidades.Conta"/>
@@ -19,8 +19,8 @@
     <mapping class="entidades.Entrada"/>
     <mapping class="entidades.Entradaslog"/>
     <mapping class="entidades.Funcionario"/>
-    <mapping class="entidades.MotivoDespesa"/>
-    <mapping class="entidades.MotivoEntrada"/>
+    <mapping class="entidades.Motivodespesa"/>
+    <mapping class="entidades.Motivoentrada"/>
     <mapping class="entidades.Pessoa"/>
     <mapping class="entidades.Saida"/>
     <mapping class="entidades.Saidaslog"/>
