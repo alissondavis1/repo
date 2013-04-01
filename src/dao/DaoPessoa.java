@@ -200,6 +200,5 @@ public class DaoPessoa implements PessoasInterface {
     return lista;
     }
 
-    
 }
  
