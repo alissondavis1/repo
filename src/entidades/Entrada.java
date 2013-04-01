@@ -44,7 +44,7 @@ public class Entrada implements Serializable {
     private Integer id;
     @Basic(optional = false)
     @Column(name = "data")
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.TIMESTAMP)
     private Date data;
     @Lob
     @Column(name = "observacao")
@@ -53,15 +53,15 @@ public class Entrada implements Serializable {
     @Basic(optional = false)
     @Column(name = "valor")
     private BigDecimal valor;
-    @JoinColumn(name = "idFuncionario", referencedColumnName = "id")
-    @ManyToOne(optional = false)
-    private Funcionario idFuncionario;
     @JoinColumn(name = "idCedente", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Socio idCedente;
     @JoinColumn(name = "idMotivoEntrada", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    private MotivoEntrada idMotivoEntrada;
+    private Motivoentrada idMotivoEntrada;
+    @JoinColumn(name = "idFuncionario", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private Funcionario idFuncionario;
 
     public Entrada() {
     }
@@ -108,14 +108,6 @@ public class Entrada implements Serializable {
         this.valor = valor;
     }
 
-    public Funcionario getIdFuncionario() {
-        return idFuncionario;
-    }
-
-    public void setIdFuncionario(Funcionario idFuncionario) {
-        this.idFuncionario = idFuncionario;
-    }
-
     public Socio getIdCedente() {
         return idCedente;
     }
@@ -124,12 +116,20 @@ public class Entrada implements Serializable {
         this.idCedente = idCedente;
     }
 
-    public MotivoEntrada getIdMotivoEntrada() {
+    public Motivoentrada getIdMotivoEntrada() {
         return idMotivoEntrada;
     }
 
-    public void setIdMotivoEntrada(MotivoEntrada idMotivoEntrada) {
+    public void setIdMotivoEntrada(Motivoentrada idMotivoEntrada) {
         this.idMotivoEntrada = idMotivoEntrada;
+    }
+
+    public Funcionario getIdFuncionario() {
+        return idFuncionario;
+    }
+
+    public void setIdFuncionario(Funcionario idFuncionario) {
+        this.idFuncionario = idFuncionario;
     }
 
     @Override

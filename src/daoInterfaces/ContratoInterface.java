@@ -4,7 +4,6 @@
  */
 package daoInterfaces;
 
-import entidades.CategoriaSocio;
 import entidades.Contrato;
 import java.util.List;
 

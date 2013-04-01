@@ -4,8 +4,8 @@
  */
 package dao;
 
-import entidades.MotivoDespesa;
-import entidades.MotivoEntrada;
+import entidades.Motivodespesa;
+import entidades.Motivoentrada;
 import daoInterfaces.MotivoEntradasInterface;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +23,7 @@ import org.hibernate.cfg.Configuration;
 public class DaoMotivoEntrada implements MotivoEntradasInterface{
 
     @Override
-    public void InserirMotivoEntrada(MotivoEntrada motivo) {
+    public void InserirMotivoEntrada(Motivoentrada motivo) {
         Configuration cfg = new AnnotationConfiguration(); 
         
         cfg.configure("hibernate.cfg.xml");
@@ -49,7 +49,7 @@ public class DaoMotivoEntrada implements MotivoEntradasInterface{
     }
 
     @Override
-    public void ApagarMotivoEntrada(MotivoEntrada motivo) {
+    public void ApagarMotivoEntrada(Motivoentrada motivo) {
         Configuration cfg = new AnnotationConfiguration(); 
         
         cfg.configure("hibernate.cfg.xml");
@@ -75,7 +75,7 @@ public class DaoMotivoEntrada implements MotivoEntradasInterface{
     }
 
     @Override
-    public void AlterarMotivoEntrada(MotivoEntrada motivo) {
+    public void AlterarMotivoEntrada(Motivoentrada motivo) {
        Configuration cfg = new AnnotationConfiguration(); 
         
         cfg.configure("hibernate.cfg.xml");
@@ -101,7 +101,7 @@ public class DaoMotivoEntrada implements MotivoEntradasInterface{
     }
 
     @Override
-    public List<MotivoEntrada> BuscarMotivo(String nome) {
+    public List<Motivoentrada> BuscarMotivo(String nome) {
         
         Configuration cfg = new AnnotationConfiguration(); 
         cfg.configure("hibernate.cfg.xml");
@@ -109,7 +109,7 @@ public class DaoMotivoEntrada implements MotivoEntradasInterface{
         Session session = sf.openSession();
         Transaction tx = session.beginTransaction();
         
-        List<MotivoEntrada> lista = new ArrayList<>();
+        List<Motivoentrada> lista = new ArrayList<>();
        
         try{
             String HQL_QUERY="FROM MotivoEntrada m where  lower(m.nome) like lower(:nome) order by nome";
@@ -133,7 +133,7 @@ public class DaoMotivoEntrada implements MotivoEntradasInterface{
     }
 
     @Override
-    public List<MotivoEntrada> BuscarTodosMotivos() {
+    public List<Motivoentrada> BuscarTodosMotivos() {
         
         Configuration cfg = new AnnotationConfiguration(); 
         cfg.configure("hibernate.cfg.xml");
@@ -141,7 +141,7 @@ public class DaoMotivoEntrada implements MotivoEntradasInterface{
         Session session = sf.openSession();
         Transaction tx = session.beginTransaction();
         
-        List<MotivoEntrada> lista = new ArrayList<>();
+        List<Motivoentrada> lista = new ArrayList<>();
        
         try{
             String HQL_QUERY="FROM MotivoDespesa order by nome";

@@ -59,7 +59,7 @@ public class Saida implements Serializable {
     private String favorecido;
     @JoinColumn(name = "idmotivosaida", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    private MotivoDespesa idmotivosaida;
+    private Motivodespesa idmotivosaida;
     @JoinColumn(name = "idfuncionario", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Funcionario idfuncionario;
@@ -118,11 +118,11 @@ public class Saida implements Serializable {
         this.favorecido = favorecido;
     }
 
-    public MotivoDespesa getIdmotivosaida() {
+    public Motivodespesa getIdmotivosaida() {
         return idmotivosaida;
     }
 
-    public void setIdmotivosaida(MotivoDespesa idmotivosaida) {
+    public void setIdmotivosaida(Motivodespesa idmotivosaida) {
         this.idmotivosaida = idmotivosaida;
     }
 

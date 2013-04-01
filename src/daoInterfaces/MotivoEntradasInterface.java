@@ -4,7 +4,7 @@
  */
 package daoInterfaces;
 
-import entidades.MotivoEntrada;
+import entidades.Motivoentrada;
 import java.util.List;
 /**
  *
@@ -12,10 +12,10 @@ import java.util.List;
  */
 public interface MotivoEntradasInterface {
     
-    public void InserirMotivoEntrada        (MotivoEntrada motivo);
-    public void ApagarMotivoEntrada         (MotivoEntrada motivo);
-    public void AlterarMotivoEntrada        (MotivoEntrada motivo);
+    public void InserirMotivoEntrada        (Motivoentrada motivo);
+    public void ApagarMotivoEntrada         (Motivoentrada motivo);
+    public void AlterarMotivoEntrada        (Motivoentrada motivo);
   
-    public List<MotivoEntrada> BuscarMotivo (String nome);
-    public List<MotivoEntrada> BuscarTodosMotivos ();
+    public List<Motivoentrada> BuscarMotivo (String nome);
+    public List<Motivoentrada> BuscarTodosMotivos ();
 }

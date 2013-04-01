@@ -27,18 +27,21 @@
     <class>entidades.Conta</class>
     <class>entidades.MotivoDespesa</class>
     <class>entidades.Categoriasocio</class>
-    <class>entidades.Saidaslog</class>
     <class>entidades.Entradaslog</class>
     <class>entidades.Chequeslog</class>
-    <class>entidades.SomaContasPagasPorPessoa</class>
-    <class>entidades.RelatorioContas</class>
-    <class>entidades.RelatorioEntradas</class>
-    <class>entidades.SaidaFuncionario</class>
-    <class>entidades.ContasSocioTaxa</class>
-    <class>entidades.SomaContasAbertasPorPessoa</class>
     <class>entidades.Contaslog</class>
-    <class>entidades.RelatorioSocioAtivos</class>
-    <class>entidades.RelatorioContasAbertas</class>
+    <class>entidades.view.SomaContasAbertasPorPessoa</class>
+    <class>entidades.view.Saidaslog</class>
+    <class>entidades.view.SomaContasPagasPorPessoa</class>
+    <class>entidades.view.RelatorioContas</class>
+    <class>entidades.view.SaidaFuncionario</class>
+    <class>entidades.view.RelatorioSocioAtivos</class>
+    <class>entidades.view.ContasSocioTaxa</class>
+    <class>entidades.view.RelatorioContasAbertas</class>
+    <class>entidades.view.RelatorioEntradas</class>
+    <class>entidades.Saidaslog</class>
+    <class>entidades.Motivoentrada</class>
+    <class>entidades.Motivodespesa</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/acal?zeroDateTimeBehavior=convertToNull"/>
       <property name="javax.persistence.jdbc.password" value="123"/>

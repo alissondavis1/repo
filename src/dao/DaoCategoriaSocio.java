@@ -5,9 +5,7 @@
 package dao;
 
 import daoInterfaces.CategoriaSocioInterface;
-import entidades.CategoriaSocio;
-import entidades.Pessoa;
-import java.util.ArrayList;
+import entidades.Categoriasocio;
 import java.util.List;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
@@ -20,98 +18,98 @@ import util.HibernateUtil;
  * @author Alexandre
  */
 public class DaoCategoriaSocio implements CategoriaSocioInterface {
-
+ 
     @Override
-    public void AdicionarCategoria(CategoriaSocio categoria) {
+    public void AdicionarCategoria(Categoriasocio categoria) {
         
-        Session session = null;
-        Transaction tx = null;
+        Session sessao = null;
+        Transaction transacao = null;
        
          try{
-            session = HibernateUtil.getSessionFactory().openSession();
-            tx = session.beginTransaction();
-            session.save(categoria); 
-            tx.commit();
+            sessao = HibernateUtil.getSessionFactory().openSession();
+            transacao = sessao.beginTransaction();
+            sessao.save(categoria); 
+            transacao.commit();
             System.out.println("Salvo com sucesso");  
         }
-        catch(Exception e)
+        catch(HibernateException e)
         {
             System.out.println("Erro ao iniciar a sessao para persistencia " + e);
-            tx.rollback();
+            transacao.rollback();
         }
         finally
         {
-            session.close(); 
+            sessao.close(); 
         }    
     }
     
     @Override
-    public void ApagarCategoria(CategoriaSocio categoria) {
+    public void ApagarCategoria(Categoriasocio categoria) {
        
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        Transaction tx = session.beginTransaction();
+        Session sessao = HibernateUtil.getSessionFactory().openSession();
+        Transaction transacao = sessao.beginTransaction();
        
          try{
-            session.delete(categoria); 
-            tx.commit();
+            sessao.delete(categoria); 
+            transacao.commit();
             System.out.println("Salvo com sucesso");  
         }
-        catch(Exception e)
+        catch(HibernateException e)
         {
             System.out.println("Erro ao iniciar a sessao para persistencia " + e);
-            tx.rollback();
+            transacao.rollback();
         }
         finally
         {
-            session.close(); 
+            sessao.close(); 
         }    
     }
 
     @Override
-    public void AtualizarCategoria(CategoriaSocio categoria) {
+    public void AtualizarCategoria(Categoriasocio categoria) {
        
-        Session session =  null;
-        Transaction tx = null;
+        Session sessao =  null;
+        Transaction transacao = null;
        
          try{
-             session = HibernateUtil.getSessionFactory().openSession();
-            tx = session.beginTransaction();
-            session.saveOrUpdate(categoria); 
-            tx.commit();
+             sessao = HibernateUtil.getSessionFactory().openSession();
+            transacao = sessao.beginTransaction();
+            sessao.saveOrUpdate(categoria); 
+            transacao.commit();
             System.out.println("Salvo com sucesso");  
         }
-        catch(Exception e)
+        catch(HibernateException e)
         {
             System.out.println("Erro ao iniciar a sessao para persistencia " + e);
-            tx.rollback();
+            transacao.rollback();
         }
         finally
         {
-            session.close(); 
+            sessao.close(); 
         }    
     }
 
     @Override
-    public CategoriaSocio BuscarCategoria(String nome) {
+    public Categoriasocio BuscarCategoria(String nome) {
         
-        CategoriaSocio categoriaSocio = null;
+        Categoriasocio categoriaSocio = null;
         Session sessao = null; 
         Query query = null;
-        Transaction trasacao = null;
+        Transaction transacao = null;
         
         try{
-           Session session = HibernateUtil.getSessionFactory().openSession();
-           Transaction tx = session.beginTransaction();
+           sessao = HibernateUtil.getSessionFactory().openSession();
+           transacao = sessao.beginTransaction();
            query = sessao.createQuery("from Pessoa where nome = :nome");
            query.setParameter("nome", nome);
-           categoriaSocio = (CategoriaSocio) query.uniqueResult();
-           trasacao.commit(); 
+           categoriaSocio = (Categoriasocio) query.uniqueResult();
+           transacao.commit(); 
            
         }
         catch(HibernateException e)
         {
             System.out.println(e);
-            trasacao.rollback();
+            transacao.rollback();
         }
         finally
         {
@@ -121,25 +119,25 @@ public class DaoCategoriaSocio implements CategoriaSocioInterface {
     }
 
     @Override
-    public List<CategoriaSocio> BuscarTodasCategorias() {
+    public List<Categoriasocio> BuscarTodasCategorias() {
         
-        List<CategoriaSocio> categoriaSocio = null;
+        List<Categoriasocio> categoriaSocio = null;
         Session sessao = null; 
         Query query = null;
-        Transaction trasacao = null;
+        Transaction transacao = null;
         
         try{
-           Session session = HibernateUtil.getSessionFactory().openSession();
-           Transaction tx = session.beginTransaction();
+           sessao = HibernateUtil.getSessionFactory().openSession();
+           transacao = sessao.beginTransaction();
            query = sessao.createQuery("from CategoriaSocio order by nome");
            categoriaSocio =  query.list();
-           trasacao.commit(); 
+           transacao.commit(); 
            
         }
         catch(HibernateException e)
         {
             System.out.println(e);
-            trasacao.rollback();
+            transacao.rollback();
         }
         finally
         {
@@ -150,25 +148,25 @@ public class DaoCategoriaSocio implements CategoriaSocioInterface {
     
 
     @Override
-    public CategoriaSocio BuscarCategoriaSocioPorId(int id) {
+    public Categoriasocio BuscarCategoriaSocioPorId(int id) {
         
-        CategoriaSocio categoriaSocio = null;
+       Categoriasocio categoriaSocio = null;
         Session sessao = null; 
         Query query = null;
-        Transaction trasacao = null;
+        Transaction transacao = null;
         
         try{
-           Session session = HibernateUtil.getSessionFactory().openSession();
-           Transaction tx = session.beginTransaction();
+           sessao = HibernateUtil.getSessionFactory().openSession();
+           transacao= sessao.beginTransaction();
            query = sessao.createQuery("from Pessoa where id = :id");
            query.setParameter("id", id);
-           categoriaSocio =(CategoriaSocio) query.uniqueResult();
-           trasacao.commit(); 
+           categoriaSocio =(Categoriasocio) query.uniqueResult();
+           transacao.commit(); 
         }
         catch(HibernateException e)
         {
             System.out.println(e);
-            trasacao.rollback();
+            transacao.rollback();
         }
         finally
         {

@@ -20,7 +20,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -66,12 +65,12 @@ public class Socio implements Serializable {
     private String observacao;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idNumeroSocio")
     private List<Conta> contaList;
+    @JoinColumn(name = "idPessoa", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private Pessoa idPessoa;
     @JoinColumn(name = "idCategoriaSocio", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    private CategoriaSocio idCategoriaSocio;
-    @JoinColumn(name = "idPessoa", referencedColumnName = "id")
-    @OneToOne(optional = false)
-    private Pessoa idPessoa;
+    private Categoriasocio idCategoriaSocio;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idCedente")
     private List<Entrada> entradaList;
 
@@ -145,20 +144,20 @@ public class Socio implements Serializable {
         this.contaList = contaList;
     }
 
-    public CategoriaSocio getIdCategoriaSocio() {
-        return idCategoriaSocio;
-    }
-
-    public void setIdCategoriaSocio(CategoriaSocio idCategoriaSocio) {
-        this.idCategoriaSocio = idCategoriaSocio;
-    }
-
     public Pessoa getIdPessoa() {
         return idPessoa;
     }
 
     public void setIdPessoa(Pessoa idPessoa) {
         this.idPessoa = idPessoa;
+    }
+
+    public Categoriasocio getIdCategoriaSocio() {
+        return idCategoriaSocio;
+    }
+
+    public void setIdCategoriaSocio(Categoriasocio idCategoriaSocio) {
+        this.idCategoriaSocio = idCategoriaSocio;
     }
 
     @XmlTransient

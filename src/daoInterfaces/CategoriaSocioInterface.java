@@ -4,9 +4,9 @@
  */
 package daoInterfaces;
 
-import entidades.CategoriaSocio;
+import entidades.Categoriasocio;
 import java.util.List;
-import javax.swing.DefaultComboBoxModel;
+
 
 /**
  *
@@ -14,11 +14,11 @@ import javax.swing.DefaultComboBoxModel;
  */
 public interface CategoriaSocioInterface {
     
-    public void AdicionarCategoria(CategoriaSocio categoria);
-    public void ApagarCategoria   (CategoriaSocio categoria);
-    public void AtualizarCategoria(CategoriaSocio categoria);
+    public void AdicionarCategoria(Categoriasocio categoria);
+    public void ApagarCategoria   (Categoriasocio categoria);
+    public void AtualizarCategoria(Categoriasocio categoria);
     
-    public CategoriaSocio       BuscarCategoria(String nome);
-    public CategoriaSocio       BuscarCategoriaSocioPorId(int id);
-    public List<CategoriaSocio> BuscarTodasCategorias();
+    public Categoriasocio       BuscarCategoria(String nome);
+    public Categoriasocio       BuscarCategoriaSocioPorId(int id);
+    public List<Categoriasocio> BuscarTodasCategorias();
 }

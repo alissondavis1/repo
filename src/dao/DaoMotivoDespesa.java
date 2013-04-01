@@ -4,16 +4,9 @@
  */
 package dao;
 
-import entidades.MotivoDespesa;
+import entidades.Motivodespesa;
 import daoInterfaces.MotivoDespesasInterface;
-import java.util.ArrayList;
 import java.util.List;
-import org.hibernate.Query;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
-import org.hibernate.cfg.AnnotationConfiguration;
-import org.hibernate.cfg.Configuration;
 
 /**
  *
@@ -22,28 +15,29 @@ import org.hibernate.cfg.Configuration;
 public class DaoMotivoDespesa implements MotivoDespesasInterface  {
 
     @Override
-    public void AdicionarMotivoEntrada(MotivoDespesa motivo) {
+    public void AdicionarMotivoEntrada(Motivodespesa motivo) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void ApagarMotivoEntrada(MotivoDespesa motivo) {
+    public void ApagarMotivoEntrada(Motivodespesa motivo) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void AlterarMotivoEntrada(MotivoDespesa motivo) {
+    public void AlterarMotivoEntrada(Motivodespesa motivo) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public List<MotivoDespesa> BuscarMotivo(String nome) {
+    public List<Motivodespesa> BuscarMotivo(String nome) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public List<MotivoDespesa> BuscarTodosMotivos() {
+    public List<Motivodespesa> BuscarTodosMotivos() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+   
 }

@@ -61,12 +61,12 @@ public class Cheque implements Serializable {
     @Basic(optional = false)
     @Column(name = "valor")
     private BigDecimal valor;
+    @JoinColumn(name = "idMotivoDespesa", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private Motivodespesa idMotivoDespesa;
     @JoinColumn(name = "idFuncionario", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Funcionario idFuncionario;
-    @JoinColumn(name = "idMotivoDespesa", referencedColumnName = "id")
-    @ManyToOne(optional = false)
-    private MotivoDespesa idMotivoDespesa;
 
     public Cheque() {
     }
@@ -130,20 +130,20 @@ public class Cheque implements Serializable {
         this.valor = valor;
     }
 
+    public Motivodespesa getIdMotivoDespesa() {
+        return idMotivoDespesa;
+    }
+
+    public void setIdMotivoDespesa(Motivodespesa idMotivoDespesa) {
+        this.idMotivoDespesa = idMotivoDespesa;
+    }
+
     public Funcionario getIdFuncionario() {
         return idFuncionario;
     }
 
     public void setIdFuncionario(Funcionario idFuncionario) {
         this.idFuncionario = idFuncionario;
-    }
-
-    public MotivoDespesa getIdMotivoDespesa() {
-        return idMotivoDespesa;
-    }
-
-    public void setIdMotivoDespesa(MotivoDespesa idMotivoDespesa) {
-        this.idMotivoDespesa = idMotivoDespesa;
     }
 
     @Override

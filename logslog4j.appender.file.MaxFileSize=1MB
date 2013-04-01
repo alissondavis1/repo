@@ -82,3 +82,10 @@
 16:38:57,560  INFO Environment:681 - Bytecode provider name : cglib
 16:38:57,571  INFO Environment:598 - using JDK 1.4 java.sql.Timestamp handling
 16:38:57,737  INFO Version:15 - Hibernate EntityManager 3.3.2.GA
+23:51:37,178  INFO Boleto:220 - Data de Processamento do Boleto : 31/03/2013
+03:19:53,467  INFO Version:15 - Hibernate Annotations 3.3.1.GA
+03:19:53,576  INFO Environment:514 - Hibernate 3.2.5
+03:19:53,592  INFO Environment:547 - hibernate.properties not found
+03:19:53,592  INFO Environment:681 - Bytecode provider name : cglib
+03:19:53,607  INFO Environment:598 - using JDK 1.4 java.sql.Timestamp handling
+03:19:53,763  INFO Version:15 - Hibernate EntityManager 3.3.2.GA

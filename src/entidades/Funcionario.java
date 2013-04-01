@@ -5,6 +5,7 @@
 package entidades;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Basic;
@@ -60,9 +61,10 @@ public class Funcionario implements Serializable {
     @Lob
     @Column(name = "observacao")
     private String observacao;
+    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Basic(optional = false)
     @Column(name = "salario")
-    private float salario;
+    private BigDecimal salario;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idfuncionario")
     private List<Saida> saidaList;
     @JoinColumn(name = "idPessoa", referencedColumnName = "id")
@@ -80,7 +82,7 @@ public class Funcionario implements Serializable {
         this.id = id;
     }
 
-    public Funcionario(Integer id, String cargo, Date dataContratacao, int matricula, float salario) {
+    public Funcionario(Integer id, String cargo, Date dataContratacao, int matricula, BigDecimal salario) {
         this.id = id;
         this.cargo = cargo;
         this.dataContratacao = dataContratacao;
@@ -128,11 +130,11 @@ public class Funcionario implements Serializable {
         this.observacao = observacao;
     }
 
-    public float getSalario() {
+    public BigDecimal getSalario() {
         return salario;
     }
 
-    public void setSalario(float salario) {
+    public void setSalario(BigDecimal salario) {
         this.salario = salario;
     }
 

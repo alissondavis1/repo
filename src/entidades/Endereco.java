@@ -31,8 +31,8 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "Endereco.findAll", query = "SELECT e FROM Endereco e"),
     @NamedQuery(name = "Endereco.findById", query = "SELECT e FROM Endereco e WHERE e.id = :id"),
-    @NamedQuery(name = "Endereco.findByNome", query = "SELECT e FROM Endereco e WHERE e.nome = :nome"),
-    @NamedQuery(name = "Endereco.findByTipo", query = "SELECT e FROM Endereco e WHERE e.tipo = :tipo")})
+    @NamedQuery(name = "Endereco.findByTipo", query = "SELECT e FROM Endereco e WHERE e.tipo = :tipo"),
+    @NamedQuery(name = "Endereco.findByNome", query = "SELECT e FROM Endereco e WHERE e.nome = :nome")})
 public class Endereco implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -40,15 +40,15 @@ public class Endereco implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
-    @Lob
-    @Column(name = "descricao")
-    private String descricao;
-    @Basic(optional = false)
-    @Column(name = "nome")
-    private String nome;
     @Basic(optional = false)
     @Column(name = "tipo")
     private String tipo;
+    @Basic(optional = false)
+    @Column(name = "nome")
+    private String nome;
+    @Lob
+    @Column(name = "descricao")
+    private String descricao;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idEndereco")
     private List<Pessoa> pessoaList;
 
@@ -59,10 +59,10 @@ public class Endereco implements Serializable {
         this.id = id;
     }
 
-    public Endereco(Integer id, String nome, String tipo) {
+    public Endereco(Integer id, String tipo, String nome) {
         this.id = id;
-        this.nome = nome;
         this.tipo = tipo;
+        this.nome = nome;
     }
 
     public Integer getId() {
@@ -73,12 +73,12 @@ public class Endereco implements Serializable {
         this.id = id;
     }
 
-    public String getDescricao() {
-        return descricao;
+    public String getTipo() {
+        return tipo;
     }
 
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 
     public String getNome() {
@@ -89,12 +89,12 @@ public class Endereco implements Serializable {
         this.nome = nome;
     }
 
-    public String getTipo() {
-        return tipo;
+    public String getDescricao() {
+        return descricao;
     }
 
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 
     @XmlTransient

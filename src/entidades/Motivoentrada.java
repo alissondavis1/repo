@@ -5,8 +5,9 @@
 package entidades;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
+import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,23 +16,23 @@ import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
  * @author alexandre
  */
 @Entity
-@Table(name = "taxa")
+@Table(name = "motivoentrada")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Taxa.findAll", query = "SELECT t FROM Taxa t"),
-    @NamedQuery(name = "Taxa.findById", query = "SELECT t FROM Taxa t WHERE t.id = :id"),
-    @NamedQuery(name = "Taxa.findByNome", query = "SELECT t FROM Taxa t WHERE t.nome = :nome"),
-    @NamedQuery(name = "Taxa.findByDescricao", query = "SELECT t FROM Taxa t WHERE t.descricao = :descricao"),
-    @NamedQuery(name = "Taxa.findByValor", query = "SELECT t FROM Taxa t WHERE t.valor = :valor")})
-public class Taxa implements Serializable {
+    @NamedQuery(name = "Motivoentrada.findAll", query = "SELECT m FROM Motivoentrada m"),
+    @NamedQuery(name = "Motivoentrada.findById", query = "SELECT m FROM Motivoentrada m WHERE m.id = :id"),
+    @NamedQuery(name = "Motivoentrada.findByNome", query = "SELECT m FROM Motivoentrada m WHERE m.nome = :nome")})
+public class Motivoentrada implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -41,27 +42,25 @@ public class Taxa implements Serializable {
     @Basic(optional = false)
     @Column(name = "nome")
     private String nome;
+    @Lob
     @Column(name = "descricao")
     private String descricao;
     @Lob
     @Column(name = "observacao")
     private String observacao;
-    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
-    @Basic(optional = false)
-    @Column(name = "valor")
-    private BigDecimal valor;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idMotivoEntrada")
+    private List<Entrada> entradaList;
 
-    public Taxa() {
+    public Motivoentrada() {
     }
 
-    public Taxa(Integer id) {
+    public Motivoentrada(Integer id) {
         this.id = id;
     }
 
-    public Taxa(Integer id, String nome, BigDecimal valor) {
+    public Motivoentrada(Integer id, String nome) {
         this.id = id;
         this.nome = nome;
-        this.valor = valor;
     }
 
     public Integer getId() {
@@ -96,12 +95,13 @@ public class Taxa implements Serializable {
         this.observacao = observacao;
     }
 
-    public BigDecimal getValor() {
-        return valor;
+    @XmlTransient
+    public List<Entrada> getEntradaList() {
+        return entradaList;
     }
 
-    public void setValor(BigDecimal valor) {
-        this.valor = valor;
+    public void setEntradaList(List<Entrada> entradaList) {
+        this.entradaList = entradaList;
     }
 
     @Override
@@ -114,10 +114,10 @@ public class Taxa implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Taxa)) {
+        if (!(object instanceof Motivoentrada)) {
             return false;
         }
-        Taxa other = (Taxa) object;
+        Motivoentrada other = (Motivoentrada) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -126,7 +126,7 @@ public class Taxa implements Serializable {
 
     @Override
     public String toString() {
-        return "entidades.Taxa[ id=" + id + " ]";
+        return "entidades.Motivoentrada[ id=" + id + " ]";
     }
     
 }
