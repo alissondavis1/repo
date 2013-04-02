@@ -16,7 +16,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JProgressBar;
 import javax.swing.JWindow;
 import javax.swing.UnsupportedLookAndFeelException;
-import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.netbeans.lib.awtextra.AbsoluteConstraints;
 import org.netbeans.lib.awtextra.AbsoluteLayout;

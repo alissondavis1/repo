@@ -21,7 +21,8 @@ public class TelaCadastros extends javax.swing.JFrame {
 
     JFrame telaPrincipal;
     List<Endereco> enderecos;
-
+    
+    
     /**
      * Creates new form TelaCadastros
      */
@@ -95,7 +96,7 @@ public class TelaCadastros extends javax.swing.JFrame {
         jTextFieldFuncionarioOrgaoExpedidor = new javax.swing.JTextField();
         jTextFieldFuncionarioDatadeemissao = new javax.swing.JTextField();
         jButtonFuncionarioPesquisar = new javax.swing.JButton();
-        jFormattedTextField1 = new javax.swing.JFormattedTextField();
+        jFormattedTextFieldFuncionarioCpf = new javax.swing.JFormattedTextField();
         jPanel3 = new javax.swing.JPanel();
         jComboBoxFuncionarioLograduro = new javax.swing.JComboBox();
         jLabel8 = new javax.swing.JLabel();
@@ -315,7 +316,7 @@ public class TelaCadastros extends javax.swing.JFrame {
                 }
             });
 
-            jComboBoxFuncionarioSexo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Masculino","Feminino" }));
+            jComboBoxFuncionarioSexo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ","Masculino","Feminino" }));
 
             jLabel19.setText("Sexo");
 
@@ -337,7 +338,7 @@ public class TelaCadastros extends javax.swing.JFrame {
             });
 
             try {
-                jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
+                jFormattedTextFieldFuncionarioCpf.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
             } catch (java.text.ParseException ex) {
                 ex.printStackTrace();
             }
@@ -395,7 +396,7 @@ public class TelaCadastros extends javax.swing.JFrame {
                                 .addComponent(jLabel20))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jFormattedTextFieldFuncionarioCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(jPanel2Layout.createSequentialGroup()
                                     .addComponent(jTextFieldFuncionarioRgnumero, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(31, 31, 31)
@@ -463,7 +464,7 @@ public class TelaCadastros extends javax.swing.JFrame {
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel20)
-                        .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jFormattedTextFieldFuncionarioCpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel21)
@@ -490,6 +491,7 @@ public class TelaCadastros extends javax.swing.JFrame {
             Logradouro.setText("Logradouro");
 
             jComboBoxFuncionarioUf.setModel(new javax.swing.DefaultComboBoxModel(new String[] {
+                " ",
                 "AC",
                 "AL",
                 "AP",
@@ -583,7 +585,7 @@ public class TelaCadastros extends javax.swing.JFrame {
 
             Logradouro3.setText("Numero da Matricula");
 
-            jComboBoxFuncionarioStatus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ativo", "Desativar" }));
+            jComboBoxFuncionarioStatus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ","Ativo", "Desativar" }));
 
             jButtonFuncionarioEditar.setText("Editar");
 
@@ -1006,7 +1008,12 @@ public class TelaCadastros extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBoxTipoLogradouroActionPerformed
 
     private void jButtonFuncionarioNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFuncionarioNovoActionPerformed
+        
         editableTextFields(true);
+        limparCampos();
+        jButtonFuncionarioApagar.setEnabled(false);
+        jButtonFuncionarioEditar.setEnabled(false);
+        
     }//GEN-LAST:event_jButtonFuncionarioNovoActionPerformed
 
     private void jTextFieldFuncionarioNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldFuncionarioNomeActionPerformed
@@ -1018,6 +1025,9 @@ public class TelaCadastros extends javax.swing.JFrame {
          if(pessoa != null){
              
              preencherAbaFuncionarios(pessoa);
+             jButtonFuncionarioApagar.setEnabled(true);
+             jButtonFuncionarioEditar.setEnabled(true);
+             
             
              
              
@@ -1035,8 +1045,10 @@ public class TelaCadastros extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldFuncionarioNomeActionPerformed
 
     private void jButtonFuncionarioPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFuncionarioPesquisarActionPerformed
-      
-        
+    
+        new TelaPesquisa(this).setVisible(true);
+        setVisible(false);
+        setEnabled(false);
     
     }//GEN-LAST:event_jButtonFuncionarioPesquisarActionPerformed
 
@@ -1061,7 +1073,7 @@ public class TelaCadastros extends javax.swing.JFrame {
         jTextFieldFuncionarioCategoriaSocio.setEditable(editable);
         jTextFieldFuncionarioCep.setEditable(editable);
         jTextFieldFuncionarioCidade.setEditable(editable);
-        jFormattedTextField1.setEditable(editable);
+        jFormattedTextFieldFuncionarioCpf.setEditable(editable);
         jTextFieldFuncionarioDataDeContratacao.setEditable(editable);
         jTextFieldFuncionarioDataNascimento.setEditable(editable);
         jTextFieldFuncionarioDatadeemissao.setEditable(editable);
@@ -1085,7 +1097,39 @@ public class TelaCadastros extends javax.swing.JFrame {
         jButtonFuncionarioSalvar.setEnabled(editable);
     }
     
-    private void preencherAbaFuncionarios(Pessoa pessoa){
+    private void limparCampos(){
+        
+        jTextFieldFuncionarioID.setText("");
+        jTextFieldFuncionarioNome.setText("");
+        jTextFieldFuncionarioApelido.setText("");
+        jTextFieldFuncionarioBairro.setText("");
+        jTextFieldFuncionarioCargo.setText("");
+        jTextFieldFuncionarioCategoriaSocio.setText("");
+        jTextFieldFuncionarioCep.setText("");
+        jTextFieldFuncionarioCidade.setText("");
+        jFormattedTextFieldFuncionarioCpf.setText("");
+        jTextFieldFuncionarioDataDeContratacao.setText("");
+        jTextFieldFuncionarioDataNascimento.setText("");
+        jTextFieldFuncionarioDatadeemissao.setText("");
+        jTextFieldFuncionarioEmail.setText("");
+        jTextFieldFuncionarioNomedame.setText("");
+        jTextFieldFuncionarioNomedopai.setText("");
+        jTextFieldFuncionarioNumero.setText("");
+        jTextFieldFuncionarioNumeroDaMatricula.setText("");
+        jTextFieldFuncionarioOrgaoExpedidor.setText("");
+        jTextFieldFuncionarioRgnumero.setText("");
+        jTextFieldFuncionarioSalario.setText("");
+        jTextFieldFuncionarioSobrenome.setText("");
+        jTextFieldFuncionarioTelefone.setText("");
+       
+        jComboBoxFuncionarioSexo.setSelectedIndex(0);
+        jComboBoxFuncionarioStatus.setSelectedIndex(0);
+        jComboBoxFuncionarioUf.setSelectedIndex(0);
+        
+        
+    }
+    
+    protected void preencherAbaFuncionarios(Pessoa pessoa){
         
         
          jTextFieldFuncionarioNome.setText(pessoa.getNome());   
@@ -1100,7 +1144,7 @@ public class TelaCadastros extends javax.swing.JFrame {
          jComboBoxFuncionarioSexo.setSelectedItem(pessoa.getSexo());
          jTextFieldFuncionarioNomedame.setText(pessoa.getNomeMae());
          jTextFieldFuncionarioNomedopai.setText(pessoa.getNomePai());
-         jFormattedTextField1.setText(pessoa.getCpf());
+         jFormattedTextFieldFuncionarioCpf.setText(pessoa.getCpf());
          jTextFieldFuncionarioRgnumero.setText(pessoa.getRgNumero());
          jTextFieldFuncionarioOrgaoExpedidor.setText(pessoa.getRgExpedidor());
          if(pessoa.getRgEmissao() != null){
@@ -1171,7 +1215,7 @@ public class TelaCadastros extends javax.swing.JFrame {
     private javax.swing.JComboBox jComboBoxFuncionarioStatus;
     private javax.swing.JComboBox jComboBoxFuncionarioUf;
     private javax.swing.JComboBox jComboBoxTipoLogradouro;
-    private javax.swing.JFormattedTextField jFormattedTextField1;
+    private javax.swing.JFormattedTextField jFormattedTextFieldFuncionarioCpf;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

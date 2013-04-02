@@ -4,9 +4,12 @@
  */
 package telas;
 
+import dao.DaoPessoa;
+import entidades.Pessoa;
 import java.awt.Toolkit;
-import javax.swing.JLabel;
-import javax.swing.table.TableColumn;
+import java.text.SimpleDateFormat;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -17,12 +20,20 @@ public class TelaPesquisa extends javax.swing.JFrame {
     /**
      * Creates new form TelaPesquisa
      */
+    
+    TelaCadastros telaCadastro;
     public TelaPesquisa() {
         initComponents();
        
        
-         setSize(Toolkit.getDefaultToolkit().getScreenSize());       
+         setSize(Toolkit.getDefaultToolkit().getScreenSize().height, Toolkit.getDefaultToolkit().getScreenSize().width/2);       
        
+    }
+    public TelaPesquisa(TelaCadastros telaCadastro){
+        
+        this();
+        this.telaCadastro = telaCadastro;
+        
     }
  
     
@@ -34,17 +45,19 @@ public class TelaPesquisa extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
-        acal2002PUEntityManager = java.beans.Beans.isDesignTime() ? null : javax.persistence.Persistence.createEntityManagerFactory("acal2002PU").createEntityManager();
-        pessoaQuery = java.beans.Beans.isDesignTime() ? null : acal2002PUEntityManager.createQuery("SELECT p FROM Pessoa p");
-        pessoaList = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : pessoaQuery.getResultList();
-        pessoaQuery1 = java.beans.Beans.isDesignTime() ? null : acal2002PUEntityManager.createQuery("SELECT p FROM Pessoa p");
-        pessoaList1 = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : pessoaQuery1.getResultList();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
 
         jScrollPane1.setAutoscrolls(true);
 
@@ -53,11 +66,11 @@ public class TelaPesquisa extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Nome", "Sobrenome", "Apelido", "Data Nasc", "Email", "Numero Matricula", "Telefone"
+                "Nome", "Sobrenome", "CPF", "Cidade", "Data Nascimento", "Email", "Status"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Boolean.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false, false, false, false
@@ -72,52 +85,97 @@ public class TelaPesquisa extends javax.swing.JFrame {
             }
         });
         jTable1.setToolTipText("");
-        jTable1.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
-        jTable1.setCellSelectionEnabled(true);
-
-        org.jdesktop.swingbinding.JTableBinding jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, pessoaList1, jTable1);
-        org.jdesktop.swingbinding.JTableBinding.ColumnBinding columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${nome}"));
-        columnBinding.setColumnName("Nome");
-        columnBinding.setColumnClass(String.class);
-        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${sobrenome}"));
-        columnBinding.setColumnName("Sobrenome");
-        columnBinding.setColumnClass(String.class);
-        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${apelido}"));
-        columnBinding.setColumnName("Apelido");
-        columnBinding.setColumnClass(String.class);
-        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${dataNasc}"));
-        columnBinding.setColumnName("Data Nasc");
-        columnBinding.setColumnClass(java.util.Date.class);
-        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${email}"));
-        columnBinding.setColumnName("Email");
-        columnBinding.setColumnClass(String.class);
-        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${numeroMatricula}"));
-        columnBinding.setColumnName("Numero Matricula");
-        columnBinding.setColumnClass(Integer.class);
-        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${telefone}"));
-        columnBinding.setColumnName("Telefone");
-        columnBinding.setColumnClass(String.class);
-        bindingGroup.addBinding(jTableBinding);
-        jTableBinding.bind();
+        jTable1.getTableHeader().setReorderingAllowed(false);
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
+
+        jLabel1.setText("Pesquisar");
+
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(29, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 673, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 40, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 267, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
-
-        bindingGroup.bind();
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+
+       DefaultTableModel model; 
+      Pessoa p =  new DaoPessoa().BuscarPessoaNome(jTextField1.getText());
+      if(p != null){
+          
+          model = (DefaultTableModel)jTable1.getModel();
+          model.setRowCount(0);
+          if(p.getDataNasc() != null){
+          model.addRow(new Object[]{p.getNome(),p.getSobrenome(),p.getCpf(),p.getCidade(),SimpleDateFormat.getDateInstance().format(p.getDataNasc()),p.getEmail(),p.getStatus()});
+          }else{
+           model.addRow(new Object[]{p.getNome(),p.getSobrenome(),p.getCpf(),p.getCidade(),"nulo",p.getEmail(),p.getStatus()});   
+          }
+      }else{
+          
+          JOptionPane.showMessageDialog(this,"Pessoa não encontrada");
+      }
+        
+    }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        telaCadastro.setEnabled(true);
+        telaCadastro.setVisible(true);
+    }//GEN-LAST:event_formWindowClosed
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        
+        if(evt.getClickCount() > 1){
+           
+           
+          telaCadastro.preencherAbaFuncionarios(new DaoPessoa().BuscarPessoaNome((String)jTable1.getValueAt(0, 0)));
+          telaCadastro.setEnabled(true);
+          telaCadastro.setVisible(true);
+          dispose();
+          
+        }
+    }//GEN-LAST:event_jTable1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -154,13 +212,10 @@ public class TelaPesquisa extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.persistence.EntityManager acal2002PUEntityManager;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private java.util.List<entidades.Pessoa> pessoaList;
-    private java.util.List<entidades.Pessoa> pessoaList1;
-    private javax.persistence.Query pessoaQuery;
-    private javax.persistence.Query pessoaQuery1;
-    private org.jdesktop.beansbinding.BindingGroup bindingGroup;
+    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }
