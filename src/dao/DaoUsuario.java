@@ -4,10 +4,12 @@
  */
 package dao;
 
-import daoInterfaces.UsuariosInterface;
+
+import daoInterfaces.UsuarioInterface;
 import entidades.Usuario;
 import java.util.List;
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import util.HibernateUtil;
@@ -17,19 +19,26 @@ import util.HibernateUtil;
  *
  * @author alexandre
  */
-public class DaoUsuario implements UsuariosInterface {
+public class DaoUsuario implements UsuarioInterface{
 
     @Override
-    public void AdcionarUsuario(Usuario usuario) {
-        
+    public void AdicionarUsuario(Usuario u) {
+       
         Session sessao = null;
         Transaction transcao = null;
-       
+        
+        DaoUsuario d = new DaoUsuario();
+        String sql = d.ConstruirString(u);
+        String Qry = null;
+        
          try{
+            
             sessao = HibernateUtil.getSessionFactory().openSession();
             transcao = sessao.beginTransaction();    
-            sessao.save(usuario); 
+            sessao.createSQLQuery(sql);
+           
             transcao.commit();
+            
             System.out.println("Salvo com sucesso");  
         }
         catch(HibernateException e)
@@ -40,75 +49,38 @@ public class DaoUsuario implements UsuariosInterface {
         finally
         {
             sessao.close(); 
-        }  
+        }     
     }
-
     @Override
     public void AlterarUsuario(Usuario usuario) {
-       
-        Session sessao = null;
-        Transaction transcao = null;
-       
-         try{
-            sessao = HibernateUtil.getSessionFactory().openSession();
-            transcao = sessao.beginTransaction();    
-            sessao.saveOrUpdate(usuario); 
-            transcao.commit();
-            System.out.println("Salvo com sucesso");  
-        }
-        catch(HibernateException e)
-        {
-            System.out.println("Erro ao iniciar a sessao para persistencia " + e);
-            transcao.rollback();
-        }
-        finally
-        {
-            sessao.close(); 
-        }  
-     }
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
     @Override
     public void ApagarUsuario(Usuario usuario) {
-      
-        Session sessao = null;
-        Transaction transcao = null;
-       
-         try{
-            sessao = HibernateUtil.getSessionFactory().openSession();
-            transcao = sessao.beginTransaction();    
-            sessao.delete(usuario); 
-            transcao.commit();
-            System.out.println("Salvo com sucesso");  
-        }
-        catch(HibernateException e)
-        {
-            System.out.println("Erro ao iniciar a sessao para persistencia " + e);
-            transcao.rollback();
-        }
-        finally
-        {
-            sessao.close(); 
-        }  
-    }
-    
-
-    @Override
-    public Usuario ListarPorId(int id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    @Override
-    public List<Usuario> ListarUsuario() {
+    public void EditarPermissoesUsuario(Usuario usuario) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
-    @Override
-    public List<Usuario> ListarUsuarioPorNome() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
+    
+    
+    
+    private void Previlegios(Usuario u, String p)
+    {
     
     
     }
-
     
+    private String ConstruirString(Usuario u)
+    {
+        
+    String sql = null;
+    if((u.getNome()!= null)&&(u.getSenha()!=null))
+    {
+     sql ="create user " + u.getNome() +"@localhost identified by '"+ u.getSenha()+"' ;";
+    }
+    return sql;
+    }
+}

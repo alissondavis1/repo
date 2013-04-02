@@ -28,18 +28,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "entradaslog")
 @XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Entradaslog.findAll", query = "SELECT e FROM Entradaslog e"),
-    @NamedQuery(name = "Entradaslog.findById", query = "SELECT e FROM Entradaslog e WHERE e.id = :id"),
-    @NamedQuery(name = "Entradaslog.findByIdOriginal", query = "SELECT e FROM Entradaslog e WHERE e.idOriginal = :idOriginal"),
-    @NamedQuery(name = "Entradaslog.findByDataOriginal", query = "SELECT e FROM Entradaslog e WHERE e.dataOriginal = :dataOriginal"),
-    @NamedQuery(name = "Entradaslog.findByDataAlteracao", query = "SELECT e FROM Entradaslog e WHERE e.dataAlteracao = :dataAlteracao"),
-    @NamedQuery(name = "Entradaslog.findByValor", query = "SELECT e FROM Entradaslog e WHERE e.valor = :valor"),
-    @NamedQuery(name = "Entradaslog.findByIdCedente", query = "SELECT e FROM Entradaslog e WHERE e.idCedente = :idCedente"),
-    @NamedQuery(name = "Entradaslog.findByIdFuncionario", query = "SELECT e FROM Entradaslog e WHERE e.idFuncionario = :idFuncionario"),
-    @NamedQuery(name = "Entradaslog.findByIdMotivoEntrada", query = "SELECT e FROM Entradaslog e WHERE e.idMotivoEntrada = :idMotivoEntrada"),
-    @NamedQuery(name = "Entradaslog.findByTipo", query = "SELECT e FROM Entradaslog e WHERE e.tipo = :tipo"),
-    @NamedQuery(name = "Entradaslog.findByIdFuncionarioAlteracao", query = "SELECT e FROM Entradaslog e WHERE e.idFuncionarioAlteracao = :idFuncionarioAlteracao")})
+
 public class Entradaslog implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id

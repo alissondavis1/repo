@@ -30,13 +30,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "cheque")
 @XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Cheque.findAll", query = "SELECT c FROM Cheque c"),
-    @NamedQuery(name = "Cheque.findById", query = "SELECT c FROM Cheque c WHERE c.id = :id"),
-    @NamedQuery(name = "Cheque.findByDataPagamento", query = "SELECT c FROM Cheque c WHERE c.dataPagamento = :dataPagamento"),
-    @NamedQuery(name = "Cheque.findByDataVencimento", query = "SELECT c FROM Cheque c WHERE c.dataVencimento = :dataVencimento"),
-    @NamedQuery(name = "Cheque.findByNumero", query = "SELECT c FROM Cheque c WHERE c.numero = :numero"),
-    @NamedQuery(name = "Cheque.findByValor", query = "SELECT c FROM Cheque c WHERE c.valor = :valor")})
+
 public class Cheque implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id

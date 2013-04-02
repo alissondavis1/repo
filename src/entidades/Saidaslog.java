@@ -28,18 +28,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "saidaslog")
 @XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Saidaslog.findAll", query = "SELECT s FROM Saidaslog s"),
-    @NamedQuery(name = "Saidaslog.findById", query = "SELECT s FROM Saidaslog s WHERE s.id = :id"),
-    @NamedQuery(name = "Saidaslog.findByIdoriginal", query = "SELECT s FROM Saidaslog s WHERE s.idoriginal = :idoriginal"),
-    @NamedQuery(name = "Saidaslog.findByDataoriginal", query = "SELECT s FROM Saidaslog s WHERE s.dataoriginal = :dataoriginal"),
-    @NamedQuery(name = "Saidaslog.findByDataalteracao", query = "SELECT s FROM Saidaslog s WHERE s.dataalteracao = :dataalteracao"),
-    @NamedQuery(name = "Saidaslog.findByValor", query = "SELECT s FROM Saidaslog s WHERE s.valor = :valor"),
-    @NamedQuery(name = "Saidaslog.findByFavorecido", query = "SELECT s FROM Saidaslog s WHERE s.favorecido = :favorecido"),
-    @NamedQuery(name = "Saidaslog.findByIdfuncionario", query = "SELECT s FROM Saidaslog s WHERE s.idfuncionario = :idfuncionario"),
-    @NamedQuery(name = "Saidaslog.findByIdFuncionarioAltercao", query = "SELECT s FROM Saidaslog s WHERE s.idFuncionarioAltercao = :idFuncionarioAltercao"),
-    @NamedQuery(name = "Saidaslog.findByIdmotivosaida", query = "SELECT s FROM Saidaslog s WHERE s.idmotivosaida = :idmotivosaida"),
-    @NamedQuery(name = "Saidaslog.findByTipo", query = "SELECT s FROM Saidaslog s WHERE s.tipo = :tipo")})
+
 public class Saidaslog implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id

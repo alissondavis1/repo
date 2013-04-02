@@ -34,13 +34,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @Entity
 @Table(name = "funcionario")
 @XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Funcionario.findAll", query = "SELECT f FROM Funcionario f"),
-    @NamedQuery(name = "Funcionario.findById", query = "SELECT f FROM Funcionario f WHERE f.id = :id"),
-    @NamedQuery(name = "Funcionario.findByCargo", query = "SELECT f FROM Funcionario f WHERE f.cargo = :cargo"),
-    @NamedQuery(name = "Funcionario.findByDataContratacao", query = "SELECT f FROM Funcionario f WHERE f.dataContratacao = :dataContratacao"),
-    @NamedQuery(name = "Funcionario.findByMatricula", query = "SELECT f FROM Funcionario f WHERE f.matricula = :matricula"),
-    @NamedQuery(name = "Funcionario.findBySalario", query = "SELECT f FROM Funcionario f WHERE f.salario = :salario")})
+
 public class Funcionario implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id

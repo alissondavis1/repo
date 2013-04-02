@@ -4,68 +4,30 @@
  */
 package entidades;
 
-import java.io.Serializable;
-import javax.persistence.Basic;
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlRootElement;
-
 /**
  *
  * @author alexandre
  */
-@Entity
-@Table(name = "usuario")
-@XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Usuario.findAll", query = "SELECT u FROM Usuario u"),
-    @NamedQuery(name = "Usuario.findById", query = "SELECT u FROM Usuario u WHERE u.id = :id"),
-    @NamedQuery(name = "Usuario.findByNome", query = "SELECT u FROM Usuario u WHERE u.nome = :nome"),
-    @NamedQuery(name = "Usuario.findBySenha", query = "SELECT u FROM Usuario u WHERE u.senha = :senha"),
-    @NamedQuery(name = "Usuario.findByNivel", query = "SELECT u FROM Usuario u WHERE u.nivel = :nivel")})
-public class Usuario implements Serializable {
-    private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
-    @Column(name = "id")
-    private Integer id;
-    @Basic(optional = false)
-    @Column(name = "nome")
+public class Usuario {
+    
     private String nome;
-    @Basic(optional = false)
-    @Column(name = "senha")
     private String senha;
-    @Basic(optional = false)
-    @Column(name = "nivel")
-    private int nivel;
+    private boolean select;
+    private boolean insert;
+    private boolean delete;
+    private boolean update;
+    private boolean grant;
+    
+    public Usuario(){}
 
-    public Usuario() {
+    public boolean isUpdate() {
+        return update;
     }
 
-    public Usuario(Integer id) {
-        this.id = id;
-    }
-
-    public Usuario(Integer id, String nome, String senha, int nivel) {
-        this.id = id;
-        this.nome = nome;
-        this.senha = senha;
-        this.nivel = nivel;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
+    public void setUpdate(boolean update) {
+        this.update = update;
     }
 
     public String getNome() {
@@ -84,37 +46,36 @@ public class Usuario implements Serializable {
         this.senha = senha;
     }
 
-    public int getNivel() {
-        return nivel;
+    public boolean isSelect() {
+        return select;
     }
 
-    public void setNivel(int nivel) {
-        this.nivel = nivel;
+    public void setSelect(boolean select) {
+        this.select = select;
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
-        return hash;
+    public boolean isInsert() {
+        return insert;
     }
 
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Usuario)) {
-            return false;
-        }
-        Usuario other = (Usuario) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
+    public void setInsert(boolean insert) {
+        this.insert = insert;
     }
 
-    @Override
-    public String toString() {
-        return "entidades.Usuario[ id=" + id + " ]";
+    public boolean isDelete() {
+        return delete;
     }
-    
+
+    public void setDelete(boolean delete) {
+        this.delete = delete;
+    }
+
+    public boolean isGrant() {
+        return grant;
+    }
+
+    public void setGrant(boolean grant) {
+        this.grant = grant;
+    }
+  
 }

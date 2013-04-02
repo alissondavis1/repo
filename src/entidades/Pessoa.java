@@ -36,29 +36,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @Entity
 @Table(name = "pessoa")
 @XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Pessoa.findAll", query = "SELECT p FROM Pessoa p"),
-    @NamedQuery(name = "Pessoa.findById", query = "SELECT p FROM Pessoa p WHERE p.id = :id"),
-    @NamedQuery(name = "Pessoa.findByNome", query = "SELECT p FROM Pessoa p WHERE p.nome = :nome"),
-    @NamedQuery(name = "Pessoa.findBySobrenome", query = "SELECT p FROM Pessoa p WHERE p.sobrenome = :sobrenome"),
-    @NamedQuery(name = "Pessoa.findByCategoriaSocio", query = "SELECT p FROM Pessoa p WHERE p.categoriaSocio = :categoriaSocio"),
-    @NamedQuery(name = "Pessoa.findByStatus", query = "SELECT p FROM Pessoa p WHERE p.status = :status"),
-    @NamedQuery(name = "Pessoa.findByApelido", query = "SELECT p FROM Pessoa p WHERE p.apelido = :apelido"),
-    @NamedQuery(name = "Pessoa.findByBairro", query = "SELECT p FROM Pessoa p WHERE p.bairro = :bairro"),
-    @NamedQuery(name = "Pessoa.findByCep", query = "SELECT p FROM Pessoa p WHERE p.cep = :cep"),
-    @NamedQuery(name = "Pessoa.findByCidade", query = "SELECT p FROM Pessoa p WHERE p.cidade = :cidade"),
-    @NamedQuery(name = "Pessoa.findByCpf", query = "SELECT p FROM Pessoa p WHERE p.cpf = :cpf"),
-    @NamedQuery(name = "Pessoa.findByDataNasc", query = "SELECT p FROM Pessoa p WHERE p.dataNasc = :dataNasc"),
-    @NamedQuery(name = "Pessoa.findByEmail", query = "SELECT p FROM Pessoa p WHERE p.email = :email"),
-    @NamedQuery(name = "Pessoa.findByNomeMae", query = "SELECT p FROM Pessoa p WHERE p.nomeMae = :nomeMae"),
-    @NamedQuery(name = "Pessoa.findByNomePai", query = "SELECT p FROM Pessoa p WHERE p.nomePai = :nomePai"),
-    @NamedQuery(name = "Pessoa.findByNumeroMatricula", query = "SELECT p FROM Pessoa p WHERE p.numeroMatricula = :numeroMatricula"),
-    @NamedQuery(name = "Pessoa.findByRgEmissao", query = "SELECT p FROM Pessoa p WHERE p.rgEmissao = :rgEmissao"),
-    @NamedQuery(name = "Pessoa.findByRgExpedidor", query = "SELECT p FROM Pessoa p WHERE p.rgExpedidor = :rgExpedidor"),
-    @NamedQuery(name = "Pessoa.findByRgNumero", query = "SELECT p FROM Pessoa p WHERE p.rgNumero = :rgNumero"),
-    @NamedQuery(name = "Pessoa.findBySexo", query = "SELECT p FROM Pessoa p WHERE p.sexo = :sexo"),
-    @NamedQuery(name = "Pessoa.findByTelefone", query = "SELECT p FROM Pessoa p WHERE p.telefone = :telefone"),
-    @NamedQuery(name = "Pessoa.findByUf", query = "SELECT p FROM Pessoa p WHERE p.uf = :uf")})
+
 public class Pessoa implements Serializable {
     @Transient
     private PropertyChangeSupport changeSupport = new PropertyChangeSupport(this);

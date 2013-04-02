@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 5.5.30, for Win64 (x86)
 --
--- Host: localhost    Database: acal2
+-- Host: localhost    Database: acal
 -- ------------------------------------------------------
 -- Server version	5.5.30
 
@@ -215,7 +215,7 @@ CREATE TABLE `conta` (
   PRIMARY KEY (`id`),
   KEY `FK5A7376F56F0C6CC` (`idNumeroSocio`),
   CONSTRAINT `FK5A7376FC2A54024` FOREIGN KEY (`idNumeroSocio`) REFERENCES `socio` (`id`) ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -224,7 +224,7 @@ CREATE TABLE `conta` (
 
 LOCK TABLES `conta` WRITE;
 /*!40000 ALTER TABLE `conta` DISABLE KEYS */;
-INSERT INTO `conta` VALUES (1,'2013-03-30 00:00:00','2013-03-30 00:00:00',NULL,4,NULL,5),(2,'2013-03-30 00:00:00','2013-03-30 00:00:00',NULL,5,400.00,5),(4,'2013-03-30 00:00:00','2013-03-30 00:00:00',NULL,4,200.00,4);
+INSERT INTO `conta` VALUES (1,'2013-03-30 00:00:00','2013-03-30 00:00:00',NULL,4,NULL,5),(2,'2013-03-30 00:00:00','2013-03-30 00:00:00',NULL,5,400.00,5),(4,'2013-03-30 00:00:00','2013-03-30 00:00:00',NULL,4,200.00,4),(7,NULL,'2013-03-12 00:00:00',NULL,5,200.00,4),(8,NULL,'2013-03-23 00:00:00',NULL,5,NULL,4),(14,NULL,'2013-02-10 00:00:00',NULL,5,NULL,4),(15,NULL,'2013-01-20 00:00:00',NULL,5,NULL,4),(16,NULL,'2013-03-10 00:00:00',NULL,5,NULL,4);
 /*!40000 ALTER TABLE `conta` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -347,7 +347,7 @@ CREATE TABLE `contaslog` (
   `horaAlteracao` datetime DEFAULT NULL,
   `tipo` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -356,7 +356,7 @@ CREATE TABLE `contaslog` (
 
 LOCK TABLES `contaslog` WRITE;
 /*!40000 ALTER TABLE `contaslog` DISABLE KEYS */;
-INSERT INTO `contaslog` VALUES (1,1,'2013-03-30 00:00:00','2013-03-30 00:00:00',NULL,4,NULL,5,'2013-04-01 02:52:16','Insert'),(2,2,'2013-03-30 00:00:00','2013-03-30 00:00:00',NULL,5,400.00,5,'2013-04-01 02:52:16','Insert'),(3,4,'2013-03-30 00:00:00','2013-03-30 00:00:00',NULL,4,200.00,4,'2013-04-01 02:53:04','Insert');
+INSERT INTO `contaslog` VALUES (1,1,'2013-03-30 00:00:00','2013-03-30 00:00:00',NULL,4,NULL,5,'2013-04-01 02:52:16','Insert'),(2,2,'2013-03-30 00:00:00','2013-03-30 00:00:00',NULL,5,400.00,5,'2013-04-01 02:52:16','Insert'),(3,4,'2013-03-30 00:00:00','2013-03-30 00:00:00',NULL,4,200.00,4,'2013-04-01 02:53:04','Insert'),(5,7,NULL,'2013-03-30 00:00:00',NULL,5,200.00,4,'2013-04-01 21:06:19','Insert'),(6,8,NULL,'2013-03-30 00:00:00',NULL,5,NULL,4,'2013-04-01 21:06:19','Insert'),(12,14,NULL,'2013-02-10 00:00:00',NULL,5,NULL,4,'2013-04-01 21:08:11','Insert'),(13,15,NULL,'2013-01-20 00:00:00',NULL,5,NULL,4,'2013-04-01 21:08:11','Insert'),(14,16,NULL,'2013-03-10 00:00:00',NULL,5,NULL,4,'2013-04-01 21:08:11','Insert');
 /*!40000 ALTER TABLE `contaslog` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -394,11 +394,11 @@ DROP TABLE IF EXISTS `endereco`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `endereco` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `tipo` enum('AEROPORTO','APARTAMENTO','AVENIDA','BECO','BLOCO','CAMINHO','ESCADINHA','ESTAÇÃO','ESTRADA','FAZENDA','LADEIRA','LARGO',' PRAÇA','PARQUE','QUADRA','QUILÔMETRO','QUINTA','RODOVIA','RUA','TRAVESSA') NOT NULL,
+  `tipo` enum('AEROPORTO','APARTAMENTO','AVENIDA','BECO','BLOCO','CAMINHO','ESCADINHA','ESTAÃ‡ÃƒO','ESTRADA','FAZENDA','LADEIRA','LARGO',' PRAÃ‡A','PARQUE','QUADRA','QUILÃ”METRO','QUINTA','RODOVIA','RUA','TRAVESSA') NOT NULL,
   `nome` varchar(255) NOT NULL,
   `descricao` text,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -407,7 +407,7 @@ CREATE TABLE `endereco` (
 
 LOCK TABLES `endereco` WRITE;
 /*!40000 ALTER TABLE `endereco` DISABLE KEYS */;
-INSERT INTO `endereco` VALUES (4,'AVENIDA','Fernando Daltro','Rua da posta'),(5,'BECO','Roberio','BECO'),(6,'ESTRADA','Saco',NULL),(7,'RUA','do Morro',NULL),(8,'LADEIRA','feliz',NULL);
+INSERT INTO `endereco` VALUES (4,'AVENIDA','Fernando Daltro','Rua da posta'),(5,'BECO','Roberio','BECO'),(6,'ESTRADA','Saco',NULL),(7,'RUA','do Morro',NULL),(8,'LADEIRA','feliz',NULL),(9,'RUA','odina','teste swing grafico!'),(10,'AEROPORTO','teste','teste');
 /*!40000 ALTER TABLE `endereco` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -433,7 +433,7 @@ CREATE TABLE `entrada` (
   CONSTRAINT `FK_EntradaFuncionario` FOREIGN KEY (`idFuncionario`) REFERENCES `funcionario` (`id`) ON UPDATE CASCADE,
   CONSTRAINT `FK_EntradaMotivoEntrada` FOREIGN KEY (`idMotivoEntrada`) REFERENCES `motivoentrada` (`id`) ON UPDATE CASCADE,
   CONSTRAINT `FK_EntradaSocio` FOREIGN KEY (`idCedente`) REFERENCES `socio` (`id`) ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -442,7 +442,7 @@ CREATE TABLE `entrada` (
 
 LOCK TABLES `entrada` WRITE;
 /*!40000 ALTER TABLE `entrada` DISABLE KEYS */;
-INSERT INTO `entrada` VALUES (6,'2012-10-10 00:00:00',NULL,15.00,5,3,2),(9,'2012-10-10 00:00:00',NULL,23.00,4,3,1);
+INSERT INTO `entrada` VALUES (6,'2012-10-10 00:00:00',NULL,15.00,5,3,2),(9,'2012-10-10 00:00:00',NULL,23.00,4,3,1),(10,'2013-03-01 00:00:00',NULL,50.00,4,3,1),(11,'2013-03-01 00:00:00',NULL,25.00,4,3,1);
 /*!40000 ALTER TABLE `entrada` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -548,7 +548,7 @@ CREATE TABLE `entradaslog` (
   `observacao` text,
   `idFuncionarioAlteracao` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -557,7 +557,7 @@ CREATE TABLE `entradaslog` (
 
 LOCK TABLES `entradaslog` WRITE;
 /*!40000 ALTER TABLE `entradaslog` DISABLE KEYS */;
-INSERT INTO `entradaslog` VALUES (1,6,'2012-10-10','2013-04-01 02:55:53',15.00,5,3,2,'insert',NULL,NULL),(2,9,'2012-10-10','2013-04-01 02:56:26',23.00,4,3,1,'insert',NULL,NULL);
+INSERT INTO `entradaslog` VALUES (1,6,'2012-10-10','2013-04-01 02:55:53',15.00,5,3,2,'insert',NULL,NULL),(2,9,'2012-10-10','2013-04-01 02:56:26',23.00,4,3,1,'insert',NULL,NULL),(3,10,'2013-03-01','2013-04-01 13:16:50',50.00,4,3,1,'insert',NULL,NULL),(4,11,'2013-03-01','2013-04-01 13:17:04',25.00,4,3,1,'insert',NULL,NULL);
 /*!40000 ALTER TABLE `entradaslog` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -657,6 +657,7 @@ CREATE TABLE `pessoa` (
   `sobrenome` varchar(255) NOT NULL,
   `categoriaSocio` int(11) NOT NULL,
   `idEndereco` int(11) NOT NULL,
+  `numeroEndereco` varchar(11) DEFAULT NULL,
   `status` bit(1) NOT NULL,
   `apelido` varchar(255) DEFAULT NULL,
   `bairro` varchar(255) DEFAULT NULL,
@@ -675,6 +676,7 @@ CREATE TABLE `pessoa` (
   `sexo` enum('Masculino','Feminino') DEFAULT NULL,
   `telefone` varchar(255) DEFAULT NULL,
   `uf` enum('AC','AL','AP','AM','BA','CE','DF','ES','GO','MA','MT','MS','MG','PA','PB','PR','PE','PI','RJ','RN','RS','RO','RR','SC','SP','SE','TO') DEFAULT NULL,
+  `pessoacol` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `FK_PessoaEndereco` (`idEndereco`),
   CONSTRAINT `FK_PessoaEndereco` FOREIGN KEY (`idEndereco`) REFERENCES `endereco` (`id`) ON UPDATE CASCADE
@@ -687,7 +689,7 @@ CREATE TABLE `pessoa` (
 
 LOCK TABLES `pessoa` WRITE;
 /*!40000 ALTER TABLE `pessoa` DISABLE KEYS */;
-INSERT INTO `pessoa` VALUES (4,'Alexandreq','Querioz',1,4,'','Alexandreq','lages','44700-000','jacobina',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Masculino',NULL,'BA'),(5,'Alisson','Davis',2,5,'',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(6,'Fernando','Lorrand',3,6,'',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO `pessoa` VALUES (4,'Alexandre','Querioz',1,4,NULL,'','Alexandreq','lages','44700-000','jacobina',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Masculino',NULL,'BA',NULL),(5,'Alisson','Davis',2,5,NULL,'',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(6,'Fernando','Lorrand',3,6,NULL,'',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `pessoa` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -731,20 +733,19 @@ SET character_set_client = utf8;
 SET character_set_client = @saved_cs_client;
 
 --
--- Temporary table structure for view `relatorio_entradas`
+-- Temporary table structure for view `relatorio_entrada`
 --
 
-DROP TABLE IF EXISTS `relatorio_entradas`;
-/*!50001 DROP VIEW IF EXISTS `relatorio_entradas`*/;
+DROP TABLE IF EXISTS `relatorio_entrada`;
+/*!50001 DROP VIEW IF EXISTS `relatorio_entrada`*/;
 SET @saved_cs_client     = @@character_set_client;
 SET character_set_client = utf8;
-/*!50001 CREATE TABLE `relatorio_entradas` (
-  `numero` tinyint NOT NULL,
+/*!50001 CREATE TABLE `relatorio_entrada` (
+  `id` tinyint NOT NULL,
   `data` tinyint NOT NULL,
   `valor` tinyint NOT NULL,
-  `motivo` tinyint NOT NULL,
-  `cod_F` tinyint NOT NULL,
-  `nome` tinyint NOT NULL,
+  `Motivo` tinyint NOT NULL,
+  `funcionario` tinyint NOT NULL,
   `cpf` tinyint NOT NULL
 ) ENGINE=MyISAM */;
 SET character_set_client = @saved_cs_client;
@@ -1120,11 +1121,11 @@ UNLOCK TABLES;
 /*!50001 SET collation_connection      = @saved_col_connection */;
 
 --
--- Final view structure for view `relatorio_entradas`
+-- Final view structure for view `relatorio_entrada`
 --
 
-/*!50001 DROP TABLE IF EXISTS `relatorio_entradas`*/;
-/*!50001 DROP VIEW IF EXISTS `relatorio_entradas`*/;
+/*!50001 DROP TABLE IF EXISTS `relatorio_entrada`*/;
+/*!50001 DROP VIEW IF EXISTS `relatorio_entrada`*/;
 /*!50001 SET @saved_cs_client          = @@character_set_client */;
 /*!50001 SET @saved_cs_results         = @@character_set_results */;
 /*!50001 SET @saved_col_connection     = @@collation_connection */;
@@ -1133,7 +1134,7 @@ UNLOCK TABLES;
 /*!50001 SET collation_connection      = utf8_general_ci */;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
 /*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
-/*!50001 VIEW `relatorio_entradas` AS select `e`.`id` AS `numero`,`e`.`data` AS `data`,`e`.`valor` AS `valor`,`me`.`nome` AS `motivo`,`f`.`id` AS `cod_F`,concat(`p`.`nome`,' ',`p`.`sobrenome`) AS `nome`,`p`.`cpf` AS `cpf` from (((`entrada` `e` join `motivoentrada` `me` on((`me`.`id` = `e`.`idMotivoEntrada`))) join `funcionario` `f` on((`e`.`idFuncionario` = `f`.`id`))) join `pessoa` `p` on((`f`.`idPessoa` = `p`.`id`))) order by `p`.`nome` */;
+/*!50001 VIEW `relatorio_entrada` AS select `e`.`id` AS `id`,`e`.`data` AS `data`,`e`.`valor` AS `valor`,`me`.`nome` AS `Motivo`,`p`.`nome` AS `funcionario`,`p`.`cpf` AS `cpf` from ((((`entrada` `e` join `motivoentrada` `me` on((`me`.`id` = `e`.`idMotivoEntrada`))) join `socio` `s` on((`s`.`id` = `e`.`idCedente`))) join `funcionario` `f` on((`f`.`id` = `e`.`idFuncionario`))) join `pessoa` `p` on((`p`.`id` = `f`.`idPessoa`))) order by `e`.`id` */;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
 /*!50001 SET collation_connection      = @saved_col_connection */;
@@ -1223,4 +1224,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-04-01  3:18:44
+-- Dump completed on 2013-04-03 12:25:50

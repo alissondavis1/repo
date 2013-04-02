@@ -8,9 +8,6 @@ import dao.DaoPessoa;
 import dao.DaoUsuario;
 import entidades.Pessoa;
 import entidades.Usuario;
-
-
-
 /**
  *
  * @author alexandre
@@ -78,12 +75,15 @@ public class TelaTestes extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
        
-        DaoPessoa dp = new DaoPessoa();
-        Pessoa p = new Pessoa();
-        
-        p=dp.BuscarNomeCompleto("AlIsSoN DaVis");
-        System.out.println(p.getNome()+" "+ p.getSobrenome());
-        
+        Usuario u = new Usuario();
+        u.setNome("a");
+        u.setSenha("1234");
+        u.setDelete(true);
+        u.setSelect(true);
+        u.setUpdate(true);
+       
+        DaoUsuario d = new DaoUsuario();
+        d.AdicionarUsuario(u);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
