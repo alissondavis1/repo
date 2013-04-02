@@ -4,6 +4,8 @@
  */
 package entidades;
 
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -23,6 +25,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -57,6 +60,8 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Pessoa.findByTelefone", query = "SELECT p FROM Pessoa p WHERE p.telefone = :telefone"),
     @NamedQuery(name = "Pessoa.findByUf", query = "SELECT p FROM Pessoa p WHERE p.uf = :uf")})
 public class Pessoa implements Serializable {
+    @Transient
+    private PropertyChangeSupport changeSupport = new PropertyChangeSupport(this);
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -140,7 +145,9 @@ public class Pessoa implements Serializable {
     }
 
     public void setId(Integer id) {
+        Integer oldId = this.id;
         this.id = id;
+        changeSupport.firePropertyChange("id", oldId, id);
     }
 
     public String getNome() {
@@ -148,7 +155,9 @@ public class Pessoa implements Serializable {
     }
 
     public void setNome(String nome) {
+        String oldNome = this.nome;
         this.nome = nome;
+        changeSupport.firePropertyChange("nome", oldNome, nome);
     }
 
     public String getSobrenome() {
@@ -156,7 +165,9 @@ public class Pessoa implements Serializable {
     }
 
     public void setSobrenome(String sobrenome) {
+        String oldSobrenome = this.sobrenome;
         this.sobrenome = sobrenome;
+        changeSupport.firePropertyChange("sobrenome", oldSobrenome, sobrenome);
     }
 
     public int getCategoriaSocio() {
@@ -164,7 +175,9 @@ public class Pessoa implements Serializable {
     }
 
     public void setCategoriaSocio(int categoriaSocio) {
+        int oldCategoriaSocio = this.categoriaSocio;
         this.categoriaSocio = categoriaSocio;
+        changeSupport.firePropertyChange("categoriaSocio", oldCategoriaSocio, categoriaSocio);
     }
 
     public boolean getStatus() {
@@ -172,7 +185,9 @@ public class Pessoa implements Serializable {
     }
 
     public void setStatus(boolean status) {
+        boolean oldStatus = this.status;
         this.status = status;
+        changeSupport.firePropertyChange("status", oldStatus, status);
     }
 
     public String getApelido() {
@@ -180,7 +195,9 @@ public class Pessoa implements Serializable {
     }
 
     public void setApelido(String apelido) {
+        String oldApelido = this.apelido;
         this.apelido = apelido;
+        changeSupport.firePropertyChange("apelido", oldApelido, apelido);
     }
 
     public String getBairro() {
@@ -188,7 +205,9 @@ public class Pessoa implements Serializable {
     }
 
     public void setBairro(String bairro) {
+        String oldBairro = this.bairro;
         this.bairro = bairro;
+        changeSupport.firePropertyChange("bairro", oldBairro, bairro);
     }
 
     public String getCep() {
@@ -196,7 +215,9 @@ public class Pessoa implements Serializable {
     }
 
     public void setCep(String cep) {
+        String oldCep = this.cep;
         this.cep = cep;
+        changeSupport.firePropertyChange("cep", oldCep, cep);
     }
 
     public String getCidade() {
@@ -204,7 +225,9 @@ public class Pessoa implements Serializable {
     }
 
     public void setCidade(String cidade) {
+        String oldCidade = this.cidade;
         this.cidade = cidade;
+        changeSupport.firePropertyChange("cidade", oldCidade, cidade);
     }
 
     public String getCpf() {
@@ -212,7 +235,9 @@ public class Pessoa implements Serializable {
     }
 
     public void setCpf(String cpf) {
+        String oldCpf = this.cpf;
         this.cpf = cpf;
+        changeSupport.firePropertyChange("cpf", oldCpf, cpf);
     }
 
     public Date getDataNasc() {
@@ -220,7 +245,9 @@ public class Pessoa implements Serializable {
     }
 
     public void setDataNasc(Date dataNasc) {
+        Date oldDataNasc = this.dataNasc;
         this.dataNasc = dataNasc;
+        changeSupport.firePropertyChange("dataNasc", oldDataNasc, dataNasc);
     }
 
     public String getEmail() {
@@ -228,7 +255,9 @@ public class Pessoa implements Serializable {
     }
 
     public void setEmail(String email) {
+        String oldEmail = this.email;
         this.email = email;
+        changeSupport.firePropertyChange("email", oldEmail, email);
     }
 
     public String getNomeMae() {
@@ -236,7 +265,9 @@ public class Pessoa implements Serializable {
     }
 
     public void setNomeMae(String nomeMae) {
+        String oldNomeMae = this.nomeMae;
         this.nomeMae = nomeMae;
+        changeSupport.firePropertyChange("nomeMae", oldNomeMae, nomeMae);
     }
 
     public String getNomePai() {
@@ -244,7 +275,9 @@ public class Pessoa implements Serializable {
     }
 
     public void setNomePai(String nomePai) {
+        String oldNomePai = this.nomePai;
         this.nomePai = nomePai;
+        changeSupport.firePropertyChange("nomePai", oldNomePai, nomePai);
     }
 
     public Integer getNumeroMatricula() {
@@ -252,7 +285,9 @@ public class Pessoa implements Serializable {
     }
 
     public void setNumeroMatricula(Integer numeroMatricula) {
+        Integer oldNumeroMatricula = this.numeroMatricula;
         this.numeroMatricula = numeroMatricula;
+        changeSupport.firePropertyChange("numeroMatricula", oldNumeroMatricula, numeroMatricula);
     }
 
     public String getObservacoes() {
@@ -260,7 +295,9 @@ public class Pessoa implements Serializable {
     }
 
     public void setObservacoes(String observacoes) {
+        String oldObservacoes = this.observacoes;
         this.observacoes = observacoes;
+        changeSupport.firePropertyChange("observacoes", oldObservacoes, observacoes);
     }
 
     public Date getRgEmissao() {
@@ -268,7 +305,9 @@ public class Pessoa implements Serializable {
     }
 
     public void setRgEmissao(Date rgEmissao) {
+        Date oldRgEmissao = this.rgEmissao;
         this.rgEmissao = rgEmissao;
+        changeSupport.firePropertyChange("rgEmissao", oldRgEmissao, rgEmissao);
     }
 
     public String getRgExpedidor() {
@@ -276,7 +315,9 @@ public class Pessoa implements Serializable {
     }
 
     public void setRgExpedidor(String rgExpedidor) {
+        String oldRgExpedidor = this.rgExpedidor;
         this.rgExpedidor = rgExpedidor;
+        changeSupport.firePropertyChange("rgExpedidor", oldRgExpedidor, rgExpedidor);
     }
 
     public String getRgNumero() {
@@ -284,7 +325,9 @@ public class Pessoa implements Serializable {
     }
 
     public void setRgNumero(String rgNumero) {
+        String oldRgNumero = this.rgNumero;
         this.rgNumero = rgNumero;
+        changeSupport.firePropertyChange("rgNumero", oldRgNumero, rgNumero);
     }
 
     public String getSexo() {
@@ -292,7 +335,9 @@ public class Pessoa implements Serializable {
     }
 
     public void setSexo(String sexo) {
+        String oldSexo = this.sexo;
         this.sexo = sexo;
+        changeSupport.firePropertyChange("sexo", oldSexo, sexo);
     }
 
     public String getTelefone() {
@@ -300,7 +345,9 @@ public class Pessoa implements Serializable {
     }
 
     public void setTelefone(String telefone) {
+        String oldTelefone = this.telefone;
         this.telefone = telefone;
+        changeSupport.firePropertyChange("telefone", oldTelefone, telefone);
     }
 
     public String getUf() {
@@ -308,7 +355,9 @@ public class Pessoa implements Serializable {
     }
 
     public void setUf(String uf) {
+        String oldUf = this.uf;
         this.uf = uf;
+        changeSupport.firePropertyChange("uf", oldUf, uf);
     }
 
     public Endereco getIdEndereco() {
@@ -316,7 +365,9 @@ public class Pessoa implements Serializable {
     }
 
     public void setIdEndereco(Endereco idEndereco) {
+        Endereco oldIdEndereco = this.idEndereco;
         this.idEndereco = idEndereco;
+        changeSupport.firePropertyChange("idEndereco", oldIdEndereco, idEndereco);
     }
 
     @XmlTransient
@@ -360,6 +411,14 @@ public class Pessoa implements Serializable {
     @Override
     public String toString() {
         return "entidades.Pessoa[ id=" + id + " ]";
+    }
+
+    public void addPropertyChangeListener(PropertyChangeListener listener) {
+        changeSupport.addPropertyChangeListener(listener);
+    }
+
+    public void removePropertyChangeListener(PropertyChangeListener listener) {
+        changeSupport.removePropertyChangeListener(listener);
     }
     
 }

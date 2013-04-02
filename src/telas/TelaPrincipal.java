@@ -150,6 +150,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         setBackground(new java.awt.Color(204, 255, 255));
         setBounds(new java.awt.Rectangle(0, 0, 0, 0));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setIconImage(new ImageIcon(getClass().getResource("/img/ico.png")).getImage());
         setResizable(false);
 
         jPanel1.setLayout(new java.awt.GridBagLayout());
