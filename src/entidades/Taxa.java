@@ -13,8 +13,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -25,12 +23,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "taxa")
 @XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Taxa.findAll", query = "SELECT t FROM Taxa t"),
-    @NamedQuery(name = "Taxa.findById", query = "SELECT t FROM Taxa t WHERE t.id = :id"),
-    @NamedQuery(name = "Taxa.findByNome", query = "SELECT t FROM Taxa t WHERE t.nome = :nome"),
-    @NamedQuery(name = "Taxa.findByDescricao", query = "SELECT t FROM Taxa t WHERE t.descricao = :descricao"),
-    @NamedQuery(name = "Taxa.findByValor", query = "SELECT t FROM Taxa t WHERE t.valor = :valor")})
+
 public class Taxa implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id

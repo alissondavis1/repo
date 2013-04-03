@@ -28,11 +28,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @Entity
 @Table(name = "endereco")
 @XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Endereco.findAll", query = "SELECT e FROM Endereco e"),
-    @NamedQuery(name = "Endereco.findById", query = "SELECT e FROM Endereco e WHERE e.id = :id"),
-    @NamedQuery(name = "Endereco.findByTipo", query = "SELECT e FROM Endereco e WHERE e.tipo = :tipo"),
-    @NamedQuery(name = "Endereco.findByNome", query = "SELECT e FROM Endereco e WHERE e.nome = :nome")})
+
 public class Endereco implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id

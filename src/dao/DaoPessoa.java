@@ -113,6 +113,70 @@ public class DaoPessoa implements PessoasInterface {
         }  
     return pessoa;
     }  
+    
+    @Override
+    public List<Pessoa> BuscarPessoaLikeNomeCompleto(String NomeCompleto) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    @Override
+    public List<Pessoa> BuscarPessoaLikeNome(String nome)
+    {
+        List<Pessoa> pessoa = null;
+        Session sessao = null; 
+        Query query = null;
+        Transaction transacao = null;
+        
+        try{
+           sessao = HibernateUtil.getSessionFactory().openSession();
+           transacao = sessao.beginTransaction();
+           query = sessao.createQuery("from Pessoa p where p.nome LIKE '%:nome%'");
+           query.setParameter("nome",nome);
+           pessoa = query.list();
+           transacao.commit(); 
+           
+        }
+        catch(HibernateException e)
+        {
+            System.out.println(e);
+            transacao.rollback();
+        }
+        finally
+        {
+             sessao.close();
+        }  
+    return pessoa;
+    }
+    @Override
+    public List<Pessoa> BuscarPessoaLikeSobrenome(String sobreNome)
+    {
+        List<Pessoa> pessoa = null;
+        Session sessao = null; 
+        Query query = null;
+        Transaction transacao = null;
+        
+        try{
+           sessao = HibernateUtil.getSessionFactory().openSession();
+           transacao = sessao.beginTransaction();
+           query = sessao.createQuery("from Pessoa p where p.nome LIKE '%:sobrenome%'");
+           query.setParameter("sobrenome",sobreNome);
+           pessoa = query.list();
+           transacao.commit(); 
+           
+        }
+        catch(HibernateException e)
+        {
+            System.out.println(e);
+            transacao.rollback();
+        }
+        finally
+        {
+             sessao.close();
+        }  
+    return pessoa;
+    }
+ 
+    
     @Override
     public Pessoa BuscarPessoaId(int id) {
        
@@ -180,6 +244,7 @@ public class DaoPessoa implements PessoasInterface {
         Transaction transacao = null;
         
         try{
+      
            sessao = HibernateUtil.getSessionFactory().openSession();
            transacao = sessao.beginTransaction();
            query = sessao.createQuery("from Pessoa where cpf = :cpf");
@@ -197,6 +262,7 @@ public class DaoPessoa implements PessoasInterface {
         {
              sessao.close();
         }  
+        
     return pessoa;
     }
 
@@ -228,6 +294,7 @@ public class DaoPessoa implements PessoasInterface {
         }  
     return lista;
     }
+
 
 }
  

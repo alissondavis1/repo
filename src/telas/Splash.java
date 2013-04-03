@@ -16,7 +16,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JProgressBar;
 import javax.swing.JWindow;
 import javax.swing.UnsupportedLookAndFeelException;
-import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.netbeans.lib.awtextra.AbsoluteConstraints;
 import org.netbeans.lib.awtextra.AbsoluteLayout;
@@ -37,10 +36,10 @@ public class Splash extends JWindow{
         
         absl = new AbsoluteLayout();
         label = new JLabel();
-        image = new ImageIcon(getClass().getResource("/img/acal.jpg"));
+        image = new ImageIcon(getClass().getResource("/img/acal.png"));
         label.setIcon(image);
         progress = new JProgressBar();
-        progress.setPreferredSize(new Dimension(794,20));
+        progress.setPreferredSize(new Dimension(640,20));
         progress.setBackground(Color.GREEN);
         progress.setString("Carregando");
         progress.setStringPainted(true);
@@ -58,10 +57,7 @@ public class Splash extends JWindow{
                     i++;
                    
                     try {   
-                       
-                  
-                    
-                       
+                            
                         sleep(60);
                     } catch (Exception ex) {
                   

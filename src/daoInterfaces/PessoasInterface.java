@@ -25,5 +25,9 @@ public interface PessoasInterface {
     public Pessoa       BuscarPessoaNome(String nome);
     public Pessoa       BuscarPessoaCpf(String Cpf);
     public List<Pessoa> BuscarTodos();
+    
+    public List<Pessoa> BuscarPessoaLikeNomeCompleto(String NomeCompleto) ;
+    public List<Pessoa> BuscarPessoaLikeNome(String nome);
+    public List<Pessoa> BuscarPessoaLikeSobrenome(String sobreNome);
       
 }

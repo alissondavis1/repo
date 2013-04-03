@@ -13,7 +13,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -28,11 +30,8 @@ import javax.xml.bind.annotation.XmlTransient;
 @Entity
 @Table(name = "categoriasocio")
 @XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Categoriasocio.findAll", query = "SELECT c FROM Categoriasocio c"),
-    @NamedQuery(name = "Categoriasocio.findById", query = "SELECT c FROM Categoriasocio c WHERE c.id = :id"),
-    @NamedQuery(name = "Categoriasocio.findByNome", query = "SELECT c FROM Categoriasocio c WHERE c.nome = :nome"),
-    @NamedQuery(name = "Categoriasocio.findByTaxasId", query = "SELECT c FROM Categoriasocio c WHERE c.taxasId = :taxasId")})
+
+   
 public class Categoriasocio implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -46,9 +45,9 @@ public class Categoriasocio implements Serializable {
     @Basic(optional = false)
     @Column(name = "nome")
     private String nome;
-    @Basic(optional = false)
-    @Column(name = "taxasId")
-    private int taxasId;
+    @JoinColumn(name = "taxasId", referencedColumnName = "id")
+    @ManyToOne
+    private Taxa taxasId;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idCategoriaSocio")
     private List<Socio> socioList;
 
@@ -59,10 +58,9 @@ public class Categoriasocio implements Serializable {
         this.id = id;
     }
 
-    public Categoriasocio(Integer id, String nome, int taxasId) {
+    public Categoriasocio(Integer id, String nome) {
         this.id = id;
         this.nome = nome;
-        this.taxasId = taxasId;
     }
 
     public Integer getId() {
@@ -89,11 +87,11 @@ public class Categoriasocio implements Serializable {
         this.nome = nome;
     }
 
-    public int getTaxasId() {
+    public Taxa getTaxasId() {
         return taxasId;
     }
 
-    public void setTaxasId(int taxasId) {
+    public void setTaxasId(Taxa taxasId) {
         this.taxasId = taxasId;
     }
 
@@ -128,7 +126,7 @@ public class Categoriasocio implements Serializable {
 
     @Override
     public String toString() {
-        return "entidades.Categoriasocio[ id=" + id + " ]";
+        return "entidades.CategoriaSocio[ id=" + id + " ]";
     }
     
 }

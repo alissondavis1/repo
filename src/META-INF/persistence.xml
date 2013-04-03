@@ -19,13 +19,11 @@
     <class>entidades.Entradas</class>
     <class>entidades.Motivoentradas</class>
     <class>entidades.Endereco</class>
-    <class>entidades.MotivoEntrada</class>
     <class>entidades.Cheque</class>
     <class>entidades.Saida</class>
     <class>entidades.Taxa</class>
     <class>entidades.Entrada</class>
     <class>entidades.Conta</class>
-    <class>entidades.MotivoDespesa</class>
     <class>entidades.Categoriasocio</class>
     <class>entidades.Entradaslog</class>
     <class>entidades.Chequeslog</class>

@@ -28,17 +28,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "contaslog")
 @XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Contaslog.findAll", query = "SELECT c FROM Contaslog c"),
-    @NamedQuery(name = "Contaslog.findById", query = "SELECT c FROM Contaslog c WHERE c.id = :id"),
-    @NamedQuery(name = "Contaslog.findByIdOriginal", query = "SELECT c FROM Contaslog c WHERE c.idOriginal = :idOriginal"),
-    @NamedQuery(name = "Contaslog.findByDataPag", query = "SELECT c FROM Contaslog c WHERE c.dataPag = :dataPag"),
-    @NamedQuery(name = "Contaslog.findByDataVence", query = "SELECT c FROM Contaslog c WHERE c.dataVence = :dataVence"),
-    @NamedQuery(name = "Contaslog.findByTaxaSocio", query = "SELECT c FROM Contaslog c WHERE c.taxaSocio = :taxaSocio"),
-    @NamedQuery(name = "Contaslog.findByTaxaRelogio", query = "SELECT c FROM Contaslog c WHERE c.taxaRelogio = :taxaRelogio"),
-    @NamedQuery(name = "Contaslog.findByIdNumeroSocio", query = "SELECT c FROM Contaslog c WHERE c.idNumeroSocio = :idNumeroSocio"),
-    @NamedQuery(name = "Contaslog.findByHoraAlteracao", query = "SELECT c FROM Contaslog c WHERE c.horaAlteracao = :horaAlteracao"),
-    @NamedQuery(name = "Contaslog.findByTipo", query = "SELECT c FROM Contaslog c WHERE c.tipo = :tipo")})
+
 public class Contaslog implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id

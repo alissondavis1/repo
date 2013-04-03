@@ -28,17 +28,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "chequeslog")
 @XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Chequeslog.findAll", query = "SELECT c FROM Chequeslog c"),
-    @NamedQuery(name = "Chequeslog.findById", query = "SELECT c FROM Chequeslog c WHERE c.id = :id"),
-    @NamedQuery(name = "Chequeslog.findByIdOriginal", query = "SELECT c FROM Chequeslog c WHERE c.idOriginal = :idOriginal"),
-    @NamedQuery(name = "Chequeslog.findByDataPagamento", query = "SELECT c FROM Chequeslog c WHERE c.dataPagamento = :dataPagamento"),
-    @NamedQuery(name = "Chequeslog.findByDataVencimento", query = "SELECT c FROM Chequeslog c WHERE c.dataVencimento = :dataVencimento"),
-    @NamedQuery(name = "Chequeslog.findByDataAlteracao", query = "SELECT c FROM Chequeslog c WHERE c.dataAlteracao = :dataAlteracao"),
-    @NamedQuery(name = "Chequeslog.findByNumero", query = "SELECT c FROM Chequeslog c WHERE c.numero = :numero"),
-    @NamedQuery(name = "Chequeslog.findByValor", query = "SELECT c FROM Chequeslog c WHERE c.valor = :valor"),
-    @NamedQuery(name = "Chequeslog.findByIdFuncionarioAlteracao", query = "SELECT c FROM Chequeslog c WHERE c.idFuncionarioAlteracao = :idFuncionarioAlteracao"),
-    @NamedQuery(name = "Chequeslog.findByTipo", query = "SELECT c FROM Chequeslog c WHERE c.tipo = :tipo")})
+
 public class Chequeslog implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
