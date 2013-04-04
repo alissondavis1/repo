@@ -8,6 +8,7 @@ import dao.DaoPessoa;
 import entidades.Pessoa;
 import java.awt.Toolkit;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -51,6 +52,7 @@ public class TelaPesquisa extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
+        jButtonPesquisa = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -85,6 +87,7 @@ public class TelaPesquisa extends javax.swing.JFrame {
             }
         });
         jTable1.setToolTipText("");
+        jTable1.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
         jTable1.getTableHeader().setReorderingAllowed(false);
         jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -101,6 +104,14 @@ public class TelaPesquisa extends javax.swing.JFrame {
             }
         });
 
+        jButtonPesquisa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/pesquisar.gif"))); // NOI18N
+        jButtonPesquisa.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButtonPesquisa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPesquisaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -109,6 +120,8 @@ public class TelaPesquisa extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButtonPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -118,7 +131,10 @@ public class TelaPesquisa extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addContainerGap(56, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jButtonPesquisa)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -131,7 +147,7 @@ public class TelaPesquisa extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 267, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -141,20 +157,43 @@ public class TelaPesquisa extends javax.swing.JFrame {
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
 
-       DefaultTableModel model; 
-      Pessoa p =  new DaoPessoa().BuscarPessoaNome(jTextField1.getText());
-      if(p != null){
-          
+      DefaultTableModel model; 
+     
+      
+      
+      if(!jTextField1.getText().isEmpty()){
+          ArrayList<Pessoa> p1 =  (ArrayList)new DaoPessoa().BuscarPessoaLikeNome(jTextField1.getText());
           model = (DefaultTableModel)jTable1.getModel();
           model.setRowCount(0);
+          if(!p1.isEmpty()){
+          for(Pessoa p : p1){
           if(p.getDataNasc() != null){
           model.addRow(new Object[]{p.getNome(),p.getSobrenome(),p.getCpf(),p.getCidade(),SimpleDateFormat.getDateInstance().format(p.getDataNasc()),p.getEmail(),p.getStatus()});
           }else{
            model.addRow(new Object[]{p.getNome(),p.getSobrenome(),p.getCpf(),p.getCidade(),"nulo",p.getEmail(),p.getStatus()});   
           }
+          }}else{
+              
+              JOptionPane.showMessageDialog(this, "Nenhuma pessoa encontrada");
+          }
+      }else if(jTextField1.getText().equals("")){
+          
+          ArrayList<Pessoa> pessoas = (ArrayList)new DaoPessoa().BuscarTodos();
+          model = (DefaultTableModel)jTable1.getModel();
+          model.setRowCount(0);
+          for(Pessoa pessoa : pessoas){
+              
+           if(pessoa.getDataNasc() != null){
+          model.addRow(new Object[]{pessoa.getNome(),pessoa.getSobrenome(),pessoa.getCpf(),pessoa.getCidade(),SimpleDateFormat.getDateInstance().format(pessoa.getDataNasc()),pessoa.getEmail(),pessoa.getStatus()});
+          }else{
+           model.addRow(new Object[]{pessoa.getNome(),pessoa.getSobrenome(),pessoa.getCpf(),pessoa.getCidade(),"nulo",pessoa.getEmail(),pessoa.getStatus()});   
+          }
+              
+              
+          }
       }else{
           
-          JOptionPane.showMessageDialog(this,"Pessoa não encontrada");
+           JOptionPane.showMessageDialog(this,"Pessoa não encontrada");
       }
         
     }//GEN-LAST:event_jTextField1ActionPerformed
@@ -169,13 +208,58 @@ public class TelaPesquisa extends javax.swing.JFrame {
         if(evt.getClickCount() > 1){
            
            
-          telaCadastro.preencherAbaFuncionarios(new DaoPessoa().BuscarPessoaNome((String)jTable1.getValueAt(0, 0)));
+          telaCadastro.preencherAbaFuncionarios(new DaoPessoa().BuscarPessoaNome((String)jTable1.getValueAt(jTable1.getSelectedRow(), jTable1.getSelectedColumn())));
+          telaCadastro.jButtonFuncionarioApagar.setEnabled(true);
+          telaCadastro.jButtonFuncionarioEditar.setEnabled(true);
           telaCadastro.setEnabled(true);
           telaCadastro.setVisible(true);
           dispose();
           
         }
     }//GEN-LAST:event_jTable1MouseClicked
+
+    private void jButtonPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPesquisaActionPerformed
+        
+          DefaultTableModel model; 
+     
+      
+      
+      if(!jTextField1.getText().isEmpty()){
+          ArrayList<Pessoa> p1 =  (ArrayList)new DaoPessoa().BuscarPessoaLikeNome(jTextField1.getText());
+          model = (DefaultTableModel)jTable1.getModel();
+          model.setRowCount(0);
+          if(!p1.isEmpty()){
+          for(Pessoa p : p1){
+          if(p.getDataNasc() != null){
+          model.addRow(new Object[]{p.getNome(),p.getSobrenome(),p.getCpf(),p.getCidade(),SimpleDateFormat.getDateInstance().format(p.getDataNasc()),p.getEmail(),p.getStatus()});
+          }else{
+           model.addRow(new Object[]{p.getNome(),p.getSobrenome(),p.getCpf(),p.getCidade(),"nulo",p.getEmail(),p.getStatus()});   
+          }
+          }}else{
+              
+              JOptionPane.showMessageDialog(this, "Nenhuma pessoa encontrada");
+          }
+      }else if(jTextField1.getText().equals("")){
+          
+          ArrayList<Pessoa> pessoas = (ArrayList)new DaoPessoa().BuscarTodos();
+          model = (DefaultTableModel)jTable1.getModel();
+          model.setRowCount(0);
+          for(Pessoa pessoa : pessoas){
+              
+           if(pessoa.getDataNasc() != null){
+          model.addRow(new Object[]{pessoa.getNome(),pessoa.getSobrenome(),pessoa.getCpf(),pessoa.getCidade(),SimpleDateFormat.getDateInstance().format(pessoa.getDataNasc()),pessoa.getEmail(),pessoa.getStatus()});
+          }else{
+           model.addRow(new Object[]{pessoa.getNome(),pessoa.getSobrenome(),pessoa.getCpf(),pessoa.getCidade(),"nulo",pessoa.getEmail(),pessoa.getStatus()});   
+          }
+              
+              
+          }
+      }else{
+          
+           JOptionPane.showMessageDialog(this,"Pessoa não encontrada");
+      }
+          
+    }//GEN-LAST:event_jButtonPesquisaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -212,6 +296,7 @@ public class TelaPesquisa extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonPesquisa;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;

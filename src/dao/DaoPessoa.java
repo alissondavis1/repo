@@ -130,8 +130,9 @@ public class DaoPessoa implements PessoasInterface {
         try{
            sessao = HibernateUtil.getSessionFactory().openSession();
            transacao = sessao.beginTransaction();
-           query = sessao.createQuery("from Pessoa p where p.nome LIKE '%:nome%'");
-           query.setParameter("nome",nome);
+           query = sessao.createQuery("from Pessoa p where p.nome LIKE :nome");
+           query.setString("nome","%"+nome+"%");
+           //query.setParameter("nome",nome);
            pessoa = query.list();
            transacao.commit(); 
            

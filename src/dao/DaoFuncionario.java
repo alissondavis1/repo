@@ -91,8 +91,11 @@ public class DaoFuncionario implements FuncionariosInterface{
         }         
     }
 
+    
+   
+
     @Override
-    public Funcionario BuscarFuncionarioCpf(double Cpf) {
+     public Funcionario BuscarFuncionarioCpf(String Cpf) {
         
         Funcionario funcionario = null;
         Session sessao = null; 
@@ -102,8 +105,8 @@ public class DaoFuncionario implements FuncionariosInterface{
         try{
            sessao = HibernateUtil.getSessionFactory().openSession();
            transacao = sessao.beginTransaction();
-           query = sessao.createQuery("from Pessoa where Cpf = :Cpf");
-           query.setParameter("Cpf",Cpf);
+           query = sessao.createQuery("from Pessoa where cpf = :cpf");
+           query.setParameter("cpf",Cpf);
            funcionario = (Funcionario)query.uniqueResult();
            transacao.commit(); 
            
@@ -119,7 +122,7 @@ public class DaoFuncionario implements FuncionariosInterface{
         }  
     return funcionario;
     }
-
+    
     @Override
     public Funcionario BuscarFuncionario(String nome) {
       

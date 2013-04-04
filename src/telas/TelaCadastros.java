@@ -4,10 +4,15 @@
  */
 package telas;
 
+import dao.DaoFuncionario;
 import dao.DaoPessoa;
 import entidades.Endereco;
+import entidades.Funcionario;
 import entidades.Pessoa;
+import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -585,9 +590,14 @@ public class TelaCadastros extends javax.swing.JFrame {
 
             Logradouro3.setText("Numero da Matricula");
 
-            jComboBoxFuncionarioStatus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ","Ativo", "Desativar" }));
+            jComboBoxFuncionarioStatus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ","Ativo", "Desativo" }));
 
             jButtonFuncionarioEditar.setText("Editar");
+            jButtonFuncionarioEditar.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    jButtonFuncionarioEditarActionPerformed(evt);
+                }
+            });
 
             jButtonFuncionarioApagar.setText("Apagar");
 
@@ -601,6 +611,11 @@ public class TelaCadastros extends javax.swing.JFrame {
             });
 
             jButtonFuncionarioCancelar.setText("Cancelar");
+            jButtonFuncionarioCancelar.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    jButtonFuncionarioCancelarActionPerformed(evt);
+                }
+            });
 
             javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
             jPanel4.setLayout(jPanel4Layout);
@@ -680,26 +695,25 @@ public class TelaCadastros extends javax.swing.JFrame {
                 jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel5Layout.createSequentialGroup()
                     .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(Logradouro4)
+                        .addComponent(Logradouro5))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel5Layout.createSequentialGroup()
-                            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(jPanel5Layout.createSequentialGroup()
-                                    .addComponent(Logradouro5)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jTextFieldFuncionarioSalario, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE))
-                                .addGroup(jPanel5Layout.createSequentialGroup()
-                                    .addComponent(Logradouro4)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jTextFieldFuncionarioCargo)))
+                            .addComponent(jTextFieldFuncionarioCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(Logradouro7, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(Logradouro7, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(10, 10, 10))
                         .addGroup(jPanel5Layout.createSequentialGroup()
-                            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(Logradouro6, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jTextFieldFuncionarioDataDeContratacao, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(0, 0, Short.MAX_VALUE)))
-                    .addGap(18, 18, 18)
+                            .addComponent(jTextFieldFuncionarioSalario)
+                            .addGap(194, 194, 194)))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(80, 80, 80))
+                    .addGap(29, 29, 29))
+                .addGroup(jPanel5Layout.createSequentialGroup()
+                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jTextFieldFuncionarioDataDeContratacao, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Logradouro6, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(558, 558, 558))
             );
             jPanel5Layout.setVerticalGroup(
                 jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -707,10 +721,9 @@ public class TelaCadastros extends javax.swing.JFrame {
                     .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addGroup(jPanel5Layout.createSequentialGroup()
                             .addContainerGap()
-                            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(Logradouro4)
-                                    .addComponent(jTextFieldFuncionarioCargo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(Logradouro4)
+                                .addComponent(jTextFieldFuncionarioCargo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(Logradouro7))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -735,7 +748,7 @@ public class TelaCadastros extends javax.swing.JFrame {
                         .addGroup(jPanelFuncLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jPanel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 692, Short.MAX_VALUE)))
+                            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             );
             jPanelFuncLayout.setVerticalGroup(
@@ -1013,12 +1026,13 @@ public class TelaCadastros extends javax.swing.JFrame {
         limparCampos();
         jButtonFuncionarioApagar.setEnabled(false);
         jButtonFuncionarioEditar.setEnabled(false);
+        jButtonFuncionarioNovo.setEnabled(false);
         
     }//GEN-LAST:event_jButtonFuncionarioNovoActionPerformed
 
     private void jTextFieldFuncionarioNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldFuncionarioNomeActionPerformed
        
-        
+      if(jButtonFuncionarioNovo.isEnabled()){  
         String nome = jTextFieldFuncionarioNome.getText();
         if(nome.matches("\\w+\\s\\w+")){
          Pessoa pessoa = new DaoPessoa().BuscarNomeCompleto(jTextFieldFuncionarioNome.getText());
@@ -1033,7 +1047,7 @@ public class TelaCadastros extends javax.swing.JFrame {
              
          }else{
              
-             JOptionPane.showMessageDialog(null,"Funcionário não encontrado");
+             JOptionPane.showMessageDialog(this,"Funcionário não encontrado");
              jTextFieldFuncionarioNome.setText("");
          }
          
@@ -1041,15 +1055,23 @@ public class TelaCadastros extends javax.swing.JFrame {
             
             JOptionPane.showMessageDialog(this, "Para fazer uma pesquisa por nome é necessário digitar o sobrenome");
         }
-        
+      }else{
+          
+          JOptionPane.showMessageDialog(this, "Para realizar uma pesquisa é necessário primeiro cancelar a operação ");
+      }
     }//GEN-LAST:event_jTextFieldFuncionarioNomeActionPerformed
 
     private void jButtonFuncionarioPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFuncionarioPesquisarActionPerformed
-    
+
+        if(jButtonFuncionarioNovo.isEnabled()){
         new TelaPesquisa(this).setVisible(true);
         setVisible(false);
         setEnabled(false);
-    
+        }
+        else{
+            
+            JOptionPane.showMessageDialog(this,"É preciso cancelar a operação de inclusão para realizar pesquisa!");
+        }
     }//GEN-LAST:event_jButtonFuncionarioPesquisarActionPerformed
 
     private void jButtonEnviarLogradouroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEnviarLogradouroActionPerformed
@@ -1063,6 +1085,27 @@ public class TelaCadastros extends javax.swing.JFrame {
         System.out.println(nomeLogradouro + tipoLogradouro + descricaoLogradouro);
         
     }//GEN-LAST:event_jButtonEnviarLogradouroActionPerformed
+
+    private void jButtonFuncionarioCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFuncionarioCancelarActionPerformed
+        editableTextFields(false);
+        jButtonFuncionarioCancelar.setEnabled(false);
+        jButtonFuncionarioEditar.setEnabled(false);
+        jButtonFuncionarioApagar.setEnabled(false);
+        jButtonFuncionarioSalvar.setEnabled(false);
+        jButtonFuncionarioNovo.setEnabled(true);
+        limparCampos();
+    }//GEN-LAST:event_jButtonFuncionarioCancelarActionPerformed
+
+    private void jButtonFuncionarioEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFuncionarioEditarActionPerformed
+        
+        JOptionPane.showMessageDialog(this, "Você está em modo de edição, as informações só serão gravadas depois de clicar em salvar!");
+        editableTextFields(true);
+        jButtonFuncionarioSalvar.setEnabled(true);
+        jButtonFuncionarioCancelar.setEnabled(true);
+        jButtonFuncionarioNovo.setEnabled(false);
+        jButtonFuncionarioApagar.setEnabled(false);
+        
+    }//GEN-LAST:event_jButtonFuncionarioEditarActionPerformed
 
     
     private void editableTextFields(boolean editable){
@@ -1121,7 +1164,7 @@ public class TelaCadastros extends javax.swing.JFrame {
         jTextFieldFuncionarioSalario.setText("");
         jTextFieldFuncionarioSobrenome.setText("");
         jTextFieldFuncionarioTelefone.setText("");
-       
+        jTextAreaFuncionarioObservacoes.setText("");
         jComboBoxFuncionarioSexo.setSelectedIndex(0);
         jComboBoxFuncionarioStatus.setSelectedIndex(0);
         jComboBoxFuncionarioUf.setSelectedIndex(0);
@@ -1154,7 +1197,27 @@ public class TelaCadastros extends javax.swing.JFrame {
          jTextFieldFuncionarioBairro.setText(pessoa.getBairro());
          jComboBoxFuncionarioUf.setSelectedItem(pessoa.getUf());
          jTextFieldFuncionarioCep.setText(pessoa.getCep());
+        for (Iterator<Funcionario> it = pessoa.getFuncionarioList().iterator(); it.hasNext();) {
+            Funcionario func = it.next();
+            jTextFieldFuncionarioCargo.setText(func.getCargo());
+            jTextFieldFuncionarioSalario.setText(NumberFormat.getCurrencyInstance().format(func.getSalario()));
+            if(func.getDataContratacao() != null){
+              
+            jTextFieldFuncionarioDataDeContratacao.setText(SimpleDateFormat.getDateInstance().format(func.getDataContratacao()));    
+            }else{
+            jTextFieldFuncionarioDataDeContratacao.setText("nulo");    
+            }
+            jTextAreaFuncionarioObservacoes.setText(func.getObservacao());
+        }
+        if(pessoa.getStatus()){
+            jComboBoxFuncionarioStatus.setSelectedItem("Ativo");
+        }else{
+            jComboBoxFuncionarioStatus.setSelectedItem("Desativo");
+        }
+        jTextFieldFuncionarioCategoriaSocio.setText(String.valueOf(pessoa.getCategoriaSocio()));
+        jTextFieldFuncionarioNumeroDaMatricula.setText(String.valueOf(pessoa.getNumeroMatricula()));
          
+     
     }
     /**
      * @param args the command line arguments
@@ -1204,9 +1267,9 @@ public class TelaCadastros extends javax.swing.JFrame {
     private java.util.List<entidades.Endereco> enderecoList;
     private javax.persistence.Query enderecoQuery;
     private javax.swing.JButton jButtonEnviarLogradouro;
-    private javax.swing.JButton jButtonFuncionarioApagar;
+    protected javax.swing.JButton jButtonFuncionarioApagar;
     private javax.swing.JButton jButtonFuncionarioCancelar;
-    private javax.swing.JButton jButtonFuncionarioEditar;
+    protected javax.swing.JButton jButtonFuncionarioEditar;
     private javax.swing.JButton jButtonFuncionarioNovo;
     private javax.swing.JButton jButtonFuncionarioPesquisar;
     private javax.swing.JButton jButtonFuncionarioSalvar;

@@ -48,6 +48,7 @@ public class Splash extends JWindow{
         getContentPane().add(progress,absBarra);
         new Thread(){
             
+            @Override
             public void run(){
                 
                 int i = 0;
@@ -89,7 +90,7 @@ public class Splash extends JWindow{
             Session session= null;
             try{
             
-            progress.setString("Testando Conexão com o Banco");
+            progress.setString("Testando Conexão com o Banco de Dados");
             session = HibernateUtil.getSessionFactory().openSession();
            
         }catch(Exception e){
