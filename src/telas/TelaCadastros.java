@@ -9,6 +9,7 @@ import dao.DaoPessoa;
 import entidades.Endereco;
 import entidades.Funcionario;
 import entidades.Pessoa;
+import java.awt.event.ActionEvent;
 import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -45,6 +46,30 @@ public class TelaCadastros extends javax.swing.JFrame {
         this.telaPrincipal.setEnabled(false);
     }
 
+    public TelaCadastros(JFrame telaPrincipal, ActionEvent evt){
+        
+        this(telaPrincipal);
+        
+        switch(evt.getActionCommand()){
+            
+            case "Funcionarios" : jTabbedPane1.setSelectedComponent(jPanelFunc); break;
+            case "Logradouro" : jTabbedPane1.setSelectedComponent(jPanelLog); break;
+            case "Receitas" : jTabbedPane1.setSelectedComponent(jPanelReceitas); break;
+            case "Categoria Socio" : jTabbedPane1.setSelectedComponent(jPanelCategoria_Socio); break;
+            case "Socio" : jTabbedPane1.setSelectedComponent(jPanelSocio); break;
+            case "Tipo de Despesa" : jTabbedPane1.setSelectedComponent(jPanelTipoDespesa); break;
+            case "Despesa" : jTabbedPane1.setSelectedComponent(jPanelDespesa); break;
+            case "Tipo de Receita" : jTabbedPane1.setSelectedComponent(jPanelTipoReceita); break;
+            case "Receita" : jTabbedPane1.setSelectedComponent(jPanelReceita); break;
+            case "Contrato" : jTabbedPane1.setSelectedComponent(jPanelContrato); break;
+            case "Taxas" : jTabbedPane1.setSelectedComponent(jPanelTaxas); break;    
+                
+            
+            
+        }
+        
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

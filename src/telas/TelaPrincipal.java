@@ -122,18 +122,17 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenuItemReceitas = new javax.swing.JMenuItem();
         jMenuItemCategoria_Socio = new javax.swing.JMenuItem();
         jMenuItemSocio = new javax.swing.JMenuItem();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
-        jMenuItem6 = new javax.swing.JMenuItem();
+        jMenuItemTipoDespesa = new javax.swing.JMenuItem();
+        jMenuItemDespesa = new javax.swing.JMenuItem();
+        jMenuItemTipoReceita = new javax.swing.JMenuItem();
+        jMenuItemReceita = new javax.swing.JMenuItem();
+        jMenuItemContrato = new javax.swing.JMenuItem();
+        jMenuItemTaxas = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItemAgua = new javax.swing.JMenuItem();
         jMenuItemSolicita_Socio = new javax.swing.JMenuItem();
         jMenuItemCaixa = new javax.swing.JMenuItem();
         jMenuItem8 = new javax.swing.JMenuItem();
-        jMenuItem7 = new javax.swing.JMenuItem();
         jSeparator2 = new javax.swing.JPopupMenu.Separator();
         jMenuItemSair = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
@@ -246,56 +245,101 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenuCadastros.setText("Cadastros");
 
         jMenuItemLogradouros.setText("Logradouro");
+        jMenuItemLogradouros.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemLogradourosActionPerformed(evt);
+            }
+        });
         jMenuCadastros.add(jMenuItemLogradouros);
 
         jMenuItemFuncionarios.setText("Funcionarios");
+        jMenuItemFuncionarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemFuncionariosActionPerformed(evt);
+            }
+        });
         jMenuCadastros.add(jMenuItemFuncionarios);
 
         jMenuItemReceitas.setText("Receitas");
+        jMenuItemReceitas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemReceitasActionPerformed(evt);
+            }
+        });
         jMenuCadastros.add(jMenuItemReceitas);
 
         jMenuItemCategoria_Socio.setText("Categoria Socio");
+        jMenuItemCategoria_Socio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemCategoria_SocioActionPerformed(evt);
+            }
+        });
         jMenuCadastros.add(jMenuItemCategoria_Socio);
 
         jMenuItemSocio.setText("Socio");
+        jMenuItemSocio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemSocioActionPerformed(evt);
+            }
+        });
         jMenuCadastros.add(jMenuItemSocio);
 
-        jMenuItem1.setText("Tipo de Despesa");
-        jMenuCadastros.add(jMenuItem1);
+        jMenuItemTipoDespesa.setText("Tipo de Despesa");
+        jMenuItemTipoDespesa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemTipoDespesaActionPerformed(evt);
+            }
+        });
+        jMenuCadastros.add(jMenuItemTipoDespesa);
 
-        jMenuItem2.setText("Despesa");
-        jMenuCadastros.add(jMenuItem2);
+        jMenuItemDespesa.setText("Despesa");
+        jMenuItemDespesa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemDespesaActionPerformed(evt);
+            }
+        });
+        jMenuCadastros.add(jMenuItemDespesa);
 
-        jMenuItem3.setText("Tipo de Receita");
-        jMenuCadastros.add(jMenuItem3);
+        jMenuItemTipoReceita.setText("Tipo de Receita");
+        jMenuItemTipoReceita.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemTipoReceitaActionPerformed(evt);
+            }
+        });
+        jMenuCadastros.add(jMenuItemTipoReceita);
 
-        jMenuItem4.setText("Receita");
-        jMenuCadastros.add(jMenuItem4);
+        jMenuItemReceita.setText("Receita");
+        jMenuItemReceita.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemReceitaActionPerformed(evt);
+            }
+        });
+        jMenuCadastros.add(jMenuItemReceita);
 
-        jMenuItem5.setText("Contrato");
-        jMenuCadastros.add(jMenuItem5);
+        jMenuItemContrato.setText("Contrato");
+        jMenuItemContrato.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemContratoActionPerformed(evt);
+            }
+        });
+        jMenuCadastros.add(jMenuItemContrato);
 
-        jMenuItem6.setText("Taxas");
-        jMenuCadastros.add(jMenuItem6);
+        jMenuItemTaxas.setText("Taxas");
+        jMenuItemTaxas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemTaxasActionPerformed(evt);
+            }
+        });
+        jMenuCadastros.add(jMenuItemTaxas);
 
         jMenu.add(jMenuCadastros);
 
         jMenu2.setText("Solicitações");
 
         jMenuItemAgua.setText("Ligação de Água");
-        jMenuItemAgua.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemAguaActionPerformed(evt);
-            }
-        });
         jMenu2.add(jMenuItemAgua);
 
         jMenuItemSolicita_Socio.setText("Filiação de Sócio");
-        jMenuItemSolicita_Socio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemSolicita_SocioActionPerformed(evt);
-            }
-        });
         jMenu2.add(jMenuItemSolicita_Socio);
 
         jMenu.add(jMenu2);
@@ -304,20 +348,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenu.add(jMenuItemCaixa);
 
         jMenuItem8.setText("Gerador de contas");
-        jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem8ActionPerformed(evt);
-            }
-        });
         jMenu.add(jMenuItem8);
-
-        jMenuItem7.setText("TelaTestes");
-        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem7ActionPerformed(evt);
-            }
-        });
-        jMenu.add(jMenuItem7);
         jMenu.add(jSeparator2);
 
         jMenuItemSair.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
@@ -363,14 +394,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         new TelaCadastros(this).setVisible(true);
 
     }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jMenuItemAguaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAguaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItemAguaActionPerformed
-
-    private void jMenuItemSolicita_SocioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSolicita_SocioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItemSolicita_SocioActionPerformed
 
     private void jMenuSairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuSairMouseClicked
         System.exit(0);
@@ -458,14 +481,50 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem8ActionPerformed
+    private void jMenuItemFuncionariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemFuncionariosActionPerformed
+         new TelaCadastros(this, evt).setVisible(true);
+        
+    }//GEN-LAST:event_jMenuItemFuncionariosActionPerformed
 
-    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
-       TelaTestes tl = new TelaTestes();
-       tl.setVisible(true);
-    }//GEN-LAST:event_jMenuItem7ActionPerformed
+    private void jMenuItemLogradourosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemLogradourosActionPerformed
+         new TelaCadastros(this, evt).setVisible(true); 
+    }//GEN-LAST:event_jMenuItemLogradourosActionPerformed
+
+    private void jMenuItemReceitasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemReceitasActionPerformed
+        new TelaCadastros(this, evt).setVisible(true);
+    }//GEN-LAST:event_jMenuItemReceitasActionPerformed
+
+    private void jMenuItemCategoria_SocioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCategoria_SocioActionPerformed
+        new TelaCadastros(this, evt).setVisible(true);
+    }//GEN-LAST:event_jMenuItemCategoria_SocioActionPerformed
+
+    private void jMenuItemSocioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSocioActionPerformed
+        new TelaCadastros(this, evt).setVisible(true);
+    }//GEN-LAST:event_jMenuItemSocioActionPerformed
+
+    private void jMenuItemTipoDespesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemTipoDespesaActionPerformed
+        new TelaCadastros(this, evt).setVisible(true);
+    }//GEN-LAST:event_jMenuItemTipoDespesaActionPerformed
+
+    private void jMenuItemDespesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemDespesaActionPerformed
+        new TelaCadastros(this, evt).setVisible(true);
+    }//GEN-LAST:event_jMenuItemDespesaActionPerformed
+
+    private void jMenuItemTipoReceitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemTipoReceitaActionPerformed
+       new TelaCadastros(this, evt).setVisible(true);
+    }//GEN-LAST:event_jMenuItemTipoReceitaActionPerformed
+
+    private void jMenuItemReceitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemReceitaActionPerformed
+        new TelaCadastros(this, evt).setVisible(true);
+    }//GEN-LAST:event_jMenuItemReceitaActionPerformed
+
+    private void jMenuItemContratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemContratoActionPerformed
+       new TelaCadastros(this, evt).setVisible(true);
+    }//GEN-LAST:event_jMenuItemContratoActionPerformed
+
+    private void jMenuItemTaxasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemTaxasActionPerformed
+        new TelaCadastros(this, evt).setVisible(true);
+    }//GEN-LAST:event_jMenuItemTaxasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -524,23 +583,22 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu jMenuCadastros;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
-    private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItemAgua;
     private javax.swing.JMenuItem jMenuItemCaixa;
     private javax.swing.JMenuItem jMenuItemCategoria_Socio;
+    private javax.swing.JMenuItem jMenuItemContrato;
+    private javax.swing.JMenuItem jMenuItemDespesa;
     private javax.swing.JMenuItem jMenuItemFuncionarios;
     private javax.swing.JMenuItem jMenuItemLogradouros;
+    private javax.swing.JMenuItem jMenuItemReceita;
     private javax.swing.JMenuItem jMenuItemReceitas;
     private javax.swing.JMenuItem jMenuItemSair;
     private javax.swing.JMenuItem jMenuItemSocio;
     private javax.swing.JMenuItem jMenuItemSolicita_Socio;
+    private javax.swing.JMenuItem jMenuItemTaxas;
+    private javax.swing.JMenuItem jMenuItemTipoDespesa;
+    private javax.swing.JMenuItem jMenuItemTipoReceita;
     private javax.swing.JMenu jMenuSair;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPopupMenu.Separator jSeparator2;
