@@ -33420,3 +33420,410 @@ org.hibernate.LazyInitializationException: failed to lazily initialize a collect
 15:23:24,170  INFO Environment:681 - Bytecode provider name : cglib
 15:23:24,187  INFO Environment:598 - using JDK 1.4 java.sql.Timestamp handling
 15:23:24,296  INFO Version:15 - Hibernate EntityManager 3.3.2.GA
+17:03:33,803  INFO Version:15 - Hibernate Annotations 3.3.1.GA
+17:03:33,818  INFO Environment:514 - Hibernate 3.2.5
+17:03:33,834  INFO Environment:547 - hibernate.properties not found
+17:03:33,834  INFO Environment:681 - Bytecode provider name : cglib
+17:03:33,850  INFO Environment:598 - using JDK 1.4 java.sql.Timestamp handling
+17:03:34,146  INFO Configuration:1426 - configuring from resource: /hibernate.cfg.xml
+17:03:34,146  INFO Configuration:1403 - Configuration resource: /hibernate.cfg.xml
+17:03:34,427  INFO Configuration:1541 - Configured SessionFactory: null
+17:03:34,583  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Categoriasocio
+17:03:34,598  INFO QueryBinder:64 - Binding Named query: CategoriaSocio.findAll => SELECT c FROM CategoriaSocio c
+17:03:34,598  INFO QueryBinder:64 - Binding Named query: CategoriaSocio.findById => SELECT c FROM CategoriaSocio c WHERE c.id = :id
+17:03:34,614  INFO QueryBinder:64 - Binding Named query: CategoriaSocio.findByNome => SELECT c FROM CategoriaSocio c WHERE c.nome = :nome
+17:03:34,692  INFO EntityBinder:424 - Bind entity entidades.Categoriasocio on table categoriasocio
+17:03:35,051  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Cheque
+17:03:35,051  INFO EntityBinder:424 - Bind entity entidades.Cheque on table cheque
+17:03:35,066  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Chequeslog
+17:03:35,066  INFO EntityBinder:424 - Bind entity entidades.Chequeslog on table chequeslog
+17:03:35,066  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Conta
+17:03:35,066  INFO EntityBinder:424 - Bind entity entidades.Conta on table conta
+17:03:35,082  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Contrato
+17:03:35,082  INFO EntityBinder:424 - Bind entity entidades.Contrato on table contrato
+17:03:35,082  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Endereco
+17:03:35,082  INFO EntityBinder:424 - Bind entity entidades.Endereco on table endereco
+17:03:35,098  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Entrada
+17:03:35,098  INFO EntityBinder:424 - Bind entity entidades.Entrada on table entrada
+17:03:35,098  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Entradaslog
+17:03:35,098  INFO EntityBinder:424 - Bind entity entidades.Entradaslog on table entradaslog
+17:03:35,118  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Funcionario
+17:03:35,119  INFO EntityBinder:424 - Bind entity entidades.Funcionario on table funcionario
+17:03:35,130  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Motivodespesa
+17:03:35,131  INFO QueryBinder:64 - Binding Named query: MotivoDespesa.findAll => SELECT m FROM MotivoDespesa m
+17:03:35,131  INFO QueryBinder:64 - Binding Named query: MotivoDespesa.findById => SELECT m FROM MotivoDespesa m WHERE m.id = :id
+17:03:35,132  INFO QueryBinder:64 - Binding Named query: MotivoDespesa.findByNome => SELECT m FROM MotivoDespesa m WHERE m.nome = :nome
+17:03:35,132  INFO EntityBinder:424 - Bind entity entidades.Motivodespesa on table motivodespesa
+17:03:35,157  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Motivoentrada
+17:03:35,157  INFO QueryBinder:64 - Binding Named query: MotivoEntrada.findAll => SELECT m FROM MotivoEntrada m
+17:03:35,158  INFO QueryBinder:64 - Binding Named query: MotivoEntrada.findById => SELECT m FROM MotivoEntrada m WHERE m.id = :id
+17:03:35,158  INFO QueryBinder:64 - Binding Named query: MotivoEntrada.findByNome => SELECT m FROM MotivoEntrada m WHERE m.nome = :nome
+17:03:35,159  INFO EntityBinder:424 - Bind entity entidades.Motivoentrada on table motivoentrada
+17:03:35,164  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Pessoa
+17:03:35,164  INFO EntityBinder:424 - Bind entity entidades.Pessoa on table pessoa
+17:03:35,222  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Saida
+17:03:35,223  INFO EntityBinder:424 - Bind entity entidades.Saida on table saida
+17:03:35,234  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Saidaslog
+17:03:35,254  INFO EntityBinder:424 - Bind entity entidades.Saidaslog on table saidaslog
+17:03:35,266  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Socio
+17:03:35,267  INFO EntityBinder:424 - Bind entity entidades.Socio on table socio
+17:03:35,279  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Taxa
+17:03:35,280  INFO EntityBinder:424 - Bind entity entidades.Taxa on table taxa
+17:03:35,434  INFO CollectionBinder:651 - Mapping collection: entidades.Categoriasocio.socioList -> socio
+17:03:35,438  INFO CollectionBinder:651 - Mapping collection: entidades.Endereco.pessoaList -> pessoa
+17:03:35,438  INFO CollectionBinder:651 - Mapping collection: entidades.Funcionario.chequeList -> cheque
+17:03:35,458  INFO CollectionBinder:651 - Mapping collection: entidades.Funcionario.entradaList -> entrada
+17:03:35,460  INFO CollectionBinder:651 - Mapping collection: entidades.Funcionario.saidaList -> saida
+17:03:35,461  INFO CollectionBinder:651 - Mapping collection: entidades.Motivodespesa.chequeList -> cheque
+17:03:35,461  INFO CollectionBinder:651 - Mapping collection: entidades.Motivodespesa.saidaList -> saida
+17:03:35,479  INFO CollectionBinder:651 - Mapping collection: entidades.Motivoentrada.entradaList -> entrada
+17:03:35,479  INFO CollectionBinder:651 - Mapping collection: entidades.Pessoa.funcionarioList -> funcionario
+17:03:35,480  INFO CollectionBinder:651 - Mapping collection: entidades.Pessoa.socioList -> socio
+17:03:35,481  INFO CollectionBinder:651 - Mapping collection: entidades.Socio.contaList -> conta
+17:03:35,481  INFO CollectionBinder:651 - Mapping collection: entidades.Socio.entradaList -> entrada
+17:03:35,483  INFO AnnotationConfiguration:365 - Hibernate Validator not found: ignoring
+17:03:35,503  INFO DriverManagerConnectionProvider:41 - Using Hibernate built-in connection pool (not for production use!)
+17:03:35,503  INFO DriverManagerConnectionProvider:42 - Hibernate connection pool size: 20
+17:03:35,504  INFO DriverManagerConnectionProvider:45 - autocommit mode: false
+17:03:35,515  INFO DriverManagerConnectionProvider:80 - using driver: com.mysql.jdbc.Driver at URL: jdbc:mysql://localhost:3306/acal?zeroDateTimeBehavior=convertToNull
+17:03:35,516  INFO DriverManagerConnectionProvider:86 - connection properties: {user=root, password=****}
+17:03:36,063  INFO SettingsFactory:89 - RDBMS: MySQL, version: 5.5.30
+17:03:36,079  INFO SettingsFactory:90 - JDBC driver: MySQL-AB JDBC Driver, version: mysql-connector-java-5.1.18 ( Revision: tonci.grgin@oracle.com-20110930151701-jfj14ddfq48ifkfq )
+17:03:36,094  INFO Dialect:152 - Using dialect: org.hibernate.dialect.MySQLDialect
+17:03:36,110  INFO TransactionFactoryFactory:31 - Using default transaction strategy (direct JDBC transactions)
+17:03:36,110  INFO TransactionManagerLookupFactory:33 - No TransactionManagerLookup configured (in JTA environment, use of read-write or transactional second-level cache is not recommended)
+17:03:36,110  INFO SettingsFactory:143 - Automatic flush during beforeCompletion(): disabled
+17:03:36,110  INFO SettingsFactory:147 - Automatic session close at end of transaction: disabled
+17:03:36,110  INFO SettingsFactory:154 - JDBC batch size: 15
+17:03:36,110  INFO SettingsFactory:157 - JDBC batch updates for versioned data: disabled
+17:03:36,110  INFO SettingsFactory:162 - Scrollable result sets: enabled
+17:03:36,110  INFO SettingsFactory:170 - JDBC3 getGeneratedKeys(): enabled
+17:03:36,126  INFO SettingsFactory:178 - Connection release mode: auto
+17:03:36,126  INFO SettingsFactory:202 - Maximum outer join fetch depth: 2
+17:03:36,126  INFO SettingsFactory:205 - Default batch fetch size: 1
+17:03:36,126  INFO SettingsFactory:209 - Generate SQL with comments: enabled
+17:03:36,126  INFO SettingsFactory:213 - Order SQL updates by primary key: disabled
+17:03:36,126  INFO SettingsFactory:217 - Order SQL inserts for batching: disabled
+17:03:36,126  INFO SettingsFactory:386 - Query translator: org.hibernate.hql.ast.ASTQueryTranslatorFactory
+17:03:36,126  INFO ASTQueryTranslatorFactory:24 - Using ASTQueryTranslatorFactory
+17:03:36,126  INFO SettingsFactory:225 - Query language substitutions: {}
+17:03:36,126  INFO SettingsFactory:230 - JPA-QL strict compliance: disabled
+17:03:36,126  INFO SettingsFactory:235 - Second-level cache: enabled
+17:03:36,126  INFO SettingsFactory:239 - Query cache: disabled
+17:03:36,126  INFO SettingsFactory:373 - Cache provider: org.hibernate.cache.NoCacheProvider
+17:03:36,126  INFO SettingsFactory:254 - Optimize cache for minimal puts: disabled
+17:03:36,126  INFO SettingsFactory:263 - Structured second-level cache entries: disabled
+17:03:36,141  INFO SettingsFactory:283 - Echoing all SQL to stdout
+17:03:36,141  INFO SettingsFactory:290 - Statistics: disabled
+17:03:36,141  INFO SettingsFactory:294 - Deleted entity synthetic identifier rollback: disabled
+17:03:36,141  INFO SettingsFactory:309 - Default entity-mode: pojo
+17:03:36,141  INFO SettingsFactory:313 - Named query checking : enabled
+17:03:36,188  INFO SessionFactoryImpl:161 - building session factory
+17:03:36,843  INFO SessionFactoryObjectFactory:82 - Not binding factory to JNDI, no JNDI name configured
+17:03:37,046 ERROR SessionFactoryImpl:363 - Error in named query: CategoriaSocio.findById
+org.hibernate.hql.ast.QuerySyntaxException: CategoriaSocio is not mapped [SELECT c FROM CategoriaSocio c WHERE c.id = :id]
+	at org.hibernate.hql.ast.util.SessionFactoryHelper.requireClassPersister(SessionFactoryHelper.java:158)
+	at org.hibernate.hql.ast.tree.FromElementFactory.addFromElement(FromElementFactory.java:87)
+	at org.hibernate.hql.ast.tree.FromClause.addFromElement(FromClause.java:70)
+	at org.hibernate.hql.ast.HqlSqlWalker.createFromElement(HqlSqlWalker.java:255)
+	at org.hibernate.hql.antlr.HqlSqlBaseWalker.fromElement(HqlSqlBaseWalker.java:3056)
+	at org.hibernate.hql.antlr.HqlSqlBaseWalker.fromElementList(HqlSqlBaseWalker.java:2945)
+	at org.hibernate.hql.antlr.HqlSqlBaseWalker.fromClause(HqlSqlBaseWalker.java:688)
+	at org.hibernate.hql.antlr.HqlSqlBaseWalker.query(HqlSqlBaseWalker.java:544)
+	at org.hibernate.hql.antlr.HqlSqlBaseWalker.selectStatement(HqlSqlBaseWalker.java:281)
+	at org.hibernate.hql.antlr.HqlSqlBaseWalker.statement(HqlSqlBaseWalker.java:229)
+	at org.hibernate.hql.ast.QueryTranslatorImpl.analyze(QueryTranslatorImpl.java:228)
+	at org.hibernate.hql.ast.QueryTranslatorImpl.doCompile(QueryTranslatorImpl.java:160)
+	at org.hibernate.hql.ast.QueryTranslatorImpl.compile(QueryTranslatorImpl.java:111)
+	at org.hibernate.engine.query.HQLQueryPlan.<init>(HQLQueryPlan.java:77)
+	at org.hibernate.engine.query.HQLQueryPlan.<init>(HQLQueryPlan.java:56)
+	at org.hibernate.engine.query.QueryPlanCache.getHQLQueryPlan(QueryPlanCache.java:72)
+	at org.hibernate.impl.SessionFactoryImpl.checkNamedQueries(SessionFactoryImpl.java:402)
+	at org.hibernate.impl.SessionFactoryImpl.<init>(SessionFactoryImpl.java:352)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:1294)
+	at org.hibernate.cfg.AnnotationConfiguration.buildSessionFactory(AnnotationConfiguration.java:859)
+	at util.HibernateUtil.<clinit>(HibernateUtil.java:24)
+	at telas.Splash$2.run(Splash.java:94)
+17:03:37,046 ERROR SessionFactoryImpl:363 - Error in named query: MotivoDespesa.findAll
+org.hibernate.hql.ast.QuerySyntaxException: MotivoDespesa is not mapped [SELECT m FROM MotivoDespesa m]
+	at org.hibernate.hql.ast.util.SessionFactoryHelper.requireClassPersister(SessionFactoryHelper.java:158)
+	at org.hibernate.hql.ast.tree.FromElementFactory.addFromElement(FromElementFactory.java:87)
+	at org.hibernate.hql.ast.tree.FromClause.addFromElement(FromClause.java:70)
+	at org.hibernate.hql.ast.HqlSqlWalker.createFromElement(HqlSqlWalker.java:255)
+	at org.hibernate.hql.antlr.HqlSqlBaseWalker.fromElement(HqlSqlBaseWalker.java:3056)
+	at org.hibernate.hql.antlr.HqlSqlBaseWalker.fromElementList(HqlSqlBaseWalker.java:2945)
+	at org.hibernate.hql.antlr.HqlSqlBaseWalker.fromClause(HqlSqlBaseWalker.java:688)
+	at org.hibernate.hql.antlr.HqlSqlBaseWalker.query(HqlSqlBaseWalker.java:544)
+	at org.hibernate.hql.antlr.HqlSqlBaseWalker.selectStatement(HqlSqlBaseWalker.java:281)
+	at org.hibernate.hql.antlr.HqlSqlBaseWalker.statement(HqlSqlBaseWalker.java:229)
+	at org.hibernate.hql.ast.QueryTranslatorImpl.analyze(QueryTranslatorImpl.java:228)
+	at org.hibernate.hql.ast.QueryTranslatorImpl.doCompile(QueryTranslatorImpl.java:160)
+	at org.hibernate.hql.ast.QueryTranslatorImpl.compile(QueryTranslatorImpl.java:111)
+	at org.hibernate.engine.query.HQLQueryPlan.<init>(HQLQueryPlan.java:77)
+	at org.hibernate.engine.query.HQLQueryPlan.<init>(HQLQueryPlan.java:56)
+	at org.hibernate.engine.query.QueryPlanCache.getHQLQueryPlan(QueryPlanCache.java:72)
+	at org.hibernate.impl.SessionFactoryImpl.checkNamedQueries(SessionFactoryImpl.java:402)
+	at org.hibernate.impl.SessionFactoryImpl.<init>(SessionFactoryImpl.java:352)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:1294)
+	at org.hibernate.cfg.AnnotationConfiguration.buildSessionFactory(AnnotationConfiguration.java:859)
+	at util.HibernateUtil.<clinit>(HibernateUtil.java:24)
+	at telas.Splash$2.run(Splash.java:94)
+17:03:37,046 ERROR SessionFactoryImpl:363 - Error in named query: MotivoEntrada.findByNome
+org.hibernate.hql.ast.QuerySyntaxException: MotivoEntrada is not mapped [SELECT m FROM MotivoEntrada m WHERE m.nome = :nome]
+	at org.hibernate.hql.ast.util.SessionFactoryHelper.requireClassPersister(SessionFactoryHelper.java:158)
+	at org.hibernate.hql.ast.tree.FromElementFactory.addFromElement(FromElementFactory.java:87)
+	at org.hibernate.hql.ast.tree.FromClause.addFromElement(FromClause.java:70)
+	at org.hibernate.hql.ast.HqlSqlWalker.createFromElement(HqlSqlWalker.java:255)
+	at org.hibernate.hql.antlr.HqlSqlBaseWalker.fromElement(HqlSqlBaseWalker.java:3056)
+	at org.hibernate.hql.antlr.HqlSqlBaseWalker.fromElementList(HqlSqlBaseWalker.java:2945)
+	at org.hibernate.hql.antlr.HqlSqlBaseWalker.fromClause(HqlSqlBaseWalker.java:688)
+	at org.hibernate.hql.antlr.HqlSqlBaseWalker.query(HqlSqlBaseWalker.java:544)
+	at org.hibernate.hql.antlr.HqlSqlBaseWalker.selectStatement(HqlSqlBaseWalker.java:281)
+	at org.hibernate.hql.antlr.HqlSqlBaseWalker.statement(HqlSqlBaseWalker.java:229)
+	at org.hibernate.hql.ast.QueryTranslatorImpl.analyze(QueryTranslatorImpl.java:228)
+	at org.hibernate.hql.ast.QueryTranslatorImpl.doCompile(QueryTranslatorImpl.java:160)
+	at org.hibernate.hql.ast.QueryTranslatorImpl.compile(QueryTranslatorImpl.java:111)
+	at org.hibernate.engine.query.HQLQueryPlan.<init>(HQLQueryPlan.java:77)
+	at org.hibernate.engine.query.HQLQueryPlan.<init>(HQLQueryPlan.java:56)
+	at org.hibernate.engine.query.QueryPlanCache.getHQLQueryPlan(QueryPlanCache.java:72)
+	at org.hibernate.impl.SessionFactoryImpl.checkNamedQueries(SessionFactoryImpl.java:402)
+	at org.hibernate.impl.SessionFactoryImpl.<init>(SessionFactoryImpl.java:352)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:1294)
+	at org.hibernate.cfg.AnnotationConfiguration.buildSessionFactory(AnnotationConfiguration.java:859)
+	at util.HibernateUtil.<clinit>(HibernateUtil.java:24)
+	at telas.Splash$2.run(Splash.java:94)
+17:03:37,046 ERROR SessionFactoryImpl:363 - Error in named query: CategoriaSocio.findAll
+org.hibernate.hql.ast.QuerySyntaxException: CategoriaSocio is not mapped [SELECT c FROM CategoriaSocio c]
+	at org.hibernate.hql.ast.util.SessionFactoryHelper.requireClassPersister(SessionFactoryHelper.java:158)
+	at org.hibernate.hql.ast.tree.FromElementFactory.addFromElement(FromElementFactory.java:87)
+	at org.hibernate.hql.ast.tree.FromClause.addFromElement(FromClause.java:70)
+	at org.hibernate.hql.ast.HqlSqlWalker.createFromElement(HqlSqlWalker.java:255)
+	at org.hibernate.hql.antlr.HqlSqlBaseWalker.fromElement(HqlSqlBaseWalker.java:3056)
+	at org.hibernate.hql.antlr.HqlSqlBaseWalker.fromElementList(HqlSqlBaseWalker.java:2945)
+	at org.hibernate.hql.antlr.HqlSqlBaseWalker.fromClause(HqlSqlBaseWalker.java:688)
+	at org.hibernate.hql.antlr.HqlSqlBaseWalker.query(HqlSqlBaseWalker.java:544)
+	at org.hibernate.hql.antlr.HqlSqlBaseWalker.selectStatement(HqlSqlBaseWalker.java:281)
+	at org.hibernate.hql.antlr.HqlSqlBaseWalker.statement(HqlSqlBaseWalker.java:229)
+	at org.hibernate.hql.ast.QueryTranslatorImpl.analyze(QueryTranslatorImpl.java:228)
+	at org.hibernate.hql.ast.QueryTranslatorImpl.doCompile(QueryTranslatorImpl.java:160)
+	at org.hibernate.hql.ast.QueryTranslatorImpl.compile(QueryTranslatorImpl.java:111)
+	at org.hibernate.engine.query.HQLQueryPlan.<init>(HQLQueryPlan.java:77)
+	at org.hibernate.engine.query.HQLQueryPlan.<init>(HQLQueryPlan.java:56)
+	at org.hibernate.engine.query.QueryPlanCache.getHQLQueryPlan(QueryPlanCache.java:72)
+	at org.hibernate.impl.SessionFactoryImpl.checkNamedQueries(SessionFactoryImpl.java:402)
+	at org.hibernate.impl.SessionFactoryImpl.<init>(SessionFactoryImpl.java:352)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:1294)
+	at org.hibernate.cfg.AnnotationConfiguration.buildSessionFactory(AnnotationConfiguration.java:859)
+	at util.HibernateUtil.<clinit>(HibernateUtil.java:24)
+	at telas.Splash$2.run(Splash.java:94)
+17:03:37,795 ERROR SessionFactoryImpl:363 - Error in named query: MotivoDespesa.findByNome
+org.hibernate.hql.ast.QuerySyntaxException: MotivoDespesa is not mapped [SELECT m FROM MotivoDespesa m WHERE m.nome = :nome]
+	at org.hibernate.hql.ast.util.SessionFactoryHelper.requireClassPersister(SessionFactoryHelper.java:158)
+	at org.hibernate.hql.ast.tree.FromElementFactory.addFromElement(FromElementFactory.java:87)
+	at org.hibernate.hql.ast.tree.FromClause.addFromElement(FromClause.java:70)
+	at org.hibernate.hql.ast.HqlSqlWalker.createFromElement(HqlSqlWalker.java:255)
+	at org.hibernate.hql.antlr.HqlSqlBaseWalker.fromElement(HqlSqlBaseWalker.java:3056)
+	at org.hibernate.hql.antlr.HqlSqlBaseWalker.fromElementList(HqlSqlBaseWalker.java:2945)
+	at org.hibernate.hql.antlr.HqlSqlBaseWalker.fromClause(HqlSqlBaseWalker.java:688)
+	at org.hibernate.hql.antlr.HqlSqlBaseWalker.query(HqlSqlBaseWalker.java:544)
+	at org.hibernate.hql.antlr.HqlSqlBaseWalker.selectStatement(HqlSqlBaseWalker.java:281)
+	at org.hibernate.hql.antlr.HqlSqlBaseWalker.statement(HqlSqlBaseWalker.java:229)
+	at org.hibernate.hql.ast.QueryTranslatorImpl.analyze(QueryTranslatorImpl.java:228)
+	at org.hibernate.hql.ast.QueryTranslatorImpl.doCompile(QueryTranslatorImpl.java:160)
+	at org.hibernate.hql.ast.QueryTranslatorImpl.compile(QueryTranslatorImpl.java:111)
+	at org.hibernate.engine.query.HQLQueryPlan.<init>(HQLQueryPlan.java:77)
+	at org.hibernate.engine.query.HQLQueryPlan.<init>(HQLQueryPlan.java:56)
+	at org.hibernate.engine.query.QueryPlanCache.getHQLQueryPlan(QueryPlanCache.java:72)
+	at org.hibernate.impl.SessionFactoryImpl.checkNamedQueries(SessionFactoryImpl.java:402)
+	at org.hibernate.impl.SessionFactoryImpl.<init>(SessionFactoryImpl.java:352)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:1294)
+	at org.hibernate.cfg.AnnotationConfiguration.buildSessionFactory(AnnotationConfiguration.java:859)
+	at util.HibernateUtil.<clinit>(HibernateUtil.java:24)
+	at telas.Splash$2.run(Splash.java:94)
+17:03:37,795 ERROR SessionFactoryImpl:363 - Error in named query: MotivoDespesa.findById
+org.hibernate.hql.ast.QuerySyntaxException: MotivoDespesa is not mapped [SELECT m FROM MotivoDespesa m WHERE m.id = :id]
+	at org.hibernate.hql.ast.util.SessionFactoryHelper.requireClassPersister(SessionFactoryHelper.java:158)
+	at org.hibernate.hql.ast.tree.FromElementFactory.addFromElement(FromElementFactory.java:87)
+	at org.hibernate.hql.ast.tree.FromClause.addFromElement(FromClause.java:70)
+	at org.hibernate.hql.ast.HqlSqlWalker.createFromElement(HqlSqlWalker.java:255)
+	at org.hibernate.hql.antlr.HqlSqlBaseWalker.fromElement(HqlSqlBaseWalker.java:3056)
+	at org.hibernate.hql.antlr.HqlSqlBaseWalker.fromElementList(HqlSqlBaseWalker.java:2945)
+	at org.hibernate.hql.antlr.HqlSqlBaseWalker.fromClause(HqlSqlBaseWalker.java:688)
+	at org.hibernate.hql.antlr.HqlSqlBaseWalker.query(HqlSqlBaseWalker.java:544)
+	at org.hibernate.hql.antlr.HqlSqlBaseWalker.selectStatement(HqlSqlBaseWalker.java:281)
+	at org.hibernate.hql.antlr.HqlSqlBaseWalker.statement(HqlSqlBaseWalker.java:229)
+	at org.hibernate.hql.ast.QueryTranslatorImpl.analyze(QueryTranslatorImpl.java:228)
+	at org.hibernate.hql.ast.QueryTranslatorImpl.doCompile(QueryTranslatorImpl.java:160)
+	at org.hibernate.hql.ast.QueryTranslatorImpl.compile(QueryTranslatorImpl.java:111)
+	at org.hibernate.engine.query.HQLQueryPlan.<init>(HQLQueryPlan.java:77)
+	at org.hibernate.engine.query.HQLQueryPlan.<init>(HQLQueryPlan.java:56)
+	at org.hibernate.engine.query.QueryPlanCache.getHQLQueryPlan(QueryPlanCache.java:72)
+	at org.hibernate.impl.SessionFactoryImpl.checkNamedQueries(SessionFactoryImpl.java:402)
+	at org.hibernate.impl.SessionFactoryImpl.<init>(SessionFactoryImpl.java:352)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:1294)
+	at org.hibernate.cfg.AnnotationConfiguration.buildSessionFactory(AnnotationConfiguration.java:859)
+	at util.HibernateUtil.<clinit>(HibernateUtil.java:24)
+	at telas.Splash$2.run(Splash.java:94)
+17:03:37,795 ERROR SessionFactoryImpl:363 - Error in named query: MotivoEntrada.findAll
+org.hibernate.hql.ast.QuerySyntaxException: MotivoEntrada is not mapped [SELECT m FROM MotivoEntrada m]
+	at org.hibernate.hql.ast.util.SessionFactoryHelper.requireClassPersister(SessionFactoryHelper.java:158)
+	at org.hibernate.hql.ast.tree.FromElementFactory.addFromElement(FromElementFactory.java:87)
+	at org.hibernate.hql.ast.tree.FromClause.addFromElement(FromClause.java:70)
+	at org.hibernate.hql.ast.HqlSqlWalker.createFromElement(HqlSqlWalker.java:255)
+	at org.hibernate.hql.antlr.HqlSqlBaseWalker.fromElement(HqlSqlBaseWalker.java:3056)
+	at org.hibernate.hql.antlr.HqlSqlBaseWalker.fromElementList(HqlSqlBaseWalker.java:2945)
+	at org.hibernate.hql.antlr.HqlSqlBaseWalker.fromClause(HqlSqlBaseWalker.java:688)
+	at org.hibernate.hql.antlr.HqlSqlBaseWalker.query(HqlSqlBaseWalker.java:544)
+	at org.hibernate.hql.antlr.HqlSqlBaseWalker.selectStatement(HqlSqlBaseWalker.java:281)
+	at org.hibernate.hql.antlr.HqlSqlBaseWalker.statement(HqlSqlBaseWalker.java:229)
+	at org.hibernate.hql.ast.QueryTranslatorImpl.analyze(QueryTranslatorImpl.java:228)
+	at org.hibernate.hql.ast.QueryTranslatorImpl.doCompile(QueryTranslatorImpl.java:160)
+	at org.hibernate.hql.ast.QueryTranslatorImpl.compile(QueryTranslatorImpl.java:111)
+	at org.hibernate.engine.query.HQLQueryPlan.<init>(HQLQueryPlan.java:77)
+	at org.hibernate.engine.query.HQLQueryPlan.<init>(HQLQueryPlan.java:56)
+	at org.hibernate.engine.query.QueryPlanCache.getHQLQueryPlan(QueryPlanCache.java:72)
+	at org.hibernate.impl.SessionFactoryImpl.checkNamedQueries(SessionFactoryImpl.java:402)
+	at org.hibernate.impl.SessionFactoryImpl.<init>(SessionFactoryImpl.java:352)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:1294)
+	at org.hibernate.cfg.AnnotationConfiguration.buildSessionFactory(AnnotationConfiguration.java:859)
+	at util.HibernateUtil.<clinit>(HibernateUtil.java:24)
+	at telas.Splash$2.run(Splash.java:94)
+17:03:38,060 ERROR SessionFactoryImpl:363 - Error in named query: MotivoEntrada.findById
+org.hibernate.hql.ast.QuerySyntaxException: MotivoEntrada is not mapped [SELECT m FROM MotivoEntrada m WHERE m.id = :id]
+	at org.hibernate.hql.ast.util.SessionFactoryHelper.requireClassPersister(SessionFactoryHelper.java:158)
+	at org.hibernate.hql.ast.tree.FromElementFactory.addFromElement(FromElementFactory.java:87)
+	at org.hibernate.hql.ast.tree.FromClause.addFromElement(FromClause.java:70)
+	at org.hibernate.hql.ast.HqlSqlWalker.createFromElement(HqlSqlWalker.java:255)
+	at org.hibernate.hql.antlr.HqlSqlBaseWalker.fromElement(HqlSqlBaseWalker.java:3056)
+	at org.hibernate.hql.antlr.HqlSqlBaseWalker.fromElementList(HqlSqlBaseWalker.java:2945)
+	at org.hibernate.hql.antlr.HqlSqlBaseWalker.fromClause(HqlSqlBaseWalker.java:688)
+	at org.hibernate.hql.antlr.HqlSqlBaseWalker.query(HqlSqlBaseWalker.java:544)
+	at org.hibernate.hql.antlr.HqlSqlBaseWalker.selectStatement(HqlSqlBaseWalker.java:281)
+	at org.hibernate.hql.antlr.HqlSqlBaseWalker.statement(HqlSqlBaseWalker.java:229)
+	at org.hibernate.hql.ast.QueryTranslatorImpl.analyze(QueryTranslatorImpl.java:228)
+	at org.hibernate.hql.ast.QueryTranslatorImpl.doCompile(QueryTranslatorImpl.java:160)
+	at org.hibernate.hql.ast.QueryTranslatorImpl.compile(QueryTranslatorImpl.java:111)
+	at org.hibernate.engine.query.HQLQueryPlan.<init>(HQLQueryPlan.java:77)
+	at org.hibernate.engine.query.HQLQueryPlan.<init>(HQLQueryPlan.java:56)
+	at org.hibernate.engine.query.QueryPlanCache.getHQLQueryPlan(QueryPlanCache.java:72)
+	at org.hibernate.impl.SessionFactoryImpl.checkNamedQueries(SessionFactoryImpl.java:402)
+	at org.hibernate.impl.SessionFactoryImpl.<init>(SessionFactoryImpl.java:352)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:1294)
+	at org.hibernate.cfg.AnnotationConfiguration.buildSessionFactory(AnnotationConfiguration.java:859)
+	at util.HibernateUtil.<clinit>(HibernateUtil.java:24)
+	at telas.Splash$2.run(Splash.java:94)
+17:03:38,060 ERROR SessionFactoryImpl:363 - Error in named query: CategoriaSocio.findByNome
+org.hibernate.hql.ast.QuerySyntaxException: CategoriaSocio is not mapped [SELECT c FROM CategoriaSocio c WHERE c.nome = :nome]
+	at org.hibernate.hql.ast.util.SessionFactoryHelper.requireClassPersister(SessionFactoryHelper.java:158)
+	at org.hibernate.hql.ast.tree.FromElementFactory.addFromElement(FromElementFactory.java:87)
+	at org.hibernate.hql.ast.tree.FromClause.addFromElement(FromClause.java:70)
+	at org.hibernate.hql.ast.HqlSqlWalker.createFromElement(HqlSqlWalker.java:255)
+	at org.hibernate.hql.antlr.HqlSqlBaseWalker.fromElement(HqlSqlBaseWalker.java:3056)
+	at org.hibernate.hql.antlr.HqlSqlBaseWalker.fromElementList(HqlSqlBaseWalker.java:2945)
+	at org.hibernate.hql.antlr.HqlSqlBaseWalker.fromClause(HqlSqlBaseWalker.java:688)
+	at org.hibernate.hql.antlr.HqlSqlBaseWalker.query(HqlSqlBaseWalker.java:544)
+	at org.hibernate.hql.antlr.HqlSqlBaseWalker.selectStatement(HqlSqlBaseWalker.java:281)
+	at org.hibernate.hql.antlr.HqlSqlBaseWalker.statement(HqlSqlBaseWalker.java:229)
+	at org.hibernate.hql.ast.QueryTranslatorImpl.analyze(QueryTranslatorImpl.java:228)
+	at org.hibernate.hql.ast.QueryTranslatorImpl.doCompile(QueryTranslatorImpl.java:160)
+	at org.hibernate.hql.ast.QueryTranslatorImpl.compile(QueryTranslatorImpl.java:111)
+	at org.hibernate.engine.query.HQLQueryPlan.<init>(HQLQueryPlan.java:77)
+	at org.hibernate.engine.query.HQLQueryPlan.<init>(HQLQueryPlan.java:56)
+	at org.hibernate.engine.query.QueryPlanCache.getHQLQueryPlan(QueryPlanCache.java:72)
+	at org.hibernate.impl.SessionFactoryImpl.checkNamedQueries(SessionFactoryImpl.java:402)
+	at org.hibernate.impl.SessionFactoryImpl.<init>(SessionFactoryImpl.java:352)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:1294)
+	at org.hibernate.cfg.AnnotationConfiguration.buildSessionFactory(AnnotationConfiguration.java:859)
+	at util.HibernateUtil.<clinit>(HibernateUtil.java:24)
+	at telas.Splash$2.run(Splash.java:94)
+17:04:21,105  INFO Version:15 - Hibernate Annotations 3.3.1.GA
+17:04:21,136  INFO Environment:514 - Hibernate 3.2.5
+17:04:21,152  INFO Environment:547 - hibernate.properties not found
+17:04:21,152  INFO Environment:681 - Bytecode provider name : cglib
+17:04:21,167  INFO Environment:598 - using JDK 1.4 java.sql.Timestamp handling
+17:04:21,354  INFO Configuration:1426 - configuring from resource: /hibernate.cfg.xml
+17:04:21,354  INFO Configuration:1403 - Configuration resource: /hibernate.cfg.xml
+17:04:21,510  INFO Configuration:1541 - Configured SessionFactory: null
+17:04:21,620  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Categoriasocio
+17:04:21,682  INFO EntityBinder:424 - Bind entity entidades.Categoriasocio on table categoriasocio
+17:04:21,873  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Cheque
+17:04:21,873  INFO EntityBinder:424 - Bind entity entidades.Cheque on table cheque
+17:04:21,889  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Chequeslog
+17:04:21,889  INFO EntityBinder:424 - Bind entity entidades.Chequeslog on table chequeslog
+17:04:21,889  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Conta
+17:04:21,889  INFO EntityBinder:424 - Bind entity entidades.Conta on table conta
+17:04:21,904  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Contrato
+17:04:21,904  INFO EntityBinder:424 - Bind entity entidades.Contrato on table contrato
+17:04:21,904  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Endereco
+17:04:21,904  INFO EntityBinder:424 - Bind entity entidades.Endereco on table endereco
+17:04:21,904  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Entrada
+17:04:21,920  INFO EntityBinder:424 - Bind entity entidades.Entrada on table entrada
+17:04:21,920  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Entradaslog
+17:04:21,920  INFO EntityBinder:424 - Bind entity entidades.Entradaslog on table entradaslog
+17:04:21,920  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Funcionario
+17:04:21,920  INFO EntityBinder:424 - Bind entity entidades.Funcionario on table funcionario
+17:04:21,936  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Motivodespesa
+17:04:21,936  INFO EntityBinder:424 - Bind entity entidades.Motivodespesa on table motivodespesa
+17:04:21,936  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Motivoentrada
+17:04:21,951  INFO EntityBinder:424 - Bind entity entidades.Motivoentrada on table motivoentrada
+17:04:21,951  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Pessoa
+17:04:21,951  INFO EntityBinder:424 - Bind entity entidades.Pessoa on table pessoa
+17:04:21,982  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Saida
+17:04:21,982  INFO EntityBinder:424 - Bind entity entidades.Saida on table saida
+17:04:21,982  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Saidaslog
+17:04:21,982  INFO EntityBinder:424 - Bind entity entidades.Saidaslog on table saidaslog
+17:04:21,982  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Socio
+17:04:21,998  INFO EntityBinder:424 - Bind entity entidades.Socio on table socio
+17:04:21,998  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Taxa
+17:04:21,998  INFO EntityBinder:424 - Bind entity entidades.Taxa on table taxa
+17:04:22,092  INFO CollectionBinder:651 - Mapping collection: entidades.Categoriasocio.socioList -> socio
+17:04:22,107  INFO CollectionBinder:651 - Mapping collection: entidades.Endereco.pessoaList -> pessoa
+17:04:22,107  INFO CollectionBinder:651 - Mapping collection: entidades.Funcionario.chequeList -> cheque
+17:04:22,107  INFO CollectionBinder:651 - Mapping collection: entidades.Funcionario.entradaList -> entrada
+17:04:22,107  INFO CollectionBinder:651 - Mapping collection: entidades.Funcionario.saidaList -> saida
+17:04:22,107  INFO CollectionBinder:651 - Mapping collection: entidades.Motivodespesa.chequeList -> cheque
+17:04:22,107  INFO CollectionBinder:651 - Mapping collection: entidades.Motivodespesa.saidaList -> saida
+17:04:22,107  INFO CollectionBinder:651 - Mapping collection: entidades.Motivoentrada.entradaList -> entrada
+17:04:22,107  INFO CollectionBinder:651 - Mapping collection: entidades.Pessoa.funcionarioList -> funcionario
+17:04:22,107  INFO CollectionBinder:651 - Mapping collection: entidades.Pessoa.socioList -> socio
+17:04:22,107  INFO CollectionBinder:651 - Mapping collection: entidades.Socio.contaList -> conta
+17:04:22,107  INFO CollectionBinder:651 - Mapping collection: entidades.Socio.entradaList -> entrada
+17:04:22,107  INFO AnnotationConfiguration:365 - Hibernate Validator not found: ignoring
+17:04:22,138  INFO DriverManagerConnectionProvider:41 - Using Hibernate built-in connection pool (not for production use!)
+17:04:22,138  INFO DriverManagerConnectionProvider:42 - Hibernate connection pool size: 20
+17:04:22,138  INFO DriverManagerConnectionProvider:45 - autocommit mode: false
+17:04:22,138  INFO DriverManagerConnectionProvider:80 - using driver: com.mysql.jdbc.Driver at URL: jdbc:mysql://localhost:3306/acal?zeroDateTimeBehavior=convertToNull
+17:04:22,138  INFO DriverManagerConnectionProvider:86 - connection properties: {user=root, password=****}
+17:04:22,544  INFO SettingsFactory:89 - RDBMS: MySQL, version: 5.5.30
+17:04:22,544  INFO SettingsFactory:90 - JDBC driver: MySQL-AB JDBC Driver, version: mysql-connector-java-5.1.18 ( Revision: tonci.grgin@oracle.com-20110930151701-jfj14ddfq48ifkfq )
+17:04:22,560  INFO Dialect:152 - Using dialect: org.hibernate.dialect.MySQLDialect
+17:04:22,575  INFO TransactionFactoryFactory:31 - Using default transaction strategy (direct JDBC transactions)
+17:04:22,575  INFO TransactionManagerLookupFactory:33 - No TransactionManagerLookup configured (in JTA environment, use of read-write or transactional second-level cache is not recommended)
+17:04:22,575  INFO SettingsFactory:143 - Automatic flush during beforeCompletion(): disabled
+17:04:22,575  INFO SettingsFactory:147 - Automatic session close at end of transaction: disabled
+17:04:22,575  INFO SettingsFactory:154 - JDBC batch size: 15
+17:04:22,575  INFO SettingsFactory:157 - JDBC batch updates for versioned data: disabled
+17:04:22,575  INFO SettingsFactory:162 - Scrollable result sets: enabled
+17:04:22,591  INFO SettingsFactory:170 - JDBC3 getGeneratedKeys(): enabled
+17:04:22,591  INFO SettingsFactory:178 - Connection release mode: auto
+17:04:22,591  INFO SettingsFactory:202 - Maximum outer join fetch depth: 2
+17:04:22,591  INFO SettingsFactory:205 - Default batch fetch size: 1
+17:04:22,591  INFO SettingsFactory:209 - Generate SQL with comments: enabled
+17:04:22,591  INFO SettingsFactory:213 - Order SQL updates by primary key: disabled
+17:04:22,591  INFO SettingsFactory:217 - Order SQL inserts for batching: disabled
+17:04:22,591  INFO SettingsFactory:386 - Query translator: org.hibernate.hql.ast.ASTQueryTranslatorFactory
+17:04:22,591  INFO ASTQueryTranslatorFactory:24 - Using ASTQueryTranslatorFactory
+17:04:22,591  INFO SettingsFactory:225 - Query language substitutions: {}
+17:04:22,591  INFO SettingsFactory:230 - JPA-QL strict compliance: disabled
+17:04:22,591  INFO SettingsFactory:235 - Second-level cache: enabled
+17:04:22,591  INFO SettingsFactory:239 - Query cache: disabled
+17:04:22,591  INFO SettingsFactory:373 - Cache provider: org.hibernate.cache.NoCacheProvider
+17:04:22,591  INFO SettingsFactory:254 - Optimize cache for minimal puts: disabled
+17:04:22,591  INFO SettingsFactory:263 - Structured second-level cache entries: disabled
+17:04:22,606  INFO SettingsFactory:283 - Echoing all SQL to stdout
+17:04:22,606  INFO SettingsFactory:290 - Statistics: disabled
+17:04:22,606  INFO SettingsFactory:294 - Deleted entity synthetic identifier rollback: disabled
+17:04:22,606  INFO SettingsFactory:309 - Default entity-mode: pojo
+17:04:22,606  INFO SettingsFactory:313 - Named query checking : enabled
+17:04:22,653  INFO SessionFactoryImpl:161 - building session factory
+17:04:23,324  INFO SessionFactoryObjectFactory:82 - Not binding factory to JNDI, no JNDI name configured

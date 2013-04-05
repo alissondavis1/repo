@@ -16,8 +16,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -31,7 +29,6 @@ import javax.xml.bind.annotation.XmlTransient;
 @Table(name = "categoriasocio")
 @XmlRootElement
 
-   
 public class Categoriasocio implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
