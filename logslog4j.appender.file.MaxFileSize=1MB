@@ -33827,3 +33827,94 @@ org.hibernate.hql.ast.QuerySyntaxException: CategoriaSocio is not mapped [SELECT
 17:04:22,606  INFO SettingsFactory:313 - Named query checking : enabled
 17:04:22,653  INFO SessionFactoryImpl:161 - building session factory
 17:04:23,324  INFO SessionFactoryObjectFactory:82 - Not binding factory to JNDI, no JNDI name configured
+17:27:42,821  INFO Version:15 - Hibernate Annotations 3.3.1.GA
+17:27:42,853  INFO Environment:514 - Hibernate 3.2.5
+17:27:42,853  INFO Environment:547 - hibernate.properties not found
+17:27:42,868  INFO Environment:681 - Bytecode provider name : cglib
+17:27:42,868  INFO Environment:598 - using JDK 1.4 java.sql.Timestamp handling
+17:27:42,993  INFO Configuration:1426 - configuring from resource: /hibernate.cfg.xml
+17:27:42,993  INFO Configuration:1403 - Configuration resource: /hibernate.cfg.xml
+17:27:43,305  INFO Configuration:1541 - Configured SessionFactory: null
+17:27:43,414  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Categoriasocio
+17:27:43,477  INFO EntityBinder:424 - Bind entity entidades.Categoriasocio on table categoriasocio
+17:27:43,679  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Cheque
+17:27:43,679  INFO EntityBinder:424 - Bind entity entidades.Cheque on table cheque
+17:27:43,711  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Chequeslog
+17:27:43,711  INFO EntityBinder:424 - Bind entity entidades.Chequeslog on table chequeslog
+17:27:43,711  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Conta
+17:27:43,711  INFO EntityBinder:424 - Bind entity entidades.Conta on table conta
+17:27:43,726  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Contrato
+17:27:43,726  INFO EntityBinder:424 - Bind entity entidades.Contrato on table contrato
+17:27:43,726  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Endereco
+17:27:43,726  INFO EntityBinder:424 - Bind entity entidades.Endereco on table endereco
+17:27:43,726  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Entrada
+17:27:43,726  INFO EntityBinder:424 - Bind entity entidades.Entrada on table entrada
+17:27:43,742  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Entradaslog
+17:27:43,742  INFO EntityBinder:424 - Bind entity entidades.Entradaslog on table entradaslog
+17:27:43,742  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Funcionario
+17:27:43,757  INFO EntityBinder:424 - Bind entity entidades.Funcionario on table funcionario
+17:27:43,757  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Motivodespesa
+17:27:43,773  INFO EntityBinder:424 - Bind entity entidades.Motivodespesa on table motivodespesa
+17:27:43,773  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Motivoentrada
+17:27:43,773  INFO EntityBinder:424 - Bind entity entidades.Motivoentrada on table motivoentrada
+17:27:43,789  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Pessoa
+17:27:43,789  INFO EntityBinder:424 - Bind entity entidades.Pessoa on table pessoa
+17:27:43,804  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Saida
+17:27:43,804  INFO EntityBinder:424 - Bind entity entidades.Saida on table saida
+17:27:43,835  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Saidaslog
+17:27:43,835  INFO EntityBinder:424 - Bind entity entidades.Saidaslog on table saidaslog
+17:27:43,851  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Socio
+17:27:43,851  INFO EntityBinder:424 - Bind entity entidades.Socio on table socio
+17:27:43,867  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Taxa
+17:27:43,867  INFO EntityBinder:424 - Bind entity entidades.Taxa on table taxa
+17:27:43,991  INFO CollectionBinder:651 - Mapping collection: entidades.Categoriasocio.socioList -> socio
+17:27:43,991  INFO CollectionBinder:651 - Mapping collection: entidades.Endereco.pessoaList -> pessoa
+17:27:43,991  INFO CollectionBinder:651 - Mapping collection: entidades.Funcionario.chequeList -> cheque
+17:27:43,991  INFO CollectionBinder:651 - Mapping collection: entidades.Funcionario.entradaList -> entrada
+17:27:43,991  INFO CollectionBinder:651 - Mapping collection: entidades.Funcionario.saidaList -> saida
+17:27:43,991  INFO CollectionBinder:651 - Mapping collection: entidades.Motivodespesa.chequeList -> cheque
+17:27:43,991  INFO CollectionBinder:651 - Mapping collection: entidades.Motivodespesa.saidaList -> saida
+17:27:43,991  INFO CollectionBinder:651 - Mapping collection: entidades.Motivoentrada.entradaList -> entrada
+17:27:44,007  INFO CollectionBinder:651 - Mapping collection: entidades.Pessoa.funcionarioList -> funcionario
+17:27:44,007  INFO CollectionBinder:651 - Mapping collection: entidades.Pessoa.socioList -> socio
+17:27:44,007  INFO CollectionBinder:651 - Mapping collection: entidades.Socio.contaList -> conta
+17:27:44,007  INFO CollectionBinder:651 - Mapping collection: entidades.Socio.entradaList -> entrada
+17:27:44,007  INFO AnnotationConfiguration:365 - Hibernate Validator not found: ignoring
+17:27:44,023  INFO DriverManagerConnectionProvider:41 - Using Hibernate built-in connection pool (not for production use!)
+17:27:44,023  INFO DriverManagerConnectionProvider:42 - Hibernate connection pool size: 20
+17:27:44,023  INFO DriverManagerConnectionProvider:45 - autocommit mode: false
+17:27:44,038  INFO DriverManagerConnectionProvider:80 - using driver: com.mysql.jdbc.Driver at URL: jdbc:mysql://localhost:3306/acal?zeroDateTimeBehavior=convertToNull
+17:27:44,038  INFO DriverManagerConnectionProvider:86 - connection properties: {user=root, password=****}
+17:27:44,662  INFO SettingsFactory:89 - RDBMS: MySQL, version: 5.5.30
+17:27:44,662  INFO SettingsFactory:90 - JDBC driver: MySQL-AB JDBC Driver, version: mysql-connector-java-5.1.18 ( Revision: tonci.grgin@oracle.com-20110930151701-jfj14ddfq48ifkfq )
+17:27:44,693  INFO Dialect:152 - Using dialect: org.hibernate.dialect.MySQLDialect
+17:27:44,709  INFO TransactionFactoryFactory:31 - Using default transaction strategy (direct JDBC transactions)
+17:27:44,709  INFO TransactionManagerLookupFactory:33 - No TransactionManagerLookup configured (in JTA environment, use of read-write or transactional second-level cache is not recommended)
+17:27:44,709  INFO SettingsFactory:143 - Automatic flush during beforeCompletion(): disabled
+17:27:44,709  INFO SettingsFactory:147 - Automatic session close at end of transaction: disabled
+17:27:44,709  INFO SettingsFactory:154 - JDBC batch size: 15
+17:27:44,709  INFO SettingsFactory:157 - JDBC batch updates for versioned data: disabled
+17:27:44,709  INFO SettingsFactory:162 - Scrollable result sets: enabled
+17:27:44,709  INFO SettingsFactory:170 - JDBC3 getGeneratedKeys(): enabled
+17:27:44,709  INFO SettingsFactory:178 - Connection release mode: auto
+17:27:44,709  INFO SettingsFactory:202 - Maximum outer join fetch depth: 2
+17:27:44,709  INFO SettingsFactory:205 - Default batch fetch size: 1
+17:27:44,709  INFO SettingsFactory:209 - Generate SQL with comments: enabled
+17:27:44,709  INFO SettingsFactory:213 - Order SQL updates by primary key: disabled
+17:27:44,709  INFO SettingsFactory:217 - Order SQL inserts for batching: disabled
+17:27:44,709  INFO SettingsFactory:386 - Query translator: org.hibernate.hql.ast.ASTQueryTranslatorFactory
+17:27:44,725  INFO ASTQueryTranslatorFactory:24 - Using ASTQueryTranslatorFactory
+17:27:44,725  INFO SettingsFactory:225 - Query language substitutions: {}
+17:27:44,725  INFO SettingsFactory:230 - JPA-QL strict compliance: disabled
+17:27:44,725  INFO SettingsFactory:235 - Second-level cache: enabled
+17:27:44,725  INFO SettingsFactory:239 - Query cache: disabled
+17:27:44,725  INFO SettingsFactory:373 - Cache provider: org.hibernate.cache.NoCacheProvider
+17:27:44,725  INFO SettingsFactory:254 - Optimize cache for minimal puts: disabled
+17:27:44,725  INFO SettingsFactory:263 - Structured second-level cache entries: disabled
+17:27:44,740  INFO SettingsFactory:283 - Echoing all SQL to stdout
+17:27:44,740  INFO SettingsFactory:290 - Statistics: disabled
+17:27:44,740  INFO SettingsFactory:294 - Deleted entity synthetic identifier rollback: disabled
+17:27:44,740  INFO SettingsFactory:309 - Default entity-mode: pojo
+17:27:44,740  INFO SettingsFactory:313 - Named query checking : enabled
+17:27:44,787  INFO SessionFactoryImpl:161 - building session factory
+17:27:45,395  INFO SessionFactoryObjectFactory:82 - Not binding factory to JNDI, no JNDI name configured
