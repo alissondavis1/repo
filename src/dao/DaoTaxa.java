@@ -8,6 +8,7 @@ import daoInterfaces.TaxasInterface;
 import entidades.Taxa;
 import java.util.List;
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import util.HibernateUtil;
@@ -91,17 +92,94 @@ public class DaoTaxa implements TaxasInterface {
 
     @Override
     public Taxa TaxaPorId(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+      
+        Taxa taxa = null;
+        Session sessao = null; 
+        Query query = null;
+        Transaction transacao = null;
+        
+        try{
+           sessao = HibernateUtil.getSessionFactory().openSession();
+           transacao = sessao.beginTransaction();
+           query = sessao.createQuery("from taxa t where t.id = :id");
+           //query.setString("nome","%"+nome+"%");
+           query.setParameter("id",id);
+           taxa = (Taxa) query.uniqueResult();
+           transacao.commit(); 
+           
+        }
+        catch(HibernateException e)
+        {
+            System.out.println(e);
+            transacao.rollback();
+        }
+        finally
+        {
+             sessao.close();
+        }  
+    return taxa;
     }
+    
 
     @Override
     public List<Taxa> TaxasPorNome(String nome) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       
+        List<Taxa> taxa = null;
+        Session sessao = null; 
+        Query query = null;
+        Transaction transacao = null;
+        
+        try{
+           sessao = HibernateUtil.getSessionFactory().openSession();
+           transacao = sessao.beginTransaction();
+           query = sessao.createQuery("from taxa t where t.nome = :nome");
+           query.setString("nome","%"+nome+"%");
+           //query.setParameter("id",id);
+           taxa = query.list();
+           transacao.commit(); 
+           
+        }
+        catch(HibernateException e)
+        {
+            System.out.println(e);
+            transacao.rollback();
+        }
+        finally
+        {
+             sessao.close();
+        }  
+    return taxa;
     }
 
     @Override
     public List<Taxa> TaxasTodas() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+      
+        List<Taxa> taxa = null;
+        Session sessao = null; 
+        Query query = null;
+        Transaction transacao = null;
+        
+        try{
+           sessao = HibernateUtil.getSessionFactory().openSession();
+           transacao = sessao.beginTransaction();
+           query = sessao.createQuery("from taxa ");
+           //query.setString("nome","%"+nome+"%");
+           //query.setParameter("id",id);
+           // taxa = (Taxa) query.uniqueResult();
+           taxa = query.list();
+           transacao.commit(); 
+           
+        }
+        catch(HibernateException e)
+        {
+            System.out.println(e);
+            transacao.rollback();
+        }
+        finally
+        {
+             sessao.close();
+        }  
+    return taxa;
     }
    
     

@@ -5,6 +5,7 @@
 package daoInterfaces;
 
 import entidades.Contaslog;
+import java.util.List;
 
 /**
  *
@@ -13,6 +14,6 @@ import entidades.Contaslog;
 public interface ContaslogInterface {
   
     public Contaslog ListarPorId  (int id);
-    public Contaslog ListarPorNome(String nome);
-    public Contaslog ListarTodas  ();
+    public List<Contaslog> ListarPorTipo(String tipo);
+    public List<Contaslog> ListarTodas  ();
 }

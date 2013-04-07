@@ -133,6 +133,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenuItemSolicita_Socio = new javax.swing.JMenuItem();
         jMenuItemCaixa = new javax.swing.JMenuItem();
         jMenuItem8 = new javax.swing.JMenuItem();
+        jMenuItemTelateste = new javax.swing.JMenuItem();
         jSeparator2 = new javax.swing.JPopupMenu.Separator();
         jMenuItemSair = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
@@ -349,6 +350,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jMenuItem8.setText("Gerador de contas");
         jMenu.add(jMenuItem8);
+
+        jMenuItemTelateste.setText("Teste");
+        jMenuItemTelateste.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemTelatesteActionPerformed(evt);
+            }
+        });
+        jMenu.add(jMenuItemTelateste);
         jMenu.add(jSeparator2);
 
         jMenuItemSair.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
@@ -526,6 +535,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         new TelaCadastros(this, evt).setVisible(true);
     }//GEN-LAST:event_jMenuItemTaxasActionPerformed
 
+    private void jMenuItemTelatesteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemTelatesteActionPerformed
+      TelaTestes t = new TelaTestes();
+      t.setVisible(true);
+    }//GEN-LAST:event_jMenuItemTelatesteActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -597,6 +611,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItemSocio;
     private javax.swing.JMenuItem jMenuItemSolicita_Socio;
     private javax.swing.JMenuItem jMenuItemTaxas;
+    private javax.swing.JMenuItem jMenuItemTelateste;
     private javax.swing.JMenuItem jMenuItemTipoDespesa;
     private javax.swing.JMenuItem jMenuItemTipoReceita;
     private javax.swing.JMenu jMenuSair;

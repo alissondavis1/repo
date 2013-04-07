@@ -21,7 +21,6 @@
     <class>entidades.Endereco</class>
     <class>entidades.Cheque</class>
     <class>entidades.Saida</class>
-    <class>entidades.Taxa</class>
     <class>entidades.Entrada</class>
     <class>entidades.Conta</class>
     <class>entidades.Categoriasocio</class>
@@ -40,6 +39,7 @@
     <class>entidades.Saidaslog</class>
     <class>entidades.Motivoentrada</class>
     <class>entidades.Motivodespesa</class>
+    <class>entidades.Taxa</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/acal?zeroDateTimeBehavior=convertToNull"/>
       <property name="javax.persistence.jdbc.password" value="123"/>

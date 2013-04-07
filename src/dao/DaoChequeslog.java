@@ -49,7 +49,7 @@ public class DaoChequeslog implements ChequeLogsInterface {
         
         
     }
-
+    //testado
     @Override
     public List<Chequeslog> BuscarTodosChequesLog() {
         

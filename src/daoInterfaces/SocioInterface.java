@@ -18,7 +18,7 @@ public interface SocioInterface {
     public void AlterarSocio     (Socio socio);
     public void ApagarSocio      (Socio socio);
    
-    public List<Socio> SociosPorNome(String nome);
+    public List<Socio> SociosPorNomeLike(String nome);
     public List<Socio> SocioPorRua(String Rua);
     public List<Socio> TodosOsSocios();
  

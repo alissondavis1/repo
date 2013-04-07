@@ -9,6 +9,7 @@ import entidades.Conta;
 import java.util.Date;
 import java.util.List;
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import util.HibernateUtil;
@@ -53,7 +54,7 @@ public class DaoContasMensais implements ContasInterface {
             transacao = sessao.beginTransaction();
             sessao.delete(conta); 
             transacao.commit();
-            System.out.println("Salvo com sucesso");  
+            System.out.println("deletado com sucesso");  
         }
         catch(HibernateException e)
         {
@@ -91,9 +92,32 @@ public class DaoContasMensais implements ContasInterface {
     }
 
     @Override
-    public Conta ContasPorId(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    public List<Conta> ContasPorId(int id) {
+          
+        List<Conta> cheque = null;
+        Session sessao = null; 
+        Query query = null;
+        Transaction tx = null;
+        
+        try{
+           sessao = HibernateUtil.getSessionFactory().openSession();
+           tx = sessao.beginTransaction();
+          query = sessao.createQuery("from Conta" );
+           //query.setParameter("id",id);
+           cheque =  query.list();
+           tx.commit(); 
+           
+        }
+        catch(HibernateException e)
+        {
+            System.out.println(e);
+            tx.rollback();
+        }
+        finally
+        {
+             sessao.close();
+        }  
+    return cheque; }
 
     @Override
     public List<Conta> ContasAbertas(Date data) {

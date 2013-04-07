@@ -5,15 +5,12 @@
 package dao;
 
 import daoInterfaces.ContratoInterface;
-import entidades.Conta;
 import entidades.Contrato;
 import java.util.List;
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.hibernate.cfg.AnnotationConfiguration;
-import org.hibernate.cfg.Configuration;
 import util.HibernateUtil;
 
 /**
@@ -94,7 +91,32 @@ public class DaoContrato implements ContratoInterface{
     }
 
     @Override
-    public List<Contrato> BuscarContrato(Contrato contrato) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<Contrato> BuscarContrato(int id) {
+       
+        List<Contrato> contrato = null;
+        Session sessao = null; 
+        Query query = null;
+        Transaction transacao = null;
+        
+        try{
+           sessao = HibernateUtil.getSessionFactory().openSession();
+           transacao = sessao.beginTransaction();
+           query = sessao.createQuery("from Contrato c where c.id :id");   
+           query.setParameter("id", id);
+           contrato = query.list();
+           transacao.commit(); 
+           
+        }
+        catch(HibernateException e)
+        {
+            System.out.println(e);
+            transacao.rollback();
+        }
+        finally
+        {
+             sessao.close();
+        }  
+    return contrato;
     }
+    
 }

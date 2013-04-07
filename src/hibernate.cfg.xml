@@ -14,6 +14,7 @@
     <mapping class="entidades.Cheque"/>
     <mapping class="entidades.Chequeslog"/>
     <mapping class="entidades.Conta"/>
+    <mapping class="entidades.Contaslog"/>
     <mapping class="entidades.Contrato"/>
     <mapping class="entidades.Endereco"/>
     <mapping class="entidades.Entrada"/>

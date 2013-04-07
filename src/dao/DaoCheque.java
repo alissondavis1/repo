@@ -19,6 +19,7 @@ import util.HibernateUtil;
  */
 public class DaoCheque implements ChequesInterface {
 
+    //testado com sucesso
     @Override
     public void AdicionarCheque(Cheque cheque) {
       
@@ -91,7 +92,7 @@ public class DaoCheque implements ChequesInterface {
             session.close(); 
         }    
     }
-
+    //testado
     @Override
     public Cheque ChequesId(int idCheque) {
        

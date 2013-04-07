@@ -19,6 +19,7 @@ public interface CategoriaSocioInterface {
     public void AtualizarCategoria(Categoriasocio categoria);
     
     public Categoriasocio       BuscarCategoriaPorNome(String nome);
+    public List<Categoriasocio> BuscarCategoriaPorNomeLike (String nome);
     public Categoriasocio       BuscarCategoriaSocioPorId(int id);
     public List<Categoriasocio> BuscarTodasCategorias();
 }

@@ -4,10 +4,27 @@
  */
 package telas;
 
+import dao.DaoCategoriaSocio;
+import dao.DaoCheque;
+import dao.DaoContasMensais;
+import dao.DaoContaslog;
 import dao.DaoPessoa;
 import dao.DaoUsuario;
+import entidades.Categoriasocio;
+import entidades.Cheque;
+import entidades.Conta;
+import entidades.Contaslog;
+import entidades.Funcionario;
+import entidades.Motivodespesa;
 import entidades.Pessoa;
+import entidades.Taxa;
 import entidades.Usuario;
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Scanner;
 /**
  *
  * @author alexandre
@@ -75,15 +92,116 @@ public class TelaTestes extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
        
-        Usuario u = new Usuario();
-        u.setNome("a");
-        u.setSenha("1234");
-        u.setDelete(true);
-        u.setSelect(true);
-        u.setUpdate(true);
-       
-        DaoUsuario d = new DaoUsuario();
-        d.AdicionarUsuario(u);
+        int op = 7;
+        
+        //categoria Socio
+          Categoriasocio cs = new Categoriasocio();   
+          DaoCategoriaSocio dcs = new DaoCategoriaSocio();
+          Taxa t = new Taxa();
+          List<Categoriasocio> categorias = new ArrayList();
+          //cheque 
+          Cheque cheque = new Cheque();
+          DaoCheque dc = new DaoCheque();
+          Funcionario f = new Funcionario();
+          f.setId(1);
+          Motivodespesa md = new Motivodespesa();
+          md.setId(7);
+          //contas log
+           DaoContaslog dcl = new DaoContaslog(); 
+          Contaslog cl = new Contaslog();
+            List<Contaslog> listalog ;
+           
+           
+          Date data = new Date();
+          
+          switch(op)
+        {
+         case (1):
+         
+          cs.setNome("as");
+          cs.setDescricao("descricao de teste");
+          t.setId(20);
+          cs.setTaxasId(t);
+          
+          dcs.AdicionarCategoria(cs);
+         break; 
+          case(2):
+          cs.setId(13);
+          cs.setNome("e");
+          t.setId(20);
+          cs.setTaxasId(t);     
+          dcs.ApagarCategoria(cs);
+         break;
+          case(3):
+          //buscar todas as categorias
+          categorias = dcs.BuscarTodasCategorias();
+          for(Categoriasocio s : categorias)
+          {
+              System.out.println(s.getNome());
+          }
+          break;
+          case(4):
+           cheque.setValor(BigDecimal.ONE);
+           cheque.setNumero(1);
+           
+           cheque.setIdFuncionario(f);
+           cheque.setIdMotivoDespesa(md);
+           cheque.setDataPagamento(data);
+           cheque.setDataVencimento(data);
+           
+           
+           dc.AdicionarCheque(cheque);
+          break;
+          case(5):
+           cheque = dc.ChequesId(6);
+           System.out.println(cheque.getValor()); 
+           break;
+          case(6):
+         
+            
+          listalog = dcl.ListarTodas();
+          for(Contaslog c : listalog)
+          {
+              System.out.print(c.getId()+" ");
+              System.out.print(c.getDataPag()+" ");
+              System.out.print(c.getDataVence()+" ");
+              System.out.print(c.getTaxaRelogio()+" ");
+              System.out.print(c.getTaxaSocio()+" ");
+              System.out.println(c.getTipo());
+          }
+  
+          break;
+              case(7):
+         
+            listalog= dcl.ListarPorTipo("insert");
+          
+          for(Contaslog c : listalog)
+          {
+              System.out.print(c.getId()+" ");
+              System.out.print(c.getDataPag()+" ");
+              System.out.print(c.getDataVence()+" ");
+              System.out.print(c.getTaxaRelogio()+" ");
+              System.out.print(c.getTaxaSocio()+" ");
+              System.out.println(c.getTipo());
+          }
+  
+          break;       
+              
+              
+          case(8):
+             cl = dcl.ListarPorId(1);
+              System.out.print(cl.getId()+" ");
+              System.out.print(cl.getDataPag()+" ");
+              System.out.print(cl.getDataVence()+" ");
+              System.out.print(cl.getTaxaRelogio()+" ");
+              System.out.print(cl.getTaxaSocio()+" ");
+              System.out.println(cl.getTipo());
+              
+          break;    
+          }
+          
+          
+          
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

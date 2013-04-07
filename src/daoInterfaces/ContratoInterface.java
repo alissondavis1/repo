@@ -17,6 +17,6 @@ public interface ContratoInterface {
     public void ApagarCategoria   (Contrato contrato);
     public void AtualizarCategoria(Contrato contrato);
     
-    public List<Contrato> BuscarContrato(Contrato contrato);
+    public List<Contrato> BuscarContrato(int id);
     
 }
