@@ -4,9 +4,13 @@
  */
 package util;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import org.hibernate.HibernateException;
 import org.hibernate.cfg.AnnotationConfiguration;
 import org.hibernate.SessionFactory;
-
+  
 /**
  * Hibernate Utility class with a convenient method to get Session Factory
  * object.
@@ -32,4 +36,17 @@ public class HibernateUtil {
     public static SessionFactory getSessionFactory() {
         return sessionFactory;
     }
+    
+    public static Connection getConnection() throws Exception {  
+        try {  
+            
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/acal","root" , "123");
+  
+            return conn;  
+            
+        } catch (HibernateException | SQLException e) {  
+            e.printStackTrace();  
+            throw e;  
+        }  
+    }  
 }

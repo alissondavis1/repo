@@ -70,10 +70,9 @@ public class Splash extends JWindow{
                 dispose();
                
             }
-            
-            
+   
         }.start();
-        setLocation(Toolkit.getDefaultToolkit().getScreenSize().width/5 ,   
+        setLocation(Toolkit.getDefaultToolkit().getScreenSize().width/4 ,   
         Toolkit.getDefaultToolkit().getScreenSize().height/5 );  
         pack();
         setVisible(true);

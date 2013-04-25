@@ -7,19 +7,32 @@ package telas;
 import java.awt.Desktop;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.math.BigDecimal;
+import java.sql.Connection;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 import java.util.Properties;
+import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
 import javax.swing.UnsupportedLookAndFeelException;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.view.JasperViewer;
 import org.jrimum.bopepo.BancosSuportados;
 import org.jrimum.bopepo.Boleto;
 import org.jrimum.bopepo.view.BoletoViewer;
@@ -34,6 +47,7 @@ import org.jrimum.domkee.financeiro.banco.febraban.NumeroDaConta;
 import org.jrimum.domkee.financeiro.banco.febraban.Sacado;
 import org.jrimum.domkee.financeiro.banco.febraban.TipoDeTitulo;
 import org.jrimum.domkee.financeiro.banco.febraban.Titulo;
+import util.HibernateUtil;
 /**
  *
  * @author alexandre
@@ -114,6 +128,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jProgressBar1 = new javax.swing.JProgressBar();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu = new javax.swing.JMenu();
         jMenuCadastros = new javax.swing.JMenu();
@@ -238,6 +253,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(11, 10, 5, 10);
         jPanel1.add(jLabel2, gridBagConstraints);
+        jPanel1.add(jProgressBar1, new java.awt.GridBagConstraints());
 
         jMenuBar1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(0, 0, 255), new java.awt.Color(51, 51, 255), new java.awt.Color(51, 0, 255), new java.awt.Color(51, 0, 255)));
 
@@ -351,7 +367,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenuItem8.setText("Gerador de contas");
         jMenu.add(jMenuItem8);
 
-        jMenuItemTelateste.setText("Teste");
+        jMenuItemTelateste.setText("Backup");
         jMenuItemTelateste.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItemTelatesteActionPerformed(evt);
@@ -415,7 +431,25 @@ public class TelaPrincipal extends javax.swing.JFrame {
  
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+
+      
+      new Thread(){
+          
+           @Override
+           public void run(){ try {
+           Connection conn = HibernateUtil.getConnection();
+           Map<String, Object> paramets = new HashMap<>();
+          JasperReport report = JasperCompileManager.compileReport(getClass().getResourceAsStream("/relatorios/relatorios.jrxml"));
        
+        JasperPrint jasper = JasperFillManager.fillReport(report,paramets, conn );
+            JasperViewer.viewReport(jasper, false);
+        
+           
+        } catch (Exception ex) {
+            Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }}
+      }.start();
+        
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void timer1OnTime(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_timer1OnTime
@@ -536,8 +570,55 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemTaxasActionPerformed
 
     private void jMenuItemTelatesteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemTelatesteActionPerformed
-      TelaTestes t = new TelaTestes();
-      t.setVisible(true);
+         PrintWriter pw = null;
+         Scanner sc = null;
+        try {
+        
+         
+          Runtime.getRuntime().exec(getClass().getResource("/script/mysql.bat").getPath());
+           
+           
+            File file = new File("acal.sql");
+            JFileChooser jf = new JFileChooser();
+           
+            
+
+            
+            int result = jf.showSaveDialog(this);
+            
+            if(result == JFileChooser.APPROVE_OPTION){
+                
+                
+                File f = new File( jf.getSelectedFile().getAbsolutePath()+".sql");
+                f.createNewFile();
+                pw = new PrintWriter(f);
+                sc  = new Scanner(file);
+                while(sc.hasNextLine()){
+                String s = sc.nextLine();
+                
+                pw.println(s);
+                }
+              
+                 
+            }
+            
+                
+           
+        } catch (IOException ex) {
+            Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }finally{
+            if(pw != null){
+                
+                pw.close();
+            }
+            if(sc != null){
+                
+                sc.close();
+            }
+                
+            
+        }
+        
     }//GEN-LAST:event_jMenuItemTelatesteActionPerformed
 
     /**
@@ -616,6 +697,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItemTipoReceita;
     private javax.swing.JMenu jMenuSair;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JPopupMenu.Separator jSeparator2;
     private org.netbeans.examples.lib.timerbean.Timer timer1;
     // End of variables declaration//GEN-END:variables

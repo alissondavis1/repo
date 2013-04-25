@@ -1678,6 +1678,7 @@ public class TelaCadastros extends javax.swing.JFrame {
         jButtonFuncionarioCancelar.setEnabled(true);
         jButtonFuncionarioNovo.setEnabled(false);
         jButtonFuncionarioApagar.setEnabled(false);
+        jButtonFuncionarioEditar.setEnabled(false);
         
     }//GEN-LAST:event_jButtonFuncionarioEditarActionPerformed
 

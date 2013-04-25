@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="relatorios" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="bef2d380-9a21-40c4-bd5b-0b8001fd4939">
+	<property name="ireport.zoom" value="1.2100000000000002"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     rc_socio.`regristo` AS rc_socio_regristo,
+     rc_socio.`numeroSocio` AS rc_socio_numeroSocio,
+     rc_socio.`dataMatricula` AS rc_socio_dataMatricula,
+     rc_socio.`dataAprovacao` AS rc_socio_dataAprovacao,
+     rc_socio.`observacao` AS rc_socio_observacao,
+     rc_socio.`nome` AS rc_socio_nome,
+     rc_socio.`categoria` AS rc_socio_categoria
+FROM
+     `rc_socio` rc_socio]]>
+	</queryString>
+	<field name="rc_socio_regristo" class="java.lang.Integer"/>
+	<field name="rc_socio_numeroSocio" class="java.lang.Integer"/>
+	<field name="rc_socio_dataMatricula" class="java.sql.Timestamp"/>
+	<field name="rc_socio_dataAprovacao" class="java.sql.Timestamp"/>
+	<field name="rc_socio_observacao" class="java.lang.String"/>
+	<field name="rc_socio_nome" class="java.lang.String"/>
+	<field name="rc_socio_categoria" class="java.lang.String"/>
+	<group name="rc_socio_regristo">
+		<groupExpression><![CDATA[$F{rc_socio_regristo}]]></groupExpression>
+		<groupHeader>
+			<band height="33">
+				<staticText>
+					<reportElement uuid="87f63e0b-7771-4561-a884-c040e3658aa6" mode="Opaque" x="0" y="0" width="100" height="32" forecolor="#666666" backcolor="#E6E6E6"/>
+					<textElement>
+						<font size="12"/>
+					</textElement>
+					<text><![CDATA[rc_socio_regristo]]></text>
+				</staticText>
+				<textField>
+					<reportElement uuid="a6c7e0ec-bd06-42ac-a421-ae0311ae5969" mode="Opaque" x="100" y="0" width="455" height="32" forecolor="#006699" backcolor="#E6E6E6"/>
+					<textElement>
+						<font size="24" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{rc_socio_regristo}]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement uuid="443b3c4c-b850-4ae2-a97b-7acbccd4a153" x="0" y="32" width="555" height="1" forecolor="#666666"/>
+				</line>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="72">
+			<frame>
+				<reportElement uuid="e128eec7-03b6-4ab9-a8e9-7a8745120d1e" mode="Opaque" x="-20" y="-20" width="595" height="92" backcolor="#006699"/>
+				<staticText>
+					<reportElement uuid="c6b1a567-07cd-4386-9067-7724a3a1cd56" x="20" y="20" width="234" height="43" forecolor="#FFFFFF"/>
+					<textElement>
+						<font size="34" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Acal2000]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="5e9675f7-a20f-48ab-b9e3-1d645417d97b" x="395" y="43" width="180" height="20" forecolor="#FFFFFF"/>
+					<textElement textAlignment="Right">
+						<font size="14" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Agua é vida, Economize.]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="70"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="21">
+			<line>
+				<reportElement uuid="3e261f03-4b06-401f-92c5-13bf33458084" x="0" y="20" width="555" height="1" forecolor="#666666"/>
+			</line>
+			<staticText>
+				<reportElement uuid="a7ff7efb-5e23-484f-9b36-65c39b59dac9" mode="Opaque" x="0" y="0" width="92" height="20" forecolor="#006699" backcolor="#E6E6E6"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[rc_socio_numeroSocio]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="97e7c0a8-c10b-4259-9111-995598fc04df" mode="Opaque" x="92" y="0" width="92" height="20" forecolor="#006699" backcolor="#E6E6E6"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[rc_socio_dataMatricula]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="d3eec85b-7c5d-45be-88fb-4745ff376279" mode="Opaque" x="184" y="0" width="92" height="20" forecolor="#006699" backcolor="#E6E6E6"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[rc_socio_dataAprovacao]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="6af4d18b-d864-463a-bb57-65b5e85f618a" mode="Opaque" x="276" y="0" width="92" height="20" forecolor="#006699" backcolor="#E6E6E6"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[rc_socio_observacao]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="049ec9ec-1230-4e3e-96be-51138c1e6e6a" mode="Opaque" x="368" y="0" width="92" height="20" forecolor="#006699" backcolor="#E6E6E6"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[rc_socio_nome]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="dbdcfda8-d613-4d6f-b567-3ca0aacca07b" mode="Opaque" x="460" y="0" width="92" height="20" forecolor="#006699" backcolor="#E6E6E6"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[rc_socio_categoria]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20">
+			<line>
+				<reportElement uuid="1268fad7-0978-460f-b534-2db930e18295" positionType="FixRelativeToBottom" x="0" y="19" width="555" height="1"/>
+			</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="f7283382-e448-4eb6-b589-8cc67100c0cc" x="0" y="0" width="92" height="20"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rc_socio_numeroSocio}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="ca9fd574-2b7c-47e8-aeac-6360aa26b3cf" x="92" y="0" width="92" height="20"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rc_socio_dataMatricula}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="21d8eac2-e24f-48b5-8354-4d0f7bf787d2" x="184" y="0" width="92" height="20"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rc_socio_dataAprovacao}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="311a9bf1-1033-461e-ab12-9af2c4fdfdaa" x="276" y="0" width="92" height="20"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rc_socio_observacao}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="f95283e8-5bb4-48cb-9ae3-0764363dd207" x="368" y="0" width="92" height="20"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rc_socio_nome}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="a8408f57-a5cd-4089-abae-e632063c0795" x="460" y="0" width="92" height="20"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rc_socio_categoria}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="17">
+			<textField>
+				<reportElement uuid="da1841d7-db7d-4d87-bd03-bc6db21ad006" mode="Opaque" x="0" y="4" width="515" height="13" backcolor="#E6E6E6"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Pagina "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement uuid="0dc029ad-dd14-45af-a803-e4c13a73c81e" mode="Opaque" x="515" y="4" width="40" height="13" backcolor="#E6E6E6"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement uuid="2adb80a0-dae7-4c0f-857d-27ac55df1e5b" x="0" y="4" width="100" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>

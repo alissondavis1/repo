@@ -1,0 +1,1 @@
+mysqldump -uroot -p123 acal > acal1.sql
