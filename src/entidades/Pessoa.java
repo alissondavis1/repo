@@ -53,6 +53,8 @@ public class Pessoa implements Serializable {
     @Basic(optional = false)
     @Column(name = "sobrenome")
     private String sobrenome;
+    @Column(name = "numeroEndereco")
+    private String numeroEndereco;
     @Basic(optional = false)
     @Column(name = "categoriaSocio")
     private int categoriaSocio;
@@ -137,6 +139,18 @@ public class Pessoa implements Serializable {
         String oldNome = this.nome;
         this.nome = nome;
         changeSupport.firePropertyChange("nome", oldNome, nome);
+    }
+    
+    public String getNumeroEnderco(){
+        
+        return this.numeroEndereco;
+    }
+    
+    public void setNumeroEndereco(String numeroEndereco){
+        
+        String oldNumeroEndereco = this.numeroEndereco;
+        this.numeroEndereco = numeroEndereco;
+        changeSupport.firePropertyChange("numeroEndereco", oldNumeroEndereco, numeroEndereco);
     }
 
     public String getSobrenome() {

@@ -6,7 +6,9 @@ package telas;
 
 import dao.DaoUsuario;
 import entidades.User;
-import entidades.UserPK;
+import javax.swing.JOptionPane;
+import org.hibernate.Session;
+import org.hibernate.cfg.AnnotationConfiguration;
 
 /**
  *
@@ -19,6 +21,7 @@ public class TelaLogin extends javax.swing.JFrame {
      */
     public TelaLogin() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -33,9 +36,9 @@ public class TelaLogin extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextFieldNomeLogin = new javax.swing.JTextField();
-        jTextFieldLoginLogin = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        jTextFieldTelaLoginNome = new javax.swing.JTextField();
+        jButtonTelaLoginLogar = new javax.swing.JButton();
+        jPasswordFieldTelaPrincipalSenha = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -43,17 +46,18 @@ public class TelaLogin extends javax.swing.JFrame {
 
         jLabel1.setText("Nome");
 
-        jLabel2.setText("Login");
+        jLabel2.setText("Senha");
 
-        jButton1.setText("Logar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonTelaLoginLogar.setText("Logar");
+        jButtonTelaLoginLogar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButtonTelaLoginLogarActionPerformed(evt);
             }
         });
-        jButton1.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jButton1KeyPressed(evt);
+
+        jPasswordFieldTelaPrincipalSenha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jPasswordFieldTelaPrincipalSenhaActionPerformed(evt);
             }
         });
 
@@ -63,13 +67,12 @@ public class TelaLogin extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton1)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jLabel1)
-                        .addComponent(jLabel2)
-                        .addComponent(jTextFieldNomeLogin, javax.swing.GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE)
-                        .addComponent(jTextFieldLoginLogin)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButtonTelaLoginLogar, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2)
+                    .addComponent(jTextFieldTelaLoginNome, javax.swing.GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE)
+                    .addComponent(jPasswordFieldTelaPrincipalSenha))
                 .addContainerGap(22, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -78,13 +81,13 @@ public class TelaLogin extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextFieldNomeLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTextFieldTelaLoginNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextFieldLoginLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addGap(18, 18, 18)
+                .addComponent(jPasswordFieldTelaPrincipalSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                .addComponent(jButtonTelaLoginLogar)
                 .addContainerGap())
         );
 
@@ -102,31 +105,61 @@ public class TelaLogin extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButtonTelaLoginLogarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTelaLoginLogarActionPerformed
         
-        String log = jTextFieldNomeLogin.getText();
-        String pass = jTextFieldLoginLogin.getText();
-        DaoUsuario du = new DaoUsuario();
-        User usuario = du.BuscaUsuario(log,pass);
-        
-        if(usuario!=null)
-        {
-            System.out.println("voce esta logado");
-            this.dispose();
-            new TelaPrincipal().setVisible(true);
+       Session session = null;
+        try{
+            
+             String log = jTextFieldTelaLoginNome.getText();
+             String pass = new String(jPasswordFieldTelaPrincipalSenha.getPassword());
+             DaoUsuario du = new DaoUsuario();
+             User usuario = du.BuscaUsuario(log,pass);
+            if(usuario != null){
+             session = new AnnotationConfiguration().configure("hibernate.cfg.xml").setProperty("hibernate.connection.username", log).setProperty("hibernate.connection.password", pass).buildSessionFactory().openSession();
+             new TelaPrincipal().setVisible(true);
+             dispose();
+            }else{
+                
+                throw new Exception();
+            }
+        }catch(Exception e){
+            
+            JOptionPane.showMessageDialog(this, "Verifique o nome do usuário e a senha","Login", JOptionPane.OK_OPTION);
+        }finally{
+            if(session != null){
+           session.close(); 
+            }
         }
-        else 
-        {
-            System.out.println("usario ou senha invalida");
+        
+    }//GEN-LAST:event_jButtonTelaLoginLogarActionPerformed
 
+    private void jPasswordFieldTelaPrincipalSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordFieldTelaPrincipalSenhaActionPerformed
+        
+         Session session = null;
+        try{
+            
+             String log = jTextFieldTelaLoginNome.getText();
+             String pass = new String(jPasswordFieldTelaPrincipalSenha.getPassword());
+             DaoUsuario du = new DaoUsuario();
+             User usuario = du.BuscaUsuario(log,pass);
+            if(usuario != null){
+             session = new AnnotationConfiguration().configure("hibernate.cfg.xml").setProperty("hibernate.connection.username", log).setProperty("hibernate.connection.password", pass).buildSessionFactory().openSession();
+             new TelaPrincipal().setVisible(true);
+             dispose();
+            }else{
+                
+                throw new Exception();
+            }
+        }catch(Exception e){
+            
+            JOptionPane.showMessageDialog(this, "Verifique o nome do usuário e a senha","Login", JOptionPane.OK_OPTION);
+        }finally{
+            if(session != null){
+           session.close(); 
+            }
         }
         
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton1KeyPressed
-          
- 
-    }//GEN-LAST:event_jButton1KeyPressed
+    }//GEN-LAST:event_jPasswordFieldTelaPrincipalSenhaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -163,11 +196,11 @@ public class TelaLogin extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButtonTelaLoginLogar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextFieldLoginLogin;
-    private javax.swing.JTextField jTextFieldNomeLogin;
+    private javax.swing.JPasswordField jPasswordFieldTelaPrincipalSenha;
+    private javax.swing.JTextField jTextFieldTelaLoginNome;
     // End of variables declaration//GEN-END:variables
 }

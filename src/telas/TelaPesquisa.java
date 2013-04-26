@@ -208,7 +208,7 @@ public class TelaPesquisa extends javax.swing.JFrame {
         if(evt.getClickCount() > 1){
            
            
-          telaCadastro.preencherAbaFuncionarios(new DaoPessoa().BuscarPessoaNome((String)jTable1.getValueAt(jTable1.getSelectedRow(), jTable1.getSelectedColumn())));
+          telaCadastro.preencherAbaFuncionarios(new DaoPessoa().BuscarPessoaNome((String)jTable1.getValueAt(jTable1.getSelectedRow(), 0)));
           telaCadastro.jButtonFuncionarioApagar.setEnabled(true);
           telaCadastro.jButtonFuncionarioEditar.setEnabled(true);
           telaCadastro.setEnabled(true);

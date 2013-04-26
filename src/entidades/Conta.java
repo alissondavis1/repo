@@ -51,8 +51,8 @@ public class Conta implements Serializable {
     @Column(name = "taxaSocio")
     private Integer taxaSocio;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
-    @Column(name = "taxaRelogio")
-    private BigDecimal taxaRelogio;
+    //@Column(name = "taxaRelogio")
+    //private BigDecimal taxaRelogio;
     @JoinColumn(name = "idNumeroSocio", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Socio idNumeroSocio;
@@ -109,13 +109,13 @@ public class Conta implements Serializable {
         this.taxaSocio = taxaSocio;
     }
 
-    public BigDecimal getTaxaRelogio() {
-        return taxaRelogio;
-    }
-
-    public void setTaxaRelogio(BigDecimal taxaRelogio) {
-        this.taxaRelogio = taxaRelogio;
-    }
+//    public BigDecimal getTaxaRelogio() {
+//        return taxaRelogio;
+//    }
+//
+//    public void setTaxaRelogio(BigDecimal taxaRelogio) {
+//        this.taxaRelogio = taxaRelogio;
+//    }
 
     public Socio getIdNumeroSocio() {
         return idNumeroSocio;

@@ -552,7 +552,7 @@ public class TelaCadastros extends javax.swing.JFrame {
                             .addComponent(jLabel19)
                             .addGap(18, 18, 18)
                             .addComponent(jComboBoxFuncionarioSexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addContainerGap())
             );
             jPanel2Layout.setVerticalGroup(
                 jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -732,6 +732,11 @@ public class TelaCadastros extends javax.swing.JFrame {
             });
 
             jButtonFuncionarioApagar.setText("Apagar");
+            jButtonFuncionarioApagar.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    jButtonFuncionarioApagarActionPerformed(evt);
+                }
+            });
 
             jButtonFuncionarioSalvar.setText("Salvar");
 
@@ -1359,7 +1364,7 @@ public class TelaCadastros extends javax.swing.JFrame {
                         .addComponent(jLabel28))
                     .addGap(35, 35, 35)
                     .addComponent(jLabel26)
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addContainerGap())
                 .addComponent(jPanel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             );
             jPanelChequesLayout.setVerticalGroup(
@@ -1555,7 +1560,7 @@ public class TelaCadastros extends javax.swing.JFrame {
             jPanel1.setLayout(jPanel1Layout);
             jPanel1Layout.setHorizontalGroup(
                 jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 789, Short.MAX_VALUE)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 789, Short.MAX_VALUE)
             );
             jPanel1Layout.setVerticalGroup(
                 jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1682,6 +1687,25 @@ public class TelaCadastros extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButtonFuncionarioEditarActionPerformed
 
+    private void jButtonFuncionarioApagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFuncionarioApagarActionPerformed
+       
+        int result = JOptionPane.showConfirmDialog(this, "Tem certeza que deseja excluir o registro?","Apagar",JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE);
+        if(result == 0){
+         
+           try{
+               Pessoa p = new DaoPessoa().BuscarPessoaId(Integer.parseInt(jTextFieldFuncionarioID.getText()));
+               new DaoPessoa().ApagarPessoa(p);
+               limparCampos();
+               jButtonFuncionarioApagar.setEnabled(false);
+               jButtonFuncionarioEditar.setEnabled(false);
+           }catch(Exception e){
+               
+               JOptionPane.showMessageDialog(this, "Erro para excluir o registro");
+           }
+            
+        }
+    }//GEN-LAST:event_jButtonFuncionarioApagarActionPerformed
+
     
     private void editableTextFields(boolean editable){
         
@@ -1768,6 +1792,7 @@ public class TelaCadastros extends javax.swing.JFrame {
          if(pessoa.getRgEmissao() != null){
          jTextFieldFuncionarioDatadeemissao.setText(SimpleDateFormat.getDateInstance().format(pessoa.getRgEmissao()));
          }
+         jTextFieldFuncionarioNumero.setText(pessoa.getNumeroEnderco());
          jTextFieldFuncionarioCidade.setText(pessoa.getCidade());
          jTextFieldFuncionarioBairro.setText(pessoa.getBairro());
          jComboBoxFuncionarioUf.setSelectedItem(pessoa.getUf());
