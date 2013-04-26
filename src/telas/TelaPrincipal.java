@@ -7,9 +7,7 @@ package telas;
 import java.awt.Desktop;
 import java.awt.Dimension;
 import java.awt.Toolkit;
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.math.BigDecimal;
@@ -27,6 +25,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import javax.swing.UnsupportedLookAndFeelException;
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperFillManager;
@@ -48,6 +47,7 @@ import org.jrimum.domkee.financeiro.banco.febraban.Sacado;
 import org.jrimum.domkee.financeiro.banco.febraban.TipoDeTitulo;
 import org.jrimum.domkee.financeiro.banco.febraban.Titulo;
 import util.HibernateUtil;
+
 /**
  *
  * @author alexandre
@@ -56,25 +56,26 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private Calendar c;
     SimpleDateFormat sdf = new SimpleDateFormat();
+
     /**
      * Creates new form TelaPrincipal
      */
     public TelaPrincipal() {
-       // setLocationRelativeTo(null);
-        
+        // setLocationRelativeTo(null);
+
         initComponents();
-        c = Calendar.getInstance(new Locale("pt","BR"));
-        DateFormat df = SimpleDateFormat.getDateInstance(SimpleDateFormat.DATE_FIELD, new Locale("pt","BR"));
-        
-        
+        c = Calendar.getInstance(new Locale("pt", "BR"));
+        DateFormat df = SimpleDateFormat.getDateInstance(SimpleDateFormat.DATE_FIELD, new Locale("pt", "BR"));
+
+
         jLabel1.setText(df.format(c.getTime()));
-        
+
         timer1.start();
-         Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
-         
-        setBounds(0,0,d.width,d.height/3);
-        
-        
+        Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
+
+        setBounds(0, 0, d.width, d.height / 3);
+
+
 //        Properties prop = new Properties();
 //        try {
 //            prop.load(new FileInputStream("configs/LAF.properties"));
@@ -108,7 +109,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 //        }
 //
 //
- }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -122,10 +123,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         timer1 = new org.netbeans.examples.lib.timerbean.Timer();
         jPanel1 = new javax.swing.JPanel();
-        jButton4 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        jButtonTelaPrincipalLogoff = new javax.swing.JButton();
+        jButtonTelaPrincipalRelatorios = new javax.swing.JButton();
+        jButtonTelaPrincipalCaixa = new javax.swing.JButton();
+        jButtonTelaPrincipalCadastros = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jProgressBar1 = new javax.swing.JProgressBar();
@@ -148,10 +149,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenuItemSolicita_Socio = new javax.swing.JMenuItem();
         jMenuItemCaixa = new javax.swing.JMenuItem();
         jMenuItem8 = new javax.swing.JMenuItem();
-        jMenuItemTelateste = new javax.swing.JMenuItem();
+        jMenuItemTelaPrincipalBackup = new javax.swing.JMenuItem();
         jSeparator2 = new javax.swing.JPopupMenu.Separator();
         jMenuItemSair = new javax.swing.JMenuItem();
-        jMenu1 = new javax.swing.JMenu();
         jMenuSair = new javax.swing.JMenu();
 
         timer1.addTimerListener(new org.netbeans.examples.lib.timerbean.TimerListener() {
@@ -170,11 +170,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jPanel1.setLayout(new java.awt.GridBagLayout());
 
-        jButton4.setIcon(new ImageIcon(getClass().getResource("/img/logoff.jpg")));
-        jButton4.setText("Opções de Logoff");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        jButtonTelaPrincipalLogoff.setIcon(new ImageIcon(getClass().getResource("/img/logoff.jpg")));
+        jButtonTelaPrincipalLogoff.setText("Opções de Logoff");
+        jButtonTelaPrincipalLogoff.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                jButtonTelaPrincipalLogoffActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -184,13 +184,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
         gridBagConstraints.ipady = 66;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(10, 18, 0, 0);
-        jPanel1.add(jButton4, gridBagConstraints);
+        jPanel1.add(jButtonTelaPrincipalLogoff, gridBagConstraints);
 
-        jButton2.setIcon(new ImageIcon(getClass().getResource("/img/relatorios.png")));
-        jButton2.setText("Relatórios");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jButtonTelaPrincipalRelatorios.setIcon(new ImageIcon(getClass().getResource("/img/relatorios.png")));
+        jButtonTelaPrincipalRelatorios.setText("Relatórios");
+        jButtonTelaPrincipalRelatorios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jButtonTelaPrincipalRelatoriosActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -200,13 +200,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
         gridBagConstraints.ipady = 66;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(10, 18, 0, 0);
-        jPanel1.add(jButton2, gridBagConstraints);
+        jPanel1.add(jButtonTelaPrincipalRelatorios, gridBagConstraints);
 
-        jButton3.setIcon(new ImageIcon(getClass().getResource("/img/caixa.png")));
-        jButton3.setText("Caixa");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        jButtonTelaPrincipalCaixa.setIcon(new ImageIcon(getClass().getResource("/img/caixa.png")));
+        jButtonTelaPrincipalCaixa.setText("Caixa");
+        jButtonTelaPrincipalCaixa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                jButtonTelaPrincipalCaixaActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -216,13 +216,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
         gridBagConstraints.ipady = 66;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(10, 18, 0, 0);
-        jPanel1.add(jButton3, gridBagConstraints);
+        jPanel1.add(jButtonTelaPrincipalCaixa, gridBagConstraints);
 
-        jButton1.setIcon(new ImageIcon(getClass().getResource("/img/cadastros.png")));
-        jButton1.setText("Cadastros");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonTelaPrincipalCadastros.setIcon(new ImageIcon(getClass().getResource("/img/cadastros.png")));
+        jButtonTelaPrincipalCadastros.setText("Cadastros");
+        jButtonTelaPrincipalCadastros.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButtonTelaPrincipalCadastrosActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -233,7 +233,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         gridBagConstraints.ipady = 66;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(10, 3, 0, 0);
-        jPanel1.add(jButton1, gridBagConstraints);
+        jPanel1.add(jButtonTelaPrincipalCadastros, gridBagConstraints);
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel1.setText("jLabel1");
@@ -372,13 +372,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenuItem8.setText("Gerador de contas");
         jMenu.add(jMenuItem8);
 
-        jMenuItemTelateste.setText("Backup");
-        jMenuItemTelateste.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemTelaPrincipalBackup.setText("Backup");
+        jMenuItemTelaPrincipalBackup.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemTelatesteActionPerformed(evt);
+                jMenuItemTelaPrincipalBackupActionPerformed(evt);
             }
         });
-        jMenu.add(jMenuItemTelateste);
+        jMenu.add(jMenuItemTelaPrincipalBackup);
         jMenu.add(jSeparator2);
 
         jMenuItemSair.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
@@ -391,7 +391,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenu.add(jMenuItemSair);
 
         jMenuBar1.add(jMenu);
-        jMenuBar1.add(jMenu1);
 
         jMenuSair.setText("Sair");
         jMenuSair.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -419,11 +418,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButtonTelaPrincipalCadastrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTelaPrincipalCadastrosActionPerformed
 
         new TelaCadastros(this).setVisible(true);
 
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jButtonTelaPrincipalCadastrosActionPerformed
 
     private void jMenuSairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuSairMouseClicked
         System.exit(0);
@@ -433,43 +432,42 @@ public class TelaPrincipal extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_jMenuItemSairActionPerformed
 
- 
+    private void jButtonTelaPrincipalRelatoriosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTelaPrincipalRelatoriosActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 
-      
-      new Thread(){
-          
-           @Override
-           public void run(){ try {
-           Connection conn = HibernateUtil.getConnection();
-           Map<String, Object> paramets = new HashMap<>();
-          JasperReport report = JasperCompileManager.compileReport(getClass().getResourceAsStream("/relatorios/relatorios.jrxml"));
-       
-        JasperPrint jasper = JasperFillManager.fillReport(report,paramets, conn );
-            JasperViewer.viewReport(jasper, false);
-        
-           
-        } catch (Exception ex) {
-            Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
-        }}
-      }.start();
-        
-    }//GEN-LAST:event_jButton2ActionPerformed
+        new Thread() {
+            @Override
+            public void run() {
+                try {
+                    Connection conn = HibernateUtil.getConnection();
+                    Map<String, Object> paramets = new HashMap<>();
+                    JasperReport report = JasperCompileManager.compileReport(getClass().getResourceAsStream("/relatorios/relatorios.jrxml"));
+
+                    JasperPrint jasper = JasperFillManager.fillReport(report, paramets, conn);
+                    JasperViewer.viewReport(jasper, false);
+
+
+                } catch (Exception ex) {
+                    Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }.start();
+
+    }//GEN-LAST:event_jButtonTelaPrincipalRelatoriosActionPerformed
 
     private void timer1OnTime(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_timer1OnTime
-        
+
         c = Calendar.getInstance();
-        DateFormat df = SimpleDateFormat.getTimeInstance(SimpleDateFormat.MEDIUM,new Locale("pt","BR"));
+        DateFormat df = SimpleDateFormat.getTimeInstance(SimpleDateFormat.MEDIUM, new Locale("pt", "BR"));
         jLabel2.setText(df.format(c.getTime()));
-        
-        
-        
+
+
+
     }//GEN-LAST:event_timer1OnTime
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void jButtonTelaPrincipalCaixaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTelaPrincipalCaixaActionPerformed
 
-        Cedente cedente = new Cedente("PROJETO JRimiun","03.247.900/0001-26");
+        Cedente cedente = new Cedente("PROJETO JRimiun", "03.247.900/0001-26");
 
         Sacado sacado = new Sacado("JavaDeveloper Pronto Para Férias", "222.222.222-22");
         Endereco enderecoSac = new Endereco();
@@ -503,10 +501,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         Boleto boleto = new Boleto(titulo);
 
-        boleto.setLocalPagamento("Pagável preferencialmente na Rede X ou em " +
-            "qualquer Banco até o Vencimento.");
-        boleto.setInstrucaoAoSacado("Senhor sacado, sabemos sim que o valor " +
-            "cobrado não é o esperado, aproveite o DESCONTÃO!");
+        boleto.setLocalPagamento("Pagável preferencialmente na Rede X ou em "
+                + "qualquer Banco até o Vencimento.");
+        boleto.setInstrucaoAoSacado("Senhor sacado, sabemos sim que o valor "
+                + "cobrado não é o esperado, aproveite o DESCONTÃO!");
         boleto.setInstrucao1("PARA PAGAMENTO 1 até Hoje não cobrar nada!");
         boleto.setInstrucao2("PARA PAGAMENTO 2 até Amanhã Não cobre!");
         boleto.setInstrucao3("PARA PAGAMENTO 3 até Depois de amanhã, OK, não cobre.");
@@ -519,7 +517,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         BoletoViewer boletoViewer = new BoletoViewer(boleto);
 
         File arquivoPdf = boletoViewer.getPdfAsFile("MeuPrimeiroBoleto.pdf");
-        
+
         Desktop desktop = Desktop.getDesktop();
         try {
             desktop.open(arquivoPdf);
@@ -527,15 +525,15 @@ public class TelaPrincipal extends javax.swing.JFrame {
             Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_jButtonTelaPrincipalCaixaActionPerformed
 
     private void jMenuItemFuncionariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemFuncionariosActionPerformed
-         new TelaCadastros(this, evt).setVisible(true);
-        
+        new TelaCadastros(this, evt).setVisible(true);
+
     }//GEN-LAST:event_jMenuItemFuncionariosActionPerformed
 
     private void jMenuItemLogradourosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemLogradourosActionPerformed
-         new TelaCadastros(this, evt).setVisible(true); 
+        new TelaCadastros(this, evt).setVisible(true);
     }//GEN-LAST:event_jMenuItemLogradourosActionPerformed
 
     private void jMenuItemReceitasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemReceitasActionPerformed
@@ -559,7 +557,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemDespesaActionPerformed
 
     private void jMenuItemTipoReceitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemTipoReceitaActionPerformed
-       new TelaCadastros(this, evt).setVisible(true);
+        new TelaCadastros(this, evt).setVisible(true);
     }//GEN-LAST:event_jMenuItemTipoReceitaActionPerformed
 
     private void jMenuItemReceitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemReceitaActionPerformed
@@ -567,68 +565,83 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemReceitaActionPerformed
 
     private void jMenuItemContratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemContratoActionPerformed
-       new TelaCadastros(this, evt).setVisible(true);
+        new TelaCadastros(this, evt).setVisible(true);
     }//GEN-LAST:event_jMenuItemContratoActionPerformed
 
     private void jMenuItemTaxasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemTaxasActionPerformed
         new TelaCadastros(this, evt).setVisible(true);
     }//GEN-LAST:event_jMenuItemTaxasActionPerformed
 
-    private void jMenuItemTelatesteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemTelatesteActionPerformed
-         PrintWriter pw = null;
-         Scanner sc = null;
-        try {
-        
-         
-          Runtime.getRuntime().exec(getClass().getResource("/script/mysql.bat").getPath());
-           
-           
-            File file = new File("acal.sql");
-            JFileChooser jf = new JFileChooser();
-           
-            
+    private void jMenuItemTelaPrincipalBackupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemTelaPrincipalBackupActionPerformed
 
-            
+        PrintWriter pw = null;
+        Scanner sc = null;
+        try {
+
+            String comando = "cmd /c mysqldump -uroot -p123 acal >" + getClass().getResource("/Sql/").getPath().substring(1) + "acal.sql";
+
+            Process p = Runtime.getRuntime().exec(comando);
+            try {
+                if(p.waitFor() == 0){
+                    
+                    System.out.println("mysqldump executado");
+                    
+                }else{
+                    System.out.println("erro no mysqldump");
+                }
+            } catch (InterruptedException ex) {
+                
+                Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+
+            File file = new File(getClass().getResource("/Sql/acal.sql").getPath());
+            JFileChooser jf = new JFileChooser();
+
+
+
+
             int result = jf.showSaveDialog(this);
-            
-            if(result == JFileChooser.APPROVE_OPTION){
-                
-                
-                File f = new File( jf.getSelectedFile().getAbsolutePath()+".sql");
+
+            if (result == JFileChooser.APPROVE_OPTION) {
+
+
+                File f = new File(jf.getSelectedFile().getAbsolutePath() + ".sql");
                 f.createNewFile();
                 pw = new PrintWriter(f);
-                sc  = new Scanner(file);
-                while(sc.hasNextLine()){
-                String s = sc.nextLine();
-                
-                pw.println(s);
+                sc = new Scanner(file);
+                while (sc.hasNextLine()) {
+                    String s = sc.nextLine();
+
+                    pw.println(s);
                 }
-              
-                 
+
+
             }
-            
-                
-           
+
+
+
         } catch (IOException ex) {
+            JOptionPane.showMessageDialog(this, "Erro ao gerar o Backup, contate o suporte");
             Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
-        }finally{
-            if(pw != null){
-                
+        } finally {
+            if (pw != null) {
+
                 pw.close();
             }
-            if(sc != null){
-                
+            if (sc != null) {
+
                 sc.close();
             }
-                
-            
-        }
-        
-    }//GEN-LAST:event_jMenuItemTelatesteActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+
+        }
+
+    }//GEN-LAST:event_jMenuItemTelaPrincipalBackupActionPerformed
+
+    private void jButtonTelaPrincipalLogoffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTelaPrincipalLogoffActionPerformed
         new TelaLogout().setVisible(true);
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_jButtonTelaPrincipalLogoffActionPerformed
 
     /**
      * @param args the command line arguments
@@ -656,14 +669,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
             Properties p = new Properties();
             p.put("logoString", "ACAL2000");
             com.jtattoo.plaf.mcwin.McWinLookAndFeel.setTheme(p);
-           
+
             javax.swing.UIManager.setLookAndFeel(new com.jtattoo.plaf.mcwin.McWinLookAndFeel());
             /* Create and display the form */
         } catch (UnsupportedLookAndFeelException ex) {
             Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-       
+
+
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
@@ -672,18 +685,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
     }
-   
-
-   
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButtonTelaPrincipalCadastros;
+    private javax.swing.JButton jButtonTelaPrincipalCaixa;
+    private javax.swing.JButton jButtonTelaPrincipalLogoff;
+    private javax.swing.JButton jButtonTelaPrincipalRelatorios;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu;
-    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu jMenuCadastros;
@@ -701,7 +710,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItemSocio;
     private javax.swing.JMenuItem jMenuItemSolicita_Socio;
     private javax.swing.JMenuItem jMenuItemTaxas;
-    private javax.swing.JMenuItem jMenuItemTelateste;
+    private javax.swing.JMenuItem jMenuItemTelaPrincipalBackup;
     private javax.swing.JMenuItem jMenuItemTipoDespesa;
     private javax.swing.JMenuItem jMenuItemTipoReceita;
     private javax.swing.JMenu jMenuSair;

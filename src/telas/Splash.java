@@ -67,7 +67,7 @@ public class Splash extends JWindow{
                         System.exit(1);
                     }
                 }
-                new TelaLogin().setVisible(true);
+                new TelaPrincipal().setVisible(true);
                 //new TelaPrincipal().setVisible(true);
                 dispose();
                

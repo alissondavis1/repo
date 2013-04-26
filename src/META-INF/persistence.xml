@@ -3,28 +3,19 @@
   <persistence-unit name="acal2002PU" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>entidades.Usuario</class>
-    <class>entidades.Contas</class>
     <class>entidades.EntradasLog</class>
-    <class>entidades.Saidas</class>
     <class>entidades.Pessoa</class>
     <class>entidades.Taxas</class>
     <class>entidades.Socio</class>
-    <class>entidades.CategoriaSocio</class>
-    <class>entidades.Motivosaidas</class>
     <class>entidades.Contrato</class>
-    <class>entidades.Enderecos</class>
     <class>entidades.Funcionario</class>
-    <class>entidades.Cheques</class>
     <class>entidades.SaidasLog</class>
-    <class>entidades.Entradas</class>
-    <class>entidades.Motivoentradas</class>
     <class>entidades.Endereco</class>
     <class>entidades.Cheque</class>
     <class>entidades.Saida</class>
     <class>entidades.Entrada</class>
     <class>entidades.Conta</class>
     <class>entidades.Categoriasocio</class>
-    <class>entidades.Entradaslog</class>
     <class>entidades.Chequeslog</class>
     <class>entidades.Contaslog</class>
     <class>entidades.view.SomaContasAbertasPorPessoa</class>
