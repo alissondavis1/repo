@@ -46,8 +46,9 @@ public class Splash extends JWindow{
         setLayout(absl);
         getContentPane().add(label,absImage);
         getContentPane().add(progress,absBarra);
+     
         new Thread(){
-            
+       
             @Override
             public void run(){
                 
@@ -66,12 +67,14 @@ public class Splash extends JWindow{
                         System.exit(1);
                     }
                 }
-                new TelaPrincipal().setVisible(true);
+                new TelaLogin().setVisible(true);
+                //new TelaPrincipal().setVisible(true);
                 dispose();
                
             }
    
         }.start();
+     
         setLocation(Toolkit.getDefaultToolkit().getScreenSize().width/4 ,   
         Toolkit.getDefaultToolkit().getScreenSize().height/5 );  
         pack();
@@ -85,6 +88,7 @@ public class Splash extends JWindow{
         
         
         new Thread(){
+            @Override
             public void run(){
             Session session= null;
             try{

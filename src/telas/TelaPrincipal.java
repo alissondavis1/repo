@@ -171,7 +171,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jPanel1.setLayout(new java.awt.GridBagLayout());
 
         jButton4.setIcon(new ImageIcon(getClass().getResource("/img/logoff.jpg")));
-        jButton4.setText("Logoff");
+        jButton4.setText("Opções de Logoff");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
         gridBagConstraints.gridy = 0;
@@ -620,6 +625,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_jMenuItemTelatesteActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        new TelaLogout().setVisible(true);
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments

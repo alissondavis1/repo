@@ -6,13 +6,14 @@ package dao;
 
 
 import daoInterfaces.UsuarioInterface;
-import entidades.Usuario;
+import entidades.User;
 import java.util.List;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import util.HibernateUtil;
+import util.HibernateUtilUser;
 
 
 /**
@@ -22,23 +23,15 @@ import util.HibernateUtil;
 public class DaoUsuario implements UsuarioInterface{
 
     @Override
-    public void AdicionarUsuario(Usuario u) {
-       
-        Session sessao = null;
+    public void AdicionarUsuario(User usuario) {
+       Session sessao = null;
         Transaction transcao = null;
-        
-        DaoUsuario d = new DaoUsuario();
-        String sql = d.ConstruirString(u);
-        String Qry = null;
-        
+       
          try{
-            
-            sessao = HibernateUtil.getSessionFactory().openSession();
+            sessao = HibernateUtilUser.getSessionFactory().openSession();
             transcao = sessao.beginTransaction();    
-            sessao.createSQLQuery(sql);
-           
+            sessao.save(usuario); 
             transcao.commit();
-            
             System.out.println("Salvo com sucesso");  
         }
         catch(HibernateException e)
@@ -49,38 +42,86 @@ public class DaoUsuario implements UsuarioInterface{
         finally
         {
             sessao.close(); 
-        }     
-    }
-    @Override
-    public void AlterarUsuario(Usuario usuario) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        }  
     }
 
     @Override
-    public void ApagarUsuario(Usuario usuario) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void AlterarUsuario(User usuario) {
+       Session sessao = null;
+        Transaction transcao = null;
+       
+         try{
+            sessao = HibernateUtilUser.getSessionFactory().openSession();
+            transcao = sessao.beginTransaction();    
+            sessao.saveOrUpdate(usuario); 
+            transcao.commit();
+            System.out.println("Salvo com sucesso");  
+        }
+        catch(HibernateException e)
+        {
+            System.out.println("Erro ao iniciar a sessao para persistencia " + e);
+            transcao.rollback();
+        }
+        finally
+        {
+            sessao.close(); 
+        }  
     }
 
-    public void EditarPermissoesUsuario(Usuario usuario) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    @Override
+    public void ApagarUsuario(User usuario) {
+       Session sessao = null;
+        Transaction transcao = null;
+       
+         try{
+            sessao = HibernateUtilUser.getSessionFactory().openSession();
+            transcao = sessao.beginTransaction();    
+            sessao.delete(usuario); 
+            transcao.commit();
+            System.out.println("Salvo com sucesso");  
+        }
+        catch(HibernateException e)
+        {
+            System.out.println("Erro ao iniciar a sessao para persistencia " + e);
+            transcao.rollback();
+        }
+        finally
+        {
+            sessao.close(); 
+        }  
     }
-    
-    
-    
-    private void Previlegios(Usuario u, String p)
-    {
-    
-    
-    }
-    
-    private String ConstruirString(Usuario u)
-    {
+ 
+    public User BuscaUsuario(String nome, String pass) {
+       
+        User user = null;
+        Session sessao = null; 
+        Query query = null;
+        Transaction transacao = null;
         
-    String sql = null;
-    if((u.getNome()!= null)&&(u.getSenha()!=null))
-    {
-     sql ="create user " + u.getNome() +"@localhost identified by '"+ u.getSenha()+"' ;";
+        try{
+           sessao = HibernateUtilUser.getSessionFactory().openSession();
+           transacao = sessao.beginTransaction();
+           query = sessao.createQuery("from User where user = :nome and password = PASSWORD(:pass) ");
+           //query.setString("nome","%"+nome+"%");
+           query.setParameter("nome",nome);
+           query.setParameter("pass", pass);
+           
+           user = (User) query.uniqueResult();
+           transacao.commit(); 
+           
+        }
+        catch(HibernateException e)
+        {
+            System.out.println(e);
+            transacao.rollback();
+        }
+        finally
+        {
+             sessao.close();
+        }  
+    return user;
     }
-    return sql;
-    }
+
+    
+    
 }

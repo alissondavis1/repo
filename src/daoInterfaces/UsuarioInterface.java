@@ -4,7 +4,7 @@
  */
 package daoInterfaces;
 
-import entidades.Usuario;
+import entidades.User;
 
 /**
  *
@@ -12,8 +12,8 @@ import entidades.Usuario;
  */
 public interface UsuarioInterface {
 
-    void AdicionarUsuario(Usuario u);
-    void AlterarUsuario(Usuario usuario);
-    void ApagarUsuario(Usuario usuario);
+    void AdicionarUsuario(User usuario);
+    void AlterarUsuario(User usuario);
+    void ApagarUsuario(User usuario);
     
 }

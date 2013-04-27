@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report1" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="bef2d380-9a21-40c4-bd5b-0b8001fd4939">
+	<property name="ireport.zoom" value="1.3310000000000004"/>
+	<property name="ireport.x" value="33"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT
+     cheque.`id` AS cheque_id,
+     cheque.`dataPagamento` AS cheque_dataPagamento,
+     cheque.`dataVencimento` AS cheque_dataVencimento,
+     cheque.`numero` AS cheque_numero,
+     cheque.`observacoes` AS cheque_observacoes,
+     cheque.`valor` AS cheque_valor,
+     cheque.`idFuncionario` AS cheque_idFuncionario,
+     cheque.`idMotivoDespesa` AS cheque_idMotivoDespesa,
+     funcionario.`id` AS funcionario_id,
+     funcionario.`cargo` AS funcionario_cargo,
+     funcionario.`dataContratacao` AS funcionario_dataContratacao,
+     funcionario.`matricula` AS funcionario_matricula,
+     funcionario.`observacao` AS funcionario_observacao,
+     funcionario.`salario` AS funcionario_salario,
+     funcionario.`idPessoa` AS funcionario_idPessoa
+FROM
+     `funcionario` funcionario INNER JOIN `cheque` cheque ON funcionario.`id` = cheque.`idFuncionario`
+order by cheque.id]]>
+	</queryString>
+	<field name="cheque_id" class="java.lang.Integer"/>
+	<field name="cheque_dataPagamento" class="java.sql.Timestamp"/>
+	<field name="cheque_dataVencimento" class="java.sql.Timestamp"/>
+	<field name="cheque_numero" class="java.lang.Integer"/>
+	<field name="cheque_observacoes" class="java.lang.String"/>
+	<field name="cheque_valor" class="java.math.BigDecimal"/>
+	<field name="cheque_idFuncionario" class="java.lang.Integer"/>
+	<field name="cheque_idMotivoDespesa" class="java.lang.Integer"/>
+	<field name="funcionario_id" class="java.lang.Integer"/>
+	<field name="funcionario_cargo" class="java.lang.String"/>
+	<field name="funcionario_dataContratacao" class="java.sql.Timestamp"/>
+	<field name="funcionario_matricula" class="java.lang.Integer"/>
+	<field name="funcionario_observacao" class="java.lang.String"/>
+	<field name="funcionario_salario" class="java.math.BigDecimal"/>
+	<field name="funcionario_idPessoa" class="java.lang.Integer"/>
+	<variable name="cheque_valor_1" class="java.math.BigDecimal" resetType="Page" calculation="Sum">
+		<variableExpression><![CDATA[$F{cheque_valor}]]></variableExpression>
+	</variable>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="72">
+			<frame>
+				<reportElement uuid="e128eec7-03b6-4ab9-a8e9-7a8745120d1e" mode="Opaque" x="-20" y="-20" width="595" height="92" backcolor="#006699"/>
+				<staticText>
+					<reportElement uuid="c6b1a567-07cd-4386-9067-7724a3a1cd56" x="20" y="20" width="234" height="43" forecolor="#FFFFFF"/>
+					<textElement>
+						<font size="34" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Acal2000]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="5e9675f7-a20f-48ab-b9e3-1d645417d97b" x="395" y="43" width="180" height="20" forecolor="#FFFFFF"/>
+					<textElement textAlignment="Right">
+						<font size="14" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Agua é vida, Economize.]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="69">
+			<textField>
+				<reportElement uuid="18396acf-8c88-49bc-a5a8-5304b5c724bf" mode="Opaque" x="0" y="23" width="111" height="46" forecolor="#006699" backcolor="#E6E6E6"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[id]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="21">
+			<line>
+				<reportElement uuid="3e261f03-4b06-401f-92c5-13bf33458084" x="0" y="20" width="555" height="1" forecolor="#666666"/>
+			</line>
+			<staticText>
+				<reportElement uuid="42392ff1-da2f-44b2-bfce-a367e9696f0f" mode="Opaque" x="111" y="0" width="111" height="20" forecolor="#006699" backcolor="#E6E6E6"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[cheque_dataVencimento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="2ec7192b-5198-4898-9a67-fb99ab02ca5f" mode="Opaque" x="222" y="0" width="111" height="20" forecolor="#006699" backcolor="#E6E6E6"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[cheque_numero]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="dc6a28f3-b9b3-4275-80bc-98709ce24f1d" mode="Opaque" x="333" y="0" width="111" height="20" forecolor="#006699" backcolor="#E6E6E6"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[cheque_valor]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="37204bce-0471-4774-9fc7-efa510eb5bd4" mode="Opaque" x="444" y="0" width="111" height="20" forecolor="#006699" backcolor="#E6E6E6"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[funcionario_dataContratacao]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20">
+			<line>
+				<reportElement uuid="1268fad7-0978-460f-b534-2db930e18295" positionType="FixRelativeToBottom" x="0" y="19" width="555" height="1"/>
+			</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="b0388326-27ca-4692-b02e-3a8433554b27" x="0" y="0" width="111" height="20"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cheque_dataPagamento}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="a547613d-f3ba-40ed-818e-be18362bfa00" x="111" y="0" width="111" height="20"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cheque_dataVencimento}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="ee876f37-b1c3-44c7-84e6-dc7c8b6033c4" x="222" y="0" width="111" height="20"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cheque_numero}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="d46baffb-0790-44c5-b2fc-30b05e844ee0" x="333" y="0" width="111" height="20"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cheque_valor}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="381422a2-6c11-4e4c-be9c-85f43765f3ab" x="444" y="0" width="111" height="20"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{funcionario_dataContratacao}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="39">
+			<textField>
+				<reportElement uuid="da1841d7-db7d-4d87-bd03-bc6db21ad006" mode="Opaque" x="0" y="26" width="515" height="13" backcolor="#E6E6E6"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Pagina "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement uuid="0dc029ad-dd14-45af-a803-e4c13a73c81e" mode="Opaque" x="515" y="26" width="40" height="13" backcolor="#E6E6E6"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement uuid="2adb80a0-dae7-4c0f-857d-27ac55df1e5b" x="0" y="4" width="100" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="d249b5c7-4c1e-4051-b154-2c6a16349eba" x="345" y="9" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$V{cheque_valor_1}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>
