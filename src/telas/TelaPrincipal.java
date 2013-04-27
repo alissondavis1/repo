@@ -11,6 +11,8 @@ import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.math.BigDecimal;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.sql.Connection;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -23,6 +25,7 @@ import java.util.Properties;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.naming.spi.DirectoryManager;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -578,9 +581,25 @@ public class TelaPrincipal extends javax.swing.JFrame {
         Scanner sc = null;
         try {
 
-            String comando = "cmd /c mysqldump -uroot -p123 acal >" + getClass().getResource("/Sql/").getPath().substring(1) + "acal.sql";
-
-            Process p = Runtime.getRuntime().exec(comando);
+           // String comando = "cmd /c mysqldump -uroot -p123 acal >" + getClass().getResource("/Sql/").getPath().substring(1) + "acal.sql";
+              File caminho = new File("sql/");
+              if(!caminho.exists()){
+              caminho.mkdir();
+              //Files.createDirectory(caminho.toPath());
+              }
+              Calendar c = Calendar.getInstance();
+              String[] s = SimpleDateFormat.getDateInstance(SimpleDateFormat.SHORT).format(c.getTime()).split("/");
+              String data = "";
+              
+              for( String temp : s){
+                  
+                 data = data.concat(temp);
+              }
+              String acal = "acal"+data+".sql";
+              System.out.println(data);
+              String comando = "cmd /c mysqldump -uroot -p123 acal > sql/"+acal;  
+                
+              Process p = Runtime.getRuntime().exec(comando);
             try {
                 if(p.waitFor() == 0){
                     
@@ -595,7 +614,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
 
 
-            File file = new File(getClass().getResource("/Sql/acal.sql").getPath());
+           // File file = new File(getClass().getResource("/Sql/acal.sql").getPath());
+            File file = new File("sql/"+acal);
             JFileChooser jf = new JFileChooser();
 
 
@@ -611,11 +631,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 pw = new PrintWriter(f);
                 sc = new Scanner(file);
                 while (sc.hasNextLine()) {
-                    String s = sc.nextLine();
+                    String s1 = sc.nextLine();
 
-                    pw.println(s);
+                    pw.println(s1);
                 }
-
+                
+                JOptionPane.showMessageDialog(null, "Backup gerado com sucesso!", "Backup", JOptionPane.INFORMATION_MESSAGE);
 
             }
 

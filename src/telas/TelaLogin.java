@@ -6,6 +6,7 @@ package telas;
 
 import dao.DaoUsuario;
 import entidades.User;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import org.hibernate.Session;
 import org.hibernate.cfg.AnnotationConfiguration;
@@ -41,6 +42,7 @@ public class TelaLogin extends javax.swing.JFrame {
         jPasswordFieldTelaPrincipalSenha = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setIconImage(new ImageIcon(getClass().getResource("/img/ico.png")).getImage());
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Seja bem vindo"));
 

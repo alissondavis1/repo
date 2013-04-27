@@ -7,6 +7,7 @@ package util;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import javax.swing.JOptionPane;
 import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.AnnotationConfiguration;
@@ -45,6 +46,8 @@ public class HibernateUtil {
             return conn;  
             
         } catch (HibernateException | SQLException e) {  
+            
+            JOptionPane.showMessageDialog(null, "Erro de conexão ao banco de dados utilizando jdbc");
             e.printStackTrace();  
             throw e;  
         }  
