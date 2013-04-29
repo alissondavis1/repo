@@ -86,19 +86,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         
         trayIcon = new TrayIcon(new ImageIcon(getClass().getResource("/img/ico.png")).getImage(), "Acal2000", popupMenu1);
         trayIcon.setImageAutoSize(true);
-        trayIcon.addMouseMotionListener(new MouseMotionListener() {
-
-            @Override
-            public void mouseDragged(MouseEvent e) {
-               
-            }
-
-            @Override
-            public void mouseMoved(MouseEvent e) {
-                
-                trayIcon.displayMessage("Seja Bem vindo ao Acal200", "Para ver as opções disponíveis clique com o botão direito", TrayIcon.MessageType.INFO);
-            }
-        });
+       
        try{
            systemTray.add(trayIcon);
        }catch(AWTException e){
@@ -153,7 +141,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         timer1 = new org.netbeans.examples.lib.timerbean.Timer();
         popupMenu1 = new java.awt.PopupMenu();
-        menuItem1 = new java.awt.MenuItem();
+        menuItemPopupSair = new java.awt.MenuItem();
+        menuItemPopupCadastros = new java.awt.MenuItem();
         jPanel1 = new javax.swing.JPanel();
         jButtonTelaPrincipalLogoff = new javax.swing.JButton();
         jButtonTelaPrincipalRelatorios = new javax.swing.JButton();
@@ -194,14 +183,22 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         popupMenu1.setLabel("popupMenu1");
 
-        menuItem1.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        menuItem1.setLabel("Sair");
-        menuItem1.addActionListener(new java.awt.event.ActionListener() {
+        menuItemPopupSair.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        menuItemPopupSair.setLabel("Sair");
+        menuItemPopupSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuItem1ActionPerformed(evt);
+                menuItemPopupSairActionPerformed(evt);
             }
         });
-        popupMenu1.add(menuItem1);
+        popupMenu1.add(menuItemPopupSair);
+        popupMenu1.addSeparator();
+        menuItemPopupCadastros.setLabel("Cadastros");
+        menuItemPopupCadastros.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemPopupCadastrosActionPerformed(evt);
+            }
+        });
+        popupMenu1.add(menuItemPopupCadastros);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("ACAL2000");
@@ -673,10 +670,15 @@ public class TelaPrincipal extends javax.swing.JFrame {
         new TelaLogout().setVisible(true);
     }//GEN-LAST:event_jButtonTelaPrincipalLogoffActionPerformed
 
-    private void menuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItem1ActionPerformed
+    private void menuItemPopupSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemPopupSairActionPerformed
         
         System.exit(0);
-    }//GEN-LAST:event_menuItem1ActionPerformed
+    }//GEN-LAST:event_menuItemPopupSairActionPerformed
+
+    private void menuItemPopupCadastrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemPopupCadastrosActionPerformed
+        
+          new TelaCadastros(this).setVisible(true);
+    }//GEN-LAST:event_menuItemPopupCadastrosActionPerformed
 
     public static void main(String args[]) {
 
@@ -749,7 +751,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JPopupMenu.Separator jSeparator2;
-    private java.awt.MenuItem menuItem1;
+    private java.awt.MenuItem menuItemPopupCadastros;
+    private java.awt.MenuItem menuItemPopupSair;
     private java.awt.PopupMenu popupMenu1;
     private org.netbeans.examples.lib.timerbean.Timer timer1;
     // End of variables declaration//GEN-END:variables

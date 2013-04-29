@@ -12,6 +12,8 @@ import entidades.Pessoa;
 import java.awt.event.ActionEvent;
 import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import javax.swing.ImageIcon;
@@ -136,7 +138,6 @@ public class TelaCadastros extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         jTextFieldFuncionarioTelefone = new javax.swing.JTextField();
         jTextFieldFuncionarioEmail = new javax.swing.JTextField();
-        jTextFieldFuncionarioDataNascimento = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel16 = new javax.swing.JLabel();
         jTextFieldFuncionarioNomedame = new javax.swing.JTextField();
@@ -153,9 +154,10 @@ public class TelaCadastros extends javax.swing.JFrame {
         jSeparator2 = new javax.swing.JSeparator();
         jTextFieldFuncionarioRgnumero = new javax.swing.JTextField();
         jTextFieldFuncionarioOrgaoExpedidor = new javax.swing.JTextField();
-        jTextFieldFuncionarioDatadeemissao = new javax.swing.JTextField();
         jButtonFuncionarioPesquisar = new javax.swing.JButton();
         jFormattedTextFieldFuncionarioCpf = new javax.swing.JFormattedTextField();
+        jFormattedTextFieldFuncionarioDataNascimento = new javax.swing.JFormattedTextField();
+        jFormattedTextFieldFuncionarioDataEmissao = new javax.swing.JFormattedTextField();
         jPanel3 = new javax.swing.JPanel();
         jComboBoxFuncionarioLograduro = new javax.swing.JComboBox();
         jLabel8 = new javax.swing.JLabel();
@@ -188,7 +190,7 @@ public class TelaCadastros extends javax.swing.JFrame {
         jTextAreaFuncionarioObservacoes = new javax.swing.JTextArea();
         jTextFieldFuncionarioCargo = new javax.swing.JTextField();
         jTextFieldFuncionarioSalario = new javax.swing.JTextField();
-        jTextFieldFuncionarioDataDeContratacao = new javax.swing.JTextField();
+        jFormattedTextFieldFuncionarioDataContratacao = new javax.swing.JFormattedTextField();
         jPanelReceitas = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
         jButtonNovoReceita = new javax.swing.JButton();
@@ -476,7 +478,7 @@ public class TelaCadastros extends javax.swing.JFrame {
                 }
             });
 
-            jComboBoxFuncionarioSexo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ","Masculino","Feminino" }));
+            jComboBoxFuncionarioSexo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "","Masculino","Feminino" }));
 
             jLabel19.setText("Sexo");
 
@@ -499,6 +501,18 @@ public class TelaCadastros extends javax.swing.JFrame {
 
             try {
                 jFormattedTextFieldFuncionarioCpf.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
+            } catch (java.text.ParseException ex) {
+                ex.printStackTrace();
+            }
+
+            try {
+                jFormattedTextFieldFuncionarioDataNascimento.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+            } catch (java.text.ParseException ex) {
+                ex.printStackTrace();
+            }
+
+            try {
+                jFormattedTextFieldFuncionarioDataEmissao.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
             } catch (java.text.ParseException ex) {
                 ex.printStackTrace();
             }
@@ -565,15 +579,15 @@ public class TelaCadastros extends javax.swing.JFrame {
                                     .addComponent(jTextFieldFuncionarioOrgaoExpedidor, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                     .addComponent(jLabel24)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(jTextFieldFuncionarioDatadeemissao, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jFormattedTextFieldFuncionarioDataEmissao, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGroup(jPanel2Layout.createSequentialGroup()
                             .addComponent(jLabel14)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jTextFieldFuncionarioDataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
+                            .addComponent(jFormattedTextFieldFuncionarioDataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(12, 12, 12)
                             .addComponent(jLabel19)
-                            .addGap(18, 18, 18)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                             .addComponent(jComboBoxFuncionarioSexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addContainerGap())
             );
@@ -610,9 +624,9 @@ public class TelaCadastros extends javax.swing.JFrame {
                     .addGap(18, 18, 18)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel14)
-                        .addComponent(jTextFieldFuncionarioDataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel19)
-                        .addComponent(jComboBoxFuncionarioSexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jComboBoxFuncionarioSexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jFormattedTextFieldFuncionarioDataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGap(30, 30, 30)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel16)
@@ -632,7 +646,7 @@ public class TelaCadastros extends javax.swing.JFrame {
                         .addComponent(jLabel22)
                         .addComponent(jTextFieldFuncionarioOrgaoExpedidor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel24)
-                        .addComponent(jTextFieldFuncionarioDatadeemissao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jFormattedTextFieldFuncionarioDataEmissao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addContainerGap(16, Short.MAX_VALUE))
             );
 
@@ -851,6 +865,12 @@ public class TelaCadastros extends javax.swing.JFrame {
             jTextAreaFuncionarioObservacoes.setRows(5);
             jScrollPane2.setViewportView(jTextAreaFuncionarioObservacoes);
 
+            try {
+                jFormattedTextFieldFuncionarioDataContratacao.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+            } catch (java.text.ParseException ex) {
+                ex.printStackTrace();
+            }
+
             javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
             jPanel5.setLayout(jPanel5Layout);
             jPanel5Layout.setHorizontalGroup(
@@ -872,7 +892,7 @@ public class TelaCadastros extends javax.swing.JFrame {
                                     .addComponent(jTextFieldFuncionarioSalario)
                                     .addGap(194, 194, 194))))
                         .addGroup(jPanel5Layout.createSequentialGroup()
-                            .addComponent(jTextFieldFuncionarioDataDeContratacao, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jFormattedTextFieldFuncionarioDataContratacao, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(29, 29, 29))
@@ -883,7 +903,7 @@ public class TelaCadastros extends javax.swing.JFrame {
             jPanel5Layout.setVerticalGroup(
                 jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel5Layout.createSequentialGroup()
-                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel5Layout.createSequentialGroup()
                             .addContainerGap()
                             .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -896,8 +916,8 @@ public class TelaCadastros extends javax.swing.JFrame {
                                 .addComponent(jTextFieldFuncionarioSalario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGap(9, 9, 9)
                             .addComponent(Logradouro6)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jTextFieldFuncionarioDataDeContratacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jFormattedTextFieldFuncionarioDataContratacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addContainerGap(21, Short.MAX_VALUE))
             );
@@ -1746,8 +1766,40 @@ public class TelaCadastros extends javax.swing.JFrame {
     private void jButtonFuncionarioSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFuncionarioSalvarActionPerformed
        
         if(iscamposFuncionáriosPreenchidos()){
+           
+            Calendar c = Calendar.getInstance();
+           try{ 
+            Pessoa p = new Pessoa();
+            p.setNome(jTextFieldFuncionarioNome.getText());
+            p.setSobrenome(jTextFieldFuncionarioSobrenome.getText());
+            p.setApelido(jTextFieldFuncionarioApelido.getText());
+            p.setTelefone(jTextFieldFuncionarioTelefone.getText());
+            p.setEmail(jTextFieldFuncionarioEmail.getText());
+            String[] dataNascimento = jFormattedTextFieldFuncionarioDataNascimento.getText().split("/");
+            c.set(Integer.parseInt(dataNascimento[2]), Integer.parseInt(dataNascimento[1]), Integer.parseInt(dataNascimento[0]));
+            p.setDataNasc(c.getTime());
+            p.setSexo((String)jComboBoxFuncionarioSexo.getSelectedItem());
+            p.setNomeMae(jTextFieldFuncionarioNomedame.getText());
+            p.setNomePai(jTextFieldFuncionarioNomedopai.getText());
+            p.setCpf(jFormattedTextFieldFuncionarioCpf.getText());
+            p.setRgNumero(jTextFieldFuncionarioRgnumero.getText());
+            p.setRgExpedidor(jTextFieldFuncionarioOrgaoExpedidor.getText());
+            String[] dataEmissao = jFormattedTextFieldFuncionarioDataEmissao.getText().split("/");
+            c.set(Integer.parseInt(dataEmissao[2]), Integer.parseInt(dataEmissao[1]), Integer.parseInt(dataEmissao[0]));
+            p.setRgEmissao(c.getTime());
+            p.setNumeroEndereco(jTextFieldFuncionarioNumero.getText());
+            p.setCidade(jTextFieldFuncionarioCidade.getText());
+            p.setBairro(jTextFieldFuncionarioBairro.getText());
+            p.setUf((String)jComboBoxFuncionarioUf.getSelectedItem());
+            p.setCep(jTextFieldFuncionarioCep.getText());
+            p.getIdEndereco().setNome((String)jComboBoxFuncionarioLograduro.getSelectedItem());
             
             
+            
+           }catch(Exception e){
+               JOptionPane.showMessageDialog(this, "Erro para gravar os dados, verifique se todos os campos estão preenchidos corretamente","ERRO",JOptionPane.ERROR_MESSAGE);
+               
+           }
         }else{
             
             JOptionPane.showMessageDialog(this,"Por Favor, preencha todos os campos em negrito","Atenção",JOptionPane.INFORMATION_MESSAGE);
@@ -1764,9 +1816,9 @@ public class TelaCadastros extends javax.swing.JFrame {
         jTextFieldFuncionarioCep.setEditable(editable);
         jTextFieldFuncionarioCidade.setEditable(editable);
         jFormattedTextFieldFuncionarioCpf.setEditable(editable);
-        jTextFieldFuncionarioDataDeContratacao.setEditable(editable);
-        jTextFieldFuncionarioDataNascimento.setEditable(editable);
-        jTextFieldFuncionarioDatadeemissao.setEditable(editable);
+        jFormattedTextFieldFuncionarioDataContratacao.setEditable(editable);
+        jFormattedTextFieldFuncionarioDataNascimento.setEditable(editable);
+        jFormattedTextFieldFuncionarioDataEmissao.setEditable(editable);
         jTextFieldFuncionarioEmail.setEditable(editable);
         jTextFieldFuncionarioNomedame.setEditable(editable);
         jTextFieldFuncionarioNomedopai.setEditable(editable);
@@ -1798,9 +1850,9 @@ public class TelaCadastros extends javax.swing.JFrame {
         jTextFieldFuncionarioCep.setText("");
         jTextFieldFuncionarioCidade.setText("");
         jFormattedTextFieldFuncionarioCpf.setText("");
-        jTextFieldFuncionarioDataDeContratacao.setText("");
-        jTextFieldFuncionarioDataNascimento.setText("");
-        jTextFieldFuncionarioDatadeemissao.setText("");
+        jFormattedTextFieldFuncionarioDataContratacao.setText("");
+        jFormattedTextFieldFuncionarioDataNascimento.setText("");
+        jFormattedTextFieldFuncionarioDataEmissao.setText("");
         jTextFieldFuncionarioEmail.setText("");
         jTextFieldFuncionarioNomedame.setText("");
         jTextFieldFuncionarioNomedopai.setText("");
@@ -1815,8 +1867,9 @@ public class TelaCadastros extends javax.swing.JFrame {
         jComboBoxFuncionarioSexo.setSelectedIndex(0);
         jComboBoxFuncionarioStatus.setSelectedIndex(0);
         jComboBoxFuncionarioUf.setSelectedIndex(0);
+        if(jComboBoxFuncionarioLograduro.getItemCount() != 0){
         jComboBoxFuncionarioLograduro.setSelectedIndex(0);
-
+        }
 
     }
 
@@ -1830,7 +1883,7 @@ public class TelaCadastros extends javax.swing.JFrame {
         jTextFieldFuncionarioTelefone.setText(pessoa.getTelefone());
         jTextFieldFuncionarioEmail.setText(pessoa.getEmail());
         if (pessoa.getDataNasc() != null) {
-            jTextFieldFuncionarioDataNascimento.setText(SimpleDateFormat.getDateInstance().format(pessoa.getDataNasc()));
+            jFormattedTextFieldFuncionarioDataNascimento.setText(SimpleDateFormat.getDateInstance().format(pessoa.getDataNasc()));
         }
         jComboBoxFuncionarioSexo.setSelectedItem(pessoa.getSexo());
         jTextFieldFuncionarioNomedame.setText(pessoa.getNomeMae());
@@ -1839,7 +1892,7 @@ public class TelaCadastros extends javax.swing.JFrame {
         jTextFieldFuncionarioRgnumero.setText(pessoa.getRgNumero());
         jTextFieldFuncionarioOrgaoExpedidor.setText(pessoa.getRgExpedidor());
         if (pessoa.getRgEmissao() != null) {
-            jTextFieldFuncionarioDatadeemissao.setText(SimpleDateFormat.getDateInstance().format(pessoa.getRgEmissao()));
+            jFormattedTextFieldFuncionarioDataEmissao.setText(SimpleDateFormat.getDateInstance().format(pessoa.getRgEmissao()));
         }
         if (jComboBoxFuncionarioLograduro.getItemCount() == 0) {
             jComboBoxFuncionarioLograduro.addItem("");
@@ -1862,9 +1915,9 @@ public class TelaCadastros extends javax.swing.JFrame {
             jTextFieldFuncionarioSalario.setText(NumberFormat.getCurrencyInstance().format(func.getSalario()));
             if (func.getDataContratacao() != null) {
 
-                jTextFieldFuncionarioDataDeContratacao.setText(SimpleDateFormat.getDateInstance().format(func.getDataContratacao()));
+                jFormattedTextFieldFuncionarioDataContratacao.setText(SimpleDateFormat.getDateInstance().format(func.getDataContratacao()));
             } else {
-                jTextFieldFuncionarioDataDeContratacao.setText("nulo");
+                jFormattedTextFieldFuncionarioDataContratacao.setText("nulo");
             }
             jTextAreaFuncionarioObservacoes.setText(func.getObservacao());
             jTextFieldFuncionarioNumeroDaMatricula.setText(String.valueOf(func.getMatricula()));
@@ -1882,7 +1935,7 @@ public class TelaCadastros extends javax.swing.JFrame {
 
     private boolean iscamposFuncionáriosPreenchidos(){
         
-        if(!jTextFieldFuncionarioNome.getText().equals("") && !jTextFieldFuncionarioSobrenome.getText().equals("") && !jTextFieldFuncionarioCargo.getText().equals("") && !jTextFieldFuncionarioSalario.getText().equals("") && !jTextFieldFuncionarioDataDeContratacao.getText().equals("") && !jComboBoxFuncionarioStatus.getSelectedItem().equals("") && !jTextFieldFuncionarioNumeroDaMatricula.getText().equals("")){
+        if(!jTextFieldFuncionarioNome.getText().equals("") && !jTextFieldFuncionarioSobrenome.getText().equals("") && !jTextFieldFuncionarioCargo.getText().equals("") && !jTextFieldFuncionarioSalario.getText().equals("") && !jFormattedTextFieldFuncionarioDataContratacao.getText().equals("") && !jComboBoxFuncionarioStatus.getSelectedItem().equals("") && !jTextFieldFuncionarioNumeroDaMatricula.getText().equals("")){
             
             return true;
             
@@ -2009,6 +2062,9 @@ public class TelaCadastros extends javax.swing.JFrame {
     private javax.swing.JComboBox jComboBoxFuncionarioUf;
     private javax.swing.JComboBox jComboBoxTipoLogradouro;
     private javax.swing.JFormattedTextField jFormattedTextFieldFuncionarioCpf;
+    private javax.swing.JFormattedTextField jFormattedTextFieldFuncionarioDataContratacao;
+    private javax.swing.JFormattedTextField jFormattedTextFieldFuncionarioDataEmissao;
+    private javax.swing.JFormattedTextField jFormattedTextFieldFuncionarioDataNascimento;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -2086,9 +2142,6 @@ public class TelaCadastros extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldFuncionarioCargo;
     private javax.swing.JTextField jTextFieldFuncionarioCep;
     private javax.swing.JTextField jTextFieldFuncionarioCidade;
-    private javax.swing.JTextField jTextFieldFuncionarioDataDeContratacao;
-    private javax.swing.JTextField jTextFieldFuncionarioDataNascimento;
-    private javax.swing.JTextField jTextFieldFuncionarioDatadeemissao;
     private javax.swing.JTextField jTextFieldFuncionarioEmail;
     private javax.swing.JTextField jTextFieldFuncionarioID;
     private javax.swing.JTextField jTextFieldFuncionarioNome;

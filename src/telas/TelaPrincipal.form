@@ -12,7 +12,7 @@
         <Property name="label" type="java.lang.String" value="popupMenu1"/>
       </Properties>
       <SubComponents>
-        <MenuItem class="java.awt.MenuItem" name="menuItem1">
+        <MenuItem class="java.awt.MenuItem" name="menuItemPopupSair">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Dialog" size="12" style="1"/>
@@ -20,7 +20,17 @@
             <Property name="label" type="java.lang.String" value="Sair"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuItem1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuItemPopupSairActionPerformed"/>
+          </Events>
+        </MenuItem>
+        <MenuItem class="org.netbeans.modules.form.Separator" name="separator1">
+        </MenuItem>
+        <MenuItem class="java.awt.MenuItem" name="menuItemPopupCadastros">
+          <Properties>
+            <Property name="label" type="java.lang.String" value="Cadastros"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuItemPopupCadastrosActionPerformed"/>
           </Events>
         </MenuItem>
       </SubComponents>
