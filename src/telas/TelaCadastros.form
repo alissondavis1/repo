@@ -546,11 +546,17 @@
                   <SubComponents>
                     <Component class="javax.swing.JLabel" name="jLabel6">
                       <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Tahoma" size="11" style="1"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="Sobrenome"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel5">
                       <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Tahoma" size="11" style="1"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="Nome"/>
                       </Properties>
                     </Component>
@@ -829,10 +835,6 @@
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="jComboBoxFuncionarioStatus" min="-2" pref="96" max="-2" attributes="0"/>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="Logradouro2" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="jTextFieldFuncionarioCategoriaSocio" min="-2" pref="63" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                                       <Component id="Logradouro3" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="jTextFieldFuncionarioNumeroDaMatricula" min="-2" pref="84" max="-2" attributes="0"/>
@@ -849,7 +851,7 @@
                                       <Component id="jButtonFuncionarioCancelar" linkSize="1" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <EmptySpace pref="44" max="32767" attributes="0"/>
+                              <EmptySpace pref="160" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -859,10 +861,8 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="Logradouro1" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="Logradouro2" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="Logradouro3" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jTextFieldFuncionarioNumeroDaMatricula" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTextFieldFuncionarioCategoriaSocio" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jComboBoxFuncionarioStatus" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -881,27 +881,26 @@
                   <SubComponents>
                     <Component class="javax.swing.JLabel" name="Logradouro1">
                       <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Tahoma" size="11" style="1"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="Status"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JLabel" name="Logradouro2">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="Categoria Socio"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JLabel" name="Logradouro3">
                       <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Tahoma" size="11" style="1"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="Numero da Matricula"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JTextField" name="jTextFieldFuncionarioNumeroDaMatricula">
                     </Component>
-                    <Component class="javax.swing.JTextField" name="jTextFieldFuncionarioCategoriaSocio">
-                    </Component>
                     <Component class="javax.swing.JComboBox" name="jComboBoxFuncionarioStatus">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                          <Connection code="new javax.swing.DefaultComboBoxModel(new String[] { &quot; &quot;,&quot;Ativo&quot;, &quot;Desativo&quot; })" type="code"/>
+                          <Connection code="new javax.swing.DefaultComboBoxModel(new String[] {&quot;&quot;,&quot;Ativo&quot;, &quot;Desativo&quot; })" type="code"/>
                         </Property>
                       </Properties>
                     </Component>
@@ -931,6 +930,9 @@
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Salvar"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonFuncionarioSalvarActionPerformed"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JButton" name="jButtonFuncionarioNovo">
                       <Properties>
@@ -965,30 +967,35 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="Logradouro4" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="Logradouro5" alignment="0" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" attributes="0">
-                                      <Component id="jTextFieldFuncionarioCargo" min="-2" pref="142" max="-2" attributes="0"/>
-                                      <EmptySpace max="32767" attributes="0"/>
-                                      <Component id="Logradouro7" min="-2" pref="83" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="Logradouro4" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="Logradouro5" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" attributes="0">
+                                              <Component id="jTextFieldFuncionarioCargo" min="-2" pref="142" max="-2" attributes="0"/>
+                                              <EmptySpace max="32767" attributes="0"/>
+                                              <Component id="Logradouro7" min="-2" pref="83" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" attributes="0">
+                                              <Component id="jTextFieldFuncionarioSalario" max="32767" attributes="0"/>
+                                              <EmptySpace min="-2" pref="194" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
                                   </Group>
-                                  <Group type="102" attributes="0">
-                                      <Component id="jTextFieldFuncionarioSalario" max="32767" attributes="0"/>
-                                      <EmptySpace min="-2" pref="194" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="jTextFieldFuncionarioDataDeContratacao" min="-2" pref="99" max="-2" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                               <Component id="jScrollPane2" min="-2" pref="335" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jTextFieldFuncionarioDataDeContratacao" min="-2" pref="99" max="-2" attributes="0"/>
-                                  <Component id="Logradouro6" min="-2" pref="125" max="-2" attributes="0"/>
-                              </Group>
+                              <Component id="Logradouro6" min="-2" pref="125" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="558" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -1024,16 +1031,25 @@
                   <SubComponents>
                     <Component class="javax.swing.JLabel" name="Logradouro4">
                       <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Tahoma" size="11" style="1"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="Cargo"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JLabel" name="Logradouro5">
                       <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Tahoma" size="11" style="1"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="Salario"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JLabel" name="Logradouro6">
                       <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Tahoma" size="11" style="1"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="Data de Contrata&#xe7;&#xe3;o"/>
                       </Properties>
                     </Component>

@@ -20,8 +20,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -80,8 +78,8 @@ public class Pessoa implements Serializable {
     private String nomeMae;
     @Column(name = "nomePai")
     private String nomePai;
-    @Column(name = "numeroMatricula")
-    private Integer numeroMatricula;
+//    @Column(name = "numeroMatricula")
+//    private Integer numeroMatricula;
     @Lob
     @Column(name = "observacoes")
     private String observacoes;
@@ -273,15 +271,15 @@ public class Pessoa implements Serializable {
         changeSupport.firePropertyChange("nomePai", oldNomePai, nomePai);
     }
 
-    public Integer getNumeroMatricula() {
-        return numeroMatricula;
-    }
-
-    public void setNumeroMatricula(Integer numeroMatricula) {
-        Integer oldNumeroMatricula = this.numeroMatricula;
-        this.numeroMatricula = numeroMatricula;
-        changeSupport.firePropertyChange("numeroMatricula", oldNumeroMatricula, numeroMatricula);
-    }
+//    public Integer getNumeroMatricula() {
+//        return numeroMatricula;
+//    }
+//
+//    public void setNumeroMatricula(Integer numeroMatricula) {
+//        Integer oldNumeroMatricula = this.numeroMatricula;
+//        this.numeroMatricula = numeroMatricula;
+//        changeSupport.firePropertyChange("numeroMatricula", oldNumeroMatricula, numeroMatricula);
+//    }
 
     public String getObservacoes() {
         return observacoes;

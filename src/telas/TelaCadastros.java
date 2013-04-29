@@ -4,7 +4,7 @@
  */
 package telas;
 
-import dao.DaoFuncionario;
+import dao.DaoEndereco;
 import dao.DaoPessoa;
 import entidades.Endereco;
 import entidades.Funcionario;
@@ -12,7 +12,6 @@ import entidades.Pessoa;
 import java.awt.event.ActionEvent;
 import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import javax.swing.ImageIcon;
@@ -27,8 +26,7 @@ public class TelaCadastros extends javax.swing.JFrame {
 
     JFrame telaPrincipal;
     List<Endereco> enderecos;
-    
-    
+
     /**
      * Creates new form TelaCadastros
      */
@@ -36,7 +34,7 @@ public class TelaCadastros extends javax.swing.JFrame {
 
         initComponents();
         editableTextFields(false);
-         
+
     }
 
     public TelaCadastros(JFrame telaPrincipal) {
@@ -46,30 +44,55 @@ public class TelaCadastros extends javax.swing.JFrame {
         this.telaPrincipal.setEnabled(false);
     }
 
-    public TelaCadastros(JFrame telaPrincipal, ActionEvent evt){
-        
+    public TelaCadastros(JFrame telaPrincipal, ActionEvent evt) {
+
         this(telaPrincipal);
-        
-        switch(evt.getActionCommand()){
-            
-            case "Funcionarios" : jTabbedPane1.setSelectedComponent(jPanelFunc); break;
-            case "Logradouro" : jTabbedPane1.setSelectedComponent(jPanelLog); break;
-            case "Receitas" : jTabbedPane1.setSelectedComponent(jPanelReceitas); break;
-            case "Categoria Socio" : jTabbedPane1.setSelectedComponent(jPanelCategoria_Socio); break;
-            case "Socio" : jTabbedPane1.setSelectedComponent(jPanelSocio); break;
-            case "Tipo de Despesa" : jTabbedPane1.setSelectedComponent(jPanelTipoDespesa); break;
-            case "Despesa" : jTabbedPane1.setSelectedComponent(jPanelDespesa); break;
-            case "Tipo de Receita" : jTabbedPane1.setSelectedComponent(jPanelTipoReceita); break;
-            case "Receita" : jTabbedPane1.setSelectedComponent(jPanelReceita); break;
-            case "Contrato" : jTabbedPane1.setSelectedComponent(jPanelContrato); break;
-            case "Taxas" : jTabbedPane1.setSelectedComponent(jPanelTaxas); break;    
-                
-            
-            
+
+        switch (evt.getActionCommand()) {
+
+            case "Funcionarios":
+                jTabbedPane1.setSelectedComponent(jPanelFunc);
+                break;
+            case "Logradouro":
+                jTabbedPane1.setSelectedComponent(jPanelLog);
+                break;
+            case "Receitas":
+                jTabbedPane1.setSelectedComponent(jPanelReceitas);
+                break;
+            case "Categoria Socio":
+                jTabbedPane1.setSelectedComponent(jPanelCategoria_Socio);
+                break;
+            case "Socio":
+                jTabbedPane1.setSelectedComponent(jPanelSocio);
+                break;
+            case "Tipo de Despesa":
+                jTabbedPane1.setSelectedComponent(jPanelTipoDespesa);
+                break;
+            case "Despesa":
+                jTabbedPane1.setSelectedComponent(jPanelDespesa);
+                break;
+            case "Tipo de Receita":
+                jTabbedPane1.setSelectedComponent(jPanelTipoReceita);
+                break;
+            case "Receita":
+                jTabbedPane1.setSelectedComponent(jPanelReceita);
+                break;
+            case "Contrato":
+                jTabbedPane1.setSelectedComponent(jPanelContrato);
+                break;
+            case "Taxas":
+                jTabbedPane1.setSelectedComponent(jPanelTaxas);
+                break;
+
+
+
         }
-        
+
+
+
+
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -148,10 +171,8 @@ public class TelaCadastros extends javax.swing.JFrame {
         jComboBoxFuncionarioUf = new javax.swing.JComboBox();
         jPanel4 = new javax.swing.JPanel();
         Logradouro1 = new javax.swing.JLabel();
-        Logradouro2 = new javax.swing.JLabel();
         Logradouro3 = new javax.swing.JLabel();
         jTextFieldFuncionarioNumeroDaMatricula = new javax.swing.JTextField();
-        jTextFieldFuncionarioCategoriaSocio = new javax.swing.JTextField();
         jComboBoxFuncionarioStatus = new javax.swing.JComboBox();
         jButtonFuncionarioEditar = new javax.swing.JButton();
         jButtonFuncionarioApagar = new javax.swing.JButton();
@@ -424,8 +445,10 @@ public class TelaCadastros extends javax.swing.JFrame {
 
             jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Informações Pessoais"));
 
+            jLabel6.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
             jLabel6.setText("Sobrenome");
 
+            jLabel5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
             jLabel5.setText("Nome");
 
             jTextFieldFuncionarioNome.addActionListener(new java.awt.event.ActionListener() {
@@ -716,13 +739,13 @@ public class TelaCadastros extends javax.swing.JFrame {
 
             jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Detalhes Especiais"));
 
+            Logradouro1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
             Logradouro1.setText("Status");
 
-            Logradouro2.setText("Categoria Socio");
-
+            Logradouro3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
             Logradouro3.setText("Numero da Matricula");
 
-            jComboBoxFuncionarioStatus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ","Ativo", "Desativo" }));
+            jComboBoxFuncionarioStatus.setModel(new javax.swing.DefaultComboBoxModel(new String[] {"","Ativo", "Desativo" }));
 
             jButtonFuncionarioEditar.setText("Editar");
             jButtonFuncionarioEditar.addActionListener(new java.awt.event.ActionListener() {
@@ -739,6 +762,11 @@ public class TelaCadastros extends javax.swing.JFrame {
             });
 
             jButtonFuncionarioSalvar.setText("Salvar");
+            jButtonFuncionarioSalvar.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    jButtonFuncionarioSalvarActionPerformed(evt);
+                }
+            });
 
             jButtonFuncionarioNovo.setText("Novo");
             jButtonFuncionarioNovo.addActionListener(new java.awt.event.ActionListener() {
@@ -766,10 +794,6 @@ public class TelaCadastros extends javax.swing.JFrame {
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(jComboBoxFuncionarioStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(Logradouro2)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(jTextFieldFuncionarioCategoriaSocio, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(34, 34, 34)
                             .addComponent(Logradouro3)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(jTextFieldFuncionarioNumeroDaMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -783,7 +807,7 @@ public class TelaCadastros extends javax.swing.JFrame {
                             .addComponent(jButtonFuncionarioSalvar)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(jButtonFuncionarioCancelar)))
-                    .addContainerGap(44, Short.MAX_VALUE))
+                    .addContainerGap(160, Short.MAX_VALUE))
             );
 
             jPanel4Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButtonFuncionarioApagar, jButtonFuncionarioCancelar, jButtonFuncionarioEditar, jButtonFuncionarioNovo, jButtonFuncionarioSalvar});
@@ -794,10 +818,8 @@ public class TelaCadastros extends javax.swing.JFrame {
                     .addContainerGap()
                     .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(Logradouro1)
-                        .addComponent(Logradouro2)
                         .addComponent(Logradouro3)
                         .addComponent(jTextFieldFuncionarioNumeroDaMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jTextFieldFuncionarioCategoriaSocio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jComboBoxFuncionarioStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGap(18, 18, 18)
                     .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -814,10 +836,13 @@ public class TelaCadastros extends javax.swing.JFrame {
             jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Detalhes do Funcionario"));
             jPanel5.setToolTipText("");
 
+            Logradouro4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
             Logradouro4.setText("Cargo");
 
+            Logradouro5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
             Logradouro5.setText("Salario");
 
+            Logradouro6.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
             Logradouro6.setText("Data de Contratação");
 
             Logradouro7.setText("Observações");
@@ -832,24 +857,27 @@ public class TelaCadastros extends javax.swing.JFrame {
                 jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel5Layout.createSequentialGroup()
                     .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(Logradouro4)
-                        .addComponent(Logradouro5))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel5Layout.createSequentialGroup()
-                            .addComponent(jTextFieldFuncionarioCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(Logradouro7, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(10, 10, 10))
+                            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(Logradouro4)
+                                .addComponent(Logradouro5))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel5Layout.createSequentialGroup()
+                                    .addComponent(jTextFieldFuncionarioCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(Logradouro7, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(10, 10, 10))
+                                .addGroup(jPanel5Layout.createSequentialGroup()
+                                    .addComponent(jTextFieldFuncionarioSalario)
+                                    .addGap(194, 194, 194))))
                         .addGroup(jPanel5Layout.createSequentialGroup()
-                            .addComponent(jTextFieldFuncionarioSalario)
-                            .addGap(194, 194, 194)))
+                            .addComponent(jTextFieldFuncionarioDataDeContratacao, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(29, 29, 29))
                 .addGroup(jPanel5Layout.createSequentialGroup()
-                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jTextFieldFuncionarioDataDeContratacao, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(Logradouro6, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Logradouro6, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(558, 558, 558))
             );
             jPanel5Layout.setVerticalGroup(
@@ -1600,69 +1628,78 @@ public class TelaCadastros extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBoxTipoLogradouroActionPerformed
 
     private void jButtonFuncionarioNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFuncionarioNovoActionPerformed
-        
+
         editableTextFields(true);
         limparCampos();
         jButtonFuncionarioApagar.setEnabled(false);
         jButtonFuncionarioEditar.setEnabled(false);
         jButtonFuncionarioNovo.setEnabled(false);
-        
+
+        if (jComboBoxFuncionarioLograduro.getItemCount() == 0) {
+            jComboBoxFuncionarioLograduro.addItem("");
+            List<Endereco> enderecos = new DaoEndereco().BuscarTodosEnderecos();
+            for (Endereco endereco : enderecos) {
+
+                jComboBoxFuncionarioLograduro.addItem(endereco.getNome());
+
+            }
+        }
+        jComboBoxFuncionarioLograduro.setSelectedItem("");
     }//GEN-LAST:event_jButtonFuncionarioNovoActionPerformed
 
     private void jTextFieldFuncionarioNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldFuncionarioNomeActionPerformed
-       
-      if(jButtonFuncionarioNovo.isEnabled()){  
-        String nome = jTextFieldFuncionarioNome.getText();
-        if(nome.matches("\\w+\\s\\w+")){
-         Pessoa pessoa = new DaoPessoa().BuscarNomeCompleto(jTextFieldFuncionarioNome.getText());
-         if(pessoa != null){
-             
-             preencherAbaFuncionarios(pessoa);
-             jButtonFuncionarioApagar.setEnabled(true);
-             jButtonFuncionarioEditar.setEnabled(true);
-             
-            
-             
-             
-         }else{
-             
-             JOptionPane.showMessageDialog(this,"Funcionário não encontrado");
-             jTextFieldFuncionarioNome.setText("");
-         }
-         
-        }else{
-            
-            JOptionPane.showMessageDialog(this, "Para fazer uma pesquisa por nome é necessário digitar o sobrenome");
+
+        if (jButtonFuncionarioNovo.isEnabled()) {
+            String nome = jTextFieldFuncionarioNome.getText();
+            if (nome.matches("\\w+\\s\\w+")) {
+                Pessoa pessoa = new DaoPessoa().BuscarNomeCompleto(jTextFieldFuncionarioNome.getText());
+                if (pessoa != null) {
+
+                    preencherAbaFuncionarios(pessoa);
+                    jButtonFuncionarioApagar.setEnabled(true);
+                    jButtonFuncionarioEditar.setEnabled(true);
+
+
+
+
+                } else {
+
+                    JOptionPane.showMessageDialog(this, "Funcionário não encontrado");
+                    jTextFieldFuncionarioNome.setText("");
+                }
+
+            } else {
+
+                JOptionPane.showMessageDialog(this, "Para fazer uma pesquisa por nome é necessário digitar o sobrenome");
+            }
+        } else {
+
+            JOptionPane.showMessageDialog(this, "Para realizar uma pesquisa é necessário primeiro cancelar a operação ");
         }
-      }else{
-          
-          JOptionPane.showMessageDialog(this, "Para realizar uma pesquisa é necessário primeiro cancelar a operação ");
-      }
     }//GEN-LAST:event_jTextFieldFuncionarioNomeActionPerformed
 
     private void jButtonFuncionarioPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFuncionarioPesquisarActionPerformed
 
-        if(jButtonFuncionarioNovo.isEnabled()){
-        new TelaPesquisa(this).setVisible(true);
-        setVisible(false);
-        setEnabled(false);
-        }
-        else{
-            
-            JOptionPane.showMessageDialog(this,"É preciso cancelar a operação de inclusão para realizar pesquisa!");
+        if (jButtonFuncionarioNovo.isEnabled()) {
+            new TelaPesquisa(this).setVisible(true);
+            setVisible(false);
+            setEnabled(false);
+        } else {
+
+            JOptionPane.showMessageDialog(this, "É preciso cancelar a operação de inclusão para realizar pesquisa!");
         }
     }//GEN-LAST:event_jButtonFuncionarioPesquisarActionPerformed
 
     private void jButtonEnviarLogradouroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEnviarLogradouroActionPerformed
-       
+
         Endereco endereco = new Endereco();
-        
+
         String nomeLogradouro = jTextFieldNomeLograduro.getText();
         String tipoLogradouro = (String) jComboBoxTipoLogradouro.getSelectedItem();
         String descricaoLogradouro = jTextAreaDescricaoLogradouro.getText();
-        
+
         System.out.println(nomeLogradouro + tipoLogradouro + descricaoLogradouro);
-        
+
     }//GEN-LAST:event_jButtonEnviarLogradouroActionPerformed
 
     private void jButtonFuncionarioCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFuncionarioCancelarActionPerformed
@@ -1676,7 +1713,7 @@ public class TelaCadastros extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonFuncionarioCancelarActionPerformed
 
     private void jButtonFuncionarioEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFuncionarioEditarActionPerformed
-        
+
         JOptionPane.showMessageDialog(this, "Você está em modo de edição, as informações só serão gravadas depois de clicar em salvar!");
         editableTextFields(true);
         jButtonFuncionarioSalvar.setEnabled(true);
@@ -1684,35 +1721,46 @@ public class TelaCadastros extends javax.swing.JFrame {
         jButtonFuncionarioNovo.setEnabled(false);
         jButtonFuncionarioApagar.setEnabled(false);
         jButtonFuncionarioEditar.setEnabled(false);
-        
+
     }//GEN-LAST:event_jButtonFuncionarioEditarActionPerformed
 
     private void jButtonFuncionarioApagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFuncionarioApagarActionPerformed
-       
-        int result = JOptionPane.showConfirmDialog(this, "Tem certeza que deseja excluir o registro?","Apagar",JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE);
-        if(result == 0){
-         
-           try{
-               Pessoa p = new DaoPessoa().BuscarPessoaId(Integer.parseInt(jTextFieldFuncionarioID.getText()));
-               new DaoPessoa().ApagarPessoa(p);
-               limparCampos();
-               jButtonFuncionarioApagar.setEnabled(false);
-               jButtonFuncionarioEditar.setEnabled(false);
-           }catch(Exception e){
-               
-               JOptionPane.showMessageDialog(this, "Erro para excluir o registro");
-           }
-            
+
+        int result = JOptionPane.showConfirmDialog(this, "Tem certeza que deseja excluir o registro?", "Apagar", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+        if (result == 0) {
+
+            try {
+                Pessoa p = new DaoPessoa().BuscarPessoaId(Integer.parseInt(jTextFieldFuncionarioID.getText()));
+                new DaoPessoa().ApagarPessoa(p);
+                limparCampos();
+                jButtonFuncionarioApagar.setEnabled(false);
+                jButtonFuncionarioEditar.setEnabled(false);
+            } catch (Exception e) {
+
+                JOptionPane.showMessageDialog(this, "Erro para excluir o registro");
+            }
+
         }
     }//GEN-LAST:event_jButtonFuncionarioApagarActionPerformed
 
-    
-    private void editableTextFields(boolean editable){
+    private void jButtonFuncionarioSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFuncionarioSalvarActionPerformed
+       
+        if(iscamposFuncionáriosPreenchidos()){
+            
+            
+        }else{
+            
+            JOptionPane.showMessageDialog(this,"Por Favor, preencha todos os campos em negrito","Atenção",JOptionPane.INFORMATION_MESSAGE);
+        }
         
+    }//GEN-LAST:event_jButtonFuncionarioSalvarActionPerformed
+
+    private void editableTextFields(boolean editable) {
+
         jTextFieldFuncionarioApelido.setEditable(editable);
         jTextFieldFuncionarioBairro.setEditable(editable);
         jTextFieldFuncionarioCargo.setEditable(editable);
-        jTextFieldFuncionarioCategoriaSocio.setEditable(editable);
+        
         jTextFieldFuncionarioCep.setEditable(editable);
         jTextFieldFuncionarioCidade.setEditable(editable);
         jFormattedTextFieldFuncionarioCpf.setEditable(editable);
@@ -1738,15 +1786,15 @@ public class TelaCadastros extends javax.swing.JFrame {
         jButtonFuncionarioEditar.setEnabled(editable);
         jButtonFuncionarioSalvar.setEnabled(editable);
     }
-    
-    private void limparCampos(){
-        
+
+    private void limparCampos() {
+
         jTextFieldFuncionarioID.setText("");
         jTextFieldFuncionarioNome.setText("");
         jTextFieldFuncionarioApelido.setText("");
         jTextFieldFuncionarioBairro.setText("");
         jTextFieldFuncionarioCargo.setText("");
-        jTextFieldFuncionarioCategoriaSocio.setText("");
+       
         jTextFieldFuncionarioCep.setText("");
         jTextFieldFuncionarioCidade.setText("");
         jFormattedTextFieldFuncionarioCpf.setText("");
@@ -1767,58 +1815,86 @@ public class TelaCadastros extends javax.swing.JFrame {
         jComboBoxFuncionarioSexo.setSelectedIndex(0);
         jComboBoxFuncionarioStatus.setSelectedIndex(0);
         jComboBoxFuncionarioUf.setSelectedIndex(0);
-        
-        
+        jComboBoxFuncionarioLograduro.setSelectedIndex(0);
+
+
     }
-    
-    protected void preencherAbaFuncionarios(Pessoa pessoa){
-        
-        
-         jTextFieldFuncionarioNome.setText(pessoa.getNome());   
-         jTextFieldFuncionarioID.setText(String.valueOf(pessoa.getId()));
-         jTextFieldFuncionarioSobrenome.setText(pessoa.getSobrenome());
-         jTextFieldFuncionarioApelido.setText(pessoa.getApelido());
-         jTextFieldFuncionarioTelefone.setText(pessoa.getTelefone());
-         jTextFieldFuncionarioEmail.setText(pessoa.getEmail());
-         if(pessoa.getDataNasc() != null){
-         jTextFieldFuncionarioDataNascimento.setText( SimpleDateFormat.getDateInstance().format(pessoa.getDataNasc()));
-         }
-         jComboBoxFuncionarioSexo.setSelectedItem(pessoa.getSexo());
-         jTextFieldFuncionarioNomedame.setText(pessoa.getNomeMae());
-         jTextFieldFuncionarioNomedopai.setText(pessoa.getNomePai());
-         jFormattedTextFieldFuncionarioCpf.setText(pessoa.getCpf());
-         jTextFieldFuncionarioRgnumero.setText(pessoa.getRgNumero());
-         jTextFieldFuncionarioOrgaoExpedidor.setText(pessoa.getRgExpedidor());
-         if(pessoa.getRgEmissao() != null){
-         jTextFieldFuncionarioDatadeemissao.setText(SimpleDateFormat.getDateInstance().format(pessoa.getRgEmissao()));
-         }
-         jTextFieldFuncionarioNumero.setText(pessoa.getNumeroEnderco());
-         jTextFieldFuncionarioCidade.setText(pessoa.getCidade());
-         jTextFieldFuncionarioBairro.setText(pessoa.getBairro());
-         jComboBoxFuncionarioUf.setSelectedItem(pessoa.getUf());
-         jTextFieldFuncionarioCep.setText(pessoa.getCep());
+
+    protected void preencherAbaFuncionarios(Pessoa pessoa) {
+
+
+        jTextFieldFuncionarioNome.setText(pessoa.getNome());
+        jTextFieldFuncionarioID.setText(String.valueOf(pessoa.getId()));
+        jTextFieldFuncionarioSobrenome.setText(pessoa.getSobrenome());
+        jTextFieldFuncionarioApelido.setText(pessoa.getApelido());
+        jTextFieldFuncionarioTelefone.setText(pessoa.getTelefone());
+        jTextFieldFuncionarioEmail.setText(pessoa.getEmail());
+        if (pessoa.getDataNasc() != null) {
+            jTextFieldFuncionarioDataNascimento.setText(SimpleDateFormat.getDateInstance().format(pessoa.getDataNasc()));
+        }
+        jComboBoxFuncionarioSexo.setSelectedItem(pessoa.getSexo());
+        jTextFieldFuncionarioNomedame.setText(pessoa.getNomeMae());
+        jTextFieldFuncionarioNomedopai.setText(pessoa.getNomePai());
+        jFormattedTextFieldFuncionarioCpf.setText(pessoa.getCpf());
+        jTextFieldFuncionarioRgnumero.setText(pessoa.getRgNumero());
+        jTextFieldFuncionarioOrgaoExpedidor.setText(pessoa.getRgExpedidor());
+        if (pessoa.getRgEmissao() != null) {
+            jTextFieldFuncionarioDatadeemissao.setText(SimpleDateFormat.getDateInstance().format(pessoa.getRgEmissao()));
+        }
+        if (jComboBoxFuncionarioLograduro.getItemCount() == 0) {
+            jComboBoxFuncionarioLograduro.addItem("");
+            List<Endereco> enderecos = new DaoEndereco().BuscarTodosEnderecos();
+            for (Endereco endereco : enderecos) {
+
+                jComboBoxFuncionarioLograduro.addItem(endereco.getNome());
+
+            }
+        }
+        jComboBoxFuncionarioLograduro.setSelectedItem(pessoa.getIdEndereco().getNome());
+        jTextFieldFuncionarioNumero.setText(pessoa.getNumeroEnderco());
+        jTextFieldFuncionarioCidade.setText(pessoa.getCidade());
+        jTextFieldFuncionarioBairro.setText(pessoa.getBairro());
+        jComboBoxFuncionarioUf.setSelectedItem(pessoa.getUf());
+        jTextFieldFuncionarioCep.setText(pessoa.getCep());
         for (Iterator<Funcionario> it = pessoa.getFuncionarioList().iterator(); it.hasNext();) {
             Funcionario func = it.next();
             jTextFieldFuncionarioCargo.setText(func.getCargo());
             jTextFieldFuncionarioSalario.setText(NumberFormat.getCurrencyInstance().format(func.getSalario()));
-            if(func.getDataContratacao() != null){
-              
-            jTextFieldFuncionarioDataDeContratacao.setText(SimpleDateFormat.getDateInstance().format(func.getDataContratacao()));    
-            }else{
-            jTextFieldFuncionarioDataDeContratacao.setText("nulo");    
+            if (func.getDataContratacao() != null) {
+
+                jTextFieldFuncionarioDataDeContratacao.setText(SimpleDateFormat.getDateInstance().format(func.getDataContratacao()));
+            } else {
+                jTextFieldFuncionarioDataDeContratacao.setText("nulo");
             }
             jTextAreaFuncionarioObservacoes.setText(func.getObservacao());
+            jTextFieldFuncionarioNumeroDaMatricula.setText(String.valueOf(func.getMatricula()));
         }
-        if(pessoa.getStatus()){
+        if (pessoa.getStatus()) {
             jComboBoxFuncionarioStatus.setSelectedItem("Ativo");
-        }else{
+        } else {
             jComboBoxFuncionarioStatus.setSelectedItem("Desativo");
         }
-        jTextFieldFuncionarioCategoriaSocio.setText(String.valueOf(pessoa.getCategoriaSocio()));
-        jTextFieldFuncionarioNumeroDaMatricula.setText(String.valueOf(pessoa.getNumeroMatricula()));
-         
-     
+        
+       // jTextFieldFuncionarioNumeroDaMatricula.setText(String.valueOf(pessoa.getNumeroMatricula()));
+
+
     }
+
+    private boolean iscamposFuncionáriosPreenchidos(){
+        
+        if(!jTextFieldFuncionarioNome.getText().equals("") && !jTextFieldFuncionarioSobrenome.getText().equals("") && !jTextFieldFuncionarioCargo.getText().equals("") && !jTextFieldFuncionarioSalario.getText().equals("") && !jTextFieldFuncionarioDataDeContratacao.getText().equals("") && !jComboBoxFuncionarioStatus.getSelectedItem().equals("") && !jTextFieldFuncionarioNumeroDaMatricula.getText().equals("")){
+            
+            return true;
+            
+        }else{
+            
+          return false;
+            
+        }
+        
+        
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -1857,7 +1933,6 @@ public class TelaCadastros extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Logradouro;
     private javax.swing.JLabel Logradouro1;
-    private javax.swing.JLabel Logradouro2;
     private javax.swing.JLabel Logradouro3;
     private javax.swing.JLabel Logradouro4;
     private javax.swing.JLabel Logradouro5;
@@ -2009,7 +2084,6 @@ public class TelaCadastros extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldFuncionarioApelido;
     private javax.swing.JTextField jTextFieldFuncionarioBairro;
     private javax.swing.JTextField jTextFieldFuncionarioCargo;
-    private javax.swing.JTextField jTextFieldFuncionarioCategoriaSocio;
     private javax.swing.JTextField jTextFieldFuncionarioCep;
     private javax.swing.JTextField jTextFieldFuncionarioCidade;
     private javax.swing.JTextField jTextFieldFuncionarioDataDeContratacao;

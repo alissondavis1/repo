@@ -4,20 +4,24 @@
  */
 package telas;
 
-import java.awt.Desktop;
+import java.awt.AWTException;
 import java.awt.Dimension;
+import java.awt.Image;
+import java.awt.PopupMenu;
+import java.awt.SystemTray;
 import java.awt.Toolkit;
+import java.awt.TrayIcon;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionListener;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.math.BigDecimal;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.sql.Connection;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
@@ -25,7 +29,6 @@ import java.util.Properties;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.naming.spi.DirectoryManager;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -35,33 +38,24 @@ import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.view.JasperViewer;
-import org.jrimum.bopepo.BancosSuportados;
-import org.jrimum.bopepo.Boleto;
-import org.jrimum.bopepo.view.BoletoViewer;
-import org.jrimum.domkee.comum.pessoa.endereco.CEP;
-import org.jrimum.domkee.comum.pessoa.endereco.Endereco;
-import org.jrimum.domkee.comum.pessoa.endereco.UnidadeFederativa;
-import org.jrimum.domkee.financeiro.banco.febraban.Agencia;
-import org.jrimum.domkee.financeiro.banco.febraban.Carteira;
-import org.jrimum.domkee.financeiro.banco.febraban.Cedente;
-import org.jrimum.domkee.financeiro.banco.febraban.ContaBancaria;
-import org.jrimum.domkee.financeiro.banco.febraban.NumeroDaConta;
-import org.jrimum.domkee.financeiro.banco.febraban.Sacado;
-import org.jrimum.domkee.financeiro.banco.febraban.TipoDeTitulo;
-import org.jrimum.domkee.financeiro.banco.febraban.Titulo;
 import util.HibernateUtil;
 
 /**
  *
- * @author alexandre
+ * @author Alexandre 
+ * @author Alisson 
  */
 public class TelaPrincipal extends javax.swing.JFrame {
 
     private Calendar c;
     SimpleDateFormat sdf = new SimpleDateFormat();
+    private final TrayIcon trayIcon;
 
     /**
-     * Creates new form TelaPrincipal
+     *
+     * Aqui os componentes são iniciados , a classe Calendar é instanciada para
+     * manipulação de datas e a classe DateFormat.
+     *
      */
     public TelaPrincipal() {
         // setLocationRelativeTo(null);
@@ -71,14 +65,47 @@ public class TelaPrincipal extends javax.swing.JFrame {
         DateFormat df = SimpleDateFormat.getDateInstance(SimpleDateFormat.DATE_FIELD, new Locale("pt", "BR"));
 
 
+
+        // A data do sistema.
+
         jLabel1.setText(df.format(c.getTime()));
 
+
+        //  Start do TimerBean para atualizar a hora no sistema
+
         timer1.start();
+
+        // redimensionamento e posicionamento da tela principal, para que fique alinhada na parte de cima do monitor.
+
         Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
 
         setBounds(0, 0, d.width, d.height / 3);
 
 
+        SystemTray systemTray = SystemTray.getSystemTray();
+        
+        trayIcon = new TrayIcon(new ImageIcon(getClass().getResource("/img/ico.png")).getImage(), "Acal2000", popupMenu1);
+        trayIcon.setImageAutoSize(true);
+        trayIcon.addMouseMotionListener(new MouseMotionListener() {
+
+            @Override
+            public void mouseDragged(MouseEvent e) {
+               
+            }
+
+            @Override
+            public void mouseMoved(MouseEvent e) {
+                
+                trayIcon.displayMessage("Seja Bem vindo ao Acal200", "Para ver as opções disponíveis clique com o botão direito", TrayIcon.MessageType.INFO);
+            }
+        });
+       try{
+           systemTray.add(trayIcon);
+       }catch(AWTException e){
+        
+        e.printStackTrace();
+        
+    }
 //        Properties prop = new Properties();
 //        try {
 //            prop.load(new FileInputStream("configs/LAF.properties"));
@@ -125,6 +152,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
         java.awt.GridBagConstraints gridBagConstraints;
 
         timer1 = new org.netbeans.examples.lib.timerbean.Timer();
+        popupMenu1 = new java.awt.PopupMenu();
+        menuItem1 = new java.awt.MenuItem();
         jPanel1 = new javax.swing.JPanel();
         jButtonTelaPrincipalLogoff = new javax.swing.JButton();
         jButtonTelaPrincipalRelatorios = new javax.swing.JButton();
@@ -162,6 +191,17 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 timer1OnTime(evt);
             }
         });
+
+        popupMenu1.setLabel("popupMenu1");
+
+        menuItem1.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        menuItem1.setLabel("Sair");
+        menuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItem1ActionPerformed(evt);
+            }
+        });
+        popupMenu1.add(menuItem1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("ACAL2000");
@@ -207,11 +247,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jButtonTelaPrincipalCaixa.setIcon(new ImageIcon(getClass().getResource("/img/caixa.png")));
         jButtonTelaPrincipalCaixa.setText("Caixa");
-        jButtonTelaPrincipalCaixa.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonTelaPrincipalCaixaActionPerformed(evt);
-            }
-        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 0;
@@ -421,16 +456,19 @@ public class TelaPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
     private void jButtonTelaPrincipalCadastrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTelaPrincipalCadastrosActionPerformed
 
         new TelaCadastros(this).setVisible(true);
 
     }//GEN-LAST:event_jButtonTelaPrincipalCadastrosActionPerformed
 
+   
     private void jMenuSairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuSairMouseClicked
         System.exit(0);
     }//GEN-LAST:event_jMenuSairMouseClicked
 
+   
     private void jMenuItemSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSairActionPerformed
         System.exit(0);
     }//GEN-LAST:event_jMenuItemSairActionPerformed
@@ -438,6 +476,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void jButtonTelaPrincipalRelatoriosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTelaPrincipalRelatoriosActionPerformed
 
 
+        //Thread para gerar relatório. Utilizei jdbc como conexão para passar no método fillReport da classe JasperFillManager
         new Thread() {
             @Override
             public void run() {
@@ -458,6 +497,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButtonTelaPrincipalRelatoriosActionPerformed
 
+    
     private void timer1OnTime(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_timer1OnTime
 
         c = Calendar.getInstance();
@@ -468,77 +508,19 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     }//GEN-LAST:event_timer1OnTime
 
-    private void jButtonTelaPrincipalCaixaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTelaPrincipalCaixaActionPerformed
-
-        Cedente cedente = new Cedente("PROJETO JRimiun", "03.247.900/0001-26");
-
-        Sacado sacado = new Sacado("JavaDeveloper Pronto Para Férias", "222.222.222-22");
-        Endereco enderecoSac = new Endereco();
-        enderecoSac.setUF(UnidadeFederativa.RN);
-        enderecoSac.setLocalidade("Natal");
-        enderecoSac.setCep(new CEP("59064-120"));
-        enderecoSac.setBairro("Grande Centro");
-        enderecoSac.setLogradouro("Rua poeta dos programas");
-        enderecoSac.setNumero("1");
-        sacado.addEndereco(enderecoSac);
-
-        ContaBancaria contaBancaria = new ContaBancaria(BancosSuportados.BANCO_BRADESCO.create());
-        contaBancaria.setNumeroDaConta(new NumeroDaConta(123456, "0"));
-        contaBancaria.setCarteira(new Carteira(30));
-        contaBancaria.setAgencia(new Agencia(1234, "1"));
-
-        Titulo titulo = new Titulo(contaBancaria, sacado, cedente);
-        titulo.setNumeroDoDocumento("123456");
-        titulo.setNossoNumero("99345678912");
-        titulo.setDigitoDoNossoNumero("5");
-        titulo.setValor(BigDecimal.valueOf(0.23));
-        titulo.setDataDoDocumento(new Date());
-        titulo.setDataDoVencimento(new Date());
-        titulo.setTipoDeDocumento(TipoDeTitulo.DM_DUPLICATA_MERCANTIL);
-        // titulo.setAceite(Aceite.A);
-        titulo.setDesconto(new BigDecimal(0.05));
-        titulo.setDeducao(BigDecimal.ZERO);
-        titulo.setMora(BigDecimal.ZERO);
-        titulo.setAcrecimo(BigDecimal.ZERO);
-        titulo.setValorCobrado(BigDecimal.ZERO);
-
-        Boleto boleto = new Boleto(titulo);
-
-        boleto.setLocalPagamento("Pagável preferencialmente na Rede X ou em "
-                + "qualquer Banco até o Vencimento.");
-        boleto.setInstrucaoAoSacado("Senhor sacado, sabemos sim que o valor "
-                + "cobrado não é o esperado, aproveite o DESCONTÃO!");
-        boleto.setInstrucao1("PARA PAGAMENTO 1 até Hoje não cobrar nada!");
-        boleto.setInstrucao2("PARA PAGAMENTO 2 até Amanhã Não cobre!");
-        boleto.setInstrucao3("PARA PAGAMENTO 3 até Depois de amanhã, OK, não cobre.");
-        boleto.setInstrucao4("PARA PAGAMENTO 4 até 04/xx/xxxx de 4 dias atrás COBRAR O VALOR DE: R$ 01,00");
-        boleto.setInstrucao5("PARA PAGAMENTO 5 até 05/xx/xxxx COBRAR O VALOR DE: R$ 02,00");
-        boleto.setInstrucao6("PARA PAGAMENTO 6 até 06/xx/xxxx COBRAR O VALOR DE: R$ 03,00");
-        boleto.setInstrucao7("PARA PAGAMENTO 7 até xx/xx/xxxx COBRAR O VALOR QUE VOCÊ QUISER!");
-        boleto.setInstrucao8("APÓS o Vencimento, Pagável Somente na Rede X.");
-
-        BoletoViewer boletoViewer = new BoletoViewer(boleto);
-
-        File arquivoPdf = boletoViewer.getPdfAsFile("MeuPrimeiroBoleto.pdf");
-
-        Desktop desktop = Desktop.getDesktop();
-        try {
-            desktop.open(arquivoPdf);
-        } catch (IOException ex) {
-            Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-    }//GEN-LAST:event_jButtonTelaPrincipalCaixaActionPerformed
-
+  
     private void jMenuItemFuncionariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemFuncionariosActionPerformed
+
         new TelaCadastros(this, evt).setVisible(true);
 
     }//GEN-LAST:event_jMenuItemFuncionariosActionPerformed
 
+    
     private void jMenuItemLogradourosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemLogradourosActionPerformed
         new TelaCadastros(this, evt).setVisible(true);
     }//GEN-LAST:event_jMenuItemLogradourosActionPerformed
 
+    
     private void jMenuItemReceitasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemReceitasActionPerformed
         new TelaCadastros(this, evt).setVisible(true);
     }//GEN-LAST:event_jMenuItemReceitasActionPerformed
@@ -559,83 +541,108 @@ public class TelaPrincipal extends javax.swing.JFrame {
         new TelaCadastros(this, evt).setVisible(true);
     }//GEN-LAST:event_jMenuItemDespesaActionPerformed
 
+    
     private void jMenuItemTipoReceitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemTipoReceitaActionPerformed
         new TelaCadastros(this, evt).setVisible(true);
     }//GEN-LAST:event_jMenuItemTipoReceitaActionPerformed
 
+    
     private void jMenuItemReceitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemReceitaActionPerformed
         new TelaCadastros(this, evt).setVisible(true);
     }//GEN-LAST:event_jMenuItemReceitaActionPerformed
 
+    
     private void jMenuItemContratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemContratoActionPerformed
         new TelaCadastros(this, evt).setVisible(true);
     }//GEN-LAST:event_jMenuItemContratoActionPerformed
 
+   
     private void jMenuItemTaxasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemTaxasActionPerformed
         new TelaCadastros(this, evt).setVisible(true);
     }//GEN-LAST:event_jMenuItemTaxasActionPerformed
 
+    
     private void jMenuItemTelaPrincipalBackupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemTelaPrincipalBackupActionPerformed
 
+        //PrintWriter para escrever os dados do arquivo sql, criado automaticamente pelo programa , para o arquivo onde o usuário desejar salvar o .sql
         PrintWriter pw = null;
+        //Esse Scanner vai ler os dados do arquivo sql gerado automaticamente e passar para o PrintWriter.
         Scanner sc = null;
         try {
 
-           // String comando = "cmd /c mysqldump -uroot -p123 acal >" + getClass().getResource("/Sql/").getPath().substring(1) + "acal.sql";
-              File caminho = new File("sql/");
-              if(!caminho.exists()){
-              caminho.mkdir();
-              //Files.createDirectory(caminho.toPath());
-              }
-              Calendar c = Calendar.getInstance();
-              String[] s = SimpleDateFormat.getDateInstance(SimpleDateFormat.SHORT).format(c.getTime()).split("/");
-              String data = "";
-              
-              for( String temp : s){
-                  
-                 data = data.concat(temp);
-              }
-              String acal = "acal"+data+".sql";
-              System.out.println(data);
-              String comando = "cmd /c mysqldump -uroot -p123 acal > sql/"+acal;  
-                
-              Process p = Runtime.getRuntime().exec(comando);
+            // String comando = "cmd /c mysqldump -uroot -p123 acal >" + getClass().getResource("/Sql/").getPath().substring(1) + "acal.sql";
+            //Criei um File passando um caminho de um diretório, que em primeira instancia não existe.
+            File caminho = new File("sql/");
+            //Verifico se o diretório existe, caso contrário ele será criado com o método mkdir() da classe File.
+            if (!caminho.exists()) {
+                caminho.mkdir();
+                //Files.createDirectory(caminho.toPath());
+            }
+            //Utilizei a classe Calendar e SimpleDateFormat para gravar no nome do arquivo a data atual.
+            Calendar c = Calendar.getInstance();
+            //Precisei separar a data do tipo DD/MM/yyy para DDMMyyy , para não dar erro no comando do Runtime.
+            String[] s = SimpleDateFormat.getDateInstance(SimpleDateFormat.SHORT).format(c.getTime()).split("/");
+            String data = "";
+
+            //Aqui eu junto as Strings da data que separei com o método split.
+            for (String temp : s) {
+
+                data = data.concat(temp);
+            }
+
+            //Variável que armazena o modelo de nome do arquivo .sql.
+            String acal = "acal" + data + ".sql";
+            //Variável que armazena o comando do mysqldump que ira ser passado na classe Runtime.
+            String comando = "cmd /c mysqldump -uroot -p123 acal > sql/" + acal;
+
+            //Aqui utilizo os métodos da classe Runtime para executar o comando. o método exec retorna um Process.
+            Process p = Runtime.getRuntime().exec(comando);
+            //bloco Try/Catch para testar a execução do comando no processo de exportação do banco de dados.
             try {
-                if(p.waitFor() == 0){
-                    
+                if (p.waitFor() == 0) {
+
                     System.out.println("mysqldump executado");
-                    
-                }else{
+
+                } else {
                     System.out.println("erro no mysqldump");
                 }
             } catch (InterruptedException ex) {
-                
+
                 Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
             }
 
 
-           // File file = new File(getClass().getResource("/Sql/acal.sql").getPath());
-            File file = new File("sql/"+acal);
+            // File file = new File(getClass().getResource("/Sql/acal.sql").getPath());
+            //Criei um File passando o arquivo gerado pelo mysqldump. Desse arquivo irei ler com o Scanner e escrever em um novo arquivo .sql, escolhido pelo usuário, utilizando o PrintWriter.
+            File file = new File("sql/" + acal);
+            //FileChooser para o usuário escolher onde vai salvar o arquivo .sql.
             JFileChooser jf = new JFileChooser();
 
 
 
 
+            //o método showSaveDilog retorna um int, que serve para saber em qual botão o usuário clicou na tela do FileChooser. Além disso ele faz com que o FileChooser exiba uma tela para salvar arquivos.
             int result = jf.showSaveDialog(this);
 
+            //Aqui eu testo o retorno do showSaveDialog, se o usuário clicar em salvar o if é executado e o backup é gerado.
             if (result == JFileChooser.APPROVE_OPTION) {
 
 
+                //Novo File que pega o caminho escolhido pelo usuário e, o nome do arquivo. no final acrescentei a extensão .sql.
                 File f = new File(jf.getSelectedFile().getAbsolutePath() + ".sql");
+                //Cria fisicamente o arquivo no lugar onde o usuário escolheu salvar.
                 f.createNewFile();
+                //Instanciei o PrintWriter, passando em seu construtor o File onde vou gravar os dados.
                 pw = new PrintWriter(f);
+                //Instancia do Scanner. No construtor o File do arquivo gerado automaticamente pelo programa.
                 sc = new Scanner(file);
+                //Nesse While o Scanner vai lendo linha por linha do arquivo .sql gerado automaticamente e, o PrintWriter vai escrevendo linha por linha no arquivo onde o usário escolheu salvar.
                 while (sc.hasNextLine()) {
                     String s1 = sc.nextLine();
 
                     pw.println(s1);
                 }
-                
+
                 JOptionPane.showMessageDialog(null, "Backup gerado com sucesso!", "Backup", JOptionPane.INFORMATION_MESSAGE);
 
             }
@@ -645,7 +652,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(this, "Erro ao gerar o Backup, contate o suporte");
             Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
+        }
+       
+        finally {
             if (pw != null) {
 
                 pw.close();
@@ -664,9 +673,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         new TelaLogout().setVisible(true);
     }//GEN-LAST:event_jButtonTelaPrincipalLogoffActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    private void menuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItem1ActionPerformed
+        
+        System.exit(0);
+    }//GEN-LAST:event_menuItem1ActionPerformed
+
     public static void main(String args[]) {
 
         /* Set the Nimbus look and feel */
@@ -738,6 +749,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JPopupMenu.Separator jSeparator2;
+    private java.awt.MenuItem menuItem1;
+    private java.awt.PopupMenu popupMenu1;
     private org.netbeans.examples.lib.timerbean.Timer timer1;
     // End of variables declaration//GEN-END:variables
 }
