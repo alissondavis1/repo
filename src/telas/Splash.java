@@ -61,7 +61,7 @@ public class Splash extends JWindow{
                    
                     try {   
                             
-                        sleep(60);
+                        sleep(40);
                     } catch (Exception ex) {
                   
                         Logger.getLogger(Splash.class.getName()).log(Level.SEVERE, null, ex);

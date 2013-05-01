@@ -28,6 +28,7 @@ public class DaoPessoa implements PessoasInterface {
         catch(HibernateException e)
         {
             System.out.println("Erro ao iniciar a sessao para persistencia " + e);
+            e.printStackTrace();
             transacao.rollback();
         }
         finally

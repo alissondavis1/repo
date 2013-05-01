@@ -147,8 +147,12 @@ public class TelaLogin extends javax.swing.JFrame {
                 throw new Exception();
             }
         } catch (Exception e) {
-
+            jTextFieldTelaLoginNome.setText("");
+            jPasswordFieldTelaPrincipalSenha.setText("");
+            jTextFieldTelaLoginNome.setFocusable(true);
+            jTextFieldTelaLoginNome.requestFocus();
             JOptionPane.showMessageDialog(this, "Verifique o nome do usuário e a senha", "Login", JOptionPane.OK_OPTION);
+            
         } finally {
             if (session != null) {
                 session.close();
@@ -190,6 +194,10 @@ public class TelaLogin extends javax.swing.JFrame {
             }
         } catch (Exception e) {
 
+            jTextFieldTelaLoginNome.setText("");
+            jPasswordFieldTelaPrincipalSenha.setText("");
+            jTextFieldTelaLoginNome.setFocusable(true);
+            jTextFieldTelaLoginNome.requestFocus();
             JOptionPane.showMessageDialog(this, "Verifique o nome do usuário e a senha", "Login", JOptionPane.OK_OPTION);
         } finally {
             if (session != null) {
