@@ -4,9 +4,11 @@
  */
 package util;
 
+import java.io.FileReader;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.Properties;
 import javax.swing.JOptionPane;
 import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;
@@ -26,7 +28,9 @@ public class HibernateUtil {
         try {
             // Create the SessionFactory from standard (hibernate.cfg.xml) 
             // config file.
-            sessionFactory = new AnnotationConfiguration().configure("hibernate.cfg.xml").buildSessionFactory();
+            Properties prop = new Properties();
+            prop.load(new FileReader(HibernateUtil.class.getClass().getResource("/properties/hibernate.properties").getPath()));
+            sessionFactory = new AnnotationConfiguration().configure("hibernate.cfg.xml").addProperties(prop).buildSessionFactory();
         } catch (Throwable ex) {
             // Log the exception. 
             System.err.println("Initial SessionFactory creation failed." + ex);

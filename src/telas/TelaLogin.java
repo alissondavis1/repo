@@ -6,6 +6,8 @@ package telas;
 
 import dao.DaoUsuario;
 import entidades.User;
+import java.io.PrintWriter;
+import java.util.Properties;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import org.hibernate.Session;
@@ -117,7 +119,11 @@ public class TelaLogin extends javax.swing.JFrame {
              DaoUsuario du = new DaoUsuario();
              User usuario = du.BuscaUsuario(log,pass);
             if(usuario != null){
-             session = new AnnotationConfiguration().configure("hibernate.cfg.xml").setProperty("hibernate.connection.username", log).setProperty("hibernate.connection.password", pass).buildSessionFactory().openSession();
+             //session = new AnnotationConfiguration().configure("hibernate.cfg.xml").setProperty("hibernate.connection.username", log).setProperty("hibernate.connection.password", pass).buildSessionFactory().openSession();
+             Properties prop = new Properties();
+             prop.setProperty("hibernate.connection.username", log);
+             prop.setProperty("hibernate.connection.password", pass);
+             prop.store(new PrintWriter(getClass().getResource("/properties/hibernate.properties").getPath()), null);
              new TelaPrincipal().setVisible(true);
              dispose();
             }else{
