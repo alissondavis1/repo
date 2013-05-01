@@ -5,19 +5,11 @@
 package telas;
 
 import java.awt.AWTException;
-import java.awt.Dimension;
-import java.awt.Frame;
-import java.awt.Image;
-import java.awt.PopupMenu;
 import java.awt.SystemTray;
-import java.awt.Toolkit;
 import java.awt.TrayIcon;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseMotionListener;
 import java.beans.PropertyVetoException;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -133,6 +125,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 //
     }
 
+  
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -218,6 +211,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setIconImage(new ImageIcon(getClass().getResource("/img/ico.png")).getImage());
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jPanel1.setLayout(new java.awt.GridBagLayout());
 
@@ -792,6 +790,24 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jDesktopPane1.setVisible(false);
         jPanel1.setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+       Properties prop = new Properties();
+            
+            prop.setProperty("hibernate.connection.username", "");
+            prop.setProperty("hibernate.connection.password", "");
+            
+            
+                FileOutputStream fo;
+                try {
+                    fo = new FileOutputStream(getClass().getResource("/properties/hibernate.properties").getPath());
+                    prop.store(fo, null);
+                    fo.close();
+                } catch (IOException ex) {
+                    Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                }
+        
+    }//GEN-LAST:event_formWindowClosing
 
     public static void main(String args[]) {
 

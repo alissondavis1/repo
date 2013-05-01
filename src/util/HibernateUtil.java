@@ -30,6 +30,7 @@ public class HibernateUtil {
             // config file.
             Properties prop = new Properties();
             prop.load(new FileReader(HibernateUtil.class.getClass().getResource("/properties/hibernate.properties").getPath()));
+            
             sessionFactory = new AnnotationConfiguration().configure("hibernate.cfg.xml").addProperties(prop).buildSessionFactory();
         } catch (Throwable ex) {
             // Log the exception. 

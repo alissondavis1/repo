@@ -6,8 +6,13 @@ package telas;
 
 import dao.DaoUsuario;
 import entidades.User;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import org.hibernate.Session;
@@ -110,63 +115,88 @@ public class TelaLogin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonTelaLoginLogarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTelaLoginLogarActionPerformed
-        
-       Session session = null;
-        try{
-            
-             String log = jTextFieldTelaLoginNome.getText();
-             String pass = new String(jPasswordFieldTelaPrincipalSenha.getPassword());
-             DaoUsuario du = new DaoUsuario();
-             User usuario = du.BuscaUsuario(log,pass);
-            if(usuario != null){
-             //session = new AnnotationConfiguration().configure("hibernate.cfg.xml").setProperty("hibernate.connection.username", log).setProperty("hibernate.connection.password", pass).buildSessionFactory().openSession();
-             Properties prop = new Properties();
-             prop.setProperty("hibernate.connection.username", log);
-             prop.setProperty("hibernate.connection.password", pass);
-             prop.store(new PrintWriter(getClass().getResource("/properties/hibernate.properties").getPath()), null);
-             new TelaPrincipal().setVisible(true);
-             dispose();
-            }else{
-                
+
+        Session session = null;
+        try {
+
+            String log = jTextFieldTelaLoginNome.getText();
+            String pass = new String(jPasswordFieldTelaPrincipalSenha.getPassword());
+            DaoUsuario du = new DaoUsuario();
+            User usuario = du.BuscaUsuario(log, pass);
+            if (usuario != null) {
+                //session = new AnnotationConfiguration().configure("hibernate.cfg.xml").setProperty("hibernate.connection.username", log).setProperty("hibernate.connection.password", pass).buildSessionFactory().openSession();
+                Properties prop = new Properties();
+
+                prop.setProperty("hibernate.connection.username", log);
+                prop.setProperty("hibernate.connection.password", pass);
+
+                FileOutputStream fo;
+                try {
+                    fo = new FileOutputStream(getClass().getResource("/properties/hibernate.properties").getPath());
+                    prop.store(fo, null);
+                    fo.close();
+                } catch (IOException ex) {
+                    Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+                new TelaPrincipal().setVisible(true);
+
+                dispose();
+            } else {
+
                 throw new Exception();
             }
-        }catch(Exception e){
-            
-            JOptionPane.showMessageDialog(this, "Verifique o nome do usuário e a senha","Login", JOptionPane.OK_OPTION);
-        }finally{
-            if(session != null){
-           session.close(); 
+        } catch (Exception e) {
+
+            JOptionPane.showMessageDialog(this, "Verifique o nome do usuário e a senha", "Login", JOptionPane.OK_OPTION);
+        } finally {
+            if (session != null) {
+                session.close();
             }
         }
-        
+
     }//GEN-LAST:event_jButtonTelaLoginLogarActionPerformed
 
     private void jPasswordFieldTelaPrincipalSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordFieldTelaPrincipalSenhaActionPerformed
-        
-         Session session = null;
-        try{
-            
-             String log = jTextFieldTelaLoginNome.getText();
-             String pass = new String(jPasswordFieldTelaPrincipalSenha.getPassword());
-             DaoUsuario du = new DaoUsuario();
-             User usuario = du.BuscaUsuario(log,pass);
-            if(usuario != null){
-             session = new AnnotationConfiguration().configure("hibernate.cfg.xml").setProperty("hibernate.connection.username", log).setProperty("hibernate.connection.password", pass).buildSessionFactory().openSession();
-             new TelaPrincipal().setVisible(true);
-             dispose();
-            }else{
-                
+
+        Session session = null;
+        try {
+
+            String log = jTextFieldTelaLoginNome.getText();
+            String pass = new String(jPasswordFieldTelaPrincipalSenha.getPassword());
+            DaoUsuario du = new DaoUsuario();
+            User usuario = du.BuscaUsuario(log, pass);
+            if (usuario != null) {
+                // session = new AnnotationConfiguration().configure("hibernate.cfg.xml").setProperty("hibernate.connection.username", log).setProperty("hibernate.connection.password", pass).buildSessionFactory().openSession();
+
+                Properties prop = new Properties();
+
+                prop.setProperty("hibernate.connection.username", log);
+                prop.setProperty("hibernate.connection.password", pass);
+
+                FileOutputStream fo;
+                try {
+                    fo = new FileOutputStream(getClass().getResource("/properties/hibernate.properties").getPath());
+                    prop.store(fo, null);
+                    fo.close();
+                } catch (IOException ex) {
+                    Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                new TelaPrincipal().setVisible(true);
+                dispose();
+            } else {
+
                 throw new Exception();
             }
-        }catch(Exception e){
-            
-            JOptionPane.showMessageDialog(this, "Verifique o nome do usuário e a senha","Login", JOptionPane.OK_OPTION);
-        }finally{
-            if(session != null){
-           session.close(); 
+        } catch (Exception e) {
+
+            JOptionPane.showMessageDialog(this, "Verifique o nome do usuário e a senha", "Login", JOptionPane.OK_OPTION);
+        } finally {
+            if (session != null) {
+                session.close();
             }
         }
-        
+
     }//GEN-LAST:event_jPasswordFieldTelaPrincipalSenhaActionPerformed
 
     /**

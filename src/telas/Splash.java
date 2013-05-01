@@ -17,6 +17,7 @@ import javax.swing.JProgressBar;
 import javax.swing.JWindow;
 import javax.swing.UnsupportedLookAndFeelException;
 import org.hibernate.Session;
+import org.hibernate.cfg.AnnotationConfiguration;
 import org.netbeans.lib.awtextra.AbsoluteConstraints;
 import org.netbeans.lib.awtextra.AbsoluteLayout;
 import util.HibernateUtil;
@@ -94,7 +95,7 @@ public class Splash extends JWindow{
             try{
             
             progress.setString("Testando Conexão com o Banco de Dados");
-            session = HibernateUtil.getSessionFactory().openSession();
+            session = new AnnotationConfiguration().configure().setProperty("hibernate.connection.username", "root").setProperty("hibernate.connection.password", "123").buildSessionFactory().openSession();
            
         }catch(Exception e){
             
