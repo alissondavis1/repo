@@ -9,6 +9,7 @@ import dao.DaoPessoa;
 import entidades.Endereco;
 import entidades.Funcionario;
 import entidades.Pessoa;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.beans.PropertyVetoException;
 import java.math.BigDecimal;
@@ -40,13 +41,13 @@ public class TelaCadastros extends javax.swing.JFrame {
      * Creates new form TelaCadastros
      */
     public TelaCadastros() {
-        
+       
         initComponents();
         editableTextFields(false);
         jDesktopPane1.setVisible(false);
         jInternalFrame1.setVisible(false);
-        
         setExtendedState(JFrame.MAXIMIZED_BOTH);
+       
         
     }
     
@@ -55,7 +56,7 @@ public class TelaCadastros extends javax.swing.JFrame {
         this();
         this.telaPrincipal = telaPrincipal;
         this.telaPrincipal.setEnabled(false);
-        this.telaPrincipal.setVisible(false);
+        
     }
     
     public TelaCadastros(JFrame telaPrincipal, ActionEvent evt) {
@@ -117,9 +118,6 @@ public class TelaCadastros extends javax.swing.JFrame {
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
-        acal2000PUEntityManager = java.beans.Beans.isDesignTime() ? null : javax.persistence.Persistence.createEntityManagerFactory("acal2002PU").createEntityManager();
-        enderecoQuery = java.beans.Beans.isDesignTime() ? null : acal2000PUEntityManager.createQuery("SELECT e FROM Endereco e");
-        enderecoList = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : enderecoQuery.getResultList();
         jPanel1 = new javax.swing.JPanel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanelLog = new javax.swing.JPanel();
@@ -302,6 +300,7 @@ public class TelaCadastros extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBounds(new java.awt.Rectangle(0, 0, 0, 0));
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
         setIconImage(new ImageIcon(getClass().getResource("/img/ico.png")).getImage());
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -778,11 +777,6 @@ public class TelaCadastros extends javax.swing.JFrame {
             jLabel18.setText("ID");
 
             jTextFieldFuncionarioID.setEditable(false);
-            jTextFieldFuncionarioID.addActionListener(new java.awt.event.ActionListener() {
-                public void actionPerformed(java.awt.event.ActionEvent evt) {
-                    jTextFieldFuncionarioIDActionPerformed(evt);
-                }
-            });
 
             jComboBoxFuncionarioSexo.setModel(new javax.swing.DefaultComboBoxModel(new String[] {"","Masculino","Feminino" }));
 
@@ -1739,7 +1733,7 @@ public class TelaCadastros extends javax.swing.JFrame {
                     .addComponent(jButtonPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                     .addComponent(jButtonInternalFrameVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE))
+                    .addGap(0, 410, Short.MAX_VALUE))
             );
             jPanel19Layout.setVerticalGroup(
                 jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1766,7 +1760,7 @@ public class TelaCadastros extends javax.swing.JFrame {
             jInternalFrame1Layout.setVerticalGroup(
                 jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jInternalFrame1Layout.createSequentialGroup()
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 577, Short.MAX_VALUE)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 581, Short.MAX_VALUE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(jPanel19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
             );
@@ -1799,11 +1793,7 @@ public class TelaCadastros extends javax.swing.JFrame {
         telaPrincipal.toFront();
         
     }//GEN-LAST:event_formWindowClosed
-    
-    private void jTextFieldFuncionarioIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldFuncionarioIDActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldFuncionarioIDActionPerformed
-    
+        
     private void jButtonFuncionarioNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFuncionarioNovoActionPerformed
         
         editableTextFields(true);
@@ -1863,6 +1853,8 @@ public class TelaCadastros extends javax.swing.JFrame {
 //            setEnabled(false);
             jDesktopPane1.setVisible(true);
             jInternalFrame1.setVisible(true);
+            DefaultTableModel model  = (DefaultTableModel)jTable1.getModel();
+            model.setRowCount(0);
             try {
                 jInternalFrame1.setMaximum(true);
             } catch (PropertyVetoException ex) {
@@ -2141,8 +2133,7 @@ public class TelaCadastros extends javax.swing.JFrame {
     
     private void jButtonInternalFrameVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInternalFrameVoltarActionPerformed
 
-        DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
-        model.setRowCount(0);
+      
         
         jDesktopPane1.setVisible(false);
         jInternalFrame1.setVisible(false);
@@ -2336,9 +2327,6 @@ public class TelaCadastros extends javax.swing.JFrame {
     private javax.swing.JLabel Logradouro5;
     private javax.swing.JLabel Logradouro6;
     private javax.swing.JLabel Logradouro7;
-    private javax.persistence.EntityManager acal2000PUEntityManager;
-    private java.util.List<entidades.Endereco> enderecoList;
-    private javax.persistence.Query enderecoQuery;
     private javax.swing.JButton jButtonApagar7;
     private javax.swing.JButton jButtonApagarCategoriaSocio;
     private javax.swing.JButton jButtonApagarCheque;

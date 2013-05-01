@@ -6,17 +6,15 @@ package telas;
 
 import dao.DaoUsuario;
 import entidades.User;
+import java.io.File;
 import java.io.FileOutputStream;
-import java.io.FileReader;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import org.hibernate.Session;
-import org.hibernate.cfg.AnnotationConfiguration;
 
 /**
  *
@@ -50,6 +48,7 @@ public class TelaLogin extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setIconImage(new ImageIcon(getClass().getResource("/img/ico.png")).getImage());
+        setResizable(false);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Seja bem vindo"));
 
@@ -126,13 +125,21 @@ public class TelaLogin extends javax.swing.JFrame {
             if (usuario != null) {
                 //session = new AnnotationConfiguration().configure("hibernate.cfg.xml").setProperty("hibernate.connection.username", log).setProperty("hibernate.connection.password", pass).buildSessionFactory().openSession();
                 Properties prop = new Properties();
+                File caminho = new File("properties/hibernate.properties");
+                File dir = new File("properties/");
+                
+              
+                if(!caminho.exists()){
+                   dir.mkdir();
+                   caminho.createNewFile();
+                }
 
                 prop.setProperty("hibernate.connection.username", log);
                 prop.setProperty("hibernate.connection.password", pass);
 
                 FileOutputStream fo;
                 try {
-                    fo = new FileOutputStream(getClass().getResource("/properties/hibernate.properties").getPath());
+                    fo = new FileOutputStream(caminho);
                     prop.store(fo, null);
                     fo.close();
                 } catch (IOException ex) {
@@ -173,18 +180,27 @@ public class TelaLogin extends javax.swing.JFrame {
             if (usuario != null) {
                 // session = new AnnotationConfiguration().configure("hibernate.cfg.xml").setProperty("hibernate.connection.username", log).setProperty("hibernate.connection.password", pass).buildSessionFactory().openSession();
 
-                Properties prop = new Properties();
-
+                  Properties prop = new Properties();
+                File caminho = new File("properties/hibernate.properties");
+                File dir = new File("properties/");
+                
+              
+                if(!caminho.exists()){
+                   dir.mkdir();
+                   caminho.createNewFile();
+                }
                 prop.setProperty("hibernate.connection.username", log);
                 prop.setProperty("hibernate.connection.password", pass);
-
+                
                 FileOutputStream fo;
                 try {
-                    fo = new FileOutputStream(getClass().getResource("/properties/hibernate.properties").getPath());
+                   
+                    fo = new FileOutputStream(caminho);
                     prop.store(fo, null);
                     fo.close();
                 } catch (IOException ex) {
                     Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                    ex.printStackTrace();
                 }
                 new TelaPrincipal().setVisible(true);
                 dispose();
@@ -193,7 +209,7 @@ public class TelaLogin extends javax.swing.JFrame {
                 throw new Exception();
             }
         } catch (Exception e) {
-
+            e.printStackTrace();
             jTextFieldTelaLoginNome.setText("");
             jPasswordFieldTelaPrincipalSenha.setText("");
             jTextFieldTelaLoginNome.setFocusable(true);

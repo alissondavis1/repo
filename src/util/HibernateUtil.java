@@ -4,6 +4,7 @@
  */
 package util;
 
+import java.io.File;
 import java.io.FileReader;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -29,7 +30,7 @@ public class HibernateUtil {
             // Create the SessionFactory from standard (hibernate.cfg.xml) 
             // config file.
             Properties prop = new Properties();
-            prop.load(new FileReader(HibernateUtil.class.getClass().getResource("/properties/hibernate.properties").getPath()));
+            prop.load(new FileReader(new File("properties/hibernate.properties")));
             
             sessionFactory = new AnnotationConfiguration().configure("hibernate.cfg.xml").addProperties(prop).buildSessionFactory();
         } catch (Throwable ex) {
