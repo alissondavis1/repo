@@ -4,9 +4,8 @@
  */
 package dao;
  
-import entidades.Endereco;
 import daoInterfaces.EnderecosInterface;
-import entidades.Pessoa;
+import entidades.Endereco;
 import java.util.List;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
@@ -31,7 +30,7 @@ public class DaoEndereco implements EnderecosInterface{
             transcao = sessao.beginTransaction();    
             sessao.save(endereco); 
             transcao.commit();
-            System.out.println("Salvo com sucesso");  
+             
         }
         catch(HibernateException e)
         {
@@ -53,9 +52,9 @@ public class DaoEndereco implements EnderecosInterface{
          try{
             sessao = HibernateUtil.getSessionFactory().openSession();
             transcao = sessao.beginTransaction();    
-            sessao.save(endereco); 
+            sessao.delete(endereco);
             transcao.commit();
-            System.out.println("Salvo com sucesso");  
+            
         }
         catch(HibernateException e)
         {
@@ -153,9 +152,9 @@ public class DaoEndereco implements EnderecosInterface{
     }
 
     @Override
-    public List<Endereco> BuscarPorId(int id) {
+    public Endereco BuscarPorId(int id) {
         
-        List<Endereco> endereco = null;
+        Endereco endereco = null;
         Session sessao = null; 
         Query query = null;
         Transaction transacao = null;
@@ -163,10 +162,10 @@ public class DaoEndereco implements EnderecosInterface{
         try{
            sessao = HibernateUtil.getSessionFactory().openSession();
            transacao = sessao.beginTransaction();
-           query = sessao.createQuery("from Endereco e where e.id  :id");
+           query = sessao.createQuery("from Endereco e where e.id = :id");
            // query.setString("nome","%"+nome+"%");
           query.setParameter("id",id);
-           endereco = query.list();
+           endereco = (Endereco)query.uniqueResult();
            transacao.commit(); 
            
         }
@@ -177,6 +176,7 @@ public class DaoEndereco implements EnderecosInterface{
         }
         finally
         {
+             
              sessao.close();
         }  
     return endereco;

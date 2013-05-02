@@ -20,7 +20,6 @@ import org.hibernate.Session;
 import org.hibernate.cfg.AnnotationConfiguration;
 import org.netbeans.lib.awtextra.AbsoluteConstraints;
 import org.netbeans.lib.awtextra.AbsoluteLayout;
-import util.HibernateUtil;
 
 
 public class Splash extends JWindow{

@@ -19,5 +19,5 @@ public interface EnderecosInterface {
    
     public List<Endereco> BuscarEnderecoNomeLike(String nome);
     public List<Endereco> BuscarTodosEnderecos();
-    public List<Endereco> BuscarPorId(int id); 
+    public Endereco BuscarPorId(int id); 
 }
