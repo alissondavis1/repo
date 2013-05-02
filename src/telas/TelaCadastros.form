@@ -79,6 +79,9 @@
             <Property name="tabLayoutPolicy" type="int" value="1"/>
             <Property name="tabPlacement" type="int" value="2"/>
           </Properties>
+          <Events>
+            <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="jTabbedPane1StateChanged"/>
+          </Events>
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
           <SubComponents>
@@ -120,12 +123,9 @@
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
+                          <Group type="102" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jPanel7" max="32767" attributes="0"/>
-                                  <Component id="jPanel6" max="32767" attributes="0"/>
-                              </Group>
+                              <Component id="jPanel6" max="32767" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -134,8 +134,6 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jPanel7" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                               <Component id="jPanel6" min="-2" max="-2" attributes="0"/>
                               <EmptySpace pref="339" max="32767" attributes="0"/>
                           </Group>
@@ -155,32 +153,40 @@
                       <Layout>
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="1" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="1" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" attributes="0">
-                                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                          <Component id="jButtonEnviarLogradouro" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jButtonLogradouroNovo" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="jButtonLogradouroEditar" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="jButtonLogradouroApagar" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="jButtonLogradouroSalvar" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="jButtonLogradouroCancelar" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="32767" attributes="0"/>
                                       </Group>
                                       <Group type="102" attributes="0">
                                           <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" attributes="0">
                                               <Group type="102" alignment="0" attributes="0">
-                                                  <Component id="jComboBoxTipoLogradouro" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="jComboBoxLogradouroTipo" min="-2" max="-2" attributes="0"/>
                                                   <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
                                                   <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                                  <Component id="jTextFieldNomeLograduro" max="32767" attributes="0"/>
+                                                  <Component id="jTextFieldLogradouroNome" max="32767" attributes="0"/>
                                               </Group>
                                               <Component id="jScrollPane1" pref="634" max="32767" attributes="0"/>
                                           </Group>
+                                          <EmptySpace min="-2" pref="108" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <EmptySpace min="-2" pref="108" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -191,19 +197,25 @@
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                                       <Group type="103" alignment="1" groupAlignment="3" attributes="0">
-                                          <Component id="jTextFieldNomeLograduro" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jComboBoxTipoLogradouro" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jTextFieldLogradouroNome" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jComboBoxLogradouroTipo" alignment="3" min="-2" max="-2" attributes="0"/>
                                           <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                                       <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace pref="47" max="32767" attributes="0"/>
-                                  <Component id="jButtonEnviarLogradouro" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
+                                  <EmptySpace pref="53" max="32767" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="jButtonLogradouroNovo" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jButtonLogradouroEditar" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jButtonLogradouroApagar" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jButtonLogradouroSalvar" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jButtonLogradouroCancelar" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -216,7 +228,7 @@
 
                           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                           <SubComponents>
-                            <Component class="javax.swing.JTextArea" name="jTextAreaDescricaoLogradouro">
+                            <Component class="javax.swing.JTextArea" name="jTextAreaLogradouroDescricao">
                               <Properties>
                                 <Property name="columns" type="int" value="20"/>
                                 <Property name="rows" type="int" value="5"/>
@@ -231,101 +243,65 @@
                         </Component>
                         <Component class="javax.swing.JLabel" name="jLabel1">
                           <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                              <Font name="Tahoma" size="11" style="1"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" value="Tipo"/>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JComboBox" name="jComboBoxTipoLogradouro">
+                        <Component class="javax.swing.JComboBox" name="jComboBoxLogradouroTipo">
                           <Properties>
                             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                              <Connection code="new javax.swing.DefaultComboBoxModel(&#xa;    new String[] {&#xa;        &quot;AEROPORTO&quot;,&#xa;        &quot;APARTAMENTO&quot;,&#xa;        &quot;AVENIDA&quot;,&#xa;        &quot;BECO&quot;,&#xa;        &quot;BLOCO&quot;,&#xa;        &quot;CAMINHO&quot;,&#xa;        &quot;ESCADINHA&quot;,&#xa;        &quot;ESTA&#xc7;&#xc3;O&quot;,&#xa;        &quot;ESTRADA&quot;,&#xa;        &quot;FAZENDA&quot;,&#xa;        &quot;LADEIRA&quot;,&#xa;        &quot;LARGO&quot;,&#xa;        &quot;PRA&#xc7;A&quot;,&#xa;        &quot;PARQUE&quot;,&#xa;        &quot;QUADRA&quot;,&#xa;        &quot;QUIL&#xd4;METRO&quot;,&#xa;        &quot;QUINTA&quot;,&#xa;        &quot;RODOVIA&quot;,&#xa;        &quot;RUA&quot;,&#xa;        &quot;TRAVESSA&quot;&#xa;    })" type="code"/>
+                              <Connection code="new javax.swing.DefaultComboBoxModel(&#xa;    new String[] {&#xa;        &quot;&quot;,&#xa;        &quot;AEROPORTO&quot;,&#xa;        &quot;APARTAMENTO&quot;,&#xa;        &quot;AVENIDA&quot;,&#xa;        &quot;BECO&quot;,&#xa;        &quot;BLOCO&quot;,&#xa;        &quot;CAMINHO&quot;,&#xa;        &quot;ESCADINHA&quot;,&#xa;        &quot;ESTA&#xc7;&#xc3;O&quot;,&#xa;        &quot;ESTRADA&quot;,&#xa;        &quot;FAZENDA&quot;,&#xa;        &quot;LADEIRA&quot;,&#xa;        &quot;LARGO&quot;,&#xa;        &quot;PRA&#xc7;A&quot;,&#xa;        &quot;PARQUE&quot;,&#xa;        &quot;QUADRA&quot;,&#xa;        &quot;QUIL&#xd4;METRO&quot;,&#xa;        &quot;QUINTA&quot;,&#xa;        &quot;RODOVIA&quot;,&#xa;        &quot;RUA&quot;,&#xa;        &quot;TRAVESSA&quot;&#xa;    })" type="code"/>
                             </Property>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JTextField" name="jTextFieldNomeLograduro">
+                        <Component class="javax.swing.JTextField" name="jTextFieldLogradouroNome">
                         </Component>
                         <Component class="javax.swing.JLabel" name="jLabel2">
                           <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                              <Font name="Tahoma" size="11" style="1"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" value="Nome"/>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JButton" name="jButtonEnviarLogradouro">
-                          <Properties>
-                            <Property name="text" type="java.lang.String" value="Enviar"/>
-                          </Properties>
-                          <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonEnviarLogradouroActionPerformed"/>
-                          </Events>
-                        </Component>
-                      </SubComponents>
-                    </Container>
-                    <Container class="javax.swing.JPanel" name="jPanel7">
-                      <Properties>
-                        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                          <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                            <TitledBorder title="Op&#xe7;&#xf5;es de Edi&#xe7;&#xe3;o"/>
-                          </Border>
-                        </Property>
-                      </Properties>
-
-                      <Layout>
-                        <DimensionLayout dim="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <EmptySpace min="-2" pref="227" max="-2" attributes="0"/>
-                                  <Component id="jButtonNovoLogradouro" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                                  <Component id="jButtonEditarLogradouro" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                                  <Component id="jButtonApagarLogradouro" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                                  <Component id="jButtonSalvarLogradouro" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                                  <Component id="jButtonCancelarLogradouro" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
-                              </Group>
-                          </Group>
-                        </DimensionLayout>
-                        <DimensionLayout dim="1">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jButtonNovoLogradouro" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jButtonEditarLogradouro" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jButtonApagarLogradouro" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jButtonCancelarLogradouro" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jButtonSalvarLogradouro" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace max="32767" attributes="0"/>
-                              </Group>
-                          </Group>
-                        </DimensionLayout>
-                      </Layout>
-                      <SubComponents>
-                        <Component class="javax.swing.JButton" name="jButtonNovoLogradouro">
+                        <Component class="javax.swing.JButton" name="jButtonLogradouroNovo">
                           <Properties>
                             <Property name="text" type="java.lang.String" value="Novo"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonLogradouroNovoActionPerformed"/>
+                          </Events>
                         </Component>
-                        <Component class="javax.swing.JButton" name="jButtonEditarLogradouro">
+                        <Component class="javax.swing.JButton" name="jButtonLogradouroEditar">
                           <Properties>
                             <Property name="text" type="java.lang.String" value="Editar"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonLogradouroEditarActionPerformed"/>
+                          </Events>
                         </Component>
-                        <Component class="javax.swing.JButton" name="jButtonSalvarLogradouro">
-                          <Properties>
-                            <Property name="text" type="java.lang.String" value="Salvar"/>
-                          </Properties>
-                        </Component>
-                        <Component class="javax.swing.JButton" name="jButtonApagarLogradouro">
+                        <Component class="javax.swing.JButton" name="jButtonLogradouroApagar">
                           <Properties>
                             <Property name="text" type="java.lang.String" value="Apagar"/>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JButton" name="jButtonCancelarLogradouro">
+                        <Component class="javax.swing.JButton" name="jButtonLogradouroSalvar">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="Salvar"/>
+                          </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonLogradouroSalvarActionPerformed"/>
+                          </Events>
+                        </Component>
+                        <Component class="javax.swing.JButton" name="jButtonLogradouroCancelar">
                           <Properties>
                             <Property name="text" type="java.lang.String" value="Cancelar"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonLogradouroCancelarActionPerformed"/>
+                          </Events>
                         </Component>
                       </SubComponents>
                     </Container>
@@ -354,7 +330,7 @@
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <EmptySpace min="0" pref="784" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="853" max="32767" attributes="0"/>
                           <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="1" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
@@ -371,7 +347,7 @@
                     </DimensionLayout>
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <EmptySpace min="0" pref="709" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="722" max="32767" attributes="0"/>
                           <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
@@ -382,7 +358,7 @@
                                   <Component id="jPanel5" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jPanel4" min="-2" pref="99" max="-2" attributes="0"/>
-                                  <EmptySpace pref="24" max="32767" attributes="0"/>
+                                  <EmptySpace pref="37" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -413,7 +389,7 @@
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Group type="102" attributes="0">
                                                   <Component id="jTextFieldFuncionarioCargo" min="-2" pref="142" max="-2" attributes="0"/>
-                                                  <EmptySpace pref="110" max="32767" attributes="0"/>
+                                                  <EmptySpace pref="179" max="32767" attributes="0"/>
                                                   <Component id="Logradouro7" min="-2" pref="83" max="-2" attributes="0"/>
                                                   <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                                               </Group>
@@ -2282,7 +2258,7 @@
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="jScrollPane4" pref="589" max="32767" attributes="0"/>
+                      <Component id="jScrollPane4" pref="593" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jPanel19" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -2338,7 +2314,7 @@
                           <Component id="jButtonPesquisa" min="-2" pref="54" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="jButtonInternalFrameVoltar" min="-2" pref="88" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="410" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>

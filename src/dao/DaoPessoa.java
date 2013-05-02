@@ -1,8 +1,9 @@
 
 package dao;
 
-import entidades.Pessoa;
 import daoInterfaces.PessoasInterface;
+import entidades.Pessoa;
+import entidades.Pessoa;
 import java.util.List;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
@@ -70,17 +71,22 @@ public class DaoPessoa implements PessoasInterface {
         try{
             session = HibernateUtil.getSessionFactory().openSession();
             tx = session.beginTransaction();
-            session.saveOrUpdate(pessoa); 
+            
+           
+            session.saveOrUpdate(pessoa);
+           
             tx.commit();
             System.out.println("Salvo com sucesso");  
         }
         catch(HibernateException e)
         {
+            e.printStackTrace();
             System.out.println("Erro ao iniciar a sessao para persistencia " + e);
             tx.rollback();
         }
         finally
         {
+          
             session.close(); 
         }      
     }
