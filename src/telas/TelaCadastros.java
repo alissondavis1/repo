@@ -1709,6 +1709,7 @@ public class TelaCadastros extends javax.swing.JFrame {
             ));
             jTable1.setToolTipText("");
             jTable1.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
+            jTable1.setSelectionBackground(new java.awt.Color(51, 255, 255));
             jTable1.getTableHeader().setReorderingAllowed(false);
             jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
                 public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -2174,6 +2175,7 @@ public class TelaCadastros extends javax.swing.JFrame {
             ArrayList<Pessoa> p1 = (ArrayList) new DaoPessoa().BuscarPessoaLikeNome(jTextField2.getText());
             model = (DefaultTableModel) jTable1.getModel();
             model.setRowCount(0);
+            
             if (!p1.isEmpty()) {
                 for (Pessoa p : p1) {
                     if (p.getDataNasc() != null) {
@@ -2584,6 +2586,7 @@ public class TelaCadastros extends javax.swing.JFrame {
                 }
                 boolean[] canEdit = new boolean[]{false, false, false, false, false, false, false};
 
+                        @Override
                 public boolean isCellEditable(int rowIndex, int columnIndex) {
 
                     return canEdit[columnIndex];
@@ -2603,6 +2606,7 @@ public class TelaCadastros extends javax.swing.JFrame {
                 }
                 boolean[] canEdit = new boolean[]{false, false, false, false};
 
+                        @Override
                 public boolean isCellEditable(int rowIndex, int columnIndex) {
 
                     return canEdit[columnIndex];
