@@ -31,5 +31,4 @@ public interface ContasInterface {
     public List<Conta> ContasAbertas(Date data);
     
     
-    
 }
