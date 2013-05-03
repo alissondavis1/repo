@@ -2342,6 +2342,13 @@ public class TelaCadastros extends javax.swing.JFrame {
             }
             jTabbedPane1.setSelectedComponent(jPanelFunc);
 
+        }else if(!jButtonLogradouroNovo.isEnabled() || !jTextFieldLogradouroID.getText().equals("")){
+            
+            if(jTabbedPane1.getSelectedComponent() != jPanelLog){
+                
+                JOptionPane.showMessageDialog(this, "Cancele a operação ", "Atenção", JOptionPane.INFORMATION_MESSAGE);
+            }
+            
         }
 
     }//GEN-LAST:event_jTabbedPane1StateChanged

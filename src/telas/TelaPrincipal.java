@@ -7,35 +7,30 @@ package telas;
 import java.awt.AWTException;
 import java.awt.SystemTray;
 import java.awt.TrayIcon;
+import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.beans.PropertyVetoException;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Connection;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.HashMap;
 import java.util.Locale;
-import java.util.Map;
 import java.util.Properties;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.AbstractAction;
 import javax.swing.ImageIcon;
+import javax.swing.JComponent;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JRootPane;
 import javax.swing.KeyStroke;
 import javax.swing.UnsupportedLookAndFeelException;
-import net.sf.jasperreports.engine.JasperCompileManager;
-import net.sf.jasperreports.engine.JasperFillManager;
-import net.sf.jasperreports.engine.JasperPrint;
-import net.sf.jasperreports.engine.JasperReport;
-import net.sf.jasperreports.view.JasperViewer;
-import util.HibernateUtil;
 
 /**
  *
@@ -69,7 +64,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jLabel1.setText(df.format(c.getTime()));
 
-
+       ControlaEsc();
         //  Start do TimerBean para atualizar a hora no sistema
 
         timer1.start();
@@ -103,6 +98,41 @@ public class TelaPrincipal extends javax.swing.JFrame {
      
      return true;
  }
+
+    
+  public void ControlaEsc() {  
+        KeyStroke ks = KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0, true);  
+  
+        getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(ks, "esc");  
+        getRootPane().getActionMap().put("esc", new AbstractAction() {  
+  
+            @Override  
+            public void actionPerformed(ActionEvent ae) {  
+  
+               
+                    if(jInternalFrameContas1.isVisible()){
+                        
+                        jButton4ActionPerformed(ae);
+                        
+                    }else if(jInternalFrameRelatorios.isVisible()){
+                        
+                         jButtonInternalFrameRelatoriosVoltar1ActionPerformed(ae);
+                    }else if(jInternalFrameRelatoriosFuncionarios.isEnabled()){
+                        
+                        jButtonInternalFrameRelatoriosFuncionariosVoltarActionPerformed(ae);
+                    }
+                  
+            }
+        });  
+    }  
+   
+
+     
+     
+    
+   
+  
+ 
   
     /**
      * This method is called from within the constructor to initialize the form.
@@ -360,9 +390,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
         );
         jInternalFrameContas1Layout.setVerticalGroup(
             jInternalFrameContas1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelInternalFrameContas, javax.swing.GroupLayout.DEFAULT_SIZE, 540, Short.MAX_VALUE)
+            .addComponent(jPanelInternalFrameContas, javax.swing.GroupLayout.DEFAULT_SIZE, 548, Short.MAX_VALUE)
             .addGroup(jInternalFrameContas1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 540, Short.MAX_VALUE))
+                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 548, Short.MAX_VALUE))
         );
 
         jInternalFrameContas1.setBounds(0, 0, 920, 550);
@@ -464,7 +494,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButtonInternalFrameRelatoriosVoltar1, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(550, Short.MAX_VALUE))
+                .addContainerGap(553, Short.MAX_VALUE))
         );
 
         jPanel4Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jButton5, jButtonInternalFrameRelatoriosVoltar1});
@@ -492,10 +522,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jInternalFrameRelatoriosLayout.setVerticalGroup(
             jInternalFrameRelatoriosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jInternalFrameRelatoriosLayout.createSequentialGroup()
-                .addComponent(jPanelInternalFrameRelatorios, javax.swing.GroupLayout.DEFAULT_SIZE, 712, Short.MAX_VALUE)
-                .addGap(0, 2, Short.MAX_VALUE))
+                .addComponent(jPanelInternalFrameRelatorios, javax.swing.GroupLayout.DEFAULT_SIZE, 718, Short.MAX_VALUE)
+                .addGap(0, 8, Short.MAX_VALUE))
             .addGroup(jInternalFrameRelatoriosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 714, Short.MAX_VALUE))
+                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 726, Short.MAX_VALUE))
         );
 
         jInternalFrameRelatorios.setBounds(0, 0, 930, 740);
@@ -529,6 +559,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
                     .addComponent(jButton6))
                 .addGap(379, 379, 379))
         );
+
+        jPanel5Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButton6, jButtonInternalFrameRelatoriosFuncionariosVoltar});
+
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
@@ -536,12 +569,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButtonInternalFrameRelatoriosFuncionariosVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(504, Short.MAX_VALUE))
+                .addContainerGap(505, Short.MAX_VALUE))
         );
 
+        jPanel5Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jButton6, jButtonInternalFrameRelatoriosFuncionariosVoltar});
+
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
         gridBagConstraints.ipadx = 404;
         gridBagConstraints.ipady = 586;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
@@ -558,20 +591,20 @@ public class TelaPrincipal extends javax.swing.JFrame {
             .addGap(0, 924, Short.MAX_VALUE)
             .addGroup(jInternalFrameRelatoriosFuncionariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jInternalFrameRelatoriosFuncionariosLayout.createSequentialGroup()
-                    .addComponent(jPanelInternalFrameRelatoriosFuncionarios, javax.swing.GroupLayout.PREFERRED_SIZE, 923, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 1, Short.MAX_VALUE)))
+                    .addComponent(jPanelInternalFrameRelatoriosFuncionarios, javax.swing.GroupLayout.DEFAULT_SIZE, 923, Short.MAX_VALUE)
+                    .addGap(1, 1, 1)))
             .addGroup(jInternalFrameRelatoriosFuncionariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 924, Short.MAX_VALUE))
         );
         jInternalFrameRelatoriosFuncionariosLayout.setVerticalGroup(
             jInternalFrameRelatoriosFuncionariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 732, Short.MAX_VALUE)
+            .addGap(0, 736, Short.MAX_VALUE)
             .addGroup(jInternalFrameRelatoriosFuncionariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jInternalFrameRelatoriosFuncionariosLayout.createSequentialGroup()
-                    .addComponent(jPanelInternalFrameRelatoriosFuncionarios, javax.swing.GroupLayout.PREFERRED_SIZE, 711, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 21, Short.MAX_VALUE)))
+                    .addComponent(jPanelInternalFrameRelatoriosFuncionarios, javax.swing.GroupLayout.DEFAULT_SIZE, 715, Short.MAX_VALUE)
+                    .addGap(21, 21, 21)))
             .addGroup(jInternalFrameRelatoriosFuncionariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 732, Short.MAX_VALUE))
+                .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 736, Short.MAX_VALUE))
         );
 
         jInternalFrameRelatoriosFuncionarios.setBounds(0, 0, 930, 740);
@@ -1008,10 +1041,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         
         jDesktopPaneContas.setVisible(false);
+        jInternalFrameContas1.setVisible(false);
         jPanelBotoesTelaPrincipal.setVisible(true);
         jPanelImagemTelaPrincipal.setVisible(true);
         jPanelDataHoraTelaPrincipal.setVisible(true);
-        requestFocus();
+        
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
@@ -1033,13 +1067,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowClosing
 
     private void jButtonInternalFrameRelatoriosVoltar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInternalFrameRelatoriosVoltar1ActionPerformed
-        
+       
+        jDesktopPaneContas.setVisible(false);
+        jInternalFrameRelatorios.setVisible(false);
         jPanelBotoesTelaPrincipal.setVisible(true);
         jPanelDataHoraTelaPrincipal.setVisible(true);
         jPanelImagemTelaPrincipal.setVisible(true);
-        jDesktopPaneContas.setVisible(false);
-        jInternalFrameRelatorios.setVisible(false);
-        requestFocus();
+        
+       
     }//GEN-LAST:event_jButtonInternalFrameRelatoriosVoltar1ActionPerformed
 
     private void jButtonInternalFrameRelatoriosFuncionariosVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInternalFrameRelatoriosFuncionariosVoltarActionPerformed
@@ -1060,7 +1095,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jInternalFrameRelatorios.setVisible(false);
         
     }//GEN-LAST:event_jButton5ActionPerformed
-
+ 
     
    
      
