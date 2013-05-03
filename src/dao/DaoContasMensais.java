@@ -272,17 +272,90 @@ public class DaoContasMensais implements ContasInterface {
 
     @Override
     public List<Conta> ContasVencidasPorCliente(Date data, String nome) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       
+        List<Conta> conta = null;
+        Session sessao = null; 
+        Query query = null;
+        Transaction tx = null;
+        
+        try{
+           sessao = HibernateUtil.getSessionFactory().openSession();
+           tx = sessao.beginTransaction();
+           query = sessao.createQuery("from Contas where dataPag is null and dataVence < :data and Pesssoa.nome = :nome");
+           query.setParameter("data",data);
+           query.setParameter("nome","%"+nome+"%");
+           conta =  query.list();
+           tx.commit(); 
+           
+        }
+        catch(HibernateException e)
+        {
+            System.out.println(e);
+            tx.rollback();
+        }
+        finally
+        {
+             sessao.close();
+        }  
+    return conta;   
     }
 
     @Override
     public List<Conta> ContasTotalAbertas() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List<Conta> conta = null;
+        Session sessao = null; 
+        Query query = null;
+        Transaction tx = null;
+        
+        try{
+           sessao = HibernateUtil.getSessionFactory().openSession();
+           tx = sessao.beginTransaction();
+           query = sessao.createQuery("from Contas where dataPag is null ");
+          // query.setParameter("data",data);
+           //query.setParameter("id",id);
+           conta =  query.list();
+           tx.commit(); 
+           
+        }
+        catch(HibernateException e)
+        {
+            System.out.println(e);
+            tx.rollback();
+        }
+        finally
+        {
+             sessao.close();
+        }  
+    return conta;   
     }
 
     @Override
-    public List<Conta> ContaSomaPorData(Date dataInicial, Date dataFinal) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<Conta> ContaSomaPorData(Date inicio, Date fim) {
+        List<Conta> conta = null;
+        Session sessao = null; 
+        Query query = null;
+        Transaction tx = null;
+        
+        try{
+           sessao = HibernateUtil.getSessionFactory().openSession();
+           tx = sessao.beginTransaction();
+           query = sessao.createSQLQuery("select sum(valor) from contas where datapag between :inicio and :fim ");
+           query.setParameter("inicio",inicio);
+           query.setParameter("fim",fim);
+           conta =  query.list();
+           tx.commit(); 
+           
+        }
+        catch(HibernateException e)
+        {
+            System.out.println(e);
+            tx.rollback();
+        }
+        finally
+        {
+             sessao.close();
+        }  
+    return conta;   
     }
 
     @Override
