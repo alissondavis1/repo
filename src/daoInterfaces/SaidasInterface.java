@@ -6,6 +6,7 @@ package daoInterfaces;
 
 
 import entidades.Saida;
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
@@ -19,7 +20,7 @@ public interface SaidasInterface {
     public void AlterarSaida  (Saida saida);
     public void ApagarSaida   (Saida saida);
     
-    public float SomaSaidas();
+     public BigDecimal SomaSaidas(Date inicio, Date fim);
     public List<Saida> SaidasPorFuncionario(int IdFuncionario);
     public List<Saida> SaidasPorData(Date DataInicio, Date DataFim);
     public List<Saida> SaidaPorDataPorFuncionario(int IdFuncionario, Date DataInicio, Date DataFim) ;

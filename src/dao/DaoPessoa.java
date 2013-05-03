@@ -122,8 +122,32 @@ public class DaoPessoa implements PessoasInterface {
     }  
     
     @Override
-    public List<Pessoa> BuscarPessoaLikeNomeCompleto(String NomeCompleto) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<Pessoa> BuscarPessoaLikeNomeCompleto(String nomeCompleto) {
+        List<Pessoa> pessoa = null;
+        Session sessao = null; 
+        Query query = null;
+        Transaction transacao = null;
+        
+        try{
+           sessao = HibernateUtil.getSessionFactory().openSession();
+           transacao = sessao.beginTransaction();
+           query = sessao.createQuery("from Pessoa p where concat(p.nome,p.sobrenome) LIKE :nomeCompleto");
+           query.setString("nome","%"+nomeCompleto+"%");
+           //query.setParameter("nome",nome);
+           pessoa = query.list();
+           transacao.commit(); 
+           
+        }
+        catch(HibernateException e)
+        {
+            System.out.println(e);
+            transacao.rollback();
+        }
+        finally
+        {
+             sessao.close();
+        }  
+    return pessoa;
     }
     
     @Override

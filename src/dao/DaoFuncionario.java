@@ -134,7 +134,7 @@ public class DaoFuncionario implements FuncionariosInterface{
         try{
            sessao = HibernateUtil.getSessionFactory().openSession();
            trasacao = sessao.beginTransaction();
-           query = sessao.createQuery("from Funcionario where nome = :nome");
+           query = sessao.createQuery("from Funcionario where nome = like(:nome)");
            query.setParameter("nome",nome);
            funcionario = (Funcionario) query.uniqueResult();
            trasacao.commit(); 

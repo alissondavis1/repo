@@ -19,15 +19,17 @@ public interface ContasInterface {
     public void AtualizarConta (Conta conta);
   
     public List<Conta>       ContasPorId(int id);
-    public List<Conta> ContasAbertas(Date data);
+    public List<Conta> ContasAbertas(Date inicio, Date fim);
     public List<Conta> ContasAbertasCliente(int id);
     public List<Conta> ContasAbertasCliente(String nome);
     public List<Conta> ContasVencidas(Date data);
     public List<Conta> ContasVencidasPorCliente(Date data, int id); 
     public List<Conta> ContasVencidasPorCliente(Date data, String nome) ;
     public List<Conta> ContasTotalAbertas();
-    public List<Conta> ContaSomaPorData(Date dataInicial, Date dataFinal);
     public List<Conta> ContasPorRua(int IdRua);
+    public List<Conta> ContaSomaPorData(Date dataInicial, Date dataFinal);
+    public List<Conta> ContasAbertas(Date data);
+    
     
     
 }

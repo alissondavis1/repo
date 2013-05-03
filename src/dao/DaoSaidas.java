@@ -4,11 +4,13 @@
  */
 package dao;
 
-import entidades.Saida;
 import daoInterfaces.SaidasInterface;
+import entidades.Saida;
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import util.HibernateUtil;
@@ -92,23 +94,134 @@ public class DaoSaidas implements SaidasInterface{
     }
 
     @Override
-    public float SomaSaidas() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public BigDecimal SomaSaidas(Date inicio, Date fim) {
+      
+        BigDecimal saida = null;
+        Session sessao = null; 
+        Query query = null;
+        Transaction tx = null;
+        
+        try{
+           sessao = HibernateUtil.getSessionFactory().openSession();
+           tx = sessao.beginTransaction();
+           query = sessao.createSQLQuery("select sum(valor) from saida where data between :inicio and :fim");
+           query.setParameter("inicio",inicio);
+          query.setParameter("fim",fim);
+         
+           saida = (BigDecimal) query.uniqueResult();
+           tx.commit(); 
+           
+        }
+        catch(HibernateException e)
+        {
+            System.out.println(e);
+            tx.rollback();
+        }
+        finally
+        {
+             sessao.close();
+        }  
+    return saida;
+        
+        
     }
 
     @Override
     public List<Saida> SaidasPorFuncionario(int IdFuncionario) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+      
+        List<Saida> saida = null;
+        Session sessao = null; 
+        Query query = null;
+        Transaction tx = null;
+        
+        try{
+           sessao = HibernateUtil.getSessionFactory().openSession();
+           tx = sessao.beginTransaction();
+           query = sessao.createQuery("from Saida where idFuncionaio = :idFuncionario");
+           query.setParameter("IdFuncionario",IdFuncionario);
+           
+           saida = query.list();
+           //saida = query.uniqueResult();
+           tx.commit(); 
+           
+        }
+        catch(HibernateException e)
+        {
+            System.out.println(e);
+            tx.rollback();
+        }
+        finally
+        {
+             sessao.close();
+        }  
+    return saida;
     }
 
     @Override
-    public List<Saida> SaidasPorData(Date DataInicio, Date DataFim) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<Saida> SaidasPorData(Date inicio, Date fim) {
+      
+        List<Saida> saida = null;
+        Session sessao = null; 
+        Query query = null;
+        Transaction tx = null;
+        
+        try{
+           sessao = HibernateUtil.getSessionFactory().openSession();
+           tx = sessao.beginTransaction();
+           query = sessao.createQuery("from Saida where Data between :incio and :fim");
+           query.setParameter("inicio",inicio);
+           query.setParameter("fim",fim);
+           
+           
+           saida = query.list();
+           //saida = query.uniqueResult();
+           tx.commit(); 
+           
+        }
+        catch(HibernateException e)
+        {
+            System.out.println(e);
+            tx.rollback();
+        }
+        finally
+        {
+             sessao.close();
+        }  
+    return saida;
     }
 
     @Override
-    public List<Saida> SaidaPorDataPorFuncionario(int IdFuncionario, Date DataInicio, Date DataFim) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<Saida> SaidaPorDataPorFuncionario(int idFuncionario, Date inicio, Date fim) {
+       
+        List<Saida> saida = null;
+        Session sessao = null; 
+        Query query = null;
+        Transaction tx = null;
+        
+        try{
+           sessao = HibernateUtil.getSessionFactory().openSession();
+           tx = sessao.beginTransaction();
+           query = sessao.createQuery("from Saida where Idfuncionario = :idFuncionario Data between :incio and :fim");
+           query.setParameter("idFuncionario",idFuncionario);
+           query.setParameter("inicio",inicio);
+           query.setParameter("fim",fim);
+           
+           
+           saida = query.list();
+           //saida = query.uniqueResult();
+           tx.commit(); 
+           
+        }
+        catch(HibernateException e)
+        {
+            System.out.println(e);
+            tx.rollback();
+        }
+        finally
+        {
+             sessao.close();
+        }  
+    return saida;
     }
 
     @Override
@@ -118,7 +231,32 @@ public class DaoSaidas implements SaidasInterface{
 
     @Override
     public List<Saida> SaidasPorMotivo(int IdMotivoSaidas) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       
+        List<Saida> saida = null;
+        Session sessao = null; 
+        Query query = null;
+        Transaction tx = null;
+        
+        try{
+           sessao = HibernateUtil.getSessionFactory().openSession();
+           tx = sessao.beginTransaction();
+           query = sessao.createQuery("from Saida where id = :id");
+           query.setParameter("id",IdMotivoSaidas);
+           saida = query.list();
+           //saida = query.uniqueResult();
+           tx.commit(); 
+           
+        }
+        catch(HibernateException e)
+        {
+            System.out.println(e);
+            tx.rollback();
+        }
+        finally
+        {
+             sessao.close();
+        }  
+    return saida;
     }
 
     

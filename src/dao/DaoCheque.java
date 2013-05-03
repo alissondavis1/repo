@@ -103,7 +103,7 @@ public class DaoCheque implements ChequesInterface {
         
         try{
           sessao = HibernateUtil.getSessionFactory().openSession();
-            tx = sessao.beginTransaction();
+           tx = sessao.beginTransaction();
            query = sessao.createQuery("from Cheque where id = :id");
            query.setParameter("id",idCheque);
            cheque = (Cheque) query.uniqueResult();
@@ -123,7 +123,7 @@ public class DaoCheque implements ChequesInterface {
     }
 
     @Override
-    public List<Cheque> ChequesAbertos(Date dataIni, Date dataFim ) {
+    public List<Cheque> ChequesAbertos(Date ini, Date fim ) {
       
         List<Cheque> cheque = null;
         Session sessao = null; 
@@ -133,9 +133,9 @@ public class DaoCheque implements ChequesInterface {
         try{
            sessao = HibernateUtil.getSessionFactory().openSession();
            tx = sessao.beginTransaction();
-           query = sessao.createQuery("implementar ");
-           query.setParameter("dataIni",dataIni);
-           query.setParameter("dataFim",dataFim);
+           query = sessao.createQuery("from cheque where datapagamento is null and datavencimento between :ini and :fim");
+           query.setParameter("dataIni",ini);
+           query.setParameter("dataFim",fim);
            cheque =  query.list();
            tx.commit(); 
            
@@ -152,63 +152,7 @@ public class DaoCheque implements ChequesInterface {
     return cheque;
     }
 
-    @Override
-    public List<Cheque> ChequesAbertosClientesPorIdClinete(int id) {
     
-        List<Cheque> cheque = null;
-        Session sessao = null; 
-        Query query = null;
-        Transaction tx = null;
-        
-        try{
-           sessao = HibernateUtil.getSessionFactory().openSession();
-           tx = sessao.beginTransaction();
-           query = sessao.createQuery("implementar ");
-           query.setParameter("dataIni",id);
-           cheque =  query.list();
-           tx.commit(); 
-           
-        }
-        catch(HibernateException e)
-        {
-            System.out.println(e);
-            tx.rollback();
-        }
-        finally
-        {
-             sessao.close();
-        }  
-    return cheque;
-    }
-
-    @Override
-    public List<Cheque> ChequesAbertosClientesPorNomeCliente(String nome) {
-       List<Cheque> cheque = null;
-        Session sessao = null; 
-        Query query = null;
-        Transaction tx = null;
-        
-        try{
-           sessao = HibernateUtil.getSessionFactory().openSession();
-           tx = sessao.beginTransaction();
-           query = sessao.createQuery("implementar ");
-           query.setParameter("nome",nome);
-           cheque =  query.list();
-           tx.commit(); 
-           
-        }
-        catch(HibernateException e)
-        {
-            System.out.println(e);
-            tx.rollback();
-        }
-        finally
-        {
-             sessao.close();
-        }  
-    return cheque;
-    }
-
     @Override
     public List<Cheque> ChequesVencidosPorCliente(Date data) {
        
@@ -222,7 +166,6 @@ public class DaoCheque implements ChequesInterface {
            tx = sessao.beginTransaction();
            query = sessao.createQuery("implementar ");
            query.setParameter("data",data);
-           ;
            cheque =  query.list();
            tx.commit(); 
            
@@ -295,6 +238,16 @@ public class DaoCheque implements ChequesInterface {
              sessao.close();
         }  
     return cheque;
+    }
+
+    @Override
+    public List<Cheque> ChequesAbertosClientesPorIdClinete(int id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<Cheque> ChequesAbertosClientesPorNomeCliente(String nome) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     

@@ -90,6 +90,7 @@ public class DaoContasMensais implements ContasInterface {
             sessao.close(); 
         } 
     }
+    
 
     @Override
     public List<Conta> ContasPorId(int id) {
@@ -120,9 +121,32 @@ public class DaoContasMensais implements ContasInterface {
     return cheque; }
 
     @Override
-    public List<Conta> ContasAbertas(Date data) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    public List<Conta> ContasAbertas(Date inicio, Date fim) {
+        List<Conta> cheque = null;
+        Session sessao = null; 
+        Query query = null;
+        Transaction tx = null;
+        
+        try{
+           sessao = HibernateUtil.getSessionFactory().openSession();
+           tx = sessao.beginTransaction();
+           query = sessao.createQuery("from Conta where datapagamento is null and datavencimento between :ini and :fim");
+           query.setParameter("dataIni",inicio);
+           query.setParameter("dataFim",fim);
+           cheque =  query.list();
+           tx.commit(); 
+           
+        }
+        catch(HibernateException e)
+        {
+            System.out.println(e);
+            tx.rollback();
+        }
+        finally
+        {
+             sessao.close();
+        }  
+    return cheque; }
 
     @Override
     public List<Conta> ContasAbertasCliente(int id) {
@@ -161,6 +185,11 @@ public class DaoContasMensais implements ContasInterface {
 
     @Override
     public List<Conta> ContasPorRua(int IdRua) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<Conta> ContasAbertas(Date data) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
    

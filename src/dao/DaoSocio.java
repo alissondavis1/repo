@@ -119,7 +119,7 @@ public class DaoSocio implements SocioInterface{
     }
 
     @Override
-    public List<Socio> SocioPorRua(String Rua) {
+    public List<Socio> SocioPorRua(String rua) {
       
         List<Socio> socio = null;
         Session sessao = null; 
@@ -129,9 +129,10 @@ public class DaoSocio implements SocioInterface{
         try{
            sessao = HibernateUtil.getSessionFactory().openSession();
            transacao = sessao.beginTransaction();
-           query = sessao.createQuery("implementar");
+           query = sessao.createQuery("from Socio s, Pessoa p where p.id = s.idPessoa\n" +
+        "and p.idEndereco = :rua");
            //query.setString("nome","%"+nome+"%");
-           //query.setParameter("id",id);
+           query.setParameter("rua",rua);
            // socio = (Taxa) query.uniqueResult();
            socio = query.list();
            transacao.commit(); 
@@ -160,9 +161,7 @@ public class DaoSocio implements SocioInterface{
         try{
            sessao = HibernateUtil.getSessionFactory().openSession();
            transacao = sessao.beginTransaction();
-           query = sessao.createQuery("from socio ");
-           //query.setParameter("id",id);
-           // socio = (Taxa) query.uniqueResult();
+           query = sessao.createQuery("from Socio, Pessoa where p.id = s.idPessoa ");
            socio = query.list();
            transacao.commit(); 
            
