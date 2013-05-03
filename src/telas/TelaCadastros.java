@@ -2348,6 +2348,7 @@ public class TelaCadastros extends javax.swing.JFrame {
                 
                 JOptionPane.showMessageDialog(this, "Cancele a operação ", "Atenção", JOptionPane.INFORMATION_MESSAGE);
             }
+            jTabbedPane1.setSelectedComponent(jPanelLog);
             
         }
 
