@@ -265,7 +265,7 @@ public class DaoEntradas implements EntradasInterface {
         try{
            sessao = HibernateUtil.getSessionFactory().openSession();
            tx = sessao.beginTransaction();
-           query = sessao.createQuery(" from entrada where  idfuncionario = :idfuncionario");
+           query = sessao.createQuery(" from entrada where idfuncionario = :idfuncionario");
            //query.setParameter("inicio",inicio);
            //query.setParameter("fim",fim);
            query.setParameter("id",id);
@@ -445,4 +445,16 @@ public class DaoEntradas implements EntradasInterface {
         }  
     return entrada;
         }
+
+    
+
+    @Override
+    public List<Entrada> EntradaPorCedente(int IdCedente) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<Entrada> EntradaPorCedentePorData(int IdCedente, Date DataInicial, Date DataFinal) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
