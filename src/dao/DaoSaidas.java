@@ -4,8 +4,8 @@
  */
 package dao;
 
-import entidades.Saida;
 import daoInterfaces.SaidasInterface;
+import entidades.Saida;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;

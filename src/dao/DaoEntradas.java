@@ -4,8 +4,8 @@
  */
 package dao;
 
-import entidades.Entrada;
 import daoInterfaces.EntradasInterface;
+import entidades.Entrada;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
@@ -448,13 +448,4 @@ public class DaoEntradas implements EntradasInterface {
 
     
 
-    @Override
-    public List<Entrada> EntradaPorCedente(int IdCedente) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public List<Entrada> EntradaPorCedentePorData(int IdCedente, Date DataInicial, Date DataFinal) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 }

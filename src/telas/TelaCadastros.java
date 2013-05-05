@@ -3287,6 +3287,40 @@ public class TelaCadastros extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButtonLogradouroSalvarActionPerformed
 
+    private void jTabbedPane1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jTabbedPane1StateChanged
+
+        if (!jButtonFuncionarioNovo.isEnabled() || !jTextFieldFuncionarioID.getText().equals("")) {
+            if (jTabbedPane1.getSelectedComponent() != jPanelFunc) {
+                JOptionPane.showMessageDialog(this, "Cancele a operação ", "Atenção", JOptionPane.INFORMATION_MESSAGE);
+            }
+            jTabbedPane1.setSelectedComponent(jPanelFunc);
+
+        }else if(!jButtonLogradouroNovo.isEnabled() || !jTextFieldLogradouroID.getText().equals("")){
+            
+            if(jTabbedPane1.getSelectedComponent() != jPanelLog){
+                
+                JOptionPane.showMessageDialog(this, "Cancele a operação ", "Atenção", JOptionPane.INFORMATION_MESSAGE);
+            }
+            
+        }
+
+    }//GEN-LAST:event_jTabbedPane1StateChanged
+
+    private void jButtonLogradouroPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLogradouroPesquisarActionPerformed
+
+        if (jButtonLogradouroNovo.isEnabled()) {
+
+            pesquisarTable = "logradouros";
+            mostrarJtable();
+
+        } else {
+
+            JOptionPane.showMessageDialog(this, "Cancele a operação para fazer uma pesquisa", "Atenção", JOptionPane.INFORMATION_MESSAGE);
+        }
+
+
+    }//GEN-LAST:event_jButtonLogradouroPesquisarActionPerformed
+
     private void jButtonLogradouroApagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLogradouroApagarActionPerformed
 
         int op = JOptionPane.showConfirmDialog(this, "Tem certeza que deseja excluir o registro?", "Apagar", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);

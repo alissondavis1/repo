@@ -30,9 +30,9 @@ public interface EntradasInterface {
     public List<Entrada> EntradaPorValor(int MaxValor,int MinValor);
     public List<Entrada> EntradaPorFuncionarioPorMotivo(int Motivo,int IdFuncionario);
     public List<Entrada> EntradaPorMotivo( int IdMotivo);
-    public List<Entrada> EntradaPorCedente(int IdCedente);
-    public List<Entrada> EntradaPorCedentePorData(int IdCedente, Date DataInicial, Date DataFinal);
+   // public List<Entrada> EntradaPorCedente(int IdCedente);
+   // public List<Entrada> EntradaPorCedentePorData(int IdCedente, Date DataInicial, Date DataFinal);
     public List<Entrada> EntradraPorSocio(int IdSocio);
-    
+   
                         
 }

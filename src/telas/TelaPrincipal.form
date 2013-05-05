@@ -383,9 +383,9 @@
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jPanelInternalFrameContas" alignment="0" pref="540" max="32767" attributes="0"/>
+                  <Component id="jPanelInternalFrameContas" alignment="0" pref="548" max="32767" attributes="0"/>
                   <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-                      <Component id="jLabel3" alignment="0" pref="540" max="32767" attributes="0"/>
+                      <Component id="jLabel3" alignment="0" pref="548" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -616,11 +616,11 @@
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="jPanelInternalFrameRelatorios" pref="712" max="32767" attributes="0"/>
-                      <EmptySpace min="0" pref="2" max="32767" attributes="0"/>
+                      <Component id="jPanelInternalFrameRelatorios" pref="718" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="8" max="32767" attributes="0"/>
                   </Group>
                   <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-                      <Component id="jLabel5" alignment="0" pref="714" max="32767" attributes="0"/>
+                      <Component id="jLabel5" alignment="0" pref="726" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -663,7 +663,7 @@
                               <Component id="jButton5" linkSize="2" min="-2" pref="79" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="jButtonInternalFrameRelatoriosVoltar1" linkSize="2" min="-2" pref="76" max="-2" attributes="0"/>
-                              <EmptySpace pref="550" max="32767" attributes="0"/>
+                              <EmptySpace pref="553" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -723,8 +723,8 @@
                   <EmptySpace min="0" pref="924" max="32767" attributes="0"/>
                   <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="jPanelInternalFrameRelatoriosFuncionarios" min="-2" pref="923" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="1" max="32767" attributes="0"/>
+                          <Component id="jPanelInternalFrameRelatoriosFuncionarios" pref="923" max="32767" attributes="0"/>
+                          <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="103" rootIndex="2" groupAlignment="0" attributes="0">
@@ -734,15 +734,15 @@
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="732" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="736" max="32767" attributes="0"/>
                   <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="jPanelInternalFrameRelatoriosFuncionarios" min="-2" pref="711" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="21" max="32767" attributes="0"/>
+                          <Component id="jPanelInternalFrameRelatoriosFuncionarios" pref="715" max="32767" attributes="0"/>
+                          <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="103" rootIndex="2" groupAlignment="0" attributes="0">
-                      <Component id="jLabel6" alignment="0" pref="732" max="32767" attributes="0"/>
+                      <Component id="jLabel6" alignment="0" pref="736" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -761,7 +761,7 @@
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
-                      <GridBagConstraints gridX="0" gridY="0" gridWidth="1" gridHeight="1" fill="0" ipadX="404" ipadY="586" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="18" weightX="0.0" weightY="0.0"/>
+                      <GridBagConstraints gridX="-1" gridY="-1" gridWidth="1" gridHeight="1" fill="0" ipadX="404" ipadY="586" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="18" weightX="0.0" weightY="0.0"/>
                     </Constraint>
                   </Constraints>
 
@@ -771,8 +771,8 @@
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace pref="403" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="jButtonInternalFrameRelatoriosFuncionariosVoltar" min="-2" pref="153" max="-2" attributes="0"/>
-                                  <Component id="jButton6" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jButtonInternalFrameRelatoriosFuncionariosVoltar" linkSize="3" min="-2" pref="153" max="-2" attributes="0"/>
+                                  <Component id="jButton6" linkSize="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="379" max="-2" attributes="0"/>
                           </Group>
@@ -782,10 +782,10 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="127" max="-2" attributes="0"/>
-                              <Component id="jButton6" min="-2" pref="79" max="-2" attributes="0"/>
+                              <Component id="jButton6" linkSize="4" min="-2" pref="79" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="jButtonInternalFrameRelatoriosFuncionariosVoltar" min="-2" pref="76" max="-2" attributes="0"/>
-                              <EmptySpace pref="504" max="32767" attributes="0"/>
+                              <Component id="jButtonInternalFrameRelatoriosFuncionariosVoltar" linkSize="4" min="-2" pref="76" max="-2" attributes="0"/>
+                              <EmptySpace pref="505" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
