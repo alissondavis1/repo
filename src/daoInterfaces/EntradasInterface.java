@@ -19,11 +19,11 @@ public interface EntradasInterface {
     public void ApagarEntrada   (Entrada entrada);
     public void AlterarEntrada  (Entrada entrada);
    
-    public BigDecimal SomarEntrada();
-    //public BigDecimal SomarEntradaPorFuncionario();
-    public BigDecimal SomarEntradaPorData(Date datainicio, Date datafim);
-    //public BigDecimal SomarEntradaPorFuncionarioPorData(Date datainicio, Date datafim);
     
+    public BigDecimal SomarEntrada();
+    public BigDecimal SomarEntradaPorData(Date datainicio, Date datafim);
+    public BigDecimal SomarEntradaPorFuncionario(int idfuncionario);
+    public BigDecimal SomarEntradaPorFuncionarioPorData(int idfuncionario, Date inicio, Date fim);
     public Entrada       EntradaPorId(int id);
     public List<Entrada> EntradaPorFuncionario(int IdFuncionario);
     public List<Entrada> EntradaPorData (Date DataInicial, Date DataFinal);
@@ -33,7 +33,6 @@ public interface EntradasInterface {
    // public List<Entrada> EntradaPorCedente(int IdCedente);
    // public List<Entrada> EntradaPorCedentePorData(int IdCedente, Date DataInicial, Date DataFinal);
     public List<Entrada> EntradraPorSocio(int IdSocio);
-    public BigDecimal SomarEntradaPorFuncionario(int idfuncionario);
-    public BigDecimal SomarEntradaPorFuncionarioPorData(int idfuncionario, Date inicio, Date fim);
+   
                         
 }

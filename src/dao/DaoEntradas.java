@@ -265,7 +265,7 @@ public class DaoEntradas implements EntradasInterface {
         try{
            sessao = HibernateUtil.getSessionFactory().openSession();
            tx = sessao.beginTransaction();
-           query = sessao.createQuery(" from entrada where  idfuncionario = :idfuncionario");
+           query = sessao.createQuery(" from entrada where idfuncionario = :idfuncionario");
            //query.setParameter("inicio",inicio);
            //query.setParameter("fim",fim);
            query.setParameter("id",id);
@@ -445,4 +445,7 @@ public class DaoEntradas implements EntradasInterface {
         }  
     return entrada;
         }
+
+    
+
 }
