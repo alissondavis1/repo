@@ -110,9 +110,7 @@ public class Splash extends JWindow{
             progress.setString("Conexão bem sucedida...");
                 
            
-            }
-            
-            
+            }     
         }.start();
         
     }
