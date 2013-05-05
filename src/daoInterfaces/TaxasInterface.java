@@ -20,5 +20,6 @@ public interface TaxasInterface {
     public Taxa       TaxaPorId(int id);
     public List<Taxa> TaxasPorNome(String nome);
     public List<Taxa> TaxasTodas  ();
+     public List<Taxa> BuscarTaxaNomeLike(String nome);
     
 }

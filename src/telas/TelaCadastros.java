@@ -6,11 +6,12 @@ package telas;
 
 import dao.DaoEndereco;
 import dao.DaoPessoa;
+import dao.DaoTaxa;
 import entidades.Endereco;
 import entidades.Funcionario;
 import entidades.Pessoa;
+import entidades.Taxa;
 import java.awt.event.ActionEvent;
-import java.awt.event.KeyEvent;
 import java.beans.PropertyVetoException;
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
@@ -34,7 +35,6 @@ import javax.swing.table.DefaultTableModel;
 public class TelaCadastros extends javax.swing.JFrame {
 
     JFrame telaPrincipal;
-    
     private String pesquisarTable;
 
     /**
@@ -45,6 +45,7 @@ public class TelaCadastros extends javax.swing.JFrame {
         initComponents();
         editableTextFields(false);
         setEditableComponentesLogradouros(false);
+        setEditableComponentesTaxas(false);
         jDesktopPane1.setVisible(false);
         jInternalFrame1.setVisible(false);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -227,6 +228,15 @@ public class TelaCadastros extends javax.swing.JFrame {
         jButtonSalvarCategoriaSocio = new javax.swing.JButton();
         jButtonApagarCategoriaSocio = new javax.swing.JButton();
         jButtonCancelarCategoriaSocio = new javax.swing.JButton();
+        jPanel7 = new javax.swing.JPanel();
+        jLabel33 = new javax.swing.JLabel();
+        jTextFieldCategoriaSocioID = new javax.swing.JTextField();
+        jLabel34 = new javax.swing.JLabel();
+        jTextFieldCategoriaSocioNome = new javax.swing.JTextField();
+        jLabel35 = new javax.swing.JLabel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        jTextAreaCategoriaSocioDescricao = new javax.swing.JTextArea();
+        jLabel36 = new javax.swing.JLabel();
         jPanelTipoDespesa = new javax.swing.JPanel();
         jPanel11 = new javax.swing.JPanel();
         jButtonNovoTipoDespesa = new javax.swing.JButton();
@@ -274,22 +284,24 @@ public class TelaCadastros extends javax.swing.JFrame {
         jButtonApagarContrato = new javax.swing.JButton();
         jButtonCancelarContrato = new javax.swing.JButton();
         jPanelTaxas = new javax.swing.JPanel();
+        jPanel22 = new javax.swing.JPanel();
+        jPanel18 = new javax.swing.JPanel();
+        jButtonTaxaNovo = new javax.swing.JButton();
+        jButtonTaxaEditar = new javax.swing.JButton();
+        jButtonTaxaSalvar = new javax.swing.JButton();
+        jButtonTaxaApagar = new javax.swing.JButton();
+        jButtonTaxaCancelar = new javax.swing.JButton();
         jPanel13 = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        jTextFieldTaxasNome = new javax.swing.JTextField();
+        jTextFieldTaxasValor = new javax.swing.JTextField();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
-        jTextField4 = new javax.swing.JTextField();
-        jPanel18 = new javax.swing.JPanel();
-        jButtonNovoTaxa = new javax.swing.JButton();
-        jButtonEditarTaxa = new javax.swing.JButton();
-        jButtonSalvarTaxa = new javax.swing.JButton();
-        jButtonApagarTaxa = new javax.swing.JButton();
-        jButtonCancelarTaxa = new javax.swing.JButton();
+        jTextAreaTaxasDescricao = new javax.swing.JTextArea();
+        jTextFieldTaxasID = new javax.swing.JTextField();
+        jButtonTaxasPesquisar = new javax.swing.JButton();
         jDesktopPane1 = new javax.swing.JDesktopPane();
         jInternalFrame1 = new javax.swing.JInternalFrame();
         jScrollPane4 = new javax.swing.JScrollPane();
@@ -448,8 +460,8 @@ public class TelaCadastros extends javax.swing.JFrame {
                                     .addComponent(jButtonLogradouroSalvar)
                                     .addGap(18, 18, 18)
                                     .addComponent(jButtonLogradouroCancelar)
-                                    .addGap(0, 285, Short.MAX_VALUE))
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 732, Short.MAX_VALUE))
+                                    .addGap(0, 311, Short.MAX_VALUE))
+                                .addComponent(jScrollPane1))
                             .addContainerGap())))
             );
 
@@ -498,11 +510,16 @@ public class TelaCadastros extends javax.swing.JFrame {
                 .addGroup(jPanel20Layout.createSequentialGroup()
                     .addContainerGap()
                     .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(339, Short.MAX_VALUE))
+                    .addContainerGap(797, Short.MAX_VALUE))
             );
 
             gridBagConstraints = new java.awt.GridBagConstraints();
-            gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTH;
+            gridBagConstraints.gridx = 0;
+            gridBagConstraints.gridy = 0;
+            gridBagConstraints.ipadx = 311;
+            gridBagConstraints.ipady = 786;
+            gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+            gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
             jPanelLog.add(jPanel20, gridBagConstraints);
 
             jTabbedPane1.addTab("Logradouros", null, jPanelLog, "Cadastre um logradouro");
@@ -548,7 +565,7 @@ public class TelaCadastros extends javax.swing.JFrame {
                             .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(jPanel5Layout.createSequentialGroup()
                                     .addComponent(jTextFieldFuncionarioCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 110, Short.MAX_VALUE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 166, Short.MAX_VALUE)
                                     .addComponent(Logradouro7, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(10, 10, 10))
                                 .addGroup(jPanel5Layout.createSequentialGroup()
@@ -987,7 +1004,7 @@ public class TelaCadastros extends javax.swing.JFrame {
             jPanel21.setLayout(jPanel21Layout);
             jPanel21Layout.setHorizontalGroup(
                 jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGap(0, 784, Short.MAX_VALUE)
+                .addGap(0, 840, Short.MAX_VALUE)
                 .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel21Layout.createSequentialGroup()
                         .addContainerGap()
@@ -1000,7 +1017,7 @@ public class TelaCadastros extends javax.swing.JFrame {
             );
             jPanel21Layout.setVerticalGroup(
                 jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGap(0, 709, Short.MAX_VALUE)
+                .addGap(0, 1120, Short.MAX_VALUE)
                 .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel21Layout.createSequentialGroup()
                         .addContainerGap()
@@ -1011,13 +1028,16 @@ public class TelaCadastros extends javax.swing.JFrame {
                         .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(24, Short.MAX_VALUE)))
+                        .addContainerGap(435, Short.MAX_VALUE)))
             );
 
             gridBagConstraints = new java.awt.GridBagConstraints();
-            gridBagConstraints.ipadx = 69;
-            gridBagConstraints.ipady = 13;
-            gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTH;
+            gridBagConstraints.gridx = 0;
+            gridBagConstraints.gridy = 0;
+            gridBagConstraints.ipadx = 125;
+            gridBagConstraints.ipady = 424;
+            gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+            gridBagConstraints.insets = new java.awt.Insets(0, 4, 4, 4);
             jPanelFunc.add(jPanel21, gridBagConstraints);
 
             jTabbedPane1.addTab("Funcionários", jPanelFunc);
@@ -1049,7 +1069,7 @@ public class TelaCadastros extends javax.swing.JFrame {
                     .addComponent(jButtonSalvarReceita)
                     .addGap(10, 10, 10)
                     .addComponent(jButtonCancelarReceita)
-                    .addContainerGap(326, Short.MAX_VALUE))
+                    .addContainerGap(352, Short.MAX_VALUE))
             );
             jPanel8Layout.setVerticalGroup(
                 jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1074,7 +1094,7 @@ public class TelaCadastros extends javax.swing.JFrame {
                 jPanelReceitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanelReceitasLayout.createSequentialGroup()
                     .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 668, Short.MAX_VALUE))
+                    .addGap(0, 1063, Short.MAX_VALUE))
             );
 
             jTabbedPane1.addTab("Receitas", jPanelReceitas);
@@ -1106,7 +1126,7 @@ public class TelaCadastros extends javax.swing.JFrame {
                     .addComponent(jButtonSalvarSocio)
                     .addGap(10, 10, 10)
                     .addComponent(jButtonCancelarSocio)
-                    .addContainerGap(326, Short.MAX_VALUE))
+                    .addContainerGap(352, Short.MAX_VALUE))
             );
             jPanel9Layout.setVerticalGroup(
                 jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1131,12 +1151,12 @@ public class TelaCadastros extends javax.swing.JFrame {
                 jPanelSocioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanelSocioLayout.createSequentialGroup()
                     .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 668, Short.MAX_VALUE))
+                    .addGap(0, 1063, Short.MAX_VALUE))
             );
 
             jTabbedPane1.addTab("Sócio", jPanelSocio);
 
-            jPanel10.setBorder(javax.swing.BorderFactory.createTitledBorder("Opções de Edição"));
+            jPanel10.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
             jButtonNovoCategoriaSocio.setText("Novo");
 
@@ -1153,7 +1173,7 @@ public class TelaCadastros extends javax.swing.JFrame {
             jPanel10Layout.setHorizontalGroup(
                 jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel10Layout.createSequentialGroup()
-                    .addGap(146, 146, 146)
+                    .addGap(182, 182, 182)
                     .addComponent(jButtonNovoCategoriaSocio)
                     .addGap(10, 10, 10)
                     .addComponent(jButtonEditarCategoriaSocio)
@@ -1163,8 +1183,11 @@ public class TelaCadastros extends javax.swing.JFrame {
                     .addComponent(jButtonSalvarCategoriaSocio)
                     .addGap(10, 10, 10)
                     .addComponent(jButtonCancelarCategoriaSocio)
-                    .addContainerGap(326, Short.MAX_VALUE))
+                    .addContainerGap(272, Short.MAX_VALUE))
             );
+
+            jPanel10Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButtonApagarCategoriaSocio, jButtonCancelarCategoriaSocio, jButtonEditarCategoriaSocio, jButtonNovoCategoriaSocio, jButtonSalvarCategoriaSocio});
+
             jPanel10Layout.setVerticalGroup(
                 jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel10Layout.createSequentialGroup()
@@ -1178,17 +1201,81 @@ public class TelaCadastros extends javax.swing.JFrame {
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             );
 
+            jPanel10Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jButtonApagarCategoriaSocio, jButtonCancelarCategoriaSocio, jButtonEditarCategoriaSocio, jButtonNovoCategoriaSocio, jButtonSalvarCategoriaSocio});
+
+            jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder("Categoria Sócio"));
+
+            jLabel33.setText("ID");
+
+            jTextFieldCategoriaSocioID.setEnabled(false);
+
+            jLabel34.setText("Nome");
+
+            jLabel35.setText("Descrição");
+
+            jTextAreaCategoriaSocioDescricao.setColumns(20);
+            jTextAreaCategoriaSocioDescricao.setRows(5);
+            jScrollPane5.setViewportView(jTextAreaCategoriaSocioDescricao);
+
+            jLabel36.setText("Taxa");
+
+            javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+            jPanel7.setLayout(jPanel7Layout);
+            jPanel7Layout.setHorizontalGroup(
+                jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel33, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(jTextFieldCategoriaSocioID, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(67, 67, 67))
+                .addGroup(jPanel7Layout.createSequentialGroup()
+                    .addGap(32, 32, 32)
+                    .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel35)
+                        .addComponent(jLabel34))
+                    .addGap(18, 18, 18)
+                    .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel7Layout.createSequentialGroup()
+                            .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(71, 71, 71)
+                            .addComponent(jLabel36))
+                        .addComponent(jTextFieldCategoriaSocioNome, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            );
+            jPanel7Layout.setVerticalGroup(
+                jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel7Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel33)
+                        .addComponent(jTextFieldCategoriaSocioID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel34)
+                        .addComponent(jTextFieldCategoriaSocioNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(55, 55, 55)
+                    .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel35)
+                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel36))
+                    .addContainerGap(79, Short.MAX_VALUE))
+            );
+
             javax.swing.GroupLayout jPanelCategoria_SocioLayout = new javax.swing.GroupLayout(jPanelCategoria_Socio);
             jPanelCategoria_Socio.setLayout(jPanelCategoria_SocioLayout);
             jPanelCategoria_SocioLayout.setHorizontalGroup(
                 jPanelCategoria_SocioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             );
             jPanelCategoria_SocioLayout.setVerticalGroup(
                 jPanelCategoria_SocioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanelCategoria_SocioLayout.createSequentialGroup()
+                    .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                     .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 668, Short.MAX_VALUE))
+                    .addContainerGap(750, Short.MAX_VALUE))
             );
 
             jTabbedPane1.addTab("Categoria Sócio", jPanelCategoria_Socio);
@@ -1220,7 +1307,7 @@ public class TelaCadastros extends javax.swing.JFrame {
                     .addComponent(jButtonSalvarTipoDespesa)
                     .addGap(10, 10, 10)
                     .addComponent(jButtonCancelarTipoDespesa)
-                    .addContainerGap(326, Short.MAX_VALUE))
+                    .addContainerGap(352, Short.MAX_VALUE))
             );
             jPanel11Layout.setVerticalGroup(
                 jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1245,7 +1332,7 @@ public class TelaCadastros extends javax.swing.JFrame {
                 jPanelTipoDespesaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanelTipoDespesaLayout.createSequentialGroup()
                     .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 668, Short.MAX_VALUE))
+                    .addGap(0, 1063, Short.MAX_VALUE))
             );
 
             jTabbedPane1.addTab("Tipo/Despesa", jPanelTipoDespesa);
@@ -1277,7 +1364,7 @@ public class TelaCadastros extends javax.swing.JFrame {
                     .addComponent(jButtonSalvarDespesa)
                     .addGap(10, 10, 10)
                     .addComponent(jButtonCancelarDespesa)
-                    .addContainerGap(326, Short.MAX_VALUE))
+                    .addContainerGap(352, Short.MAX_VALUE))
             );
             jPanel12Layout.setVerticalGroup(
                 jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1302,7 +1389,7 @@ public class TelaCadastros extends javax.swing.JFrame {
                 jPanelDespesaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanelDespesaLayout.createSequentialGroup()
                     .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 668, Short.MAX_VALUE))
+                    .addGap(0, 1063, Short.MAX_VALUE))
             );
 
             jTabbedPane1.addTab("Despesa", jPanelDespesa);
@@ -1334,7 +1421,7 @@ public class TelaCadastros extends javax.swing.JFrame {
                     .addComponent(jButtonSalvarTipoReceita)
                     .addGap(10, 10, 10)
                     .addComponent(jButtonCancelarTipoReceita)
-                    .addContainerGap(326, Short.MAX_VALUE))
+                    .addContainerGap(352, Short.MAX_VALUE))
             );
             jPanel14Layout.setVerticalGroup(
                 jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1359,7 +1446,7 @@ public class TelaCadastros extends javax.swing.JFrame {
                 jPanelTipoReceitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanelTipoReceitaLayout.createSequentialGroup()
                     .addComponent(jPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 668, Short.MAX_VALUE))
+                    .addGap(0, 1063, Short.MAX_VALUE))
             );
 
             jTabbedPane1.addTab("Tipo/Receita", jPanelTipoReceita);
@@ -1391,7 +1478,7 @@ public class TelaCadastros extends javax.swing.JFrame {
                     .addComponent(jButtonSalvar7)
                     .addGap(10, 10, 10)
                     .addComponent(jButtonCancelar7)
-                    .addContainerGap(326, Short.MAX_VALUE))
+                    .addContainerGap(352, Short.MAX_VALUE))
             );
             jPanel15Layout.setVerticalGroup(
                 jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1416,7 +1503,7 @@ public class TelaCadastros extends javax.swing.JFrame {
                 jPanelReceitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanelReceitaLayout.createSequentialGroup()
                     .addComponent(jPanel15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 668, Short.MAX_VALUE))
+                    .addGap(0, 1063, Short.MAX_VALUE))
             );
 
             jTabbedPane1.addTab("Receita", jPanelReceita);
@@ -1456,7 +1543,7 @@ public class TelaCadastros extends javax.swing.JFrame {
                     .addComponent(jButtonSalvarCheque)
                     .addGap(10, 10, 10)
                     .addComponent(jButtonCancelarCheque)
-                    .addContainerGap(326, Short.MAX_VALUE))
+                    .addContainerGap(352, Short.MAX_VALUE))
             );
             jPanel16Layout.setVerticalGroup(
                 jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1498,7 +1585,7 @@ public class TelaCadastros extends javax.swing.JFrame {
                         .addComponent(jLabel26))
                     .addGap(35, 35, 35)
                     .addComponent(jLabel30)
-                    .addContainerGap(490, Short.MAX_VALUE))
+                    .addContainerGap(885, Short.MAX_VALUE))
             );
 
             jTabbedPane1.addTab("Cheques", jPanelCheques);
@@ -1530,7 +1617,7 @@ public class TelaCadastros extends javax.swing.JFrame {
                     .addComponent(jButtonSalvarContrato)
                     .addGap(10, 10, 10)
                     .addComponent(jButtonCancelarContrato)
-                    .addContainerGap(326, Short.MAX_VALUE))
+                    .addContainerGap(352, Short.MAX_VALUE))
             );
             jPanel17Layout.setVerticalGroup(
                 jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1555,24 +1642,109 @@ public class TelaCadastros extends javax.swing.JFrame {
                 jPanelContratoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanelContratoLayout.createSequentialGroup()
                     .addComponent(jPanel17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 668, Short.MAX_VALUE))
+                    .addGap(0, 1063, Short.MAX_VALUE))
             );
 
             jTabbedPane1.addTab("Contrato", jPanelContrato);
+
+            jPanelTaxas.setLayout(new java.awt.GridBagLayout());
+
+            jPanel18.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+            jButtonTaxaNovo.setText("Novo");
+            jButtonTaxaNovo.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    jButtonTaxaNovoActionPerformed(evt);
+                }
+            });
+
+            jButtonTaxaEditar.setText("Editar");
+            jButtonTaxaEditar.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    jButtonTaxaEditarActionPerformed(evt);
+                }
+            });
+
+            jButtonTaxaSalvar.setText("Salvar");
+            jButtonTaxaSalvar.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    jButtonTaxaSalvarActionPerformed(evt);
+                }
+            });
+
+            jButtonTaxaApagar.setText("Apagar");
+            jButtonTaxaApagar.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    jButtonTaxaApagarActionPerformed(evt);
+                }
+            });
+
+            jButtonTaxaCancelar.setText("Cancelar");
+            jButtonTaxaCancelar.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    jButtonTaxaCancelarActionPerformed(evt);
+                }
+            });
+
+            javax.swing.GroupLayout jPanel18Layout = new javax.swing.GroupLayout(jPanel18);
+            jPanel18.setLayout(jPanel18Layout);
+            jPanel18Layout.setHorizontalGroup(
+                jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel18Layout.createSequentialGroup()
+                    .addGap(165, 165, 165)
+                    .addComponent(jButtonTaxaNovo)
+                    .addGap(10, 10, 10)
+                    .addComponent(jButtonTaxaEditar)
+                    .addGap(10, 10, 10)
+                    .addComponent(jButtonTaxaApagar)
+                    .addGap(10, 10, 10)
+                    .addComponent(jButtonTaxaSalvar)
+                    .addGap(10, 10, 10)
+                    .addComponent(jButtonTaxaCancelar)
+                    .addContainerGap(263, Short.MAX_VALUE))
+            );
+
+            jPanel18Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButtonTaxaApagar, jButtonTaxaCancelar, jButtonTaxaEditar, jButtonTaxaNovo, jButtonTaxaSalvar});
+
+            jPanel18Layout.setVerticalGroup(
+                jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel18Layout.createSequentialGroup()
+                    .addGap(10, 10, 10)
+                    .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jButtonTaxaNovo)
+                        .addComponent(jButtonTaxaEditar)
+                        .addComponent(jButtonTaxaApagar)
+                        .addComponent(jButtonTaxaCancelar)
+                        .addComponent(jButtonTaxaSalvar))
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            );
+
+            jPanel18Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jButtonTaxaApagar, jButtonTaxaCancelar, jButtonTaxaEditar, jButtonTaxaNovo, jButtonTaxaSalvar});
 
             jPanel13.setBorder(javax.swing.BorderFactory.createTitledBorder("Cadastro de Taxas"));
 
             jLabel15.setText("Id");
 
+            jLabel17.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
             jLabel17.setText("Nome");
 
             jLabel23.setText("Descrição");
 
+            jLabel25.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
             jLabel25.setText("Valor");
 
-            jTextArea2.setColumns(20);
-            jTextArea2.setRows(5);
-            jScrollPane3.setViewportView(jTextArea2);
+            jTextAreaTaxasDescricao.setColumns(20);
+            jTextAreaTaxasDescricao.setRows(5);
+            jScrollPane3.setViewportView(jTextAreaTaxasDescricao);
+
+            jTextFieldTaxasID.setEnabled(false);
+
+            jButtonTaxasPesquisar.setText("Pesquisar");
+            jButtonTaxasPesquisar.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    jButtonTaxasPesquisarActionPerformed(evt);
+                }
+            });
 
             javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
             jPanel13.setLayout(jPanel13Layout);
@@ -1581,97 +1753,69 @@ public class TelaCadastros extends javax.swing.JFrame {
                 .addGroup(jPanel13Layout.createSequentialGroup()
                     .addContainerGap()
                     .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel25)
-                        .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 419, Short.MAX_VALUE)
-                    .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel15))
-                    .addContainerGap())
+                        .addGroup(jPanel13Layout.createSequentialGroup()
+                            .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jTextFieldTaxasNome, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jTextFieldTaxasValor, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel25)
+                                .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(jPanel13Layout.createSequentialGroup()
+                            .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel15)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(jTextFieldTaxasID, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(jButtonTaxasPesquisar)
+                            .addGap(62, 62, 62))))
             );
             jPanel13Layout.setVerticalGroup(
                 jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel13Layout.createSequentialGroup()
                     .addGap(0, 0, 0)
-                    .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel15))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel15)
+                        .addComponent(jTextFieldTaxasID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButtonTaxasPesquisar))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(jTextFieldTaxasNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(10, 10, 10)
                     .addComponent(jLabel25)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldTaxasValor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                     .addComponent(jLabel23)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(39, Short.MAX_VALUE))
+                    .addContainerGap(45, Short.MAX_VALUE))
             );
 
-            jPanel18.setBorder(javax.swing.BorderFactory.createTitledBorder("Opções de Edição"));
-
-            jButtonNovoTaxa.setText("Novo");
-
-            jButtonEditarTaxa.setText("Editar");
-
-            jButtonSalvarTaxa.setText("Salvar");
-
-            jButtonApagarTaxa.setText("Apagar");
-
-            jButtonCancelarTaxa.setText("Cancelar");
-
-            javax.swing.GroupLayout jPanel18Layout = new javax.swing.GroupLayout(jPanel18);
-            jPanel18.setLayout(jPanel18Layout);
-            jPanel18Layout.setHorizontalGroup(
-                jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel18Layout.createSequentialGroup()
-                    .addGap(146, 146, 146)
-                    .addComponent(jButtonNovoTaxa)
-                    .addGap(10, 10, 10)
-                    .addComponent(jButtonEditarTaxa)
-                    .addGap(10, 10, 10)
-                    .addComponent(jButtonApagarTaxa)
-                    .addGap(10, 10, 10)
-                    .addComponent(jButtonSalvarTaxa)
-                    .addGap(10, 10, 10)
-                    .addComponent(jButtonCancelarTaxa)
-                    .addContainerGap(326, Short.MAX_VALUE))
-            );
-            jPanel18Layout.setVerticalGroup(
-                jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel18Layout.createSequentialGroup()
-                    .addGap(10, 10, 10)
-                    .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButtonNovoTaxa)
-                        .addComponent(jButtonEditarTaxa)
-                        .addComponent(jButtonApagarTaxa)
-                        .addComponent(jButtonCancelarTaxa)
-                        .addComponent(jButtonSalvarTaxa))
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            );
-
-            javax.swing.GroupLayout jPanelTaxasLayout = new javax.swing.GroupLayout(jPanelTaxas);
-            jPanelTaxas.setLayout(jPanelTaxasLayout);
-            jPanelTaxasLayout.setHorizontalGroup(
-                jPanelTaxasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            javax.swing.GroupLayout jPanel22Layout = new javax.swing.GroupLayout(jPanel22);
+            jPanel22.setLayout(jPanel22Layout);
+            jPanel22Layout.setHorizontalGroup(
+                jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jPanel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             );
-            jPanelTaxasLayout.setVerticalGroup(
-                jPanelTaxasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanelTaxasLayout.createSequentialGroup()
-                    .addComponent(jPanel18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, 0)
+            jPanel22Layout.setVerticalGroup(
+                jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel22Layout.createSequentialGroup()
                     .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 375, Short.MAX_VALUE))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(jPanel18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 764, Short.MAX_VALUE))
             );
+
+            gridBagConstraints = new java.awt.GridBagConstraints();
+            gridBagConstraints.gridx = 0;
+            gridBagConstraints.gridy = 0;
+            gridBagConstraints.ipadx = 253;
+            gridBagConstraints.ipady = 764;
+            gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+            jPanelTaxas.add(jPanel22, gridBagConstraints);
 
             jTabbedPane1.addTab("Taxas", jPanelTaxas);
 
@@ -1681,15 +1825,15 @@ public class TelaCadastros extends javax.swing.JFrame {
                 jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(13, 13, 13)
-                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 943, Short.MAX_VALUE)
+                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 969, Short.MAX_VALUE)
                     .addGap(13, 13, 13))
             );
             jPanel1Layout.setVerticalGroup(
                 jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(10, 10, 10)
-                    .addComponent(jTabbedPane1)
-                    .addGap(15, 15, 15))
+                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1135, Short.MAX_VALUE)
+                    .addContainerGap())
             );
 
             jDesktopPane1.setBackground(new java.awt.Color(240, 240, 240));
@@ -1780,7 +1924,7 @@ public class TelaCadastros extends javax.swing.JFrame {
             jInternalFrame1Layout.setVerticalGroup(
                 jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jInternalFrame1Layout.createSequentialGroup()
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 577, Short.MAX_VALUE)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 585, Short.MAX_VALUE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(jPanel19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
             );
@@ -1794,13 +1938,13 @@ public class TelaCadastros extends javax.swing.JFrame {
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jDesktopPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 969, Short.MAX_VALUE))
+                    .addComponent(jDesktopPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 995, Short.MAX_VALUE))
             );
             layout.setVerticalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jDesktopPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 765, Short.MAX_VALUE))
+                    .addComponent(jDesktopPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1156, Short.MAX_VALUE))
             );
 
             pack();
@@ -2121,23 +2265,30 @@ public class TelaCadastros extends javax.swing.JFrame {
 
             if (pesquisarTable.equals("funcionarios")) {
                 limparCampos();
-                preencherAbaFuncionarios(new DaoPessoa().BuscarPessoaNome((String) jTable1.getValueAt(jTable1.getSelectedRow(), 0)));
+               
+                preencherAbaFuncionarios(new DaoPessoa().BuscarPessoaCpf((String) jTable1.getValueAt(jTable1.getSelectedRow(), 2)));
                 jButtonFuncionarioApagar.setEnabled(true);
                 jButtonFuncionarioEditar.setEnabled(true);
                 jButtonFuncionarioCancelar.setEnabled(true);
             } else if (pesquisarTable.equals("logradouros")) {
 
                 limparCamposLogradouro();
-
-
-
-
                 preencherCamposLogradouro(new DaoEndereco().BuscarPorId((Integer) jTable1.getValueAt(jTable1.getSelectedRow(), 0)));
 
                 jButtonLogradouroApagar.setEnabled(true);
                 jButtonLogradouroCancelar.setEnabled(true);
                 jButtonLogradouroEditar.setEnabled(true);
 
+            }else if(pesquisarTable.equals("taxas")){
+                
+                
+                limparCamposTaxas();
+                preencherCamposTaxas(new DaoTaxa().TaxaPorId((Integer) jTable1.getValueAt(jTable1.getSelectedRow(), 0)));
+                
+                jButtonTaxaApagar.setEnabled(true);
+                jButtonTaxaCancelar.setEnabled(true);
+                jButtonTaxaEditar.setEnabled(true);
+                
             }
 
 
@@ -2162,10 +2313,7 @@ public class TelaCadastros extends javax.swing.JFrame {
 
             preencherTabelaComTodos();
 
-        } else {
-
-            JOptionPane.showMessageDialog(this, "Não existe registros", "Atenção", JOptionPane.INFORMATION_MESSAGE);
-        }
+        } 
 
     }//GEN-LAST:event_jTextField2ActionPerformed
 
@@ -2175,7 +2323,7 @@ public class TelaCadastros extends javax.swing.JFrame {
             ArrayList<Pessoa> p1 = (ArrayList) new DaoPessoa().BuscarPessoaLikeNome(jTextField2.getText());
             model = (DefaultTableModel) jTable1.getModel();
             model.setRowCount(0);
-            
+
             if (!p1.isEmpty()) {
                 for (Pessoa p : p1) {
                     if (p.getDataNasc() != null) {
@@ -2207,6 +2355,23 @@ public class TelaCadastros extends javax.swing.JFrame {
             }
 
 
+        }else if(pesquisarTable.equals("taxas")){
+            
+            ArrayList<Taxa> taxas = (ArrayList)new DaoTaxa().BuscarTaxaNomeLike(jTextField2.getText());
+            model = (DefaultTableModel) jTable1.getModel();
+            model.setRowCount(0);
+            if(!taxas.isEmpty()){
+                
+                for(Taxa t : taxas){
+                    
+                    model.addRow(new Object[]{t.getId(),t.getNome(),t.getDescricao(),t.getValor()});
+                    
+                }
+                
+            }else{
+                
+                 JOptionPane.showMessageDialog(this, "Taxa não encontrada", "Atenção", JOptionPane.INFORMATION_MESSAGE);
+            }
         }
 
     }
@@ -2218,27 +2383,55 @@ public class TelaCadastros extends javax.swing.JFrame {
             ArrayList<Pessoa> pessoas = (ArrayList) new DaoPessoa().BuscarTodos();
             model = (DefaultTableModel) jTable1.getModel();
             model.setRowCount(0);
-            for (Pessoa pessoa : pessoas) {
+            if (!pessoas.isEmpty()) {
+                for (Pessoa pessoa : pessoas) {
 
-                if (pessoa.getDataNasc() != null) {
-                    model.addRow(new Object[]{pessoa.getNome(), pessoa.getSobrenome(), pessoa.getCpf(), pessoa.getCidade(), SimpleDateFormat.getDateInstance().format(pessoa.getDataNasc()), pessoa.getEmail(), pessoa.getStatus()});
-                } else {
-                    model.addRow(new Object[]{pessoa.getNome(), pessoa.getSobrenome(), pessoa.getCpf(), pessoa.getCidade(), "nulo", pessoa.getEmail(), pessoa.getStatus()});
+                    if (pessoa.getDataNasc() != null) {
+                        model.addRow(new Object[]{pessoa.getNome(), pessoa.getSobrenome(), pessoa.getCpf(), pessoa.getCidade(), SimpleDateFormat.getDateInstance().format(pessoa.getDataNasc()), pessoa.getEmail(), pessoa.getStatus()});
+                    } else {
+                        model.addRow(new Object[]{pessoa.getNome(), pessoa.getSobrenome(), pessoa.getCpf(), pessoa.getCidade(), "nulo", pessoa.getEmail(), pessoa.getStatus()});
+                    }
+
                 }
+            } else {
 
+                JOptionPane.showMessageDialog(this, "A tabela de Pessoas está vazia", "Erro", JOptionPane.ERROR_MESSAGE);
             }
         } else if (pesquisarTable.equals("logradouros")) {
 
             ArrayList<Endereco> enderecos = (ArrayList) new DaoEndereco().BuscarTodosEnderecos();
             model = (DefaultTableModel) jTable1.getModel();
             model.setRowCount(0);
-            for (Endereco end : enderecos) {
 
-                model.addRow(new Object[]{end.getId(), end.getNome(), end.getTipo(), end.getDescricao()});
+            if (!enderecos.isEmpty()) {
+                for (Endereco end : enderecos) {
+
+                    model.addRow(new Object[]{end.getId(), end.getNome(), end.getTipo(), end.getDescricao()});
+                }
+            } else {
+
+                JOptionPane.showMessageDialog(this, "A tabela de Endereços está vazia", "Erro", JOptionPane.ERROR_MESSAGE);
             }
 
 
 
+        }else if(pesquisarTable.equals("taxas")){
+            
+            ArrayList<Taxa> taxas = (ArrayList) new DaoTaxa().TaxasTodas();
+            model = (DefaultTableModel) jTable1.getModel();
+            model.setRowCount(0);
+            
+            if(!taxas.isEmpty()){
+                
+                for(Taxa t: taxas){
+                model.addRow(new Object[]{t.getId(), t.getNome(), t.getDescricao(), t.getValor()});
+                }
+            }else{
+                  JOptionPane.showMessageDialog(this, "A tabela de Taxas está vazia", "Erro", JOptionPane.ERROR_MESSAGE);
+                
+        }
+            
+            
         }
 
 
@@ -2254,11 +2447,7 @@ public class TelaCadastros extends javax.swing.JFrame {
         } else if (jTextField2.getText().equals("")) {
 
             preencherTabelaComTodos();
-        } else {
-
-            JOptionPane.showMessageDialog(this, "Registro não encontrado", "Atenção", JOptionPane.INFORMATION_MESSAGE);
-        }
-
+        } 
     }//GEN-LAST:event_jButtonPesquisaActionPerformed
 
     private void jButtonInternalFrameVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInternalFrameVoltarActionPerformed
@@ -2271,7 +2460,8 @@ public class TelaCadastros extends javax.swing.JFrame {
             case "logradouros":
                 jButtonLogradouroCancelarActionPerformed(evt);
                 break;
-
+            case "taxas":
+                jButtonTaxaCancelarActionPerformed(evt);
 
         }
         jTextField2.setText("");
@@ -2294,8 +2484,8 @@ public class TelaCadastros extends javax.swing.JFrame {
 
         limparCamposLogradouro();
         setEditableComponentesLogradouros(false);
-        jButtonLogradouroNovo.setEnabled(true);    
-        
+        jButtonLogradouroNovo.setEnabled(true);
+
     }//GEN-LAST:event_jButtonLogradouroCancelarActionPerformed
 
     private void jButtonLogradouroEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLogradouroEditarActionPerformed
@@ -2303,30 +2493,50 @@ public class TelaCadastros extends javax.swing.JFrame {
         setEditableComponentesLogradouros(true);
         jButtonLogradouroNovo.setEnabled(false);
         jButtonLogradouroApagar.setEnabled(false);
+        jButtonLogradouroEditar.setEnabled(false);
     }//GEN-LAST:event_jButtonLogradouroEditarActionPerformed
 
     private void jButtonLogradouroSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLogradouroSalvarActionPerformed
 
         if (!jTextFieldLogradouroNome.getText().equals("") && !jComboBoxLogradouroTipo.getSelectedItem().equals("")) {
 
-            int op = JOptionPane.showConfirmDialog(this, "Tem certeza que deseja gravar os dados?", "Atenção", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE);
-            if (op == JOptionPane.YES_OPTION) {
-                try {
-                    Endereco end = new Endereco();
+            if (jTextFieldLogradouroID.getText().equals("")) {
+                int op = JOptionPane.showConfirmDialog(this, "Tem certeza que deseja gravar os dados?", "Atenção", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE);
+                if (op == JOptionPane.YES_OPTION) {
+                    try {
+                        Endereco end = new Endereco();
+                        end.setNome(jTextFieldLogradouroNome.getText());
+                        end.setTipo((String) jComboBoxLogradouroTipo.getSelectedItem());
+                        end.setDescricao(jTextAreaLogradouroDescricao.getText());
+
+                        new DaoEndereco().AdicionarEndereco(end);
+
+                        JOptionPane.showMessageDialog(this, "Dados gravados com sucesso!", "", JOptionPane.INFORMATION_MESSAGE);
+                        jButtonLogradouroCancelarActionPerformed(evt);
+                    } catch (Exception e) {
+
+                        JOptionPane.showMessageDialog(this, "Erro na gravação dos dados", "Erro", JOptionPane.ERROR_MESSAGE);
+
+                    }
+                }
+            } else {
+
+                int op = JOptionPane.showConfirmDialog(this, "Tem certeza que deseja gravar a edição do registro?", "Atenção", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE);
+                if (op == JOptionPane.YES_OPTION) {
+
+
+                    Endereco end = new DaoEndereco().BuscarPorId(Integer.parseInt(jTextFieldLogradouroID.getText()));
                     end.setNome(jTextFieldLogradouroNome.getText());
                     end.setTipo((String) jComboBoxLogradouroTipo.getSelectedItem());
                     end.setDescricao(jTextAreaLogradouroDescricao.getText());
 
-                    new DaoEndereco().AdicionarEndereco(end);
+                    new DaoEndereco().AlterarEndereco(end);
 
                     JOptionPane.showMessageDialog(this, "Dados gravados com sucesso!", "", JOptionPane.INFORMATION_MESSAGE);
-                    setEditableComponentesLogradouros(false);
-                    limparCamposLogradouro();
-                } catch (Exception e) {
-
-                    JOptionPane.showMessageDialog(this, "Erro na gravação dos dados", "Erro", JOptionPane.ERROR_MESSAGE);
+                    jButtonLogradouroCancelarActionPerformed(evt);
 
                 }
+
             }
         } else {
 
@@ -2344,13 +2554,22 @@ public class TelaCadastros extends javax.swing.JFrame {
             }
             jTabbedPane1.setSelectedComponent(jPanelFunc);
 
-        }else if(!jButtonLogradouroNovo.isEnabled() || !jTextFieldLogradouroID.getText().equals("")){
-            
-            if(jTabbedPane1.getSelectedComponent() != jPanelLog){
-                
+        } else if (!jButtonLogradouroNovo.isEnabled() || !jTextFieldLogradouroID.getText().equals("")) {
+
+            if (jTabbedPane1.getSelectedComponent() != jPanelLog) {
+
                 JOptionPane.showMessageDialog(this, "Cancele a operação ", "Atenção", JOptionPane.INFORMATION_MESSAGE);
             }
             jTabbedPane1.setSelectedComponent(jPanelLog);
+
+        }else if(!jButtonTaxaNovo.isEnabled() || !jTextFieldTaxasID.getText().equals("")){
+            
+            if(jTabbedPane1.getSelectedComponent() != jPanelTaxas){
+              
+                 JOptionPane.showMessageDialog(this, "Cancele a operação ", "Atenção", JOptionPane.INFORMATION_MESSAGE);
+                
+            }
+            jTabbedPane1.setSelectedComponent(jPanelTaxas);
             
         }
 
@@ -2389,6 +2608,132 @@ public class TelaCadastros extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_jButtonLogradouroApagarActionPerformed
+
+    private void jButtonTaxaNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTaxaNovoActionPerformed
+
+        limparCamposTaxas();
+        setEditableComponentesTaxas(true);
+        jButtonTaxaNovo.setEnabled(false);
+        jButtonTaxaEditar.setEnabled(false);
+        jButtonTaxaApagar.setEnabled(false);
+
+
+
+    }//GEN-LAST:event_jButtonTaxaNovoActionPerformed
+
+    private void jButtonTaxaCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTaxaCancelarActionPerformed
+
+        setEditableComponentesTaxas(false);
+        jButtonTaxaNovo.setEnabled(true);
+        jButtonTaxaCancelar.setEnabled(false);
+        limparCamposTaxas();
+
+    }//GEN-LAST:event_jButtonTaxaCancelarActionPerformed
+
+    private void jButtonTaxaEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTaxaEditarActionPerformed
+
+        setEditableComponentesTaxas(true);
+        jButtonTaxaNovo.setEnabled(false);
+        jButtonTaxaApagar.setEnabled(false);
+        jButtonTaxaEditar.setEnabled(false);
+
+    }//GEN-LAST:event_jButtonTaxaEditarActionPerformed
+
+    private void jButtonTaxaSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTaxaSalvarActionPerformed
+
+      try{  if (!jTextFieldTaxasNome.getText().equals("") && !jTextFieldTaxasValor.getText().equals("")) {
+
+            Pattern p = Pattern.compile("\\d+\\.?\\d+");
+            Matcher m = p.matcher(jTextFieldTaxasValor.getText());
+            if (jTextFieldTaxasID.getText().equals("")) {
+
+                int op = JOptionPane.showConfirmDialog(this,"Tem certeza que deseja gravar o registro?","Atenção",JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+                if(op == JOptionPane.YES_OPTION){
+                if (m.find()) {
+
+                    Taxa taxa = new Taxa();
+                    taxa.setNome(jTextFieldTaxasNome.getText());
+                    taxa.setValor(BigDecimal.valueOf(Double.parseDouble(jTextFieldTaxasValor.getText())));
+                    taxa.setDescricao(jTextAreaTaxasDescricao.getText());
+
+                    new DaoTaxa().AdicionarTaxa(taxa);
+                    JOptionPane.showMessageDialog(this,"Dados gravados com sucesso","Atenção",JOptionPane.INFORMATION_MESSAGE);
+                    jButtonTaxaCancelarActionPerformed(evt);        
+                } else {
+
+                    JOptionPane.showMessageDialog(this, "Números monetários devem ser separados por ponto", "Erro", JOptionPane.ERROR_MESSAGE);
+                }
+                }
+            } else {
+                
+                int op = JOptionPane.showConfirmDialog(this,"Tem certeza que deseja gravar a edição do registro?","Atenção",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+                if(op == JOptionPane.YES_OPTION){
+                    
+                    if(m.find()){
+                        
+                        Taxa taxa = new DaoTaxa().TaxaPorId(Integer.parseInt(jTextFieldTaxasID.getText()));
+                        taxa.setNome(jTextFieldTaxasNome.getText());
+                        taxa.setValor(BigDecimal.valueOf(Double.parseDouble(jTextFieldTaxasValor.getText())));
+                        taxa.setDescricao(jTextAreaTaxasDescricao.getText());
+                        
+                        new DaoTaxa().AlterarTaxa(taxa);
+                        JOptionPane.showMessageDialog(this,"Dados gravados com sucesso","Atenção",JOptionPane.INFORMATION_MESSAGE);
+                        jButtonTaxaCancelarActionPerformed(evt);        
+                    }else{
+                        
+                         JOptionPane.showMessageDialog(this, "Números monetários devem ser separados por ponto", "Erro", JOptionPane.ERROR_MESSAGE);
+                    }
+                    
+                }
+            }
+
+        } else {
+
+            JOptionPane.showMessageDialog(this, "Os campos em negrito são obrigatórios", "Atenção", JOptionPane.INFORMATION_MESSAGE);
+
+        }
+      }catch(Exception e){
+          
+          JOptionPane.showMessageDialog(this,"Erro ao gravar os dados","Erro",JOptionPane.ERROR_MESSAGE);
+          e.printStackTrace();
+      }
+
+    }//GEN-LAST:event_jButtonTaxaSalvarActionPerformed
+
+    private void jButtonTaxasPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTaxasPesquisarActionPerformed
+        
+         if (jButtonLogradouroNovo.isEnabled()) {
+
+            pesquisarTable = "taxas";
+            mostrarJtable();
+
+        } else {
+
+            JOptionPane.showMessageDialog(this, "Cancele a operação para fazer uma pesquisa", "Atenção", JOptionPane.INFORMATION_MESSAGE);
+        }
+        
+    }//GEN-LAST:event_jButtonTaxasPesquisarActionPerformed
+
+    private void jButtonTaxaApagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTaxaApagarActionPerformed
+      
+        try{
+        int op = JOptionPane.showConfirmDialog(this,"Tem certeza que deseja apagar o registro?","Atençao",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+        if(op == JOptionPane.YES_OPTION){
+            
+            Taxa taxa = new DaoTaxa().TaxaPorId(Integer.parseInt(jTextFieldTaxasID.getText()));
+            new DaoTaxa().ApagarTaxa(taxa);
+            
+            JOptionPane.showMessageDialog(this,"Taxa excluida com sucesso!","Atenção",JOptionPane.INFORMATION_MESSAGE);
+            
+            jButtonTaxaCancelarActionPerformed(evt);
+            
+        }
+        }catch(Exception e){
+        
+        e.printStackTrace();
+        JOptionPane.showMessageDialog(this,"Erro para excluir o registro","Erro",JOptionPane.ERROR_MESSAGE);
+    }
+    }//GEN-LAST:event_jButtonTaxaApagarActionPerformed
 
     private void editableTextFields(boolean editable) {
 
@@ -2549,6 +2894,29 @@ public class TelaCadastros extends javax.swing.JFrame {
 
     }
 
+    private void setEditableComponentesTaxas(boolean edite) {
+
+        jTextFieldTaxasNome.setEditable(edite);
+        jTextFieldTaxasValor.setEditable(edite);
+        jTextAreaTaxasDescricao.setEditable(edite);
+        jButtonTaxaApagar.setEnabled(edite);
+        jButtonTaxaCancelar.setEnabled(edite);
+        jButtonTaxaEditar.setEnabled(edite);
+        jButtonTaxaSalvar.setEnabled(edite);
+
+
+
+    }
+
+    private void limparCamposTaxas() {
+
+
+        jTextFieldTaxasID.setText("");
+        jTextFieldTaxasNome.setText("");
+        jTextFieldTaxasValor.setText("");
+        jTextAreaTaxasDescricao.setText("");
+    }
+
     private void limparCamposLogradouro() {
 
         jTextFieldLogradouroNome.setText("");
@@ -2559,7 +2927,7 @@ public class TelaCadastros extends javax.swing.JFrame {
     }
 
     private void preencherCamposLogradouro(Endereco end) {
-        System.out.println(end.getId());
+
         jTextFieldLogradouroID.setText(String.valueOf(end.getId()));
         jTextFieldLogradouroNome.setText(end.getNome());
         jTextAreaLogradouroDescricao.setText(end.getDescricao());
@@ -2568,6 +2936,15 @@ public class TelaCadastros extends javax.swing.JFrame {
 
 
 
+    }
+    
+    private void preencherCamposTaxas(Taxa taxa){
+        
+        jTextFieldTaxasID.setText(String.valueOf(taxa.getId()));
+        jTextFieldTaxasNome.setText(taxa.getNome());
+        jTextFieldTaxasValor.setText(String.valueOf(taxa.getValor()));
+        jTextAreaTaxasDescricao.setText(taxa.getDescricao());
+        
     }
 
     private void mostrarJtable() {
@@ -2586,7 +2963,7 @@ public class TelaCadastros extends javax.swing.JFrame {
                 }
                 boolean[] canEdit = new boolean[]{false, false, false, false, false, false, false};
 
-                        @Override
+                @Override
                 public boolean isCellEditable(int rowIndex, int columnIndex) {
 
                     return canEdit[columnIndex];
@@ -2606,7 +2983,7 @@ public class TelaCadastros extends javax.swing.JFrame {
                 }
                 boolean[] canEdit = new boolean[]{false, false, false, false};
 
-                        @Override
+                @Override
                 public boolean isCellEditable(int rowIndex, int columnIndex) {
 
                     return canEdit[columnIndex];
@@ -2614,6 +2991,34 @@ public class TelaCadastros extends javax.swing.JFrame {
                 }
             });
 
+        }else if(pesquisarTable.equals("taxas")){
+            
+            jTable1.setModel(new DefaultTableModel(
+                    new Object[][]{}, new String[]{"ID","Nome","Descrição","Valor"}){
+                        
+                        Class[] types = new Class[]{Integer.class,String.class,String.class,BigDecimal.class};
+                        
+                        @Override
+                        public Class getColumnClass(int columnIndex){
+                            
+                            return types[columnIndex];
+                        }
+                        
+                        boolean[] canEdit = new boolean[]{false, false, false, false};
+                        
+                        @Override
+                        public boolean isCellEditable(int rowIndex, int columnIndex){
+                            
+                            return canEdit[columnIndex];
+                            
+                        }
+                        
+                    }
+                    
+                    
+                    );
+            
+            
         }
 
 
@@ -2677,7 +3082,6 @@ public class TelaCadastros extends javax.swing.JFrame {
     private javax.swing.JButton jButtonApagarDespesa;
     private javax.swing.JButton jButtonApagarReceita;
     private javax.swing.JButton jButtonApagarSocio;
-    private javax.swing.JButton jButtonApagarTaxa;
     private javax.swing.JButton jButtonApagarTipoDespesa;
     private javax.swing.JButton jButtonApagarTipoReceita;
     private javax.swing.JButton jButtonCancelar7;
@@ -2687,7 +3091,6 @@ public class TelaCadastros extends javax.swing.JFrame {
     private javax.swing.JButton jButtonCancelarDespesa;
     private javax.swing.JButton jButtonCancelarReceita;
     private javax.swing.JButton jButtonCancelarSocio;
-    private javax.swing.JButton jButtonCancelarTaxa;
     private javax.swing.JButton jButtonCancelarTipoDespesa;
     private javax.swing.JButton jButtonCancelarTipoReceita;
     private javax.swing.JButton jButtonEditar7;
@@ -2697,7 +3100,6 @@ public class TelaCadastros extends javax.swing.JFrame {
     private javax.swing.JButton jButtonEditarDespesa;
     private javax.swing.JButton jButtonEditarReceita;
     private javax.swing.JButton jButtonEditarSocio;
-    private javax.swing.JButton jButtonEditarTaxa;
     private javax.swing.JButton jButtonEditarTipoDespesa;
     private javax.swing.JButton jButtonEditarTipoReceita;
     protected javax.swing.JButton jButtonFuncionarioApagar;
@@ -2720,7 +3122,6 @@ public class TelaCadastros extends javax.swing.JFrame {
     private javax.swing.JButton jButtonNovoDespesa;
     private javax.swing.JButton jButtonNovoReceita;
     private javax.swing.JButton jButtonNovoSocio;
-    private javax.swing.JButton jButtonNovoTaxa;
     private javax.swing.JButton jButtonNovoTipoDespesa;
     private javax.swing.JButton jButtonNovoTipoReceita;
     private javax.swing.JButton jButtonPesquisa;
@@ -2731,9 +3132,14 @@ public class TelaCadastros extends javax.swing.JFrame {
     private javax.swing.JButton jButtonSalvarDespesa;
     private javax.swing.JButton jButtonSalvarReceita;
     private javax.swing.JButton jButtonSalvarSocio;
-    private javax.swing.JButton jButtonSalvarTaxa;
     private javax.swing.JButton jButtonSalvarTipoDespesa;
     private javax.swing.JButton jButtonSalvarTipoReceita;
+    private javax.swing.JButton jButtonTaxaApagar;
+    private javax.swing.JButton jButtonTaxaCancelar;
+    private javax.swing.JButton jButtonTaxaEditar;
+    private javax.swing.JButton jButtonTaxaNovo;
+    private javax.swing.JButton jButtonTaxaSalvar;
+    private javax.swing.JButton jButtonTaxasPesquisar;
     private javax.swing.JComboBox jComboBoxFuncionarioLograduro;
     private javax.swing.JComboBox jComboBoxFuncionarioSexo;
     private javax.swing.JComboBox jComboBoxFuncionarioStatus;
@@ -2771,6 +3177,10 @@ public class TelaCadastros extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
+    private javax.swing.JLabel jLabel33;
+    private javax.swing.JLabel jLabel34;
+    private javax.swing.JLabel jLabel35;
+    private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -2791,10 +3201,12 @@ public class TelaCadastros extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel20;
     private javax.swing.JPanel jPanel21;
+    private javax.swing.JPanel jPanel22;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JPanel jPanelCategoria_Socio;
@@ -2813,17 +3225,18 @@ public class TelaCadastros extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextArea jTextArea2;
+    private javax.swing.JTextArea jTextAreaCategoriaSocioDescricao;
     private javax.swing.JTextArea jTextAreaFuncionarioObservacoes;
     private javax.swing.JTextArea jTextAreaLogradouroDescricao;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextArea jTextAreaTaxasDescricao;
     private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField jTextFieldCategoriaSocioID;
+    private javax.swing.JTextField jTextFieldCategoriaSocioNome;
     private javax.swing.JTextField jTextFieldFuncionarioApelido;
     private javax.swing.JTextField jTextFieldFuncionarioBairro;
     private javax.swing.JTextField jTextFieldFuncionarioCargo;
@@ -2843,5 +3256,8 @@ public class TelaCadastros extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldFuncionarioTelefone;
     private javax.swing.JTextField jTextFieldLogradouroID;
     private javax.swing.JTextField jTextFieldLogradouroNome;
+    private javax.swing.JTextField jTextFieldTaxasID;
+    private javax.swing.JTextField jTextFieldTaxasNome;
+    private javax.swing.JTextField jTextFieldTaxasValor;
     // End of variables declaration//GEN-END:variables
 }

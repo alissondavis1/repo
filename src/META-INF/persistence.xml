@@ -5,7 +5,6 @@
     <class>entidades.Usuario</class>
     <class>entidades.EntradasLog</class>
     <class>entidades.Pessoa</class>
-    <class>entidades.Taxas</class>
     <class>entidades.Socio</class>
     <class>entidades.Contrato</class>
     <class>entidades.Funcionario</class>

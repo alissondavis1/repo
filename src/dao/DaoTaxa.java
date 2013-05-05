@@ -101,7 +101,7 @@ public class DaoTaxa implements TaxasInterface {
         try{
            sessao = HibernateUtil.getSessionFactory().openSession();
            transacao = sessao.beginTransaction();
-           query = sessao.createQuery("from taxa t where t.id = :id");
+           query = sessao.createQuery("from Taxa t where t.id = :id");
            //query.setString("nome","%"+nome+"%");
            query.setParameter("id",id);
            taxa = (Taxa) query.uniqueResult();
@@ -132,7 +132,7 @@ public class DaoTaxa implements TaxasInterface {
         try{
            sessao = HibernateUtil.getSessionFactory().openSession();
            transacao = sessao.beginTransaction();
-           query = sessao.createQuery("from taxa t where t.nome = :nome");
+           query = sessao.createQuery("from Taxa t where t.nome = :nome");
            query.setString("nome","%"+nome+"%");
            //query.setParameter("id",id);
            taxa = query.list();
@@ -152,6 +152,36 @@ public class DaoTaxa implements TaxasInterface {
     }
 
     @Override
+    public List<Taxa> BuscarTaxaNomeLike(String nome) {
+     
+        List<Taxa> taxas = null;
+        Session sessao = null; 
+        Query query = null;
+        Transaction transacao = null;
+        
+        try{
+           sessao = HibernateUtil.getSessionFactory().openSession();
+           transacao = sessao.beginTransaction();
+           query = sessao.createQuery("from Taxa e where e.nome LIKE :nome");
+           query.setString("nome","%"+nome+"%");
+           //query.setParameter("nome",nome);
+           taxas = query.list();
+           transacao.commit(); 
+           
+        }
+        catch(HibernateException e)
+        {
+            System.out.println(e);
+            transacao.rollback();
+        }
+        finally
+        {
+             sessao.close();
+        }  
+    return taxas;
+    }
+        
+    @Override
     public List<Taxa> TaxasTodas() {
       
         List<Taxa> taxa = null;
@@ -162,7 +192,7 @@ public class DaoTaxa implements TaxasInterface {
         try{
            sessao = HibernateUtil.getSessionFactory().openSession();
            transacao = sessao.beginTransaction();
-           query = sessao.createQuery("from taxa ");
+           query = sessao.createQuery("from Taxa ");
            //query.setString("nome","%"+nome+"%");
            //query.setParameter("id",id);
            // taxa = (Taxa) query.uniqueResult();

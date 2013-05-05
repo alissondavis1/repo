@@ -76,7 +76,7 @@ public class DaoEndereco implements EnderecosInterface{
          try{
             sessao = HibernateUtil.getSessionFactory().openSession();
             transcao = sessao.beginTransaction();    
-            sessao.save(endereco); 
+            sessao.update(endereco);
             transcao.commit();
             System.out.println("Salvo com sucesso");  
         }
