@@ -94,7 +94,7 @@ public class Splash extends JWindow{
             try{
             
             progress.setString("Testando Conexão com o Banco de Dados");
-            session = new AnnotationConfiguration().configure().setProperty("hibernate.connection.username", "root").setProperty("hibernate.connection.password", "123").buildSessionFactory().openSession();
+            session = new AnnotationConfiguration().configure().setProperty("hibernate.connection.username", "root").setProperty("hibernate.connection.password", "alunoarea1").buildSessionFactory().openSession();
            
         }catch(Exception e){
             

@@ -7,6 +7,7 @@ package dao;
 import entidades.Socio;
 import daoInterfaces.SocioInterface;
 import java.util.List;
+import javax.swing.JOptionPane;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -98,11 +99,15 @@ public class DaoSocio implements SocioInterface{
         try{
            sessao = HibernateUtil.getSessionFactory().openSession();
            transacao = sessao.beginTransaction();
-           query = sessao.createQuery("from socio where nome = :nome");
+           query = sessao.createQuery("from Socio s  where s.idPessoa.nome like :nome   ");
            query.setString("nome","%"+nome+"%");
            //query.setParameter("id",id);
-           // socio = (Taxa) query.uniqueResult();
+          
            socio = query.list();
+           if(socio instanceof Socio){
+               JOptionPane.showMessageDialog(null, "é");
+               
+           }
            transacao.commit(); 
            
         }
@@ -161,7 +166,7 @@ public class DaoSocio implements SocioInterface{
         try{
            sessao = HibernateUtil.getSessionFactory().openSession();
            transacao = sessao.beginTransaction();
-           query = sessao.createQuery("from Socio, Pessoa where p.id = s.idPessoa ");
+           query = sessao.createQuery("from Socio ");
            socio = query.list();
            transacao.commit(); 
            

@@ -4,12 +4,16 @@
  */
 package telas;
 
+import dao.DaoCategoriaSocio;
 import dao.DaoEndereco;
 import dao.DaoPessoa;
+import dao.DaoSocio;
 import dao.DaoTaxa;
+import entidades.Categoriasocio;
 import entidades.Endereco;
 import entidades.Funcionario;
 import entidades.Pessoa;
+import entidades.Socio;
 import entidades.Taxa;
 import java.awt.event.ActionEvent;
 import java.beans.PropertyVetoException;
@@ -46,6 +50,7 @@ public class TelaCadastros extends javax.swing.JFrame {
         editableTextFields(false);
         setEditableComponentesLogradouros(false);
         setEditableComponentesTaxas(false);
+        setEditableComponentesSocio(false);
         jDesktopPane1.setVisible(false);
         jInternalFrame1.setVisible(false);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -94,9 +99,7 @@ public class TelaCadastros extends javax.swing.JFrame {
             case "Receita":
                 jTabbedPane1.setSelectedComponent(jPanelReceitas);
                 break;
-            case "Contrato":
-                jTabbedPane1.setSelectedComponent(jPanelContrato);
-                break;
+           
             case "Taxas":
                 jTabbedPane1.setSelectedComponent(jPanelTaxas);
                 break;
@@ -120,6 +123,7 @@ public class TelaCadastros extends javax.swing.JFrame {
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
+        buttonGroupSocioAprovacao = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanelLog = new javax.swing.JPanel();
@@ -208,68 +212,71 @@ public class TelaCadastros extends javax.swing.JFrame {
         jFormattedTextFieldFuncionarioDataNascimento = new javax.swing.JFormattedTextField();
         jFormattedTextFieldFuncionarioDataEmissao = new javax.swing.JFormattedTextField();
         jPanelSocio = new javax.swing.JPanel();
-        jPanel9 = new javax.swing.JPanel();
-        jButtonNovoSocio = new javax.swing.JButton();
-        jButtonEditarSocio = new javax.swing.JButton();
-        jButtonSalvarSocio = new javax.swing.JButton();
-        jButtonApagarSocio = new javax.swing.JButton();
-        jButtonCancelarSocio = new javax.swing.JButton();
+        jPanel17 = new javax.swing.JPanel();
         jPanel23 = new javax.swing.JPanel();
         jLabel66 = new javax.swing.JLabel();
         jLabel67 = new javax.swing.JLabel();
-        jTextFieldFuncionarioNome1 = new javax.swing.JTextField();
-        jTextFieldFuncionarioSobrenome1 = new javax.swing.JTextField();
-        jTextFieldFuncionarioApelido1 = new javax.swing.JTextField();
+        jTextFieldSocioNome = new javax.swing.JTextField();
+        jTextFieldSocioSobrenome = new javax.swing.JTextField();
+        jTextFieldSocioApelido = new javax.swing.JTextField();
         jLabel68 = new javax.swing.JLabel();
         jLabel69 = new javax.swing.JLabel();
         jLabel70 = new javax.swing.JLabel();
         jLabel71 = new javax.swing.JLabel();
-        jTextFieldFuncionarioTelefone1 = new javax.swing.JTextField();
-        jTextFieldFuncionarioEmail1 = new javax.swing.JTextField();
+        jTextFieldSocioTelefone = new javax.swing.JTextField();
+        jTextFieldSocioEmail = new javax.swing.JTextField();
         jSeparator3 = new javax.swing.JSeparator();
         jLabel72 = new javax.swing.JLabel();
-        jTextFieldFuncionarioNomedame1 = new javax.swing.JTextField();
+        jTextFieldSocioNomeMae = new javax.swing.JTextField();
         jLabel73 = new javax.swing.JLabel();
-        jTextFieldFuncionarioID1 = new javax.swing.JTextField();
-        jComboBoxFuncionarioSexo1 = new javax.swing.JComboBox();
+        jTextFieldSocioID = new javax.swing.JTextField();
+        jComboBoxSocioSexo = new javax.swing.JComboBox();
         jLabel74 = new javax.swing.JLabel();
         jLabel75 = new javax.swing.JLabel();
         jLabel76 = new javax.swing.JLabel();
         jLabel77 = new javax.swing.JLabel();
         jLabel78 = new javax.swing.JLabel();
         jLabel79 = new javax.swing.JLabel();
-        jTextFieldFuncionarioNomedopai1 = new javax.swing.JTextField();
+        jTextFieldSocioNomePai = new javax.swing.JTextField();
         jSeparator4 = new javax.swing.JSeparator();
-        jTextFieldFuncionarioRgnumero1 = new javax.swing.JTextField();
-        jTextFieldFuncionarioOrgaoExpedidor1 = new javax.swing.JTextField();
-        jButtonFuncionarioPesquisar1 = new javax.swing.JButton();
-        jFormattedTextFieldFuncionarioCpf1 = new javax.swing.JFormattedTextField();
-        jFormattedTextFieldFuncionarioDataNascimento1 = new javax.swing.JFormattedTextField();
-        jFormattedTextFieldFuncionarioDataEmissao1 = new javax.swing.JFormattedTextField();
+        jTextFieldSocioRgNumero = new javax.swing.JTextField();
+        jTextFieldSocioOrgaoExpedidor = new javax.swing.JTextField();
+        jButtonSocioPesquisar = new javax.swing.JButton();
+        jFormattedTextFieldSocioCPF = new javax.swing.JFormattedTextField();
+        jFormattedTextFieldSocioDataNascimento = new javax.swing.JFormattedTextField();
+        jFormattedTextFieldSocioDataEmissao = new javax.swing.JFormattedTextField();
         jPanel28 = new javax.swing.JPanel();
-        jComboBoxFuncionarioLograduro1 = new javax.swing.JComboBox();
+        jComboBoxSocioLogradouro = new javax.swing.JComboBox();
         jLabel80 = new javax.swing.JLabel();
-        jTextFieldFuncionarioNumero1 = new javax.swing.JTextField();
+        jTextFieldSocioNumero = new javax.swing.JTextField();
         jLabel81 = new javax.swing.JLabel();
-        jTextFieldFuncionarioBairro1 = new javax.swing.JTextField();
+        jTextFieldSocioBairro = new javax.swing.JTextField();
         jLabel82 = new javax.swing.JLabel();
-        jTextFieldFuncionarioCidade1 = new javax.swing.JTextField();
+        jTextFieldSocioCidade = new javax.swing.JTextField();
         jLabel83 = new javax.swing.JLabel();
         jLabel84 = new javax.swing.JLabel();
-        jTextFieldFuncionarioCep1 = new javax.swing.JTextField();
+        jTextFieldSocioCEP = new javax.swing.JTextField();
         Logradouro2 = new javax.swing.JLabel();
-        jComboBoxFuncionarioUf1 = new javax.swing.JComboBox();
+        jComboBoxSocioUF = new javax.swing.JComboBox();
         jPanel29 = new javax.swing.JPanel();
         jLabel85 = new javax.swing.JLabel();
         jLabel86 = new javax.swing.JLabel();
         jLabel87 = new javax.swing.JLabel();
         jLabel88 = new javax.swing.JLabel();
         jLabel89 = new javax.swing.JLabel();
-        jComboBox5 = new javax.swing.JComboBox();
-        jTextField8 = new javax.swing.JTextField();
-        jTextField9 = new javax.swing.JTextField();
-        jTextField10 = new javax.swing.JTextField();
-        jTextField11 = new javax.swing.JTextField();
+        jComboBoxSocioCategoriaSocio = new javax.swing.JComboBox();
+        jTextFieldSocioNumeroSocio = new javax.swing.JTextField();
+        jFormattedTextFieldSocioDiaVencimento = new javax.swing.JFormattedTextField();
+        jRadioButtonSocioAtivo = new javax.swing.JRadioButton();
+        jRadioButtonSocioInativo = new javax.swing.JRadioButton();
+        jRadioButtonSocioEspera = new javax.swing.JRadioButton();
+        jFormattedTextFieldSocioDataMatricula = new javax.swing.JFormattedTextField();
+        jPanel9 = new javax.swing.JPanel();
+        jButtonSocioNovo = new javax.swing.JButton();
+        jButtonSocioEditar = new javax.swing.JButton();
+        jButtonSocioSalvar = new javax.swing.JButton();
+        jButtonSocioApagar = new javax.swing.JButton();
+        jButtonSocioCancelar = new javax.swing.JButton();
         jPanelCategoria_Socio = new javax.swing.JPanel();
         jPanel10 = new javax.swing.JPanel();
         jButtonNovoCategoriaSocio = new javax.swing.JButton();
@@ -396,13 +403,6 @@ public class TelaCadastros extends javax.swing.JFrame {
         jScrollPane8 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         jLabel65 = new javax.swing.JLabel();
-        jPanelContrato = new javax.swing.JPanel();
-        jPanel17 = new javax.swing.JPanel();
-        jButtonNovoContrato = new javax.swing.JButton();
-        jButtonEditarContrato = new javax.swing.JButton();
-        jButtonSalvarContrato = new javax.swing.JButton();
-        jButtonApagarContrato = new javax.swing.JButton();
-        jButtonCancelarContrato = new javax.swing.JButton();
         jPanelTaxas = new javax.swing.JPanel();
         jPanel22 = new javax.swing.JPanel();
         jPanel18 = new javax.swing.JPanel();
@@ -464,7 +464,7 @@ public class TelaCadastros extends javax.swing.JFrame {
 
         jLabel3.setText("Descrição");
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 11));
         jLabel1.setText("Tipo");
 
         jComboBoxLogradouroTipo.setModel(new javax.swing.DefaultComboBoxModel(
@@ -492,7 +492,7 @@ public class TelaCadastros extends javax.swing.JFrame {
                 "TRAVESSA"
             }));
 
-            jLabel2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+            jLabel2.setFont(new java.awt.Font("Tahoma", 1, 11));
             jLabel2.setText("Nome");
 
             jButtonLogradouroNovo.setText("Novo");
@@ -555,14 +555,14 @@ public class TelaCadastros extends javax.swing.JFrame {
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
                             .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addGroup(jPanel6Layout.createSequentialGroup()
-                                    .addGap(0, 0, Short.MAX_VALUE)
+                                    .addGap(0, 604, Short.MAX_VALUE)
                                     .addComponent(jLabel32))
                                 .addGroup(jPanel6Layout.createSequentialGroup()
                                     .addComponent(jComboBoxLogradouroTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(18, 18, 18)
                                     .addComponent(jLabel2)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(jTextFieldLogradouroNome)))
+                                    .addComponent(jTextFieldLogradouroNome, javax.swing.GroupLayout.DEFAULT_SIZE, 527, Short.MAX_VALUE)))
                             .addGap(18, 18, 18)
                             .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jButtonLogradouroPesquisar)
@@ -581,7 +581,7 @@ public class TelaCadastros extends javax.swing.JFrame {
                                     .addGap(18, 18, 18)
                                     .addComponent(jButtonLogradouroCancelar)
                                     .addGap(0, 311, Short.MAX_VALUE))
-                                .addComponent(jScrollPane1))
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 758, Short.MAX_VALUE))
                             .addContainerGap())))
             );
 
@@ -650,13 +650,13 @@ public class TelaCadastros extends javax.swing.JFrame {
             jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Detalhes do Funcionario"));
             jPanel5.setToolTipText("");
 
-            Logradouro4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+            Logradouro4.setFont(new java.awt.Font("Tahoma", 1, 11));
             Logradouro4.setText("Cargo");
 
-            Logradouro5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+            Logradouro5.setFont(new java.awt.Font("Tahoma", 1, 11));
             Logradouro5.setText("Salario");
 
-            Logradouro6.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+            Logradouro6.setFont(new java.awt.Font("Tahoma", 1, 11));
             Logradouro6.setText("Data de Contratação");
 
             Logradouro7.setText("Observações");
@@ -689,16 +689,16 @@ public class TelaCadastros extends javax.swing.JFrame {
                                     .addComponent(Logradouro7, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(10, 10, 10))
                                 .addGroup(jPanel5Layout.createSequentialGroup()
-                                    .addComponent(jTextFieldFuncionarioSalario)
+                                    .addComponent(jTextFieldFuncionarioSalario, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
                                     .addGap(194, 194, 194))))
                         .addGroup(jPanel5Layout.createSequentialGroup()
                             .addComponent(jFormattedTextFieldFuncionarioDataContratacao, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 329, Short.MAX_VALUE)))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(29, 29, 29))
+                    .addGap(99, 99, 99))
                 .addGroup(jPanel5Layout.createSequentialGroup()
                     .addComponent(Logradouro6, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(558, 558, 558))
+                    .addGap(753, 753, 753))
             );
             jPanel5Layout.setVerticalGroup(
                 jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -724,10 +724,10 @@ public class TelaCadastros extends javax.swing.JFrame {
 
             jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Detalhes Especiais"));
 
-            Logradouro1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+            Logradouro1.setFont(new java.awt.Font("Tahoma", 1, 11));
             Logradouro1.setText("Status");
 
-            Logradouro3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+            Logradouro3.setFont(new java.awt.Font("Tahoma", 1, 11));
             Logradouro3.setText("Numero da Matricula");
 
             jComboBoxFuncionarioStatus.setModel(new javax.swing.DefaultComboBoxModel(new String[] {"","Ativo", "Inativo" }));
@@ -792,7 +792,7 @@ public class TelaCadastros extends javax.swing.JFrame {
                             .addComponent(jButtonFuncionarioSalvar)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(jButtonFuncionarioCancelar)))
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addContainerGap(469, Short.MAX_VALUE))
             );
 
             jPanel4Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButtonFuncionarioApagar, jButtonFuncionarioCancelar, jButtonFuncionarioEditar, jButtonFuncionarioNovo, jButtonFuncionarioSalvar});
@@ -826,12 +826,12 @@ public class TelaCadastros extends javax.swing.JFrame {
 
             jLabel10.setText("Cidade");
 
-            jLabel11.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+            jLabel11.setFont(new java.awt.Font("Tahoma", 1, 11));
             jLabel11.setText("UF");
 
             jLabel12.setText("CEP");
 
-            Logradouro.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+            Logradouro.setFont(new java.awt.Font("Tahoma", 1, 11));
             Logradouro.setText("Logradouro");
 
             jComboBoxFuncionarioUf.setModel(new javax.swing.DefaultComboBoxModel(new String[] {
@@ -895,7 +895,7 @@ public class TelaCadastros extends javax.swing.JFrame {
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                             .addComponent(jTextFieldFuncionarioCep, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(jTextFieldFuncionarioCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addContainerGap(270, Short.MAX_VALUE))
             );
             jPanel3Layout.setVerticalGroup(
                 jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -923,10 +923,10 @@ public class TelaCadastros extends javax.swing.JFrame {
 
             jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Informações Pessoais"));
 
-            jLabel6.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+            jLabel6.setFont(new java.awt.Font("Tahoma", 1, 11));
             jLabel6.setText("Sobrenome");
 
-            jLabel5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+            jLabel5.setFont(new java.awt.Font("Tahoma", 1, 11));
             jLabel5.setText("Nome");
 
             jTextFieldFuncionarioNome.addActionListener(new java.awt.event.ActionListener() {
@@ -951,9 +951,10 @@ public class TelaCadastros extends javax.swing.JFrame {
 
             jComboBoxFuncionarioSexo.setModel(new javax.swing.DefaultComboBoxModel(new String[] {"","Masculino","Feminino" }));
 
-            jLabel19.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+            jLabel19.setFont(new java.awt.Font("Tahoma", 1, 11));
             jLabel19.setText("Sexo");
 
+            jLabel20.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
             jLabel20.setText("Cpf");
 
             jLabel21.setText("Rg Numero");
@@ -1000,7 +1001,7 @@ public class TelaCadastros extends javax.swing.JFrame {
                     .addGap(18, 18, 18)
                     .addComponent(jLabel13)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addComponent(jTextFieldFuncionarioEmail)
+                    .addComponent(jTextFieldFuncionarioEmail, javax.swing.GroupLayout.DEFAULT_SIZE, 356, Short.MAX_VALUE)
                     .addGap(186, 186, 186))
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1012,7 +1013,7 @@ public class TelaCadastros extends javax.swing.JFrame {
                         .addComponent(jTextFieldFuncionarioSobrenome))
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                     .addComponent(jButtonFuncionarioPesquisar)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 265, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(jLabel18)
                         .addComponent(jLabel7))
@@ -1021,17 +1022,17 @@ public class TelaCadastros extends javax.swing.JFrame {
                         .addComponent(jTextFieldFuncionarioApelido, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jTextFieldFuncionarioID, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGap(24, 24, 24))
-                .addComponent(jSeparator1)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, 878, Short.MAX_VALUE)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                     .addComponent(jLabel16)
                     .addGap(18, 18, 18)
-                    .addComponent(jTextFieldFuncionarioNomedame)
+                    .addComponent(jTextFieldFuncionarioNomedame, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                     .addComponent(jLabel27)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addComponent(jTextFieldFuncionarioNomedopai)
+                    .addComponent(jTextFieldFuncionarioNomedopai, javax.swing.GroupLayout.DEFAULT_SIZE, 351, Short.MAX_VALUE)
                     .addGap(15, 15, 15))
-                .addComponent(jSeparator2)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.DEFAULT_SIZE, 878, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createSequentialGroup()
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel2Layout.createSequentialGroup()
@@ -1059,7 +1060,7 @@ public class TelaCadastros extends javax.swing.JFrame {
                             .addComponent(jLabel19)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                             .addComponent(jComboBoxFuncionarioSexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addContainerGap(240, Short.MAX_VALUE))
             );
             jPanel2Layout.setVerticalGroup(
                 jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1124,7 +1125,7 @@ public class TelaCadastros extends javax.swing.JFrame {
             jPanel21.setLayout(jPanel21Layout);
             jPanel21Layout.setHorizontalGroup(
                 jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGap(0, 840, Short.MAX_VALUE)
+                .addGap(0, 910, Short.MAX_VALUE)
                 .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel21Layout.createSequentialGroup()
                         .addContainerGap()
@@ -1137,7 +1138,7 @@ public class TelaCadastros extends javax.swing.JFrame {
             );
             jPanel21Layout.setVerticalGroup(
                 jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGap(0, 1120, Short.MAX_VALUE)
+                .addGap(0, 1127, Short.MAX_VALUE)
                 .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel21Layout.createSequentialGroup()
                         .addContainerGap()
@@ -1148,7 +1149,7 @@ public class TelaCadastros extends javax.swing.JFrame {
                         .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(435, Short.MAX_VALUE)))
+                        .addContainerGap(434, Short.MAX_VALUE)))
             );
 
             gridBagConstraints = new java.awt.GridBagConstraints();
@@ -1162,61 +1163,15 @@ public class TelaCadastros extends javax.swing.JFrame {
 
             jTabbedPane1.addTab("Funcionários", jPanelFunc);
 
-            jPanel9.setBorder(javax.swing.BorderFactory.createTitledBorder("Opções de Edição"));
-
-            jButtonNovoSocio.setText("Novo");
-
-            jButtonEditarSocio.setText("Editar");
-
-            jButtonSalvarSocio.setText("Salvar");
-
-            jButtonApagarSocio.setText("Apagar");
-
-            jButtonCancelarSocio.setText("Cancelar");
-
-            javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
-            jPanel9.setLayout(jPanel9Layout);
-            jPanel9Layout.setHorizontalGroup(
-                jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel9Layout.createSequentialGroup()
-                    .addGap(146, 146, 146)
-                    .addComponent(jButtonNovoSocio)
-                    .addGap(10, 10, 10)
-                    .addComponent(jButtonEditarSocio)
-                    .addGap(10, 10, 10)
-                    .addComponent(jButtonApagarSocio)
-                    .addGap(10, 10, 10)
-                    .addComponent(jButtonSalvarSocio)
-                    .addGap(10, 10, 10)
-                    .addComponent(jButtonCancelarSocio)
-                    .addContainerGap(574, Short.MAX_VALUE))
-            );
-            jPanel9Layout.setVerticalGroup(
-                jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel9Layout.createSequentialGroup()
-                    .addGap(10, 10, 10)
-                    .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButtonNovoSocio)
-                        .addComponent(jButtonEditarSocio)
-                        .addComponent(jButtonApagarSocio)
-                        .addComponent(jButtonCancelarSocio)
-                        .addComponent(jButtonSalvarSocio))
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            );
+            jPanelSocio.setLayout(new java.awt.GridBagLayout());
 
             jPanel23.setBorder(javax.swing.BorderFactory.createTitledBorder("Informações Pessoais"));
 
-            jLabel66.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+            jLabel66.setFont(new java.awt.Font("Tahoma", 1, 11));
             jLabel66.setText("Sobrenome");
 
-            jLabel67.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+            jLabel67.setFont(new java.awt.Font("Tahoma", 1, 11));
             jLabel67.setText("Nome");
-
-            jTextFieldFuncionarioNome1.addActionListener(new java.awt.event.ActionListener() {
-                public void actionPerformed(java.awt.event.ActionEvent evt) {
-                    jTextFieldFuncionarioNome1ActionPerformed(evt);
-                }
-            });
 
             jLabel68.setText("Apelido");
 
@@ -1230,13 +1185,14 @@ public class TelaCadastros extends javax.swing.JFrame {
 
             jLabel73.setText("ID");
 
-            jTextFieldFuncionarioID1.setEditable(false);
+            jTextFieldSocioID.setEditable(false);
 
-            jComboBoxFuncionarioSexo1.setModel(new javax.swing.DefaultComboBoxModel(new String[] {"","Masculino","Feminino" }));
+            jComboBoxSocioSexo.setModel(new javax.swing.DefaultComboBoxModel(new String[] {"","Masculino","Feminino" }));
 
-            jLabel74.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+            jLabel74.setFont(new java.awt.Font("Tahoma", 1, 11));
             jLabel74.setText("Sexo");
 
+            jLabel75.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
             jLabel75.setText("Cpf");
 
             jLabel76.setText("Rg Numero");
@@ -1247,27 +1203,27 @@ public class TelaCadastros extends javax.swing.JFrame {
 
             jLabel79.setText("Nome do Pai");
 
-            jButtonFuncionarioPesquisar1.setText("Pesquisar");
-            jButtonFuncionarioPesquisar1.addActionListener(new java.awt.event.ActionListener() {
+            jButtonSocioPesquisar.setText("Pesquisar");
+            jButtonSocioPesquisar.addActionListener(new java.awt.event.ActionListener() {
                 public void actionPerformed(java.awt.event.ActionEvent evt) {
-                    jButtonFuncionarioPesquisar1ActionPerformed(evt);
+                    jButtonSocioPesquisarActionPerformed(evt);
                 }
             });
 
             try {
-                jFormattedTextFieldFuncionarioCpf1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
+                jFormattedTextFieldSocioCPF.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
             } catch (java.text.ParseException ex) {
                 ex.printStackTrace();
             }
 
             try {
-                jFormattedTextFieldFuncionarioDataNascimento1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+                jFormattedTextFieldSocioDataNascimento.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
             } catch (java.text.ParseException ex) {
                 ex.printStackTrace();
             }
 
             try {
-                jFormattedTextFieldFuncionarioDataEmissao1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+                jFormattedTextFieldSocioDataEmissao.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
             } catch (java.text.ParseException ex) {
                 ex.printStackTrace();
             }
@@ -1279,11 +1235,11 @@ public class TelaCadastros extends javax.swing.JFrame {
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel23Layout.createSequentialGroup()
                     .addComponent(jLabel69)
                     .addGap(43, 43, 43)
-                    .addComponent(jTextFieldFuncionarioTelefone1, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldSocioTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(18, 18, 18)
                     .addComponent(jLabel70)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addComponent(jTextFieldFuncionarioEmail1)
+                    .addComponent(jTextFieldSocioEmail, javax.swing.GroupLayout.DEFAULT_SIZE, 347, Short.MAX_VALUE)
                     .addGap(186, 186, 186))
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel23Layout.createSequentialGroup()
                     .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1291,30 +1247,34 @@ public class TelaCadastros extends javax.swing.JFrame {
                         .addComponent(jLabel67))
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jTextFieldFuncionarioNome1, javax.swing.GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE)
-                        .addComponent(jTextFieldFuncionarioSobrenome1))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addComponent(jButtonFuncionarioPesquisar1)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jLabel73)
-                        .addComponent(jLabel68))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jTextFieldSocioNome, javax.swing.GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE)
+                        .addComponent(jTextFieldSocioSobrenome))
+                    .addGap(34, 34, 34)
+                    .addComponent(jLabel68)
                     .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jTextFieldFuncionarioApelido1, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jTextFieldFuncionarioID1, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(24, 24, 24))
-                .addComponent(jSeparator3)
+                        .addGroup(jPanel23Layout.createSequentialGroup()
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 209, Short.MAX_VALUE)
+                            .addComponent(jLabel73)
+                            .addGap(18, 18, 18)
+                            .addComponent(jTextFieldSocioID, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(jButtonSocioPesquisar)
+                            .addGap(99, 99, 99))
+                        .addGroup(jPanel23Layout.createSequentialGroup()
+                            .addGap(18, 18, 18)
+                            .addComponent(jTextFieldSocioApelido, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addContainerGap())))
+                .addComponent(jSeparator3, javax.swing.GroupLayout.DEFAULT_SIZE, 869, Short.MAX_VALUE)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel23Layout.createSequentialGroup()
                     .addComponent(jLabel72)
                     .addGap(18, 18, 18)
-                    .addComponent(jTextFieldFuncionarioNomedame1)
+                    .addComponent(jTextFieldSocioNomeMae, javax.swing.GroupLayout.DEFAULT_SIZE, 346, Short.MAX_VALUE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                     .addComponent(jLabel79)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addComponent(jTextFieldFuncionarioNomedopai1)
+                    .addComponent(jTextFieldSocioNomePai, javax.swing.GroupLayout.DEFAULT_SIZE, 346, Short.MAX_VALUE)
                     .addGap(15, 15, 15))
-                .addComponent(jSeparator4)
+                .addComponent(jSeparator4, javax.swing.GroupLayout.DEFAULT_SIZE, 869, Short.MAX_VALUE)
                 .addGroup(jPanel23Layout.createSequentialGroup()
                     .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel23Layout.createSequentialGroup()
@@ -1323,83 +1283,77 @@ public class TelaCadastros extends javax.swing.JFrame {
                                 .addComponent(jLabel75))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jFormattedTextFieldFuncionarioCpf1, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jFormattedTextFieldSocioCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(jPanel23Layout.createSequentialGroup()
-                                    .addComponent(jTextFieldFuncionarioRgnumero1, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTextFieldSocioRgNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(31, 31, 31)
                                     .addComponent(jLabel77)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(jTextFieldFuncionarioOrgaoExpedidor1, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTextFieldSocioOrgaoExpedidor, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                     .addComponent(jLabel78)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jFormattedTextFieldFuncionarioDataEmissao1, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(jFormattedTextFieldSocioDataEmissao, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGroup(jPanel23Layout.createSequentialGroup()
                             .addComponent(jLabel71)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jFormattedTextFieldFuncionarioDataNascimento1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jFormattedTextFieldSocioDataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(12, 12, 12)
                             .addComponent(jLabel74)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(jComboBoxFuncionarioSexo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addContainerGap(413, Short.MAX_VALUE))
+                            .addComponent(jComboBoxSocioSexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addContainerGap(231, Short.MAX_VALUE))
             );
             jPanel23Layout.setVerticalGroup(
                 jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel23Layout.createSequentialGroup()
-                    .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel23Layout.createSequentialGroup()
-                            .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel67)
-                                .addComponent(jTextFieldFuncionarioNome1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jButtonFuncionarioPesquisar1))
-                            .addGap(8, 8, 8)
-                            .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel66)
-                                .addComponent(jTextFieldFuncionarioSobrenome1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(jPanel23Layout.createSequentialGroup()
-                            .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jTextFieldFuncionarioID1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel73, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel68)
-                                .addComponent(jTextFieldFuncionarioApelido1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel67)
+                        .addComponent(jTextFieldSocioNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel73, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTextFieldSocioID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButtonSocioPesquisar))
+                    .addGap(8, 8, 8)
+                    .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel66)
+                        .addComponent(jTextFieldSocioSobrenome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel68)
+                        .addComponent(jTextFieldSocioApelido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGap(18, 18, 18)
                     .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, 0)
                     .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextFieldFuncionarioTelefone1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldSocioTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel70)
-                            .addComponent(jTextFieldFuncionarioEmail1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTextFieldSocioEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(jLabel69))
                     .addGap(18, 18, 18)
                     .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel71)
                         .addComponent(jLabel74)
-                        .addComponent(jComboBoxFuncionarioSexo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jFormattedTextFieldFuncionarioDataNascimento1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jComboBoxSocioSexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jFormattedTextFieldSocioDataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGap(30, 30, 30)
                     .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel72)
-                        .addComponent(jTextFieldFuncionarioNomedame1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTextFieldSocioNomeMae, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel79)
-                        .addComponent(jTextFieldFuncionarioNomedopai1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jTextFieldSocioNomePai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel75)
-                        .addComponent(jFormattedTextFieldFuncionarioCpf1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jFormattedTextFieldSocioCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel76)
-                        .addComponent(jTextFieldFuncionarioRgnumero1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTextFieldSocioRgNumero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel77)
-                        .addComponent(jTextFieldFuncionarioOrgaoExpedidor1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTextFieldSocioOrgaoExpedidor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel78)
-                        .addComponent(jFormattedTextFieldFuncionarioDataEmissao1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jFormattedTextFieldSocioDataEmissao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addContainerGap(16, Short.MAX_VALUE))
             );
 
@@ -1411,15 +1365,15 @@ public class TelaCadastros extends javax.swing.JFrame {
 
             jLabel82.setText("Cidade");
 
-            jLabel83.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+            jLabel83.setFont(new java.awt.Font("Tahoma", 1, 11));
             jLabel83.setText("UF");
 
             jLabel84.setText("CEP");
 
-            Logradouro2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+            Logradouro2.setFont(new java.awt.Font("Tahoma", 1, 11));
             Logradouro2.setText("Logradouro");
 
-            jComboBoxFuncionarioUf1.setModel(new javax.swing.DefaultComboBoxModel(new String[] {
+            jComboBoxSocioUF.setModel(new javax.swing.DefaultComboBoxModel(new String[] {
                 "",
                 "AC",
                 "AL",
@@ -1461,10 +1415,10 @@ public class TelaCadastros extends javax.swing.JFrame {
                             .addGroup(jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(jPanel28Layout.createSequentialGroup()
                                     .addGap(1, 1, 1)
-                                    .addComponent(jTextFieldFuncionarioNumero1, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jTextFieldSocioNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jTextFieldFuncionarioBairro1, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jComboBoxFuncionarioLograduro1, javax.swing.GroupLayout.Alignment.LEADING, 0, 138, Short.MAX_VALUE))))
+                                    .addComponent(jTextFieldSocioBairro, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jComboBoxSocioLogradouro, javax.swing.GroupLayout.Alignment.LEADING, 0, 138, Short.MAX_VALUE))))
                         .addComponent(jLabel80)
                         .addComponent(jLabel81))
                     .addGap(92, 92, 92)
@@ -1474,13 +1428,13 @@ public class TelaCadastros extends javax.swing.JFrame {
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                     .addGroup(jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel28Layout.createSequentialGroup()
-                            .addComponent(jComboBoxFuncionarioUf1, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jComboBoxSocioUF, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(18, 18, 18)
                             .addComponent(jLabel84)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(jTextFieldFuncionarioCep1, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(jTextFieldFuncionarioCidade1, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addContainerGap(455, Short.MAX_VALUE))
+                            .addComponent(jTextFieldSocioCEP, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jTextFieldSocioCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addContainerGap(261, Short.MAX_VALUE))
             );
             jPanel28Layout.setVerticalGroup(
                 jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1488,139 +1442,218 @@ public class TelaCadastros extends javax.swing.JFrame {
                     .addContainerGap()
                     .addGroup(jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel80)
-                        .addComponent(jTextFieldFuncionarioNumero1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTextFieldSocioNumero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel82)
-                        .addComponent(jTextFieldFuncionarioCidade1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jTextFieldSocioCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addGroup(jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel81)
-                        .addComponent(jTextFieldFuncionarioBairro1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTextFieldSocioBairro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel83)
-                        .addComponent(jComboBoxFuncionarioUf1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jComboBoxSocioUF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel84)
-                        .addComponent(jTextFieldFuncionarioCep1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jTextFieldSocioCEP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addGroup(jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(Logradouro2)
-                        .addComponent(jComboBoxFuncionarioLograduro1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jComboBoxSocioLogradouro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             );
 
             jPanel29.setBorder(javax.swing.BorderFactory.createTitledBorder("Detalhes do socio"));
 
+            jLabel85.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
             jLabel85.setText("Dia  de vencimento");
 
-            jLabel86.setText("data de aprovação");
+            jLabel86.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+            jLabel86.setText("Aprovação:");
 
+            jLabel87.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
             jLabel87.setText("data de matricula");
 
+            jLabel88.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
             jLabel88.setText("Numero de Socio");
 
+            jLabel89.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
             jLabel89.setText("Categoria de socio");
 
-            jComboBox5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+            try {
+                jFormattedTextFieldSocioDiaVencimento.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+            } catch (java.text.ParseException ex) {
+                ex.printStackTrace();
+            }
 
-            jTextField8.setText("jTextField8");
+            jRadioButtonSocioAtivo.setBackground(new java.awt.Color(0, 255, 255));
+            buttonGroupSocioAprovacao.add(jRadioButtonSocioAtivo);
+            jRadioButtonSocioAtivo.setText("Ativo");
 
-            jTextField9.setText("jTextField9");
+            jRadioButtonSocioInativo.setBackground(new java.awt.Color(255, 0, 0));
+            buttonGroupSocioAprovacao.add(jRadioButtonSocioInativo);
+            jRadioButtonSocioInativo.setText("Inativo");
 
-            jTextField10.setText("jTextField10");
+            jRadioButtonSocioEspera.setBackground(new java.awt.Color(255, 255, 0));
+            buttonGroupSocioAprovacao.add(jRadioButtonSocioEspera);
+            jRadioButtonSocioEspera.setText("Em espera");
 
-            jTextField11.setText("jTextField11");
+            try {
+                jFormattedTextFieldSocioDataMatricula.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+            } catch (java.text.ParseException ex) {
+                ex.printStackTrace();
+            }
 
             javax.swing.GroupLayout jPanel29Layout = new javax.swing.GroupLayout(jPanel29);
             jPanel29.setLayout(jPanel29Layout);
             jPanel29Layout.setHorizontalGroup(
                 jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel29Layout.createSequentialGroup()
+                    .addComponent(jLabel86)
+                    .addGap(18, 18, 18)
+                    .addGroup(jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jRadioButtonSocioInativo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jRadioButtonSocioAtivo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jRadioButtonSocioEspera, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGap(94, 94, 94)
+                    .addGroup(jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jLabel85)
+                        .addComponent(jLabel87))
+                    .addGap(10, 10, 10)
+                    .addGroup(jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jFormattedTextFieldSocioDataMatricula)
+                        .addComponent(jFormattedTextFieldSocioDiaVencimento, javax.swing.GroupLayout.DEFAULT_SIZE, 113, Short.MAX_VALUE))
+                    .addGap(18, 18, 18)
                     .addGroup(jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel29Layout.createSequentialGroup()
-                            .addGap(14, 14, 14)
-                            .addGroup(jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel86)
-                                .addComponent(jLabel87))
-                            .addGap(18, 18, 18)
-                            .addGroup(jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel29Layout.createSequentialGroup()
-                                    .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(0, 0, Short.MAX_VALUE))
-                                .addGroup(jPanel29Layout.createSequentialGroup()
-                                    .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                        .addGroup(jPanel29Layout.createSequentialGroup()
-                            .addGap(19, 19, 19)
-                            .addComponent(jLabel85)
-                            .addGap(18, 18, 18)
-                            .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(204, 204, 204)))
+                        .addComponent(jLabel88, javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jLabel89, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addGap(18, 18, 18)
                     .addGroup(jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel29Layout.createSequentialGroup()
-                            .addComponent(jLabel88)
-                            .addGap(27, 27, 27))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel29Layout.createSequentialGroup()
-                            .addComponent(jLabel89)
-                            .addGap(18, 18, 18)))
-                    .addGroup(jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jTextFieldSocioNumeroSocio, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jComboBoxSocioCategoriaSocio, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(95, 95, 95))
             );
             jPanel29Layout.setVerticalGroup(
                 jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel29Layout.createSequentialGroup()
+                    .addContainerGap()
                     .addGroup(jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel29Layout.createSequentialGroup()
-                            .addContainerGap()
                             .addGroup(jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel85)
-                                .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jTextFieldSocioNumeroSocio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel88))
+                            .addGap(18, 18, 18)
+                            .addGroup(jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jComboBoxSocioCategoriaSocio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel89)))
                         .addGroup(jPanel29Layout.createSequentialGroup()
-                            .addGap(20, 20, 20)
+                            .addComponent(jRadioButtonSocioAtivo)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jRadioButtonSocioInativo)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jRadioButtonSocioEspera))
+                        .addGroup(jPanel29Layout.createSequentialGroup()
                             .addGroup(jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel88)
-                                .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addGroup(jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel86)
-                        .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(5, 5, 5)
-                    .addGroup(jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel87)
-                        .addComponent(jLabel89)
-                        .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addContainerGap(18, Short.MAX_VALUE))
+                                .addComponent(jLabel86)
+                                .addComponent(jFormattedTextFieldSocioDiaVencimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel85))
+                            .addGap(18, 18, 18)
+                            .addGroup(jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel87)
+                                .addComponent(jFormattedTextFieldSocioDataMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addContainerGap(67, Short.MAX_VALUE))
             );
 
-            javax.swing.GroupLayout jPanelSocioLayout = new javax.swing.GroupLayout(jPanelSocio);
-            jPanelSocio.setLayout(jPanelSocioLayout);
-            jPanelSocioLayout.setHorizontalGroup(
-                jPanelSocioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanelSocioLayout.createSequentialGroup()
-                    .addContainerGap()
-                    .addGroup(jPanelSocioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelSocioLayout.createSequentialGroup()
-                            .addComponent(jPanel23, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGap(22, 22, 22))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelSocioLayout.createSequentialGroup()
-                            .addGroup(jPanelSocioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jPanel29, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jPanel28, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addContainerGap())))
+            jPanel9.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+            jButtonSocioNovo.setText("Novo");
+            jButtonSocioNovo.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    jButtonSocioNovoActionPerformed(evt);
+                }
+            });
+
+            jButtonSocioEditar.setText("Editar");
+            jButtonSocioEditar.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    jButtonSocioEditarActionPerformed(evt);
+                }
+            });
+
+            jButtonSocioSalvar.setText("Salvar");
+
+            jButtonSocioApagar.setText("Apagar");
+
+            jButtonSocioCancelar.setText("Cancelar");
+            jButtonSocioCancelar.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    jButtonSocioCancelarActionPerformed(evt);
+                }
+            });
+
+            javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
+            jPanel9.setLayout(jPanel9Layout);
+            jPanel9Layout.setHorizontalGroup(
+                jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel9Layout.createSequentialGroup()
+                    .addGap(174, 174, 174)
+                    .addComponent(jButtonSocioNovo)
+                    .addGap(10, 10, 10)
+                    .addComponent(jButtonSocioEditar)
+                    .addGap(10, 10, 10)
+                    .addComponent(jButtonSocioApagar)
+                    .addGap(10, 10, 10)
+                    .addComponent(jButtonSocioSalvar)
+                    .addGap(10, 10, 10)
+                    .addComponent(jButtonSocioCancelar)
+                    .addContainerGap(278, Short.MAX_VALUE))
             );
-            jPanelSocioLayout.setVerticalGroup(
-                jPanelSocioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanelSocioLayout.createSequentialGroup()
+
+            jPanel9Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButtonSocioApagar, jButtonSocioCancelar, jButtonSocioEditar, jButtonSocioNovo, jButtonSocioSalvar});
+
+            jPanel9Layout.setVerticalGroup(
+                jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jButtonSocioNovo)
+                        .addComponent(jButtonSocioEditar)
+                        .addComponent(jButtonSocioApagar)
+                        .addComponent(jButtonSocioCancelar)
+                        .addComponent(jButtonSocioSalvar))
+                    .addContainerGap())
+            );
+
+            jPanel9Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jButtonSocioApagar, jButtonSocioCancelar, jButtonSocioEditar, jButtonSocioNovo, jButtonSocioSalvar});
+
+            javax.swing.GroupLayout jPanel17Layout = new javax.swing.GroupLayout(jPanel17);
+            jPanel17.setLayout(jPanel17Layout);
+            jPanel17Layout.setHorizontalGroup(
+                jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jPanel23, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel28, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel29, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 881, Short.MAX_VALUE)
+                .addGroup(jPanel17Layout.createSequentialGroup()
                     .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            );
+            jPanel17Layout.setVerticalGroup(
+                jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel17Layout.createSequentialGroup()
                     .addComponent(jPanel23, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(jPanel28, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(jPanel29, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 1368, Short.MAX_VALUE))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(481, Short.MAX_VALUE))
             );
+
+            gridBagConstraints = new java.awt.GridBagConstraints();
+            gridBagConstraints.gridx = 0;
+            gridBagConstraints.gridy = 0;
+            gridBagConstraints.ipadx = -8;
+            gridBagConstraints.ipady = 470;
+            gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+            jPanelSocio.add(jPanel17, gridBagConstraints);
 
             jTabbedPane1.addTab("Sócio", jPanelSocio);
 
@@ -1651,7 +1684,7 @@ public class TelaCadastros extends javax.swing.JFrame {
                     .addComponent(jButtonSalvarCategoriaSocio)
                     .addGap(10, 10, 10)
                     .addComponent(jButtonCancelarCategoriaSocio)
-                    .addContainerGap(494, Short.MAX_VALUE))
+                    .addContainerGap(272, Short.MAX_VALUE))
             );
 
             jPanel10Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButtonApagarCategoriaSocio, jButtonCancelarCategoriaSocio, jButtonEditarCategoriaSocio, jButtonNovoCategoriaSocio, jButtonSalvarCategoriaSocio});
@@ -1692,7 +1725,7 @@ public class TelaCadastros extends javax.swing.JFrame {
             jPanel7Layout.setHorizontalGroup(
                 jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addContainerGap(698, Short.MAX_VALUE)
                     .addComponent(jLabel33, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(jTextFieldCategoriaSocioID, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1709,7 +1742,7 @@ public class TelaCadastros extends javax.swing.JFrame {
                             .addGap(71, 71, 71)
                             .addComponent(jLabel36))
                         .addComponent(jTextFieldCategoriaSocioNome, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addContainerGap(356, Short.MAX_VALUE))
             );
             jPanel7Layout.setVerticalGroup(
                 jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1743,7 +1776,7 @@ public class TelaCadastros extends javax.swing.JFrame {
                     .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                     .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(1604, Short.MAX_VALUE))
+                    .addContainerGap(746, Short.MAX_VALUE))
             );
 
             jTabbedPane1.addTab("Categoria Sócio", jPanelCategoria_Socio);
@@ -1775,7 +1808,7 @@ public class TelaCadastros extends javax.swing.JFrame {
                     .addComponent(jButtonSalvarTipoDespesa)
                     .addGap(10, 10, 10)
                     .addComponent(jButtonCancelarTipoDespesa)
-                    .addContainerGap(574, Short.MAX_VALUE))
+                    .addContainerGap(352, Short.MAX_VALUE))
             );
             jPanel11Layout.setVerticalGroup(
                 jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1828,17 +1861,17 @@ public class TelaCadastros extends javax.swing.JFrame {
                     .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel24Layout.createSequentialGroup()
                             .addComponent(jLabel41)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 198, Short.MAX_VALUE)
                             .addComponent(jLabel40))
                         .addGroup(jPanel24Layout.createSequentialGroup()
                             .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jTextFieldTipoDespesaNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(0, 0, Short.MAX_VALUE)))
+                            .addGap(0, 231, Short.MAX_VALUE)))
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                     .addComponent(jTextFieldTIpoDespesaId, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addContainerGap(202, Short.MAX_VALUE))
             );
             jPanel24Layout.setVerticalGroup(
                 jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1876,7 +1909,7 @@ public class TelaCadastros extends javax.swing.JFrame {
                     .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, 0)
                     .addComponent(jPanel24, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 1484, Short.MAX_VALUE))
+                    .addGap(0, 622, Short.MAX_VALUE))
             );
 
             jTabbedPane1.addTab("Tipo/Despesa", jPanelTipoDespesa);
@@ -1908,7 +1941,7 @@ public class TelaCadastros extends javax.swing.JFrame {
                     .addComponent(jButtonSalvarDespesa)
                     .addGap(10, 10, 10)
                     .addComponent(jButtonCancelarDespesa)
-                    .addContainerGap(574, Short.MAX_VALUE))
+                    .addContainerGap(352, Short.MAX_VALUE))
             );
             jPanel12Layout.setVerticalGroup(
                 jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1964,7 +1997,7 @@ public class TelaCadastros extends javax.swing.JFrame {
                 .addGroup(jPanel25Layout.createSequentialGroup()
                     .addGroup(jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(jPanel25Layout.createSequentialGroup()
-                            .addGap(0, 0, Short.MAX_VALUE)
+                            .addGap(0, 442, Short.MAX_VALUE)
                             .addComponent(jLabel47))
                         .addGroup(jPanel25Layout.createSequentialGroup()
                             .addGroup(jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1979,7 +2012,7 @@ public class TelaCadastros extends javax.swing.JFrame {
                             .addGap(56, 56, 56)
                             .addGroup(jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(jPanel25Layout.createSequentialGroup()
-                                    .addGap(0, 0, Short.MAX_VALUE)
+                                    .addGap(0, 361, Short.MAX_VALUE)
                                     .addComponent(jLabel45))
                                 .addGroup(jPanel25Layout.createSequentialGroup()
                                     .addGroup(jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1991,12 +2024,12 @@ public class TelaCadastros extends javax.swing.JFrame {
                                         .addGroup(jPanel25Layout.createSequentialGroup()
                                             .addGap(3, 3, 3)
                                             .addComponent(jTextFieldTipoDespesaNome3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGap(0, 0, Short.MAX_VALUE)))))
+                                    .addGap(0, 205, Short.MAX_VALUE)))))
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                     .addGroup(jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jTextFieldDespesaId, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jTextFieldDespesaFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addContainerGap(216, Short.MAX_VALUE))
                 .addGroup(jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel25Layout.createSequentialGroup()
                         .addGap(199, 199, 199)
@@ -2055,7 +2088,7 @@ public class TelaCadastros extends javax.swing.JFrame {
                     .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(jPanel25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 1478, Short.MAX_VALUE))
+                    .addGap(0, 616, Short.MAX_VALUE))
             );
 
             jTabbedPane1.addTab("Despesa", jPanelDespesa);
@@ -2087,7 +2120,7 @@ public class TelaCadastros extends javax.swing.JFrame {
                     .addComponent(jButtonSalvarTipoReceita)
                     .addGap(10, 10, 10)
                     .addComponent(jButtonCancelarTipoReceita)
-                    .addContainerGap(574, Short.MAX_VALUE))
+                    .addContainerGap(352, Short.MAX_VALUE))
             );
             jPanel14Layout.setVerticalGroup(
                 jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2140,17 +2173,17 @@ public class TelaCadastros extends javax.swing.JFrame {
                     .addGroup(jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel26Layout.createSequentialGroup()
                             .addComponent(jLabel56)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 309, Short.MAX_VALUE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 198, Short.MAX_VALUE)
                             .addComponent(jLabel55))
                         .addGroup(jPanel26Layout.createSequentialGroup()
                             .addGroup(jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jTextFieldTipoDespesaNome4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(0, 0, Short.MAX_VALUE)))
+                            .addGap(0, 231, Short.MAX_VALUE)))
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                     .addComponent(jTextFieldTIpoDespesaId1, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(313, Short.MAX_VALUE))
+                    .addContainerGap(202, Short.MAX_VALUE))
             );
             jPanel26Layout.setVerticalGroup(
                 jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2188,7 +2221,7 @@ public class TelaCadastros extends javax.swing.JFrame {
                     .addComponent(jPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(jPanel26, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 1478, Short.MAX_VALUE))
+                    .addGap(0, 616, Short.MAX_VALUE))
             );
 
             jTabbedPane1.addTab("Tipo/Receita", jPanelTipoReceita);
@@ -2220,7 +2253,7 @@ public class TelaCadastros extends javax.swing.JFrame {
                     .addComponent(jButtonSalvarReceita)
                     .addGap(10, 10, 10)
                     .addComponent(jButtonCancelarReceita)
-                    .addContainerGap(574, Short.MAX_VALUE))
+                    .addContainerGap(352, Short.MAX_VALUE))
             );
             jPanel8Layout.setVerticalGroup(
                 jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2274,7 +2307,7 @@ public class TelaCadastros extends javax.swing.JFrame {
                 .addGroup(jPanel27Layout.createSequentialGroup()
                     .addGroup(jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(jPanel27Layout.createSequentialGroup()
-                            .addGap(0, 0, Short.MAX_VALUE)
+                            .addGap(0, 225, Short.MAX_VALUE)
                             .addComponent(jLabel58))
                         .addGroup(jPanel27Layout.createSequentialGroup()
                             .addGroup(jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2289,7 +2322,7 @@ public class TelaCadastros extends javax.swing.JFrame {
                             .addGap(56, 56, 56)
                             .addGroup(jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(jPanel27Layout.createSequentialGroup()
-                                    .addGap(0, 0, Short.MAX_VALUE)
+                                    .addGap(0, 156, Short.MAX_VALUE)
                                     .addComponent(jLabel57))
                                 .addGroup(jPanel27Layout.createSequentialGroup()
                                     .addGroup(jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2304,7 +2337,7 @@ public class TelaCadastros extends javax.swing.JFrame {
                     .addGroup(jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jTextFieldDespesaId1, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jTextFieldDespesaFuncionario1, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addContainerGap(654, Short.MAX_VALUE))
+                    .addContainerGap(433, Short.MAX_VALUE))
             );
             jPanel27Layout.setVerticalGroup(
                 jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2353,7 +2386,7 @@ public class TelaCadastros extends javax.swing.JFrame {
                     .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(jPanel27, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 1478, Short.MAX_VALUE))
+                    .addGap(0, 616, Short.MAX_VALUE))
             );
 
             jTabbedPane1.addTab("Receitas", jPanelReceitas);
@@ -2385,7 +2418,7 @@ public class TelaCadastros extends javax.swing.JFrame {
                     .addComponent(jButtonSalvarCheque)
                     .addGap(10, 10, 10)
                     .addComponent(jButtonCancelarCheque)
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addContainerGap(352, Short.MAX_VALUE))
             );
             jPanel16Layout.setVerticalGroup(
                 jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2439,7 +2472,7 @@ public class TelaCadastros extends javax.swing.JFrame {
             jPanel15Layout.setHorizontalGroup(
                 jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel15Layout.createSequentialGroup()
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addContainerGap(636, Short.MAX_VALUE)
                     .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addGroup(jPanel15Layout.createSequentialGroup()
                             .addComponent(jLabel26)
@@ -2475,7 +2508,7 @@ public class TelaCadastros extends javax.swing.JFrame {
                     .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jLabel65)
                         .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addContainerGap(516, Short.MAX_VALUE))
+                    .addContainerGap(294, Short.MAX_VALUE))
             );
             jPanel15Layout.setVerticalGroup(
                 jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2530,67 +2563,10 @@ public class TelaCadastros extends javax.swing.JFrame {
                     .addComponent(jPanel16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(jPanel15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(1689, Short.MAX_VALUE))
+                    .addContainerGap(831, Short.MAX_VALUE))
             );
 
             jTabbedPane1.addTab("Cheques", jPanelCheques);
-
-            jPanel17.setBorder(javax.swing.BorderFactory.createTitledBorder("Opções de Edição"));
-
-            jButtonNovoContrato.setText("Novo");
-
-            jButtonEditarContrato.setText("Editar");
-
-            jButtonSalvarContrato.setText("Salvar");
-
-            jButtonApagarContrato.setText("Apagar");
-
-            jButtonCancelarContrato.setText("Cancelar");
-
-            javax.swing.GroupLayout jPanel17Layout = new javax.swing.GroupLayout(jPanel17);
-            jPanel17.setLayout(jPanel17Layout);
-            jPanel17Layout.setHorizontalGroup(
-                jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel17Layout.createSequentialGroup()
-                    .addGap(146, 146, 146)
-                    .addComponent(jButtonNovoContrato)
-                    .addGap(10, 10, 10)
-                    .addComponent(jButtonEditarContrato)
-                    .addGap(10, 10, 10)
-                    .addComponent(jButtonApagarContrato)
-                    .addGap(10, 10, 10)
-                    .addComponent(jButtonSalvarContrato)
-                    .addGap(10, 10, 10)
-                    .addComponent(jButtonCancelarContrato)
-                    .addContainerGap(574, Short.MAX_VALUE))
-            );
-            jPanel17Layout.setVerticalGroup(
-                jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel17Layout.createSequentialGroup()
-                    .addGap(10, 10, 10)
-                    .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButtonNovoContrato)
-                        .addComponent(jButtonEditarContrato)
-                        .addComponent(jButtonApagarContrato)
-                        .addComponent(jButtonCancelarContrato)
-                        .addComponent(jButtonSalvarContrato))
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            );
-
-            javax.swing.GroupLayout jPanelContratoLayout = new javax.swing.GroupLayout(jPanelContrato);
-            jPanelContrato.setLayout(jPanelContratoLayout);
-            jPanelContratoLayout.setHorizontalGroup(
-                jPanelContratoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jPanel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            );
-            jPanelContratoLayout.setVerticalGroup(
-                jPanelContratoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanelContratoLayout.createSequentialGroup()
-                    .addComponent(jPanel17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 1917, Short.MAX_VALUE))
-            );
-
-            jTabbedPane1.addTab("Contrato", jPanelContrato);
 
             jPanelTaxas.setLayout(new java.awt.GridBagLayout());
 
@@ -2646,7 +2622,7 @@ public class TelaCadastros extends javax.swing.JFrame {
                     .addComponent(jButtonTaxaSalvar)
                     .addGap(10, 10, 10)
                     .addComponent(jButtonTaxaCancelar)
-                    .addContainerGap(263, Short.MAX_VALUE))
+                    .addContainerGap(377, Short.MAX_VALUE))
             );
 
             jPanel18Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButtonTaxaApagar, jButtonTaxaCancelar, jButtonTaxaEditar, jButtonTaxaNovo, jButtonTaxaSalvar});
@@ -2670,12 +2646,12 @@ public class TelaCadastros extends javax.swing.JFrame {
 
             jLabel15.setText("Id");
 
-            jLabel17.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+            jLabel17.setFont(new java.awt.Font("Tahoma", 1, 11));
             jLabel17.setText("Nome");
 
             jLabel23.setText("Descrição");
 
-            jLabel25.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+            jLabel25.setFont(new java.awt.Font("Tahoma", 1, 11));
             jLabel25.setText("Valor");
 
             jTextAreaTaxasDescricao.setColumns(20);
@@ -2705,16 +2681,16 @@ public class TelaCadastros extends javax.swing.JFrame {
                                 .addComponent(jTextFieldTaxasValor, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel25)
                                 .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addContainerGap(659, Short.MAX_VALUE))
                         .addGroup(jPanel13Layout.createSequentialGroup()
                             .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 537, Short.MAX_VALUE)
                             .addComponent(jLabel15)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                             .addComponent(jTextFieldTaxasID, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(18, 18, 18)
                             .addComponent(jButtonTaxasPesquisar)
-                            .addGap(62, 62, 62))))
+                            .addGap(176, 176, 176))))
             );
             jPanel13Layout.setVerticalGroup(
                 jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2751,7 +2727,7 @@ public class TelaCadastros extends javax.swing.JFrame {
                     .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(jPanel18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 764, Short.MAX_VALUE))
+                    .addGap(0, 774, Short.MAX_VALUE))
             );
 
             gridBagConstraints = new java.awt.GridBagConstraints();
@@ -2776,7 +2752,7 @@ public class TelaCadastros extends javax.swing.JFrame {
             jPanel1Layout.setVerticalGroup(
                 jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(10, 10, 10)
+                    .addGap(11, 11, 11)
                     .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1135, Short.MAX_VALUE)
                     .addContainerGap())
             );
@@ -2784,7 +2760,6 @@ public class TelaCadastros extends javax.swing.JFrame {
             jDesktopPane1.setBackground(new java.awt.Color(240, 240, 240));
 
             jInternalFrame1.setFrameIcon(null);
-            jInternalFrame1.setVisible(false);
 
             jScrollPane4.setAutoscrolls(true);
 
@@ -2847,16 +2822,16 @@ public class TelaCadastros extends javax.swing.JFrame {
             jPanel19Layout.setVerticalGroup(
                 jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel19Layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel31)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addContainerGap(56, Short.MAX_VALUE))
-                .addGroup(jPanel19Layout.createSequentialGroup()
-                    .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jButtonInternalFrameVoltar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButtonPesquisa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel19Layout.createSequentialGroup()
+                            .addContainerGap()
+                            .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel31)
+                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jButtonInternalFrameVoltar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButtonPesquisa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addContainerGap(44, Short.MAX_VALUE))
             );
 
             javax.swing.GroupLayout jInternalFrame1Layout = new javax.swing.GroupLayout(jInternalFrame1.getContentPane());
@@ -2889,7 +2864,7 @@ public class TelaCadastros extends javax.swing.JFrame {
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jDesktopPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1156, Short.MAX_VALUE))
+                    .addComponent(jDesktopPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1157, Short.MAX_VALUE))
             );
 
             pack();
@@ -3081,6 +3056,8 @@ public class TelaCadastros extends javax.swing.JFrame {
                             f.setDataContratacao(c.getTime());
                         }
 
+                        
+                        f.setIdPessoa(p);
                         List<Funcionario> funcs = new ArrayList<>();
                         p.setFuncionarioList(funcs);
 
@@ -3197,10 +3174,7 @@ public class TelaCadastros extends javax.swing.JFrame {
             }
 
 
-        } else {
-
-            JOptionPane.showMessageDialog(this, "Por Favor, preencha todos os campos em negrito", "Atenção", JOptionPane.INFORMATION_MESSAGE);
-        }
+        } 
 
     }//GEN-LAST:event_jButtonFuncionarioSalvarActionPerformed
 
@@ -3210,7 +3184,6 @@ public class TelaCadastros extends javax.swing.JFrame {
 
             if (pesquisarTable.equals("funcionarios")) {
                 limparCampos();
-               
                 preencherAbaFuncionarios(new DaoPessoa().BuscarPessoaCpf((String) jTable1.getValueAt(jTable1.getSelectedRow(), 2)));
                 jButtonFuncionarioApagar.setEnabled(true);
                 jButtonFuncionarioEditar.setEnabled(true);
@@ -3233,6 +3206,17 @@ public class TelaCadastros extends javax.swing.JFrame {
                 jButtonTaxaApagar.setEnabled(true);
                 jButtonTaxaCancelar.setEnabled(true);
                 jButtonTaxaEditar.setEnabled(true);
+                
+            }else if(pesquisarTable.equals("socios")){
+                
+                limparCamposSocio();
+                
+                
+                
+                jButtonSocioApagar.setEnabled(true);
+                jButtonSocioCancelar.setEnabled(true);
+                jButtonSocioEditar.setEnabled(true);
+                
                 
             }
 
@@ -3317,6 +3301,28 @@ public class TelaCadastros extends javax.swing.JFrame {
                 
                  JOptionPane.showMessageDialog(this, "Taxa não encontrada", "Atenção", JOptionPane.INFORMATION_MESSAGE);
             }
+        
+        }else if(pesquisarTable.equals("socios")){
+            
+            ArrayList<Socio> socios = (ArrayList) new DaoSocio().SociosPorNomeLike(jTextField2.getText());
+            model = (DefaultTableModel)jTable1.getModel();
+            model.setRowCount(0);
+            if(!socios.isEmpty()){
+                
+                for(Socio s : socios){
+                    
+                    model.addRow(new Object[]{s.getIdPessoa().getNome(), s.getIdPessoa().getSobrenome(), s.getIdPessoa().getCpf(), s.getIdCategoriaSocio().getNome(), s.getIdPessoa().getIdEndereco().getNome(), s.getNumeroSocio()});
+                    
+                }
+                
+            }else{
+                
+               JOptionPane.showMessageDialog(this, "Taxa não encontrada", "Atenção", JOptionPane.INFORMATION_MESSAGE); 
+        
+            }
+            
+            
+            
         }
 
     }
@@ -3377,6 +3383,28 @@ public class TelaCadastros extends javax.swing.JFrame {
         }
             
             
+        }else if(pesquisarTable.equals("socios")){
+            
+            
+            List<Socio> socios =  new DaoSocio().TodosOsSocios();
+            model = (DefaultTableModel) jTable1.getModel();
+            model.setRowCount(0);
+            
+            if(!socios.isEmpty()){
+                
+                for(Socio s : socios){
+                    
+                     model.addRow(new Object[]{s.getIdPessoa().getNome(), s.getIdPessoa().getSobrenome(), s.getIdPessoa().getCpf(), s.getIdCategoriaSocio().getNome(), s.getIdPessoa().getIdEndereco().getNome(), s.getNumeroSocio()});
+                    
+                }
+                
+                
+            }else{
+                
+                 JOptionPane.showMessageDialog(this, "A tabela de Taxas está vazia", "Erro", JOptionPane.ERROR_MESSAGE);
+                
+            }
+            
         }
 
 
@@ -3407,6 +3435,10 @@ public class TelaCadastros extends javax.swing.JFrame {
                 break;
             case "taxas":
                 jButtonTaxaCancelarActionPerformed(evt);
+                break;
+            case "socios":
+                jButtonSocioCancelarActionPerformed(evt);
+                break;
 
         }
         jTextField2.setText("");
@@ -3680,13 +3712,74 @@ public class TelaCadastros extends javax.swing.JFrame {
     }
     }//GEN-LAST:event_jButtonTaxaApagarActionPerformed
 
-    private void jTextFieldFuncionarioNome1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldFuncionarioNome1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldFuncionarioNome1ActionPerformed
+    private void jButtonSocioNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSocioNovoActionPerformed
+       
+        limparCamposSocio();
+        setEditableComponentesSocio(true);
+        jButtonSocioApagar.setEnabled(false);
+        jButtonSocioEditar.setEnabled(false);
+        jButtonSocioNovo.setEnabled(false);
+        
+        
+        if(jComboBoxSocioLogradouro.getItemCount() == 0){
+            
+            jComboBoxSocioLogradouro.addItem("");
+            List<Endereco> end = new DaoEndereco().BuscarTodosEnderecos();
+            for(Endereco e : end){
+                
+                jComboBoxSocioLogradouro.addItem(e.getNome());
+                
+                
+            }
+            
+            
+        }
+        if(jComboBoxSocioCategoriaSocio.getItemCount() == 0){
+            
+            jComboBoxSocioCategoriaSocio.addItem("");
+            List<Categoriasocio> cs = new DaoCategoriaSocio().BuscarTodasCategorias();
+            for(Categoriasocio c : cs){
+                
+                jComboBoxSocioCategoriaSocio.addItem(c.getNome());
+                
+            }
+            
+        }
+        jComboBoxSocioLogradouro.setSelectedItem("");
+        jComboBoxSocioCategoriaSocio.setSelectedItem("");
+        
+    }//GEN-LAST:event_jButtonSocioNovoActionPerformed
 
-    private void jButtonFuncionarioPesquisar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFuncionarioPesquisar1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonFuncionarioPesquisar1ActionPerformed
+    private void jButtonSocioCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSocioCancelarActionPerformed
+        
+        limparCamposSocio();
+        setEditableComponentesSocio(false);
+        jButtonSocioNovo.setEnabled(true);
+        
+        
+    }//GEN-LAST:event_jButtonSocioCancelarActionPerformed
+
+    private void jButtonSocioEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSocioEditarActionPerformed
+       
+        
+        setEditableComponentesSocio(true);
+        jButtonSocioEditar.setEnabled(false);
+        jButtonSocioApagar.setEnabled(false);
+        
+    }//GEN-LAST:event_jButtonSocioEditarActionPerformed
+
+    private void jButtonSocioPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSocioPesquisarActionPerformed
+        
+      if(jButtonSocioNovo.isEnabled()){
+        pesquisarTable = "socios";
+        mostrarJtable();
+        
+      }else{
+          
+           JOptionPane.showMessageDialog(this, "Cancele a operação para fazer uma pesquisa", "Atenção", JOptionPane.INFORMATION_MESSAGE);
+      }
+        
+    }//GEN-LAST:event_jButtonSocioPesquisarActionPerformed
 
     private void editableTextFields(boolean editable) {
 
@@ -3823,12 +3916,20 @@ public class TelaCadastros extends javax.swing.JFrame {
 
         if (!jTextFieldFuncionarioNome.getText().equals("") && !jTextFieldFuncionarioSobrenome.getText().equals("") && !jTextFieldFuncionarioCargo.getText().equals("") && !jTextFieldFuncionarioSalario.getText().equals("") && m.find() && !jComboBoxFuncionarioStatus.getSelectedItem().equals("") && !jTextFieldFuncionarioNumeroDaMatricula.getText().equals("") && !jComboBoxFuncionarioLograduro.getSelectedItem().equals("") && !jComboBoxFuncionarioSexo.getSelectedItem().equals("") && !jComboBoxFuncionarioUf.getSelectedItem().equals("")) {
 
-            return true;
-
+            p = Pattern.compile("\\d{3}\\.\\d{3}\\.\\d{3}-\\d{2}");
+            m = p.matcher(jFormattedTextFieldFuncionarioCpf.getText());
+            if(m.find()){
+            
+                return true;
+            }else{
+                 JOptionPane.showMessageDialog(this, "Por Favor, preencha todos os campos em negrito", "Atenção", JOptionPane.INFORMATION_MESSAGE);
+                return false;
+            }
+            
         } else {
 
-            return false;
-
+             JOptionPane.showMessageDialog(this, "Por Favor, preencha todos os campos em negrito", "Atenção", JOptionPane.INFORMATION_MESSAGE);
+             return false;
         }
 
 
@@ -3861,6 +3962,43 @@ public class TelaCadastros extends javax.swing.JFrame {
 
     }
 
+    private void setEditableComponentesSocio(boolean edit){
+        
+        
+        jTextFieldSocioNome.setEditable(edit);
+        jTextFieldSocioSobrenome.setEditable(edit);
+        jTextFieldSocioApelido.setEditable(edit);
+        jTextFieldSocioTelefone.setEditable(edit);
+        jTextFieldSocioEmail.setEditable(edit);
+        jFormattedTextFieldSocioDataNascimento.setEditable(edit);
+        jComboBoxSocioSexo.setEnabled(edit);
+        jComboBoxSocioLogradouro.setEnabled(edit);
+        jTextFieldSocioNomeMae.setEditable(edit);
+        jTextFieldSocioNomePai.setEditable(edit);
+        jFormattedTextFieldSocioCPF.setEditable(edit);
+        jTextFieldSocioRgNumero.setEditable(edit);
+        jTextFieldSocioOrgaoExpedidor.setEditable(edit);
+        jFormattedTextFieldSocioDataEmissao.setEditable(edit);
+        jTextFieldSocioNumero.setEditable(edit);
+        jTextFieldSocioBairro.setEditable(edit);
+        jTextFieldSocioCidade.setEditable(edit);
+        jComboBoxSocioUF.setEnabled(edit);
+        jTextFieldSocioCEP.setEditable(edit);
+        buttonGroupSocioAprovacao.clearSelection();
+        jFormattedTextFieldSocioDiaVencimento.setEditable(edit);
+        jFormattedTextFieldSocioDataMatricula.setEditable(edit);
+        jTextFieldSocioNumeroSocio.setEditable(edit);
+        jComboBoxSocioCategoriaSocio.setEnabled(edit);
+        jButtonSocioApagar.setEnabled(edit);
+        jButtonSocioCancelar.setEnabled(edit);
+        jButtonSocioEditar.setEnabled(edit);
+        jButtonSocioSalvar.setEnabled(edit);
+        
+                
+                
+        
+    }
+    
     private void limparCamposTaxas() {
 
 
@@ -3879,6 +4017,42 @@ public class TelaCadastros extends javax.swing.JFrame {
 
     }
 
+    private void limparCamposSocio(){
+        
+        jTextFieldSocioID.setText("");
+        jTextFieldSocioNome.setText("");
+        jTextFieldSocioSobrenome.setText("");
+        jTextFieldSocioApelido.setText("");
+        jTextFieldSocioTelefone.setText("");
+        jTextFieldSocioEmail.setText("");
+        jFormattedTextFieldSocioDataNascimento.setText("");
+        jComboBoxSocioSexo.setSelectedItem("");
+        jTextFieldSocioNomePai.setText("");
+        jTextFieldSocioNomeMae.setText("");
+        jFormattedTextFieldSocioCPF.setText("");
+        jTextFieldSocioRgNumero.setText("");
+        jTextFieldSocioOrgaoExpedidor.setText("");
+        jFormattedTextFieldSocioDataEmissao.setText("");
+        jTextFieldSocioNumero.setText("");
+        jTextFieldSocioBairro.setText("");
+        jTextFieldSocioCidade.setText("");
+        jComboBoxSocioUF.setSelectedItem("");
+        jTextFieldSocioCEP.setText("");
+        if(jComboBoxSocioLogradouro.getItemCount() != 0){
+            
+            jComboBoxSocioLogradouro.setSelectedIndex(0);
+        }
+        buttonGroupSocioAprovacao.clearSelection();
+        jFormattedTextFieldSocioDataMatricula.setText("");
+        jFormattedTextFieldSocioDiaVencimento.setText("");
+        jTextFieldSocioNumeroSocio.setText("");
+        if(jComboBoxSocioCategoriaSocio.getItemCount() != 0){
+            
+            jComboBoxSocioCategoriaSocio.setSelectedIndex(0);
+            
+        }
+        
+    }    
     private void preencherCamposLogradouro(Endereco end) {
 
         jTextFieldLogradouroID.setText(String.valueOf(end.getId()));
@@ -3972,6 +4146,35 @@ public class TelaCadastros extends javax.swing.JFrame {
                     );
             
             
+        }else if(pesquisarTable.equals("socios")){
+            
+            jTable1.setModel(new DefaultTableModel(
+                    new Object[][]{}, new String[]{"Nome","Sobrenome","CPF","Categoria Socio","Logradouro","Numero"}){
+                        
+                        Class[] types = new Class[]{String.class, String.class, String.class, String.class, String.class, String.class};
+                        
+                        @Override
+                        public Class getColumnClass(int columnIndex){
+                            
+                            return types[columnIndex];
+                            
+                        }
+                        
+                        boolean[] canEdit = new boolean[]{false, false, false, false, false, false};
+                        
+                        @Override
+                        public boolean isCellEditable(int rowIndex, int columnIndex){
+                            
+                            
+                            return canEdit[columnIndex];
+                        }
+                        
+                    }
+                    
+                    
+                    
+                    );
+            
         }
 
 
@@ -4029,28 +4232,23 @@ public class TelaCadastros extends javax.swing.JFrame {
     private javax.swing.JLabel Logradouro5;
     private javax.swing.JLabel Logradouro6;
     private javax.swing.JLabel Logradouro7;
+    private javax.swing.ButtonGroup buttonGroupSocioAprovacao;
     private javax.swing.JButton jButtonApagarCategoriaSocio;
     private javax.swing.JButton jButtonApagarCheque;
-    private javax.swing.JButton jButtonApagarContrato;
     private javax.swing.JButton jButtonApagarDespesa;
     private javax.swing.JButton jButtonApagarReceita;
-    private javax.swing.JButton jButtonApagarSocio;
     private javax.swing.JButton jButtonApagarTipoDespesa;
     private javax.swing.JButton jButtonApagarTipoReceita;
     private javax.swing.JButton jButtonCancelarCategoriaSocio;
     private javax.swing.JButton jButtonCancelarCheque;
-    private javax.swing.JButton jButtonCancelarContrato;
     private javax.swing.JButton jButtonCancelarDespesa;
     private javax.swing.JButton jButtonCancelarReceita;
-    private javax.swing.JButton jButtonCancelarSocio;
     private javax.swing.JButton jButtonCancelarTipoDespesa;
     private javax.swing.JButton jButtonCancelarTipoReceita;
     private javax.swing.JButton jButtonEditarCategoriaSocio;
     private javax.swing.JButton jButtonEditarCheque;
-    private javax.swing.JButton jButtonEditarContrato;
     private javax.swing.JButton jButtonEditarDespesa;
     private javax.swing.JButton jButtonEditarReceita;
-    private javax.swing.JButton jButtonEditarSocio;
     private javax.swing.JButton jButtonEditarTipoDespesa;
     private javax.swing.JButton jButtonEditarTipoReceita;
     protected javax.swing.JButton jButtonFuncionarioApagar;
@@ -4058,7 +4256,6 @@ public class TelaCadastros extends javax.swing.JFrame {
     protected javax.swing.JButton jButtonFuncionarioEditar;
     private javax.swing.JButton jButtonFuncionarioNovo;
     private javax.swing.JButton jButtonFuncionarioPesquisar;
-    private javax.swing.JButton jButtonFuncionarioPesquisar1;
     private javax.swing.JButton jButtonFuncionarioSalvar;
     private javax.swing.JButton jButtonInternalFrameVoltar;
     private javax.swing.JButton jButtonLogradouroApagar;
@@ -4069,21 +4266,23 @@ public class TelaCadastros extends javax.swing.JFrame {
     private javax.swing.JButton jButtonLogradouroSalvar;
     private javax.swing.JButton jButtonNovoCategoriaSocio;
     private javax.swing.JButton jButtonNovoCheque;
-    private javax.swing.JButton jButtonNovoContrato;
     private javax.swing.JButton jButtonNovoDespesa;
     private javax.swing.JButton jButtonNovoReceita;
-    private javax.swing.JButton jButtonNovoSocio;
     private javax.swing.JButton jButtonNovoTipoDespesa;
     private javax.swing.JButton jButtonNovoTipoReceita;
     private javax.swing.JButton jButtonPesquisa;
     private javax.swing.JButton jButtonSalvarCategoriaSocio;
     private javax.swing.JButton jButtonSalvarCheque;
-    private javax.swing.JButton jButtonSalvarContrato;
     private javax.swing.JButton jButtonSalvarDespesa;
     private javax.swing.JButton jButtonSalvarReceita;
-    private javax.swing.JButton jButtonSalvarSocio;
     private javax.swing.JButton jButtonSalvarTipoDespesa;
     private javax.swing.JButton jButtonSalvarTipoReceita;
+    private javax.swing.JButton jButtonSocioApagar;
+    private javax.swing.JButton jButtonSocioCancelar;
+    private javax.swing.JButton jButtonSocioEditar;
+    private javax.swing.JButton jButtonSocioNovo;
+    private javax.swing.JButton jButtonSocioPesquisar;
+    private javax.swing.JButton jButtonSocioSalvar;
     private javax.swing.JButton jButtonTaxaApagar;
     private javax.swing.JButton jButtonTaxaCancelar;
     private javax.swing.JButton jButtonTaxaEditar;
@@ -4094,23 +4293,25 @@ public class TelaCadastros extends javax.swing.JFrame {
     private javax.swing.JComboBox jComboBox2;
     private javax.swing.JComboBox jComboBox3;
     private javax.swing.JComboBox jComboBox4;
-    private javax.swing.JComboBox jComboBox5;
     private javax.swing.JComboBox jComboBoxFuncionarioLograduro;
-    private javax.swing.JComboBox jComboBoxFuncionarioLograduro1;
     private javax.swing.JComboBox jComboBoxFuncionarioSexo;
-    private javax.swing.JComboBox jComboBoxFuncionarioSexo1;
     private javax.swing.JComboBox jComboBoxFuncionarioStatus;
     private javax.swing.JComboBox jComboBoxFuncionarioUf;
-    private javax.swing.JComboBox jComboBoxFuncionarioUf1;
     private javax.swing.JComboBox jComboBoxLogradouroTipo;
+    private javax.swing.JComboBox jComboBoxSocioCategoriaSocio;
+    private javax.swing.JComboBox jComboBoxSocioLogradouro;
+    private javax.swing.JComboBox jComboBoxSocioSexo;
+    private javax.swing.JComboBox jComboBoxSocioUF;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JFormattedTextField jFormattedTextFieldFuncionarioCpf;
-    private javax.swing.JFormattedTextField jFormattedTextFieldFuncionarioCpf1;
     private javax.swing.JFormattedTextField jFormattedTextFieldFuncionarioDataContratacao;
     private javax.swing.JFormattedTextField jFormattedTextFieldFuncionarioDataEmissao;
-    private javax.swing.JFormattedTextField jFormattedTextFieldFuncionarioDataEmissao1;
     private javax.swing.JFormattedTextField jFormattedTextFieldFuncionarioDataNascimento;
-    private javax.swing.JFormattedTextField jFormattedTextFieldFuncionarioDataNascimento1;
+    private javax.swing.JFormattedTextField jFormattedTextFieldSocioCPF;
+    private javax.swing.JFormattedTextField jFormattedTextFieldSocioDataEmissao;
+    private javax.swing.JFormattedTextField jFormattedTextFieldSocioDataMatricula;
+    private javax.swing.JFormattedTextField jFormattedTextFieldSocioDataNascimento;
+    private javax.swing.JFormattedTextField jFormattedTextFieldSocioDiaVencimento;
     private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -4232,7 +4433,6 @@ public class TelaCadastros extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel9;
     private javax.swing.JPanel jPanelCategoria_Socio;
     private javax.swing.JPanel jPanelCheques;
-    private javax.swing.JPanel jPanelContrato;
     private javax.swing.JPanel jPanelDespesa;
     private javax.swing.JPanel jPanelFunc;
     private javax.swing.JPanel jPanelLog;
@@ -4241,6 +4441,9 @@ public class TelaCadastros extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelTaxas;
     private javax.swing.JPanel jPanelTipoDespesa;
     private javax.swing.JPanel jPanelTipoReceita;
+    private javax.swing.JRadioButton jRadioButtonSocioAtivo;
+    private javax.swing.JRadioButton jRadioButtonSocioEspera;
+    private javax.swing.JRadioButton jRadioButtonSocioInativo;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane10;
     private javax.swing.JScrollPane jScrollPane11;
@@ -4271,16 +4474,12 @@ public class TelaCadastros extends javax.swing.JFrame {
     private javax.swing.JTextArea jTextAreaTipoDespesaObservacao2;
     private javax.swing.JTextArea jTextAreaTipoDespesaObservacao3;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField10;
-    private javax.swing.JTextField jTextField11;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
     private javax.swing.JTextField jTextFieldCategoriaSocioID;
     private javax.swing.JTextField jTextFieldCategoriaSocioNome;
     private javax.swing.JTextField jTextFieldDespesaFuncionario;
@@ -4288,38 +4487,39 @@ public class TelaCadastros extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldDespesaId;
     private javax.swing.JTextField jTextFieldDespesaId1;
     private javax.swing.JTextField jTextFieldFuncionarioApelido;
-    private javax.swing.JTextField jTextFieldFuncionarioApelido1;
     private javax.swing.JTextField jTextFieldFuncionarioBairro;
-    private javax.swing.JTextField jTextFieldFuncionarioBairro1;
     private javax.swing.JTextField jTextFieldFuncionarioCargo;
     private javax.swing.JTextField jTextFieldFuncionarioCep;
-    private javax.swing.JTextField jTextFieldFuncionarioCep1;
     private javax.swing.JTextField jTextFieldFuncionarioCidade;
-    private javax.swing.JTextField jTextFieldFuncionarioCidade1;
     private javax.swing.JTextField jTextFieldFuncionarioEmail;
-    private javax.swing.JTextField jTextFieldFuncionarioEmail1;
     private javax.swing.JTextField jTextFieldFuncionarioID;
-    private javax.swing.JTextField jTextFieldFuncionarioID1;
     private javax.swing.JTextField jTextFieldFuncionarioNome;
-    private javax.swing.JTextField jTextFieldFuncionarioNome1;
     private javax.swing.JTextField jTextFieldFuncionarioNomedame;
-    private javax.swing.JTextField jTextFieldFuncionarioNomedame1;
     private javax.swing.JTextField jTextFieldFuncionarioNomedopai;
-    private javax.swing.JTextField jTextFieldFuncionarioNomedopai1;
     private javax.swing.JTextField jTextFieldFuncionarioNumero;
-    private javax.swing.JTextField jTextFieldFuncionarioNumero1;
     private javax.swing.JTextField jTextFieldFuncionarioNumeroDaMatricula;
     private javax.swing.JTextField jTextFieldFuncionarioOrgaoExpedidor;
-    private javax.swing.JTextField jTextFieldFuncionarioOrgaoExpedidor1;
     private javax.swing.JTextField jTextFieldFuncionarioRgnumero;
-    private javax.swing.JTextField jTextFieldFuncionarioRgnumero1;
     private javax.swing.JTextField jTextFieldFuncionarioSalario;
     private javax.swing.JTextField jTextFieldFuncionarioSobrenome;
-    private javax.swing.JTextField jTextFieldFuncionarioSobrenome1;
     private javax.swing.JTextField jTextFieldFuncionarioTelefone;
-    private javax.swing.JTextField jTextFieldFuncionarioTelefone1;
     private javax.swing.JTextField jTextFieldLogradouroID;
     private javax.swing.JTextField jTextFieldLogradouroNome;
+    private javax.swing.JTextField jTextFieldSocioApelido;
+    private javax.swing.JTextField jTextFieldSocioBairro;
+    private javax.swing.JTextField jTextFieldSocioCEP;
+    private javax.swing.JTextField jTextFieldSocioCidade;
+    private javax.swing.JTextField jTextFieldSocioEmail;
+    private javax.swing.JTextField jTextFieldSocioID;
+    private javax.swing.JTextField jTextFieldSocioNome;
+    private javax.swing.JTextField jTextFieldSocioNomeMae;
+    private javax.swing.JTextField jTextFieldSocioNomePai;
+    private javax.swing.JTextField jTextFieldSocioNumero;
+    private javax.swing.JTextField jTextFieldSocioNumeroSocio;
+    private javax.swing.JTextField jTextFieldSocioOrgaoExpedidor;
+    private javax.swing.JTextField jTextFieldSocioRgNumero;
+    private javax.swing.JTextField jTextFieldSocioSobrenome;
+    private javax.swing.JTextField jTextFieldSocioTelefone;
     private javax.swing.JTextField jTextFieldTIpoDespesaId;
     private javax.swing.JTextField jTextFieldTIpoDespesaId1;
     private javax.swing.JTextField jTextFieldTaxasID;
