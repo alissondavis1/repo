@@ -54,11 +54,13 @@ public class Contaslog implements Serializable {
     private BigDecimal taxaRelogio;
     @Column(name = "idNumeroSocio")
     private Integer idNumeroSocio;
-    @Column(name = "horaAlteracao")
+    @Column(name = "horaRegristro")
     @Temporal(TemporalType.TIMESTAMP)
-    private Date horaAlteracao;
+    private Date horaRegristro;
     @Column(name = "tipo")
     private String tipo;
+    @Column(name = "usuarioAlteracao")
+    private String usuarioAlteracao;
 
     public Contaslog() {
     }
@@ -131,12 +133,12 @@ public class Contaslog implements Serializable {
         this.idNumeroSocio = idNumeroSocio;
     }
 
-    public Date getHoraAlteracao() {
-        return horaAlteracao;
+    public Date getHoraRegristro() {
+        return horaRegristro;
     }
 
-    public void setHoraAlteracao(Date horaAlteracao) {
-        this.horaAlteracao = horaAlteracao;
+    public void setHoraRegristro(Date horaRegristro) {
+        this.horaRegristro = horaRegristro;
     }
 
     public String getTipo() {
@@ -145,6 +147,14 @@ public class Contaslog implements Serializable {
 
     public void setTipo(String tipo) {
         this.tipo = tipo;
+    }
+
+    public String getUsuarioAlteracao() {
+        return usuarioAlteracao;
+    }
+
+    public void setUsuarioAlteracao(String usuarioAlteracao) {
+        this.usuarioAlteracao = usuarioAlteracao;
     }
 
     @Override

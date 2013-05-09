@@ -53,6 +53,8 @@ public class Saidaslog implements Serializable {
     private Integer idfuncionario;
     @Column(name = "idFuncionarioAltercao")
     private Integer idFuncionarioAltercao;
+    @Column(name = "usuarioAlteracao")
+    private String usuarioAlteracao;
     @Column(name = "idmotivosaida")
     private Integer idmotivosaida;
     @Column(name = "tipo")
@@ -130,6 +132,14 @@ public class Saidaslog implements Serializable {
 
     public void setIdFuncionarioAltercao(Integer idFuncionarioAltercao) {
         this.idFuncionarioAltercao = idFuncionarioAltercao;
+    }
+
+    public String getUsuarioAlteracao() {
+        return usuarioAlteracao;
+    }
+
+    public void setUsuarioAlteracao(String usuarioAlteracao) {
+        this.usuarioAlteracao = usuarioAlteracao;
     }
 
     public Integer getIdmotivosaida() {

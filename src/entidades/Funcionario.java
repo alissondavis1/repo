@@ -17,8 +17,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
-import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -60,7 +62,7 @@ public class Funcionario implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idfuncionario")
     private List<Saida> saidaList;
     @JoinColumn(name = "idPessoa", referencedColumnName = "id")
-    @ManyToOne(optional = false)
+    @OneToOne(optional = false)
     private Pessoa idPessoa;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idFuncionario")
     private List<Entrada> entradaList;

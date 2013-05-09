@@ -58,8 +58,8 @@ public class Entradaslog implements Serializable {
     @Lob
     @Column(name = "observacao")
     private String observacao;
-    @Column(name = "idFuncionarioAlteracao")
-    private Integer idFuncionarioAlteracao;
+    @Column(name = "usuarioAlteracao")
+    private String usuarioAlteracao;
 
     public Entradaslog() {
     }
@@ -148,12 +148,12 @@ public class Entradaslog implements Serializable {
         this.observacao = observacao;
     }
 
-    public Integer getIdFuncionarioAlteracao() {
-        return idFuncionarioAlteracao;
+    public String getUsuarioAlteracao() {
+        return usuarioAlteracao;
     }
 
-    public void setIdFuncionarioAlteracao(Integer idFuncionarioAlteracao) {
-        this.idFuncionarioAlteracao = idFuncionarioAlteracao;
+    public void setUsuarioAlteracao(String usuarioAlteracao) {
+        this.usuarioAlteracao = usuarioAlteracao;
     }
 
     @Override

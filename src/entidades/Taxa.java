@@ -6,7 +6,9 @@ package entidades;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,8 +17,10 @@ import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -25,12 +29,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "taxa")
 @XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Taxa.findAll", query = "SELECT t FROM Taxa t"),
-    @NamedQuery(name = "Taxa.findById", query = "SELECT t FROM Taxa t WHERE t.id = :id"),
-    @NamedQuery(name = "Taxa.findByNome", query = "SELECT t FROM Taxa t WHERE t.nome = :nome"),
-    @NamedQuery(name = "Taxa.findByDescricao", query = "SELECT t FROM Taxa t WHERE t.descricao = :descricao"),
-    @NamedQuery(name = "Taxa.findByValor", query = "SELECT t FROM Taxa t WHERE t.valor = :valor")})
+
 public class Taxa implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -50,6 +49,10 @@ public class Taxa implements Serializable {
     @Basic(optional = false)
     @Column(name = "valor")
     private BigDecimal valor;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "taxaid")
+    private List<Taxasconta> taxascontaList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "taxasId")
+    private List<Categoriasocio> categoriasocioList;
 
     public Taxa() {
     }
@@ -102,6 +105,24 @@ public class Taxa implements Serializable {
 
     public void setValor(BigDecimal valor) {
         this.valor = valor;
+    }
+
+    @XmlTransient
+    public List<Taxasconta> getTaxascontaList() {
+        return taxascontaList;
+    }
+
+    public void setTaxascontaList(List<Taxasconta> taxascontaList) {
+        this.taxascontaList = taxascontaList;
+    }
+
+    @XmlTransient
+    public List<Categoriasocio> getCategoriasocioList() {
+        return categoriasocioList;
+    }
+
+    public void setCategoriasocioList(List<Categoriasocio> categoriasocioList) {
+        this.categoriasocioList = categoriasocioList;
     }
 
     @Override

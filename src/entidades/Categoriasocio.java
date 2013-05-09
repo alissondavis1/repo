@@ -16,6 +16,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -43,7 +45,7 @@ public class Categoriasocio implements Serializable {
     @Column(name = "nome")
     private String nome;
     @JoinColumn(name = "taxasId", referencedColumnName = "id")
-    @ManyToOne
+    @ManyToOne(optional = false)
     private Taxa taxasId;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idCategoriaSocio")
     private List<Socio> socioList;
@@ -123,7 +125,7 @@ public class Categoriasocio implements Serializable {
 
     @Override
     public String toString() {
-        return "entidades.CategoriaSocio[ id=" + id + " ]";
+        return "entidades.Categoriasocio[ id=" + id + " ]";
     }
     
 }

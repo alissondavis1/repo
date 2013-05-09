@@ -5,9 +5,10 @@
 package entidades;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,10 +19,13 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -48,14 +52,13 @@ public class Conta implements Serializable {
     @Lob
     @Column(name = "observacoes")
     private String observacoes;
-    @Column(name = "taxaSocio")
-    private Integer taxaSocio;
-    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
-    //@Column(name = "taxaRelogio")
-    //private BigDecimal taxaRelogio;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "contaid")
+    private List<Taxasconta> taxascontaList;
     @JoinColumn(name = "idNumeroSocio", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Socio idNumeroSocio;
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "conta")
+    private Hidrometro hidrometro;
 
     public Conta() {
     }
@@ -101,21 +104,14 @@ public class Conta implements Serializable {
         this.observacoes = observacoes;
     }
 
-    public Integer getTaxaSocio() {
-        return taxaSocio;
+    @XmlTransient
+    public List<Taxasconta> getTaxascontaList() {
+        return taxascontaList;
     }
 
-    public void setTaxaSocio(Integer taxaSocio) {
-        this.taxaSocio = taxaSocio;
+    public void setTaxascontaList(List<Taxasconta> taxascontaList) {
+        this.taxascontaList = taxascontaList;
     }
-
-//    public BigDecimal getTaxaRelogio() {
-//        return taxaRelogio;
-//    }
-//
-//    public void setTaxaRelogio(BigDecimal taxaRelogio) {
-//        this.taxaRelogio = taxaRelogio;
-//    }
 
     public Socio getIdNumeroSocio() {
         return idNumeroSocio;
@@ -123,6 +119,14 @@ public class Conta implements Serializable {
 
     public void setIdNumeroSocio(Socio idNumeroSocio) {
         this.idNumeroSocio = idNumeroSocio;
+    }
+
+    public Hidrometro getHidrometro() {
+        return hidrometro;
+    }
+
+    public void setHidrometro(Hidrometro hidrometro) {
+        this.hidrometro = hidrometro;
     }
 
     @Override

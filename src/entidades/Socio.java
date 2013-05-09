@@ -17,7 +17,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -58,7 +61,7 @@ public class Socio implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idNumeroSocio")
     private List<Conta> contaList;
     @JoinColumn(name = "idPessoa", referencedColumnName = "id")
-    @ManyToOne(optional = false)
+    @OneToOne(optional = false)
     private Pessoa idPessoa;
     @JoinColumn(name = "idCategoriaSocio", referencedColumnName = "id")
     @ManyToOne(optional = false)

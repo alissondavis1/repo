@@ -57,8 +57,12 @@ public class Chequeslog implements Serializable {
     private BigDecimal valor;
     @Column(name = "idFuncionarioAlteracao")
     private Integer idFuncionarioAlteracao;
+    @Column(name = "idMotivoDepesa")
+    private Integer idMotivoDepesa;
     @Column(name = "tipo")
     private String tipo;
+    @Column(name = "usuariobanco")
+    private String usuariobanco;
 
     public Chequeslog() {
     }
@@ -139,12 +143,28 @@ public class Chequeslog implements Serializable {
         this.idFuncionarioAlteracao = idFuncionarioAlteracao;
     }
 
+    public Integer getIdMotivoDepesa() {
+        return idMotivoDepesa;
+    }
+
+    public void setIdMotivoDepesa(Integer idMotivoDepesa) {
+        this.idMotivoDepesa = idMotivoDepesa;
+    }
+
     public String getTipo() {
         return tipo;
     }
 
     public void setTipo(String tipo) {
         this.tipo = tipo;
+    }
+
+    public String getUsuariobanco() {
+        return usuariobanco;
+    }
+
+    public void setUsuariobanco(String usuariobanco) {
+        this.usuariobanco = usuariobanco;
     }
 
     @Override
