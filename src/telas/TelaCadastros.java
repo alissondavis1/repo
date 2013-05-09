@@ -3311,7 +3311,7 @@ public class TelaCadastros extends javax.swing.JFrame {
                 
                 for(Socio s : socios){
                     
-                    model.addRow(new Object[]{s.getIdPessoa().getNome(), s.getIdPessoa().getSobrenome(), s.getIdPessoa().getCpf(), s.getIdCategoriaSocio().getNome(), s.getIdPessoa().getIdEndereco().getNome(), s.getNumeroSocio()});
+                    model.addRow(new Object[]{s.getId(),s.getIdPessoa().getNome(), s.getIdPessoa().getSobrenome(), s.getIdPessoa().getCpf(), s.getIdCategoriaSocio().getNome(), s.getIdPessoa().getIdEndereco().getNome(), s.getNumeroSocio()});
                     
                 }
                 
@@ -3394,7 +3394,7 @@ public class TelaCadastros extends javax.swing.JFrame {
                 
                 for(Socio s : socios){
                     
-                     model.addRow(new Object[]{s.getIdPessoa().getNome(), s.getIdPessoa().getSobrenome(), s.getIdPessoa().getCpf(), s.getIdCategoriaSocio().getNome(), s.getIdPessoa().getIdEndereco().getNome(), s.getNumeroSocio()});
+                     model.addRow(new Object[]{s.getId(),s.getIdPessoa().getNome(), s.getIdPessoa().getSobrenome(), s.getIdPessoa().getCpf(), s.getIdCategoriaSocio().getNome(), s.getIdPessoa().getIdEndereco().getNome(), s.getNumeroSocio()});
                     
                 }
                 
@@ -4149,9 +4149,9 @@ public class TelaCadastros extends javax.swing.JFrame {
         }else if(pesquisarTable.equals("socios")){
             
             jTable1.setModel(new DefaultTableModel(
-                    new Object[][]{}, new String[]{"Nome","Sobrenome","CPF","Categoria Socio","Logradouro","Numero"}){
+                    new Object[][]{}, new String[]{"ID","Nome","Sobrenome","CPF","Categoria Socio","Logradouro","Numero"}){
                         
-                        Class[] types = new Class[]{String.class, String.class, String.class, String.class, String.class, String.class};
+                        Class[] types = new Class[]{String.class,String.class, String.class, String.class, String.class, String.class, String.class};
                         
                         @Override
                         public Class getColumnClass(int columnIndex){
@@ -4160,7 +4160,7 @@ public class TelaCadastros extends javax.swing.JFrame {
                             
                         }
                         
-                        boolean[] canEdit = new boolean[]{false, false, false, false, false, false};
+                        boolean[] canEdit = new boolean[]{false,false, false, false, false, false, false};
                         
                         @Override
                         public boolean isCellEditable(int rowIndex, int columnIndex){
