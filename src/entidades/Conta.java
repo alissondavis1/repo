@@ -6,7 +6,6 @@ package entidades;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -19,13 +18,11 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -34,7 +31,11 @@ import javax.xml.bind.annotation.XmlTransient;
 @Entity
 @Table(name = "conta")
 @XmlRootElement
-
+@NamedQueries({
+    @NamedQuery(name = "Conta.findAll", query = "SELECT c FROM Conta c"),
+    @NamedQuery(name = "Conta.findById", query = "SELECT c FROM Conta c WHERE c.id = :id"),
+    @NamedQuery(name = "Conta.findByDataPag", query = "SELECT c FROM Conta c WHERE c.dataPag = :dataPag"),
+    @NamedQuery(name = "Conta.findByDataVence", query = "SELECT c FROM Conta c WHERE c.dataVence = :dataVence")})
 public class Conta implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -52,12 +53,10 @@ public class Conta implements Serializable {
     @Lob
     @Column(name = "observacoes")
     private String observacoes;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "contaid")
-    private List<Taxasconta> taxascontaList;
     @JoinColumn(name = "idNumeroSocio", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Socio idNumeroSocio;
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "conta")
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "idconta")
     private Hidrometro hidrometro;
 
     public Conta() {
@@ -102,15 +101,6 @@ public class Conta implements Serializable {
 
     public void setObservacoes(String observacoes) {
         this.observacoes = observacoes;
-    }
-
-    @XmlTransient
-    public List<Taxasconta> getTaxascontaList() {
-        return taxascontaList;
-    }
-
-    public void setTaxascontaList(List<Taxasconta> taxascontaList) {
-        this.taxascontaList = taxascontaList;
     }
 
     public Socio getIdNumeroSocio() {

@@ -4,6 +4,8 @@
  */
 package entidades;
 
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -24,6 +26,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -36,6 +39,8 @@ import javax.xml.bind.annotation.XmlTransient;
 @XmlRootElement
 
 public class Socio implements Serializable {
+    @Transient
+    private PropertyChangeSupport changeSupport = new PropertyChangeSupport(this);
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -87,7 +92,9 @@ public class Socio implements Serializable {
     }
 
     public void setId(Integer id) {
+        Integer oldId = this.id;
         this.id = id;
+        changeSupport.firePropertyChange("id", oldId, id);
     }
 
     public Date getDataVence() {
@@ -95,7 +102,9 @@ public class Socio implements Serializable {
     }
 
     public void setDataVence(Date dataVence) {
+        Date oldDataVence = this.dataVence;
         this.dataVence = dataVence;
+        changeSupport.firePropertyChange("dataVence", oldDataVence, dataVence);
     }
 
     public Date getDataAprovacao() {
@@ -103,7 +112,9 @@ public class Socio implements Serializable {
     }
 
     public void setDataAprovacao(Date dataAprovacao) {
+        Date oldDataAprovacao = this.dataAprovacao;
         this.dataAprovacao = dataAprovacao;
+        changeSupport.firePropertyChange("dataAprovacao", oldDataAprovacao, dataAprovacao);
     }
 
     public Date getDataMatricula() {
@@ -111,7 +122,9 @@ public class Socio implements Serializable {
     }
 
     public void setDataMatricula(Date dataMatricula) {
+        Date oldDataMatricula = this.dataMatricula;
         this.dataMatricula = dataMatricula;
+        changeSupport.firePropertyChange("dataMatricula", oldDataMatricula, dataMatricula);
     }
 
     public int getNumeroSocio() {
@@ -119,7 +132,9 @@ public class Socio implements Serializable {
     }
 
     public void setNumeroSocio(int numeroSocio) {
+        int oldNumeroSocio = this.numeroSocio;
         this.numeroSocio = numeroSocio;
+        changeSupport.firePropertyChange("numeroSocio", oldNumeroSocio, numeroSocio);
     }
 
     public String getObservacao() {
@@ -127,7 +142,9 @@ public class Socio implements Serializable {
     }
 
     public void setObservacao(String observacao) {
+        String oldObservacao = this.observacao;
         this.observacao = observacao;
+        changeSupport.firePropertyChange("observacao", oldObservacao, observacao);
     }
 
     @XmlTransient
@@ -152,7 +169,9 @@ public class Socio implements Serializable {
     }
 
     public void setIdCategoriaSocio(Categoriasocio idCategoriaSocio) {
+        Categoriasocio oldIdCategoriaSocio = this.idCategoriaSocio;
         this.idCategoriaSocio = idCategoriaSocio;
+        changeSupport.firePropertyChange("idCategoriaSocio", oldIdCategoriaSocio, idCategoriaSocio);
     }
 
     @XmlTransient
@@ -187,6 +206,14 @@ public class Socio implements Serializable {
     @Override
     public String toString() {
         return "entidades.Socio[ id=" + id + " ]";
+    }
+
+    public void addPropertyChangeListener(PropertyChangeListener listener) {
+        changeSupport.addPropertyChangeListener(listener);
+    }
+
+    public void removePropertyChangeListener(PropertyChangeListener listener) {
+        changeSupport.removePropertyChangeListener(listener);
     }
     
 }
