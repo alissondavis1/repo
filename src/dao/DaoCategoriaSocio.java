@@ -134,7 +134,7 @@ public class DaoCategoriaSocio implements CategoriaSocioInterface {
 
            sessao = HibernateUtil.getSessionFactory().openSession();
            transacao = sessao.beginTransaction();
-           query = sessao.createQuery("from Categoriasocio where nome = :nome");
+           query = sessao.createQuery("from Categoriasocio where nome like  :nome");
            query.setString("nome","%"+nome+"%");
            categoriaSocio =  query.list();
            transacao.commit(); 

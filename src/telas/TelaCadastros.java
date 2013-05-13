@@ -53,6 +53,7 @@ public class TelaCadastros extends javax.swing.JFrame {
         setEditableComponentesLogradouros(false);
         setEditableComponentesTaxas(false);
         setEditableComponentesSocio(false);
+        setEditableComponentesCategoriaSocio(false);
         jDesktopPane1.setVisible(false);
         jInternalFrame1.setVisible(false);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -101,7 +102,7 @@ public class TelaCadastros extends javax.swing.JFrame {
             case "Receita":
                 jTabbedPane1.setSelectedComponent(jPanelReceitas);
                 break;
-           
+
             case "Taxas":
                 jTabbedPane1.setSelectedComponent(jPanelTaxas);
                 break;
@@ -281,11 +282,11 @@ public class TelaCadastros extends javax.swing.JFrame {
         jButtonSocioCancelar = new javax.swing.JButton();
         jPanelCategoria_Socio = new javax.swing.JPanel();
         jPanel10 = new javax.swing.JPanel();
-        jButtonNovoCategoriaSocio = new javax.swing.JButton();
-        jButtonEditarCategoriaSocio = new javax.swing.JButton();
-        jButtonSalvarCategoriaSocio = new javax.swing.JButton();
-        jButtonApagarCategoriaSocio = new javax.swing.JButton();
-        jButtonCancelarCategoriaSocio = new javax.swing.JButton();
+        jButtonCategoriaSocioNovo = new javax.swing.JButton();
+        jButtonCategoriaSocioEditar = new javax.swing.JButton();
+        jButtonCategoriaSocioSalvar = new javax.swing.JButton();
+        jButtonCategoriaSocioApagar = new javax.swing.JButton();
+        jButtonCategoriaSocioCancelar = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
         jLabel33 = new javax.swing.JLabel();
         jTextFieldCategoriaSocioID = new javax.swing.JTextField();
@@ -295,6 +296,7 @@ public class TelaCadastros extends javax.swing.JFrame {
         jScrollPane5 = new javax.swing.JScrollPane();
         jTextAreaCategoriaSocioDescricao = new javax.swing.JTextArea();
         jLabel36 = new javax.swing.JLabel();
+        jComboBoxCategoriaSocioTaxa = new javax.swing.JComboBox();
         jPanelTipoDespesa = new javax.swing.JPanel();
         jPanel11 = new javax.swing.JPanel();
         jButtonNovoTipoDespesa = new javax.swing.JButton();
@@ -1586,8 +1588,18 @@ public class TelaCadastros extends javax.swing.JFrame {
             });
 
             jButtonSocioSalvar.setText("Salvar");
+            jButtonSocioSalvar.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    jButtonSocioSalvarActionPerformed(evt);
+                }
+            });
 
             jButtonSocioApagar.setText("Apagar");
+            jButtonSocioApagar.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    jButtonSocioApagarActionPerformed(evt);
+                }
+            });
 
             jButtonSocioCancelar.setText("Cancelar");
             jButtonSocioCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -1667,15 +1679,15 @@ public class TelaCadastros extends javax.swing.JFrame {
 
             jPanel10.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-            jButtonNovoCategoriaSocio.setText("Novo");
+            jButtonCategoriaSocioNovo.setText("Novo");
 
-            jButtonEditarCategoriaSocio.setText("Editar");
+            jButtonCategoriaSocioEditar.setText("Editar");
 
-            jButtonSalvarCategoriaSocio.setText("Salvar");
+            jButtonCategoriaSocioSalvar.setText("Salvar");
 
-            jButtonApagarCategoriaSocio.setText("Apagar");
+            jButtonCategoriaSocioApagar.setText("Apagar");
 
-            jButtonCancelarCategoriaSocio.setText("Cancelar");
+            jButtonCategoriaSocioCancelar.setText("Cancelar");
 
             javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
             jPanel10.setLayout(jPanel10Layout);
@@ -1683,34 +1695,34 @@ public class TelaCadastros extends javax.swing.JFrame {
                 jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel10Layout.createSequentialGroup()
                     .addGap(182, 182, 182)
-                    .addComponent(jButtonNovoCategoriaSocio)
+                    .addComponent(jButtonCategoriaSocioNovo)
                     .addGap(10, 10, 10)
-                    .addComponent(jButtonEditarCategoriaSocio)
+                    .addComponent(jButtonCategoriaSocioEditar)
                     .addGap(10, 10, 10)
-                    .addComponent(jButtonApagarCategoriaSocio)
+                    .addComponent(jButtonCategoriaSocioApagar)
                     .addGap(10, 10, 10)
-                    .addComponent(jButtonSalvarCategoriaSocio)
+                    .addComponent(jButtonCategoriaSocioSalvar)
                     .addGap(10, 10, 10)
-                    .addComponent(jButtonCancelarCategoriaSocio)
+                    .addComponent(jButtonCategoriaSocioCancelar)
                     .addContainerGap(272, Short.MAX_VALUE))
             );
 
-            jPanel10Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButtonApagarCategoriaSocio, jButtonCancelarCategoriaSocio, jButtonEditarCategoriaSocio, jButtonNovoCategoriaSocio, jButtonSalvarCategoriaSocio});
+            jPanel10Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButtonCategoriaSocioApagar, jButtonCategoriaSocioCancelar, jButtonCategoriaSocioEditar, jButtonCategoriaSocioNovo, jButtonCategoriaSocioSalvar});
 
             jPanel10Layout.setVerticalGroup(
                 jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel10Layout.createSequentialGroup()
                     .addGap(10, 10, 10)
                     .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButtonNovoCategoriaSocio)
-                        .addComponent(jButtonEditarCategoriaSocio)
-                        .addComponent(jButtonApagarCategoriaSocio)
-                        .addComponent(jButtonCancelarCategoriaSocio)
-                        .addComponent(jButtonSalvarCategoriaSocio))
+                        .addComponent(jButtonCategoriaSocioNovo)
+                        .addComponent(jButtonCategoriaSocioEditar)
+                        .addComponent(jButtonCategoriaSocioApagar)
+                        .addComponent(jButtonCategoriaSocioCancelar)
+                        .addComponent(jButtonCategoriaSocioSalvar))
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             );
 
-            jPanel10Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jButtonApagarCategoriaSocio, jButtonCancelarCategoriaSocio, jButtonEditarCategoriaSocio, jButtonNovoCategoriaSocio, jButtonSalvarCategoriaSocio});
+            jPanel10Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jButtonCategoriaSocioApagar, jButtonCategoriaSocioCancelar, jButtonCategoriaSocioEditar, jButtonCategoriaSocioNovo, jButtonCategoriaSocioSalvar});
 
             jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder("Categoria Sócio"));
 
@@ -1718,6 +1730,7 @@ public class TelaCadastros extends javax.swing.JFrame {
 
             jTextFieldCategoriaSocioID.setEnabled(false);
 
+            jLabel34.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
             jLabel34.setText("Nome");
 
             jLabel35.setText("Descrição");
@@ -1726,6 +1739,7 @@ public class TelaCadastros extends javax.swing.JFrame {
             jTextAreaCategoriaSocioDescricao.setRows(5);
             jScrollPane5.setViewportView(jTextAreaCategoriaSocioDescricao);
 
+            jLabel36.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
             jLabel36.setText("Taxa");
 
             javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
@@ -1740,17 +1754,19 @@ public class TelaCadastros extends javax.swing.JFrame {
                     .addGap(67, 67, 67))
                 .addGroup(jPanel7Layout.createSequentialGroup()
                     .addGap(32, 32, 32)
-                    .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel35)
-                        .addComponent(jLabel34))
+                    .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jLabel35, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel34, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGap(18, 18, 18)
                     .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel7Layout.createSequentialGroup()
                             .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(71, 71, 71)
-                            .addComponent(jLabel36))
+                            .addComponent(jLabel36)
+                            .addGap(18, 18, 18)
+                            .addComponent(jComboBoxCategoriaSocioTaxa, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(jTextFieldCategoriaSocioNome, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addContainerGap(356, Short.MAX_VALUE))
+                    .addContainerGap(253, Short.MAX_VALUE))
             );
             jPanel7Layout.setVerticalGroup(
                 jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1763,11 +1779,13 @@ public class TelaCadastros extends javax.swing.JFrame {
                     .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel34)
                         .addComponent(jTextFieldCategoriaSocioNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(55, 55, 55)
+                    .addGap(52, 52, 52)
                     .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jLabel35)
                         .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel36))
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel36)
+                            .addComponent(jComboBoxCategoriaSocioTaxa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addContainerGap(79, Short.MAX_VALUE))
             );
 
@@ -1784,7 +1802,7 @@ public class TelaCadastros extends javax.swing.JFrame {
                     .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                     .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(750, Short.MAX_VALUE))
+                    .addContainerGap(753, Short.MAX_VALUE))
             );
 
             jTabbedPane1.addTab("Categoria Sócio", jPanelCategoria_Socio);
@@ -2963,7 +2981,7 @@ public class TelaCadastros extends javax.swing.JFrame {
 
     private void jButtonFuncionarioEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFuncionarioEditarActionPerformed
 
-       // JOptionPane.showMessageDialog(this, "Você está em modo de edição, as informações só serão gravadas depois de clicar em salvar!");
+        // JOptionPane.showMessageDialog(this, "Você está em modo de edição, as informações só serão gravadas depois de clicar em salvar!");
         editableTextFields(true);
         jButtonFuncionarioSalvar.setEnabled(true);
         jButtonFuncionarioCancelar.setEnabled(true);
@@ -2995,7 +3013,7 @@ public class TelaCadastros extends javax.swing.JFrame {
     private void jButtonFuncionarioSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFuncionarioSalvarActionPerformed
 
 
-        if (iscamposFuncionáriosPreenchidos()) {
+        if (isCamposFuncionariosPreenchidos()) {
 
             if (jTextFieldFuncionarioID.getText().equals("")) {
                 int op = JOptionPane.showConfirmDialog(this, "Tem certeza que deseja gravar os dados?", "Salvar", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
@@ -3065,9 +3083,9 @@ public class TelaCadastros extends javax.swing.JFrame {
                             f.setDataContratacao(c.getTime());
                         }
 
-                        
+
                         f.setIdPessoa(p);
-                       
+
                         p.setFuncionario(f);
 
 
@@ -3131,7 +3149,7 @@ public class TelaCadastros extends javax.swing.JFrame {
                             p.setRgEmissao(c.getTime());
                         }
 
-                       List<Endereco> ends = new DaoEndereco().BuscarEnderecoNomeLike((String) jComboBoxFuncionarioLograduro.getSelectedItem());
+                        List<Endereco> ends = new DaoEndereco().BuscarEnderecoNomeLike((String) jComboBoxFuncionarioLograduro.getSelectedItem());
                         if (!ends.isEmpty()) {
                             p.setIdEndereco(ends.get(0));
                         }
@@ -3182,7 +3200,7 @@ public class TelaCadastros extends javax.swing.JFrame {
             }
 
 
-        } 
+        }
 
     }//GEN-LAST:event_jButtonFuncionarioSalvarActionPerformed
 
@@ -3205,27 +3223,27 @@ public class TelaCadastros extends javax.swing.JFrame {
                 jButtonLogradouroCancelar.setEnabled(true);
                 jButtonLogradouroEditar.setEnabled(true);
 
-            }else if(pesquisarTable.equals("taxas")){
-                
-                
+            } else if (pesquisarTable.equals("taxas")) {
+
+
                 limparCamposTaxas();
                 preencherCamposTaxas(new DaoTaxa().TaxaPorId((Integer) jTable1.getValueAt(jTable1.getSelectedRow(), 0)));
-                
+
                 jButtonTaxaApagar.setEnabled(true);
                 jButtonTaxaCancelar.setEnabled(true);
                 jButtonTaxaEditar.setEnabled(true);
-                
-            }else if(pesquisarTable.equals("socios")){
-                
+
+            } else if (pesquisarTable.equals("socios")) {
+
                 limparCamposSocio();
-                
-                
+
+
                 preencherCamposSocio(new DaoSocio().BuscarSocioId((Integer) jTable1.getValueAt(jTable1.getSelectedRow(), 0)));
                 jButtonSocioApagar.setEnabled(true);
                 jButtonSocioCancelar.setEnabled(true);
                 jButtonSocioEditar.setEnabled(true);
-                
-                
+
+
             }
 
 
@@ -3250,7 +3268,7 @@ public class TelaCadastros extends javax.swing.JFrame {
 
             preencherTabelaComTodos();
 
-        } 
+        }
 
     }//GEN-LAST:event_jTextField2ActionPerformed
 
@@ -3258,7 +3276,7 @@ public class TelaCadastros extends javax.swing.JFrame {
         DefaultTableModel model;
         if (pesquisarTable.equals("funcionarios")) {
             ArrayList<Funcionario> f1 = (ArrayList) new DaoFuncionario().BuscarFuncionarioLikeNome(jTextField2.getText());
-            
+
             model = (DefaultTableModel) jTable1.getModel();
             model.setRowCount(0);
 
@@ -3293,45 +3311,45 @@ public class TelaCadastros extends javax.swing.JFrame {
             }
 
 
-        }else if(pesquisarTable.equals("taxas")){
-            
-            ArrayList<Taxa> taxas = (ArrayList)new DaoTaxa().BuscarTaxaNomeLike(jTextField2.getText());
+        } else if (pesquisarTable.equals("taxas")) {
+
+            ArrayList<Taxa> taxas = (ArrayList) new DaoTaxa().BuscarTaxaNomeLike(jTextField2.getText());
             model = (DefaultTableModel) jTable1.getModel();
             model.setRowCount(0);
-            if(!taxas.isEmpty()){
-                
-                for(Taxa t : taxas){
-                    
-                    model.addRow(new Object[]{t.getId(),t.getNome(),t.getDescricao(),t.getValor()});
-                    
+            if (!taxas.isEmpty()) {
+
+                for (Taxa t : taxas) {
+
+                    model.addRow(new Object[]{t.getId(), t.getNome(), t.getDescricao(), t.getValor()});
+
                 }
-                
-            }else{
-                
-                 JOptionPane.showMessageDialog(this, "Taxa não encontrada", "Atenção", JOptionPane.INFORMATION_MESSAGE);
+
+            } else {
+
+                JOptionPane.showMessageDialog(this, "Taxa não encontrada", "Atenção", JOptionPane.INFORMATION_MESSAGE);
             }
-        
-        }else if(pesquisarTable.equals("socios")){
-            
+
+        } else if (pesquisarTable.equals("socios")) {
+
             ArrayList<Socio> socios = (ArrayList) new DaoSocio().SociosPorNomeLike(jTextField2.getText());
-            model = (DefaultTableModel)jTable1.getModel();
+            model = (DefaultTableModel) jTable1.getModel();
             model.setRowCount(0);
-            if(!socios.isEmpty()){
-                
-                for(Socio s : socios){
-                    
-                    model.addRow(new Object[]{s.getId(),s.getIdPessoa().getNome(), s.getIdPessoa().getSobrenome(), s.getIdPessoa().getCpf(), s.getIdCategoriaSocio().getNome(), s.getIdPessoa().getIdEndereco().getNome(), s.getNumeroSocio()});
-                    
+            if (!socios.isEmpty()) {
+
+                for (Socio s : socios) {
+
+                    model.addRow(new Object[]{s.getId(), s.getIdPessoa().getNome(), s.getIdPessoa().getSobrenome(), s.getIdPessoa().getCpf(), s.getIdCategoriaSocio().getNome(), s.getIdPessoa().getIdEndereco().getNome(), s.getNumeroSocio()});
+
                 }
-                
-            }else{
-                
-               JOptionPane.showMessageDialog(this, "Sócio não encontrado", "Atenção", JOptionPane.INFORMATION_MESSAGE); 
-        
+
+            } else {
+
+                JOptionPane.showMessageDialog(this, "Sócio não encontrado", "Atenção", JOptionPane.INFORMATION_MESSAGE);
+
             }
-            
-            
-            
+
+
+
         }
 
     }
@@ -3375,45 +3393,45 @@ public class TelaCadastros extends javax.swing.JFrame {
 
 
 
-        }else if(pesquisarTable.equals("taxas")){
-            
+        } else if (pesquisarTable.equals("taxas")) {
+
             ArrayList<Taxa> taxas = (ArrayList) new DaoTaxa().TaxasTodas();
             model = (DefaultTableModel) jTable1.getModel();
             model.setRowCount(0);
-            
-            if(!taxas.isEmpty()){
-                
-                for(Taxa t: taxas){
-                model.addRow(new Object[]{t.getId(), t.getNome(), t.getDescricao(), t.getValor()});
+
+            if (!taxas.isEmpty()) {
+
+                for (Taxa t : taxas) {
+                    model.addRow(new Object[]{t.getId(), t.getNome(), t.getDescricao(), t.getValor()});
                 }
-            }else{
-                  JOptionPane.showMessageDialog(this, "A tabela de Taxas está vazia", "Erro", JOptionPane.ERROR_MESSAGE);
-                
-        }
-            
-            
-        }else if(pesquisarTable.equals("socios")){
-            
-            
-            List<Socio> socios =  new DaoSocio().TodosOsSocios();
+            } else {
+                JOptionPane.showMessageDialog(this, "A tabela de Taxas está vazia", "Erro", JOptionPane.ERROR_MESSAGE);
+
+            }
+
+
+        } else if (pesquisarTable.equals("socios")) {
+
+
+            List<Socio> socios = new DaoSocio().TodosOsSocios();
             model = (DefaultTableModel) jTable1.getModel();
             model.setRowCount(0);
-            
-            if(!socios.isEmpty()){
-                
-                for(Socio s : socios){
-                    
-                     model.addRow(new Object[]{s.getId(),s.getIdPessoa().getNome(), s.getIdPessoa().getSobrenome(), s.getIdPessoa().getCpf(), s.getIdCategoriaSocio().getNome(), s.getIdPessoa().getIdEndereco().getNome(), s.getNumeroSocio()});
-                    
+
+            if (!socios.isEmpty()) {
+
+                for (Socio s : socios) {
+
+                    model.addRow(new Object[]{s.getId(), s.getIdPessoa().getNome(), s.getIdPessoa().getSobrenome(), s.getIdPessoa().getCpf(), s.getIdCategoriaSocio().getNome(), s.getIdPessoa().getIdEndereco().getNome(), s.getNumeroSocio()});
+
                 }
-                
-                
-            }else{
-                
-                 JOptionPane.showMessageDialog(this, "A tabela de Sócios está vazia", "Erro", JOptionPane.ERROR_MESSAGE);
-                
+
+
+            } else {
+
+                JOptionPane.showMessageDialog(this, "A tabela de Sócios está vazia", "Erro", JOptionPane.ERROR_MESSAGE);
+
             }
-            
+
         }
 
 
@@ -3429,7 +3447,7 @@ public class TelaCadastros extends javax.swing.JFrame {
         } else if (jTextField2.getText().equals("")) {
 
             preencherTabelaComTodos();
-        } 
+        }
     }//GEN-LAST:event_jButtonPesquisaActionPerformed
 
     private void jButtonInternalFrameVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInternalFrameVoltarActionPerformed
@@ -3548,24 +3566,24 @@ public class TelaCadastros extends javax.swing.JFrame {
             }
             jTabbedPane1.setSelectedComponent(jPanelLog);
 
-        }else if(!jButtonTaxaNovo.isEnabled() || !jTextFieldTaxasID.getText().equals("")){
-            
-            if(jTabbedPane1.getSelectedComponent() != jPanelTaxas){
-              
-                 JOptionPane.showMessageDialog(this, "Cancele a operação ", "Atenção", JOptionPane.INFORMATION_MESSAGE);
-                
+        } else if (!jButtonTaxaNovo.isEnabled() || !jTextFieldTaxasID.getText().equals("")) {
+
+            if (jTabbedPane1.getSelectedComponent() != jPanelTaxas) {
+
+                JOptionPane.showMessageDialog(this, "Cancele a operação ", "Atenção", JOptionPane.INFORMATION_MESSAGE);
+
             }
             jTabbedPane1.setSelectedComponent(jPanelTaxas);
-            
-        }else if(!jButtonSocioNovo.isEnabled() || !jTextFieldSocioID.getText().equals("")){
-            
-            if(jTabbedPane1.getSelectedComponent() != jPanelSocio){
-                
-                  JOptionPane.showMessageDialog(this, "Cancele a operação ", "Atenção", JOptionPane.INFORMATION_MESSAGE);
-                
+
+        } else if (!jButtonSocioNovo.isEnabled() || !jTextFieldSocioID.getText().equals("")) {
+
+            if (jTabbedPane1.getSelectedComponent() != jPanelSocio) {
+
+                JOptionPane.showMessageDialog(this, "Cancele a operação ", "Atenção", JOptionPane.INFORMATION_MESSAGE);
+
             }
             jTabbedPane1.setSelectedComponent(jPanelSocio);
-            
+
         }
 
     }//GEN-LAST:event_jTabbedPane1StateChanged
@@ -3636,68 +3654,69 @@ public class TelaCadastros extends javax.swing.JFrame {
 
     private void jButtonTaxaSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTaxaSalvarActionPerformed
 
-      try{  if (!jTextFieldTaxasNome.getText().equals("") && !jTextFieldTaxasValor.getText().equals("")) {
+        try {
+            if (!jTextFieldTaxasNome.getText().equals("") && !jTextFieldTaxasValor.getText().equals("")) {
 
-            Pattern p = Pattern.compile("\\d+\\.?\\d+");
-            Matcher m = p.matcher(jTextFieldTaxasValor.getText());
-            if (jTextFieldTaxasID.getText().equals("")) {
+                Pattern p = Pattern.compile("\\d+\\.?\\d+");
+                Matcher m = p.matcher(jTextFieldTaxasValor.getText());
+                if (jTextFieldTaxasID.getText().equals("")) {
 
-                int op = JOptionPane.showConfirmDialog(this,"Tem certeza que deseja gravar o registro?","Atenção",JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-                if(op == JOptionPane.YES_OPTION){
-                if (m.find()) {
+                    int op = JOptionPane.showConfirmDialog(this, "Tem certeza que deseja gravar o registro?", "Atenção", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+                    if (op == JOptionPane.YES_OPTION) {
+                        if (m.find()) {
 
-                    Taxa taxa = new Taxa();
-                    taxa.setNome(jTextFieldTaxasNome.getText());
-                    taxa.setValor(BigDecimal.valueOf(Double.parseDouble(jTextFieldTaxasValor.getText())));
-                    taxa.setDescricao(jTextAreaTaxasDescricao.getText());
+                            Taxa taxa = new Taxa();
+                            taxa.setNome(jTextFieldTaxasNome.getText());
+                            taxa.setValor(BigDecimal.valueOf(Double.parseDouble(jTextFieldTaxasValor.getText())));
+                            taxa.setDescricao(jTextAreaTaxasDescricao.getText());
 
-                    new DaoTaxa().AdicionarTaxa(taxa);
-                    JOptionPane.showMessageDialog(this,"Dados gravados com sucesso","Atenção",JOptionPane.INFORMATION_MESSAGE);
-                    jButtonTaxaCancelarActionPerformed(evt);        
+                            new DaoTaxa().AdicionarTaxa(taxa);
+                            JOptionPane.showMessageDialog(this, "Dados gravados com sucesso", "Atenção", JOptionPane.INFORMATION_MESSAGE);
+                            jButtonTaxaCancelarActionPerformed(evt);
+                        } else {
+
+                            JOptionPane.showMessageDialog(this, "Números monetários devem ser separados por ponto", "Erro", JOptionPane.ERROR_MESSAGE);
+                        }
+                    }
                 } else {
 
-                    JOptionPane.showMessageDialog(this, "Números monetários devem ser separados por ponto", "Erro", JOptionPane.ERROR_MESSAGE);
-                }
-                }
-            } else {
-                
-                int op = JOptionPane.showConfirmDialog(this,"Tem certeza que deseja gravar a edição do registro?","Atenção",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
-                if(op == JOptionPane.YES_OPTION){
-                    
-                    if(m.find()){
-                        
-                        Taxa taxa = new DaoTaxa().TaxaPorId(Integer.parseInt(jTextFieldTaxasID.getText()));
-                        taxa.setNome(jTextFieldTaxasNome.getText());
-                        taxa.setValor(BigDecimal.valueOf(Double.parseDouble(jTextFieldTaxasValor.getText())));
-                        taxa.setDescricao(jTextAreaTaxasDescricao.getText());
-                        
-                        new DaoTaxa().AlterarTaxa(taxa);
-                        JOptionPane.showMessageDialog(this,"Dados gravados com sucesso","Atenção",JOptionPane.INFORMATION_MESSAGE);
-                        jButtonTaxaCancelarActionPerformed(evt);        
-                    }else{
-                        
-                         JOptionPane.showMessageDialog(this, "Números monetários devem ser separados por ponto", "Erro", JOptionPane.ERROR_MESSAGE);
+                    int op = JOptionPane.showConfirmDialog(this, "Tem certeza que deseja gravar a edição do registro?", "Atenção", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+                    if (op == JOptionPane.YES_OPTION) {
+
+                        if (m.find()) {
+
+                            Taxa taxa = new DaoTaxa().TaxaPorId(Integer.parseInt(jTextFieldTaxasID.getText()));
+                            taxa.setNome(jTextFieldTaxasNome.getText());
+                            taxa.setValor(BigDecimal.valueOf(Double.parseDouble(jTextFieldTaxasValor.getText())));
+                            taxa.setDescricao(jTextAreaTaxasDescricao.getText());
+
+                            new DaoTaxa().AlterarTaxa(taxa);
+                            JOptionPane.showMessageDialog(this, "Dados gravados com sucesso", "Atenção", JOptionPane.INFORMATION_MESSAGE);
+                            jButtonTaxaCancelarActionPerformed(evt);
+                        } else {
+
+                            JOptionPane.showMessageDialog(this, "Números monetários devem ser separados por ponto", "Erro", JOptionPane.ERROR_MESSAGE);
+                        }
+
                     }
-                    
                 }
+
+            } else {
+
+                JOptionPane.showMessageDialog(this, "Os campos em negrito são obrigatórios", "Atenção", JOptionPane.INFORMATION_MESSAGE);
+
             }
+        } catch (Exception e) {
 
-        } else {
-
-            JOptionPane.showMessageDialog(this, "Os campos em negrito são obrigatórios", "Atenção", JOptionPane.INFORMATION_MESSAGE);
-
+            JOptionPane.showMessageDialog(this, "Erro ao gravar os dados", "Erro", JOptionPane.ERROR_MESSAGE);
+            e.printStackTrace();
         }
-      }catch(Exception e){
-          
-          JOptionPane.showMessageDialog(this,"Erro ao gravar os dados","Erro",JOptionPane.ERROR_MESSAGE);
-          e.printStackTrace();
-      }
 
     }//GEN-LAST:event_jButtonTaxaSalvarActionPerformed
 
     private void jButtonTaxasPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTaxasPesquisarActionPerformed
-        
-         if (jButtonLogradouroNovo.isEnabled()) {
+
+        if (jButtonLogradouroNovo.isEnabled()) {
 
             pesquisarTable = "taxas";
             mostrarJtable();
@@ -3706,103 +3725,314 @@ public class TelaCadastros extends javax.swing.JFrame {
 
             JOptionPane.showMessageDialog(this, "Cancele a operação para fazer uma pesquisa", "Atenção", JOptionPane.INFORMATION_MESSAGE);
         }
-        
+
     }//GEN-LAST:event_jButtonTaxasPesquisarActionPerformed
 
     private void jButtonTaxaApagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTaxaApagarActionPerformed
-      
-        try{
-        int op = JOptionPane.showConfirmDialog(this,"Tem certeza que deseja apagar o registro?","Atençao",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
-        if(op == JOptionPane.YES_OPTION){
-            
-            Taxa taxa = new DaoTaxa().TaxaPorId(Integer.parseInt(jTextFieldTaxasID.getText()));
-            new DaoTaxa().ApagarTaxa(taxa);
-            
-            JOptionPane.showMessageDialog(this,"Taxa excluida com sucesso!","Atenção",JOptionPane.INFORMATION_MESSAGE);
-            
-            jButtonTaxaCancelarActionPerformed(evt);
-            
+
+        try {
+            int op = JOptionPane.showConfirmDialog(this, "Tem certeza que deseja apagar o registro?", "Atençao", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+            if (op == JOptionPane.YES_OPTION) {
+
+                Taxa taxa = new DaoTaxa().TaxaPorId(Integer.parseInt(jTextFieldTaxasID.getText()));
+                new DaoTaxa().ApagarTaxa(taxa);
+
+                JOptionPane.showMessageDialog(this, "Taxa excluida com sucesso!", "Atenção", JOptionPane.INFORMATION_MESSAGE);
+
+                jButtonTaxaCancelarActionPerformed(evt);
+
+            }
+        } catch (Exception e) {
+
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Erro para excluir o registro", "Erro", JOptionPane.ERROR_MESSAGE);
         }
-        }catch(Exception e){
-        
-        e.printStackTrace();
-        JOptionPane.showMessageDialog(this,"Erro para excluir o registro","Erro",JOptionPane.ERROR_MESSAGE);
-    }
     }//GEN-LAST:event_jButtonTaxaApagarActionPerformed
 
     private void jButtonSocioNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSocioNovoActionPerformed
-       
+
         limparCamposSocio();
         setEditableComponentesSocio(true);
         jButtonSocioApagar.setEnabled(false);
         jButtonSocioEditar.setEnabled(false);
         jButtonSocioNovo.setEnabled(false);
-        
-        
-        if(jComboBoxSocioLogradouro.getItemCount() == 0){
-            
+
+
+        if (jComboBoxSocioLogradouro.getItemCount() == 0) {
+
             jComboBoxSocioLogradouro.addItem("");
             List<Endereco> end = new DaoEndereco().BuscarTodosEnderecos();
-            for(Endereco e : end){
-                
+            for (Endereco e : end) {
+
                 jComboBoxSocioLogradouro.addItem(e.getNome());
-                
-                
+
+
             }
-            
-            
+
+
         }
-        if(jComboBoxSocioCategoriaSocio.getItemCount() == 0){
-            
+        if (jComboBoxSocioCategoriaSocio.getItemCount() == 0) {
+
             jComboBoxSocioCategoriaSocio.addItem("");
             List<Categoriasocio> cs = new DaoCategoriaSocio().BuscarTodasCategorias();
-            for(Categoriasocio c : cs){
-                
+            for (Categoriasocio c : cs) {
+
                 jComboBoxSocioCategoriaSocio.addItem(c.getNome());
-                
+
             }
-            
+
         }
         jComboBoxSocioLogradouro.setSelectedItem("");
         jComboBoxSocioCategoriaSocio.setSelectedItem("");
-        
+
     }//GEN-LAST:event_jButtonSocioNovoActionPerformed
 
     private void jButtonSocioCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSocioCancelarActionPerformed
-        
+
         limparCamposSocio();
         setEditableComponentesSocio(false);
         jButtonSocioNovo.setEnabled(true);
-        
-        
+
+
     }//GEN-LAST:event_jButtonSocioCancelarActionPerformed
 
     private void jButtonSocioEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSocioEditarActionPerformed
-       
-        
+
+
         setEditableComponentesSocio(true);
         jButtonSocioEditar.setEnabled(false);
         jButtonSocioApagar.setEnabled(false);
         jButtonSocioNovo.setEnabled(false);
-        
+
     }//GEN-LAST:event_jButtonSocioEditarActionPerformed
 
     private void jButtonSocioPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSocioPesquisarActionPerformed
-        
-      if(jButtonSocioNovo.isEnabled()){
-        pesquisarTable = "socios";
-        mostrarJtable();
-        
-      }else{
-          
-           JOptionPane.showMessageDialog(this, "Cancele a operação para fazer uma pesquisa", "Atenção", JOptionPane.INFORMATION_MESSAGE);
-      }
-        
+
+        if (jButtonSocioNovo.isEnabled()) {
+            pesquisarTable = "socios";
+            mostrarJtable();
+
+        } else {
+
+            JOptionPane.showMessageDialog(this, "Cancele a operação para fazer uma pesquisa", "Atenção", JOptionPane.INFORMATION_MESSAGE);
+        }
+
     }//GEN-LAST:event_jButtonSocioPesquisarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-      JOptionPane.showMessageDialog(this, "BB!!","Tela",JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(this, "BB!!", "Tela", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButtonSocioSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSocioSalvarActionPerformed
+
+        if (isCamposSocioPreenchidos()) {
+            Calendar c = Calendar.getInstance();
+            Pattern p1 = Pattern.compile("\\d{2}\\/\\d{2}\\/\\d{4}");;
+            Matcher m;
+            if (jTextFieldSocioID.getText().equals("")) {
+
+                int op = JOptionPane.showConfirmDialog(this, "Tem certeza que deseja gravar os dados?", "Salvar", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+                if (op == JOptionPane.YES_OPTION) {
+
+                   try{
+                       Pessoa p = new Pessoa();
+                       
+                       p.setNome(jTextFieldSocioNome.getText());
+                       p.setSobrenome(jTextFieldSocioSobrenome.getText());
+                       p.setApelido(jTextFieldSocioApelido.getText());
+                       p.setTelefone(jTextFieldSocioTelefone.getText());
+                       p.setEmail(jTextFieldSocioEmail.getText());
+                       p.setNomeMae(jTextFieldSocioNomeMae.getText());
+                       p.setNomePai(jTextFieldSocioNomePai.getText());
+                       p.setRgNumero(jTextFieldSocioRgNumero.getText());
+                       p.setRgExpedidor(jTextFieldSocioOrgaoExpedidor.getText());
+                       p.setNumeroEndereco(jTextFieldSocioNumero.getText());
+                       p.setCidade(jTextFieldSocioCidade.getText());
+                       p.setBairro(jTextFieldSocioBairro.getText());
+                       p.setCep(jTextFieldSocioCEP.getText());
+                     
+                       if(p1.matcher(jFormattedTextFieldSocioDataNascimento.getText()).find()){
+                           
+                          String[] dataNascimento = jFormattedTextFieldSocioDataNascimento.getText().split("/");
+                          c.set(Integer.parseInt(dataNascimento[2]), Integer.parseInt(dataNascimento[1]), Integer.parseInt(dataNascimento[0]));
+                          p.setDataNasc(c.getTime()); 
+                       }
+                       p.setCpf(jFormattedTextFieldSocioCPF.getText());
+                       if(p1.matcher(jFormattedTextFieldSocioDataEmissao.getText()).find()){
+                           
+                          String[] dataEmissao = jFormattedTextFieldSocioDataEmissao.getText().split("/");
+                          c.set(Integer.parseInt(dataEmissao[2]), Integer.parseInt(dataEmissao[1]), Integer.parseInt(dataEmissao[0]));
+                          p.setRgEmissao(c.getTime()); 
+                       }
+                       p.setSexo((String)jComboBoxSocioSexo.getSelectedItem());
+                       p.setUf((String)jComboBoxSocioUF.getSelectedItem());
+                       
+                       List<Endereco> e = new DaoEndereco().BuscarEnderecoNomeLike((String)jComboBoxSocioLogradouro.getSelectedItem());
+                       if(!e.isEmpty()){
+                       p.setIdEndereco(e.get(0));
+                       }
+                       
+                       if(jRadioButtonSocioAtivo.isSelected()){
+                           
+                           p.setStatus(true);
+                       }else{
+                           
+                           p.setStatus(false);
+                       }
+                       
+                       Socio s = new Socio();
+                       
+                       String[] dataVencimento = jFormattedTextFieldSocioDiaVencimento.getText().split("/");
+                       c.set(Integer.parseInt(dataVencimento[2]), Integer.parseInt(dataVencimento[1]), Integer.parseInt(dataVencimento[0]));
+                       s.setDataVence(c.getTime());
+                       
+                       String[] dataMatricula = jFormattedTextFieldSocioDataMatricula.getText().split("/");
+                       c.set(Integer.parseInt(dataMatricula[2]), Integer.parseInt(dataMatricula[1]), Integer.parseInt(dataMatricula[0]));
+                       s.setDataMatricula(c.getTime());
+                       
+                       s.setNumeroSocio(Integer.parseInt(jTextFieldSocioNumeroSocio.getText()));
+                       List<Categoriasocio> cs = new DaoCategoriaSocio().BuscarCategoriaPorNomeLike((String)jComboBoxSocioCategoriaSocio.getSelectedItem());
+                       if(!cs.isEmpty()){
+                         
+                           s.setIdCategoriaSocio(cs.get(0));
+                       }
+                       
+                       s.setIdPessoa(p);
+                       p.setSocio(s);
+                       
+                       new DaoPessoa().AdicionarPessoa(p);
+                       
+                       jButtonSocioCancelarActionPerformed(evt);
+                       JOptionPane.showMessageDialog(this, "Dados gravados com Sucesso!", "Salvar", JOptionPane.INFORMATION_MESSAGE);
+                       
+
+                   }catch(Exception e){
+                           
+                    JOptionPane.showMessageDialog(this, "Erro para gravar os dados, verifique se todos os campos estão preenchidos corretamente", "ERRO", JOptionPane.ERROR_MESSAGE);
+                    e.printStackTrace();   
+                   
+                   }
+                }
+            } else {
+                int op = JOptionPane.showConfirmDialog(this, "Tem certeza que deseja gravar a edição desse registro?", "Salvar", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+                if(op == JOptionPane.YES_OPTION){
+                    
+                    try{
+                        
+                        Socio s = new DaoSocio().BuscarSocioId(Integer.parseInt(jTextFieldSocioID.getText()));
+                        Pessoa p = s.getIdPessoa();
+                       
+                       p.setNome(jTextFieldSocioNome.getText());
+                       p.setSobrenome(jTextFieldSocioSobrenome.getText());
+                       p.setApelido(jTextFieldSocioApelido.getText());
+                       p.setTelefone(jTextFieldSocioTelefone.getText());
+                       p.setEmail(jTextFieldSocioEmail.getText());
+                       p.setNomeMae(jTextFieldSocioNomeMae.getText());
+                       p.setNomePai(jTextFieldSocioNomePai.getText());
+                       p.setRgNumero(jTextFieldSocioRgNumero.getText());
+                       p.setRgExpedidor(jTextFieldSocioOrgaoExpedidor.getText());
+                       p.setNumeroEndereco(jTextFieldSocioNumero.getText());
+                       p.setCidade(jTextFieldSocioCidade.getText());
+                       p.setBairro(jTextFieldSocioBairro.getText());
+                       p.setCep(jTextFieldSocioCEP.getText());
+                     
+                       if(p1.matcher(jFormattedTextFieldSocioDataNascimento.getText()).find()){
+                           
+                          String[] dataNascimento = jFormattedTextFieldSocioDataNascimento.getText().split("/");
+                          c.set(Integer.parseInt(dataNascimento[2]), Integer.parseInt(dataNascimento[1]), Integer.parseInt(dataNascimento[0]));
+                          p.setDataNasc(c.getTime()); 
+                       }
+                       p.setCpf(jFormattedTextFieldSocioCPF.getText());
+                       if(p1.matcher(jFormattedTextFieldSocioDataEmissao.getText()).find()){
+                           
+                          String[] dataEmissao = jFormattedTextFieldSocioDataEmissao.getText().split("/");
+                          c.set(Integer.parseInt(dataEmissao[2]), Integer.parseInt(dataEmissao[1]), Integer.parseInt(dataEmissao[0]));
+                          p.setRgEmissao(c.getTime()); 
+                       }
+                       p.setSexo((String)jComboBoxSocioSexo.getSelectedItem());
+                       p.setUf((String)jComboBoxSocioUF.getSelectedItem());
+                       
+                       List<Endereco> e = new DaoEndereco().BuscarEnderecoNomeLike((String)jComboBoxSocioLogradouro.getSelectedItem());
+                       if(!e.isEmpty()){
+                       p.setIdEndereco(e.get(0));
+                       }
+                       
+                       if(jRadioButtonSocioAtivo.isSelected()){
+                           
+                           p.setStatus(true);
+                       }else{
+                           
+                           p.setStatus(false);
+                       }
+                       
+                      
+                       
+                       String[] dataVencimento = jFormattedTextFieldSocioDiaVencimento.getText().split("/");
+                       c.set(Integer.parseInt(dataVencimento[2]), Integer.parseInt(dataVencimento[1]), Integer.parseInt(dataVencimento[0]));
+                       p.getSocio().setDataVence(c.getTime());
+                       
+                       String[] dataMatricula = jFormattedTextFieldSocioDataMatricula.getText().split("/");
+                       c.set(Integer.parseInt(dataMatricula[2]), Integer.parseInt(dataMatricula[1]), Integer.parseInt(dataMatricula[0]));
+                       p.getSocio().setDataMatricula(c.getTime());
+                       
+                       p.getSocio().setNumeroSocio(Integer.parseInt(jTextFieldSocioNumeroSocio.getText()));
+                       List<Categoriasocio> cs = new DaoCategoriaSocio().BuscarCategoriaPorNomeLike((String)jComboBoxSocioCategoriaSocio.getSelectedItem());
+                       if(!cs.isEmpty()){
+                         
+                           p.getSocio().setIdCategoriaSocio(cs.get(0));
+                       }
+                       
+                     
+                       
+                       new DaoPessoa().AlterarPessoa(p);
+                       
+                       jButtonSocioCancelarActionPerformed(evt);
+                       JOptionPane.showMessageDialog(this, "Dados alterados com Sucesso!", "Salvar", JOptionPane.INFORMATION_MESSAGE);
+                       
+                        
+                        
+                    }catch(Exception e){
+                        
+                        JOptionPane.showMessageDialog(this,"Erro ao gravar os dados","Erro", JOptionPane.ERROR_MESSAGE);
+                        
+                    }
+                    
+                    
+                    
+                    
+                    
+                }
+                
+                
+                
+            }
+
+        }
+
+    }//GEN-LAST:event_jButtonSocioSalvarActionPerformed
+
+    private void jButtonSocioApagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSocioApagarActionPerformed
+        
+
+        int op = JOptionPane.showConfirmDialog(this, "Tem certeza que deseja excluir o registro?", "Apagar", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+        if(op == JOptionPane.YES_OPTION){
+            
+            try{
+                
+                Socio s = new DaoSocio().BuscarSocioId(Integer.parseInt(jTextFieldSocioID.getText()));
+                Pessoa p = s.getIdPessoa();
+                
+                new DaoPessoa().ApagarPessoa(p);
+                JOptionPane.showMessageDialog(this, "Registro excluido com sucesso","Atenção", JOptionPane.INFORMATION_MESSAGE);
+                jButtonSocioCancelarActionPerformed(evt);
+                
+            }catch(Exception e){
+                
+                JOptionPane.showMessageDialog(this, "Erro ao excluir o registro","Erro",JOptionPane.ERROR_MESSAGE);
+            }
+            
+        }
+    }//GEN-LAST:event_jButtonSocioApagarActionPerformed
 
     private void editableTextFields(boolean editable) {
 
@@ -3907,22 +4137,22 @@ public class TelaCadastros extends javax.swing.JFrame {
         jTextFieldFuncionarioBairro.setText(pessoa.getBairro());
         jComboBoxFuncionarioUf.setSelectedItem(pessoa.getUf());
         jTextFieldFuncionarioCep.setText(pessoa.getCep());
-        
-        Funcionario f  = pessoa.getFuncionario();
-       
-            
-            jTextFieldFuncionarioCargo.setText(f.getCargo());
-            // jTextFieldFuncionarioSalario.setText(NumberFormat.getCurrencyInstance().format(func.getSalario()));
-            jTextFieldFuncionarioSalario.setText(String.valueOf(f.getSalario()));
-            if (f.getDataContratacao() != null) {
 
-                jFormattedTextFieldFuncionarioDataContratacao.setText(SimpleDateFormat.getDateInstance().format(f.getDataContratacao()));
-            } else {
-                jFormattedTextFieldFuncionarioDataContratacao.setText("nulo");
-            }
-            jTextAreaFuncionarioObservacoes.setText(f.getObservacao());
-            jTextFieldFuncionarioNumeroDaMatricula.setText(String.valueOf(f.getMatricula()));
-        
+        Funcionario f = pessoa.getFuncionario();
+
+
+        jTextFieldFuncionarioCargo.setText(f.getCargo());
+        // jTextFieldFuncionarioSalario.setText(NumberFormat.getCurrencyInstance().format(func.getSalario()));
+        jTextFieldFuncionarioSalario.setText(String.valueOf(f.getSalario()));
+        if (f.getDataContratacao() != null) {
+
+            jFormattedTextFieldFuncionarioDataContratacao.setText(SimpleDateFormat.getDateInstance().format(f.getDataContratacao()));
+        } else {
+            jFormattedTextFieldFuncionarioDataContratacao.setText("nulo");
+        }
+        jTextAreaFuncionarioObservacoes.setText(f.getObservacao());
+        jTextFieldFuncionarioNumeroDaMatricula.setText(String.valueOf(f.getMatricula()));
+
         if (pessoa.getStatus()) {
             jComboBoxFuncionarioStatus.setSelectedItem("Ativo");
         } else {
@@ -3934,7 +4164,7 @@ public class TelaCadastros extends javax.swing.JFrame {
 
     }
 
-    private boolean iscamposFuncionáriosPreenchidos() {
+    private boolean isCamposFuncionariosPreenchidos() {
 
         Pattern p = Pattern.compile("\\d{2}\\/\\d{2}\\/\\d{4}");
         Matcher m = p.matcher(jFormattedTextFieldFuncionarioDataContratacao.getText());
@@ -3942,26 +4172,78 @@ public class TelaCadastros extends javax.swing.JFrame {
         if (!jTextFieldFuncionarioNome.getText().equals("") && !jTextFieldFuncionarioSobrenome.getText().equals("") && !jTextFieldFuncionarioCargo.getText().equals("") && !jTextFieldFuncionarioSalario.getText().equals("") && m.find() && !jComboBoxFuncionarioStatus.getSelectedItem().equals("") && !jTextFieldFuncionarioNumeroDaMatricula.getText().equals("") && !jComboBoxFuncionarioLograduro.getSelectedItem().equals("") && !jComboBoxFuncionarioSexo.getSelectedItem().equals("") && !jComboBoxFuncionarioUf.getSelectedItem().equals("")) {
 
             Pessoa p1 = new DaoPessoa().BuscarPessoaCpf(jFormattedTextFieldFuncionarioCpf.getText());
-            if(p1 == null){
-            p = Pattern.compile("\\d{3}\\.\\d{3}\\.\\d{3}-\\d{2}");
-            m = p.matcher(jFormattedTextFieldFuncionarioCpf.getText());
-            if(m.find()){
-            
-                return true;
-            }else{
-                 JOptionPane.showMessageDialog(this, "Por Favor, preencha todos os campos em negrito", "Atenção", JOptionPane.INFORMATION_MESSAGE);
-                return false;
-            }
-            }else{
-                
-                JOptionPane.showMessageDialog(this, "Esse cpf já existe","Erro",JOptionPane.ERROR_MESSAGE);
+            if (p1 == null) {
+                p = Pattern.compile("\\d{3}\\.\\d{3}\\.\\d{3}-\\d{2}");
+                m = p.matcher(jFormattedTextFieldFuncionarioCpf.getText());
+                if (m.find()) {
+
+                    return true;
+                } else {
+                    JOptionPane.showMessageDialog(this, "Por Favor, preencha todos os campos em negrito", "Atenção", JOptionPane.INFORMATION_MESSAGE);
+                    return false;
+                }
+            } else {
+
+                JOptionPane.showMessageDialog(this, "Esse cpf já existe", "Erro", JOptionPane.ERROR_MESSAGE);
                 return false;
             }
         } else {
 
-             JOptionPane.showMessageDialog(this, "Por Favor, preencha todos os campos em negrito", "Atenção", JOptionPane.INFORMATION_MESSAGE);
-             return false;
+            JOptionPane.showMessageDialog(this, "Por Favor, preencha todos os campos em negrito", "Atenção", JOptionPane.INFORMATION_MESSAGE);
+            return false;
         }
+
+
+    }
+
+    private boolean isCamposSocioPreenchidos() {
+
+        Pattern p = Pattern.compile("\\d{2}\\/\\d{2}\\/\\d{4}");
+        Matcher m;
+
+        if (!jTextFieldSocioNome.getText().equals("") && !jTextFieldSocioSobrenome.getText().equals("") && !jComboBoxSocioSexo.getSelectedItem().equals("") && !jComboBoxSocioLogradouro.getSelectedItem().equals("") && !jComboBoxSocioUF.getSelectedItem().equals("") && !jTextFieldSocioNumeroSocio.getText().equals("") && !jComboBoxSocioCategoriaSocio.getSelectedItem().equals("") && (jRadioButtonSocioAtivo.isSelected() || jRadioButtonSocioInativo.isSelected())) {
+
+            Pessoa p1 = new DaoPessoa().BuscarPessoaCpf(jFormattedTextFieldSocioCPF.getText());
+            if (p1 == null) {
+                m = p.matcher(jFormattedTextFieldSocioDiaVencimento.getText());
+                if (m.find()) {
+                    m = p.matcher(jFormattedTextFieldSocioDataMatricula.getText());
+                    if (m.find()) {
+                        p = Pattern.compile("\\d{3}\\.\\d{3}\\.\\d{3}-\\d{2}");
+                        m = p.matcher(jFormattedTextFieldSocioCPF.getText());
+                        if (m.find()) {
+
+                            return true;
+                        } else {
+                            JOptionPane.showMessageDialog(this, "Por Favor, preencha todos os campos em negrito", "Atenção", JOptionPane.INFORMATION_MESSAGE);
+                            return false;
+                        }
+                    } else {
+
+                        JOptionPane.showMessageDialog(this, "Por Favor, preencha todos os campos em negrito", "Atenção", JOptionPane.INFORMATION_MESSAGE);
+                        return false;
+                    }
+
+                } else {
+
+                    JOptionPane.showMessageDialog(this, "Por Favor, preencha todos os campos em negrito", "Atenção", JOptionPane.INFORMATION_MESSAGE);
+                    return false;
+                }
+
+
+            } else {
+
+                JOptionPane.showMessageDialog(this, "O cpf informado já existe", "Erro", JOptionPane.ERROR_MESSAGE);
+                return false;
+            }
+
+
+        } else {
+
+            JOptionPane.showMessageDialog(this, "Por Favor, preencha todos os campos em negrito", "Atenção", JOptionPane.INFORMATION_MESSAGE);
+            return false;
+        }
+
 
 
     }
@@ -3993,9 +4275,9 @@ public class TelaCadastros extends javax.swing.JFrame {
 
     }
 
-    private void setEditableComponentesSocio(boolean edit){
-        
-        
+    private void setEditableComponentesSocio(boolean edit) {
+
+
         jTextFieldSocioNome.setEditable(edit);
         jTextFieldSocioSobrenome.setEditable(edit);
         jTextFieldSocioApelido.setEditable(edit);
@@ -4026,9 +4308,23 @@ public class TelaCadastros extends javax.swing.JFrame {
         jButtonSocioCancelar.setEnabled(edit);
         jButtonSocioEditar.setEnabled(edit);
         jButtonSocioSalvar.setEnabled(edit);
+
+
+
+
+    }
+
+    private void setEditableComponentesCategoriaSocio(boolean edit){
         
-                
-                
+        jTextFieldCategoriaSocioNome.setEditable(edit);
+        jTextAreaCategoriaSocioDescricao.setEditable(edit);
+        jComboBoxCategoriaSocioTaxa.setEnabled(edit);
+        jButtonCategoriaSocioApagar.setEnabled(edit);
+        jButtonCategoriaSocioCancelar.setEnabled(edit);
+        jButtonCategoriaSocioEditar.setEnabled(edit);
+        jButtonCategoriaSocioSalvar.setEnabled(edit);
+        
+        
         
     }
     
@@ -4050,8 +4346,8 @@ public class TelaCadastros extends javax.swing.JFrame {
 
     }
 
-    private void limparCamposSocio(){
-        
+    private void limparCamposSocio() {
+
         jTextFieldSocioID.setText("");
         jTextFieldSocioNome.setText("");
         jTextFieldSocioSobrenome.setText("");
@@ -4071,21 +4367,35 @@ public class TelaCadastros extends javax.swing.JFrame {
         jTextFieldSocioCidade.setText("");
         jComboBoxSocioUF.setSelectedItem("");
         jTextFieldSocioCEP.setText("");
-        if(jComboBoxSocioLogradouro.getItemCount() != 0){
-            
+        if (jComboBoxSocioLogradouro.getItemCount() != 0) {
+
             jComboBoxSocioLogradouro.setSelectedIndex(0);
         }
         buttonGroupSocioAprovacao.clearSelection();
         jFormattedTextFieldSocioDataMatricula.setText("");
         jFormattedTextFieldSocioDiaVencimento.setText("");
         jTextFieldSocioNumeroSocio.setText("");
-        if(jComboBoxSocioCategoriaSocio.getItemCount() != 0){
-            
+        if (jComboBoxSocioCategoriaSocio.getItemCount() != 0) {
+
             jComboBoxSocioCategoriaSocio.setSelectedIndex(0);
+
+        }
+
+    }
+
+    private void limparCamposCategoriaSocio(){
+        
+        jTextFieldCategoriaSocioNome.setText("");
+        jTextFieldCategoriaSocioID.setText("");
+        jTextAreaCategoriaSocioDescricao.setText("");
+        if(jComboBoxCategoriaSocioTaxa.getItemCount() != 0){
             
+            jComboBoxCategoriaSocioTaxa.setSelectedIndex(0);
         }
         
-    }    
+        
+    }
+    
     private void preencherCamposLogradouro(Endereco end) {
 
         jTextFieldLogradouroID.setText(String.valueOf(end.getId()));
@@ -4097,29 +4407,94 @@ public class TelaCadastros extends javax.swing.JFrame {
 
 
     }
-    
-    private void preencherCamposTaxas(Taxa taxa){
-        
+
+    private void preencherCamposTaxas(Taxa taxa) {
+
         jTextFieldTaxasID.setText(String.valueOf(taxa.getId()));
         jTextFieldTaxasNome.setText(taxa.getNome());
         jTextFieldTaxasValor.setText(String.valueOf(taxa.getValor()));
         jTextAreaTaxasDescricao.setText(taxa.getDescricao());
-        
+
     }
 
-    private void preencherCamposSocio(Socio socio){
-        
-        
-        
-        
-        
+    private void preencherCamposSocio(Socio socio) {
+
+        jTextFieldSocioNome.setText(socio.getIdPessoa().getNome());
+        jTextFieldSocioSobrenome.setText(socio.getIdPessoa().getSobrenome());
+        jTextFieldSocioApelido.setText(socio.getIdPessoa().getApelido());
+        jTextFieldSocioID.setText(String.valueOf(socio.getId()));
+        jTextFieldSocioTelefone.setText(socio.getIdPessoa().getTelefone());
+        jTextFieldSocioEmail.setText(socio.getIdPessoa().getEmail());
+        jTextFieldSocioNomePai.setText(socio.getIdPessoa().getNomePai());
+        jTextFieldSocioNomeMae.setText(socio.getIdPessoa().getNomeMae());
+        jTextFieldSocioRgNumero.setText(socio.getIdPessoa().getRgNumero());
+        jTextFieldSocioOrgaoExpedidor.setText(socio.getIdPessoa().getRgExpedidor());
+        jTextFieldSocioNumero.setText(socio.getIdPessoa().getNumeroEndereco());
+        jTextFieldSocioCidade.setText(socio.getIdPessoa().getCidade());
+        jTextFieldSocioBairro.setText(socio.getIdPessoa().getBairro());
+        jTextFieldSocioCEP.setText(socio.getIdPessoa().getCep());
+        jTextFieldSocioNumeroSocio.setText(String.valueOf(socio.getNumeroSocio()));
+
+
+        jComboBoxSocioSexo.setSelectedItem(socio.getIdPessoa().getSexo());
+        jComboBoxSocioUF.setSelectedItem(socio.getIdPessoa().getUf());
+        if (jComboBoxSocioLogradouro.getItemCount() == 0) {
+
+            jComboBoxSocioLogradouro.addItem("");
+            List<Endereco> ends = new DaoEndereco().BuscarTodosEnderecos();
+            for (Endereco e : ends) {
+
+                jComboBoxSocioLogradouro.addItem(e.getNome());
+
+            }
+
+        }
+        jComboBoxSocioLogradouro.setSelectedItem(socio.getIdPessoa().getIdEndereco().getNome());
+        if (jComboBoxSocioCategoriaSocio.getItemCount() == 0) {
+
+            jComboBoxSocioCategoriaSocio.addItem("");
+            List<Categoriasocio> categorias = new DaoCategoriaSocio().BuscarTodasCategorias();
+            for (Categoriasocio categoria : categorias) {
+
+                jComboBoxSocioCategoriaSocio.addItem(categoria.getNome());
+
+            }
+
+        }
+        jComboBoxSocioCategoriaSocio.setSelectedItem(socio.getIdCategoriaSocio().getNome());
+
+
+        if (socio.getIdPessoa().getDataNasc() != null) {
+
+            jFormattedTextFieldSocioDataNascimento.setText(SimpleDateFormat.getDateInstance().format(socio.getIdPessoa().getDataNasc()));
+        }
+        jFormattedTextFieldSocioCPF.setText(socio.getIdPessoa().getCpf());
+        if (socio.getIdPessoa().getRgEmissao() != null) {
+
+            jFormattedTextFieldSocioDataEmissao.setText(SimpleDateFormat.getDateInstance().format(socio.getIdPessoa().getRgEmissao()));
+        }
+        jFormattedTextFieldSocioDiaVencimento.setText(SimpleDateFormat.getDateInstance().format(socio.getDataVence()));
+        jFormattedTextFieldSocioDataMatricula.setText(SimpleDateFormat.getDateInstance().format(socio.getDataMatricula()));
+
+
+        if (socio.getIdPessoa().getStatus()) {
+
+            jRadioButtonSocioAtivo.setSelected(true);
+        } else {
+
+            jRadioButtonSocioInativo.setSelected(false);
+
+        }
+
+
+
     }
-    
+
     private void mostrarJtable() {
-        
+
         DefaultTableCellRenderer centralizar = new DefaultTableCellRenderer();
         centralizar.setHorizontalAlignment(SwingConstants.CENTER);
-       
+
 
         if (pesquisarTable.equals("funcionarios")) {
 
@@ -4148,9 +4523,9 @@ public class TelaCadastros extends javax.swing.JFrame {
             jTable1.getColumn("Cidade").setCellRenderer(centralizar);
             jTable1.getColumn("Data Nascimento").setCellRenderer(centralizar);
             jTable1.getColumn("Email").setCellRenderer(centralizar);
-            
-            
-            
+
+
+
         } else if (pesquisarTable.equals("logradouros")) {
 
             jTable1.setModel(new DefaultTableModel(
@@ -4176,71 +4551,65 @@ public class TelaCadastros extends javax.swing.JFrame {
             jTable1.getColumn("Nome").setCellRenderer(centralizar);
             jTable1.getColumn("Tipo").setCellRenderer(centralizar);
             jTable1.getColumn("Descrição").setCellRenderer(centralizar);
-            
-        }else if(pesquisarTable.equals("taxas")){
-            
+
+        } else if (pesquisarTable.equals("taxas")) {
+
             jTable1.setModel(new DefaultTableModel(
-                    new Object[][]{}, new String[]{"ID","Nome","Descrição","Valor"}){
-                        
-                        Class[] types = new Class[]{Integer.class,String.class,String.class,BigDecimal.class};
-                        
-                        @Override
-                        public Class getColumnClass(int columnIndex){
-                            
-                            return types[columnIndex];
-                        }
-                        
-                        boolean[] canEdit = new boolean[]{false, false, false, false};
-                        
-                        @Override
-                        public boolean isCellEditable(int rowIndex, int columnIndex){
-                            
-                            return canEdit[columnIndex];
-                            
-                        }
-                        
-                    });
-                    
-                jTable1.getColumn("ID").setCellRenderer(centralizar);
-                jTable1.getColumn("Nome").setCellRenderer(centralizar);
-                jTable1.getColumn("Descrição").setCellRenderer(centralizar);
-                jTable1.getColumn("Valor").setCellRenderer(centralizar);
-    
-        }else if(pesquisarTable.equals("socios")){
-            
+                    new Object[][]{}, new String[]{"ID", "Nome", "Descrição", "Valor"}) {
+                Class[] types = new Class[]{Integer.class, String.class, String.class, BigDecimal.class};
+
+                @Override
+                public Class getColumnClass(int columnIndex) {
+
+                    return types[columnIndex];
+                }
+                boolean[] canEdit = new boolean[]{false, false, false, false};
+
+                @Override
+                public boolean isCellEditable(int rowIndex, int columnIndex) {
+
+                    return canEdit[columnIndex];
+
+                }
+            });
+
+            jTable1.getColumn("ID").setCellRenderer(centralizar);
+            jTable1.getColumn("Nome").setCellRenderer(centralizar);
+            jTable1.getColumn("Descrição").setCellRenderer(centralizar);
+            jTable1.getColumn("Valor").setCellRenderer(centralizar);
+
+        } else if (pesquisarTable.equals("socios")) {
+
             jTable1.setModel(new DefaultTableModel(
-                    new Object[][]{}, new String[]{"ID","Nome","Sobrenome","CPF","Categoria Socio","Logradouro","Numero"}){
-                        
-                        Class[] types = new Class[]{String.class,String.class, String.class, String.class, String.class, String.class, String.class};
-                        
-                        @Override
-                        public Class getColumnClass(int columnIndex){
-                            
-                            return types[columnIndex];
-                            
-                        }
-                        
-                        boolean[] canEdit = new boolean[]{false,false, false, false, false, false, false};
-                        
-                        @Override
-                        public boolean isCellEditable(int rowIndex, int columnIndex){
-                            
-                            
-                            return canEdit[columnIndex];
-                        }
-                        
-                    });
-                    
-                 jTable1.getColumn("ID").setCellRenderer(centralizar);
-                 jTable1.getColumn("Nome").setCellRenderer(centralizar);
-                 jTable1.getColumn("Sobrenome").setCellRenderer(centralizar);
-                 jTable1.getColumn("CPF").setCellRenderer(centralizar);
-                 jTable1.getColumn("Categoria Socio").setCellRenderer(centralizar);
-                 jTable1.getColumn("Logradouro").setCellRenderer(centralizar);
-                 jTable1.getColumn("Numero").setCellRenderer(centralizar);
-                    
-                    
-            
+                    new Object[][]{}, new String[]{"ID", "Nome", "Sobrenome", "CPF", "Categoria Socio", "Logradouro", "Numero"}) {
+                Class[] types = new Class[]{String.class, String.class, String.class, String.class, String.class, String.class, String.class};
+
+                @Override
+                public Class getColumnClass(int columnIndex) {
+
+                    return types[columnIndex];
+
+                }
+                boolean[] canEdit = new boolean[]{false, false, false, false, false, false, false};
+
+                @Override
+                public boolean isCellEditable(int rowIndex, int columnIndex) {
+
+
+                    return canEdit[columnIndex];
+                }
+            });
+
+            jTable1.getColumn("ID").setCellRenderer(centralizar);
+            jTable1.getColumn("Nome").setCellRenderer(centralizar);
+            jTable1.getColumn("Sobrenome").setCellRenderer(centralizar);
+            jTable1.getColumn("CPF").setCellRenderer(centralizar);
+            jTable1.getColumn("Categoria Socio").setCellRenderer(centralizar);
+            jTable1.getColumn("Logradouro").setCellRenderer(centralizar);
+            jTable1.getColumn("Numero").setCellRenderer(centralizar);
+
+
+
         }
 
 
@@ -4300,19 +4669,21 @@ public class TelaCadastros extends javax.swing.JFrame {
     private javax.swing.JLabel Logradouro7;
     private javax.swing.ButtonGroup buttonGroupSocioAprovacao;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButtonApagarCategoriaSocio;
     private javax.swing.JButton jButtonApagarCheque;
     private javax.swing.JButton jButtonApagarDespesa;
     private javax.swing.JButton jButtonApagarReceita;
     private javax.swing.JButton jButtonApagarTipoDespesa;
     private javax.swing.JButton jButtonApagarTipoReceita;
-    private javax.swing.JButton jButtonCancelarCategoriaSocio;
     private javax.swing.JButton jButtonCancelarCheque;
     private javax.swing.JButton jButtonCancelarDespesa;
     private javax.swing.JButton jButtonCancelarReceita;
     private javax.swing.JButton jButtonCancelarTipoDespesa;
     private javax.swing.JButton jButtonCancelarTipoReceita;
-    private javax.swing.JButton jButtonEditarCategoriaSocio;
+    private javax.swing.JButton jButtonCategoriaSocioApagar;
+    private javax.swing.JButton jButtonCategoriaSocioCancelar;
+    private javax.swing.JButton jButtonCategoriaSocioEditar;
+    private javax.swing.JButton jButtonCategoriaSocioNovo;
+    private javax.swing.JButton jButtonCategoriaSocioSalvar;
     private javax.swing.JButton jButtonEditarCheque;
     private javax.swing.JButton jButtonEditarDespesa;
     private javax.swing.JButton jButtonEditarReceita;
@@ -4331,14 +4702,12 @@ public class TelaCadastros extends javax.swing.JFrame {
     private javax.swing.JButton jButtonLogradouroNovo;
     private javax.swing.JButton jButtonLogradouroPesquisar;
     private javax.swing.JButton jButtonLogradouroSalvar;
-    private javax.swing.JButton jButtonNovoCategoriaSocio;
     private javax.swing.JButton jButtonNovoCheque;
     private javax.swing.JButton jButtonNovoDespesa;
     private javax.swing.JButton jButtonNovoReceita;
     private javax.swing.JButton jButtonNovoTipoDespesa;
     private javax.swing.JButton jButtonNovoTipoReceita;
     private javax.swing.JButton jButtonPesquisa;
-    private javax.swing.JButton jButtonSalvarCategoriaSocio;
     private javax.swing.JButton jButtonSalvarCheque;
     private javax.swing.JButton jButtonSalvarDespesa;
     private javax.swing.JButton jButtonSalvarReceita;
@@ -4360,6 +4729,7 @@ public class TelaCadastros extends javax.swing.JFrame {
     private javax.swing.JComboBox jComboBox2;
     private javax.swing.JComboBox jComboBox3;
     private javax.swing.JComboBox jComboBox4;
+    private javax.swing.JComboBox jComboBoxCategoriaSocioTaxa;
     private javax.swing.JComboBox jComboBoxFuncionarioLograduro;
     private javax.swing.JComboBox jComboBoxFuncionarioSexo;
     private javax.swing.JComboBox jComboBoxFuncionarioStatus;
