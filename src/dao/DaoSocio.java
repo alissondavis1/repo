@@ -4,8 +4,8 @@
  */
 package dao;
 
-import entidades.Socio;
 import daoInterfaces.SocioInterface;
+import entidades.Socio;
 import java.util.List;
 import javax.swing.JOptionPane;
 import org.hibernate.HibernateException;
@@ -123,6 +123,36 @@ public class DaoSocio implements SocioInterface{
     return socio;
     }
 
+    @Override
+    public Socio BuscarSocioId(int id) {
+       
+        Socio socio = null;
+        Session sessao = null; 
+        Query query = null;
+        Transaction transacao = null;
+        
+        try{
+           sessao = HibernateUtil.getSessionFactory().openSession();
+           transacao = sessao.beginTransaction();
+           query = sessao.createQuery("from Socio where id = :id");
+           query.setParameter("id",id);
+           socio = (Socio)query.uniqueResult();
+           transacao.commit(); 
+           
+        }
+        catch(HibernateException e)
+        {
+            System.out.println(e);
+            transacao.rollback();
+        }
+        finally
+        {
+             sessao.close();
+        }  
+    return socio;
+    }
+    
+    
     @Override
     public List<Socio> SocioPorRua(String rua) {
       

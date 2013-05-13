@@ -20,6 +20,6 @@ public interface FuncionariosInterface {
    public Funcionario BuscarFuncionarioCpf(String Cpf); 
    public Funcionario BuscarFuncionario(String nome);
    public List<Funcionario> BuscarFuncionarios();
-   
+   public List<Funcionario> BuscarFuncionarioLikeNome(String nome);
    
 }

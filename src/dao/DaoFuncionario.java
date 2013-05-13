@@ -4,9 +4,8 @@
  */
 package dao;
 
-import entidades.Funcionario;
 import daoInterfaces.FuncionariosInterface;
-import entidades.Pessoa;
+import entidades.Funcionario;
 import java.util.List;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
@@ -91,6 +90,37 @@ public class DaoFuncionario implements FuncionariosInterface{
         }         
     }
 
+    
+      
+    @Override
+    public List<Funcionario> BuscarFuncionarioLikeNome(String nome)
+    {
+        List<Funcionario> funcionario = null;
+        Session sessao = null; 
+        Query query = null;
+        Transaction transacao = null;
+        
+        try{
+           sessao = HibernateUtil.getSessionFactory().openSession();
+           transacao = sessao.beginTransaction();
+           query = sessao.createQuery("from Funcionario f where f.nome LIKE :nome");
+           query.setString("nome","%"+nome+"%");
+           //query.setParameter("nome",nome);
+           funcionario = query.list();
+           transacao.commit(); 
+           
+        }
+        catch(HibernateException e)
+        {
+            System.out.println(e);
+            transacao.rollback();
+        }
+        finally
+        {
+             sessao.close();
+        }  
+    return funcionario;
+    }
     
    
 
