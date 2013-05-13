@@ -26,5 +26,7 @@ public interface SaidasInterface {
     public List<Saida> SaidaPorDataPorFuncionario(int IdFuncionario, Date DataInicio, Date DataFim) ;
     public List<Saida> SaidaPorFuncionarioPorMotivo(int Motivo, int IdFuncionario);
     public List<Saida> SaidasPorMotivo(int IdMotivoSaidas);
+    public List<Saida> BuscarSaidaFavorecidoLikeNome(String nome);
+     public List<Saida> BuscarTodasSaidas();
    
 }

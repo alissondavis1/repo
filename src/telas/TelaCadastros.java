@@ -9,6 +9,7 @@ import dao.DaoEndereco;
 import dao.DaoFuncionario;
 import dao.DaoMotivoDespesa;
 import dao.DaoPessoa;
+import dao.DaoSaidas;
 import dao.DaoSocio;
 import dao.DaoTaxa;
 import entidades.Categoriasocio;
@@ -16,6 +17,7 @@ import entidades.Endereco;
 import entidades.Funcionario;
 import entidades.Motivodespesa;
 import entidades.Pessoa;
+import entidades.Saida;
 import entidades.Socio;
 import entidades.Taxa;
 import java.awt.event.ActionEvent;
@@ -24,9 +26,7 @@ import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
@@ -37,7 +37,6 @@ import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
-import net.sf.jasperreports.crosstabs.fill.JRCrosstabExpressionEvaluator;
 
 /**
  *
@@ -60,6 +59,7 @@ public class TelaCadastros extends javax.swing.JFrame {
         setEditableComponentesSocio(false);
         setEditableComponentesCategoriaSocio(false);
         setEditableComponentesTipoDespesa(false);
+        setEditableComponentesDespesa(false);
         jDesktopPane1.setVisible(false);
         jInternalFrame1.setVisible(false);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -325,29 +325,30 @@ public class TelaCadastros extends javax.swing.JFrame {
         jTextAreaTipoDespesaObservacao = new javax.swing.JTextArea();
         jButtonTipoDespesaPesquisar = new javax.swing.JButton();
         jPanelDespesa = new javax.swing.JPanel();
-        jPanel12 = new javax.swing.JPanel();
-        jButtonNovoDespesa = new javax.swing.JButton();
-        jButtonEditarDespesa = new javax.swing.JButton();
-        jButtonSalvarDespesa = new javax.swing.JButton();
-        jButtonApagarDespesa = new javax.swing.JButton();
-        jButtonCancelarDespesa = new javax.swing.JButton();
+        jPanel32 = new javax.swing.JPanel();
         jPanel25 = new javax.swing.JPanel();
         jLabel42 = new javax.swing.JLabel();
         jLabel44 = new javax.swing.JLabel();
         jLabel45 = new javax.swing.JLabel();
-        jTextFieldTipoDespesaNome1 = new javax.swing.JTextField();
-        jTextFieldDespesaId = new javax.swing.JTextField();
+        jTextFieldDespesaID = new javax.swing.JTextField();
         jScrollPane9 = new javax.swing.JScrollPane();
-        jTextAreaTipoDespesaObservacao1 = new javax.swing.JTextArea();
+        jTextAreaDespesaObservacao = new javax.swing.JTextArea();
         jLabel47 = new javax.swing.JLabel();
-        jTextFieldDespesaFuncionario = new javax.swing.JTextField();
         jLabel48 = new javax.swing.JLabel();
-        jTextFieldTipoDespesaNome2 = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox();
+        jTextFieldDespesaValor = new javax.swing.JTextField();
+        jComboBoxDespesaMotivo = new javax.swing.JComboBox();
         jLabel49 = new javax.swing.JLabel();
         jLabel50 = new javax.swing.JLabel();
-        jLabel52 = new javax.swing.JLabel();
-        jTextFieldTipoDespesaNome3 = new javax.swing.JTextField();
+        jTextFieldDespesaFavorecido = new javax.swing.JTextField();
+        jFormattedTextFieldDespesaData = new javax.swing.JFormattedTextField();
+        jComboBoxDespesaFuncionario = new javax.swing.JComboBox();
+        jButtonDespesaPesquisar = new javax.swing.JButton();
+        jPanel12 = new javax.swing.JPanel();
+        jButtonDespesaNovo = new javax.swing.JButton();
+        jButtonDespesaEditar = new javax.swing.JButton();
+        jButtonDespesaSalvar = new javax.swing.JButton();
+        jButtonDespesaApagar = new javax.swing.JButton();
+        jButtonDespesaCancelar = new javax.swing.JButton();
         jPanelTipoReceita = new javax.swing.JPanel();
         jPanel14 = new javax.swing.JPanel();
         jButtonNovoTipoReceita = new javax.swing.JButton();
@@ -2022,127 +2023,87 @@ public class TelaCadastros extends javax.swing.JFrame {
 
             jTabbedPane1.addTab("Tipo/Despesa", jPanelTipoDespesa);
 
-            jPanel12.setBorder(javax.swing.BorderFactory.createTitledBorder("Opções de Edição"));
-
-            jButtonNovoDespesa.setText("Novo");
-
-            jButtonEditarDespesa.setText("Editar");
-
-            jButtonSalvarDespesa.setText("Salvar");
-
-            jButtonApagarDespesa.setText("Apagar");
-
-            jButtonCancelarDespesa.setText("Cancelar");
-
-            javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
-            jPanel12.setLayout(jPanel12Layout);
-            jPanel12Layout.setHorizontalGroup(
-                jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel12Layout.createSequentialGroup()
-                    .addGap(146, 146, 146)
-                    .addComponent(jButtonNovoDespesa)
-                    .addGap(10, 10, 10)
-                    .addComponent(jButtonEditarDespesa)
-                    .addGap(10, 10, 10)
-                    .addComponent(jButtonApagarDespesa)
-                    .addGap(10, 10, 10)
-                    .addComponent(jButtonSalvarDespesa)
-                    .addGap(10, 10, 10)
-                    .addComponent(jButtonCancelarDespesa)
-                    .addContainerGap(352, Short.MAX_VALUE))
-            );
-            jPanel12Layout.setVerticalGroup(
-                jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel12Layout.createSequentialGroup()
-                    .addGap(10, 10, 10)
-                    .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButtonNovoDespesa)
-                        .addComponent(jButtonEditarDespesa)
-                        .addComponent(jButtonApagarDespesa)
-                        .addComponent(jButtonCancelarDespesa)
-                        .addComponent(jButtonSalvarDespesa))
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            );
+            jPanelDespesa.setLayout(new java.awt.GridBagLayout());
 
             jPanel25.setBorder(javax.swing.BorderFactory.createTitledBorder("Cadastro de Despesas"));
 
+            jLabel42.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
             jLabel42.setText("Data");
 
             jLabel44.setText("Observação");
 
             jLabel45.setText("Id");
 
-            jTextFieldTipoDespesaNome1.setText("jTextField1");
+            jTextFieldDespesaID.setEnabled(false);
 
-            jTextFieldDespesaId.setText("jTextField4");
+            jTextAreaDespesaObservacao.setColumns(20);
+            jTextAreaDespesaObservacao.setRows(5);
+            jScrollPane9.setViewportView(jTextAreaDespesaObservacao);
 
-            jTextAreaTipoDespesaObservacao1.setColumns(20);
-            jTextAreaTipoDespesaObservacao1.setRows(5);
-            jScrollPane9.setViewportView(jTextAreaTipoDespesaObservacao1);
-
+            jLabel47.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
             jLabel47.setText("Funcionario");
 
-            jTextFieldDespesaFuncionario.setText("jTextField4");
-
+            jLabel48.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
             jLabel48.setText("Valor");
 
-            jTextFieldTipoDespesaNome2.setText("jTextField1");
-
-            jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
+            jLabel49.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
             jLabel49.setText("Motivo ");
 
+            jLabel50.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
             jLabel50.setText("favorecido");
 
-            jLabel52.setText("Lá pra a tablea de tipo/despesa");
+            try {
+                jFormattedTextFieldDespesaData.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+            } catch (java.text.ParseException ex) {
+                ex.printStackTrace();
+            }
 
-            jTextFieldTipoDespesaNome3.setText("jTextField1");
+            jButtonDespesaPesquisar.setText("Pesquisar");
+            jButtonDespesaPesquisar.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    jButtonDespesaPesquisarActionPerformed(evt);
+                }
+            });
 
             javax.swing.GroupLayout jPanel25Layout = new javax.swing.GroupLayout(jPanel25);
             jPanel25.setLayout(jPanel25Layout);
             jPanel25Layout.setHorizontalGroup(
                 jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel25Layout.createSequentialGroup()
-                    .addGroup(jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(jPanel25Layout.createSequentialGroup()
-                            .addGap(0, 442, Short.MAX_VALUE)
-                            .addComponent(jLabel47))
-                        .addGroup(jPanel25Layout.createSequentialGroup()
-                            .addGroup(jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel44)
-                                .addGroup(jPanel25Layout.createSequentialGroup()
-                                    .addGap(19, 19, 19)
-                                    .addGroup(jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel48)
-                                        .addComponent(jLabel42)
-                                        .addComponent(jLabel49)
-                                        .addComponent(jLabel50))))
-                            .addGap(56, 56, 56)
-                            .addGroup(jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel25Layout.createSequentialGroup()
-                                    .addGap(0, 361, Short.MAX_VALUE)
-                                    .addComponent(jLabel45))
-                                .addGroup(jPanel25Layout.createSequentialGroup()
-                                    .addGroup(jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jTextFieldTipoDespesaNome1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGroup(jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jTextFieldTipoDespesaNome2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(jPanel25Layout.createSequentialGroup()
-                                            .addGap(3, 3, 3)
-                                            .addComponent(jTextFieldTipoDespesaNome3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGap(0, 205, Short.MAX_VALUE)))))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addGap(19, 19, 19)
                     .addGroup(jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jTextFieldDespesaId, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jTextFieldDespesaFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addContainerGap(216, Short.MAX_VALUE))
-                .addGroup(jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel25Layout.createSequentialGroup()
-                        .addGap(199, 199, 199)
-                        .addComponent(jLabel52, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(473, Short.MAX_VALUE)))
+                        .addGroup(jPanel25Layout.createSequentialGroup()
+                            .addGroup(jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel47)
+                                .addComponent(jLabel42, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel50, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(18, 18, 18)
+                            .addGroup(jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jTextFieldDespesaFavorecido, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jComboBoxDespesaFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jFormattedTextFieldDespesaData, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanel25Layout.createSequentialGroup()
+                            .addGroup(jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel49)
+                                .addComponent(jLabel48, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(38, 38, 38)
+                            .addGroup(jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jComboBoxDespesaMotivo, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jTextFieldDespesaValor, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 180, Short.MAX_VALUE)
+                    .addGroup(jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel25Layout.createSequentialGroup()
+                            .addComponent(jLabel44)
+                            .addGap(18, 18, 18)
+                            .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(101, 101, 101))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel25Layout.createSequentialGroup()
+                            .addComponent(jLabel45)
+                            .addGap(18, 18, 18)
+                            .addComponent(jTextFieldDespesaID, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(jButtonDespesaPesquisar)
+                            .addGap(134, 134, 134))))
             );
             jPanel25Layout.setVerticalGroup(
                 jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2150,54 +2111,119 @@ public class TelaCadastros extends javax.swing.JFrame {
                     .addContainerGap()
                     .addGroup(jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel45)
-                        .addComponent(jTextFieldDespesaId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addGroup(jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jTextFieldDespesaID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel47)
-                        .addComponent(jTextFieldDespesaFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(14, 14, 14)
+                        .addComponent(jComboBoxDespesaFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButtonDespesaPesquisar))
+                    .addGap(25, 25, 25)
                     .addGroup(jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel42)
-                        .addComponent(jTextFieldTipoDespesaNome1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(18, 18, 18)
-                    .addGroup(jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jTextFieldTipoDespesaNome2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel48))
-                    .addGap(27, 27, 27)
-                    .addGroup(jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel49))
-                    .addGap(28, 28, 28)
-                    .addGroup(jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel50)
-                        .addComponent(jTextFieldTipoDespesaNome3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(43, 43, 43)
-                    .addGroup(jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel44)
-                        .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addContainerGap(42, Short.MAX_VALUE))
-                .addGroup(jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel25Layout.createSequentialGroup()
-                        .addGap(174, 174, 174)
-                        .addComponent(jLabel52)
-                        .addContainerGap(222, Short.MAX_VALUE)))
+                        .addComponent(jFormattedTextFieldDespesaData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(33, 33, 33)
+                    .addGroup(jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(jPanel25Layout.createSequentialGroup()
+                            .addGroup(jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jTextFieldDespesaValor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel48))
+                            .addGap(27, 27, 27)
+                            .addGroup(jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jComboBoxDespesaMotivo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel49))
+                            .addGap(28, 28, 28)
+                            .addGroup(jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel50)
+                                .addComponent(jTextFieldDespesaFavorecido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel44)
+                            .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addContainerGap(30, Short.MAX_VALUE))
             );
 
-            javax.swing.GroupLayout jPanelDespesaLayout = new javax.swing.GroupLayout(jPanelDespesa);
-            jPanelDespesa.setLayout(jPanelDespesaLayout);
-            jPanelDespesaLayout.setHorizontalGroup(
-                jPanelDespesaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jPanel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            jPanel12.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+            jButtonDespesaNovo.setText("Novo");
+            jButtonDespesaNovo.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    jButtonDespesaNovoActionPerformed(evt);
+                }
+            });
+
+            jButtonDespesaEditar.setText("Editar");
+            jButtonDespesaEditar.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    jButtonDespesaEditarActionPerformed(evt);
+                }
+            });
+
+            jButtonDespesaSalvar.setText("Salvar");
+
+            jButtonDespesaApagar.setText("Apagar");
+
+            jButtonDespesaCancelar.setText("Cancelar");
+            jButtonDespesaCancelar.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    jButtonDespesaCancelarActionPerformed(evt);
+                }
+            });
+
+            javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
+            jPanel12.setLayout(jPanel12Layout);
+            jPanel12Layout.setHorizontalGroup(
+                jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel12Layout.createSequentialGroup()
+                    .addGap(192, 192, 192)
+                    .addComponent(jButtonDespesaNovo)
+                    .addGap(10, 10, 10)
+                    .addComponent(jButtonDespesaEditar)
+                    .addGap(10, 10, 10)
+                    .addComponent(jButtonDespesaApagar)
+                    .addGap(10, 10, 10)
+                    .addComponent(jButtonDespesaSalvar)
+                    .addGap(10, 10, 10)
+                    .addComponent(jButtonDespesaCancelar)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            );
+
+            jPanel12Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButtonDespesaApagar, jButtonDespesaCancelar, jButtonDespesaEditar, jButtonDespesaNovo, jButtonDespesaSalvar});
+
+            jPanel12Layout.setVerticalGroup(
+                jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel12Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jButtonDespesaNovo)
+                        .addComponent(jButtonDespesaEditar)
+                        .addComponent(jButtonDespesaApagar)
+                        .addComponent(jButtonDespesaCancelar)
+                        .addComponent(jButtonDespesaSalvar))
+                    .addContainerGap(15, Short.MAX_VALUE))
+            );
+
+            jPanel12Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jButtonDespesaApagar, jButtonDespesaCancelar, jButtonDespesaEditar, jButtonDespesaNovo, jButtonDespesaSalvar});
+
+            javax.swing.GroupLayout jPanel32Layout = new javax.swing.GroupLayout(jPanel32);
+            jPanel32.setLayout(jPanel32Layout);
+            jPanel32Layout.setHorizontalGroup(
+                jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jPanel25, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             );
-            jPanelDespesaLayout.setVerticalGroup(
-                jPanelDespesaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanelDespesaLayout.createSequentialGroup()
-                    .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            jPanel32Layout.setVerticalGroup(
+                jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel32Layout.createSequentialGroup()
                     .addComponent(jPanel25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 646, Short.MAX_VALUE))
+                    .addGap(6, 6, 6)
+                    .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 814, Short.MAX_VALUE))
             );
+
+            gridBagConstraints = new java.awt.GridBagConstraints();
+            gridBagConstraints.gridx = 0;
+            gridBagConstraints.gridy = 0;
+            gridBagConstraints.ipadx = 245;
+            gridBagConstraints.ipady = 814;
+            gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+            jPanelDespesa.add(jPanel32, gridBagConstraints);
 
             jTabbedPane1.addTab("Despesa", jPanelDespesa);
 
@@ -2329,7 +2355,7 @@ public class TelaCadastros extends javax.swing.JFrame {
                     .addComponent(jPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(jPanel26, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 646, Short.MAX_VALUE))
+                    .addGap(0, 647, Short.MAX_VALUE))
             );
 
             jTabbedPane1.addTab("Tipo/Receita", jPanelTipoReceita);
@@ -2494,7 +2520,7 @@ public class TelaCadastros extends javax.swing.JFrame {
                     .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(jPanel27, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 646, Short.MAX_VALUE))
+                    .addGap(0, 647, Short.MAX_VALUE))
             );
 
             jTabbedPane1.addTab("Receitas", jPanelReceitas);
@@ -2671,7 +2697,7 @@ public class TelaCadastros extends javax.swing.JFrame {
                     .addComponent(jPanel16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(jPanel15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(857, Short.MAX_VALUE))
+                    .addContainerGap(858, Short.MAX_VALUE))
             );
 
             jTabbedPane1.addTab("Cheques", jPanelCheques);
@@ -2861,7 +2887,7 @@ public class TelaCadastros extends javax.swing.JFrame {
                 jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(11, 11, 11)
-                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1157, Short.MAX_VALUE)
+                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1158, Short.MAX_VALUE)
                     .addContainerGap())
             );
 
@@ -3346,6 +3372,16 @@ public class TelaCadastros extends javax.swing.JFrame {
                 jButtonTipoDespesaEditar.setEnabled(true);
                 jButtonTipoDespesaCancelar.setEnabled(true);
                 
+            }else if(pesquisarTable.equals("despesa")){
+                
+                limparCamposDespesa();
+                
+                
+                
+                jButtonDespesaApagar.setEnabled(true);
+                jButtonDespesaEditar.setEnabled(true);
+                jButtonDespesaCancelar.setEnabled(true);
+                
             }
 
 
@@ -3483,6 +3519,26 @@ public class TelaCadastros extends javax.swing.JFrame {
                 
                 JOptionPane.showMessageDialog(this, "Tipo Despesa não encontrado", "Atenção", JOptionPane.INFORMATION_MESSAGE);  
             }
+        
+        }else if(pesquisarTable.equals("despesa")){
+            
+            ArrayList<Saida> despesas = (ArrayList) new DaoSaidas().BuscarSaidaFavorecidoLikeNome(jTextField2.getText());
+            model = (DefaultTableModel) jTable1.getModel();
+            model.setRowCount(0);
+            
+            if(!despesas.isEmpty()){
+                
+                for(Saida s : despesas){
+                    
+                    model.addRow(new Object[]{s.getId(), SimpleDateFormat.getDateInstance().format(s.getData()), s.getValor(), s.getFavorecido(), s.getIdfuncionario().getIdPessoa().getNome()+" "+s.getIdfuncionario().getIdPessoa().getSobrenome(),s.getIdmotivosaida().getNome(), s.getObservacao()});
+                    
+                }
+                
+            }else{
+                
+                 JOptionPane.showMessageDialog(this, "Despesa não encontrada", "Atenção", JOptionPane.INFORMATION_MESSAGE);  
+            }
+            
         }
 
     }
@@ -3603,6 +3659,26 @@ public class TelaCadastros extends javax.swing.JFrame {
                 
             }
             
+        }else if(pesquisarTable.equals("despesa")){
+            
+            List<Saida> saidas = new DaoSaidas().BuscarTodasSaidas();
+            model = (DefaultTableModel) jTable1.getModel();
+            model.setRowCount(0);
+            
+            if(!saidas.isEmpty()){
+                
+                for(Saida s : saidas){
+                    
+                     model.addRow(new Object[]{s.getId(), SimpleDateFormat.getDateInstance().format(s.getData()), s.getValor(), s.getFavorecido(), s.getIdfuncionario().getIdPessoa().getNome()+" "+s.getIdfuncionario().getIdPessoa().getSobrenome(),s.getIdmotivosaida().getNome(), s.getObservacao()});
+                }
+                
+            }else{
+                
+              JOptionPane.showMessageDialog(this, "A tabela de Motivo Despesa está vazia", "Erro", JOptionPane.ERROR_MESSAGE);     
+                
+            }
+            
+            
         }
 
 
@@ -3642,6 +3718,9 @@ public class TelaCadastros extends javax.swing.JFrame {
                 break;
             case "tipo despesa":
                 jButtonTipoDespesaCancelarActionPerformed(evt);
+                break;
+            case "despesa":
+                jButtonDespesaCancelarActionPerformed(evt);
                 break;
                 
         }
@@ -4463,6 +4542,71 @@ public class TelaCadastros extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButtonTipoDespesaApagarActionPerformed
 
+    private void jButtonDespesaNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDespesaNovoActionPerformed
+       
+        limparCamposDespesa();
+        
+        setEditableComponentesDespesa(true);
+        jButtonDespesaNovo.setEnabled(false);
+        jButtonDespesaApagar.setEnabled(false);
+        jButtonDespesaEditar.setEnabled(false);
+        
+        if(jComboBoxDespesaFuncionario.getItemCount() == 0){
+            jComboBoxDespesaFuncionario.addItem("");
+            List<Funcionario> funcionarios = new DaoFuncionario().BuscarFuncionarios();
+            
+            for(Funcionario f : funcionarios){
+                
+                jComboBoxDespesaFuncionario.addItem(f.getIdPessoa().getNome()+" "+f.getIdPessoa().getSobrenome());
+            }
+            
+        }
+        jComboBoxDespesaFuncionario.setSelectedIndex(0);
+        
+        if(jComboBoxDespesaMotivo.getItemCount() == 0){
+            jComboBoxDespesaMotivo.addItem("");
+            List<Motivodespesa> motivoDespesa = new DaoMotivoDespesa().BuscarTodosMotivos();
+            
+            for(Motivodespesa m : motivoDespesa){
+                
+                jComboBoxDespesaMotivo.addItem(m.getNome());
+            }
+        }
+        jComboBoxDespesaMotivo.setSelectedIndex(0);
+        
+    }//GEN-LAST:event_jButtonDespesaNovoActionPerformed
+
+    private void jButtonDespesaCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDespesaCancelarActionPerformed
+        
+        limparCamposDespesa();
+        setEditableComponentesDespesa(false);
+        jButtonDespesaNovo.setEnabled(true);
+        
+    }//GEN-LAST:event_jButtonDespesaCancelarActionPerformed
+
+    private void jButtonDespesaEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDespesaEditarActionPerformed
+        
+        setEditableComponentesDespesa(true);
+        jButtonDespesaEditar.setEnabled(false);
+        jButtonDespesaApagar.setEnabled(false);
+        
+        
+    }//GEN-LAST:event_jButtonDespesaEditarActionPerformed
+
+    private void jButtonDespesaPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDespesaPesquisarActionPerformed
+        
+        if(jButtonDespesaNovo.isEnabled()){
+            
+            pesquisarTable = "despesa";
+            mostrarJtable();
+            
+        }else{
+            
+            JOptionPane.showMessageDialog(this,"Cancele a operação antes de realizar uma pesquisa","Atenção",JOptionPane.INFORMATION_MESSAGE);
+        }
+        
+    }//GEN-LAST:event_jButtonDespesaPesquisarActionPerformed
+
     private void editableTextFields(boolean editable) {
 
         jTextFieldFuncionarioApelido.setEditable(editable);
@@ -4605,9 +4749,16 @@ public class TelaCadastros extends javax.swing.JFrame {
                 p = Pattern.compile("\\d{3}\\.\\d{3}\\.\\d{3}-\\d{2}");
                 m = p.matcher(jFormattedTextFieldFuncionarioCpf.getText());
                 if (m.find()) {
-
+                    
+                    p  = Pattern.compile("\\d+\\.?\\d+");
+                    m = p.matcher(jTextFieldFuncionarioSalario.getText());
+                    if(m.find()){
                     return true;
-                } else {
+                    }else{
+                        JOptionPane.showMessageDialog(this, "Números monetários devem ser separados por ponto","Atenção",JOptionPane.INFORMATION_MESSAGE);
+                        return false;
+                    }
+                    } else {
                     JOptionPane.showMessageDialog(this, "Por Favor, preencha todos os campos em negrito", "Atenção", JOptionPane.INFORMATION_MESSAGE);
                     return false;
                 }
@@ -4801,6 +4952,21 @@ public class TelaCadastros extends javax.swing.JFrame {
         
     }
     
+    private void setEditableComponentesDespesa(boolean edit){
+        
+        jComboBoxDespesaFuncionario.setEnabled(edit);
+        jFormattedTextFieldDespesaData.setEditable(edit);
+        jTextFieldDespesaValor.setEditable(edit);
+        jComboBoxDespesaMotivo.setEnabled(edit);
+        jTextFieldDespesaFavorecido.setEditable(edit);
+        jTextAreaDespesaObservacao.setEditable(edit);
+        jButtonDespesaApagar.setEnabled(edit);
+        jButtonDespesaCancelar.setEnabled(edit);
+        jButtonDespesaEditar.setEnabled(edit);
+        jButtonDespesaSalvar.setEnabled(edit);
+        
+        
+    }
     
     private void limparCamposTaxas() {
 
@@ -4877,6 +5043,26 @@ public class TelaCadastros extends javax.swing.JFrame {
         jTextFieldTipoDespesaNome.setText("");
         jTextAreaTipoDespesaDescricao.setText("");
         jTextAreaTipoDespesaObservacao.setText("");
+        
+    }
+    
+    private void limparCamposDespesa(){
+        
+        
+        if(jComboBoxDespesaFuncionario.getItemCount() != 0){
+            jComboBoxDespesaFuncionario.setSelectedIndex(0);
+            
+        }
+        
+        jTextFieldDespesaID.setText("");
+        jFormattedTextFieldDespesaData.setText("");
+        jTextFieldDespesaValor.setText("");
+        if(jComboBoxDespesaMotivo.getItemCount() != 0){
+            
+            jComboBoxDespesaMotivo.setSelectedIndex(0);
+        }
+        jTextFieldDespesaFavorecido.setText("");
+        jTextAreaDespesaObservacao.setText("");
         
     }
     
@@ -5006,6 +5192,13 @@ public class TelaCadastros extends javax.swing.JFrame {
         
     }
     
+    private void preencherCamposDespesa(Saida s){
+        
+        
+        
+        
+    }
+    
     private void mostrarJtable() {
 
         DefaultTableCellRenderer centralizar = new DefaultTableCellRenderer();
@@ -5098,7 +5291,7 @@ public class TelaCadastros extends javax.swing.JFrame {
 
             jTable1.setModel(new DefaultTableModel(
                     new Object[][]{}, new String[]{"ID", "Nome", "Sobrenome", "CPF", "Categoria Socio", "Logradouro", "Numero"}) {
-                Class[] types = new Class[]{String.class, String.class, String.class, String.class, String.class, String.class, String.class};
+                Class[] types = new Class[]{Integer.class, String.class, String.class, String.class, String.class, String.class, String.class};
 
                 @Override
                 public Class getColumnClass(int columnIndex) {
@@ -5131,7 +5324,7 @@ public class TelaCadastros extends javax.swing.JFrame {
             jTable1.setModel(new DefaultTableModel(
                     new Object[][]{}, new String[]{"ID","Nome","Descrição","Taxa"}) {
                         
-                        Class[] type = new Class[]{String.class, String.class, String.class, String.class};
+                        Class[] type = new Class[]{Integer.class, String.class, String.class, String.class};
                         
                         @Override
                         public Class getColumnClass(int columnIndex){
@@ -5160,7 +5353,7 @@ public class TelaCadastros extends javax.swing.JFrame {
             jTable1.setModel(new DefaultTableModel(
                     new Object[][]{}, new String[]{"ID", "Nome", "Descrição", "Observação"}){
                         
-                        Class[] type = new Class[]{String.class, String.class, String.class, String.class};
+                        Class[] type = new Class[]{Integer.class, String.class, String.class, String.class};
                         
                         @Override
                         public Class getColumnClass(int columnIndex){
@@ -5182,6 +5375,38 @@ public class TelaCadastros extends javax.swing.JFrame {
             jTable1.getColumn("Nome").setCellRenderer(centralizar);
             jTable1.getColumn("Descrição").setCellRenderer(centralizar);
             jTable1.getColumn("Observação").setCellRenderer(centralizar);
+            
+        }else if(pesquisarTable.equals("despesa")){
+            
+            jTable1.setModel(new DefaultTableModel(
+                    new Object[][]{}, new String[]{"ID","Data","Valor","Favorecido","Funcionario","Motivo de Saida","Observação"}){
+                        
+                        Class[] type = new Class[]{Integer.class, String.class, BigDecimal.class, String.class, String.class, String.class, String.class};
+                        
+                        @Override
+                        public Class getColumnClass(int columnIndex){
+                            
+                            return type[columnIndex];
+                        }
+                        
+                        boolean canEdit[] = new boolean[]{false,false,false,false,false,false,false};
+                        
+                        @Override
+                        public boolean isCellEditable(int rowIndex, int columnIndex){
+                            
+                            return canEdit[columnIndex];
+                            
+                        }
+                    });
+            
+            jTable1.getColumn("ID").setCellRenderer(centralizar);
+            jTable1.getColumn("Data").setCellRenderer(centralizar);
+            jTable1.getColumn("Valor").setCellRenderer(centralizar);
+            jTable1.getColumn("Favorecido").setCellRenderer(centralizar);
+            jTable1.getColumn("Funcionario").setCellRenderer(centralizar);
+            jTable1.getColumn("Motivo de Saida").setCellRenderer(centralizar);
+            jTable1.getColumn("Observação").setCellRenderer(centralizar);
+            
             
         }
 
@@ -5242,11 +5467,9 @@ public class TelaCadastros extends javax.swing.JFrame {
     private javax.swing.JLabel Logradouro7;
     private javax.swing.ButtonGroup buttonGroupSocioAprovacao;
     private javax.swing.JButton jButtonApagarCheque;
-    private javax.swing.JButton jButtonApagarDespesa;
     private javax.swing.JButton jButtonApagarReceita;
     private javax.swing.JButton jButtonApagarTipoReceita;
     private javax.swing.JButton jButtonCancelarCheque;
-    private javax.swing.JButton jButtonCancelarDespesa;
     private javax.swing.JButton jButtonCancelarReceita;
     private javax.swing.JButton jButtonCancelarTipoReceita;
     private javax.swing.JButton jButtonCategoriaSocioApagar;
@@ -5255,8 +5478,13 @@ public class TelaCadastros extends javax.swing.JFrame {
     private javax.swing.JButton jButtonCategoriaSocioNovo;
     private javax.swing.JButton jButtonCategoriaSocioPesquisar;
     private javax.swing.JButton jButtonCategoriaSocioSalvar;
+    private javax.swing.JButton jButtonDespesaApagar;
+    private javax.swing.JButton jButtonDespesaCancelar;
+    private javax.swing.JButton jButtonDespesaEditar;
+    private javax.swing.JButton jButtonDespesaNovo;
+    private javax.swing.JButton jButtonDespesaPesquisar;
+    private javax.swing.JButton jButtonDespesaSalvar;
     private javax.swing.JButton jButtonEditarCheque;
-    private javax.swing.JButton jButtonEditarDespesa;
     private javax.swing.JButton jButtonEditarReceita;
     private javax.swing.JButton jButtonEditarTipoReceita;
     protected javax.swing.JButton jButtonFuncionarioApagar;
@@ -5273,12 +5501,10 @@ public class TelaCadastros extends javax.swing.JFrame {
     private javax.swing.JButton jButtonLogradouroPesquisar;
     private javax.swing.JButton jButtonLogradouroSalvar;
     private javax.swing.JButton jButtonNovoCheque;
-    private javax.swing.JButton jButtonNovoDespesa;
     private javax.swing.JButton jButtonNovoReceita;
     private javax.swing.JButton jButtonNovoTipoReceita;
     private javax.swing.JButton jButtonPesquisa;
     private javax.swing.JButton jButtonSalvarCheque;
-    private javax.swing.JButton jButtonSalvarDespesa;
     private javax.swing.JButton jButtonSalvarReceita;
     private javax.swing.JButton jButtonSalvarTipoReceita;
     private javax.swing.JButton jButtonSocioApagar;
@@ -5299,11 +5525,12 @@ public class TelaCadastros extends javax.swing.JFrame {
     private javax.swing.JButton jButtonTipoDespesaNovo;
     private javax.swing.JButton jButtonTipoDespesaPesquisar;
     private javax.swing.JButton jButtonTipoDespesaSalvar;
-    private javax.swing.JComboBox jComboBox1;
     private javax.swing.JComboBox jComboBox2;
     private javax.swing.JComboBox jComboBox3;
     private javax.swing.JComboBox jComboBox4;
     private javax.swing.JComboBox jComboBoxCategoriaSocioTaxa;
+    private javax.swing.JComboBox jComboBoxDespesaFuncionario;
+    private javax.swing.JComboBox jComboBoxDespesaMotivo;
     private javax.swing.JComboBox jComboBoxFuncionarioLograduro;
     private javax.swing.JComboBox jComboBoxFuncionarioSexo;
     private javax.swing.JComboBox jComboBoxFuncionarioStatus;
@@ -5314,6 +5541,7 @@ public class TelaCadastros extends javax.swing.JFrame {
     private javax.swing.JComboBox jComboBoxSocioSexo;
     private javax.swing.JComboBox jComboBoxSocioUF;
     private javax.swing.JDesktopPane jDesktopPane1;
+    private javax.swing.JFormattedTextField jFormattedTextFieldDespesaData;
     private javax.swing.JFormattedTextField jFormattedTextFieldFuncionarioCpf;
     private javax.swing.JFormattedTextField jFormattedTextFieldFuncionarioDataContratacao;
     private javax.swing.JFormattedTextField jFormattedTextFieldFuncionarioDataEmissao;
@@ -5370,7 +5598,6 @@ public class TelaCadastros extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel50;
     private javax.swing.JLabel jLabel51;
-    private javax.swing.JLabel jLabel52;
     private javax.swing.JLabel jLabel53;
     private javax.swing.JLabel jLabel54;
     private javax.swing.JLabel jLabel55;
@@ -5437,6 +5664,7 @@ public class TelaCadastros extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel30;
     private javax.swing.JPanel jPanel31;
+    private javax.swing.JPanel jPanel32;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
@@ -5475,13 +5703,13 @@ public class TelaCadastros extends javax.swing.JFrame {
     private javax.swing.JTable jTable1;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextArea jTextAreaCategoriaSocioDescricao;
+    private javax.swing.JTextArea jTextAreaDespesaObservacao;
     private javax.swing.JTextArea jTextAreaFuncionarioObservacoes;
     private javax.swing.JTextArea jTextAreaLogradouroDescricao;
     private javax.swing.JTextArea jTextAreaTaxasDescricao;
     private javax.swing.JTextArea jTextAreaTipoDespesaDescricao;
     private javax.swing.JTextArea jTextAreaTipoDespesaDescricao2;
     private javax.swing.JTextArea jTextAreaTipoDespesaObservacao;
-    private javax.swing.JTextArea jTextAreaTipoDespesaObservacao1;
     private javax.swing.JTextArea jTextAreaTipoDespesaObservacao2;
     private javax.swing.JTextArea jTextAreaTipoDespesaObservacao3;
     private javax.swing.JTextField jTextField1;
@@ -5493,10 +5721,11 @@ public class TelaCadastros extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextFieldCategoriaSocioID;
     private javax.swing.JTextField jTextFieldCategoriaSocioNome;
-    private javax.swing.JTextField jTextFieldDespesaFuncionario;
+    private javax.swing.JTextField jTextFieldDespesaFavorecido;
     private javax.swing.JTextField jTextFieldDespesaFuncionario1;
-    private javax.swing.JTextField jTextFieldDespesaId;
+    private javax.swing.JTextField jTextFieldDespesaID;
     private javax.swing.JTextField jTextFieldDespesaId1;
+    private javax.swing.JTextField jTextFieldDespesaValor;
     private javax.swing.JTextField jTextFieldFuncionarioApelido;
     private javax.swing.JTextField jTextFieldFuncionarioBairro;
     private javax.swing.JTextField jTextFieldFuncionarioCargo;
@@ -5537,9 +5766,6 @@ public class TelaCadastros extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldTaxasNome;
     private javax.swing.JTextField jTextFieldTaxasValor;
     private javax.swing.JTextField jTextFieldTipoDespesaNome;
-    private javax.swing.JTextField jTextFieldTipoDespesaNome1;
-    private javax.swing.JTextField jTextFieldTipoDespesaNome2;
-    private javax.swing.JTextField jTextFieldTipoDespesaNome3;
     private javax.swing.JTextField jTextFieldTipoDespesaNome4;
     private javax.swing.JTextField jTextFieldTipoDespesaNome5;
     private javax.swing.JTextField jTextFieldTipoDespesaNome6;

@@ -94,6 +94,36 @@ public class DaoSaidas implements SaidasInterface{
     }
 
     @Override
+     public List<Saida> BuscarSaidaFavorecidoLikeNome(String nome)
+    {
+        List<Saida> saida = null;
+        Session sessao = null; 
+        Query query = null;
+        Transaction transacao = null;
+        
+        try{
+           sessao = HibernateUtil.getSessionFactory().openSession();
+           transacao = sessao.beginTransaction();
+           query = sessao.createQuery("from Saida s where s.favorecido LIKE :nome");
+           query.setString("nome","%"+nome+"%");
+           //query.setParameter("nome",nome);
+           saida = query.list();
+           transacao.commit(); 
+           
+        }
+        catch(HibernateException e)
+        {
+            System.out.println(e);
+            transacao.rollback();
+        }
+        finally
+        {
+             sessao.close();
+        }  
+    return saida;
+    }
+    
+    @Override
     public BigDecimal SomaSaidas(Date inicio, Date fim) {
       
         BigDecimal saida = null;
@@ -124,6 +154,34 @@ public class DaoSaidas implements SaidasInterface{
     return saida;
         
         
+    }
+    
+    @Override
+     public List<Saida> BuscarTodasSaidas() {
+        
+        List<Saida> saidas = null;
+        Session sessao = null; 
+        Query query = null;
+        Transaction transacao = null;
+        
+        try{
+           sessao = HibernateUtil.getSessionFactory().openSession();
+           transacao = sessao.beginTransaction();
+           query = sessao.createQuery("from Saida order by favorecido");
+           saidas =  query.list();
+           transacao.commit(); 
+           
+        }
+        catch(HibernateException e)
+        {
+            System.out.println(e);
+            transacao.rollback();
+        }
+        finally
+        {
+             sessao.close();
+        }  
+    return saidas;
     }
 
     @Override
