@@ -297,6 +297,7 @@ public class TelaCadastros extends javax.swing.JFrame {
         jTextAreaCategoriaSocioDescricao = new javax.swing.JTextArea();
         jLabel36 = new javax.swing.JLabel();
         jComboBoxCategoriaSocioTaxa = new javax.swing.JComboBox();
+        jButtonCategoriaSocioPesquisar = new javax.swing.JButton();
         jPanelTipoDespesa = new javax.swing.JPanel();
         jPanel11 = new javax.swing.JPanel();
         jButtonNovoTipoDespesa = new javax.swing.JButton();
@@ -1680,14 +1681,29 @@ public class TelaCadastros extends javax.swing.JFrame {
             jPanel10.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
             jButtonCategoriaSocioNovo.setText("Novo");
+            jButtonCategoriaSocioNovo.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    jButtonCategoriaSocioNovoActionPerformed(evt);
+                }
+            });
 
             jButtonCategoriaSocioEditar.setText("Editar");
+            jButtonCategoriaSocioEditar.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    jButtonCategoriaSocioEditarActionPerformed(evt);
+                }
+            });
 
             jButtonCategoriaSocioSalvar.setText("Salvar");
 
             jButtonCategoriaSocioApagar.setText("Apagar");
 
             jButtonCategoriaSocioCancelar.setText("Cancelar");
+            jButtonCategoriaSocioCancelar.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    jButtonCategoriaSocioCancelarActionPerformed(evt);
+                }
+            });
 
             javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
             jPanel10.setLayout(jPanel10Layout);
@@ -1742,6 +1758,13 @@ public class TelaCadastros extends javax.swing.JFrame {
             jLabel36.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
             jLabel36.setText("Taxa");
 
+            jButtonCategoriaSocioPesquisar.setText("Pesquisar");
+            jButtonCategoriaSocioPesquisar.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    jButtonCategoriaSocioPesquisarActionPerformed(evt);
+                }
+            });
+
             javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
             jPanel7.setLayout(jPanel7Layout);
             jPanel7Layout.setHorizontalGroup(
@@ -1765,7 +1788,10 @@ public class TelaCadastros extends javax.swing.JFrame {
                             .addComponent(jLabel36)
                             .addGap(18, 18, 18)
                             .addComponent(jComboBoxCategoriaSocioTaxa, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(jTextFieldCategoriaSocioNome, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel7Layout.createSequentialGroup()
+                            .addComponent(jTextFieldCategoriaSocioNome, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(jButtonCategoriaSocioPesquisar)))
                     .addContainerGap(253, Short.MAX_VALUE))
             );
             jPanel7Layout.setVerticalGroup(
@@ -1778,8 +1804,9 @@ public class TelaCadastros extends javax.swing.JFrame {
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel34)
-                        .addComponent(jTextFieldCategoriaSocioNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(52, 52, 52)
+                        .addComponent(jTextFieldCategoriaSocioNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButtonCategoriaSocioPesquisar))
+                    .addGap(50, 50, 50)
                     .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jLabel35)
                         .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1802,7 +1829,7 @@ public class TelaCadastros extends javax.swing.JFrame {
                     .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                     .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(753, Short.MAX_VALUE))
+                    .addContainerGap(752, Short.MAX_VALUE))
             );
 
             jTabbedPane1.addTab("Categoria Sócio", jPanelCategoria_Socio);
@@ -4034,6 +4061,56 @@ public class TelaCadastros extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButtonSocioApagarActionPerformed
 
+    private void jButtonCategoriaSocioNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCategoriaSocioNovoActionPerformed
+        
+        setEditableComponentesCategoriaSocio(true);
+        jButtonCategoriaSocioNovo.setEnabled(false);
+        jButtonCategoriaSocioApagar.setEnabled(false);
+        jButtonCategoriaSocioEditar.setEnabled(false);
+        limparCamposCategoriaSocio();
+        
+        if(jComboBoxCategoriaSocioTaxa.getItemCount() == 0){
+            
+            jComboBoxCategoriaSocioTaxa.addItem("");
+            List<Taxa> taxas = new DaoTaxa().TaxasTodas();
+            for(Taxa t : taxas){
+                
+                jComboBoxCategoriaSocioTaxa.addItem(t.getNome());
+            }
+   
+        }
+        jComboBoxCategoriaSocioTaxa.setSelectedItem("");
+        
+    }//GEN-LAST:event_jButtonCategoriaSocioNovoActionPerformed
+
+    private void jButtonCategoriaSocioCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCategoriaSocioCancelarActionPerformed
+        
+        setEditableComponentesCategoriaSocio(false);
+        limparCamposCategoriaSocio();
+        jButtonCategoriaSocioNovo.setEnabled(true);
+        
+        
+    }//GEN-LAST:event_jButtonCategoriaSocioCancelarActionPerformed
+
+    private void jButtonCategoriaSocioPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCategoriaSocioPesquisarActionPerformed
+         if (jButtonCategoriaSocioNovo.isEnabled()) {
+            pesquisarTable = "categoria socio";
+            mostrarJtable();
+
+        } else {
+
+            JOptionPane.showMessageDialog(this, "Cancele a operação para fazer uma pesquisa", "Atenção", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_jButtonCategoriaSocioPesquisarActionPerformed
+
+    private void jButtonCategoriaSocioEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCategoriaSocioEditarActionPerformed
+        
+        setEditableComponentesCategoriaSocio(true);
+        jButtonCategoriaSocioApagar.setEnabled(false);
+        jButtonCategoriaSocioEditar.setEnabled(false);
+        
+    }//GEN-LAST:event_jButtonCategoriaSocioEditarActionPerformed
+
     private void editableTextFields(boolean editable) {
 
         jTextFieldFuncionarioApelido.setEditable(editable);
@@ -4610,6 +4687,34 @@ public class TelaCadastros extends javax.swing.JFrame {
 
 
 
+        }else if(pesquisarTable.equals("categoria socio")){
+           
+            jTable1.setModel(new DefaultTableModel(
+                    new Object[][]{}, new String[]{"ID","Nome","Descrição","Taxa"}) {
+                        
+                        Class[] type = new Class[]{String.class, String.class, String.class, String.class};
+                        
+                        @Override
+                        public Class getColumnClass(int columnIndex){
+                            
+                            return type[columnIndex];
+                            
+                        }
+                        
+                        boolean[] canEdit = new boolean[]{false, false, false, false};
+                        
+                        @Override
+                        public boolean isCellEditable(int rowIndex, int columnIndex){
+                            
+                            return canEdit[columnIndex];
+                        }
+                    });
+            
+            jTable1.getColumn("ID").setCellRenderer(centralizar);
+            jTable1.getColumn("Nome").setCellRenderer(centralizar);
+            jTable1.getColumn("Descrição").setCellRenderer(centralizar);
+            jTable1.getColumn("Taxa").setCellRenderer(centralizar);
+            
         }
 
 
@@ -4683,6 +4788,7 @@ public class TelaCadastros extends javax.swing.JFrame {
     private javax.swing.JButton jButtonCategoriaSocioCancelar;
     private javax.swing.JButton jButtonCategoriaSocioEditar;
     private javax.swing.JButton jButtonCategoriaSocioNovo;
+    private javax.swing.JButton jButtonCategoriaSocioPesquisar;
     private javax.swing.JButton jButtonCategoriaSocioSalvar;
     private javax.swing.JButton jButtonEditarCheque;
     private javax.swing.JButton jButtonEditarDespesa;
