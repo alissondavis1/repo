@@ -13,10 +13,12 @@ import java.util.List;
  */
 public interface MotivoDespesasInterface {
      
-    public void AdicionarMotivoEntrada      (Motivodespesa motivo);
-    public void ApagarMotivoEntrada         (Motivodespesa motivo);
-    public void AlterarMotivoEntrada        (Motivodespesa motivo);
+    public void AdicionarMotivoDespesa      (Motivodespesa motivo);
+    public void ApagarMotivoDespesa         (Motivodespesa motivo);
+    public void AlterarMotivoDespesa        (Motivodespesa motivo);
     
     public List<Motivodespesa> BuscarMotivo   (String nome);
     public List<Motivodespesa> BuscarTodosMotivos ();
+    public List<Motivodespesa> BuscarMotivoDespesaLikeNome(String nome);
+     public Motivodespesa BuscarMotivoDespesaId(int id);
 }
