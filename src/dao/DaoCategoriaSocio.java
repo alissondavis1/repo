@@ -193,7 +193,7 @@ public class DaoCategoriaSocio implements CategoriaSocioInterface {
         try{
            sessao = HibernateUtil.getSessionFactory().openSession();
            transacao= sessao.beginTransaction();
-           query = sessao.createQuery("from Pessoa where id = :id");
+           query = sessao.createQuery("from Categoriasocio where id = :id");
            query.setParameter("id", id);
            categoriaSocio =(Categoriasocio) query.uniqueResult();
            transacao.commit(); 
