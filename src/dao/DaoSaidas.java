@@ -94,6 +94,35 @@ public class DaoSaidas implements SaidasInterface{
     }
 
     @Override
+    public Saida BuscarSaidaId(int id) {
+       
+        Saida saida = null;
+        Session sessao = null; 
+        Query query = null;
+        Transaction transacao = null;
+        
+        try{
+           sessao = HibernateUtil.getSessionFactory().openSession();
+           transacao = sessao.beginTransaction();
+           query = sessao.createQuery("from Saida where id = :id");
+           query.setParameter("id",id);
+           saida = (Saida)query.uniqueResult();
+           transacao.commit(); 
+           
+        }
+        catch(HibernateException e)
+        {
+            System.out.println(e);
+            transacao.rollback();
+        }
+        finally
+        {
+             sessao.close();
+        }  
+    return saida;
+    }
+    
+    @Override
      public List<Saida> BuscarSaidaFavorecidoLikeNome(String nome)
     {
         List<Saida> saida = null;

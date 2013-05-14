@@ -28,5 +28,6 @@ public interface SaidasInterface {
     public List<Saida> SaidasPorMotivo(int IdMotivoSaidas);
     public List<Saida> BuscarSaidaFavorecidoLikeNome(String nome);
      public List<Saida> BuscarTodasSaidas();
+      public Saida BuscarSaidaId(int id); 
    
 }

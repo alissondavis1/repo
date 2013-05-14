@@ -1011,7 +1011,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonTelaPrincipalLogoffActionPerformed
 
     private void menuItemPopupSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemPopupSairActionPerformed
-        
+        formWindowClosing(null);        
         System.exit(0);
     }//GEN-LAST:event_menuItemPopupSairActionPerformed
 
