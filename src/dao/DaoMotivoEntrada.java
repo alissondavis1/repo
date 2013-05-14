@@ -68,6 +68,35 @@ public class DaoMotivoEntrada implements MotivoEntradasInterface{
         }      
     }
     
+     @Override
+    public Motivoentrada BuscarMotivoEntradaId(int id) {
+       
+        Motivoentrada motivoEntrada = null;
+        Session sessao = null; 
+        Query query = null;
+        Transaction transacao = null;
+        
+        try{
+           sessao = HibernateUtil.getSessionFactory().openSession();
+           transacao = sessao.beginTransaction();
+           query = sessao.createQuery("from Motivoentrada where id = :id");
+           query.setParameter("id",id);
+           motivoEntrada = (Motivoentrada)query.uniqueResult();
+           transacao.commit(); 
+           
+        }
+        catch(HibernateException e)
+        {
+            System.out.println(e);
+            transacao.rollback();
+        }
+        finally
+        {
+             sessao.close();
+        }  
+    return motivoEntrada;
+    }
+    
     @Override
     public List<Motivoentrada> BuscarMotivoEntradaLikeNome(String nome)
     {

@@ -19,4 +19,5 @@ public interface MotivoEntradasInterface {
     public List<Motivoentrada> BuscarMotivo (String nome);
     public List<Motivoentrada> BuscarTodosMotivos ();
      public List<Motivoentrada> BuscarMotivoEntradaLikeNome(String nome);
+     public Motivoentrada BuscarMotivoEntradaId(int id);
 }
