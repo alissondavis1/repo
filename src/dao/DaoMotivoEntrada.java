@@ -4,8 +4,8 @@
  */
 package dao;
 
-import entidades.Motivoentrada;
 import daoInterfaces.MotivoEntradasInterface;
+import entidades.Motivoentrada;
 import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.HibernateException;
@@ -66,6 +66,36 @@ public class DaoMotivoEntrada implements MotivoEntradasInterface{
         {
             sessao.close(); 
         }      
+    }
+    
+    @Override
+    public List<Motivoentrada> BuscarMotivoEntradaLikeNome(String nome)
+    {
+        List<Motivoentrada> motivoEntrada = null;
+        Session sessao = null; 
+        Query query = null;
+        Transaction transacao = null;
+        
+        try{
+           sessao = HibernateUtil.getSessionFactory().openSession();
+           transacao = sessao.beginTransaction();
+           query = sessao.createQuery("from Motivoentrada m where m.nome LIKE :nome");
+           query.setString("nome","%"+nome+"%");
+           //query.setParameter("nome",nome);
+           motivoEntrada = query.list();
+           transacao.commit(); 
+           
+        }
+        catch(HibernateException e)
+        {
+            System.out.println(e);
+            transacao.rollback();
+        }
+        finally
+        {
+             sessao.close();
+        }  
+    return motivoEntrada;
     }
     
     @Override
@@ -132,7 +162,7 @@ public class DaoMotivoEntrada implements MotivoEntradasInterface{
         try{
             sessao = HibernateUtil.getSessionFactory().openSession();
             transacao = sessao.beginTransaction();
-            String HQL_QUERY="FROM MotivoDespesa order by nome";
+            String HQL_QUERY="FROM Motivoentrada order by nome";
             Query query = sessao.createQuery(HQL_QUERY);       
             lista = query.list();
             transacao.commit(); 

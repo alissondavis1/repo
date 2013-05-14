@@ -8,6 +8,7 @@ import dao.DaoCategoriaSocio;
 import dao.DaoEndereco;
 import dao.DaoFuncionario;
 import dao.DaoMotivoDespesa;
+import dao.DaoMotivoEntrada;
 import dao.DaoPessoa;
 import dao.DaoSaidas;
 import dao.DaoSocio;
@@ -16,6 +17,7 @@ import entidades.Categoriasocio;
 import entidades.Endereco;
 import entidades.Funcionario;
 import entidades.Motivodespesa;
+import entidades.Motivoentrada;
 import entidades.Pessoa;
 import entidades.Saida;
 import entidades.Socio;
@@ -60,6 +62,7 @@ public class TelaCadastros extends javax.swing.JFrame {
         setEditableComponentesCategoriaSocio(false);
         setEditableComponentesTipoDespesa(false);
         setEditableComponentesDespesa(false);
+        setEditableComponentesTipoReceita(false);
         jDesktopPane1.setVisible(false);
         jInternalFrame1.setVisible(false);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -350,24 +353,25 @@ public class TelaCadastros extends javax.swing.JFrame {
         jButtonDespesaApagar = new javax.swing.JButton();
         jButtonDespesaCancelar = new javax.swing.JButton();
         jPanelTipoReceita = new javax.swing.JPanel();
-        jPanel14 = new javax.swing.JPanel();
-        jButtonNovoTipoReceita = new javax.swing.JButton();
-        jButtonEditarTipoReceita = new javax.swing.JButton();
-        jButtonSalvarTipoReceita = new javax.swing.JButton();
-        jButtonApagarTipoReceita = new javax.swing.JButton();
-        jButtonCancelarTipoReceita = new javax.swing.JButton();
+        jPanel33 = new javax.swing.JPanel();
         jPanel26 = new javax.swing.JPanel();
         jLabel51 = new javax.swing.JLabel();
         jLabel53 = new javax.swing.JLabel();
         jLabel54 = new javax.swing.JLabel();
         jLabel55 = new javax.swing.JLabel();
-        jTextFieldTipoDespesaNome4 = new javax.swing.JTextField();
-        jTextFieldTIpoDespesaId1 = new javax.swing.JTextField();
+        jTextFieldTipoReceitaNome = new javax.swing.JTextField();
+        jTextFieldTIpoReceitaID = new javax.swing.JTextField();
         jScrollPane10 = new javax.swing.JScrollPane();
-        jTextAreaTipoDespesaDescricao2 = new javax.swing.JTextArea();
+        jTextAreaTipoReceitaDescricao = new javax.swing.JTextArea();
         jScrollPane11 = new javax.swing.JScrollPane();
-        jTextAreaTipoDespesaObservacao2 = new javax.swing.JTextArea();
-        jLabel56 = new javax.swing.JLabel();
+        jTextAreaTipoReceitaObservacao = new javax.swing.JTextArea();
+        jButtonTipoReceitaPesquisar = new javax.swing.JButton();
+        jPanel14 = new javax.swing.JPanel();
+        jButtonTipoReceitaNovo = new javax.swing.JButton();
+        jButtonTipoReceitaEditar = new javax.swing.JButton();
+        jButtonTipoReceitaSalvar = new javax.swing.JButton();
+        jButtonTipoReceitaApagar = new javax.swing.JButton();
+        jButtonTipoReceitaCancelar = new javax.swing.JButton();
         jPanelReceitas = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
         jButtonNovoReceita = new javax.swing.JButton();
@@ -2237,97 +2241,65 @@ public class TelaCadastros extends javax.swing.JFrame {
 
             jTabbedPane1.addTab("Despesa", jPanelDespesa);
 
-            jPanel14.setBorder(javax.swing.BorderFactory.createTitledBorder("Opções de Edição"));
-
-            jButtonNovoTipoReceita.setText("Novo");
-
-            jButtonEditarTipoReceita.setText("Editar");
-
-            jButtonSalvarTipoReceita.setText("Salvar");
-
-            jButtonApagarTipoReceita.setText("Apagar");
-
-            jButtonCancelarTipoReceita.setText("Cancelar");
-
-            javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
-            jPanel14.setLayout(jPanel14Layout);
-            jPanel14Layout.setHorizontalGroup(
-                jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel14Layout.createSequentialGroup()
-                    .addGap(146, 146, 146)
-                    .addComponent(jButtonNovoTipoReceita)
-                    .addGap(10, 10, 10)
-                    .addComponent(jButtonEditarTipoReceita)
-                    .addGap(10, 10, 10)
-                    .addComponent(jButtonApagarTipoReceita)
-                    .addGap(10, 10, 10)
-                    .addComponent(jButtonSalvarTipoReceita)
-                    .addGap(10, 10, 10)
-                    .addComponent(jButtonCancelarTipoReceita)
-                    .addContainerGap(352, Short.MAX_VALUE))
-            );
-            jPanel14Layout.setVerticalGroup(
-                jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel14Layout.createSequentialGroup()
-                    .addGap(10, 10, 10)
-                    .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButtonNovoTipoReceita)
-                        .addComponent(jButtonEditarTipoReceita)
-                        .addComponent(jButtonApagarTipoReceita)
-                        .addComponent(jButtonCancelarTipoReceita)
-                        .addComponent(jButtonSalvarTipoReceita))
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            );
+            jPanelTipoReceita.setLayout(new java.awt.GridBagLayout());
 
             jPanel26.setBorder(javax.swing.BorderFactory.createTitledBorder("Tipos de receita"));
 
+            jLabel51.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
             jLabel51.setText("Nome");
 
+            jLabel53.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
             jLabel53.setText("Descricão");
 
             jLabel54.setText("Observação");
 
             jLabel55.setText("Id");
 
-            jTextFieldTipoDespesaNome4.setText("jTextField1");
+            jTextFieldTIpoReceitaID.setEnabled(false);
 
-            jTextFieldTIpoDespesaId1.setText("jTextField4");
+            jTextAreaTipoReceitaDescricao.setColumns(20);
+            jTextAreaTipoReceitaDescricao.setRows(5);
+            jScrollPane10.setViewportView(jTextAreaTipoReceitaDescricao);
 
-            jTextAreaTipoDespesaDescricao2.setColumns(20);
-            jTextAreaTipoDespesaDescricao2.setRows(5);
-            jScrollPane10.setViewportView(jTextAreaTipoDespesaDescricao2);
+            jTextAreaTipoReceitaObservacao.setColumns(20);
+            jTextAreaTipoReceitaObservacao.setRows(5);
+            jScrollPane11.setViewportView(jTextAreaTipoReceitaObservacao);
 
-            jTextAreaTipoDespesaObservacao2.setColumns(20);
-            jTextAreaTipoDespesaObservacao2.setRows(5);
-            jScrollPane11.setViewportView(jTextAreaTipoDespesaObservacao2);
-
-            jLabel56.setText("Essa tela salva lá em motivo despesa...");
+            jButtonTipoReceitaPesquisar.setText("Pesquisar");
+            jButtonTipoReceitaPesquisar.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    jButtonTipoReceitaPesquisarActionPerformed(evt);
+                }
+            });
 
             javax.swing.GroupLayout jPanel26Layout = new javax.swing.GroupLayout(jPanel26);
             jPanel26.setLayout(jPanel26Layout);
             jPanel26Layout.setHorizontalGroup(
                 jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel26Layout.createSequentialGroup()
+                    .addGap(50, 50, 50)
+                    .addComponent(jLabel53)
+                    .addGap(18, 18, 18)
                     .addGroup(jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(jPanel26Layout.createSequentialGroup()
                             .addComponent(jLabel51)
-                            .addComponent(jLabel53))
-                        .addComponent(jLabel54))
-                    .addGap(56, 56, 56)
-                    .addGroup(jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGap(34, 34, 34)
+                            .addComponent(jTextFieldTipoReceitaNome, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(31, 31, 31)
+                            .addComponent(jButtonTipoReceitaPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
+                    .addGroup(jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(jPanel26Layout.createSequentialGroup()
-                            .addComponent(jLabel56)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 198, Short.MAX_VALUE)
-                            .addComponent(jLabel55))
+                            .addComponent(jLabel55)
+                            .addGap(18, 18, 18)
+                            .addComponent(jTextFieldTIpoReceitaID, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(96, 96, 96))
                         .addGroup(jPanel26Layout.createSequentialGroup()
-                            .addGroup(jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jTextFieldTipoDespesaNome4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(0, 231, Short.MAX_VALUE)))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addComponent(jTextFieldTIpoDespesaId1, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(202, Short.MAX_VALUE))
+                            .addComponent(jLabel54)
+                            .addGap(18, 18, 18)
+                            .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(30, 30, 30))))
             );
             jPanel26Layout.setVerticalGroup(
                 jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2335,38 +2307,104 @@ public class TelaCadastros extends javax.swing.JFrame {
                     .addContainerGap()
                     .addGroup(jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel55)
-                        .addComponent(jTextFieldTIpoDespesaId1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel56))
-                    .addGap(42, 42, 42)
-                    .addGroup(jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jTextFieldTIpoReceitaID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTextFieldTipoReceitaNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel51)
-                        .addComponent(jTextFieldTipoDespesaNome4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(42, 42, 42)
+                        .addComponent(jButtonTipoReceitaPesquisar))
+                    .addGap(102, 102, 102)
                     .addGroup(jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jLabel53)
-                        .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(38, 38, 38)
-                    .addGroup(jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel54)
-                        .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addContainerGap(45, Short.MAX_VALUE))
+                        .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel54))
+                    .addContainerGap(74, Short.MAX_VALUE))
             );
 
-            javax.swing.GroupLayout jPanelTipoReceitaLayout = new javax.swing.GroupLayout(jPanelTipoReceita);
-            jPanelTipoReceita.setLayout(jPanelTipoReceitaLayout);
-            jPanelTipoReceitaLayout.setHorizontalGroup(
-                jPanelTipoReceitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jPanel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel26, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            jPanel14.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+            jButtonTipoReceitaNovo.setText("Novo");
+            jButtonTipoReceitaNovo.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    jButtonTipoReceitaNovoActionPerformed(evt);
+                }
+            });
+
+            jButtonTipoReceitaEditar.setText("Editar");
+            jButtonTipoReceitaEditar.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    jButtonTipoReceitaEditarActionPerformed(evt);
+                }
+            });
+
+            jButtonTipoReceitaSalvar.setText("Salvar");
+
+            jButtonTipoReceitaApagar.setText("Apagar");
+
+            jButtonTipoReceitaCancelar.setText("Cancelar");
+            jButtonTipoReceitaCancelar.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    jButtonTipoReceitaCancelarActionPerformed(evt);
+                }
+            });
+
+            javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
+            jPanel14.setLayout(jPanel14Layout);
+            jPanel14Layout.setHorizontalGroup(
+                jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel14Layout.createSequentialGroup()
+                    .addGap(175, 175, 175)
+                    .addComponent(jButtonTipoReceitaNovo)
+                    .addGap(10, 10, 10)
+                    .addComponent(jButtonTipoReceitaEditar)
+                    .addGap(10, 10, 10)
+                    .addComponent(jButtonTipoReceitaApagar)
+                    .addGap(10, 10, 10)
+                    .addComponent(jButtonTipoReceitaSalvar)
+                    .addGap(10, 10, 10)
+                    .addComponent(jButtonTipoReceitaCancelar)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             );
-            jPanelTipoReceitaLayout.setVerticalGroup(
-                jPanelTipoReceitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanelTipoReceitaLayout.createSequentialGroup()
-                    .addComponent(jPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+
+            jPanel14Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButtonTipoReceitaApagar, jButtonTipoReceitaCancelar, jButtonTipoReceitaEditar, jButtonTipoReceitaNovo, jButtonTipoReceitaSalvar});
+
+            jPanel14Layout.setVerticalGroup(
+                jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel14Layout.createSequentialGroup()
+                    .addGap(10, 10, 10)
+                    .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jButtonTipoReceitaNovo)
+                        .addComponent(jButtonTipoReceitaEditar)
+                        .addComponent(jButtonTipoReceitaApagar)
+                        .addComponent(jButtonTipoReceitaCancelar)
+                        .addComponent(jButtonTipoReceitaSalvar))
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            );
+
+            jPanel14Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jButtonTipoReceitaApagar, jButtonTipoReceitaCancelar, jButtonTipoReceitaEditar, jButtonTipoReceitaNovo, jButtonTipoReceitaSalvar});
+
+            javax.swing.GroupLayout jPanel33Layout = new javax.swing.GroupLayout(jPanel33);
+            jPanel33.setLayout(jPanel33Layout);
+            jPanel33Layout.setHorizontalGroup(
+                jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jPanel26, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel14, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            );
+            jPanel33Layout.setVerticalGroup(
+                jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel33Layout.createSequentialGroup()
                     .addComponent(jPanel26, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 647, Short.MAX_VALUE))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(jPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 770, Short.MAX_VALUE))
             );
+
+            gridBagConstraints = new java.awt.GridBagConstraints();
+            gridBagConstraints.gridx = 0;
+            gridBagConstraints.gridy = 0;
+            gridBagConstraints.ipadx = 66;
+            gridBagConstraints.ipady = 770;
+            gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+            jPanelTipoReceita.add(jPanel33, gridBagConstraints);
 
             jTabbedPane1.addTab("Tipo/Receita", jPanelTipoReceita);
 
@@ -2989,7 +3027,7 @@ public class TelaCadastros extends javax.swing.JFrame {
             jInternalFrame1Layout.setVerticalGroup(
                 jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jInternalFrame1Layout.createSequentialGroup()
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 577, Short.MAX_VALUE)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 581, Short.MAX_VALUE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(jPanel19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
             );
@@ -3136,7 +3174,7 @@ public class TelaCadastros extends javax.swing.JFrame {
             if (jTextFieldFuncionarioID.getText().equals("")) {
                 int op = JOptionPane.showConfirmDialog(this, "Tem certeza que deseja gravar os dados?", "Salvar", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
                 if (op == JOptionPane.YES_OPTION) {
-                    Calendar c = Calendar.getInstance();
+                   
                     Pattern p1 = Pattern.compile("\\d{2}\\/\\d{2}\\/\\d{4}");;
                     Matcher m;
                     try {
@@ -3149,6 +3187,13 @@ public class TelaCadastros extends javax.swing.JFrame {
                         p.setSexo((String) jComboBoxFuncionarioSexo.getSelectedItem());
                         p.setNomeMae(jTextFieldFuncionarioNomedame.getText());
                         p.setNomePai(jTextFieldFuncionarioNomedopai.getText());
+                        Pessoa p0 = new DaoPessoa().BuscarPessoaCpf(jFormattedTextFieldFuncionarioCpf.getText());
+                        if (p0 != null) {
+                          JOptionPane.showMessageDialog(this, "Esse cpf já existe","Erro", JOptionPane.ERROR_MESSAGE);
+                          jFormattedTextFieldFuncionarioCpf.setText("");
+                          
+                          throw new Exception();  
+                        }
                         p.setCpf(jFormattedTextFieldFuncionarioCpf.getText());
                         p.setRgNumero(jTextFieldFuncionarioRgnumero.getText());
                         p.setRgExpedidor(jTextFieldFuncionarioOrgaoExpedidor.getText());
@@ -3161,18 +3206,16 @@ public class TelaCadastros extends javax.swing.JFrame {
                         m = p1.matcher(jFormattedTextFieldFuncionarioDataNascimento.getText());
 
                         if (m.find()) {
-                            String[] dataNascimento = jFormattedTextFieldFuncionarioDataNascimento.getText().split("/");
-                            c.set(Integer.parseInt(dataNascimento[2]), Integer.parseInt(dataNascimento[1]), Integer.parseInt(dataNascimento[0]));
-                            p.setDataNasc(c.getTime());
+                            
+                            p.setDataNasc(SimpleDateFormat.getDateInstance().parse(jFormattedTextFieldFuncionarioDataNascimento.getText()));
                         }
 
 
 
                         m = p1.matcher(jFormattedTextFieldFuncionarioDataEmissao.getText());
                         if (m.find()) {
-                            String[] dataEmissao = jFormattedTextFieldFuncionarioDataEmissao.getText().split("/");
-                            c.set(Integer.parseInt(dataEmissao[2]), Integer.parseInt(dataEmissao[1]), Integer.parseInt(dataEmissao[0]));
-                            p.setRgEmissao(c.getTime());
+                            
+                            p.setRgEmissao(SimpleDateFormat.getDateInstance().parse(jFormattedTextFieldFuncionarioDataEmissao.getText()));
                         }
 
                         List<Endereco> ends = new DaoEndereco().BuscarEnderecoNomeLike((String) jComboBoxFuncionarioLograduro.getSelectedItem());
@@ -3196,9 +3239,8 @@ public class TelaCadastros extends javax.swing.JFrame {
                         f.setMatricula(Integer.parseInt(jTextFieldFuncionarioNumeroDaMatricula.getText()));
                         m = p1.matcher(jFormattedTextFieldFuncionarioDataContratacao.getText());
                         if (m.find()) {
-                            String[] dataContratacao = jFormattedTextFieldFuncionarioDataContratacao.getText().split("/");
-                            c.set(Integer.parseInt(dataContratacao[2]), Integer.parseInt(dataContratacao[1]), Integer.parseInt(dataContratacao[0]));
-                            f.setDataContratacao(c.getTime());
+                           
+                            f.setDataContratacao(SimpleDateFormat.getDateInstance().parse(jFormattedTextFieldFuncionarioDataContratacao.getText()));
                         }
 
 
@@ -3226,7 +3268,7 @@ public class TelaCadastros extends javax.swing.JFrame {
 
                 int op = JOptionPane.showConfirmDialog(this, "Tem certeza que deseja gravar a edição desse registro?", "Salvar", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
                 if (op == JOptionPane.YES_OPTION) {
-                    Calendar c = Calendar.getInstance();
+                   
                     Pattern p1 = Pattern.compile("\\d{2}\\/\\d{2}\\/\\d{4}");;
                     Matcher m;
                     try {
@@ -3241,6 +3283,17 @@ public class TelaCadastros extends javax.swing.JFrame {
                         p.setSexo((String) jComboBoxFuncionarioSexo.getSelectedItem());
                         p.setNomeMae(jTextFieldFuncionarioNomedame.getText());
                         p.setNomePai(jTextFieldFuncionarioNomedopai.getText());
+                        if(!p.getCpf().equals(jFormattedTextFieldFuncionarioCpf.getText())){
+                            Pessoa p0 = new DaoPessoa().BuscarPessoaCpf(jFormattedTextFieldFuncionarioCpf.getText());
+                            if(p0 != null){
+                          JOptionPane.showMessageDialog(this, "Esse cpf já existe","Erro", JOptionPane.ERROR_MESSAGE);
+                          jFormattedTextFieldFuncionarioCpf.setText("");
+                          
+                          throw new Exception();  
+                                
+                            }
+                            
+                        }
                         p.setCpf(jFormattedTextFieldFuncionarioCpf.getText());
                         p.setRgNumero(jTextFieldFuncionarioRgnumero.getText());
                         p.setRgExpedidor(jTextFieldFuncionarioOrgaoExpedidor.getText());
@@ -3253,18 +3306,16 @@ public class TelaCadastros extends javax.swing.JFrame {
                         m = p1.matcher(jFormattedTextFieldFuncionarioDataNascimento.getText());
 
                         if (m.find()) {
-                            String[] dataNascimento = jFormattedTextFieldFuncionarioDataNascimento.getText().split("/");
-                            c.set(Integer.parseInt(dataNascimento[2]), Integer.parseInt(dataNascimento[1]), Integer.parseInt(dataNascimento[0]));
-                            p.setDataNasc(c.getTime());
+                            
+                            p.setDataNasc(SimpleDateFormat.getDateInstance().parse(jFormattedTextFieldFuncionarioDataNascimento.getText()));
                         }
 
 
 
                         m = p1.matcher(jFormattedTextFieldFuncionarioDataEmissao.getText());
                         if (m.find()) {
-                            String[] dataEmissao = jFormattedTextFieldFuncionarioDataEmissao.getText().split("/");
-                            c.set(Integer.parseInt(dataEmissao[2]), Integer.parseInt(dataEmissao[1]), Integer.parseInt(dataEmissao[0]));
-                            p.setRgEmissao(c.getTime());
+                            
+                            p.setRgEmissao(SimpleDateFormat.getDateInstance().parse(jFormattedTextFieldFuncionarioDataEmissao.getText()));
                         }
 
                         List<Endereco> ends = new DaoEndereco().BuscarEnderecoNomeLike((String) jComboBoxFuncionarioLograduro.getSelectedItem());
@@ -3288,9 +3339,8 @@ public class TelaCadastros extends javax.swing.JFrame {
                         p.getFuncionario().setMatricula(Integer.parseInt(jTextFieldFuncionarioNumeroDaMatricula.getText()));
                         m = p1.matcher(jFormattedTextFieldFuncionarioDataContratacao.getText());
                         if (m.find()) {
-                            String[] dataContratacao = jFormattedTextFieldFuncionarioDataContratacao.getText().split("/");
-                            c.set(Integer.parseInt(dataContratacao[2]), Integer.parseInt(dataContratacao[1]), Integer.parseInt(dataContratacao[0]));
-                            p.getFuncionario().setDataContratacao(c.getTime());
+                           
+                            p.getFuncionario().setDataContratacao(SimpleDateFormat.getDateInstance().parse(jFormattedTextFieldFuncionarioDataContratacao.getText()));
                         }
 
 
@@ -3549,6 +3599,25 @@ public class TelaCadastros extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Despesa não encontrada", "Atenção", JOptionPane.INFORMATION_MESSAGE);
             }
 
+        }else if(pesquisarTable.equals("tipo receita")){
+            
+            ArrayList<Motivoentrada> motivoEntrada = (ArrayList) new DaoMotivoEntrada().BuscarMotivoEntradaLikeNome(jTextField2.getText());
+            model = (DefaultTableModel) jTable1.getModel();
+            model.setRowCount(0);
+            
+            if(!motivoEntrada.isEmpty()){
+                
+                for(Motivoentrada m : motivoEntrada){
+                    
+                    model.addRow(new Object[]{m.getId(), m.getNome(), m.getDescricao(), m.getObservacao()});
+                }
+                
+            }else{
+                
+                JOptionPane.showMessageDialog(this, "Motivo Entrada não encontrado", "Atenção", JOptionPane.INFORMATION_MESSAGE);
+                
+            }
+            
         }
 
     }
@@ -3684,11 +3753,30 @@ public class TelaCadastros extends javax.swing.JFrame {
 
             } else {
 
-                JOptionPane.showMessageDialog(this, "A tabela de Motivo Despesa está vazia", "Erro", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "A tabela de Despesa está vazia", "Erro", JOptionPane.ERROR_MESSAGE);
 
             }
 
 
+        }else if(pesquisarTable.equals("tipo receita")){
+            
+            List<Motivoentrada> motivoEntrada = new DaoMotivoEntrada().BuscarTodosMotivos();
+            model = (DefaultTableModel) jTable1.getModel();
+            model.setRowCount(0);
+            
+            if(!motivoEntrada.isEmpty()){
+                
+                for(Motivoentrada m : motivoEntrada){
+                    
+                    model.addRow(new Object[]{m.getId(), m.getNome(), m.getDescricao(), m.getObservacao()});
+                }
+                
+            }else{
+                
+                JOptionPane.showMessageDialog(this, "A tabela de Motivo Entrada está vazia", "Atenção", JOptionPane.INFORMATION_MESSAGE);
+                
+            }
+            
         }
 
 
@@ -3732,7 +3820,10 @@ public class TelaCadastros extends javax.swing.JFrame {
             case "despesa":
                 jButtonDespesaCancelarActionPerformed(evt);
                 break;
-
+            case "tipo receita":
+                jButtonTipoReceitaCancelarActionPerformed(evt);
+                break;
+                
         }
         jTextField2.setText("");
         jDesktopPane1.setVisible(false);
@@ -4115,7 +4206,7 @@ public class TelaCadastros extends javax.swing.JFrame {
     private void jButtonSocioSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSocioSalvarActionPerformed
 
         if (isCamposSocioPreenchidos()) {
-            Calendar c = Calendar.getInstance();
+            
             Pattern p1 = Pattern.compile("\\d{2}\\/\\d{2}\\/\\d{4}");;
             Matcher m;
             if (jTextFieldSocioID.getText().equals("")) {
@@ -4142,16 +4233,21 @@ public class TelaCadastros extends javax.swing.JFrame {
 
                         if (p1.matcher(jFormattedTextFieldSocioDataNascimento.getText()).find()) {
 
-                            String[] dataNascimento = jFormattedTextFieldSocioDataNascimento.getText().split("/");
-                            c.set(Integer.parseInt(dataNascimento[2]), Integer.parseInt(dataNascimento[1]), Integer.parseInt(dataNascimento[0]));
-                            p.setDataNasc(c.getTime());
+                           
+                            p.setDataNasc(SimpleDateFormat.getDateInstance().parse(jFormattedTextFieldSocioDataNascimento.getText()));
+                        }
+                        
+                        Pessoa p0 = new DaoPessoa().BuscarPessoaCpf(jFormattedTextFieldSocioCPF.getText());
+                        if(p0 != null){
+                            JOptionPane.showMessageDialog(this,"O cpf informado já existe","Erro",JOptionPane.ERROR_MESSAGE);
+                            jFormattedTextFieldSocioCPF.setText("");
+                            throw new Exception();
                         }
                         p.setCpf(jFormattedTextFieldSocioCPF.getText());
                         if (p1.matcher(jFormattedTextFieldSocioDataEmissao.getText()).find()) {
 
-                            String[] dataEmissao = jFormattedTextFieldSocioDataEmissao.getText().split("/");
-                            c.set(Integer.parseInt(dataEmissao[2]), Integer.parseInt(dataEmissao[1]), Integer.parseInt(dataEmissao[0]));
-                            p.setRgEmissao(c.getTime());
+                           
+                            p.setRgEmissao(SimpleDateFormat.getDateInstance().parse(jFormattedTextFieldSocioDataEmissao.getText()));
                         }
                         p.setSexo((String) jComboBoxSocioSexo.getSelectedItem());
                         p.setUf((String) jComboBoxSocioUF.getSelectedItem());
@@ -4171,13 +4267,11 @@ public class TelaCadastros extends javax.swing.JFrame {
 
                         Socio s = new Socio();
 
-                        String[] dataVencimento = jFormattedTextFieldSocioDiaVencimento.getText().split("/");
-                        c.set(Integer.parseInt(dataVencimento[2]), Integer.parseInt(dataVencimento[1]), Integer.parseInt(dataVencimento[0]));
-                        s.setDataVence(c.getTime());
+                       
+                        s.setDataVence(SimpleDateFormat.getDateInstance().parse(jFormattedTextFieldSocioDiaVencimento.getText()));
 
-                        String[] dataMatricula = jFormattedTextFieldSocioDataMatricula.getText().split("/");
-                        c.set(Integer.parseInt(dataMatricula[2]), Integer.parseInt(dataMatricula[1]), Integer.parseInt(dataMatricula[0]));
-                        s.setDataMatricula(c.getTime());
+                       
+                        s.setDataMatricula(SimpleDateFormat.getDateInstance().parse(jFormattedTextFieldSocioDataMatricula.getText()));
 
                         s.setNumeroSocio(Integer.parseInt(jTextFieldSocioNumeroSocio.getText()));
                         List<Categoriasocio> cs = new DaoCategoriaSocio().BuscarCategoriaPorNomeLike((String) jComboBoxSocioCategoriaSocio.getSelectedItem());
@@ -4227,16 +4321,21 @@ public class TelaCadastros extends javax.swing.JFrame {
 
                         if (p1.matcher(jFormattedTextFieldSocioDataNascimento.getText()).find()) {
 
-                            String[] dataNascimento = jFormattedTextFieldSocioDataNascimento.getText().split("/");
-                            c.set(Integer.parseInt(dataNascimento[2]), Integer.parseInt(dataNascimento[1]), Integer.parseInt(dataNascimento[0]));
-                            p.setDataNasc(c.getTime());
+                           
+                            p.setDataNasc(SimpleDateFormat.getDateInstance().parse(jFormattedTextFieldSocioDataNascimento.getText()));
+                        }
+                        
+                        if(!p.getCpf().equals(jFormattedTextFieldSocioCPF.getText())){
+                            
+                            JOptionPane.showMessageDialog(this,"O cpf informado já existe","Erro",JOptionPane.ERROR_MESSAGE);
+                            jFormattedTextFieldSocioCPF.setText("");
+                            throw new Exception();
                         }
                         p.setCpf(jFormattedTextFieldSocioCPF.getText());
                         if (p1.matcher(jFormattedTextFieldSocioDataEmissao.getText()).find()) {
 
-                            String[] dataEmissao = jFormattedTextFieldSocioDataEmissao.getText().split("/");
-                            c.set(Integer.parseInt(dataEmissao[2]), Integer.parseInt(dataEmissao[1]), Integer.parseInt(dataEmissao[0]));
-                            p.setRgEmissao(c.getTime());
+                           
+                            p.setRgEmissao(SimpleDateFormat.getDateInstance().parse(jFormattedTextFieldSocioDataEmissao.getText()));
                         }
                         p.setSexo((String) jComboBoxSocioSexo.getSelectedItem());
                         p.setUf((String) jComboBoxSocioUF.getSelectedItem());
@@ -4256,13 +4355,11 @@ public class TelaCadastros extends javax.swing.JFrame {
 
 
 
-                        String[] dataVencimento = jFormattedTextFieldSocioDiaVencimento.getText().split("/");
-                        c.set(Integer.parseInt(dataVencimento[2]), Integer.parseInt(dataVencimento[1]), Integer.parseInt(dataVencimento[0]));
-                        p.getSocio().setDataVence(c.getTime());
+                        
+                        p.getSocio().setDataVence(SimpleDateFormat.getDateInstance().parse(jFormattedTextFieldSocioDiaVencimento.getText()));
 
-                        String[] dataMatricula = jFormattedTextFieldSocioDataMatricula.getText().split("/");
-                        c.set(Integer.parseInt(dataMatricula[2]), Integer.parseInt(dataMatricula[1]), Integer.parseInt(dataMatricula[0]));
-                        p.getSocio().setDataMatricula(c.getTime());
+                        
+                        p.getSocio().setDataMatricula(SimpleDateFormat.getDateInstance().parse(jFormattedTextFieldSocioDataMatricula.getText()));
 
                         p.getSocio().setNumeroSocio(Integer.parseInt(jTextFieldSocioNumeroSocio.getText()));
                         List<Categoriasocio> cs = new DaoCategoriaSocio().BuscarCategoriaPorNomeLike((String) jComboBoxSocioCategoriaSocio.getSelectedItem());
@@ -4646,9 +4743,9 @@ public class TelaCadastros extends javax.swing.JFrame {
                         s.setFavorecido(jTextFieldDespesaFavorecido.getText());
                         s.setValor(BigDecimal.valueOf(Double.parseDouble(jTextFieldDespesaValor.getText())));
 
-                        String[] data = jFormattedTextFieldDespesaData.getText().split("/");
-                        c.set(Integer.parseInt(data[2]), Integer.parseInt(data[1]), Integer.parseInt(data[0]));
-                        s.setData(c.getTime());
+                       
+                       
+                        s.setData( SimpleDateFormat.getDateInstance().parse(jFormattedTextFieldDespesaData.getText()));
 
                         Pessoa p1 = new DaoPessoa().BuscarNomeCompleto((String) jComboBoxDespesaFuncionario.getSelectedItem());
                         Funcionario f = p1.getFuncionario();
@@ -4747,6 +4844,48 @@ public class TelaCadastros extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_jButtonDespesaApagarActionPerformed
+
+    private void jButtonTipoReceitaNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTipoReceitaNovoActionPerformed
+       
+        limparCamposTipoReceita();
+        
+        setEditableComponentesTipoReceita(true);
+        jButtonTipoReceitaNovo.setEnabled(false);
+        jButtonTipoReceitaApagar.setEnabled(false);
+        jButtonTipoReceitaEditar.setEnabled(false);
+        
+    }//GEN-LAST:event_jButtonTipoReceitaNovoActionPerformed
+
+    private void jButtonTipoReceitaCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTipoReceitaCancelarActionPerformed
+       
+        limparCamposTipoReceita();
+        setEditableComponentesTipoReceita(false);
+        jButtonTipoReceitaNovo.setEnabled(true);
+        
+    }//GEN-LAST:event_jButtonTipoReceitaCancelarActionPerformed
+
+    private void jButtonTipoReceitaEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTipoReceitaEditarActionPerformed
+        
+        setEditableComponentesTipoReceita(true);
+        jButtonTipoReceitaApagar.setEnabled(false);
+        jButtonTipoReceitaEditar.setEnabled(false);
+        
+        
+    }//GEN-LAST:event_jButtonTipoReceitaEditarActionPerformed
+
+    private void jButtonTipoReceitaPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTipoReceitaPesquisarActionPerformed
+        
+         if (jButtonTipoReceitaNovo.isEnabled()) {
+
+            pesquisarTable = "tipo receita";
+            mostrarJtable();
+
+        } else {
+
+            JOptionPane.showMessageDialog(this, "Cancele a operação antes de realizar uma pesquisa", "Atenção", JOptionPane.INFORMATION_MESSAGE);
+        }
+        
+    }//GEN-LAST:event_jButtonTipoReceitaPesquisarActionPerformed
 
     private void editableTextFields(boolean editable) {
 
@@ -4885,8 +5024,7 @@ public class TelaCadastros extends javax.swing.JFrame {
 
         if (!jTextFieldFuncionarioNome.getText().equals("") && !jTextFieldFuncionarioSobrenome.getText().equals("") && !jTextFieldFuncionarioCargo.getText().equals("") && !jTextFieldFuncionarioSalario.getText().equals("") && m.find() && !jComboBoxFuncionarioStatus.getSelectedItem().equals("") && !jTextFieldFuncionarioNumeroDaMatricula.getText().equals("") && !jComboBoxFuncionarioLograduro.getSelectedItem().equals("") && !jComboBoxFuncionarioSexo.getSelectedItem().equals("") && !jComboBoxFuncionarioUf.getSelectedItem().equals("")) {
 
-            Pessoa p1 = new DaoPessoa().BuscarPessoaCpf(jFormattedTextFieldFuncionarioCpf.getText());
-            if (p1 == null) {
+            
                 p = Pattern.compile("\\d{3}\\.\\d{3}\\.\\d{3}-\\d{2}");
                 m = p.matcher(jFormattedTextFieldFuncionarioCpf.getText());
                 if (m.find()) {
@@ -4903,11 +5041,8 @@ public class TelaCadastros extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(this, "Por Favor, preencha todos os campos em negrito", "Atenção", JOptionPane.INFORMATION_MESSAGE);
                     return false;
                 }
-            } else {
-
-                JOptionPane.showMessageDialog(this, "Esse cpf já existe", "Erro", JOptionPane.ERROR_MESSAGE);
-                return false;
-            }
+            
+           
         } else {
 
             JOptionPane.showMessageDialog(this, "Por Favor, preencha todos os campos em negrito", "Atenção", JOptionPane.INFORMATION_MESSAGE);
@@ -4924,8 +5059,8 @@ public class TelaCadastros extends javax.swing.JFrame {
 
         if (!jTextFieldSocioNome.getText().equals("") && !jTextFieldSocioSobrenome.getText().equals("") && !jComboBoxSocioSexo.getSelectedItem().equals("") && !jComboBoxSocioLogradouro.getSelectedItem().equals("") && !jComboBoxSocioUF.getSelectedItem().equals("") && !jTextFieldSocioNumeroSocio.getText().equals("") && !jComboBoxSocioCategoriaSocio.getSelectedItem().equals("") && (jRadioButtonSocioAtivo.isSelected() || jRadioButtonSocioInativo.isSelected())) {
 
-            Pessoa p1 = new DaoPessoa().BuscarPessoaCpf(jFormattedTextFieldSocioCPF.getText());
-            if (p1 == null) {
+            
+           
                 m = p.matcher(jFormattedTextFieldSocioDiaVencimento.getText());
                 if (m.find()) {
                     m = p.matcher(jFormattedTextFieldSocioDataMatricula.getText());
@@ -4952,11 +5087,7 @@ public class TelaCadastros extends javax.swing.JFrame {
                 }
 
 
-            } else {
-
-                JOptionPane.showMessageDialog(this, "O cpf informado já existe", "Erro", JOptionPane.ERROR_MESSAGE);
-                return false;
-            }
+            
 
 
         } else {
@@ -5146,6 +5277,19 @@ public class TelaCadastros extends javax.swing.JFrame {
 
     }
 
+    private void setEditableComponentesTipoReceita(boolean edit){
+        
+        
+        jTextFieldTipoReceitaNome.setEditable(edit);
+        jTextAreaTipoReceitaDescricao.setEditable(edit);
+        jTextAreaTipoReceitaObservacao.setEditable(edit);
+        jButtonTipoReceitaApagar.setEnabled(edit);
+        jButtonTipoReceitaCancelar.setEnabled(edit);
+        jButtonTipoReceitaEditar.setEnabled(edit);
+        jButtonTipoReceitaSalvar.setEnabled(edit);
+        
+    }
+    
     private void limparCamposTaxas() {
 
 
@@ -5244,6 +5388,15 @@ public class TelaCadastros extends javax.swing.JFrame {
 
     }
 
+    private void limparCamposTipoReceita(){
+        
+        jTextFieldTIpoReceitaID.setText("");
+        jTextFieldTipoReceitaNome.setText("");
+        jTextAreaTipoReceitaDescricao.setText("");
+        jTextAreaTipoReceitaObservacao.setText("");
+        
+    }
+    
     private void preencherCamposLogradouro(Endereco end) {
 
         jTextFieldLogradouroID.setText(String.valueOf(end.getId()));
@@ -5614,6 +5767,35 @@ public class TelaCadastros extends javax.swing.JFrame {
             jTable1.getColumn("Observação").setCellRenderer(centralizar);
 
 
+        }else if(pesquisarTable.equals("tipo receita")){
+            
+            jTable1.setModel(new DefaultTableModel(
+                    new Object[][]{}, new String[]{"ID","Nome","Descrição","Observação"}){
+                        
+                        Class[] type = new Class[]{Integer.class, String.class, String.class, String.class};
+                        
+                        @Override
+                        public Class getColumnClass(int columnIndex){
+                            
+                            return type[columnIndex];
+                        }
+                        
+                        boolean[] canEdit = new boolean[]{false, false, false, false};
+                        
+                        @Override
+                        public boolean isCellEditable(int rowIndex, int columnIndex){
+                            
+                            return canEdit[columnIndex];
+                            
+                        }
+                        
+                    });
+            
+            jTable1.getColumn("ID").setCellRenderer(centralizar);
+            jTable1.getColumn("Nome").setCellRenderer(centralizar);
+            jTable1.getColumn("Descrição").setCellRenderer(centralizar);
+            jTable1.getColumn("Observação").setCellRenderer(centralizar);
+            
         }
 
 
@@ -5674,10 +5856,8 @@ public class TelaCadastros extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroupSocioAprovacao;
     private javax.swing.JButton jButtonApagarCheque;
     private javax.swing.JButton jButtonApagarReceita;
-    private javax.swing.JButton jButtonApagarTipoReceita;
     private javax.swing.JButton jButtonCancelarCheque;
     private javax.swing.JButton jButtonCancelarReceita;
-    private javax.swing.JButton jButtonCancelarTipoReceita;
     private javax.swing.JButton jButtonCategoriaSocioApagar;
     private javax.swing.JButton jButtonCategoriaSocioCancelar;
     private javax.swing.JButton jButtonCategoriaSocioEditar;
@@ -5692,7 +5872,6 @@ public class TelaCadastros extends javax.swing.JFrame {
     private javax.swing.JButton jButtonDespesaSalvar;
     private javax.swing.JButton jButtonEditarCheque;
     private javax.swing.JButton jButtonEditarReceita;
-    private javax.swing.JButton jButtonEditarTipoReceita;
     protected javax.swing.JButton jButtonFuncionarioApagar;
     private javax.swing.JButton jButtonFuncionarioCancelar;
     protected javax.swing.JButton jButtonFuncionarioEditar;
@@ -5708,11 +5887,9 @@ public class TelaCadastros extends javax.swing.JFrame {
     private javax.swing.JButton jButtonLogradouroSalvar;
     private javax.swing.JButton jButtonNovoCheque;
     private javax.swing.JButton jButtonNovoReceita;
-    private javax.swing.JButton jButtonNovoTipoReceita;
     private javax.swing.JButton jButtonPesquisa;
     private javax.swing.JButton jButtonSalvarCheque;
     private javax.swing.JButton jButtonSalvarReceita;
-    private javax.swing.JButton jButtonSalvarTipoReceita;
     private javax.swing.JButton jButtonSocioApagar;
     private javax.swing.JButton jButtonSocioCancelar;
     private javax.swing.JButton jButtonSocioEditar;
@@ -5731,6 +5908,12 @@ public class TelaCadastros extends javax.swing.JFrame {
     private javax.swing.JButton jButtonTipoDespesaNovo;
     private javax.swing.JButton jButtonTipoDespesaPesquisar;
     private javax.swing.JButton jButtonTipoDespesaSalvar;
+    private javax.swing.JButton jButtonTipoReceitaApagar;
+    private javax.swing.JButton jButtonTipoReceitaCancelar;
+    private javax.swing.JButton jButtonTipoReceitaEditar;
+    private javax.swing.JButton jButtonTipoReceitaNovo;
+    private javax.swing.JButton jButtonTipoReceitaPesquisar;
+    private javax.swing.JButton jButtonTipoReceitaSalvar;
     private javax.swing.JComboBox jComboBox2;
     private javax.swing.JComboBox jComboBox3;
     private javax.swing.JComboBox jComboBox4;
@@ -5807,7 +5990,6 @@ public class TelaCadastros extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel53;
     private javax.swing.JLabel jLabel54;
     private javax.swing.JLabel jLabel55;
-    private javax.swing.JLabel jLabel56;
     private javax.swing.JLabel jLabel57;
     private javax.swing.JLabel jLabel58;
     private javax.swing.JLabel jLabel59;
@@ -5871,6 +6053,7 @@ public class TelaCadastros extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel30;
     private javax.swing.JPanel jPanel31;
     private javax.swing.JPanel jPanel32;
+    private javax.swing.JPanel jPanel33;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
@@ -5914,10 +6097,10 @@ public class TelaCadastros extends javax.swing.JFrame {
     private javax.swing.JTextArea jTextAreaLogradouroDescricao;
     private javax.swing.JTextArea jTextAreaTaxasDescricao;
     private javax.swing.JTextArea jTextAreaTipoDespesaDescricao;
-    private javax.swing.JTextArea jTextAreaTipoDespesaDescricao2;
     private javax.swing.JTextArea jTextAreaTipoDespesaObservacao;
-    private javax.swing.JTextArea jTextAreaTipoDespesaObservacao2;
     private javax.swing.JTextArea jTextAreaTipoDespesaObservacao3;
+    private javax.swing.JTextArea jTextAreaTipoReceitaDescricao;
+    private javax.swing.JTextArea jTextAreaTipoReceitaObservacao;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
@@ -5967,13 +6150,13 @@ public class TelaCadastros extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldSocioSobrenome;
     private javax.swing.JTextField jTextFieldSocioTelefone;
     private javax.swing.JTextField jTextFieldTIpoDespesaID;
-    private javax.swing.JTextField jTextFieldTIpoDespesaId1;
+    private javax.swing.JTextField jTextFieldTIpoReceitaID;
     private javax.swing.JTextField jTextFieldTaxasID;
     private javax.swing.JTextField jTextFieldTaxasNome;
     private javax.swing.JTextField jTextFieldTaxasValor;
     private javax.swing.JTextField jTextFieldTipoDespesaNome;
-    private javax.swing.JTextField jTextFieldTipoDespesaNome4;
     private javax.swing.JTextField jTextFieldTipoDespesaNome5;
     private javax.swing.JTextField jTextFieldTipoDespesaNome6;
+    private javax.swing.JTextField jTextFieldTipoReceitaNome;
     // End of variables declaration//GEN-END:variables
 }
