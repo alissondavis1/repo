@@ -68,6 +68,36 @@ public class DaoCheque implements ChequesInterface {
         }    
     }
     
+    @Override
+    public List<Cheque> BuscarChequeFuncionarioLikeNome(String nome)
+    {
+        List<Cheque> entradas = null;
+        Session sessao = null; 
+        Query query = null;
+        Transaction transacao = null;
+        
+        try{
+           sessao = HibernateUtil.getSessionFactory().openSession();
+           transacao = sessao.beginTransaction();
+           query = sessao.createQuery("from Cheque c where c.idFuncionario.idPessoa.nome  LIKE :nome");
+           query.setString("nome","%"+nome+"%");
+           //query.setParameter("nome",nome);
+           entradas = query.list();
+           transacao.commit(); 
+           
+          
+        }
+        catch(HibernateException e)
+        {
+            System.out.println(e);
+            transacao.rollback();
+        }
+        finally
+        {
+             sessao.close();
+        }  
+    return entradas;
+    }
 
     @Override
     public void AtualizarCheque(Cheque cheque) {
@@ -193,7 +223,7 @@ public class DaoCheque implements ChequesInterface {
         try{
            sessao = HibernateUtil.getSessionFactory().openSession();
            tx = sessao.beginTransaction();
-           query = sessao.createQuery("implementar ");
+           query = sessao.createQuery("from Cheque ");
            cheque =  query.list();
            tx.commit(); 
            

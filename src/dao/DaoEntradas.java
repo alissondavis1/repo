@@ -7,6 +7,7 @@ package dao;
 import daoInterfaces.EntradasInterface;
 import entidades.Entrada;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import org.hibernate.HibernateException;
@@ -68,6 +69,65 @@ public class DaoEntradas implements EntradasInterface {
             sessao.close(); 
         }
     }
+    
+     public List<Entrada> BuscarEntradaCedenteLikeNome(String nome)
+    {
+        List<Entrada> entradas = null;
+        Session sessao = null; 
+        Query query = null;
+        Transaction transacao = null;
+        
+        try{
+           sessao = HibernateUtil.getSessionFactory().openSession();
+           transacao = sessao.beginTransaction();
+           query = sessao.createQuery("from Entrada e where e.idCedente.idPessoa.nome  LIKE :nome");
+           query.setString("nome","%"+nome+"%");
+           //query.setParameter("nome",nome);
+           entradas = query.list();
+           transacao.commit(); 
+           Entrada e = new Entrada();
+          
+        }
+        catch(HibernateException e)
+        {
+            System.out.println(e);
+            transacao.rollback();
+        }
+        finally
+        {
+             sessao.close();
+        }  
+    return entradas;
+    }
+    
+    @Override
+      public List<Entrada> BuscarTodasEntradas() {
+        
+        Session sessao= null;
+        Transaction transacao = null;
+        List<Entrada> lista = new ArrayList<>();
+       
+        try{
+            sessao = HibernateUtil.getSessionFactory().openSession();
+            transacao = sessao.beginTransaction();
+            String HQL_QUERY="FROM Entrada";
+            Query query = sessao.createQuery(HQL_QUERY);       
+            lista = query.list();
+            transacao.commit(); 
+       
+        }
+        catch(HibernateException e)
+        {
+            System.out.println(e);
+            transacao.rollback();
+        }
+        finally
+        {
+             sessao.close();
+        }  
+    return lista;
+    }
+    
 
     @Override
     public void AlterarEntrada(Entrada entrada) {
@@ -231,7 +291,7 @@ public class DaoEntradas implements EntradasInterface {
         try{
            sessao = HibernateUtil.getSessionFactory().openSession();
            tx = sessao.beginTransaction();
-           query = sessao.createQuery(" from entrada where  id = :id");
+           query = sessao.createQuery(" from Entrada where  id = :id");
            //query.setParameter("inicio",inicio);
            //query.setParameter("fim",fim);
            query.setParameter("id",id);

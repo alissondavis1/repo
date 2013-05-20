@@ -27,4 +27,5 @@ public interface ChequesInterface {
     public List<Cheque> ChequesTotalAbertas();
     public List<Cheque> ChequesSomaPorData(Date dataInicial, Date dataFinal);
 
+     public List<Cheque> BuscarChequeFuncionarioLikeNome(String nome);
 }
