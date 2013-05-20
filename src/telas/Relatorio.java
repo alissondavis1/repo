@@ -5,8 +5,18 @@
  */
 package telas;
 
+import dao.DaoEndereco;
+import dao.DaoSocio;
+import entidades.Endereco;
+import entidades.Socio;
 import java.io.FileOutputStream;
 import java.sql.Connection;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -16,7 +26,9 @@ import net.sf.jasperreports.engine.JRExporterParameter;
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.export.JRPdfExporter;
+import net.sf.jasperreports.view.JasperViewer;
 import util.HibernateUtil;
 
 /**
@@ -29,7 +41,27 @@ public class Relatorio extends javax.swing.JFrame {
      * Creates new form Relatorio
      */
     public Relatorio() {
-        initComponents(); 
+        initComponents();
+        if(jComboBoxSocio.getItemCount()==0)
+        {
+         jComboBoxSocio.addItem("");
+         List <Socio> socioList = new DaoSocio().TodosOsSocios();
+        
+         for(Socio s: socioList)
+         {
+           jComboBoxSocio.addItem(s.getIdPessoa().getNome()+" "+ s.getIdPessoa().getSobrenome());
+         }
+        }
+        if(jComboBoxLogradouro.getItemCount()==0)
+        {
+         jComboBoxLogradouro.addItem("");            
+         List <Endereco> end = new DaoEndereco().BuscarTodosEnderecos();
+         
+         for(Endereco e: end)
+         {
+           jComboBoxLogradouro.addItem(e.getTipo().toLowerCase()+" "+ e.getNome());
+         }     
+        }
     }
 
     /**
@@ -42,6 +74,12 @@ public class Relatorio extends javax.swing.JFrame {
     private void initComponents() {
 
         jRadioButton1 = new javax.swing.JRadioButton();
+        acal2002PUEntityManager = java.beans.Beans.isDesignTime() ? null : javax.persistence.Persistence.createEntityManagerFactory("acal2002PU").createEntityManager();
+        socioQuery = java.beans.Beans.isDesignTime() ? null : acal2002PUEntityManager.createQuery("SELECT s FROM Socio s");
+        socioList = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : socioQuery.getResultList();
+        socioQuery1 = java.beans.Beans.isDesignTime() ? null : acal2002PUEntityManager.createQuery("SELECT s FROM Socio s");
+        socioList1 = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : socioQuery1.getResultList();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jCheckBoxContasPeriodo = new javax.swing.JCheckBox();
@@ -65,6 +103,16 @@ public class Relatorio extends javax.swing.JFrame {
         jPanel7 = new javax.swing.JPanel();
         jComboBoxLogradouro = new javax.swing.JComboBox();
         jCheckBoxContasLogradouro = new javax.swing.JCheckBox();
+        jPanel8 = new javax.swing.JPanel();
+        jPanel10 = new javax.swing.JPanel();
+        jPanel13 = new javax.swing.JPanel();
+        jCheckBoxEntradaContasPeriodo = new javax.swing.JCheckBox();
+        jPanel14 = new javax.swing.JPanel();
+        jTextFieldEntradaInicio = new javax.swing.JTextField();
+        jPanel15 = new javax.swing.JPanel();
+        jTextFieldEntradaFim = new javax.swing.JTextField();
+        jButton2 = new javax.swing.JButton();
+        jPanel9 = new javax.swing.JPanel();
 
         jRadioButton1.setText("jRadioButton1");
 
@@ -296,7 +344,7 @@ public class Relatorio extends javax.swing.JFrame {
                 .addComponent(jCheckBoxStatusFeixada)
                 .addGap(73, 73, 73)
                 .addComponent(jCheckBoxStatusTodas)
-                .addContainerGap(52, Short.MAX_VALUE))
+                .addContainerGap(149, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -312,7 +360,6 @@ public class Relatorio extends javax.swing.JFrame {
 
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Socio"));
 
-        jComboBoxSocio.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8" }));
         jComboBoxSocio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBoxSocioActionPerformed(evt);
@@ -356,7 +403,6 @@ public class Relatorio extends javax.swing.JFrame {
 
         jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder("Logradouro"));
 
-        jComboBoxLogradouro.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jComboBoxLogradouro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBoxLogradouroActionPerformed(evt);
@@ -416,20 +462,144 @@ public class Relatorio extends javax.swing.JFrame {
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(jButton1)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 9, Short.MAX_VALUE))
         );
+
+        jTabbedPane1.addTab("Contas", jPanel1);
+
+        jPanel13.setBorder(javax.swing.BorderFactory.createTitledBorder("Periodo"));
+
+        jCheckBoxEntradaContasPeriodo.setText("Considerar Periodo");
+        jCheckBoxEntradaContasPeriodo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBoxEntradaContasPeriodoActionPerformed(evt);
+            }
+        });
+
+        jPanel14.setBorder(javax.swing.BorderFactory.createTitledBorder("Inicio"));
+
+        javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
+        jPanel14.setLayout(jPanel14Layout);
+        jPanel14Layout.setHorizontalGroup(
+            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel14Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jTextFieldEntradaInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(70, Short.MAX_VALUE))
+        );
+        jPanel14Layout.setVerticalGroup(
+            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel14Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jTextFieldEntradaInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        jPanel15.setBorder(javax.swing.BorderFactory.createTitledBorder("Fim"));
+
+        javax.swing.GroupLayout jPanel15Layout = new javax.swing.GroupLayout(jPanel15);
+        jPanel15.setLayout(jPanel15Layout);
+        jPanel15Layout.setHorizontalGroup(
+            jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel15Layout.createSequentialGroup()
+                .addContainerGap(82, Short.MAX_VALUE)
+                .addComponent(jTextFieldEntradaFim, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(80, 80, 80))
+        );
+        jPanel15Layout.setVerticalGroup(
+            jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel15Layout.createSequentialGroup()
+                .addGap(0, 12, Short.MAX_VALUE)
+                .addComponent(jTextFieldEntradaFim, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
+        jPanel13.setLayout(jPanel13Layout);
+        jPanel13Layout.setHorizontalGroup(
+            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel13Layout.createSequentialGroup()
+                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel13Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jCheckBoxEntradaContasPeriodo))
+                    .addGroup(jPanel13Layout.createSequentialGroup()
+                        .addComponent(jPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        jPanel13Layout.setVerticalGroup(
+            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel13Layout.createSequentialGroup()
+                .addComponent(jCheckBoxEntradaContasPeriodo)
+                .addGap(0, 0, 0)
+                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 14, Short.MAX_VALUE))
+        );
+
+        jButton2.setText("Gerar Relatorio");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
+        jPanel10.setLayout(jPanel10Layout);
+        jPanel10Layout.setHorizontalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel13, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton2)
+                .addContainerGap())
+        );
+        jPanel10Layout.setVerticalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel10Layout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 107, Short.MAX_VALUE)
+                .addComponent(jButton2)
+                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
+        jPanel8.setLayout(jPanel8Layout);
+        jPanel8Layout.setHorizontalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel10, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jPanel8Layout.setVerticalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("Entradas", jPanel8);
+
+        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
+        jPanel9.setLayout(jPanel9Layout);
+        jPanel9Layout.setHorizontalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 602, Short.MAX_VALUE)
+        );
+        jPanel9Layout.setVerticalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 282, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("tab3", jPanel9);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -578,81 +748,55 @@ public class Relatorio extends javax.swing.JFrame {
        }
     }//GEN-LAST:event_jComboBoxLogradouroActionPerformed
 
+    private void jCheckBoxEntradaContasPeriodoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxEntradaContasPeriodoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBoxEntradaContasPeriodoActionPerformed
+
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+
        
-        String data       = "";
-        String status     = "";
-        String socio      = "";
-        String logradouro = "";
-        
-        if(jCheckBoxContasPeriodo.isSelected())
-        {
-         if(
-         (jComboBoxInicioDia.getSelectedIndex() != 0)&&
-         (jComboBoxInicioMes.getSelectedIndex() != 0)&&
-         (jComboBoxInicioAno.getSelectedIndex() != 0)&&
-         (jComboBoxFimDia.getSelectedIndex()    != 0)&&
-         (jComboBoxFimMes.getSelectedIndex()    != 0)&&
-         (jComboBoxFimAno.getSelectedIndex()    != 0))
-         {
-          data =
-           jComboBoxInicioDia.getSelectedItem().toString()+
-           jComboBoxInicioMes.getSelectedItem().toString()+
-           jComboBoxInicioAno.getSelectedItem().toString()+
-           jComboBoxFimDia.getSelectedItem().toString()+
-           jComboBoxFimMes.getSelectedItem().toString()+
-           jComboBoxFimAno.getSelectedItem().toString();
-         }
-         else
-         {
-          JOptionPane.showMessageDialog(null, "Você precisa selecionar a data corretamente");
-          jComboBoxInicioDia.setSelectedIndex(0);
-          jComboBoxInicioMes.setSelectedIndex(0);
-          jComboBoxInicioAno.setSelectedIndex(0);
-          jComboBoxFimDia.setSelectedIndex(0);
-          jComboBoxFimMes.setSelectedIndex(0);
-          jComboBoxFimAno.setSelectedIndex(0);
-          jCheckBoxContasPeriodo.setSelected(false);
-         }
-         if(jCheckBoxContasStatus.isSelected())
-         {   
-           if(jCheckBoxStatusAberta.isSelected()) {status="aberto";}
-           if(jCheckBoxStatusFeixada.isSelected()){status="feixado";}
-           if(jCheckBoxStatusTodas.isSelected())  {status="todos";}
-         }
-         if(jCheckBoxContasSocio.isSelected())
-         {
-          socio = jComboBoxSocio.getSelectedItem().toString();
-         }
-         if(jCheckBoxContasLogradouro.isSelected())
-         {
-          logradouro = jComboBoxLogradouro.getSelectedItem().toString();
-         }
-         
-         System.out.println
-         (
-         "\ndata       " + data  + 
-         "\nSocio      " + socio + 
-         "\nStatus     " + status +
-         "\nlogradouro " + logradouro     
-         );
-                     
-       }    
-        try {
-          Connection con = HibernateUtil.getConnection();
-         // JasperCompileManager.compileReportToFile("src/relatorios/RelatorioContasAbertasPorSocio.jrxml");
-          JasperPrint jasperprint =  JasperFillManager.fillReport("src/relatorios/relatorioContasAbertasPorSocio.jasper",null, con);
-          JRExporter exp = new JRPdfExporter();
-          exp.setParameter(JRExporterParameter.JASPER_PRINT, jasperprint);
-          exp.setParameter(JRExporterParameter.OUTPUT_STREAM, new FileOutputStream("conta.pdf") );
-          exp.exportReport();
-          
-         } catch (JRException ex) {
-          Logger.getLogger(Relatorio.class.getName()).log(Level.SEVERE, null, ex);
-         } catch (Exception ex) {
-          Logger.getLogger(Relatorio.class.getName()).log(Level.SEVERE, null, ex);
-         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        
+        
+      
+       new Thread() {
+         @Override
+         public void run() {
+          try {
+               String datainicio = null;
+               String datafim = null;
+        
+          datainicio = jTextFieldEntradaInicio.getText();
+          datafim    = jTextFieldEntradaFim   .getText();
+        
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        
+        Date datainicial = sdf.parse(datainicio);
+        Date datafinal = sdf.parse(datafim);
+                    Connection conn = HibernateUtil.getConnection();
+                    Map<String, Object> paramets = new HashMap<>();
+                    
+                    paramets.put("inicio",datainicial );
+                    paramets.put("fim",datafinal );
+                    JasperReport report = JasperCompileManager.compileReport(getClass().getResourceAsStream("/relatorios/rc_entrada.jrxml"));
+
+                    JasperPrint jasper = JasperFillManager.fillReport(report, paramets, conn);
+                    JasperViewer.viewReport(jasper, false);
+
+
+                } catch (Exception ex) {
+                    Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                }
+          
+                
+            }
+       }.start();
+    
+        
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -690,11 +834,14 @@ public class Relatorio extends javax.swing.JFrame {
     }
   
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.persistence.EntityManager acal2002PUEntityManager;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JCheckBox jCheckBoxContasLogradouro;
     private javax.swing.JCheckBox jCheckBoxContasPeriodo;
     private javax.swing.JCheckBox jCheckBoxContasSocio;
     private javax.swing.JCheckBox jCheckBoxContasStatus;
+    private javax.swing.JCheckBox jCheckBoxEntradaContasPeriodo;
     private javax.swing.JCheckBox jCheckBoxStatusAberta;
     private javax.swing.JCheckBox jCheckBoxStatusFeixada;
     private javax.swing.JCheckBox jCheckBoxStatusTodas;
@@ -707,13 +854,25 @@ public class Relatorio extends javax.swing.JFrame {
     private javax.swing.JComboBox jComboBoxLogradouro;
     private javax.swing.JComboBox jComboBoxSocio;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel10;
+    private javax.swing.JPanel jPanel13;
+    private javax.swing.JPanel jPanel14;
+    private javax.swing.JPanel jPanel15;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
     private javax.swing.JRadioButton jRadioButton1;
-   
+    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTextField jTextFieldEntradaFim;
+    private javax.swing.JTextField jTextFieldEntradaInicio;
+    private java.util.List<entidades.Socio> socioList;
+    private java.util.List<entidades.Socio> socioList1;
+    private javax.persistence.Query socioQuery;
+    private javax.persistence.Query socioQuery1;
     // End of variables declaration//GEN-END:variables
 }

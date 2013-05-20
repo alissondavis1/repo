@@ -123,7 +123,7 @@ public class Motivoentrada implements Serializable {
 
     @Override
     public String toString() {
-        return "entidades.Motivoentrada[ id=" + id + " ]";
+        return "entidades.MotivoEntrada[ id=" + id + " ]";
     }
     
 }

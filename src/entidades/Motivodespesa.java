@@ -136,7 +136,7 @@ public class Motivodespesa implements Serializable {
 
     @Override
     public String toString() {
-        return "entidades.Motivodespesa[ id=" + id + " ]";
+        return "entidades.MotivoDespesa[ id=" + id + " ]";
     }
     
 }
