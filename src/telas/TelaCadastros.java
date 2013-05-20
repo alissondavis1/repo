@@ -2755,7 +2755,7 @@ public class TelaCadastros extends javax.swing.JFrame {
                         .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGap(18, 18, 18)
                     .addComponent(jButtonChequePesquisar)
-                    .addContainerGap(126, Short.MAX_VALUE))
+                    .addContainerGap(147, Short.MAX_VALUE))
             );
             jPanel15Layout.setVerticalGroup(
                 jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2815,8 +2815,18 @@ public class TelaCadastros extends javax.swing.JFrame {
             });
 
             jButtonChequeSalvar.setText("Salvar");
+            jButtonChequeSalvar.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    jButtonChequeSalvarActionPerformed(evt);
+                }
+            });
 
             jButtonChequeApagar.setText("Apagar");
+            jButtonChequeApagar.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    jButtonChequeApagarActionPerformed(evt);
+                }
+            });
 
             jButtonChequeCancelar.setText("Cancelar");
             jButtonChequeCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -3603,6 +3613,16 @@ public class TelaCadastros extends javax.swing.JFrame {
                 jButtonReceitaEditar.setEnabled(true);
                 jButtonReceitaCancelar.setEnabled(true);
                 
+            }else if(pesquisarTable.equals("cheque")){
+                
+                limparCamposCheques();
+                
+                preencherCamposCheque(new DaoCheque().ChequesId((Integer) jTable1.getValueAt(jTable1.getSelectedRow(), 0)));
+                
+                jButtonChequeApagar.setEnabled(true);
+                jButtonChequeEditar.setEnabled(true);
+                jButtonChequeCancelar.setEnabled(true);
+                
             }
 
 
@@ -4234,6 +4254,14 @@ public class TelaCadastros extends javax.swing.JFrame {
 
             }
             jTabbedPane1.setSelectedComponent(jPanelReceitas);
+            
+        }else if(!jButtonChequeNovo.isEnabled() || !jTextFieldChequeID.getText().equals("")){
+             if (jTabbedPane1.getSelectedComponent() != jPanelCheques) {
+
+                JOptionPane.showMessageDialog(this, "Cancele a operação ", "Atenção", JOptionPane.INFORMATION_MESSAGE);
+
+            }
+            jTabbedPane1.setSelectedComponent(jPanelCheques);
             
         }
         
@@ -5524,6 +5552,111 @@ public class TelaCadastros extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButtonChequePesquisarActionPerformed
 
+    private void jButtonChequeSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonChequeSalvarActionPerformed
+        
+        if(isCamposChequePreenchidos()){
+            
+            if(jTextFieldChequeID.getText().equals("")){
+            int op = JOptionPane.showConfirmDialog(this, "Confirma a gravação desse registro?", "Atenção", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+            if(op == JOptionPane.YES_OPTION){
+                
+                try{
+                    
+                    Cheque c = new Cheque();
+                    
+                    c.setNumero(Integer.parseInt(jTextFieldChequeNumero.getText()));
+                    c.setValor(BigDecimal.valueOf(Double.parseDouble(jTextFieldChequeValor.getText())));
+                    c.setDataPagamento(SimpleDateFormat.getDateInstance().parse(jFormattedTextFieldChequeDataPagamento.getText()));
+                    c.setDataVencimento(SimpleDateFormat.getDateInstance().parse(jFormattedTextFieldChequeDataVencimento.getText()));
+                    c.setObservacoes(jTextAreaChequeObservacoes.getText());
+                    
+                    Pessoa pessoa = new DaoPessoa().BuscarNomeCompleto((String)jComboBoxChequeFuncionario.getSelectedItem());
+                    c.setIdFuncionario(pessoa.getFuncionario());
+                    
+                    List<Motivodespesa> motivos = new DaoMotivoDespesa().BuscarMotivoDespesaLikeNome((String) jComboBoxChequeMotivoDespesa.getSelectedItem());
+                    c.setIdMotivoDespesa(motivos.get(0));
+                    
+                    
+                     new DaoCheque().AdicionarCheque(c);
+                     JOptionPane.showMessageDialog(this, "Registro gravado com sucesso!", "Atenção", JOptionPane.INFORMATION_MESSAGE);       
+                     jButtonChequeCancelarActionPerformed(evt);
+                    
+                }catch(Exception e){
+                    
+                       JOptionPane.showMessageDialog(this, "Erro ao gravar o registro", "Erro", JOptionPane.ERROR_MESSAGE);
+                    
+                }
+                
+                
+                
+            }
+            
+            
+            }else{
+                 int op = JOptionPane.showConfirmDialog(this, "Confirma a alteração desse registro?", "Atenção", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+                 if(op == JOptionPane.YES_OPTION){
+                     
+                     try{
+                         
+                    Cheque c = new DaoCheque().ChequesId(Integer.parseInt(jTextFieldChequeID.getText()));
+                    
+                    c.setNumero(Integer.parseInt(jTextFieldChequeNumero.getText()));
+                    c.setValor(BigDecimal.valueOf(Double.parseDouble(jTextFieldChequeValor.getText())));
+                    c.setDataPagamento(SimpleDateFormat.getDateInstance().parse(jFormattedTextFieldChequeDataPagamento.getText()));
+                    c.setDataVencimento(SimpleDateFormat.getDateInstance().parse(jFormattedTextFieldChequeDataVencimento.getText()));
+                    c.setObservacoes(jTextAreaChequeObservacoes.getText());
+                    
+                    Pessoa pessoa = new DaoPessoa().BuscarNomeCompleto((String)jComboBoxChequeFuncionario.getSelectedItem());
+                    c.setIdFuncionario(pessoa.getFuncionario());
+                    
+                    List<Motivodespesa> motivos = new DaoMotivoDespesa().BuscarMotivoDespesaLikeNome((String) jComboBoxChequeMotivoDespesa.getSelectedItem());
+                    c.setIdMotivoDespesa(motivos.get(0));
+                    
+                    
+                     new DaoCheque().AtualizarCheque(c);
+                     JOptionPane.showMessageDialog(this, "Registro alterado com sucesso!", "Atenção", JOptionPane.INFORMATION_MESSAGE);       
+                     jButtonChequeCancelarActionPerformed(evt);  
+                         
+                         
+                     }catch(Exception e){
+                         
+                       JOptionPane.showMessageDialog(this, "Erro ao alterar o registro", "Erro", JOptionPane.ERROR_MESSAGE);    
+                         
+                     }
+                     
+                 }
+                
+                
+            }
+            
+        }
+        
+        
+    }//GEN-LAST:event_jButtonChequeSalvarActionPerformed
+
+    private void jButtonChequeApagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonChequeApagarActionPerformed
+        
+         int op = JOptionPane.showConfirmDialog(this, "Tem certeza que deseja excluir esse registro?", "Atenção", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+         if(op == JOptionPane.YES_OPTION){
+             
+             try{
+                 
+                 Cheque c = new DaoCheque().ChequesId(Integer.parseInt(jTextFieldChequeID.getText()));
+                 
+                 new DaoCheque().ApagarCheque(c);
+                 
+                 JOptionPane.showMessageDialog(this,"Registro excluido com sucesso","Atenção",JOptionPane.INFORMATION_MESSAGE);
+                 jButtonChequeCancelarActionPerformed(evt);
+                 
+             }catch(Exception e){
+                 
+                  JOptionPane.showMessageDialog(this, "Erro ao excluir o registro", "Erro", JOptionPane.ERROR_MESSAGE);
+             }
+             
+         }
+        
+    }//GEN-LAST:event_jButtonChequeApagarActionPerformed
+
     private void editableTextFields(boolean editable) {
 
         jTextFieldFuncionarioApelido.setEditable(editable);
@@ -5855,6 +5988,53 @@ public class TelaCadastros extends javax.swing.JFrame {
             
         }
         
+        
+        
+        
+    }
+   
+    private boolean isCamposChequePreenchidos(){
+        
+        Pattern p = Pattern.compile("\\d{2}\\/\\d{2}\\/\\d{4}");
+        Matcher m;
+        
+        if(!jTextFieldChequeNumero.getText().equals("") && !jComboBoxChequeFuncionario.getSelectedItem().equals("") && !jComboBoxChequeMotivoDespesa.getSelectedItem().equals("") ){
+            
+            m = p.matcher(jFormattedTextFieldChequeDataPagamento.getText());
+            if(m.find()){
+                m = p.matcher(jFormattedTextFieldChequeDataVencimento.getText());
+                if(m.find()){
+                    p = Pattern.compile("\\d+\\.\\d+");
+                    m = p.matcher(jTextFieldChequeValor.getText());
+                    if(m.find()){
+                        return true;
+                        
+                    }else{
+                    
+                       JOptionPane.showMessageDialog(this, "Campos monetários devem ser separados com ponto", "Atenção", JOptionPane.INFORMATION_MESSAGE);
+                       return false;    
+                }
+                    
+                    
+                }else{
+                    
+                    JOptionPane.showMessageDialog(this, "Os campos em negrito são obrigatórios", "Atenção", JOptionPane.INFORMATION_MESSAGE);
+                    return false; 
+                }
+                
+                
+            }else{
+          JOptionPane.showMessageDialog(this, "Os campos em negrito são obrigatórios", "Atenção", JOptionPane.INFORMATION_MESSAGE);
+          return false; 
+                
+            }
+            
+        }else{
+            
+            
+          JOptionPane.showMessageDialog(this, "Os campos em negrito são obrigatórios", "Atenção", JOptionPane.INFORMATION_MESSAGE);
+          return false;   
+        }
         
         
         
@@ -6406,7 +6586,53 @@ public class TelaCadastros extends javax.swing.JFrame {
         
     }
 
+    private void preencherCamposCheque(Cheque c){
+        
 
+        jTextFieldChequeID.setText(String.valueOf(c.getId()));
+        jTextFieldChequeNumero.setText(String.valueOf(c.getNumero()));
+        jTextFieldChequeValor.setText(String.valueOf(c.getValor()));
+        jTextAreaChequeObservacoes.setText(c.getObservacoes());
+        
+        jFormattedTextFieldChequeDataPagamento.setText(SimpleDateFormat.getDateInstance().format(c.getDataPagamento()));
+        jFormattedTextFieldChequeDataVencimento.setText(SimpleDateFormat.getDateInstance().format(c.getDataVencimento()));
+        
+        if(jComboBoxChequeFuncionario.getItemCount() == 0){
+            
+            jComboBoxChequeFuncionario.addItem("");
+            List<Funcionario> funcionarios = new DaoFuncionario().BuscarFuncionarios();
+            
+            if(!funcionarios.isEmpty()){
+                
+                for(Funcionario f : funcionarios){
+                    
+                    jComboBoxChequeFuncionario.addItem(f.getIdPessoa().getNome()+" "+f.getIdPessoa().getSobrenome());
+                }
+            }
+            
+            
+        }
+        jComboBoxChequeFuncionario.setSelectedItem(c.getIdFuncionario().getIdPessoa().getNome()+" "+c.getIdFuncionario().getIdPessoa().getSobrenome());
+        
+        if(jComboBoxChequeMotivoDespesa.getItemCount() == 0){
+            
+            jComboBoxChequeMotivoDespesa.addItem("");
+            List<Motivodespesa> motivos = new DaoMotivoDespesa().BuscarTodosMotivos();
+            
+            if(!motivos.isEmpty()){
+                
+                for(Motivodespesa m : motivos){
+                    
+                    jComboBoxChequeMotivoDespesa.addItem(m.getNome());
+                }
+                
+            }
+            
+            
+        }
+        jComboBoxChequeMotivoDespesa.setSelectedItem(c.getIdMotivoDespesa().getNome());
+        
+    }
           
     
     private void zerarComboBox(){
