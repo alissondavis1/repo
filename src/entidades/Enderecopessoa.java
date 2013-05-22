@@ -25,6 +25,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 
 public class Enderecopessoa implements Serializable {
+    @Column(name = "Numero")
+    private Integer numero;
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -91,7 +93,15 @@ public class Enderecopessoa implements Serializable {
 
     @Override
     public String toString() {
-        return "dao.Enderecopessoa[ id=" + id + " ]";
+        return "dao.Enderecopessoa[ id=" + id + " ]";    }
+
+    public Integer getNumero() {
+        return numero;
+    }
+
+    public void setNumero(Integer numero) {
+        this.numero = numero;
+
     }
     
 }

@@ -125,7 +125,7 @@ public class TelaLogin extends javax.swing.JFrame {
     private void jButtonTelaLoginLogarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTelaLoginLogarActionPerformed
 
         //codigo para teste
-         new Relatorio().setVisible(true);
+       
         
         Session session = null;
         try {

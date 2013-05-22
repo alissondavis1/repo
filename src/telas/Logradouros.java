@@ -11,9 +11,14 @@
 package telas;
 
 import dao.DaoEndereco;
+import dao.DaoEnderecoPessoa;
+import dao.DaoPessoa;
 import entidades.Endereco;
 import entidades.Enderecopessoa;
+import entidades.Pessoa;
+import entidades.Socio;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -21,6 +26,7 @@ import java.util.List;
  */
 public class Logradouros extends javax.swing.JDialog {
 
+ private Socio s;
  private List<Enderecopessoa> enderecos;
     /** Creates new form Logradouros */
     public Logradouros(java.awt.Frame parent, boolean modal) {
@@ -30,11 +36,12 @@ public class Logradouros extends javax.swing.JDialog {
         setEditableComponentes(false);
     }
     
-   public Logradouros(java.awt.Frame parent, boolean modal, List<Enderecopessoa> enderecos ){
+   public Logradouros(java.awt.Frame parent, boolean modal, List<Enderecopessoa> enderecos , Socio s){
        
        this(parent, modal);
        this.enderecos = enderecos;
-          carregarCampos();      
+       this.s = s;
+       carregarCampos();      
        
    }
    
@@ -93,49 +100,103 @@ public class Logradouros extends javax.swing.JDialog {
         if(size >= 1){
             
             jComboBox1.setSelectedItem(enderecos.get(0).getIdEndereco().getTipo()+" "+enderecos.get(0).getIdEndereco().getNome());
-            
-        } if(size >= 2){
-            
-             jTextField2.setEditable(true);
+            jTextField1.setText(String.valueOf(enderecos.get(0).getNumero()));
+            jTextField2.setEditable(true);
              jComboBox2.setEnabled(true);
              jButtonAdicionar2.setEnabled(true);
-             jComboBox2.setSelectedItem(enderecos.get(1).getIdEndereco().getTipo()+" "+enderecos.get(1).getIdEndereco().getNome());
-        } if(size >= 3){
-             jTextField3.setEditable(true);
+             
+        } if(size >= 2){
+            
+             jTextField2.setEditable(false);
+             jComboBox2.setEnabled(false);
+             jButtonAdicionar2.setEnabled(false);
+              jButton2.setEnabled(true);
+            jTextField2.setText(String.valueOf(enderecos.get(1).getNumero()));
+            jTextField3.setEditable(true);
              jComboBox3.setEnabled(true);
              jButtonAdicionar3.setEnabled(true);
-             jComboBox3.setSelectedItem(enderecos.get(2).getIdEndereco().getTipo()+" "+enderecos.get(2).getIdEndereco().getNome());
-        } if(size >= 4){
+              
+             jComboBox2.setSelectedItem(enderecos.get(1).getIdEndereco().getTipo()+" "+enderecos.get(1).getIdEndereco().getNome());
+        } if(size >= 3){
+            
+             jTextField3.setEditable(false);
+             jComboBox3.setEnabled(false);
+             jButtonAdicionar3.setEnabled(false);
+              jButton3.setEnabled(true);
+            jTextField3.setText(String.valueOf(enderecos.get(2).getNumero()));
+            
              jTextField4.setEditable(true);
              jComboBox4.setEnabled(true);
              jButtonAdicionar4.setEnabled(true);
-             jComboBox4.setSelectedItem(enderecos.get(3).getIdEndereco().getTipo()+" "+enderecos.get(3).getIdEndereco().getNome());
-        }if(size >= 5){
+             
+             jComboBox3.setSelectedItem(enderecos.get(2).getIdEndereco().getTipo()+" "+enderecos.get(2).getIdEndereco().getNome());
+        } if(size >= 4){
+            
+             jTextField4.setEditable(false);
+             jComboBox4.setEnabled(false);
+             jButtonAdicionar4.setEnabled(false);
+              jButton4.setEnabled(true);
+            jTextField4.setText(String.valueOf(enderecos.get(3).getNumero()));
              jTextField5.setEditable(true);
              jComboBox5.setEnabled(true);
              jButtonAdicionar5.setEnabled(true);
-             jComboBox5.setSelectedItem(enderecos.get(4).getIdEndereco().getTipo()+" "+enderecos.get(4).getIdEndereco().getNome());
+             
+             jComboBox4.setSelectedItem(enderecos.get(3).getIdEndereco().getTipo()+" "+enderecos.get(3).getIdEndereco().getNome());
+        }if(size >= 5){
             
-        }if(size >= 6){
+            jTextField5.setEditable(false);
+             jComboBox5.setEnabled(false);
+             jButtonAdicionar5.setEnabled(false);
+              jButton5.setEnabled(true);
+            jTextField5.setText(String.valueOf(enderecos.get(4).getNumero()));
              jTextField6.setEditable(true);
              jComboBox6.setEnabled(true);
              jButtonAdicionar6.setEnabled(true);
-             jComboBox6.setSelectedItem(enderecos.get(5).getIdEndereco().getTipo()+" "+enderecos.get(5).getIdEndereco().getNome());
-        } if(size >= 7){
+             
+             jComboBox5.setSelectedItem(enderecos.get(4).getIdEndereco().getTipo()+" "+enderecos.get(4).getIdEndereco().getNome());
+            
+        }if(size >= 6){
+            
+            jTextField6.setEditable(false);
+             jComboBox6.setEnabled(false);
+             jButtonAdicionar6.setEnabled(false);
+              jButton6.setEnabled(true);
+            jTextField6.setText(String.valueOf(enderecos.get(5).getNumero()));
              jTextField7.setEditable(true);
              jComboBox7.setEnabled(true);
              jButtonAdicionar7.setEnabled(true);
-             jComboBox1.setSelectedItem(enderecos.get(6).getIdEndereco().getTipo()+" "+enderecos.get(6).getIdEndereco().getNome());
-        } if(size >= 8){
+             
+             jComboBox6.setSelectedItem(enderecos.get(5).getIdEndereco().getTipo()+" "+enderecos.get(5).getIdEndereco().getNome());
+        } if(size >= 7){
+            
+            jTextField7.setEditable(false);
+             jComboBox7.setEnabled(false);
+             jButtonAdicionar7.setEnabled(false);
+              jButton7.setEnabled(true);
+            jTextField7.setText(String.valueOf(enderecos.get(6).getNumero()));
              jTextField8.setEditable(true);
              jComboBox8.setEnabled(true);
              jButtonAdicionar8.setEnabled(true);
+             
+             jComboBox1.setSelectedItem(enderecos.get(6).getIdEndereco().getTipo()+" "+enderecos.get(6).getIdEndereco().getNome());
+        } if(size >= 8){
+             
+             jTextField8.setEditable(false);
+             jComboBox8.setEnabled(false);
+             jButtonAdicionar8.setEnabled(false);
+              jButton8.setEnabled(true);
+            jTextField8.setText(String.valueOf(enderecos.get(7).getNumero()));
              jComboBox8.setSelectedItem(enderecos.get(7).getIdEndereco().getTipo()+" "+enderecos.get(7).getIdEndereco().getNome());
+        }if(size > 8){
+            
+            JOptionPane.showMessageDialog(this, "Você atingiu o número máximo de endereços","Erro",JOptionPane.ERROR_MESSAGE);
         }
         
     }
     
     private void setEditableComponentes(boolean edit){
+        
+        jTextField1.setEditable(edit);
         
         jTextField2.setEditable(edit);
         jTextField3.setEditable(edit);
@@ -145,6 +206,7 @@ public class Logradouros extends javax.swing.JDialog {
         jTextField7.setEditable(edit);
         jTextField8.setEditable(edit);
      
+        jComboBox1.setEnabled(edit);
         jComboBox2.setEnabled(edit);
         jComboBox3.setEnabled(edit);
         jComboBox4.setEnabled(edit);
@@ -153,6 +215,7 @@ public class Logradouros extends javax.swing.JDialog {
         jComboBox7.setEnabled(edit);
         jComboBox8.setEnabled(edit);
         
+       
         jButtonAdicionar2.setEnabled(edit);
         jButtonAdicionar3.setEnabled(edit);
         jButtonAdicionar4.setEnabled(edit);
@@ -160,6 +223,14 @@ public class Logradouros extends javax.swing.JDialog {
         jButtonAdicionar6.setEnabled(edit);
         jButtonAdicionar7.setEnabled(edit);
         jButtonAdicionar8.setEnabled(edit);
+        
+        jButton2.setEnabled(edit);
+        jButton3.setEnabled(edit);
+        jButton4.setEnabled(edit);
+        jButton5.setEnabled(edit);
+        jButton6.setEnabled(edit);
+        jButton7.setEnabled(edit);
+        jButton8.setEnabled(edit);
         
     }
  
@@ -174,7 +245,6 @@ public class Logradouros extends javax.swing.JDialog {
     private void initComponents() {
 
         jButtonAdicionar2 = new javax.swing.JButton();
-        jButtonAdicionar1 = new javax.swing.JButton();
         jButtonAdicionar3 = new javax.swing.JButton();
         jComboBox1 = new javax.swing.JComboBox();
         jComboBox2 = new javax.swing.JComboBox();
@@ -199,14 +269,24 @@ public class Logradouros extends javax.swing.JDialog {
         jTextField8 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
+        jButton8 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setModal(true);
         setResizable(false);
 
         jButtonAdicionar2.setText("Adicionar");
-
-        jButtonAdicionar1.setText("Adicionar");
+        jButtonAdicionar2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAdicionar2ActionPerformed(evt);
+            }
+        });
 
         jButtonAdicionar3.setText("Adicionar");
 
@@ -224,19 +304,33 @@ public class Logradouros extends javax.swing.JDialog {
 
         jLabel2.setText("Logradouro");
 
+        jButton2.setText("Remover");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jButton3.setText("Remover");
+
+        jButton4.setText("Remover");
+
+        jButton5.setText("Remover");
+
+        jButton6.setText("Remover");
+
+        jButton7.setText("Remover");
+
+        jButton8.setText("Remover");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(59, 59, 59)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(68, 68, 68)
-                        .addComponent(jLabel1)
-                        .addGap(43, 43, 43)
-                        .addComponent(jLabel2))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(59, 59, 59)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -265,78 +359,214 @@ public class Logradouros extends javax.swing.JDialog {
                                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(40, 40, 40)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButtonAdicionar3)
-                            .addComponent(jButtonAdicionar1)
-                            .addComponent(jButtonAdicionar2)
-                            .addComponent(jButtonAdicionar4)
-                            .addComponent(jButtonAdicionar5)
-                            .addComponent(jButtonAdicionar7)
-                            .addComponent(jButtonAdicionar8)
-                            .addComponent(jButtonAdicionar6))))
-                .addContainerGap(331, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jButtonAdicionar2)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton2))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jButtonAdicionar3)
+                                    .addComponent(jButtonAdicionar4))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jButton3)
+                                    .addComponent(jButton4)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jButtonAdicionar5)
+                                    .addComponent(jButtonAdicionar6))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jButton5)
+                                    .addComponent(jButton6)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jButtonAdicionar7)
+                                    .addComponent(jButtonAdicionar8))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jButton7)
+                                    .addComponent(jButton8)))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel2)))
+                .addContainerGap(238, Short.MAX_VALUE))
         );
 
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButtonAdicionar1, jButtonAdicionar2, jButtonAdicionar3, jButtonAdicionar4, jButtonAdicionar5, jButtonAdicionar6, jButtonAdicionar7, jButtonAdicionar8});
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButtonAdicionar2, jButtonAdicionar3, jButtonAdicionar4, jButtonAdicionar5, jButtonAdicionar6, jButtonAdicionar7, jButtonAdicionar8});
 
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel1))
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonAdicionar1)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonAdicionar2)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonAdicionar3)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonAdicionar4)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonAdicionar3)
+                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton3))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonAdicionar4)
+                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jButton4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButtonAdicionar5))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jButton5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jButton6))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jButtonAdicionar5))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jComboBox6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jButtonAdicionar6)
+                                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jComboBox6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButtonAdicionar6)
-                            .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jComboBox7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButtonAdicionar7)
-                            .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jComboBox8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButtonAdicionar8)
-                            .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(122, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jComboBox7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jButtonAdicionar7)
+                                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jComboBox8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jButtonAdicionar8)
+                                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jButton7)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jButton8)))))
+                .addContainerGap(125, Short.MAX_VALUE))
         );
 
         layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jTextField1, jTextField2, jTextField3, jTextField4, jTextField5, jTextField6, jTextField7, jTextField8});
 
-        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jButtonAdicionar1, jButtonAdicionar2, jButtonAdicionar3, jButtonAdicionar4, jButtonAdicionar5, jButtonAdicionar6, jButtonAdicionar7, jButtonAdicionar8});
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jButtonAdicionar2, jButtonAdicionar3, jButtonAdicionar4, jButtonAdicionar5, jButtonAdicionar6, jButtonAdicionar7, jButtonAdicionar8});
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButtonAdicionar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAdicionar2ActionPerformed
+       
+        if(!jTextField2.getText().equals("") && !jComboBox2.getSelectedItem().equals("")){
+            if(!jTextField2.getText().equals(jTextField1.getText()) ){
+            int op = JOptionPane.showConfirmDialog(this, "Tem certeza que deseja adicionar esse endereço? ","Atenção", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+            if(op == JOptionPane.YES_OPTION){
+                
+                
+                try{
+                    
+                    Endereco e = new DaoEndereco().BuscarEnderecoCompleto((String) jComboBox2.getSelectedItem());
+                    Pessoa p = this.s.getIdPessoa();
+                    List<Enderecopessoa> ends = p.getEnderecopessoaList();
+                    Enderecopessoa ep = new Enderecopessoa();
+                    
+                   
+                    ep.setIdEndereco(e);
+                    
+                    if(new DaoEnderecoPessoa().EnderecopessoaporNumero(Integer.parseInt(jTextField2.getText())) != null){
+                        
+                        throw new Exception("Número ja existe");
+                        
+                    }
+                    ep.setNumero(Integer.parseInt(jTextField2.getText()));
+                    ep.setIdPessoa(p);
+                    ends.add(ep);
+                    p.setEnderecopessoaList(ends);
+                    
+                    new DaoPessoa().AlterarPessoa(p);
+                    
+                    JOptionPane.showMessageDialog(this,"Endereço adicionado com sucesso!","Atenção", JOptionPane.INFORMATION_MESSAGE);
+                  
+                    carregarCampos();
+                }catch(Exception e){
+                    
+                    
+                    JOptionPane.showMessageDialog(this, "Erro "+e.getMessage(),"Erro", JOptionPane.ERROR_MESSAGE);
+                }
+                
+            }
+            }else{
+                
+                JOptionPane.showMessageDialog(this, "Número ou Endereço ja existente para esse sócio","Erro",JOptionPane.ERROR_MESSAGE);
+                
+            }
+        }else{
+            
+            JOptionPane.showMessageDialog(this, "Preencha todos os campos","Erro", JOptionPane.ERROR_MESSAGE);
+        }
+        
+    }//GEN-LAST:event_jButtonAdicionar2ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+      
+        int op = JOptionPane.showConfirmDialog(this,"Deseja excluir o endereço? ","Atenção",JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        if(op == JOptionPane.YES_OPTION){
+            try{
+        
+                Enderecopessoa ep = new DaoEnderecoPessoa().EnderecopessoaporNumero(Integer.parseInt(jTextField2.getText()));
+                this.enderecos.remove(ep);
+                new DaoEnderecoPessoa().ApagarEnderecopessoa(ep);
+                
+        JOptionPane.showMessageDialog(this, "Endereço excluido com sucesso!","Atenção", JOptionPane.INFORMATION_MESSAGE);
+       limparCampos();
+       setEditableComponentes(false);
+        carregarCampos();
+            }catch(Exception e){
+                
+                JOptionPane.showMessageDialog(this, "Erro","Erro", JOptionPane.ERROR_MESSAGE);
+                
+            }
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void limparCampos(){
+        
+        jTextField1.setText("");
+        jTextField2.setText("");
+        jTextField3.setText("");
+        jTextField4.setText("");
+        jTextField5.setText("");
+        jTextField6.setText("");
+        jTextField7.setText("");
+        jTextField8.setText("");
+        
+        jComboBox1.setSelectedIndex(0);
+        jComboBox2.setSelectedIndex(0);
+        jComboBox3.setSelectedIndex(0);
+        jComboBox4.setSelectedIndex(0);
+        jComboBox5.setSelectedIndex(0);
+        jComboBox6.setSelectedIndex(0);
+        jComboBox7.setSelectedIndex(0);
+        jComboBox8.setSelectedIndex(0);
+        
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -381,7 +611,13 @@ public class Logradouros extends javax.swing.JDialog {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonAdicionar1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
     private javax.swing.JButton jButtonAdicionar2;
     private javax.swing.JButton jButtonAdicionar3;
     private javax.swing.JButton jButtonAdicionar4;
