@@ -24,7 +24,7 @@ public interface ChequesInterface {
     public List<Cheque> ChequesAbertosClientesPorNomeCliente(String nome);
   
     public List<Cheque> ChequesVencidosPorCliente(Date data); 
-    public List<Cheque> ChequesTotalAbertas();
+    public List<Cheque> ChequesTotalAbertos();
     public List<Cheque> ChequesSomaPorData(Date dataInicial, Date dataFinal);
 
      public List<Cheque> BuscarChequeFuncionarioLikeNome(String nome);

@@ -28,6 +28,7 @@
     <mapping class="entidades.Socio"/>
     <mapping class="entidades.Taxa"/>
     <mapping class="entidades.Taxasconta"/>
+     <mapping class="entidades.Enderecopessoa"/>
     
   </session-factory>
 </hibernate-configuration>

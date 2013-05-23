@@ -121,6 +121,36 @@ public class DaoEndereco implements EnderecosInterface{
     return endereco;
     }
 
+   public Endereco BuscarEnderecoCompleto(String nomeCompleto){
+        
+        Endereco endereco = null;
+        Session sessao = null; 
+        Query query = null;
+        Transaction transacao = null;
+        
+        try{
+           sessao = HibernateUtil.getSessionFactory().openSession();
+           transacao = sessao.beginTransaction();
+           query = sessao.createQuery
+          ("from Endereco p where\n" +
+          "lower(concat(p.tipo,' ', p.nome)) = lower(:nomeCompleto)");
+           query.setParameter("nomeCompleto",nomeCompleto);
+           endereco = (Endereco)query.uniqueResult();
+           transacao.commit(); 
+           
+        }
+        catch(HibernateException e)
+        {
+            System.out.println(e);
+            transacao.rollback();
+        }
+        finally
+        {
+             sessao.close();
+        }  
+    return endereco;
+    }  
+    
     @Override
     public List<Endereco> BuscarTodosEnderecos() {
         

@@ -32,12 +32,7 @@ public class TelaLogin extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }
     
-   public TelaLogin(TelaPrincipal telaPrincipal){
-       
-       this();
-       this.telaPrincipal = telaPrincipal;
-     
-   }
+  
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -125,7 +120,7 @@ public class TelaLogin extends javax.swing.JFrame {
     private void jButtonTelaLoginLogarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTelaLoginLogarActionPerformed
 
         //codigo para teste
-         new Relatorio().setVisible(true);
+       
         
         Session session = null;
         try {
@@ -158,12 +153,9 @@ public class TelaLogin extends javax.swing.JFrame {
                     Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
                 }
 
-                if(telaPrincipal == null){
+              
                 new TelaPrincipal().setVisible(true);
-                }else{
-                    
-                telaPrincipal.setVisible(true);    
-                }
+               
                 
                 dispose();
             } else {
@@ -220,12 +212,9 @@ public class TelaLogin extends javax.swing.JFrame {
                     ex.printStackTrace();
                 }
                
-                   if(telaPrincipal == null){
+                  
                 new TelaPrincipal().setVisible(true);
-                }else{
-                    
-                telaPrincipal.setVisible(true);    
-                }
+               
                 
                 dispose();
             } else {
