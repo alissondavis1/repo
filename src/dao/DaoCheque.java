@@ -213,7 +213,7 @@ public class DaoCheque implements ChequesInterface {
     }
 
     @Override
-    public List<Cheque> ChequesTotalAbertas() {
+    public List<Cheque> ChequesTotalAbertos() {
      
         List<Cheque> cheque = null;
         Session sessao = null; 

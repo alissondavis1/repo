@@ -14,10 +14,13 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 import java.util.Properties;
 import java.util.Scanner;
 import java.util.logging.Level;
@@ -31,6 +34,15 @@ import javax.swing.JOptionPane;
 import javax.swing.JRootPane;
 import javax.swing.KeyStroke;
 import javax.swing.UnsupportedLookAndFeelException;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.view.JasperViewer;
+import telas.relatorios.TelaRelatoriosCheques;
+import telas.relatorios.TelaRelatoriosEntradas;
+
+import util.HibernateUtil;
 
 /**
  *
@@ -38,11 +50,11 @@ import javax.swing.UnsupportedLookAndFeelException;
  * @author Alisson 
  */
 public class TelaPrincipal extends javax.swing.JFrame {
-    private boolean tray = false;
+   // private boolean tray = false;
     private Calendar c;
     SimpleDateFormat sdf = new SimpleDateFormat();
     private  TrayIcon trayIcon = null;
-    
+    private SystemTray systemTray;
     /**
      *
      * Aqui os componentes são iniciados , a classe Calendar é instanciada para
@@ -75,8 +87,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         //setBounds(0, 0, d.width, d.height);
 
-       if(tray == false){ 
-        SystemTray systemTray = SystemTray.getSystemTray();
+      // if(tray == false){ 
+        systemTray = SystemTray.getSystemTray();
         
         trayIcon = new TrayIcon(new ImageIcon(getClass().getResource("/img/ico.png")).getImage(), "Acal2000", popupMenu1);
         trayIcon.setImageAutoSize(true);
@@ -89,7 +101,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
            System.out.println("EROOOOOOOOOOOOOOOOOOOOOO");
         e.printStackTrace();
        }
-    }
+   // }
 
     }
 
@@ -171,8 +183,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jInternalFrameRelatorios = new javax.swing.JInternalFrame();
         jPanelInternalFrameRelatorios = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
-        jButton5 = new javax.swing.JButton();
+        jButtonFuncionarioRelatorio = new javax.swing.JButton();
         jButtonInternalFrameRelatoriosVoltar1 = new javax.swing.JButton();
+        jButtonTaxasRelatorio = new javax.swing.JButton();
+        jButtonCategoriaSocioRelatorio = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
+        jButtonEntrada = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jInternalFrameRelatoriosFuncionarios = new javax.swing.JInternalFrame();
         jPanelInternalFrameRelatoriosFuncionarios = new javax.swing.JPanel();
@@ -376,9 +392,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(0, 308, 0, 316);
         jPanelInternalFrameContas.add(jPanel3, gridBagConstraints);
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/contas.jpg"))); // NOI18N
-        jLabel3.setMaximumSize(jPanelInternalFrameContas.getMaximumSize());
-        jLabel3.setMinimumSize(jPanelInternalFrameContas.getMinimumSize());
+        jLabel3.setBackground(new java.awt.Color(51, 255, 255));
+        jLabel3.setMaximumSize(new java.awt.Dimension(2147483647, 2147483647));
+        jLabel3.setMinimumSize(new java.awt.Dimension(683, 10));
+        jLabel3.setPreferredSize(new java.awt.Dimension(920, 585));
 
         javax.swing.GroupLayout jInternalFrameContas1Layout = new javax.swing.GroupLayout(jInternalFrameContas1.getContentPane());
         jInternalFrameContas1.getContentPane().setLayout(jInternalFrameContas1Layout);
@@ -390,9 +407,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
         );
         jInternalFrameContas1Layout.setVerticalGroup(
             jInternalFrameContas1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelInternalFrameContas, javax.swing.GroupLayout.DEFAULT_SIZE, 548, Short.MAX_VALUE)
+            .addComponent(jPanelInternalFrameContas, javax.swing.GroupLayout.DEFAULT_SIZE, 524, Short.MAX_VALUE)
             .addGroup(jInternalFrameContas1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 548, Short.MAX_VALUE))
+                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 524, Short.MAX_VALUE))
         );
 
         jInternalFrameContas1.setBounds(0, 0, 920, 550);
@@ -459,10 +476,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jPanel4.setOpaque(false);
 
-        jButton5.setText("Funcionários");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        jButtonFuncionarioRelatorio.setText("Funcionários");
+        jButtonFuncionarioRelatorio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                jButtonFuncionarioRelatorioActionPerformed(evt);
             }
         });
 
@@ -473,31 +490,67 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jButtonTaxasRelatorio.setText("Taxas");
+        jButtonTaxasRelatorio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonTaxasRelatorioActionPerformed(evt);
+            }
+        });
+
+        jButtonCategoriaSocioRelatorio.setText("Categorias dos Socios");
+        jButtonCategoriaSocioRelatorio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCategoriaSocioRelatorioActionPerformed(evt);
+            }
+        });
+
+        jButton5.setText("Cheques");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+
+        jButtonEntrada.setText("Entradas");
+        jButtonEntrada.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEntradaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(353, 353, 353)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButtonInternalFrameRelatoriosVoltar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE))
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButtonEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE)
+                        .addComponent(jButtonCategoriaSocioRelatorio, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE)
+                        .addComponent(jButtonTaxasRelatorio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButtonFuncionarioRelatorio, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE)
+                        .addComponent(jButtonInternalFrameRelatoriosVoltar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap(414, Short.MAX_VALUE))
         );
-
-        jPanel4Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButton5, jButtonInternalFrameRelatoriosVoltar1});
-
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(34, 34, 34)
-                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButtonInternalFrameRelatoriosVoltar1, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(555, Short.MAX_VALUE))
+                .addComponent(jButtonFuncionarioRelatorio, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButtonTaxasRelatorio, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButtonCategoriaSocioRelatorio, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButtonEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButtonInternalFrameRelatoriosVoltar1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(597, Short.MAX_VALUE))
         );
-
-        jPanel4Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jButton5, jButtonInternalFrameRelatoriosVoltar1});
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -522,10 +575,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jInternalFrameRelatoriosLayout.setVerticalGroup(
             jInternalFrameRelatoriosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jInternalFrameRelatoriosLayout.createSequentialGroup()
-                .addComponent(jPanelInternalFrameRelatorios, javax.swing.GroupLayout.DEFAULT_SIZE, 722, Short.MAX_VALUE)
-                .addGap(0, 12, Short.MAX_VALUE))
+                .addComponent(jPanelInternalFrameRelatorios, javax.swing.GroupLayout.PREFERRED_SIZE, 726, Short.MAX_VALUE)
+                .addGap(0, 16, Short.MAX_VALUE))
             .addGroup(jInternalFrameRelatoriosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 734, Short.MAX_VALUE))
+                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 742, Short.MAX_VALUE))
         );
 
         jInternalFrameRelatorios.setBounds(0, 0, 930, 740);
@@ -1004,9 +1057,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemTelaPrincipalBackupActionPerformed
 
     private void jButtonTelaPrincipalLogoffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTelaPrincipalLogoffActionPerformed
-        tray = true; 
-        setVisible(false);
-        new TelaLogin(this).setVisible(true);
+        //tray = true; 
+        systemTray.remove(trayIcon);
+        dispose();
+        new TelaLogin().setVisible(true);
         
     }//GEN-LAST:event_jButtonTelaPrincipalLogoffActionPerformed
 
@@ -1017,13 +1071,16 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void menuItemPopupCadastrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemPopupCadastrosActionPerformed
         
+        
           new TelaCadastros(this).setVisible(true);
+        
     }//GEN-LAST:event_menuItemPopupCadastrosActionPerformed
 
     private void jButtonTelaPrincipalCaixaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTelaPrincipalCaixaActionPerformed
         jDesktopPaneContas.setVisible(true);
         jInternalFrameContas1.setVisible(true);
        
+        
         try {
         jInternalFrameContas1.setMaximum(true);
         } catch (PropertyVetoException ex) {
@@ -1080,7 +1137,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButtonInternalFrameRelatoriosFuncionariosVoltarActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void jButtonFuncionarioRelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFuncionarioRelatorioActionPerformed
         
         jInternalFrameRelatoriosFuncionarios.setVisible(true);
         try {
@@ -1090,11 +1147,89 @@ public class TelaPrincipal extends javax.swing.JFrame {
         }
         jInternalFrameRelatorios.setVisible(false);
         
-    }//GEN-LAST:event_jButton5ActionPerformed
- 
-    
+    }//GEN-LAST:event_jButtonFuncionarioRelatorioActionPerformed
+
+    private void jButtonTaxasRelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTaxasRelatorioActionPerformed
+         
    
+    int  resposta = JOptionPane.showConfirmDialog(null, "Deseja Gerar um Relatório de taxas?");
+    if (resposta == JOptionPane.YES_OPTION) {
      
+        jButtonTaxasRelatorio.setEnabled(false);
+        JOptionPane.showMessageDialog(null, "Espere , a janela se abrirá em breve");
+    
+        Thread t = new Thread(){
+            
+              @Override
+            public void run() {
+                try {
+                    Connection conn = HibernateUtil.getConnection();
+                    JasperReport report = JasperCompileManager.compileReport(getClass().getResourceAsStream("/relatorios/rc_taxa.jrxml"));
+
+                    JasperPrint jasper = JasperFillManager.fillReport(report, null, conn);
+                    JasperViewer.viewReport(jasper, false);
+
+
+                } catch (Exception ex) {
+                    Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        };
+        
+        t.start();
+        try {
+            t.join();
+        } catch (InterruptedException ex) {
+            Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        jButtonTaxasRelatorio.setEnabled(true);
+        }
+    }//GEN-LAST:event_jButtonTaxasRelatorioActionPerformed
+
+    private void jButtonCategoriaSocioRelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCategoriaSocioRelatorioActionPerformed
+         
+    int resposta = JOptionPane.showConfirmDialog(null, "Deseja Gerar um Relatório de Categorias de Socios?");
+    if (resposta == JOptionPane.YES_OPTION) {
+     
+        JOptionPane.showMessageDialog(null, "Espere Alguns Instantes, a janela se abrirá em breve");
+    
+        
+        new Thread() {
+            @Override
+            public void run() {
+                try {
+                    Connection conn = HibernateUtil.getConnection();
+                    JasperReport report = JasperCompileManager.compileReport(getClass().getResourceAsStream("/relatorios/rc_categoriaSocio.jrxml"));
+
+                    JasperPrint jasper = JasperFillManager.fillReport(report, null, conn);
+                    JasperViewer.viewReport(jasper, false);
+
+
+                } catch (Exception ex) {
+                    Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }.start();
+        
+        }
+    }//GEN-LAST:event_jButtonCategoriaSocioRelatorioActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        
+       TelaRelatoriosCheques c = new TelaRelatoriosCheques(this, true);
+       c.setLocationRelativeTo(null);
+       c.setVisible(true);
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButtonEntradaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEntradaActionPerformed
+       TelaRelatoriosEntradas c = new TelaRelatoriosEntradas(this, true);
+       c.setLocationRelativeTo(null);
+       c.setVisible(true);
+        
+       
+    }//GEN-LAST:event_jButtonEntradaActionPerformed
+ 
+  
     public static void main(String args[]) {
 
         /* Set the Nimbus look and feel */
@@ -1141,8 +1276,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButtonCategoriaSocioRelatorio;
+    private javax.swing.JButton jButtonEntrada;
+    private javax.swing.JButton jButtonFuncionarioRelatorio;
     private javax.swing.JButton jButtonInternalFrameRelatoriosFuncionariosVoltar;
     private javax.swing.JButton jButtonInternalFrameRelatoriosVoltar1;
+    private javax.swing.JButton jButtonTaxasRelatorio;
     private javax.swing.JButton jButtonTelaPrincipalCadastros;
     private javax.swing.JButton jButtonTelaPrincipalCaixa;
     private javax.swing.JButton jButtonTelaPrincipalLogoff;

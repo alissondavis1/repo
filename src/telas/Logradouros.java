@@ -18,7 +18,9 @@ import entidades.Enderecopessoa;
 import entidades.Pessoa;
 import entidades.Socio;
 import java.util.List;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 /**
  *
@@ -49,7 +51,10 @@ public class Logradouros extends javax.swing.JDialog {
     private void carregarCampos(){
         
         List<Endereco> ends = new DaoEndereco().BuscarTodosEnderecos();
-                jComboBox1.addItem("");
+               
+        if(!ends.isEmpty() && jComboBox1.getItemCount() == 0){
+            
+             jComboBox1.addItem("");
                 jComboBox2.addItem("");
                 jComboBox3.addItem("");
                 jComboBox4.addItem("");
@@ -57,9 +62,6 @@ public class Logradouros extends javax.swing.JDialog {
                 jComboBox6.addItem("");
                 jComboBox7.addItem("");
                 jComboBox8.addItem("");
-        if(!ends.isEmpty()){
-            
-            
             for(Endereco e : ends){
                 jComboBox1.addItem(e.getTipo()+" "+e.getNome());
                 jComboBox2.addItem(e.getTipo()+" "+e.getNome());
@@ -178,7 +180,7 @@ public class Logradouros extends javax.swing.JDialog {
              jComboBox8.setEnabled(true);
              jButtonAdicionar8.setEnabled(true);
              
-             jComboBox1.setSelectedItem(enderecos.get(6).getIdEndereco().getTipo()+" "+enderecos.get(6).getIdEndereco().getNome());
+             jComboBox7.setSelectedItem(enderecos.get(6).getIdEndereco().getTipo()+" "+enderecos.get(6).getIdEndereco().getNome());
         } if(size >= 8){
              
              jTextField8.setEditable(false);
@@ -289,16 +291,46 @@ public class Logradouros extends javax.swing.JDialog {
         });
 
         jButtonAdicionar3.setText("Adicionar");
+        jButtonAdicionar3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAdicionar3ActionPerformed(evt);
+            }
+        });
 
         jButtonAdicionar4.setText("Adicionar");
+        jButtonAdicionar4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAdicionar4ActionPerformed(evt);
+            }
+        });
 
         jButtonAdicionar5.setText("Adicionar");
+        jButtonAdicionar5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAdicionar5ActionPerformed(evt);
+            }
+        });
 
         jButtonAdicionar7.setText("Adicionar");
+        jButtonAdicionar7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAdicionar7ActionPerformed(evt);
+            }
+        });
 
         jButtonAdicionar8.setText("Adicionar");
+        jButtonAdicionar8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAdicionar8ActionPerformed(evt);
+            }
+        });
 
         jButtonAdicionar6.setText("Adicionar");
+        jButtonAdicionar6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAdicionar6ActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("Número");
 
@@ -312,16 +344,46 @@ public class Logradouros extends javax.swing.JDialog {
         });
 
         jButton3.setText("Remover");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("Remover");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jButton5.setText("Remover");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         jButton6.setText("Remover");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
 
         jButton7.setText("Remover");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
 
         jButton8.setText("Remover");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -473,15 +535,22 @@ public class Logradouros extends javax.swing.JDialog {
 
     private void jButtonAdicionar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAdicionar2ActionPerformed
        
-        if(!jTextField2.getText().equals("") && !jComboBox2.getSelectedItem().equals("")){
-            if(!jTextField2.getText().equals(jTextField1.getText()) ){
+        adicionar(jComboBox2, jTextField2);
+        
+    }//GEN-LAST:event_jButtonAdicionar2ActionPerformed
+
+    
+    private void adicionar(JComboBox comboAtual, JTextField textoAtual){
+        
+          if(!textoAtual.getText().equals("") && !comboAtual.getSelectedItem().equals("")){
+            if(new DaoEnderecoPessoa().EnderecopessoaporNumero(Integer.parseInt(textoAtual.getText())) == null ){
             int op = JOptionPane.showConfirmDialog(this, "Tem certeza que deseja adicionar esse endereço? ","Atenção", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
             if(op == JOptionPane.YES_OPTION){
                 
                 
                 try{
                     
-                    Endereco e = new DaoEndereco().BuscarEnderecoCompleto((String) jComboBox2.getSelectedItem());
+                    Endereco e = new DaoEndereco().BuscarEnderecoCompleto((String) comboAtual.getSelectedItem());
                     Pessoa p = this.s.getIdPessoa();
                     List<Enderecopessoa> ends = p.getEnderecopessoaList();
                     Enderecopessoa ep = new Enderecopessoa();
@@ -489,12 +558,12 @@ public class Logradouros extends javax.swing.JDialog {
                    
                     ep.setIdEndereco(e);
                     
-                    if(new DaoEnderecoPessoa().EnderecopessoaporNumero(Integer.parseInt(jTextField2.getText())) != null){
-                        
-                        throw new Exception("Número ja existe");
-                        
-                    }
-                    ep.setNumero(Integer.parseInt(jTextField2.getText()));
+//                    if(new DaoEnderecoPessoa().EnderecopessoaporNumero(Integer.parseInt(textoAtual.getText())) != null){
+//                        
+//                        throw new Exception("Número ja existe");
+//                        
+//                    }
+                    ep.setNumero(Integer.parseInt(textoAtual.getText()));
                     ep.setIdPessoa(p);
                     ends.add(ep);
                     p.setEnderecopessoaList(ends);
@@ -521,15 +590,22 @@ public class Logradouros extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(this, "Preencha todos os campos","Erro", JOptionPane.ERROR_MESSAGE);
         }
         
-    }//GEN-LAST:event_jButtonAdicionar2ActionPerformed
-
+    }
+    
+    
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
       
-        int op = JOptionPane.showConfirmDialog(this,"Deseja excluir o endereço? ","Atenção",JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+       remover(jTextField2);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    
+    private void remover(JTextField textoAtual){
+        
+         int op = JOptionPane.showConfirmDialog(this,"Deseja excluir o endereço? ","Atenção",JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         if(op == JOptionPane.YES_OPTION){
             try{
         
-                Enderecopessoa ep = new DaoEnderecoPessoa().EnderecopessoaporNumero(Integer.parseInt(jTextField2.getText()));
+                Enderecopessoa ep = new DaoEnderecoPessoa().EnderecopessoaporNumero(Integer.parseInt(textoAtual.getText()));
                 this.enderecos.remove(ep);
                 new DaoEnderecoPessoa().ApagarEnderecopessoa(ep);
                 
@@ -543,8 +619,61 @@ public class Logradouros extends javax.swing.JDialog {
                 
             }
         }
-    }//GEN-LAST:event_jButton2ActionPerformed
+        
+        
+    }
+    
+    private void jButtonAdicionar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAdicionar3ActionPerformed
+       adicionar(jComboBox3, jTextField3);
+    }//GEN-LAST:event_jButtonAdicionar3ActionPerformed
 
+    private void jButtonAdicionar4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAdicionar4ActionPerformed
+       adicionar(jComboBox4, jTextField4);
+    }//GEN-LAST:event_jButtonAdicionar4ActionPerformed
+
+    private void jButtonAdicionar5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAdicionar5ActionPerformed
+        adicionar(jComboBox5, jTextField5);
+    }//GEN-LAST:event_jButtonAdicionar5ActionPerformed
+
+    private void jButtonAdicionar6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAdicionar6ActionPerformed
+        adicionar(jComboBox6, jTextField6);
+    }//GEN-LAST:event_jButtonAdicionar6ActionPerformed
+
+    private void jButtonAdicionar7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAdicionar7ActionPerformed
+        adicionar(jComboBox7, jTextField7);
+    }//GEN-LAST:event_jButtonAdicionar7ActionPerformed
+
+    private void jButtonAdicionar8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAdicionar8ActionPerformed
+       adicionar(jComboBox8, jTextField8);
+    }//GEN-LAST:event_jButtonAdicionar8ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        
+        remover(jTextField3);
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        remover(jTextField4);
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        remover(jTextField5);
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        remover(jTextField6);
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+       remover(jTextField7);
+    }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        remover(jTextField8);
+    }//GEN-LAST:event_jButton8ActionPerformed
+
+    
+    
     private void limparCampos(){
         
         jTextField1.setText("");
