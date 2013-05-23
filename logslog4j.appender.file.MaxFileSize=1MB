@@ -45629,3 +45629,155 @@ Caused by: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationExce
 12:18:34,164 TRACE IntegerType:172 - returning '19' as column: taxasId40_1_
 12:18:34,183 TRACE IntegerType:133 - binding '15' to parameter: 1
 12:18:34,185 TRACE StringType:172 - returning 'Teste' as column: nome51_0_
+12:37:47,482  INFO Version:15 - Hibernate Annotations 3.3.1.GA
+12:37:47,529  INFO Environment:514 - Hibernate 3.2.5
+12:37:47,529  INFO Environment:547 - hibernate.properties not found
+12:37:47,544  INFO Environment:681 - Bytecode provider name : cglib
+12:37:47,560  INFO Environment:598 - using JDK 1.4 java.sql.Timestamp handling
+12:37:47,700  INFO Configuration:1426 - configuring from resource: /hibernate.cfg.xml
+12:37:47,700  INFO Configuration:1403 - Configuration resource: /hibernate.cfg.xml
+12:37:48,013  INFO Configuration:1541 - Configured SessionFactory: null
+12:37:48,169  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Categoriasocio
+12:37:48,279  INFO EntityBinder:424 - Bind entity entidades.Categoriasocio on table categoriasocio
+12:37:48,529  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Cheque
+12:37:48,529  INFO EntityBinder:424 - Bind entity entidades.Cheque on table cheque
+12:37:48,560  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Chequeslog
+12:37:48,560  INFO EntityBinder:424 - Bind entity entidades.Chequeslog on table chequeslog
+12:37:48,575  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Conta
+12:37:48,575  INFO QueryBinder:64 - Binding Named query: Conta.findAll => SELECT c FROM Conta c
+12:37:48,575  INFO QueryBinder:64 - Binding Named query: Conta.findById => SELECT c FROM Conta c WHERE c.id = :id
+12:37:48,575  INFO QueryBinder:64 - Binding Named query: Conta.findByDataPag => SELECT c FROM Conta c WHERE c.dataPag = :dataPag
+12:37:48,575  INFO QueryBinder:64 - Binding Named query: Conta.findByDataVence => SELECT c FROM Conta c WHERE c.dataVence = :dataVence
+12:37:48,575  INFO EntityBinder:424 - Bind entity entidades.Conta on table conta
+12:37:48,607  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Contaslog
+12:37:48,607  INFO EntityBinder:424 - Bind entity entidades.Contaslog on table contaslog
+12:37:48,607  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Contrato
+12:37:48,622  INFO EntityBinder:424 - Bind entity entidades.Contrato on table contrato
+12:37:48,622  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Endereco
+12:37:48,622  INFO EntityBinder:424 - Bind entity entidades.Endereco on table endereco
+12:37:48,638  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Entrada
+12:37:48,638  INFO EntityBinder:424 - Bind entity entidades.Entrada on table entrada
+12:37:48,654  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Entradaslog
+12:37:48,654  INFO EntityBinder:424 - Bind entity entidades.Entradaslog on table entradaslog
+12:37:48,669  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Funcionario
+12:37:48,685  INFO EntityBinder:424 - Bind entity entidades.Funcionario on table funcionario
+12:37:48,700  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Hidrometro
+12:37:48,700  INFO QueryBinder:64 - Binding Named query: Hidrometro.findAll => SELECT h FROM Hidrometro h
+12:37:48,716  INFO QueryBinder:64 - Binding Named query: Hidrometro.findByIdhidrometro => SELECT h FROM Hidrometro h WHERE h.idhidrometro = :idhidrometro
+12:37:48,716  INFO QueryBinder:64 - Binding Named query: Hidrometro.findByConsumo => SELECT h FROM Hidrometro h WHERE h.consumo = :consumo
+12:37:48,716  INFO EntityBinder:424 - Bind entity entidades.Hidrometro on table hidrometro
+12:37:48,716  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Motivodespesa
+12:37:48,716  INFO EntityBinder:424 - Bind entity entidades.Motivodespesa on table motivodespesa
+12:37:48,732  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Motivoentrada
+12:37:48,732  INFO EntityBinder:424 - Bind entity entidades.Motivoentrada on table motivoentrada
+12:37:48,732  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Pessoa
+12:37:48,732  INFO EntityBinder:424 - Bind entity entidades.Pessoa on table pessoa
+12:37:48,779  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Saida
+12:37:48,779  INFO EntityBinder:424 - Bind entity entidades.Saida on table saida
+12:37:48,810  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Saidaslog
+12:37:48,810  INFO EntityBinder:424 - Bind entity entidades.Saidaslog on table saidaslog
+12:37:48,857  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Socio
+12:37:48,857  INFO EntityBinder:424 - Bind entity entidades.Socio on table socio
+12:37:48,904  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Taxa
+12:37:48,904  INFO EntityBinder:424 - Bind entity entidades.Taxa on table taxa
+12:37:48,919  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Taxasconta
+12:37:48,919  INFO EntityBinder:424 - Bind entity entidades.Taxasconta on table taxasconta
+12:37:49,044  INFO CollectionBinder:651 - Mapping collection: entidades.Categoriasocio.socioList -> socio
+12:37:49,060  INFO CollectionBinder:651 - Mapping collection: entidades.Endereco.pessoaList -> pessoa
+12:37:49,060  INFO CollectionBinder:651 - Mapping collection: entidades.Funcionario.chequeList -> cheque
+12:37:49,060  INFO CollectionBinder:651 - Mapping collection: entidades.Funcionario.entradaList -> entrada
+12:37:49,060  INFO CollectionBinder:651 - Mapping collection: entidades.Funcionario.saidaList -> saida
+12:37:49,060  INFO CollectionBinder:651 - Mapping collection: entidades.Motivodespesa.chequeList -> cheque
+12:37:49,060  INFO CollectionBinder:651 - Mapping collection: entidades.Motivodespesa.saidaList -> saida
+12:37:49,060  INFO CollectionBinder:651 - Mapping collection: entidades.Motivoentrada.entradaList -> entrada
+12:37:49,060  INFO CollectionBinder:651 - Mapping collection: entidades.Socio.contaList -> conta
+12:37:49,060  INFO CollectionBinder:651 - Mapping collection: entidades.Socio.entradaList -> entrada
+12:37:49,060  INFO CollectionBinder:651 - Mapping collection: entidades.Taxa.categoriasocioList -> categoriasocio
+12:37:49,060  INFO CollectionBinder:651 - Mapping collection: entidades.Taxa.taxascontaList -> taxasconta
+12:37:49,075  INFO AnnotationConfiguration:365 - Hibernate Validator not found: ignoring
+12:37:49,091  INFO DriverManagerConnectionProvider:41 - Using Hibernate built-in connection pool (not for production use!)
+12:37:49,091  INFO DriverManagerConnectionProvider:42 - Hibernate connection pool size: 20
+12:37:49,091  INFO DriverManagerConnectionProvider:45 - autocommit mode: false
+12:37:49,107  INFO DriverManagerConnectionProvider:80 - using driver: com.mysql.jdbc.Driver at URL: jdbc:mysql://localhost:3306/acal?zeroDateTimeBehavior=convertToNull
+12:37:49,107  INFO DriverManagerConnectionProvider:86 - connection properties: {user=root, password=****}
+12:37:52,060  INFO SettingsFactory:89 - RDBMS: MySQL, version: 5.5.28
+12:37:52,060  INFO SettingsFactory:90 - JDBC driver: MySQL-AB JDBC Driver, version: mysql-connector-java-5.1.18 ( Revision: tonci.grgin@oracle.com-20110930151701-jfj14ddfq48ifkfq )
+12:37:52,091  INFO Dialect:152 - Using dialect: org.hibernate.dialect.MySQLDialect
+12:37:52,091  INFO TransactionFactoryFactory:31 - Using default transaction strategy (direct JDBC transactions)
+12:37:52,107  INFO TransactionManagerLookupFactory:33 - No TransactionManagerLookup configured (in JTA environment, use of read-write or transactional second-level cache is not recommended)
+12:37:52,107  INFO SettingsFactory:143 - Automatic flush during beforeCompletion(): disabled
+12:37:52,107  INFO SettingsFactory:147 - Automatic session close at end of transaction: disabled
+12:37:52,107  INFO SettingsFactory:154 - JDBC batch size: 15
+12:37:52,122  INFO SettingsFactory:157 - JDBC batch updates for versioned data: disabled
+12:37:52,122  INFO SettingsFactory:162 - Scrollable result sets: enabled
+12:37:52,122  INFO SettingsFactory:170 - JDBC3 getGeneratedKeys(): enabled
+12:37:52,122  INFO SettingsFactory:178 - Connection release mode: auto
+12:37:52,122  INFO SettingsFactory:202 - Maximum outer join fetch depth: 2
+12:37:52,138  INFO SettingsFactory:205 - Default batch fetch size: 1
+12:37:52,138  INFO SettingsFactory:209 - Generate SQL with comments: enabled
+12:37:52,138  INFO SettingsFactory:213 - Order SQL updates by primary key: disabled
+12:37:52,138  INFO SettingsFactory:217 - Order SQL inserts for batching: disabled
+12:37:52,138  INFO SettingsFactory:386 - Query translator: org.hibernate.hql.ast.ASTQueryTranslatorFactory
+12:37:52,154  INFO ASTQueryTranslatorFactory:24 - Using ASTQueryTranslatorFactory
+12:37:52,154  INFO SettingsFactory:225 - Query language substitutions: {}
+12:37:52,154  INFO SettingsFactory:230 - JPA-QL strict compliance: disabled
+12:37:52,154  INFO SettingsFactory:235 - Second-level cache: enabled
+12:37:52,154  INFO SettingsFactory:239 - Query cache: disabled
+12:37:52,154  INFO SettingsFactory:373 - Cache provider: org.hibernate.cache.NoCacheProvider
+12:37:52,169  INFO SettingsFactory:254 - Optimize cache for minimal puts: disabled
+12:37:52,169  INFO SettingsFactory:263 - Structured second-level cache entries: disabled
+12:37:52,185  INFO SettingsFactory:283 - Echoing all SQL to stdout
+12:37:52,185  INFO SettingsFactory:290 - Statistics: disabled
+12:37:52,185  INFO SettingsFactory:294 - Deleted entity synthetic identifier rollback: disabled
+12:37:52,185  INFO SettingsFactory:309 - Default entity-mode: pojo
+12:37:52,185  INFO SettingsFactory:313 - Named query checking : enabled
+12:37:52,247  INFO SessionFactoryImpl:161 - building session factory
+12:37:53,450  INFO SessionFactoryObjectFactory:82 - Not binding factory to JNDI, no JNDI name configured
+12:37:56,372  INFO Configuration:1426 - configuring from resource: hibernateUser.cfg.xml
+12:37:56,372  INFO Configuration:1403 - Configuration resource: hibernateUser.cfg.xml
+12:37:56,388  INFO Configuration:1541 - Configured SessionFactory: null
+12:37:56,388  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.User
+12:37:56,388  INFO EntityBinder:424 - Bind entity entidades.User on table user
+12:37:56,404  INFO AnnotationConfiguration:365 - Hibernate Validator not found: ignoring
+12:37:56,419  INFO DriverManagerConnectionProvider:41 - Using Hibernate built-in connection pool (not for production use!)
+12:37:56,419  INFO DriverManagerConnectionProvider:42 - Hibernate connection pool size: 20
+12:37:56,419  INFO DriverManagerConnectionProvider:45 - autocommit mode: false
+12:37:56,419  INFO DriverManagerConnectionProvider:80 - using driver: com.mysql.jdbc.Driver at URL: jdbc:mysql://localhost:3306/mysql?zeroDateTimeBehavior=convertToNull
+12:37:56,435  INFO DriverManagerConnectionProvider:86 - connection properties: {user=root, password=****}
+12:37:56,513  INFO SettingsFactory:89 - RDBMS: MySQL, version: 5.5.28
+12:37:56,513  INFO SettingsFactory:90 - JDBC driver: MySQL-AB JDBC Driver, version: mysql-connector-java-5.1.18 ( Revision: tonci.grgin@oracle.com-20110930151701-jfj14ddfq48ifkfq )
+12:37:56,513  INFO Dialect:152 - Using dialect: org.hibernate.dialect.MySQLDialect
+12:37:56,513  INFO TransactionFactoryFactory:31 - Using default transaction strategy (direct JDBC transactions)
+12:37:56,529  INFO TransactionManagerLookupFactory:33 - No TransactionManagerLookup configured (in JTA environment, use of read-write or transactional second-level cache is not recommended)
+12:37:56,529  INFO SettingsFactory:143 - Automatic flush during beforeCompletion(): disabled
+12:37:56,529  INFO SettingsFactory:147 - Automatic session close at end of transaction: disabled
+12:37:56,529  INFO SettingsFactory:154 - JDBC batch size: 15
+12:37:56,529  INFO SettingsFactory:157 - JDBC batch updates for versioned data: disabled
+12:37:56,529  INFO SettingsFactory:162 - Scrollable result sets: enabled
+12:37:56,529  INFO SettingsFactory:170 - JDBC3 getGeneratedKeys(): enabled
+12:37:56,529  INFO SettingsFactory:178 - Connection release mode: auto
+12:37:56,529  INFO SettingsFactory:202 - Maximum outer join fetch depth: 2
+12:37:56,529  INFO SettingsFactory:205 - Default batch fetch size: 1
+12:37:56,529  INFO SettingsFactory:209 - Generate SQL with comments: disabled
+12:37:56,529  INFO SettingsFactory:213 - Order SQL updates by primary key: disabled
+12:37:56,529  INFO SettingsFactory:217 - Order SQL inserts for batching: disabled
+12:37:56,529  INFO SettingsFactory:386 - Query translator: org.hibernate.hql.ast.ASTQueryTranslatorFactory
+12:37:56,529  INFO ASTQueryTranslatorFactory:24 - Using ASTQueryTranslatorFactory
+12:37:56,529  INFO SettingsFactory:225 - Query language substitutions: {}
+12:37:56,529  INFO SettingsFactory:230 - JPA-QL strict compliance: disabled
+12:37:56,529  INFO SettingsFactory:235 - Second-level cache: enabled
+12:37:56,544  INFO SettingsFactory:239 - Query cache: disabled
+12:37:56,544  INFO SettingsFactory:373 - Cache provider: org.hibernate.cache.NoCacheProvider
+12:37:56,544  INFO SettingsFactory:254 - Optimize cache for minimal puts: disabled
+12:37:56,576  INFO SettingsFactory:263 - Structured second-level cache entries: disabled
+12:37:56,576  INFO SettingsFactory:290 - Statistics: disabled
+12:37:56,576  INFO SettingsFactory:294 - Deleted entity synthetic identifier rollback: disabled
+12:37:56,576  INFO SettingsFactory:309 - Default entity-mode: pojo
+12:37:56,576  INFO SettingsFactory:313 - Named query checking : enabled
+12:37:56,591  INFO SessionFactoryImpl:161 - building session factory
+12:37:56,607  INFO SessionFactoryObjectFactory:82 - Not binding factory to JNDI, no JNDI name configured
+12:37:56,669 TRACE StringType:133 - binding 'root' to parameter: 1
+12:37:56,669 TRACE StringType:133 - binding '123' to parameter: 2
+12:37:56,904 TRACE StringType:172 - returning 'localhost' as column: Host38_
+12:37:56,904 TRACE StringType:172 - returning 'root' as column: User38_
+12:37:56,935 TRACE StringType:172 - returning '*23AE809DDACAF96AF0FD78ED04B6A265E05AA257' as column: Password38_
