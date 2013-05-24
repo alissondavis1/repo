@@ -651,37 +651,50 @@
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="353" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="307" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="jButtonEntrada" min="-2" pref="147" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="jButton5" pref="147" max="32767" attributes="0"/>
-                                      <Component id="jButtonCategoriaSocioRelatorio" pref="147" max="32767" attributes="0"/>
-                                      <Component id="jButtonTaxasRelatorio" max="32767" attributes="0"/>
-                                      <Component id="jButtonFuncionarioRelatorio" pref="147" max="32767" attributes="0"/>
-                                      <Component id="jButtonInternalFrameRelatoriosVoltar1" max="32767" attributes="0"/>
+                                  <Component id="jButtonEntrada" alignment="0" min="-2" pref="147" max="-2" attributes="0"/>
+                                  <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="jButton5" max="32767" attributes="0"/>
+                                      <Component id="jButtonCategoriaSocioRelatorio" max="32767" attributes="0"/>
+                                      <Component id="jButtonTaxasRelatorio" min="-2" pref="147" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <EmptySpace pref="414" max="32767" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="jButton8" max="32767" attributes="0"/>
+                                  <Component id="jButton7" pref="147" max="32767" attributes="0"/>
+                                  <Component id="jButtonFuncionarioRelatorio" pref="147" max="32767" attributes="0"/>
+                                  <Component id="jButtonInternalFrameRelatoriosVoltar1" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace pref="307" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-                              <Component id="jButtonFuncionarioRelatorio" min="-2" pref="80" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jButtonTaxasRelatorio" min="-2" pref="80" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="jButtonCategoriaSocioRelatorio" min="-2" pref="81" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jButton5" min="-2" pref="80" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jButtonEntrada" min="-2" pref="80" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jButtonInternalFrameRelatoriosVoltar1" min="-2" pref="80" max="-2" attributes="0"/>
-                              <EmptySpace pref="597" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jButtonTaxasRelatorio" alignment="3" min="-2" pref="80" max="-2" attributes="0"/>
+                                  <Component id="jButtonFuncionarioRelatorio" alignment="3" min="-2" pref="80" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jButtonCategoriaSocioRelatorio" alignment="3" min="-2" pref="81" max="-2" attributes="0"/>
+                                  <Component id="jButton8" alignment="3" min="-2" pref="80" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jButtonEntrada" alignment="3" min="-2" pref="80" max="-2" attributes="0"/>
+                                  <Component id="jButton7" alignment="3" min="-2" pref="77" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="jButton5" pref="80" max="32767" attributes="0"/>
+                                  <Component id="jButtonInternalFrameRelatoriosVoltar1" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace pref="239" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -733,6 +746,22 @@
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonEntradaActionPerformed"/>
+                      </Events>
+                    </Component>
+                    <Component class="javax.swing.JButton" name="jButton7">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Saidas"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton7ActionPerformed"/>
+                      </Events>
+                    </Component>
+                    <Component class="javax.swing.JButton" name="jButton8">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Socios"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton8ActionPerformed"/>
                       </Events>
                     </Component>
                   </SubComponents>

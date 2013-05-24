@@ -85,14 +85,6 @@ Email : Acallages@hotmail.com]]></text>
 				</textElement>
 				<text><![CDATA[ACAL - Associação Comunitária e assistêncial de Lages]]></text>
 			</staticText>
-			<image>
-				<reportElement uuid="b7fe7eb8-f918-4f36-8aba-bba0bcfb3a5a" x="0" y="27" width="90" height="81"/>
-				<imageExpression><![CDATA["E:\\acal.jpg"]]></imageExpression>
-			</image>
-			<image>
-				<reportElement uuid="153a1917-5786-4a71-a926-b04a995cdfac" x="465" y="27" width="90" height="81"/>
-				<imageExpression><![CDATA["E:\\acalLogoFolha.jpg"]]></imageExpression>
-			</image>
 			<textField pattern="EEEEE dd MMMMM yyyy">
 				<reportElement uuid="33342f7d-ea18-4279-a531-c66c5abab504" x="0" y="108" width="119" height="15"/>
 				<textElement/>
