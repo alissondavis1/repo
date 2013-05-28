@@ -542,6 +542,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
                     .addComponent(jButtonInternalFrameRelatoriosVoltar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(361, Short.MAX_VALUE))
         );
+
+        jPanel4Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButton5, jButton7, jButton8, jButtonCategoriaSocioRelatorio, jButtonEntrada, jButtonFuncionarioRelatorio, jButtonInternalFrameRelatoriosVoltar1, jButtonTaxasRelatorio});
+
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
@@ -561,8 +564,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
                     .addComponent(jButtonInternalFrameRelatoriosVoltar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(481, Short.MAX_VALUE))
+                .addContainerGap(480, Short.MAX_VALUE))
         );
+
+        jPanel4Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jButton5, jButton7, jButton8, jButtonCategoriaSocioRelatorio, jButtonEntrada, jButtonFuncionarioRelatorio, jButtonInternalFrameRelatoriosVoltar1, jButtonTaxasRelatorio});
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -587,10 +592,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jInternalFrameRelatoriosLayout.setVerticalGroup(
             jInternalFrameRelatoriosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jInternalFrameRelatoriosLayout.createSequentialGroup()
-                .addComponent(jPanelInternalFrameRelatorios, javax.swing.GroupLayout.PREFERRED_SIZE, 726, Short.MAX_VALUE)
-                .addGap(0, 16, Short.MAX_VALUE))
+                .addComponent(jPanelInternalFrameRelatorios, javax.swing.GroupLayout.PREFERRED_SIZE, 728, Short.MAX_VALUE)
+                .addGap(0, 18, Short.MAX_VALUE))
             .addGroup(jInternalFrameRelatoriosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 742, Short.MAX_VALUE))
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 746, Short.MAX_VALUE))
         );
 
         jInternalFrameRelatorios.setBounds(0, 0, 930, 740);

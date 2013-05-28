@@ -250,7 +250,7 @@ public class TelaPesquisa extends javax.swing.JFrame {
           model.addRow(new Object[]{pessoa.getNome(),pessoa.getSobrenome(),pessoa.getCpf(),pessoa.getCidade(),SimpleDateFormat.getDateInstance().format(pessoa.getDataNasc()),pessoa.getEmail(),pessoa.getStatus()});
           }else{
            model.addRow(new Object[]{pessoa.getNome(),pessoa.getSobrenome(),pessoa.getCpf(),pessoa.getCidade(),"nulo",pessoa.getEmail(),pessoa.getStatus()});   
-          }
+           }
               
               
           }

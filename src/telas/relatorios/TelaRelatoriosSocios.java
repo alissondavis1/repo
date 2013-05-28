@@ -785,9 +785,9 @@ public class TelaRelatoriosSocios extends javax.swing.JDialog {
                         cont ++;
                     }
                     if(jCheckBoxAprovacao.isSelected()){
-                        String[] aMenor = jFormattedTextFieldAprovacaoMaior.getText().split("/");
+                        String[] aMenor = jFormattedTextFieldAprovacaoMenor.getText().split("/");
                         aprMenor =  " (s.dataAprovacao between '" + aMenor[2]+"/"+aMenor[1]+"/"+aMenor[0] +"'";
-                        String[] aMaior = jFormattedTextFieldAprovacaoMenor.getText().split("/");
+                        String[] aMaior = jFormattedTextFieldAprovacaoMaior.getText().split("/");
                         aprMaior =  " and  '"+  aMaior[2]+"/"+aMaior[1]+"/"+aMaior[0] + "' ) ";
                         cont ++;
                     }
@@ -886,7 +886,7 @@ public class TelaRelatoriosSocios extends javax.swing.JDialog {
                     }
                 }
             }.start();
-            //this.dispose();
+            this.dispose();
         }
         else
         {
