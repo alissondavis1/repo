@@ -313,7 +313,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(10, 18, 0, 0);
         jPanelBotoesTelaPrincipal.add(jButtonTelaPrincipalCaixa, gridBagConstraints);
 
-        jButtonTelaPrincipalCadastros.setIcon(new ImageIcon(getClass().getResource("/img/cadastros.png")));
+        jButtonTelaPrincipalCadastros.setIcon(new ImageIcon(getClass().getResource("/img/Cadastros.png")));
         jButtonTelaPrincipalCadastros.setText("Cadastros");
         jButtonTelaPrincipalCadastros.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -350,7 +350,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setText("jButton3");
+        jButton3.setText("Gerar Contas");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -407,9 +412,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
         );
         jInternalFrameContas1Layout.setVerticalGroup(
             jInternalFrameContas1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelInternalFrameContas, javax.swing.GroupLayout.DEFAULT_SIZE, 524, Short.MAX_VALUE)
+            .addComponent(jPanelInternalFrameContas, javax.swing.GroupLayout.DEFAULT_SIZE, 528, Short.MAX_VALUE)
             .addGroup(jInternalFrameContas1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 524, Short.MAX_VALUE))
+                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 528, Short.MAX_VALUE))
         );
 
         jInternalFrameContas1.setBounds(0, 0, 920, 550);
@@ -575,7 +580,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jInternalFrameRelatoriosLayout.setVerticalGroup(
             jInternalFrameRelatoriosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jInternalFrameRelatoriosLayout.createSequentialGroup()
-                .addComponent(jPanelInternalFrameRelatorios, javax.swing.GroupLayout.PREFERRED_SIZE, 726, Short.MAX_VALUE)
+                .addComponent(jPanelInternalFrameRelatorios, javax.swing.GroupLayout.DEFAULT_SIZE, 726, Short.MAX_VALUE)
                 .addGap(0, 16, Short.MAX_VALUE))
             .addGroup(jInternalFrameRelatoriosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 742, Short.MAX_VALUE))
@@ -1164,9 +1169,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
             public void run() {
                 try {
                     Connection conn = HibernateUtil.getConnection();
-                    JasperReport report = JasperCompileManager.compileReport(getClass().getResourceAsStream("/relatorios/rc_taxa.jrxml"));
+                    //JasperReport report = JasperCompileManager.compileReport(getClass().getResourceAsStream("/relatorios/rc_taxa.jrxml"));
 
-                    JasperPrint jasper = JasperFillManager.fillReport(report, null, conn);
+                    JasperPrint jasper = JasperFillManager.fillReport(getClass().getResourceAsStream("/relatorios/rc_taxa.jasper"), null, conn);
                     JasperViewer.viewReport(jasper, false);
 
 
@@ -1228,6 +1233,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
         
        
     }//GEN-LAST:event_jButtonEntradaActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        
+        GerarContas g = new GerarContas(this, false);
+        g.setLocationRelativeTo(null);
+        g.setVisible(true);
+        
+    }//GEN-LAST:event_jButton3ActionPerformed
  
   
     public static void main(String args[]) {
