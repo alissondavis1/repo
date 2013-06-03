@@ -39,6 +39,8 @@ import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.view.JasperViewer;
+import telas.GeradorUsuario.CriadorUsuario;
+
 import telas.relatorios.TelaRelatoriosCheques;
 import telas.relatorios.TelaRelatoriosEntradas;
 import telas.relatorios.TelaRelatoriosSaidas;
@@ -210,6 +212,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenuItemSolicita_Socio = new javax.swing.JMenuItem();
         jMenuItemCaixa = new javax.swing.JMenuItem();
         jMenuItem8 = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItemTelaPrincipalBackup = new javax.swing.JMenuItem();
         jSeparator2 = new javax.swing.JPopupMenu.Separator();
         jMenuItemSair = new javax.swing.JMenuItem();
@@ -713,6 +716,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenuItem8.setText("Gerador de contas");
         jMenu.add(jMenuItem8);
 
+        jMenuItem1.setText("Criar Usuarios");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu.add(jMenuItem1);
+
         jMenuItemTelaPrincipalBackup.setText("Backup");
         jMenuItemTelaPrincipalBackup.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1163,6 +1174,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
        socio.setLocationRelativeTo(null);
        socio.setVisible(true);  
     }//GEN-LAST:event_jButton8ActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+     CriadorUsuario us = new CriadorUsuario(this,true);
+     us.setLocationRelativeTo(null);
+     us.setVisible(true);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
  
   
     public static void main(String args[]) {
@@ -1234,6 +1251,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu jMenuCadastros;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItemAgua;
     private javax.swing.JMenuItem jMenuItemCaixa;

@@ -22,7 +22,7 @@ public class DaoUsuario implements UsuarioInterface{
 
     @Override
     public void AdicionarUsuario(User usuario) {
-       Session sessao = null;
+        Session sessao = null;
         Transaction transcao = null;
        
          try{
@@ -43,6 +43,34 @@ public class DaoUsuario implements UsuarioInterface{
         }  
     }
 
+    public void novoUsuario(String parametro) {
+       
+        User user = null;
+        Session sessao = null; 
+        Query query = null;
+        Transaction transacao = null;
+        
+        try{
+           sessao = HibernateUtilUser.getSessionFactory().openSession();
+           transacao = sessao.beginTransaction();
+           query = sessao.
+                   createSQLQuery(parametro);
+           //query.setString("nome","%"+nome+"%");
+
+           transacao.commit(); 
+           
+        }
+        catch(HibernateException e)
+        {
+            System.out.println(e);
+            transacao.rollback();
+        }
+        finally
+        {
+             sessao.close();
+        }  
+    
+    }
     @Override
     public void AlterarUsuario(User usuario) {
        Session sessao = null;
@@ -118,6 +146,39 @@ public class DaoUsuario implements UsuarioInterface{
              sessao.close();
         }  
     return user;
+    }
+    public boolean BuscaUsuarioBoolean(String nome, String pass) {
+       
+        User user = null;
+        Session sessao = null; 
+        Query query = null;
+        Transaction transacao = null;
+        boolean     teste=false;
+        try{
+           sessao = HibernateUtilUser.getSessionFactory().openSession();
+           transacao = sessao.beginTransaction();
+           query = sessao.createQuery("from User where user = :nome and password = PASSWORD(:pass) ");
+           //query.setString("nome","%"+nome+"%");
+           query.setParameter("nome",nome);
+           query.setParameter("pass", pass);
+           
+           user = (User) query.uniqueResult();
+           transacao.commit(); 
+           
+          
+        }
+        catch(HibernateException e)
+        {
+            System.out.println(e);
+            transacao.rollback();
+        }
+        finally
+        {
+             sessao.close();
+        }  
+        if(user.getPassword()== pass){ teste = true;}
+        
+    return teste;
     }
 
     
