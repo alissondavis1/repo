@@ -991,7 +991,8 @@ public class CriadorUsuario extends javax.swing.JDialog {
        String senha ="";
        String privilegios = "";
        char[] input ; 
-      
+       int cont=0;
+       
        if(jTextFieldUsuario.getText().equals("")||(jPasswordFieldSenha.getPassword().length==0))
        {
         JOptionPane.showMessageDialog(null,"Os campos Usuario e senha São Obrigatorios");
@@ -1016,32 +1017,43 @@ public class CriadorUsuario extends javax.swing.JDialog {
           if(!entradas(jTextFieldUsuario.getText().trim()).equals("0"))
            {
                privilegios += entradas(jTextFieldUsuario.getText().trim())+"\n" ;
+               cont++;
            }
            if(!saidas(jTextFieldUsuario.getText().trim()).equals("0"))
            {
                privilegios += saidas(jTextFieldUsuario.getText().trim())+"\n" ;
+               cont++;
            }
            if(!cheques(jTextFieldUsuario.getText().trim()).equals("0"))
            {
                privilegios += cheques(jTextFieldUsuario.getText().trim())+"\n" ;
+                cont++;
            }
            if(!contas(jTextFieldUsuario.getText().trim()).equals("0"))
            {
                privilegios += contas(jTextFieldUsuario.getText().trim())+"\n" ;
+                cont++;
            }
            if(!taxas(jTextFieldUsuario.getText().trim()).equals("0"))
            {
                privilegios += taxas(jTextFieldUsuario.getText().trim())+"\n" ;
+                cont++;
            }
            if(!socios(jTextFieldUsuario.getText().trim()).equals("0"))
            {
                privilegios += socios(jTextFieldUsuario.getText().trim())+"\n" ;
+                cont++;
            }
-           System.out.println(usuario);
-           System.out.println(privilegios);
-           
-           new DaoUsuario().novoUsuario(usuario+ privilegios);
-     }
+          //o usuario ja existe no banco?
+           if(new DaoUsuario().BuscaUsuarioBoolean(usuario)==true)
+           {
+            JOptionPane.showMessageDialog(null,"Nome de usuario ja cadastrado, tente novamente");
+           }
+           else{
+            if(cont>0){ new DaoUsuario().novoUsuario(usuario, privilegios);}
+            else      { new DaoUsuario().novoUsuario(usuario, "0" );}
+           }
+       }
        
        
     }//GEN-LAST:event_jButton3ActionPerformed

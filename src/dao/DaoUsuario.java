@@ -7,6 +7,8 @@ package dao;
 
 import daoInterfaces.UsuarioInterface;
 import entidades.User;
+import java.sql.SQLException;
+import java.sql.*;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -43,37 +45,33 @@ public class DaoUsuario implements UsuarioInterface{
         }  
     }
 
-    public void novoUsuario(String parametro) {
+    public void novoUsuario(String usuario, String privilegio) {
        
-        User user = null;
-        Session sessao = null; 
-        Query query = null;
-        Transaction transacao = null;
-        
-        try{
-           sessao = HibernateUtilUser.getSessionFactory().openSession();
-           transacao = sessao.beginTransaction();
-           query = sessao.
-                   createSQLQuery(parametro);
-           //query.setString("nome","%"+nome+"%");
-
-           transacao.commit(); 
-           
-        }
-        catch(HibernateException e)
-        {
-            System.out.println(e);
-            transacao.rollback();
-        }
-        finally
-        {
-             sessao.close();
-        }  
+    Session sessao =  null;  
+    Transaction transaction = null;
     
+    try{
+        
+    sessao = HibernateUtilUser.getSessionFactory().openSession();
+    transaction =  sessao.beginTransaction();
+    sessao.createSQLQuery(usuario).executeUpdate();
+    if(!privilegio.equals("0")){sessao.createSQLQuery(privilegio).executeUpdate();}
+    sessao.getTransaction().commit();
+    
+        System.out.println(usuario);
+        System.out.println(privilegio);
+    }    
+    catch(HibernateException e)
+    {
+        System.out.println(e);
+    }
+      finally{
+    sessao.close();
+     }
     }
     @Override
     public void AlterarUsuario(User usuario) {
-       Session sessao = null;
+        Session sessao = null;
         Transaction transcao = null;
        
          try{
@@ -147,7 +145,7 @@ public class DaoUsuario implements UsuarioInterface{
         }  
     return user;
     }
-    public boolean BuscaUsuarioBoolean(String nome, String pass) {
+    public boolean BuscaUsuarioBoolean(String nome) {
        
         User user = null;
         Session sessao = null; 
@@ -157,11 +155,9 @@ public class DaoUsuario implements UsuarioInterface{
         try{
            sessao = HibernateUtilUser.getSessionFactory().openSession();
            transacao = sessao.beginTransaction();
-           query = sessao.createQuery("from User where user = :nome and password = PASSWORD(:pass) ");
+           query = sessao.createQuery("from User where user = :nome  ");
            //query.setString("nome","%"+nome+"%");
            query.setParameter("nome",nome);
-           query.setParameter("pass", pass);
-           
            user = (User) query.uniqueResult();
            transacao.commit(); 
            
@@ -176,7 +172,7 @@ public class DaoUsuario implements UsuarioInterface{
         {
              sessao.close();
         }  
-        if(user.getPassword()== pass){ teste = true;}
+        if(user!=null){teste = true;}
         
     return teste;
     }
