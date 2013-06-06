@@ -310,7 +310,7 @@ public class DaoContasMensais implements ContasInterface {
         try{
            sessao = HibernateUtil.getSessionFactory().openSession();
            tx = sessao.beginTransaction();
-           query = sessao.createQuery("from Contas where dataPag is null ");
+           query = sessao.createQuery("from Conta where dataPag is null ");
           // query.setParameter("data",data);
            //query.setParameter("id",id);
            conta =  query.list();

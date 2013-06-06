@@ -61,8 +61,7 @@ public class Socio implements Serializable {
     @Lob
     @Column(name = "observacao")
     private String observacao;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idNumeroSocio")
-    private List<Conta> contaList;
+   
     @JoinColumn(name = "idPessoa", referencedColumnName = "id")
     @OneToOne(optional = false)
     private Pessoa idPessoa;
@@ -145,14 +144,7 @@ public class Socio implements Serializable {
         changeSupport.firePropertyChange("observacao", oldObservacao, observacao);
     }
 
-    @XmlTransient
-    public List<Conta> getContaList() {
-        return contaList;
-    }
-
-    public void setContaList(List<Conta> contaList) {
-        this.contaList = contaList;
-    }
+   
 
     public Pessoa getIdPessoa() {
         return idPessoa;

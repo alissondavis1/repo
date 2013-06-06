@@ -16,8 +16,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -31,12 +29,9 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "conta")
 @XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Conta.findAll", query = "SELECT c FROM Conta c"),
-    @NamedQuery(name = "Conta.findById", query = "SELECT c FROM Conta c WHERE c.id = :id"),
-    @NamedQuery(name = "Conta.findByDataPag", query = "SELECT c FROM Conta c WHERE c.dataPag = :dataPag"),
-    @NamedQuery(name = "Conta.findByDataVence", query = "SELECT c FROM Conta c WHERE c.dataVence = :dataVence")})
+
 public class Conta implements Serializable {
+    
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -53,12 +48,15 @@ public class Conta implements Serializable {
     @Lob
     @Column(name = "observacoes")
     private String observacoes;
-    @JoinColumn(name = "idNumeroSocio", referencedColumnName = "id")
-    @ManyToOne(optional = false)
-    private Socio idNumeroSocio;
+   
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "idconta")
     private Hidrometro hidrometro;
-
+    @Column(name = "dataGerada")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date dataGerada;
+    @JoinColumn(name = "idEnderecoPessoa", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private Enderecopessoa idEnderecoPessoa;
     public Conta() {
     }
 
@@ -103,13 +101,7 @@ public class Conta implements Serializable {
         this.observacoes = observacoes;
     }
 
-    public Socio getIdNumeroSocio() {
-        return idNumeroSocio;
-    }
-
-    public void setIdNumeroSocio(Socio idNumeroSocio) {
-        this.idNumeroSocio = idNumeroSocio;
-    }
+   
 
     public Hidrometro getHidrometro() {
         return hidrometro;
@@ -142,6 +134,22 @@ public class Conta implements Serializable {
     @Override
     public String toString() {
         return "entidades.Conta[ id=" + id + " ]";
+    }
+
+    public Date getDataGerada() {
+        return dataGerada;
+    }
+
+    public void setDataGerada(Date dataGerada) {
+        this.dataGerada = dataGerada;
+    }
+
+    public Enderecopessoa getIdEnderecoPessoa() {
+        return idEnderecoPessoa;
+    }
+
+    public void setIdEnderecoPessoa(Enderecopessoa idEnderecoPessoa) {
+        this.idEnderecoPessoa = idEnderecoPessoa;
     }
     
 }

@@ -98,7 +98,7 @@ public class Splash extends JWindow{
            
         }catch(Exception e){
             
-            JOptionPane.showMessageDialog(null, "Erro de conexão ao banco de dados");
+            JOptionPane.showMessageDialog(null, "Erro de conexão ao banco de dados: "+e.getMessage());
             
         }finally{
             if(session != null){

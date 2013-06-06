@@ -12,8 +12,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -25,10 +23,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "hidrometro")
 @XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Hidrometro.findAll", query = "SELECT h FROM Hidrometro h"),
-    @NamedQuery(name = "Hidrometro.findByIdhidrometro", query = "SELECT h FROM Hidrometro h WHERE h.idhidrometro = :idhidrometro"),
-    @NamedQuery(name = "Hidrometro.findByConsumo", query = "SELECT h FROM Hidrometro h WHERE h.consumo = :consumo")})
+
 public class Hidrometro implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id

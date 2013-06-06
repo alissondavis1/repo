@@ -19,7 +19,6 @@ import util.HibernateUtil;
  */
 public class DaoCategoriaSocio implements CategoriaSocioInterface {
  
-    //testado
     @Override
     public void AdicionarCategoria(Categoriasocio categoria) {
         
