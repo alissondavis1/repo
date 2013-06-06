@@ -7,6 +7,8 @@ package dao;
 
 import daoInterfaces.UsuarioInterface;
 import entidades.User;
+import java.sql.SQLException;
+import java.sql.*;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -22,7 +24,7 @@ public class DaoUsuario implements UsuarioInterface{
 
     @Override
     public void AdicionarUsuario(User usuario) {
-       Session sessao = null;
+        Session sessao = null;
         Transaction transcao = null;
        
          try{
@@ -43,9 +45,33 @@ public class DaoUsuario implements UsuarioInterface{
         }  
     }
 
+    public void novoUsuario(String usuario, String privilegio) {
+       
+    Session sessao =  null;  
+    Transaction transaction = null;
+    
+    try{
+        
+    sessao = HibernateUtilUser.getSessionFactory().openSession();
+    transaction =  sessao.beginTransaction();
+    sessao.createSQLQuery(usuario).executeUpdate();
+    if(!privilegio.equals("0")){sessao.createSQLQuery(privilegio).executeUpdate();}
+    sessao.getTransaction().commit();
+    
+        System.out.println(usuario);
+        System.out.println(privilegio);
+    }    
+    catch(HibernateException e)
+    {
+        System.out.println(e);
+    }
+      finally{
+    sessao.close();
+     }
+    }
     @Override
     public void AlterarUsuario(User usuario) {
-       Session sessao = null;
+        Session sessao = null;
         Transaction transcao = null;
        
          try{
@@ -118,6 +144,37 @@ public class DaoUsuario implements UsuarioInterface{
              sessao.close();
         }  
     return user;
+    }
+    public boolean BuscaUsuarioBoolean(String nome) {
+       
+        User user = null;
+        Session sessao = null; 
+        Query query = null;
+        Transaction transacao = null;
+        boolean     teste=false;
+        try{
+           sessao = HibernateUtilUser.getSessionFactory().openSession();
+           transacao = sessao.beginTransaction();
+           query = sessao.createQuery("from User where user = :nome  ");
+           //query.setString("nome","%"+nome+"%");
+           query.setParameter("nome",nome);
+           user = (User) query.uniqueResult();
+           transacao.commit(); 
+           
+          
+        }
+        catch(HibernateException e)
+        {
+            System.out.println(e);
+            transacao.rollback();
+        }
+        finally
+        {
+             sessao.close();
+        }  
+        if(user!=null){teste = true;}
+        
+    return teste;
     }
 
     
