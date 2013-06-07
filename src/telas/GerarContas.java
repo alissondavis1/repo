@@ -7,18 +7,16 @@ package telas;
 import dao.DaoContasMensais;
 import dao.DaoTaxa;
 import entidades.Conta;
+import entidades.Hidrometro;
 import entidades.Taxa;
-import java.awt.Component;
 import java.awt.Frame;
 import java.awt.Toolkit;
 import java.util.List;
 import javax.swing.DefaultCellEditor;
 import javax.swing.JComboBox;
-import javax.swing.JTable;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
 
 /**
@@ -34,7 +32,7 @@ public class GerarContas extends javax.swing.JDialog {
         super(parent, modal);
         setPreferredSize(Toolkit.getDefaultToolkit().getScreenSize());
         initComponents();
-        preencherTabela();
+       
     }
 
     private void preencherTabela() {
@@ -54,7 +52,7 @@ public class GerarContas extends javax.swing.JDialog {
                 new Object[][]{},
                 new String[]{"id", "dataVencimento", "Sócio", "Numero Socio", "CPF", "Gerar", "Taxa"}) {
             Class[] types = new Class[]{String.class, String.class, String.class, String.class, String.class,
-                Boolean.class, List.class};
+                Boolean.class, String.class};
 
             @Override
             public Class getColumnClass(int columnIndex) {
@@ -86,29 +84,12 @@ public class GerarContas extends javax.swing.JDialog {
 
     }
 
-    private class combo extends JComboBox implements TableCellRenderer {
-
-        @Override
-        public Component getTableCellRendererComponent(JTable table,
-                Object value, boolean isSelected, boolean hasFocus, int row,
-                int column) {
-            if (isSelected) {
-                setForeground(table.getSelectionForeground());
-                super.setBackground(table.getSelectionBackground());
-            } else {
-                setForeground(table.getForeground());
-                setBackground(table.getBackground());
-            }
-            setSelectedItem(value);
-            return this;
-        }
-    }
-
+  
     private void preencherColunas() {
 
-
+if(jRadioButtonContaFixa.isSelected()){
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-
+        model.setRowCount(0);
         List<Conta> contas = new DaoContasMensais().ContasTotalAbertas();
 
         if (!contas.isEmpty()) {
@@ -120,7 +101,29 @@ public class GerarContas extends javax.swing.JDialog {
         }
 
 
+    }else if(jRadioButtonContaHidrometro.isSelected())
+    {
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        model.setRowCount(0);
+        List<Conta> contas = new DaoContasMensais().ContasTotalAbertas();
+        
+
+        if (!contas.isEmpty()) {
+
+            for (Conta c : contas) {
+                 Hidrometro h = c.getHidrometro();
+                 if(h != null){
+                     
+                model.addRow(new Object[]{h.getIdconta().getId(), h.getIdconta().getDataVence(), h.getIdconta().getIdEnderecoPessoa().getIdPessoa().getNome() + " " + h.getIdconta().getIdEnderecoPessoa().getIdPessoa().getSobrenome(), h.getIdconta().getIdEnderecoPessoa().getIdPessoa().getSocio().getNumeroSocio(), h.getIdconta().getIdEnderecoPessoa().getIdPessoa().getCpf(), false});
+                 }
+                 }
+        }
+
+       
+    
+}
     }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -157,9 +160,19 @@ public class GerarContas extends javax.swing.JDialog {
 
         buttonGroup1.add(jRadioButtonContaFixa);
         jRadioButtonContaFixa.setText("Conta Fixa");
+        jRadioButtonContaFixa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonContaFixaActionPerformed(evt);
+            }
+        });
 
         buttonGroup1.add(jRadioButtonContaHidrometro);
         jRadioButtonContaHidrometro.setText("Conta com Hidrômetro");
+        jRadioButtonContaHidrometro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonContaHidrometroActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -198,6 +211,16 @@ public class GerarContas extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jRadioButtonContaFixaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonContaFixaActionPerformed
+        
+        preencherTabela();
+        
+    }//GEN-LAST:event_jRadioButtonContaFixaActionPerformed
+
+    private void jRadioButtonContaHidrometroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonContaHidrometroActionPerformed
+        preencherTabela();
+    }//GEN-LAST:event_jRadioButtonContaHidrometroActionPerformed
 
     /**
      * @param args the command line arguments

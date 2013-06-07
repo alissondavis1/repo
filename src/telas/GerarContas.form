@@ -99,6 +99,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Conta Fixa"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioButtonContaFixaActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JRadioButton" name="jRadioButtonContaHidrometro">
           <Properties>
@@ -107,6 +110,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Conta com Hidr&#xf4;metro"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioButtonContaHidrometroActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
