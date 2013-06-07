@@ -5,13 +5,21 @@
 package telas;
 
 import dao.DaoContasMensais;
+import dao.DaoTaxa;
 import entidades.Conta;
+import entidades.Taxa;
+import java.awt.Component;
 import java.awt.Frame;
 import java.awt.Toolkit;
 import java.util.List;
+import javax.swing.DefaultCellEditor;
+import javax.swing.JComboBox;
+import javax.swing.JTable;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellRenderer;
+import javax.swing.table.TableColumn;
 
 /**
  *
@@ -29,61 +37,91 @@ public class GerarContas extends javax.swing.JDialog {
         preencherTabela();
     }
 
-  
-    private void preencherTabela(){
-        
-        
-         DefaultTableCellRenderer centralizar = new DefaultTableCellRenderer();
+    private void preencherTabela() {
+
+        JComboBox combo = new JComboBox();
+        combo.addItem("");
+        List<Taxa> taxas = new DaoTaxa().TaxasTodas();
+        if(!taxas.isEmpty()){
+        for(Taxa t : taxas){
+            combo.addItem(t.getNome());
+        }
+        }
+        DefaultTableCellRenderer centralizar = new DefaultTableCellRenderer();
         centralizar.setHorizontalAlignment(SwingConstants.CENTER);
-        
+
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
-                    new Object[][]{},
-                    new String[]{"id", "dataVencimento", "Sócio", "Numero Socio", "CPF", "Gerar"}) {
-                Class[] types = new Class[]{String.class, String.class, String.class, String.class, String.class,
-                  Boolean.class};
+                new Object[][]{},
+                new String[]{"id", "dataVencimento", "Sócio", "Numero Socio", "CPF", "Gerar", "Taxa"}) {
+            Class[] types = new Class[]{String.class, String.class, String.class, String.class, String.class,
+                Boolean.class, List.class};
 
-                @Override
-                public Class getColumnClass(int columnIndex) {
-                    return types[columnIndex];
-                }
-                boolean[] canEdit = new boolean[]{false, false, false, false, false, true};
+            @Override
+            public Class getColumnClass(int columnIndex) {
+                return types[columnIndex];
+            }
+            boolean[] canEdit = new boolean[]{false, false, false, false, false, true, true};
 
-                @Override
-                public boolean isCellEditable(int rowIndex, int columnIndex) {
+            @Override
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
 
-                    return canEdit[columnIndex];
-                }
-            });
+                return canEdit[columnIndex];
+            }
+        });
 
-            jTable1.getColumn("id").setCellRenderer(centralizar);
-            jTable1.getColumn("dataVencimento").setCellRenderer(centralizar);
-            jTable1.getColumn("Sócio").setCellRenderer(centralizar);
-            jTable1.getColumn("Numero Socio").setCellRenderer(centralizar);
-            jTable1.getColumn("CPF").setCellRenderer(centralizar);
-            //jTable1.getColumn("Gerar").setCellRenderer(centralizar);
+        jTable1.getColumn("id").setCellRenderer(centralizar);
+        jTable1.getColumn("dataVencimento").setCellRenderer(centralizar);
+        jTable1.getColumn("Sócio").setCellRenderer(centralizar);
+        jTable1.getColumn("Numero Socio").setCellRenderer(centralizar);
+        jTable1.getColumn("CPF").setCellRenderer(centralizar);
 
-
-         preencherColunas();
+        TableColumn t = jTable1.getColumnModel().getColumn(6);
+        DefaultTableCellRenderer t1 = new DefaultTableCellRenderer();
+        t1.add(combo);
+        t.setCellEditor(new DefaultCellEditor(combo));
         
+        //t.setCellRenderer(new combo());
+
+        preencherColunas();
+
     }
-    
-    private void preencherColunas(){
-        
-        DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
-        
+
+    private class combo extends JComboBox implements TableCellRenderer {
+
+        @Override
+        public Component getTableCellRendererComponent(JTable table,
+                Object value, boolean isSelected, boolean hasFocus, int row,
+                int column) {
+            if (isSelected) {
+                setForeground(table.getSelectionForeground());
+                super.setBackground(table.getSelectionBackground());
+            } else {
+                setForeground(table.getForeground());
+                setBackground(table.getBackground());
+            }
+            setSelectedItem(value);
+            return this;
+        }
+    }
+
+    private void preencherColunas() {
+
+
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+
         List<Conta> contas = new DaoContasMensais().ContasTotalAbertas();
-        
-        if(!contas.isEmpty()){
-            
-            for(Conta c : contas){
-                
-                model.addRow(new Object[]{c.getId(),c.getDataVence(),c.getIdEnderecoPessoa().getIdPessoa().getNome()+" "+c.getIdEnderecoPessoa().getIdPessoa().getSobrenome(),c.getIdEnderecoPessoa().getIdPessoa().getSocio().getNumeroSocio(),c.getIdEnderecoPessoa().getIdPessoa().getCpf()});
+
+        if (!contas.isEmpty()) {
+
+            for (Conta c : contas) {
+
+                model.addRow(new Object[]{c.getId(), c.getDataVence(), c.getIdEnderecoPessoa().getIdPessoa().getNome() + " " + c.getIdEnderecoPessoa().getIdPessoa().getSobrenome(), c.getIdEnderecoPessoa().getIdPessoa().getSocio().getNumeroSocio(), c.getIdEnderecoPessoa().getIdPessoa().getCpf(), false});
             }
         }
-        
-        
+
+
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -93,10 +131,12 @@ public class GerarContas extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        jRadioButtonContaFixa = new javax.swing.JRadioButton();
+        jRadioButtonContaHidrometro = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -115,12 +155,11 @@ public class GerarContas extends javax.swing.JDialog {
         jTable1.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(jTable1);
 
-        jButton1.setText("jButton1");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
+        buttonGroup1.add(jRadioButtonContaFixa);
+        jRadioButtonContaFixa.setText("Conta Fixa");
+
+        buttonGroup1.add(jRadioButtonContaHidrometro);
+        jRadioButtonContaHidrometro.setText("Conta com Hidrômetro");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -128,15 +167,18 @@ public class GerarContas extends javax.swing.JDialog {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton1)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jRadioButtonContaFixa)
+                    .addComponent(jRadioButtonContaHidrometro))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jButton1)
-                .addContainerGap(39, Short.MAX_VALUE))
+                .addComponent(jRadioButtonContaFixa)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jRadioButtonContaHidrometro)
+                .addGap(0, 24, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -156,10 +198,6 @@ public class GerarContas extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
-    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -203,8 +241,10 @@ public class GerarContas extends javax.swing.JDialog {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JRadioButton jRadioButtonContaFixa;
+    private javax.swing.JRadioButton jRadioButtonContaHidrometro;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
