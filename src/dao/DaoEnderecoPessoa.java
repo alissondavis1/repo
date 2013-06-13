@@ -5,6 +5,7 @@
 package dao;
 
 import entidades.Enderecopessoa;
+import java.util.List;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -44,6 +45,33 @@ public class DaoEnderecoPessoa {
              sessao.close();
         }  
     return end;
+    }
+    
+    public List<Enderecopessoa> TodosOsSocios() {
+        
+        List<Enderecopessoa> socio = null;
+        Session sessao = null; 
+        Query query = null;
+        Transaction transacao = null;
+        
+        try{
+           sessao = HibernateUtil.getSessionFactory().openSession();
+           transacao = sessao.beginTransaction();
+           query = sessao.createQuery("from Enderecopessoa ");
+           socio = query.list();
+           transacao.commit(); 
+           
+        }
+        catch(HibernateException e)
+        {
+            System.out.println(e);
+            transacao.rollback();
+        }
+        finally
+        {
+             sessao.close();
+        }  
+    return socio;
     }
     
      public void ApagarEnderecopessoa ( Enderecopessoa p) {

@@ -4,20 +4,24 @@
  */
 package telas;
 
-import dao.DaoContasMensais;
-import dao.DaoTaxa;
-import entidades.Conta;
-import entidades.Hidrometro;
-import entidades.Taxa;
+import dao.DaoEnderecoPessoa;
+import entidades.Enderecopessoa;
+import java.awt.Component;
 import java.awt.Frame;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.List;
-import javax.swing.DefaultCellEditor;
-import javax.swing.JComboBox;
+import javax.swing.AbstractCellEditor;
+import javax.swing.JButton;
+import javax.swing.JTable;
 import javax.swing.SwingConstants;
+import javax.swing.UIManager;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableColumn;
+import javax.swing.table.TableCellEditor;
+import javax.swing.table.TableCellRenderer;
+import javax.swing.table.TableColumnModel;
 
 /**
  *
@@ -30,35 +34,31 @@ public class GerarContas extends javax.swing.JDialog {
      */
     public GerarContas(Frame parent, boolean modal) {
         super(parent, modal);
+       
         setPreferredSize(Toolkit.getDefaultToolkit().getScreenSize());
         initComponents();
-       
+      
     }
 
+    
     private void preencherTabela() {
 
-        JComboBox combo = new JComboBox();
-        combo.addItem("");
-        List<Taxa> taxas = new DaoTaxa().TaxasTodas();
-        if(!taxas.isEmpty()){
-        for(Taxa t : taxas){
-            combo.addItem(t.getNome());
-        }
-        }
+            
+        
         DefaultTableCellRenderer centralizar = new DefaultTableCellRenderer();
         centralizar.setHorizontalAlignment(SwingConstants.CENTER);
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
                 new Object[][]{},
-                new String[]{"id", "dataVencimento", "Sócio", "Numero Socio", "CPF", "Gerar", "Taxa"}) {
+                new String[]{"id", "dataVencimento", "Sócio", "Numero Socio", "CPF","Valor","Gerar","Taxa"}) {
             Class[] types = new Class[]{String.class, String.class, String.class, String.class, String.class,
-                Boolean.class, String.class};
+                 String.class, Boolean.class, JButton.class};
 
             @Override
             public Class getColumnClass(int columnIndex) {
                 return types[columnIndex];
             }
-            boolean[] canEdit = new boolean[]{false, false, false, false, false, true, true};
+            boolean[] canEdit = new boolean[]{false, false, false, false, false, true, true, true};
 
             @Override
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -72,14 +72,11 @@ public class GerarContas extends javax.swing.JDialog {
         jTable1.getColumn("Sócio").setCellRenderer(centralizar);
         jTable1.getColumn("Numero Socio").setCellRenderer(centralizar);
         jTable1.getColumn("CPF").setCellRenderer(centralizar);
+        jTable1.getColumn("Valor").setCellRenderer(centralizar);
 
-        TableColumn t = jTable1.getColumnModel().getColumn(6);
-        DefaultTableCellRenderer t1 = new DefaultTableCellRenderer();
-        t1.add(combo);
-        t.setCellEditor(new DefaultCellEditor(combo));
         
-        //t.setCellRenderer(new combo());
-
+        ButtonColumn botao = new ButtonColumn(jTable1, 7);
+        
         preencherColunas();
 
     }
@@ -90,31 +87,38 @@ public class GerarContas extends javax.swing.JDialog {
 if(jRadioButtonContaFixa.isSelected()){
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         model.setRowCount(0);
-        List<Conta> contas = new DaoContasMensais().ContasTotalAbertas();
+        List<Enderecopessoa> socios = new DaoEnderecoPessoa().TodosOsSocios();
+         
+        if (!socios.isEmpty()) {
 
-        if (!contas.isEmpty()) {
+            
+            for (Enderecopessoa s : socios) {
 
-            for (Conta c : contas) {
-
-                model.addRow(new Object[]{c.getId(), c.getDataVence(), c.getIdEnderecoPessoa().getIdPessoa().getNome() + " " + c.getIdEnderecoPessoa().getIdPessoa().getSobrenome(), c.getIdEnderecoPessoa().getIdPessoa().getSocio().getNumeroSocio(), c.getIdEnderecoPessoa().getIdPessoa().getCpf(), false});
-            }
+                if(!s.getIdPessoa().getSocio().getIdCategoriaSocio().getNome().equals("hidrometro")){
+                model.addRow(new Object[]{s.getIdPessoa().getSocio().getId(), s.getIdPessoa().getSocio().getDataVence(), s.getIdPessoa().getNome() + " " + s.getIdPessoa().getSobrenome(), s.getIdPessoa().getSocio().getNumeroSocio(), s.getIdPessoa().getCpf(),s.getIdPessoa().getSocio().getIdCategoriaSocio().getTaxasId().getValor(), false});
+                }
+                }
+            
         }
 
 
     }else if(jRadioButtonContaHidrometro.isSelected())
     {
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+       
+        model.addColumn("Consumo");
+        
         model.setRowCount(0);
-        List<Conta> contas = new DaoContasMensais().ContasTotalAbertas();
+        List<Enderecopessoa> socios = new DaoEnderecoPessoa().TodosOsSocios();
         
 
-        if (!contas.isEmpty()) {
+        if (!socios.isEmpty()) {
 
-            for (Conta c : contas) {
-                 Hidrometro h = c.getHidrometro();
-                 if(h != null){
+            for (Enderecopessoa s : socios) {
+               
+                 if(s.getIdPessoa().getSocio().getIdCategoriaSocio().getNome().equals("hidrometro")){
                      
-                model.addRow(new Object[]{h.getIdconta().getId(), h.getIdconta().getDataVence(), h.getIdconta().getIdEnderecoPessoa().getIdPessoa().getNome() + " " + h.getIdconta().getIdEnderecoPessoa().getIdPessoa().getSobrenome(), h.getIdconta().getIdEnderecoPessoa().getIdPessoa().getSocio().getNumeroSocio(), h.getIdconta().getIdEnderecoPessoa().getIdPessoa().getCpf(), false});
+                model.addRow(new Object[]{s.getIdPessoa().getSocio().getId(), s.getIdPessoa().getSocio().getDataVence(), s.getIdPessoa().getNome() + " " + s.getIdPessoa().getSobrenome(), s.getIdPessoa().getSocio().getNumeroSocio(), s.getIdPessoa().getCpf(),s.getIdPessoa().getSocio().getIdCategoriaSocio().getTaxasId().getValor(), false});
                  }
                  }
         }
@@ -140,9 +144,9 @@ if(jRadioButtonContaFixa.isSelected()){
         jPanel1 = new javax.swing.JPanel();
         jRadioButtonContaFixa = new javax.swing.JRadioButton();
         jRadioButtonContaHidrometro = new javax.swing.JRadioButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setResizable(false);
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -174,6 +178,8 @@ if(jRadioButtonContaFixa.isSelected()){
             }
         });
 
+        jButton1.setText("Gerar");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -183,12 +189,16 @@ if(jRadioButtonContaFixa.isSelected()){
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jRadioButtonContaFixa)
                     .addComponent(jRadioButtonContaHidrometro))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(22, 22, 22)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(575, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jRadioButtonContaFixa)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jRadioButtonContaFixa)
+                    .addComponent(jButton1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jRadioButtonContaHidrometro)
                 .addGap(0, 24, Short.MAX_VALUE))
@@ -204,7 +214,7 @@ if(jRadioButtonContaFixa.isSelected()){
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 370, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 366, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -222,6 +232,76 @@ if(jRadioButtonContaFixa.isSelected()){
         preencherTabela();
     }//GEN-LAST:event_jRadioButtonContaHidrometroActionPerformed
 
+    
+    class ButtonColumn extends AbstractCellEditor  
+     implements TableCellRenderer, TableCellEditor, ActionListener  
+{  
+     JTable table;  
+     JButton renderButton;  
+     JButton editButton;  
+     String text;  
+  
+     public ButtonColumn(JTable table, int column)  
+     {  
+         super();  
+         this.table = table;  
+         renderButton = new JButton();  
+  
+         editButton = new JButton();  
+         editButton.setFocusPainted( false );  
+         editButton.addActionListener( this );  
+  
+         TableColumnModel columnModel = table.getColumnModel();  
+         columnModel.getColumn(column).setCellRenderer( this );  
+         columnModel.getColumn(column).setCellEditor( this );  
+     }  
+  
+        @Override
+     public Component getTableCellRendererComponent(  
+         JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column)  
+     {  
+         if (hasFocus)  
+         {  
+             renderButton.setForeground(table.getForeground());  
+             renderButton.setBackground(UIManager.getColor("Button.background"));  
+         }  
+         else if (isSelected)  
+         {  
+             renderButton.setForeground(table.getSelectionForeground());  
+              renderButton.setBackground(table.getSelectionBackground());  
+         }  
+         else  
+         {  
+             renderButton.setForeground(table.getForeground());  
+             renderButton.setBackground(UIManager.getColor("Button.background"));  
+         }  
+  
+         renderButton.setText( (value == null) ? "Adicionar" : value.toString() );  
+         return renderButton;  
+     }  
+  
+        @Override
+     public Component getTableCellEditorComponent(  
+         JTable table, Object value, boolean isSelected, int row, int column)  
+     {  
+         text = (value == null) ? "Adicionar" : value.toString();  
+         editButton.setText( text );  
+         return editButton;  
+     }  
+  
+        @Override
+     public Object getCellEditorValue()  
+     {  
+         return text;  
+     }  
+  
+        @Override
+     public void actionPerformed(ActionEvent e)  
+     {  
+         fireEditingStopped();  
+         System.out.println( e.getActionCommand() + " : " + table.getSelectedRow());  
+     }  
+}  
     /**
      * @param args the command line arguments
      */
@@ -265,6 +345,7 @@ if(jRadioButtonContaFixa.isSelected()){
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JRadioButton jRadioButtonContaFixa;
     private javax.swing.JRadioButton jRadioButtonContaHidrometro;
