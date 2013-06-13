@@ -11,6 +11,11 @@ import java.awt.Frame;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.math.BigDecimal;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import javax.swing.AbstractCellEditor;
 import javax.swing.JButton;
@@ -32,6 +37,8 @@ public class GerarContas extends javax.swing.JDialog {
     /**
      * Creates new form GerarContas
      */
+    
+    private List<Enderecopessoa> socios = new DaoEnderecoPessoa().TodosOsSocios();
     public GerarContas(Frame parent, boolean modal) {
         super(parent, modal);
        
@@ -43,22 +50,22 @@ public class GerarContas extends javax.swing.JDialog {
     
     private void preencherTabela() {
 
-            
         
+        if(jRadioButtonContaFixa.isSelected()){
         DefaultTableCellRenderer centralizar = new DefaultTableCellRenderer();
         centralizar.setHorizontalAlignment(SwingConstants.CENTER);
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
                 new Object[][]{},
-                new String[]{"id", "dataVencimento", "Sócio", "Numero Socio", "CPF","Valor","Gerar","Taxa"}) {
-            Class[] types = new Class[]{String.class, String.class, String.class, String.class, String.class,
-                 String.class, Boolean.class, JButton.class};
+                new String[]{"id", "dataVencimento", "Sócio", "Numero Socio", "CPF","Numero Endereço","Valor","Gerar","Taxa"}) {
+            Class[] types = new Class[]{Integer.class, Date.class, String.class, Integer.class, String.class,Integer.class,
+                 BigDecimal.class, Boolean.class, JButton.class};
 
             @Override
             public Class getColumnClass(int columnIndex) {
                 return types[columnIndex];
             }
-            boolean[] canEdit = new boolean[]{false, false, false, false, false, true, true, true};
+            boolean[] canEdit = new boolean[]{false, false, false, false, false,false, true, true, true};
 
             @Override
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -72,11 +79,49 @@ public class GerarContas extends javax.swing.JDialog {
         jTable1.getColumn("Sócio").setCellRenderer(centralizar);
         jTable1.getColumn("Numero Socio").setCellRenderer(centralizar);
         jTable1.getColumn("CPF").setCellRenderer(centralizar);
+         jTable1.getColumn("Numero Endereço").setCellRenderer(centralizar);
         jTable1.getColumn("Valor").setCellRenderer(centralizar);
 
         
-        ButtonColumn botao = new ButtonColumn(jTable1, 7);
+        }else if(jRadioButtonContaHidrometro.isSelected()){
+            
+            DefaultTableCellRenderer centralizar = new DefaultTableCellRenderer();
+        centralizar.setHorizontalAlignment(SwingConstants.CENTER);
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+                new Object[][]{},
+                new String[]{"id", "dataVencimento", "Sócio", "Numero Socio", "CPF","Numero Endereço","Valor","Gerar","Taxa", "Consumo"}) {
+            Class[] types = new Class[]{Integer.class, String.class, String.class, Integer.class, String.class,Integer.class,
+                 BigDecimal.class, Boolean.class, JButton.class, Double.class};
+
+            @Override
+            public Class getColumnClass(int columnIndex) {
+                return types[columnIndex];
+            }
+            boolean[] canEdit = new boolean[]{false, false, false, false, false,false, true, true, true, true};
+
+            @Override
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+
+                return canEdit[columnIndex];
+            }
+        });
+
+        jTable1.getColumn("id").setCellRenderer(centralizar);
+        jTable1.getColumn("dataVencimento").setCellRenderer(centralizar);
+        jTable1.getColumn("Sócio").setCellRenderer(centralizar);
+        jTable1.getColumn("Numero Socio").setCellRenderer(centralizar);
+        jTable1.getColumn("CPF").setCellRenderer(centralizar);
+         jTable1.getColumn("Numero Endereço").setCellRenderer(centralizar);
+        jTable1.getColumn("Valor").setCellRenderer(centralizar);
+        jTable1.getColumn("Consumo").setCellRenderer(centralizar);
+            
+          
+        }
         
+        
+        
+         ButtonColumn botao = new ButtonColumn(jTable1, 8);
         preencherColunas();
 
     }
@@ -87,15 +132,15 @@ public class GerarContas extends javax.swing.JDialog {
 if(jRadioButtonContaFixa.isSelected()){
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         model.setRowCount(0);
-        List<Enderecopessoa> socios = new DaoEnderecoPessoa().TodosOsSocios();
-         
+      //  List<Enderecopessoa> socios = new DaoEnderecoPessoa().TodosOsSocios();
+        
         if (!socios.isEmpty()) {
 
             
             for (Enderecopessoa s : socios) {
 
                 if(!s.getIdPessoa().getSocio().getIdCategoriaSocio().getNome().equals("hidrometro")){
-                model.addRow(new Object[]{s.getIdPessoa().getSocio().getId(), s.getIdPessoa().getSocio().getDataVence(), s.getIdPessoa().getNome() + " " + s.getIdPessoa().getSobrenome(), s.getIdPessoa().getSocio().getNumeroSocio(), s.getIdPessoa().getCpf(),s.getIdPessoa().getSocio().getIdCategoriaSocio().getTaxasId().getValor(), false});
+                model.addRow(new Object[]{s.getIdPessoa().getSocio().getId(), SimpleDateFormat.getDateInstance().format(s.getIdPessoa().getSocio().getDataVence()), s.getIdPessoa().getNome() + " " + s.getIdPessoa().getSobrenome(), s.getIdPessoa().getSocio().getNumeroSocio(), s.getIdPessoa().getCpf(),s.getNumero(),s.getIdPessoa().getSocio().getIdCategoriaSocio().getTaxasId().getValor(), false});
                 }
                 }
             
@@ -106,10 +151,10 @@ if(jRadioButtonContaFixa.isSelected()){
     {
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
        
-        model.addColumn("Consumo");
+        
         
         model.setRowCount(0);
-        List<Enderecopessoa> socios = new DaoEnderecoPessoa().TodosOsSocios();
+       // List<Enderecopessoa> socios = new DaoEnderecoPessoa().TodosOsSocios();
         
 
         if (!socios.isEmpty()) {
@@ -118,7 +163,7 @@ if(jRadioButtonContaFixa.isSelected()){
                
                  if(s.getIdPessoa().getSocio().getIdCategoriaSocio().getNome().equals("hidrometro")){
                      
-                model.addRow(new Object[]{s.getIdPessoa().getSocio().getId(), s.getIdPessoa().getSocio().getDataVence(), s.getIdPessoa().getNome() + " " + s.getIdPessoa().getSobrenome(), s.getIdPessoa().getSocio().getNumeroSocio(), s.getIdPessoa().getCpf(),s.getIdPessoa().getSocio().getIdCategoriaSocio().getTaxasId().getValor(), false});
+                model.addRow(new Object[]{s.getIdPessoa().getSocio().getId(), SimpleDateFormat.getDateInstance().format(s.getIdPessoa().getSocio().getDataVence()), s.getIdPessoa().getNome() + " " + s.getIdPessoa().getSobrenome(), s.getIdPessoa().getSocio().getNumeroSocio(), s.getIdPessoa().getCpf(),s.getNumero(),s.getIdPessoa().getSocio().getIdCategoriaSocio().getTaxasId().getValor(), false});
                  }
                  }
         }
@@ -148,6 +193,7 @@ if(jRadioButtonContaFixa.isSelected()){
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
+        jTable1.setAutoCreateRowSorter(true);
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -233,7 +279,7 @@ if(jRadioButtonContaFixa.isSelected()){
     }//GEN-LAST:event_jRadioButtonContaHidrometroActionPerformed
 
     
-    class ButtonColumn extends AbstractCellEditor  
+  private  class ButtonColumn extends AbstractCellEditor  
      implements TableCellRenderer, TableCellEditor, ActionListener  
 {  
      JTable table;  
