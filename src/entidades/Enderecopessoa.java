@@ -10,6 +10,7 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -19,6 +20,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 /**
  *
@@ -29,7 +32,8 @@ import javax.xml.bind.annotation.XmlTransient;
 @XmlRootElement
 
 public class Enderecopessoa implements Serializable {
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idEnderecoPessoa")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idEnderecoPessoa", fetch= FetchType.EAGER)
+    @Fetch(FetchMode.SUBSELECT)
     private Collection<Conta> contaCollection;
     @Column(name = "Numero")
     private Integer numero;
