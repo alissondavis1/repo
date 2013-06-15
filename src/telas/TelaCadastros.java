@@ -50,7 +50,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class TelaCadastros extends javax.swing.JFrame {
 
-    JFrame telaPrincipal;
+    private JFrame telaPrincipal;
     private String pesquisarTable;
    
     
@@ -82,7 +82,7 @@ public class TelaCadastros extends javax.swing.JFrame {
         this();
         this.telaPrincipal = telaPrincipal;
         this.telaPrincipal.setEnabled(false);
-        this.telaPrincipal.setEnabled(false);
+        
     }
 
     public TelaCadastros(JFrame telaPrincipal, ActionEvent evt) {
@@ -5374,10 +5374,11 @@ public class TelaCadastros extends javax.swing.JFrame {
        Socio s = new DaoSocio().BuscarSocioId(Integer.parseInt(jTextFieldSocioID.getText()));
        Pessoa p = s.getIdPessoa();
        List<Enderecopessoa> enderecos = p.getEnderecopessoaList();
+      
        Logradouros l = new Logradouros(this, true, enderecos, s);
        l.setLocationRelativeTo(null);
        l.setVisible(true);
-       
+      
        
     }//GEN-LAST:event_jButtonSocioAdicionarLogradouroActionPerformed
 

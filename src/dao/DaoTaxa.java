@@ -122,9 +122,9 @@ public class DaoTaxa implements TaxasInterface {
     
 
     @Override
-    public List<Taxa> TaxasPorNome(String nome) {
+    public Taxa TaxasPorNome(String nome) {
        
-        List<Taxa> taxa = null;
+        Taxa taxa = null;
         Session sessao = null; 
         Query query = null;
         Transaction transacao = null;
@@ -133,9 +133,9 @@ public class DaoTaxa implements TaxasInterface {
            sessao = HibernateUtil.getSessionFactory().openSession();
            transacao = sessao.beginTransaction();
            query = sessao.createQuery("from Taxa t where t.nome = :nome");
-           query.setString("nome","%"+nome+"%");
+           query.setParameter("nome",nome);
            //query.setParameter("id",id);
-           taxa = query.list();
+           taxa = (Taxa)query.uniqueResult();
            transacao.commit(); 
            
         }

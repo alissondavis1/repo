@@ -18,9 +18,7 @@ import java.sql.Connection;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.HashMap;
 import java.util.Locale;
-import java.util.Map;
 import java.util.Properties;
 import java.util.Scanner;
 import java.util.logging.Level;
@@ -31,7 +29,6 @@ import javax.swing.JComponent;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import javax.swing.JRootPane;
 import javax.swing.KeyStroke;
 import javax.swing.UnsupportedLookAndFeelException;
 import net.sf.jasperreports.engine.JasperCompileManager;
@@ -202,6 +199,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenuItemSolicita_Socio = new javax.swing.JMenuItem();
         jMenuItemCaixa = new javax.swing.JMenuItem();
         jMenuItem8 = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItemTelaPrincipalBackup = new javax.swing.JMenuItem();
         jSeparator2 = new javax.swing.JPopupMenu.Separator();
         jMenuItemSair = new javax.swing.JMenuItem();
@@ -318,6 +316,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(10, 3, 0, 0);
         jPanelBotoesTelaPrincipal.add(jButtonTelaPrincipalCadastros, gridBagConstraints);
 
+        jInternalFrameContas1.setBackground(new java.awt.Color(51, 51, 255));
         jInternalFrameContas1.setFrameIcon(null);
         jInternalFrameContas1.setVisible(true);
 
@@ -709,6 +708,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jMenuItem8.setText("Gerador de contas");
         jMenu.add(jMenuItem8);
+
+        jMenuItem1.setText("Criar Usuarios");
+        jMenu.add(jMenuItem1);
 
         jMenuItemTelaPrincipalBackup.setText("Backup");
         jMenuItemTelaPrincipalBackup.addActionListener(new java.awt.event.ActionListener() {
@@ -1165,9 +1167,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         
-        GerarContas g = new GerarContas(this, true);
-        g.setLocationRelativeTo(null);
-        g.setVisible(true);
+        new GContas(this).setVisible(true);
       
     }//GEN-LAST:event_jButton3ActionPerformed
  
@@ -1241,6 +1241,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu jMenuCadastros;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItemAgua;
     private javax.swing.JMenuItem jMenuItemCaixa;

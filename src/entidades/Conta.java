@@ -6,6 +6,7 @@ package entidades;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -16,6 +17,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -57,6 +59,16 @@ public class Conta implements Serializable {
     @JoinColumn(name = "idEnderecoPessoa", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Enderecopessoa idEnderecoPessoa;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "contaid")
+    private List<Taxasconta> taxascontaList;
+
+    public List<Taxasconta> getTaxascontaList() {
+        return taxascontaList;
+    }
+
+    public void setTaxascontaList(List<Taxasconta> taxascontaList) {
+        this.taxascontaList = taxascontaList;
+    }
     public Conta() {
     }
 

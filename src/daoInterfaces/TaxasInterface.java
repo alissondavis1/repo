@@ -18,7 +18,7 @@ public interface TaxasInterface {
     public void AlterarTaxa  (Taxa taxa);
     
     public Taxa       TaxaPorId(int id);
-    public List<Taxa> TaxasPorNome(String nome);
+    public Taxa TaxasPorNome(String nome);
     public List<Taxa> TaxasTodas  ();
      public List<Taxa> BuscarTaxaNomeLike(String nome);
     
