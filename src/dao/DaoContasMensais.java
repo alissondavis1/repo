@@ -93,9 +93,9 @@ public class DaoContasMensais implements ContasInterface {
     
 
     @Override
-    public List<Conta> ContasPorId(int id) {
+    public Conta ContasPorId(int id) {
           
-        List<Conta> cheque = null;
+        Conta cheque = null;
         Session sessao = null; 
         Query query = null;
         Transaction tx = null;
@@ -103,9 +103,9 @@ public class DaoContasMensais implements ContasInterface {
         try{
            sessao = HibernateUtil.getSessionFactory().openSession();
            tx = sessao.beginTransaction();
-          query = sessao.createQuery("from Conta" );
-           //query.setParameter("id",id);
-           cheque =  query.list();
+          query = sessao.createQuery("from Conta where id =:id" );
+           query.setParameter("id",id);
+           cheque = (Conta) query.uniqueResult();
            tx.commit(); 
            
         }

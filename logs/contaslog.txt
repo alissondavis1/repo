@@ -1,0 +1,28 @@
+ID:1	IDOriginal:1	dataPagamento:2013-03-30 00:00:00.0	dataVencimento:2013-03-30 00:00:00.0	TaxaSócio:4	NúmeroSócio:5	HoraRegistro:2013-04-01 02:52:16.0	Tipo:Insert
+
+ID:2	IDOriginal:2	dataPagamento:2013-03-30 00:00:00.0	dataVencimento:2013-03-30 00:00:00.0	TaxaSócio:5	NúmeroSócio:5	HoraRegistro:2013-04-01 02:52:16.0	Tipo:Insert
+
+ID:3	IDOriginal:4	dataPagamento:2013-03-30 00:00:00.0	dataVencimento:2013-03-30 00:00:00.0	TaxaSócio:4	NúmeroSócio:4	HoraRegistro:2013-04-01 02:53:04.0	Tipo:Insert
+
+ID:5	IDOriginal:7	dataPagamento:null	dataVencimento:2013-03-30 00:00:00.0	TaxaSócio:5	NúmeroSócio:4	HoraRegistro:2013-04-01 21:06:19.0	Tipo:Insert
+
+ID:6	IDOriginal:8	dataPagamento:null	dataVencimento:2013-03-30 00:00:00.0	TaxaSócio:5	NúmeroSócio:4	HoraRegistro:2013-04-01 21:06:19.0	Tipo:Insert
+
+ID:12	IDOriginal:14	dataPagamento:null	dataVencimento:2013-02-10 00:00:00.0	TaxaSócio:5	NúmeroSócio:4	HoraRegistro:2013-04-01 21:08:11.0	Tipo:Insert
+
+ID:13	IDOriginal:15	dataPagamento:null	dataVencimento:2013-01-20 00:00:00.0	TaxaSócio:5	NúmeroSócio:4	HoraRegistro:2013-04-01 21:08:11.0	Tipo:Insert
+
+ID:14	IDOriginal:16	dataPagamento:null	dataVencimento:2013-03-10 00:00:00.0	TaxaSócio:5	NúmeroSócio:4	HoraRegistro:2013-04-01 21:08:11.0	Tipo:Insert
+
+ID:15	IDOriginal:17	dataPagamento:null	dataVencimento:2013-03-10 00:00:00.0	TaxaSócio:1	NúmeroSócio:4	HoraRegistro:2013-04-06 07:27:31.0	Tipo:Insert
+
+ID:16	IDOriginal:17	dataPagamento:null	dataVencimento:2013-03-10 00:00:00.0	TaxaSócio:1	NúmeroSócio:4	HoraRegistro:2013-04-06 07:31:11.0	Tipo:Delete
+
+ID:17	IDOriginal:20	dataPagamento:2013-03-10 00:00:00.0	dataVencimento:2013-03-10 00:00:00.0	TaxaSócio:20	NúmeroSócio:4	HoraRegistro:2013-04-06 07:33:36.0	Tipo:Insert
+
+ID:19	IDOriginal:22	dataPagamento:2013-03-10 00:00:00.0	dataVencimento:2013-03-10 00:00:00.0	TaxaSócio:20	NúmeroSócio:4	HoraRegistro:2013-04-07 12:11:42.0	Tipo:insert
+
+ID:20	IDOriginal:22	dataPagamento:2013-03-10 00:00:00.0	dataVencimento:2013-03-10 00:00:00.0	TaxaSócio:20	NúmeroSócio:4	HoraRegistro:2013-04-07 12:12:33.0	Tipo:delete
+
+ID:21	IDOriginal:22	dataPagamento:2013-03-10 00:00:00.0	dataVencimento:2013-03-10 00:00:00.0	TaxaSócio:20	NúmeroSócio:4	HoraRegistro:2013-04-08 20:37:06.0	Tipo:insert
+

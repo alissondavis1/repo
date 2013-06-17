@@ -32,6 +32,7 @@ import java.beans.PropertyVetoException;
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -4579,16 +4580,17 @@ public class TelaCadastros extends javax.swing.JFrame {
                               p.setEnderecopessoaList(enderecos1);
 
                         }
-                      
+                        Socio s = new Socio();
                         if (jRadioButtonSocioAtivo.isSelected()) {
 
                             p.setStatus(true);
+                            s.setDataAprovacao(new Date());
                         } else {
 
                             p.setStatus(false);
                         }
 
-                        Socio s = new Socio();
+                      
 
 
                         s.setDataVence(SimpleDateFormat.getDateInstance().parse(jFormattedTextFieldSocioDiaVencimento.getText()));
@@ -4649,10 +4651,18 @@ public class TelaCadastros extends javax.swing.JFrame {
                         }
 
                         if (!p.getCpf().equals(jFormattedTextFieldSocioCPF.getText())) {
+ 
+                            Pessoa p0 = new DaoPessoa().BuscarPessoaCpf(jFormattedTextFieldSocioCPF.getText());
+                            if (p0 != null) {
+                                JOptionPane.showMessageDialog(this, "Esse cpf já existe", "Erro", JOptionPane.ERROR_MESSAGE);
+                                jFormattedTextFieldSocioCPF.setText("");
 
-                            JOptionPane.showMessageDialog(this, "O cpf informado já existe", "Erro", JOptionPane.ERROR_MESSAGE);
-                            jFormattedTextFieldSocioCPF.setText("");
-                            throw new Exception();
+                                throw new Exception();
+
+                            }
+
+                        
+                           
                         }
                         p.setCpf(jFormattedTextFieldSocioCPF.getText());
                         if (p1.matcher(jFormattedTextFieldSocioDataEmissao.getText()).find()) {
@@ -4663,25 +4673,37 @@ public class TelaCadastros extends javax.swing.JFrame {
                         p.setSexo((String) jComboBoxSocioSexo.getSelectedItem());
                         p.setUf((String) jComboBoxSocioUF.getSelectedItem());
 
-                         Enderecopessoa ep = new Enderecopessoa();
+                         //Enderecopessoa ep = new Enderecopessoa();
                         Endereco e = new DaoEndereco().BuscarEnderecoCompleto((String)jComboBoxSocioLogradouro.getSelectedItem());
                         if (e != null) {
+                            if(p.getIdEndereco() == e){
                             p.setIdEndereco(e);
-                             
-                              ep.setIdEndereco(e);
-                              ep.setIdPessoa(p);
-                              ep.setNumero(Integer.parseInt(jTextFieldSocioNumero.getText()));
-                              List<Enderecopessoa> enderecos1 = new ArrayList<>();
-                              enderecos1.add(ep);
-                              p.setEnderecopessoaList(enderecos1);
+                            }else{
+                                
+                                p.setIdEndereco(e);
+                                p.getEnderecopessoaList().get(0).setIdEndereco(e);
+                                p.getEnderecopessoaList().get(0).setNumero(Integer.parseInt(p.getNumeroEndereco()));
+                                
+                            }
+//                              ep.setIdEndereco(p.getIdEndereco());
+//                              ep.setIdPessoa(p);
+//                              ep.setNumero(Integer.parseInt(p.getNumeroEndereco()));
+//                              List<Enderecopessoa> enderecos1 = new ArrayList<>();
+//                              enderecos1.add(ep);
+//                              
+//                              p.setEnderecopessoaList(enderecos1);
 
                         }
 
                         if (jRadioButtonSocioAtivo.isSelected()) {
 
                             p.setStatus(true);
+                            if(p.getSocio().getDataAprovacao() == null){
+                                
+                                p.getSocio().setDataAprovacao(new Date());
+                            }
                         } else {
-
+                            p.getSocio().setDataAprovacao(null);
                             p.setStatus(false);
                         }
 

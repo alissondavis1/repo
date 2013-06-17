@@ -18,7 +18,7 @@ public interface ContasInterface {
     public void ApagarConta    (Conta conta);
     public void AtualizarConta (Conta conta);
   
-    public List<Conta>       ContasPorId(int id);
+    public Conta ContasPorId(int id);
     public List<Conta> ContasAbertas(Date inicio, Date fim);
     public List<Conta> ContasAbertasCliente(int id);
     public List<Conta> ContasAbertasCliente(String nome);

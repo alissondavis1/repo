@@ -61,7 +61,7 @@ public class DaoChequeslog implements ChequeLogsInterface {
         try{
            sessao = HibernateUtil.getSessionFactory().openSession();
            tx = sessao.beginTransaction();
-           query = sessao.createQuery("implementar ");
+           query = sessao.createQuery("from Chequeslog ");
            cheque =  query.list();
            tx.commit(); 
            

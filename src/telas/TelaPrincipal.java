@@ -4,20 +4,32 @@
  */
 package telas;
 
+import dao.DaoChequeslog;
+import dao.DaoContaslog;
+import dao.DaoEntradaslog;
+import entidades.Chequeslog;
+import entidades.Contaslog;
+import entidades.Entradaslog;
+import entidades.Saidaslog;
 import java.awt.AWTException;
+import java.awt.Desktop;
 import java.awt.SystemTray;
 import java.awt.TrayIcon;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.beans.PropertyVetoException;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 import java.util.Properties;
 import java.util.Scanner;
@@ -70,7 +82,18 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jInternalFrameContas1.setVisible(false);
         jDesktopPaneRelatorios.setVisible(false);
         jInternalFrameRelatorios.setVisible(false);
-        
+        Properties prop = new Properties();
+        try{
+            prop.load(new FileInputStream(new File("properties/hibernate.properties")));
+            if(!prop.getProperty("hibernate.connection.username").equals("root")){
+                
+                jMenuAuditoria.setVisible(false);
+                        
+            }
+            
+        }catch(Exception e){
+           JOptionPane.showMessageDialog(this,"Erro:"+e.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE); 
+        }
         // A data do sistema.
 
         jLabel1.setText(df.format(c.getTime()));
@@ -203,6 +226,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenuItemTelaPrincipalBackup = new javax.swing.JMenuItem();
         jSeparator2 = new javax.swing.JPopupMenu.Separator();
         jMenuItemSair = new javax.swing.JMenuItem();
+        jMenuAuditoria = new javax.swing.JMenu();
+        jMenuItemAuditoriaCheques = new javax.swing.JMenuItem();
+        jMenuItemAuditoriaContas = new javax.swing.JMenuItem();
+        jMenuItemAuditoriaEntradas = new javax.swing.JMenuItem();
+        jMenuItemAuditoriaSaidas = new javax.swing.JMenuItem();
         jMenuSair = new javax.swing.JMenu();
 
         timer1.addTimerListener(new org.netbeans.examples.lib.timerbean.TimerListener() {
@@ -316,7 +344,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(10, 3, 0, 0);
         jPanelBotoesTelaPrincipal.add(jButtonTelaPrincipalCadastros, gridBagConstraints);
 
-        jInternalFrameContas1.setBackground(new java.awt.Color(51, 51, 255));
+        jInternalFrameContas1.setBackground(new java.awt.Color(51, 153, 255));
         jInternalFrameContas1.setFrameIcon(null);
         jInternalFrameContas1.setVisible(true);
 
@@ -326,6 +354,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jPanel3.setOpaque(false);
 
         jButton1.setText("Contas a Receber");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Contas a Pagar");
 
@@ -422,7 +455,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         );
         jPanelImagemTelaPrincipalLayout.setVerticalGroup(
             jPanelImagemTelaPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 742, Short.MAX_VALUE)
+            .addGap(0, 746, Short.MAX_VALUE)
             .addGroup(jPanelImagemTelaPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 742, Short.MAX_VALUE))
         );
@@ -732,6 +765,42 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu);
 
+        jMenuAuditoria.setText("Auditoria");
+
+        jMenuItemAuditoriaCheques.setText("Log de Cheques");
+        jMenuItemAuditoriaCheques.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemAuditoriaChequesActionPerformed(evt);
+            }
+        });
+        jMenuAuditoria.add(jMenuItemAuditoriaCheques);
+
+        jMenuItemAuditoriaContas.setText("Log de Contas");
+        jMenuItemAuditoriaContas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemAuditoriaContasActionPerformed(evt);
+            }
+        });
+        jMenuAuditoria.add(jMenuItemAuditoriaContas);
+
+        jMenuItemAuditoriaEntradas.setText("Log de Entradas");
+        jMenuItemAuditoriaEntradas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemAuditoriaEntradasActionPerformed(evt);
+            }
+        });
+        jMenuAuditoria.add(jMenuItemAuditoriaEntradas);
+
+        jMenuItemAuditoriaSaidas.setText("Log de Saidas");
+        jMenuItemAuditoriaSaidas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemAuditoriaSaidasActionPerformed(evt);
+            }
+        });
+        jMenuAuditoria.add(jMenuItemAuditoriaSaidas);
+
+        jMenuBar1.add(jMenuAuditoria);
+
         jMenuSair.setText("Sair");
         jMenuSair.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -759,14 +828,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanelBotoesTelaPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
                 .addComponent(jPanelDataHoraTelaPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jDesktopPaneContas, javax.swing.GroupLayout.DEFAULT_SIZE, 742, Short.MAX_VALUE))
+                .addComponent(jDesktopPaneContas, javax.swing.GroupLayout.DEFAULT_SIZE, 746, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jPanelImagemTelaPrincipal, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jDesktopPaneRelatorios, javax.swing.GroupLayout.DEFAULT_SIZE, 742, Short.MAX_VALUE))
+                .addComponent(jDesktopPaneRelatorios, javax.swing.GroupLayout.DEFAULT_SIZE, 746, Short.MAX_VALUE))
         );
 
         pack();
@@ -970,7 +1039,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
                     pw.println(s1);
                 }
-
+             
+                
                 JOptionPane.showMessageDialog(null, "Backup gerado com sucesso!", "Backup", JOptionPane.INFORMATION_MESSAGE);
 
             }
@@ -1170,6 +1240,157 @@ public class TelaPrincipal extends javax.swing.JFrame {
         new GContas(this).setVisible(true);
       
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
+        new GContasAReceber(this).setVisible(true);
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jMenuItemAuditoriaChequesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAuditoriaChequesActionPerformed
+        
+        PrintWriter pw = null;
+        try{
+            
+            
+          
+            File caminho = new File("logs/");
+            
+            if(!caminho.exists()){
+                caminho.mkdir();
+                
+            }
+            File arquivo = new File("logs/chequeslog.txt");
+         
+          
+           if(arquivo.exists()){
+                arquivo.delete();
+               
+           }
+             arquivo.createNewFile();
+            List<Chequeslog> cheques = new DaoChequeslog().BuscarTodosChequesLog();
+            pw = new PrintWriter(arquivo);
+            for(Chequeslog c : cheques){
+                
+                pw.print("ID:"+c.getId()+"\tIDOriginal:"+c.getIdOriginal()+"\tdataPagamento:"+c.getDataPagamento()+
+                        "\tdataVencimento:"+c.getDataVencimento()+"\tdataAlteração:"+c.getDataAlteracao()+"\tNúmero:"+c.getNumero()+
+                        "\tValor:"+c.getValor()+"\tIdFuncionario:"+c.getIdFuncionarioAlteracao()+"\tTipo:"+c.getTipo());
+                pw.println();
+                pw.println();
+                
+            }
+            
+            Desktop.getDesktop().open(arquivo);
+            
+        }catch(Exception e){
+           e.printStackTrace(); 
+           JOptionPane.showMessageDialog(this,"Erro:"+e.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE); 
+        }finally{
+            
+            if(pw != null){
+                pw.close();
+            }
+        }
+        
+    }//GEN-LAST:event_jMenuItemAuditoriaChequesActionPerformed
+
+    private void jMenuItemAuditoriaContasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAuditoriaContasActionPerformed
+      
+         PrintWriter pw = null;
+        try{
+            
+            
+          
+            File caminho = new File("logs/");
+            
+            if(!caminho.exists()){
+                caminho.mkdir();
+                
+            }
+            File arquivo = new File("logs/contaslog.txt");
+         
+          
+           if(arquivo.exists()){
+                arquivo.delete();
+               
+           }
+             arquivo.createNewFile();
+            List<Contaslog> contas = new DaoContaslog().ListarTodas();
+            pw = new PrintWriter(arquivo);
+            for(Contaslog c : contas){
+                
+                pw.print("ID:"+c.getId()+"\tIDOriginal:"+c.getIdOriginal()+"\tdataPagamento:"+c.getDataPag()+
+                        "\tdataVencimento:"+c.getDataVence()+"\tTaxaSócio:"+c.getTaxaSocio()+"\tNúmeroSócio:"+c.getIdNumeroSocio()+
+                        "\tHoraRegistro:"+c.getHoraRegristro()+"\tTipo:"+c.getTipo());
+                pw.println();
+                pw.println();
+                
+            }
+            
+            Desktop.getDesktop().open(arquivo);
+            
+        }catch(Exception e){
+           e.printStackTrace(); 
+           JOptionPane.showMessageDialog(this,"Erro:"+e.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE); 
+        }finally{
+            
+            if(pw != null){
+                pw.close();
+            }
+        }
+    }//GEN-LAST:event_jMenuItemAuditoriaContasActionPerformed
+
+    private void jMenuItemAuditoriaEntradasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAuditoriaEntradasActionPerformed
+         PrintWriter pw = null;
+        try{
+            
+            
+          
+            File caminho = new File("logs/");
+            
+            if(!caminho.exists()){
+                caminho.mkdir();
+                
+            }
+            File arquivo = new File("logs/entradaslog.txt");
+         
+          
+           if(arquivo.exists()){
+                arquivo.delete();
+               
+           }
+             arquivo.createNewFile();
+            List<Entradaslog> entradas = new DaoEntradaslog().BuscarTodasEntradasLog();
+            pw = new PrintWriter(arquivo);
+            for(Entradaslog c : entradas){
+                
+                pw.print("ID:"+c.getId()+"\tIDOriginal:"+c.getIdOriginal()+"\tdataAlteração:"+c.getDataAlteracao()+
+                        "\tIdCedente:"+c.getIdCedente()+"\tIdFuncionario:"+c.getIdFuncionario()+"\tMotivoEntrada:"+c.getIdMotivoEntrada()+
+                        "\tValor:"+c.getValor()+"\tTipo:"+c.getTipo());
+                pw.println();
+                pw.println();
+                
+            }
+            
+            Desktop.getDesktop().open(arquivo);
+            
+        }catch(Exception e){
+           e.printStackTrace(); 
+           JOptionPane.showMessageDialog(this,"Erro:"+e.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE); 
+        }finally{
+            
+            if(pw != null){
+                pw.close();
+            }
+        }
+    }//GEN-LAST:event_jMenuItemAuditoriaEntradasActionPerformed
+
+    private void jMenuItemAuditoriaSaidasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAuditoriaSaidasActionPerformed
+        
+       
+        
+        
+    }//GEN-LAST:event_jMenuItemAuditoriaSaidasActionPerformed
  
   
     public static void main(String args[]) {
@@ -1239,11 +1460,16 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JMenu jMenu;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenuAuditoria;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu jMenuCadastros;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItemAgua;
+    private javax.swing.JMenuItem jMenuItemAuditoriaCheques;
+    private javax.swing.JMenuItem jMenuItemAuditoriaContas;
+    private javax.swing.JMenuItem jMenuItemAuditoriaEntradas;
+    private javax.swing.JMenuItem jMenuItemAuditoriaSaidas;
     private javax.swing.JMenuItem jMenuItemCaixa;
     private javax.swing.JMenuItem jMenuItemCategoria_Socio;
     private javax.swing.JMenuItem jMenuItemContrato;

@@ -8,12 +8,15 @@ import dao.DaoContasMensais;
 import dao.DaoEnderecoPessoa;
 import entidades.Conta;
 import entidades.Enderecopessoa;
+import entidades.Hidrometro;
 import entidades.Taxa;
 import entidades.Taxasconta;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -22,6 +25,8 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.AbstractCellEditor;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -45,17 +50,19 @@ public class GContas extends javax.swing.JFrame {
     /**
      * Creates new form NewJFrame
      */
+    //variavel que armazena uma lista de enderecospessoa....é através dessa tabela que acesso todos os endereços cadastrados dos sócios.
     private List<Enderecopessoa> socios;
+    //mapa que irá armazenar todas as taxas referentes a uma conta de um endereço...logo depois será adicionada na tabela taxasConta.
     private Map<Integer, List<Taxa>> taxas;
     private JFrame telaPrincipal;
-
+//Construtor principal da classe.
     public GContas() {
         taxas = new HashMap<>();
         initComponents();
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         carregarSocios();
     }
-
+//Construtor que recebe como parâmetro o frame da tela principal.
     public GContas(JFrame telaPrincipal) {
 
         this();
@@ -65,24 +72,28 @@ public class GContas extends javax.swing.JFrame {
 
     }
 
+    //Aqui são carregados todos os endereços para preencher a tabela.
     private void carregarSocios() {
 
         this.socios = new DaoEnderecoPessoa().TodosOsSocios();
     }
 
+    //Método responsável por editar as colunas da tabela, de acordo com o tipo de conta selecionada, que pode ser fixa ou hidrometro.
     private void preencherTabela() {
 
-
+        //Se tiver sido selecionado a conta fixa, a tabela será preenchida com as colunas específicas.
         if (jRadioButtonContaFixa.isSelected()) {
+            //Table Renderer resposável por centralizar o conteúdo das colunas.
             DefaultTableCellRenderer centralizar = new DefaultTableCellRenderer();
             centralizar.setHorizontalAlignment(SwingConstants.CENTER);
 
+            //Define o modelo da tabela
             jTable1.setModel(new javax.swing.table.DefaultTableModel(
                     new Object[][]{},
                     new String[]{"id", "dataVencimento", "Sócio", "Numero Socio", "CPF", "Numero Endereço", "Valor", "Gerar", "Taxa"}) {
                 Class[] types = new Class[]{Integer.class, String.class, String.class, Integer.class, String.class, Integer.class,
                     BigDecimal.class, Boolean.class, JButton.class};
-
+                
                 @Override
                 public Class getColumnClass(int columnIndex) {
                     return types[columnIndex];
@@ -96,6 +107,7 @@ public class GContas extends javax.swing.JFrame {
                 }
             });
 
+            //Seta o tipo de Cell Renderer. Aqui eu passei o renderer que criei lá em cima para centralizar o conteúdo.
             jTable1.getColumn("id").setCellRenderer(centralizar);
             jTable1.getColumn("dataVencimento").setCellRenderer(centralizar);
             jTable1.getColumn("Sócio").setCellRenderer(centralizar);
@@ -104,12 +116,15 @@ public class GContas extends javax.swing.JFrame {
             jTable1.getColumn("Numero Endereço").setCellRenderer(centralizar);
             jTable1.getColumn("Valor").setCellRenderer(centralizar);
 
-
-        } else if (jRadioButtonContaHidrometro.isSelected()) {
-
+            
+            
+        } 
+        //Se tiver sido selecionado a conta hidrometro, a tabela será preenchida com as colunas específicas.
+        else if (jRadioButtonContaHidrometro.isSelected()) {
+        //Table Renderer resposável por centralizar o conteúdo das colunas.
             DefaultTableCellRenderer centralizar = new DefaultTableCellRenderer();
             centralizar.setHorizontalAlignment(SwingConstants.CENTER);
-
+            //Define o modelo da tabela
             jTable1.setModel(new javax.swing.table.DefaultTableModel(
                     new Object[][]{},
                     new String[]{"id", "dataVencimento", "Sócio", "Numero Socio", "CPF", "Numero Endereço", "Valor", "Gerar", "Taxa", "Consumo"}) {
@@ -128,7 +143,7 @@ public class GContas extends javax.swing.JFrame {
                     return canEdit[columnIndex];
                 }
             });
-
+            //Seta o tipo de Cell Renderer. Aqui eu passei o renderer que criei lá em cima para centralizar o conteúdo.
             jTable1.getColumn("id").setCellRenderer(centralizar);
             jTable1.getColumn("dataVencimento").setCellRenderer(centralizar);
             jTable1.getColumn("Sócio").setCellRenderer(centralizar);
@@ -138,22 +153,26 @@ public class GContas extends javax.swing.JFrame {
             jTable1.getColumn("Valor").setCellRenderer(centralizar);
             jTable1.getColumn("Consumo").setCellRenderer(centralizar);
 
-
-        }
-
+           
 
 
+        //Classe interna ButtonColumn, responsável por adicionar o botão de adicionar taxas na tabela.
         ButtonColumn botao = new ButtonColumn(jTable1, 8);
-
+        //método que irá preencher as linhas com a lista de EnderecosPessoa.
         preencherColunas();
 
     }
+    }
+    
+ 
 
     private void preencherColunas() {
 
+        //Calendário que irá definir a data de vencimento da conta...Deixei fixo um valor de 5 dias após a data atual, pretendo deixar esse valor dinâmico para o usuário.
         Calendar c = Calendar.getInstance();
         c.set(Calendar.MONTH, jMonthChooser1.getMonth());
         c.add(Calendar.DAY_OF_MONTH, 5);
+        
         if (jRadioButtonContaFixa.isSelected()) {
             DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
             model.setRowCount(0);
@@ -166,8 +185,10 @@ public class GContas extends javax.swing.JFrame {
                     List<Conta> contas = (List) s.getContaCollection();
                     if (contas.isEmpty()) {
                         if (!s.getIdPessoa().getSocio().getIdCategoriaSocio().getNome().equals("hidrometro")) {
+                            if(s.getIdPessoa().getStatus()){
                             model.addRow(new Object[]{s.getIdPessoa().getSocio().getId(), SimpleDateFormat.getDateInstance().format(c.getTime()), s.getIdPessoa().getNome() + " " + s.getIdPessoa().getSobrenome(), s.getIdPessoa().getSocio().getNumeroSocio(), s.getIdPessoa().getCpf(), s.getNumero(), s.getIdPessoa().getSocio().getIdCategoriaSocio().getTaxasId().getValor(), false});
-                        }
+                            }
+                            }
                     } else {
                         boolean existeContaNoMes = false;
                         for (Conta conta : contas) {
@@ -185,8 +206,10 @@ public class GContas extends javax.swing.JFrame {
                         if (!existeContaNoMes) {
 
                             if (!s.getIdPessoa().getSocio().getIdCategoriaSocio().getNome().equals("hidrometro")) {
+                                if(s.getIdPessoa().getStatus()){
                                 model.addRow(new Object[]{s.getIdPessoa().getSocio().getId(), SimpleDateFormat.getDateInstance().format(c.getTime()), s.getIdPessoa().getNome() + " " + s.getIdPessoa().getSobrenome(), s.getIdPessoa().getSocio().getNumeroSocio(), s.getIdPessoa().getCpf(), s.getNumero(), s.getIdPessoa().getSocio().getIdCategoriaSocio().getTaxasId().getValor(), false});
-                            }
+                                }
+                                }
                         }
                     }
 
@@ -210,8 +233,9 @@ public class GContas extends javax.swing.JFrame {
                     List<Conta> contas = (List) s.getContaCollection();
                     if (contas.isEmpty()) {
                         if (s.getIdPessoa().getSocio().getIdCategoriaSocio().getNome().equals("hidrometro")) {
-
+                        if(s.getIdPessoa().getStatus()){
                             model.addRow(new Object[]{s.getIdPessoa().getSocio().getId(), SimpleDateFormat.getDateInstance().format(c.getTime()), s.getIdPessoa().getNome() + " " + s.getIdPessoa().getSobrenome(), s.getIdPessoa().getSocio().getNumeroSocio(), s.getIdPessoa().getCpf(), s.getNumero(), s.getIdPessoa().getSocio().getIdCategoriaSocio().getTaxasId().getValor(), false});
+                        }
                         }
                     } else {
                         boolean existeContaNoMes = false;
@@ -230,8 +254,10 @@ public class GContas extends javax.swing.JFrame {
                         if (!existeContaNoMes) {
 
                             if (s.getIdPessoa().getSocio().getIdCategoriaSocio().getNome().equals("hidrometro")) {
+                               if(s.getIdPessoa().getStatus()){
                                 model.addRow(new Object[]{s.getIdPessoa().getSocio().getId(), SimpleDateFormat.getDateInstance().format(c.getTime()), s.getIdPessoa().getNome() + " " + s.getIdPessoa().getSobrenome(), s.getIdPessoa().getSocio().getNumeroSocio(), s.getIdPessoa().getCpf(), s.getNumero(), s.getIdPessoa().getSocio().getIdCategoriaSocio().getTaxasId().getValor(), false});
-                            }
+                               }
+                               }
                         }
 
 
@@ -246,6 +272,7 @@ public class GContas extends javax.swing.JFrame {
 
     private void chamarTaxas() {
 
+        
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         Enderecopessoa e1 = new DaoEnderecoPessoa().EnderecopessoaporNumero((int) model.getValueAt(jTable1.getSelectedRow(), 5));
         //se o mapa não tiver essa chave , ele adiciona e coloca um único valor...que é a taxa principal
@@ -279,6 +306,7 @@ public class GContas extends javax.swing.JFrame {
 
     }
 
+    //Classe que adiciona o botão de adicionar taxas na tabela.
     private class ButtonColumn extends AbstractCellEditor
             implements TableCellRenderer, TableCellEditor, ActionListener {
 
@@ -350,6 +378,7 @@ public class GContas extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
@@ -384,6 +413,7 @@ public class GContas extends javax.swing.JFrame {
         jTable1.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(jTable1);
 
+        buttonGroup1.add(jRadioButtonContaFixa);
         jRadioButtonContaFixa.setText("Conta Fixa");
         jRadioButtonContaFixa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -391,6 +421,7 @@ public class GContas extends javax.swing.JFrame {
             }
         });
 
+        buttonGroup1.add(jRadioButtonContaHidrometro);
         jRadioButtonContaHidrometro.setText("Conta com Hidrômetro");
         jRadioButtonContaHidrometro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -499,18 +530,55 @@ public class GContas extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
+        //se a tabela estiver vazia nada não entrará no if.
+       if(jTable1.getRowCount() >0){
+          
+        boolean existeContaSelecionada = false;
+        //Percorre todas as linhas da tabela à procura dos sócios selecionados.
+        for(int i = 0; i<jTable1.getRowCount(); i++){
+               
+                //se alguma linha estiver selecionada, configura a variável existeContaSelecionada como true.
+                if((boolean)jTable1.getValueAt(i, 7)){
+                    
+                    existeContaSelecionada = true;
+                }
+              
+            }
+            
+        
+        //Se tiver pelo menos uma conta selecionada, o bloco if será executado.
+        if(existeContaSelecionada){
+         boolean consumoPreenchido = true;
+         Pattern p = Pattern.compile("\\d+");
+         Matcher m = null;
+         //Se as contas de hidrometro estiverem selecionadas...o bloco if irá fazer um teste para verificar se a coluna consumo está preenchida corretamente.
+        if(jRadioButtonContaHidrometro.isSelected()){
+            
+           for(int i = 0; i<jTable1.getRowCount(); i++){
+               if(jTable1.getValueAt(i, 9) != null){
+               m = p.matcher(String.valueOf(jTable1.getValueAt(i, 9)));
+               if(!m.find()){
+                   consumoPreenchido = false;
+               }
+           }else{
+                   consumoPreenchido = false;
+               }
+           }
+            
+        }    
+        //se a coluna de consumo estiver preenchida de acordo com a expressão regular, o bloco if será executado.    
+        if(consumoPreenchido){
         int op = JOptionPane.showConfirmDialog(this, "Tem certeza que deseja registrar as contas desses sócios?", "Atenção", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-
+        
         if (op == JOptionPane.YES_OPTION) {
             Thread t = new Thread() {
+                @Override
                 public void run() {
                     DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
                     Conta c = null;
                     jButton1.setEnabled(false);
                     jRadioButtonContaFixa.setEnabled(false);
                     jRadioButtonContaHidrometro.setEnabled(false);
-
-                    if (jRadioButtonContaFixa.isSelected() || jRadioButtonContaHidrometro.isSelected()) {
 
                         try {
 
@@ -569,42 +637,85 @@ public class GContas extends javax.swing.JFrame {
 
                                     } //se tiver selecionado as contas com hidrometro
                                     else if (jRadioButtonContaHidrometro.isSelected()) {
+                                        
+                                         //Cria uma conta vazia.
+                                        c = new Conta();
+                                        //seta a data Gerada como a data atual.
+                                        c.setDataGerada(new Date());
+                                        //data de vencimento da tabela
+                                        c.setDataVence(SimpleDateFormat.getDateInstance().parse((String) model.getValueAt(i, 1)));
+                                        //Pega do banco um endereçoPessoa de acordo com o número do endereço na tabela, que é único
+                                        Enderecopessoa e = new DaoEnderecoPessoa().EnderecopessoaporNumero((int) model.getValueAt(i, 5));
+                                        //seta o enderecoPessoa na conta
+                                        c.setIdEnderecoPessoa(e);
+
+                                        List<Taxasconta> taxas1 = new ArrayList<>();
+                                        if(taxas.containsKey(e.getNumero())){
+                                       for(Taxa aux : taxas.get(e.getNumero())){
+                                        Taxasconta tx = new Taxasconta();
+                                        tx.setContaid(c);
+                                        //seta a taxa em taxas Conta de acordo com a categoria socio do sócio vinculado ao endereço
+                                        tx.setTaxaid(aux);
+                                        //Aqui adiciono todas as taxas de cada endereço...
+                                        taxas1.add(tx);
+                                       } 
+                                       }else{
+                                        Taxasconta tx = new Taxasconta();
+                                        tx.setContaid(c);
+                                        //seta a taxa em taxas Conta de acordo com a categoria socio do sócio vinculado ao endereço
+                                        tx.setTaxaid(e.getIdPessoa().getSocio().getIdCategoriaSocio().getTaxasId());
+                                        //Aqui adiciono todas as taxas de cada endereço...
+                                        taxas1.add(tx);  
+                                        }
+                                        
+                                        Hidrometro h = new Hidrometro();
+                                        h.setIdconta(c);
+                                        h.setConsumo((double)model.getValueAt(i, 9));
+                                        //lista de taxasConta na conta...
+                                        c.setTaxascontaList(taxas1);
+                                        c.setHidrometro(h);
+                                        new DaoContasMensais().AdicionarConta(c); 
+                                        
                                     }
 
                                 }
                             }
-
-                            if (c == null) {
-                                jButton1.setEnabled(true);
-                                jRadioButtonContaFixa.setEnabled(true);
-                                jRadioButtonContaHidrometro.setEnabled(true);
-                                JOptionPane.showMessageDialog(GContas.this, "Nenhum sócio foi selecionado", "Atenção", JOptionPane.INFORMATION_MESSAGE);
-                            } else {
 
                                 jButton1.setEnabled(true);
                                 jRadioButtonContaFixa.setEnabled(true);
                                 jRadioButtonContaHidrometro.setEnabled(true);
                                 JOptionPane.showMessageDialog(GContas.this, "Conta(s) Registrada(s) com sucesso!", "Atenção", JOptionPane.INFORMATION_MESSAGE);
                                 jProgressBar1.setValue(0);
+                                jCheckBox1.setSelected(false);
                                 carregarSocios();
                                 preencherTabela();
-                            }
+                            
 
                         } catch (Exception e) {
 
                             JOptionPane.showMessageDialog(GContas.this, e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
                         }
-                    }
+                    
                 }
             };
 
             t.start();
         }
-
+        }else{
+          JOptionPane.showMessageDialog(this, "Preencha corretamente o campo de consumo com dígitos","Atenção",JOptionPane.ERROR_MESSAGE);  
+            
+        }}else{
+            
+            JOptionPane.showMessageDialog(this, "Nenhum sócio foi selecionado","Atenção",JOptionPane.INFORMATION_MESSAGE);
+            
+        }
+       }
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jMonthChooser1PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jMonthChooser1PropertyChange
         taxas.clear();
+        jCheckBox1.setSelected(false);
         if (jRadioButtonContaFixa.isSelected()) {
 
             jRadioButtonContaFixaActionPerformed(null);
@@ -616,6 +727,7 @@ public class GContas extends javax.swing.JFrame {
 
     private void jYearChooser1PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jYearChooser1PropertyChange
         taxas.clear();
+        jCheckBox1.setSelected(false);
         if (jRadioButtonContaFixa.isSelected()) {
 
             jRadioButtonContaFixaActionPerformed(null);
@@ -696,6 +808,7 @@ public class GContas extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;
     private javax.swing.JCheckBox jCheckBox1;
     private com.toedter.calendar.JMonthChooser jMonthChooser1;

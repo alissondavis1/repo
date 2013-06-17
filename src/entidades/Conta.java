@@ -11,6 +11,7 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -59,7 +60,7 @@ public class Conta implements Serializable {
     @JoinColumn(name = "idEnderecoPessoa", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Enderecopessoa idEnderecoPessoa;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "contaid")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "contaid", fetch= FetchType.EAGER)
     private List<Taxasconta> taxascontaList;
 
     public List<Taxasconta> getTaxascontaList() {
