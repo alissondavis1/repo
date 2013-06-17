@@ -45,7 +45,33 @@ public class DaoUsuario implements UsuarioInterface{
         }  
     }
 
-    public void novoUsuario(String usuario, String privilegio) {
+    public void privilegios(String privilegio){
+        
+        Session sessao =  null;  
+    Transaction transaction = null;
+    
+    try{
+        
+    sessao = HibernateUtilUser.getSessionFactory().openSession();
+    transaction =  sessao.beginTransaction();
+    
+    if(!privilegio.equals("0")){sessao.createSQLQuery(privilegio).executeUpdate();}
+    sessao.getTransaction().commit();
+    
+       
+        System.out.println(privilegio);
+    }    
+    catch(HibernateException e)
+    {
+        System.out.println(e);
+    }
+      finally{
+    sessao.close();
+     }
+    }
+   
+    
+    public void novoUsuario(String usuario) {
        
     Session sessao =  null;  
     Transaction transaction = null;
@@ -55,11 +81,11 @@ public class DaoUsuario implements UsuarioInterface{
     sessao = HibernateUtilUser.getSessionFactory().openSession();
     transaction =  sessao.beginTransaction();
     sessao.createSQLQuery(usuario).executeUpdate();
-    if(!privilegio.equals("0")){sessao.createSQLQuery(privilegio).executeUpdate();}
+    //if(!privilegio.equals("0")){sessao.createSQLQuery(privilegio).executeUpdate();}
     sessao.getTransaction().commit();
     
         System.out.println(usuario);
-        System.out.println(privilegio);
+        //System.out.println(privilegio);
     }    
     catch(HibernateException e)
     {

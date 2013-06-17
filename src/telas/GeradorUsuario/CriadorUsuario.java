@@ -989,7 +989,12 @@ public class CriadorUsuario extends javax.swing.JDialog {
          //usuario e senha
        String usuario = null;
        String senha ="";
-       String privilegios = "";
+       String privilegios1 = "";
+       String privilegios2 = "";
+       String privilegios3 = "";
+       String privilegios4 = "";
+       String privilegios5 = "";
+       String privilegios6 = "";
        char[] input ; 
        int cont=0;
        
@@ -1012,36 +1017,36 @@ public class CriadorUsuario extends javax.swing.JDialog {
          
          usuario = 
          "CREATE USER '"+ jTextFieldUsuario.getText().trim() +
-         "'@'localhost' IDENTIFIED BY '"+senha+"'";
+         "' IDENTIFIED BY '"+senha+"'";
            
           if(!entradas(jTextFieldUsuario.getText().trim()).equals("0"))
            {
-               privilegios += entradas(jTextFieldUsuario.getText().trim())+"\n" ;
+               privilegios1 += entradas(jTextFieldUsuario.getText().trim())+"\n" ;
                cont++;
            }
            if(!saidas(jTextFieldUsuario.getText().trim()).equals("0"))
            {
-               privilegios += saidas(jTextFieldUsuario.getText().trim())+"\n" ;
+               privilegios2 += saidas(jTextFieldUsuario.getText().trim())+"\n" ;
                cont++;
            }
            if(!cheques(jTextFieldUsuario.getText().trim()).equals("0"))
            {
-               privilegios += cheques(jTextFieldUsuario.getText().trim())+"\n" ;
+               privilegios3 += cheques(jTextFieldUsuario.getText().trim())+"\n" ;
                 cont++;
            }
            if(!contas(jTextFieldUsuario.getText().trim()).equals("0"))
            {
-               privilegios += contas(jTextFieldUsuario.getText().trim())+"\n" ;
+               privilegios4 += contas(jTextFieldUsuario.getText().trim())+"\n" ;
                 cont++;
            }
            if(!taxas(jTextFieldUsuario.getText().trim()).equals("0"))
            {
-               privilegios += taxas(jTextFieldUsuario.getText().trim())+"\n" ;
+               privilegios5 += taxas(jTextFieldUsuario.getText().trim())+"\n" ;
                 cont++;
            }
            if(!socios(jTextFieldUsuario.getText().trim()).equals("0"))
            {
-               privilegios += socios(jTextFieldUsuario.getText().trim())+"\n" ;
+               privilegios6 += socios(jTextFieldUsuario.getText().trim())+"\n" ;
                 cont++;
            }
           //o usuario ja existe no banco?
@@ -1050,8 +1055,15 @@ public class CriadorUsuario extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null,"Nome de usuario ja cadastrado, tente novamente");
            }
            else{
-            if(cont>0){ new DaoUsuario().novoUsuario(usuario, privilegios);}
-            else      { new DaoUsuario().novoUsuario(usuario, "0" );}
+               DaoUsuario user = new DaoUsuario();
+             user.novoUsuario(usuario);
+             user.privilegios(privilegios1);
+             user.privilegios(privilegios2);
+             user.privilegios(privilegios3);
+             user.privilegios(privilegios4);
+             user.privilegios(privilegios5);
+             user.privilegios(privilegios6);
+             
            }
        }
        
@@ -1129,7 +1141,7 @@ public class CriadorUsuario extends javax.swing.JDialog {
            privilegios +=",";
            }
         }        
-        instrucao = "GRANT "+ privilegios +" ON acal.entrada TO '" + usuario +"'@'localhost'";
+        instrucao = "GRANT "+ privilegios +" ON acal.entrada TO " + usuario ;
         
         if(quant==0){instrucao="0";}
         return instrucao;
@@ -1187,7 +1199,7 @@ public class CriadorUsuario extends javax.swing.JDialog {
            privilegios +=",";
            }
         }        
-        instrucao = "GRANT "+ privilegios +" ON acal.saida TO '" + usuario +"'@'localhost'";
+        instrucao = "GRANT "+ privilegios +" ON acal.saida to " + usuario;
         
         if(quant==0){instrucao="0";}
         return instrucao;
@@ -1245,7 +1257,7 @@ public class CriadorUsuario extends javax.swing.JDialog {
            privilegios +=",";
            }
         }        
-        instrucao = "GRANT "+ privilegios +" ON acal.cheque TO '" + usuario +"'@'localhost'";
+        instrucao = "GRANT "+ privilegios +" ON acal.cheque TO " + usuario;
         
         if(quant==0){instrucao="0";}
         return instrucao;
@@ -1303,7 +1315,7 @@ public class CriadorUsuario extends javax.swing.JDialog {
            privilegios +=",";
            }
         }        
-        instrucao = "GRANT "+ privilegios +" ON acal.conta TO '" + usuario +"'@'localhost'";
+        instrucao = "GRANT "+ privilegios +" ON acal.conta TO " + usuario ;
         
         if(quant==0){instrucao="0";}
         return instrucao;
@@ -1361,7 +1373,7 @@ public class CriadorUsuario extends javax.swing.JDialog {
            privilegios +=",";
            }
         }        
-        instrucao = "GRANT "+ privilegios +" ON acal.taxa TO '" + usuario +"'@'localhost'";
+        instrucao = "GRANT "+ privilegios +" ON acal.taxa TO " + usuario;
         
         if(quant==0){instrucao="0";}
         return instrucao;
@@ -1419,7 +1431,7 @@ public class CriadorUsuario extends javax.swing.JDialog {
            privilegios +=",";
            }
         }        
-        instrucao = "GRANT "+ privilegios +" ON acal.entradas TO '" + usuario +"'@'localhost'";
+        instrucao = "GRANT "+ privilegios +" ON acal.socio TO " + usuario;
         
         if(quant==0){instrucao="0";}
         return instrucao;
