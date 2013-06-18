@@ -47,6 +47,7 @@ import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.view.JasperViewer;
+import telas.GeradorUsuario.CriadorUsuario;
 import telas.relatorios.TelaRelatoriosCheques;
 import telas.relatorios.TelaRelatoriosEntradas;
 import telas.relatorios.TelaRelatoriosSaidas;
@@ -87,7 +88,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             if(!prop.getProperty("hibernate.connection.username").equals("root")){
                 
                 jMenuAuditoria.setVisible(false);
-                        
+                 jMenuItemCriarUsuarios.setVisible(false);       
             }
             
         }catch(Exception e){
@@ -219,8 +220,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
         jMenuItemAgua = new javax.swing.JMenuItem();
         jMenuItemSolicita_Socio = new javax.swing.JMenuItem();
-        jMenuItemCaixa = new javax.swing.JMenuItem();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItemCriarUsuarios = new javax.swing.JMenuItem();
         jMenuItemTelaPrincipalBackup = new javax.swing.JMenuItem();
         jSeparator2 = new javax.swing.JPopupMenu.Separator();
         jMenuItemSair = new javax.swing.JMenuItem();
@@ -734,16 +734,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jMenu.add(jMenu2);
 
-        jMenuItemCaixa.setText("Caixa");
-        jMenu.add(jMenuItemCaixa);
-
-        jMenuItem1.setText("Criar Usuarios");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemCriarUsuarios.setText("Criar Usuarios");
+        jMenuItemCriarUsuarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                jMenuItemCriarUsuariosActionPerformed(evt);
             }
         });
-        jMenu.add(jMenuItem1);
+        jMenu.add(jMenuItemCriarUsuarios);
 
         jMenuItemTelaPrincipalBackup.setText("Backup");
         jMenuItemTelaPrincipalBackup.addActionListener(new java.awt.event.ActionListener() {
@@ -1392,23 +1389,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jMenuItemAuditoriaSaidasActionPerformed
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void jMenuItemCriarUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCriarUsuariosActionPerformed
         
-        try{Properties prop = new Properties();
-        prop.load(new FileInputStream(new File("properties/hibernate.properties")));
-        String usuario = prop.getProperty("hibernate.connection.username");
-        String senha = prop.getProperty("hibernate.connection.password");
-        if(usuario != null && !usuario.equals("root")){
-            
-         User u =  new DaoUsuario().BuscaUsuario(usuario, senha);
-         JOptionPane.showMessageDialog(this,u.getSelectpriv());
-        }
+       CriadorUsuario cu = new CriadorUsuario(this, true);
+       cu.setLocationRelativeTo(null);
+       cu.setVisible(true);
         
-        }catch(Exception e){
-            
-            
-        }
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_jMenuItemCriarUsuariosActionPerformed
  
   
     public static void main(String args[]) {
@@ -1481,15 +1468,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenuAuditoria;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu jMenuCadastros;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItemAgua;
     private javax.swing.JMenuItem jMenuItemAuditoriaCheques;
     private javax.swing.JMenuItem jMenuItemAuditoriaContas;
     private javax.swing.JMenuItem jMenuItemAuditoriaEntradas;
     private javax.swing.JMenuItem jMenuItemAuditoriaSaidas;
-    private javax.swing.JMenuItem jMenuItemCaixa;
     private javax.swing.JMenuItem jMenuItemCategoria_Socio;
     private javax.swing.JMenuItem jMenuItemContrato;
+    private javax.swing.JMenuItem jMenuItemCriarUsuarios;
     private javax.swing.JMenuItem jMenuItemDespesa;
     private javax.swing.JMenuItem jMenuItemFuncionarios;
     private javax.swing.JMenuItem jMenuItemLogradouros;
