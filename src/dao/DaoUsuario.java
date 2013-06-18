@@ -7,8 +7,7 @@ package dao;
 
 import daoInterfaces.UsuarioInterface;
 import entidades.User;
-import java.sql.SQLException;
-import java.sql.*;
+import java.util.List;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -141,6 +140,40 @@ public class DaoUsuario implements UsuarioInterface{
         }  
     }
  
+    public List<String> verPermissoes(String nome){
+        
+         List<String> user = null;
+        Session sessao = null; 
+        Query query = null;
+        Transaction transacao = null;
+        
+        try{
+           sessao = HibernateUtilUser.getSessionFactory().openSession();
+           transacao = sessao.beginTransaction();
+           query = sessao.createSQLQuery("show grants for :nome ");
+           //query.setString("nome","%"+nome+"%");
+           query.setParameter("nome",nome);
+           
+           
+           user =  query.list();
+           transacao.commit(); 
+           
+        }
+        catch(HibernateException e)
+        {
+            System.out.println(e);
+            transacao.rollback();
+        }
+        finally
+        {
+             sessao.close();
+        }  
+    return user;
+    }
+        
+        
+    
+    
     public User BuscaUsuario(String nome, String pass) {
        
         User user = null;
@@ -171,6 +204,8 @@ public class DaoUsuario implements UsuarioInterface{
         }  
     return user;
     }
+    
+    
     public boolean BuscaUsuarioBoolean(String nome) {
        
         User user = null;

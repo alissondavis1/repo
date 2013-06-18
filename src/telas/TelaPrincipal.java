@@ -7,10 +7,11 @@ package telas;
 import dao.DaoChequeslog;
 import dao.DaoContaslog;
 import dao.DaoEntradaslog;
+import dao.DaoUsuario;
 import entidades.Chequeslog;
 import entidades.Contaslog;
 import entidades.Entradaslog;
-import entidades.Saidaslog;
+import entidades.User;
 import java.awt.AWTException;
 import java.awt.Desktop;
 import java.awt.SystemTray;
@@ -21,14 +22,12 @@ import java.beans.PropertyVetoException;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import java.util.Properties;
@@ -221,7 +220,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenuItemAgua = new javax.swing.JMenuItem();
         jMenuItemSolicita_Socio = new javax.swing.JMenuItem();
         jMenuItemCaixa = new javax.swing.JMenuItem();
-        jMenuItem8 = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItemTelaPrincipalBackup = new javax.swing.JMenuItem();
         jSeparator2 = new javax.swing.JPopupMenu.Separator();
@@ -739,10 +737,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenuItemCaixa.setText("Caixa");
         jMenu.add(jMenuItemCaixa);
 
-        jMenuItem8.setText("Gerador de contas");
-        jMenu.add(jMenuItem8);
-
         jMenuItem1.setText("Criar Usuarios");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
         jMenu.add(jMenuItem1);
 
         jMenuItemTelaPrincipalBackup.setText("Backup");
@@ -1391,6 +1391,24 @@ public class TelaPrincipal extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_jMenuItemAuditoriaSaidasActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        
+        try{Properties prop = new Properties();
+        prop.load(new FileInputStream(new File("properties/hibernate.properties")));
+        String usuario = prop.getProperty("hibernate.connection.username");
+        String senha = prop.getProperty("hibernate.connection.password");
+        if(usuario != null && !usuario.equals("root")){
+            
+         User u =  new DaoUsuario().BuscaUsuario(usuario, senha);
+         JOptionPane.showMessageDialog(this,u.getSelectpriv());
+        }
+        
+        }catch(Exception e){
+            
+            
+        }
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
  
   
     public static void main(String args[]) {
@@ -1464,7 +1482,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu jMenuCadastros;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItemAgua;
     private javax.swing.JMenuItem jMenuItemAuditoriaCheques;
     private javax.swing.JMenuItem jMenuItemAuditoriaContas;

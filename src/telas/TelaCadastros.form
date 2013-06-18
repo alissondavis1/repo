@@ -1203,7 +1203,7 @@
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="jLabel70" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="jTextFieldSocioEmail" pref="337" max="32767" attributes="0"/>
+                                  <Component id="jTextFieldSocioEmail" pref="344" max="32767" attributes="0"/>
                                   <EmptySpace min="-2" pref="186" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
@@ -1220,7 +1220,7 @@
                                   <Component id="jLabel68" min="-2" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" attributes="0">
-                                          <EmptySpace pref="199" max="32767" attributes="0"/>
+                                          <EmptySpace pref="206" max="32767" attributes="0"/>
                                           <Component id="jLabel73" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
                                           <Component id="jTextFieldSocioID" min="-2" pref="66" max="-2" attributes="0"/>
@@ -1235,18 +1235,18 @@
                                       </Group>
                                   </Group>
                               </Group>
-                              <Component id="jSeparator3" alignment="0" pref="859" max="32767" attributes="0"/>
+                              <Component id="jSeparator3" alignment="0" pref="866" max="32767" attributes="0"/>
                               <Group type="102" alignment="1" attributes="0">
                                   <Component id="jLabel72" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jTextFieldSocioNomeMae" pref="341" max="32767" attributes="0"/>
+                                  <Component id="jTextFieldSocioNomeMae" pref="344" max="32767" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Component id="jLabel79" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="jTextFieldSocioNomePai" pref="341" max="32767" attributes="0"/>
+                                  <Component id="jTextFieldSocioNomePai" pref="345" max="32767" attributes="0"/>
                                   <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="jSeparator4" alignment="0" pref="859" max="32767" attributes="0"/>
+                              <Component id="jSeparator4" alignment="0" pref="866" max="32767" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
@@ -1280,7 +1280,7 @@
                                           <Component id="jComboBoxSocioSexo" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <EmptySpace pref="221" max="32767" attributes="0"/>
+                                  <EmptySpace pref="228" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -1546,7 +1546,7 @@
                                   </Group>
                                   <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
                                   <Component id="jButtonSocioAdicionarLogradouro" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace pref="617" max="32767" attributes="0"/>
+                                  <EmptySpace pref="624" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -1590,6 +1590,9 @@
                         </Component>
                         <Component class="javax.swing.JLabel" name="jLabel80">
                           <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                              <Font name="Tahoma" size="11" style="1"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" value="N&#xfa;mero"/>
                           </Properties>
                         </Component>
@@ -1688,7 +1691,7 @@
                                       <Component id="jTextFieldSocioNumeroSocio" min="-2" pref="97" max="-2" attributes="0"/>
                                       <Component id="jComboBoxSocioCategoriaSocio" min="-2" pref="152" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace pref="85" max="32767" attributes="0"/>
+                                  <EmptySpace pref="92" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -1842,7 +1845,7 @@
                                   <Component id="jButtonSocioSalvar" linkSize="9" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                                   <Component id="jButtonSocioCancelar" linkSize="9" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace pref="278" max="32767" attributes="0"/>
+                                  <EmptySpace pref="285" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>

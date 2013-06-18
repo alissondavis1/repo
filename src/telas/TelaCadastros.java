@@ -29,11 +29,13 @@ import entidades.Socio;
 import entidades.Taxa;
 import java.awt.event.ActionEvent;
 import java.beans.PropertyVetoException;
+import java.io.FileInputStream;
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
@@ -1264,7 +1266,7 @@ public class TelaCadastros extends javax.swing.JFrame {
                     .addGap(18, 18, 18)
                     .addComponent(jLabel70)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addComponent(jTextFieldSocioEmail, javax.swing.GroupLayout.DEFAULT_SIZE, 337, Short.MAX_VALUE)
+                    .addComponent(jTextFieldSocioEmail, javax.swing.GroupLayout.DEFAULT_SIZE, 344, Short.MAX_VALUE)
                     .addGap(186, 186, 186))
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel23Layout.createSequentialGroup()
                     .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1278,7 +1280,7 @@ public class TelaCadastros extends javax.swing.JFrame {
                     .addComponent(jLabel68)
                     .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel23Layout.createSequentialGroup()
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 199, Short.MAX_VALUE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 206, Short.MAX_VALUE)
                             .addComponent(jLabel73)
                             .addGap(18, 18, 18)
                             .addComponent(jTextFieldSocioID, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1289,17 +1291,17 @@ public class TelaCadastros extends javax.swing.JFrame {
                             .addGap(18, 18, 18)
                             .addComponent(jTextFieldSocioApelido, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addContainerGap())))
-                .addComponent(jSeparator3, javax.swing.GroupLayout.DEFAULT_SIZE, 859, Short.MAX_VALUE)
+                .addComponent(jSeparator3, javax.swing.GroupLayout.DEFAULT_SIZE, 866, Short.MAX_VALUE)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel23Layout.createSequentialGroup()
                     .addComponent(jLabel72)
                     .addGap(18, 18, 18)
-                    .addComponent(jTextFieldSocioNomeMae, javax.swing.GroupLayout.DEFAULT_SIZE, 341, Short.MAX_VALUE)
+                    .addComponent(jTextFieldSocioNomeMae, javax.swing.GroupLayout.DEFAULT_SIZE, 344, Short.MAX_VALUE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                     .addComponent(jLabel79)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addComponent(jTextFieldSocioNomePai, javax.swing.GroupLayout.DEFAULT_SIZE, 341, Short.MAX_VALUE)
+                    .addComponent(jTextFieldSocioNomePai, javax.swing.GroupLayout.DEFAULT_SIZE, 345, Short.MAX_VALUE)
                     .addGap(15, 15, 15))
-                .addComponent(jSeparator4, javax.swing.GroupLayout.DEFAULT_SIZE, 859, Short.MAX_VALUE)
+                .addComponent(jSeparator4, javax.swing.GroupLayout.DEFAULT_SIZE, 866, Short.MAX_VALUE)
                 .addGroup(jPanel23Layout.createSequentialGroup()
                     .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel23Layout.createSequentialGroup()
@@ -1327,7 +1329,7 @@ public class TelaCadastros extends javax.swing.JFrame {
                             .addComponent(jLabel74)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                             .addComponent(jComboBoxSocioSexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addContainerGap(221, Short.MAX_VALUE))
+                    .addContainerGap(228, Short.MAX_VALUE))
             );
             jPanel23Layout.setVerticalGroup(
                 jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1384,6 +1386,7 @@ public class TelaCadastros extends javax.swing.JFrame {
 
             jPanel28.setBorder(javax.swing.BorderFactory.createTitledBorder("Endereço"));
 
+            jLabel80.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
             jLabel80.setText("Número");
 
             jLabel81.setText("Bairro");
@@ -1470,7 +1473,7 @@ public class TelaCadastros extends javax.swing.JFrame {
                         .addComponent(jTextFieldSocioBairro))
                     .addGap(2, 2, 2)
                     .addComponent(jButtonSocioAdicionarLogradouro)
-                    .addContainerGap(617, Short.MAX_VALUE))
+                    .addContainerGap(624, Short.MAX_VALUE))
             );
             jPanel28Layout.setVerticalGroup(
                 jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1560,7 +1563,7 @@ public class TelaCadastros extends javax.swing.JFrame {
                     .addGroup(jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jTextFieldSocioNumeroSocio, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jComboBoxSocioCategoriaSocio, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addContainerGap(85, Short.MAX_VALUE))
+                    .addContainerGap(92, Short.MAX_VALUE))
             );
             jPanel29Layout.setVerticalGroup(
                 jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1643,7 +1646,7 @@ public class TelaCadastros extends javax.swing.JFrame {
                     .addComponent(jButtonSocioSalvar)
                     .addGap(10, 10, 10)
                     .addComponent(jButtonSocioCancelar)
-                    .addContainerGap(278, Short.MAX_VALUE))
+                    .addContainerGap(285, Short.MAX_VALUE))
             );
 
             jPanel9Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButtonSocioApagar, jButtonSocioCancelar, jButtonSocioEditar, jButtonSocioNovo, jButtonSocioSalvar});
@@ -3215,6 +3218,7 @@ public class TelaCadastros extends javax.swing.JFrame {
 
     private void jButtonFuncionarioNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFuncionarioNovoActionPerformed
 
+       
         editableTextFields(true);
         limparCampos();
         jButtonFuncionarioApagar.setEnabled(false);
@@ -4112,6 +4116,7 @@ public class TelaCadastros extends javax.swing.JFrame {
 
     private void jButtonLogradouroNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLogradouroNovoActionPerformed
 
+        
         limparCamposLogradouro();
         setEditableComponentesLogradouros(true);
         jButtonLogradouroEditar.setEnabled(false);
@@ -5878,7 +5883,7 @@ public class TelaCadastros extends javax.swing.JFrame {
         Pattern p = Pattern.compile("\\d{2}\\/\\d{2}\\/\\d{4}");
         Matcher m;
 
-        if (!jTextFieldSocioNome.getText().equals("") && !jTextFieldSocioSobrenome.getText().equals("") && !jComboBoxSocioSexo.getSelectedItem().equals("") && !jComboBoxSocioLogradouro.getSelectedItem().equals("") && !jComboBoxSocioUF.getSelectedItem().equals("") && !jTextFieldSocioNumeroSocio.getText().equals("") && !jComboBoxSocioCategoriaSocio.getSelectedItem().equals("") && (jRadioButtonSocioAtivo.isSelected() || jRadioButtonSocioInativo.isSelected())) {
+        if (!jTextFieldSocioNome.getText().equals("") && !jTextFieldSocioSobrenome.getText().equals("") && !jComboBoxSocioSexo.getSelectedItem().equals("") && !jComboBoxSocioLogradouro.getSelectedItem().equals("") && !jComboBoxSocioUF.getSelectedItem().equals("") && !jTextFieldSocioNumeroSocio.getText().equals("") && !jComboBoxSocioCategoriaSocio.getSelectedItem().equals("") && !jTextFieldSocioNumero.getText().equals("") && (jRadioButtonSocioAtivo.isSelected() || jRadioButtonSocioInativo.isSelected())) {
 
 
 

@@ -99,7 +99,7 @@ public class Splash extends JWindow{
         }catch(Exception e){
             
             JOptionPane.showMessageDialog(null, "Erro de conexão ao banco de dados: "+e.getMessage());
-            
+            System.exit(1);
         }finally{
             if(session != null){
                 session.close();
@@ -128,6 +128,7 @@ public class Splash extends JWindow{
             /* Create and display the form */
         } catch (UnsupportedLookAndFeelException ex) {
             Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+            System.exit(1);
         }
        
         

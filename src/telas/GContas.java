@@ -69,7 +69,7 @@ public class GContas extends javax.swing.JFrame {
         this.telaPrincipal = telaPrincipal;
         this.telaPrincipal.setEnabled(false);
         this.telaPrincipal.setVisible(false);
-
+        toFront();
     }
 
     //Aqui são carregados todos os endereços para preencher a tabela.
@@ -153,7 +153,7 @@ public class GContas extends javax.swing.JFrame {
             jTable1.getColumn("Valor").setCellRenderer(centralizar);
             jTable1.getColumn("Consumo").setCellRenderer(centralizar);
 
-           
+        }
 
 
         //Classe interna ButtonColumn, responsável por adicionar o botão de adicionar taxas na tabela.
@@ -161,7 +161,7 @@ public class GContas extends javax.swing.JFrame {
         //método que irá preencher as linhas com a lista de EnderecosPessoa.
         preencherColunas();
 
-    }
+    
     }
     
  
