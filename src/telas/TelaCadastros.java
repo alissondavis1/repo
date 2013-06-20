@@ -299,6 +299,7 @@ public class TelaCadastros extends javax.swing.JFrame {
         jButtonSocioSalvar = new javax.swing.JButton();
         jButtonSocioApagar = new javax.swing.JButton();
         jButtonSocioCancelar = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         jPanelCategoriaSocio = new javax.swing.JPanel();
         jPanel30 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
@@ -1631,6 +1632,13 @@ public class TelaCadastros extends javax.swing.JFrame {
                 }
             });
 
+            jButton1.setText("Importar Funcionário");
+            jButton1.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    jButton1ActionPerformed(evt);
+                }
+            });
+
             javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
             jPanel9.setLayout(jPanel9Layout);
             jPanel9Layout.setHorizontalGroup(
@@ -1646,7 +1654,9 @@ public class TelaCadastros extends javax.swing.JFrame {
                     .addComponent(jButtonSocioSalvar)
                     .addGap(10, 10, 10)
                     .addComponent(jButtonSocioCancelar)
-                    .addContainerGap(285, Short.MAX_VALUE))
+                    .addGap(90, 90, 90)
+                    .addComponent(jButton1)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             );
 
             jPanel9Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButtonSocioApagar, jButtonSocioCancelar, jButtonSocioEditar, jButtonSocioNovo, jButtonSocioSalvar});
@@ -1660,7 +1670,8 @@ public class TelaCadastros extends javax.swing.JFrame {
                         .addComponent(jButtonSocioEditar)
                         .addComponent(jButtonSocioApagar)
                         .addComponent(jButtonSocioCancelar)
-                        .addComponent(jButtonSocioSalvar))
+                        .addComponent(jButtonSocioSalvar)
+                        .addComponent(jButton1))
                     .addContainerGap())
             );
 
@@ -2680,7 +2691,6 @@ public class TelaCadastros extends javax.swing.JFrame {
 
             jTextFieldChequeID.setEnabled(false);
 
-            jLabel29.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
             jLabel29.setText("Data de pagamento");
 
             jLabel30.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -3543,7 +3553,16 @@ public class TelaCadastros extends javax.swing.JFrame {
                 jButtonFuncionarioApagar.setEnabled(true);
                 jButtonFuncionarioEditar.setEnabled(true);
                 jButtonFuncionarioCancelar.setEnabled(true);
-            } else if (pesquisarTable.equals("logradouros")) {
+            }else if(pesquisarTable.equals("importar funcionário")){
+                
+                limparCamposSocio();
+                preencherCamposSocioImportados(new DaoPessoa().BuscarPessoaCpf((String) jTable1.getValueAt(jTable1.getSelectedRow(), 2)));
+                jButtonSocioSalvar.setEnabled(true);
+                jButtonSocioCancelar.setEnabled(true);
+                
+            }
+      
+            else if (pesquisarTable.equals("logradouros")) {
 
                 limparCamposLogradouro();
                 preencherCamposLogradouro(new DaoEndereco().BuscarPorId((Integer) jTable1.getValueAt(jTable1.getSelectedRow(), 0)));
@@ -3663,7 +3682,7 @@ public class TelaCadastros extends javax.swing.JFrame {
 
     private void preencherTabelaComLike() {
         DefaultTableModel model;
-        if (pesquisarTable.equals("funcionarios")) {
+        if (pesquisarTable.equals("funcionarios") || pesquisarTable.equals("importar funcionário")) {
             ArrayList<Funcionario> f1 = (ArrayList) new DaoFuncionario().BuscarFuncionarioLikeNome(jTextField2.getText());
 
             model = (DefaultTableModel) jTable1.getModel();
@@ -3860,7 +3879,7 @@ public class TelaCadastros extends javax.swing.JFrame {
     private void preencherTabelaComTodos() {
         DefaultTableModel model;
 
-        if (pesquisarTable.equals("funcionarios")) {
+        if (pesquisarTable.equals("funcionarios") || pesquisarTable.equals("importar funcionário")) {
             ArrayList<Funcionario> funcionarios = (ArrayList) new DaoFuncionario().BuscarFuncionarios();
             model = (DefaultTableModel) jTable1.getModel();
             model.setRowCount(0);
@@ -4106,6 +4125,8 @@ public class TelaCadastros extends javax.swing.JFrame {
                 break;
             case "cheque":
                 jButtonChequeCancelarActionPerformed(evt);
+            case "importar funcionário":
+                jButtonSocioCancelarActionPerformed(evt);
                 break;
         }
         jTextField2.setText("");
@@ -5713,6 +5734,19 @@ public class TelaCadastros extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButtonChequeApagarActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
+        
+         if (jButtonSocioNovo.isEnabled()) {
+            pesquisarTable = "importar funcionário";
+            mostrarJtable();
+
+        } else {
+
+            JOptionPane.showMessageDialog(this, "Cancele a operação para importar um funcionário", "Atenção", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     private void editableTextFields(boolean editable) {
 
         jTextFieldFuncionarioApelido.setEditable(editable);
@@ -6056,8 +6090,7 @@ public class TelaCadastros extends javax.swing.JFrame {
         
         if(!jTextFieldChequeNumero.getText().equals("") && !jComboBoxChequeFuncionario.getSelectedItem().equals("") && !jComboBoxChequeMotivoDespesa.getSelectedItem().equals("") ){
             
-            m = p.matcher(jFormattedTextFieldChequeDataPagamento.getText());
-            if(m.find()){
+            
                 m = p.matcher(jFormattedTextFieldChequeDataVencimento.getText());
                 if(m.find()){
                     p = Pattern.compile("\\d+\\.\\d+");
@@ -6079,11 +6112,9 @@ public class TelaCadastros extends javax.swing.JFrame {
                 }
                 
                 
-            }else{
-          JOptionPane.showMessageDialog(this, "Os campos em negrito são obrigatórios", "Atenção", JOptionPane.INFORMATION_MESSAGE);
-          return false; 
+            
                 
-            }
+            
             
         }else{
             
@@ -6524,6 +6555,52 @@ public class TelaCadastros extends javax.swing.JFrame {
 
     }
 
+    private void preencherCamposSocioImportados(Pessoa pessoa){
+        
+        jTextFieldSocioNome.setText(pessoa.getNome());
+        jTextFieldSocioID.setText(String.valueOf(pessoa.getId()));
+        jTextFieldSocioSobrenome.setText(pessoa.getSobrenome());
+        jTextFieldSocioApelido.setText(pessoa.getApelido());
+        jTextFieldSocioTelefone.setText(pessoa.getTelefone());
+        jTextFieldSocioEmail.setText(pessoa.getEmail());
+        if (pessoa.getDataNasc() != null) {
+            jFormattedTextFieldSocioDataNascimento.setText(SimpleDateFormat.getDateInstance().format(pessoa.getDataNasc()));
+        }
+        jComboBoxSocioSexo.setSelectedItem(pessoa.getSexo());
+        jTextFieldSocioNomeMae.setText(pessoa.getNomeMae());
+        jTextFieldSocioNomePai.setText(pessoa.getNomePai());
+        jFormattedTextFieldSocioCPF.setText(pessoa.getCpf());
+        jTextFieldSocioRgNumero.setText(pessoa.getRgNumero());
+        jTextFieldSocioOrgaoExpedidor.setText(pessoa.getRgExpedidor());
+        if (pessoa.getRgEmissao() != null) {
+            jFormattedTextFieldSocioDataEmissao.setText(SimpleDateFormat.getDateInstance().format(pessoa.getRgEmissao()));
+        }
+        if (jComboBoxSocioLogradouro.getItemCount() == 0) {
+            jComboBoxSocioLogradouro.addItem("");
+            List<Endereco> enderecos = new DaoEndereco().BuscarTodosEnderecos();
+            for (Endereco endereco : enderecos) {
+
+                jComboBoxSocioLogradouro.addItem(endereco.getTipo()+" "+endereco.getNome());
+
+            }
+        }
+        jComboBoxSocioLogradouro.setSelectedItem(pessoa.getIdEndereco().getTipo()+" "+pessoa.getIdEndereco().getNome());
+        jTextFieldSocioNumero.setText(pessoa.getNumeroEndereco());
+        jTextFieldSocioCidade.setText(pessoa.getCidade());
+        jTextFieldSocioBairro.setText(pessoa.getBairro());
+        jComboBoxSocioUF.setSelectedItem(pessoa.getUf());
+        jTextFieldSocioCEP.setText(pessoa.getCep());
+
+      
+
+        if (pessoa.getStatus()) {
+            jRadioButtonSocioAtivo.setSelected(true);
+        } else {
+            jRadioButtonSocioInativo.setSelected(false);
+        }
+        
+    }
+    
     private void preencherCamposTipoDespesa(Motivodespesa m) {
 
 
@@ -6716,7 +6793,7 @@ public class TelaCadastros extends javax.swing.JFrame {
         centralizar.setHorizontalAlignment(SwingConstants.CENTER);
 
 
-        if (pesquisarTable.equals("funcionarios")) {
+        if (pesquisarTable.equals("funcionarios") || pesquisarTable.equals("importar funcionário")) {
 
             jTable1.setModel(new javax.swing.table.DefaultTableModel(
                     new Object[][]{},
@@ -7068,6 +7145,7 @@ public class TelaCadastros extends javax.swing.JFrame {
     private javax.swing.JLabel Logradouro6;
     private javax.swing.JLabel Logradouro7;
     private javax.swing.ButtonGroup buttonGroupSocioAprovacao;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonCategoriaSocioApagar;
     private javax.swing.JButton jButtonCategoriaSocioCancelar;
     private javax.swing.JButton jButtonCategoriaSocioEditar;
