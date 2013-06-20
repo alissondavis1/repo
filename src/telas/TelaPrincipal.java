@@ -82,6 +82,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jInternalFrameContas1.setVisible(false);
         jDesktopPaneRelatorios.setVisible(false);
         jInternalFrameRelatorios.setVisible(false);
+       // jPanelImagemTelaPrincipal1.setVisible(false);
+        //jPanelImagemTelaPrincipal2.setVisible(false);
         Properties prop = new Properties();
         try{
             prop.load(new FileInputStream(new File("properties/hibernate.properties")));
@@ -178,18 +180,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jButtonTelaPrincipalCadastros = new javax.swing.JButton();
         jDesktopPaneContas = new javax.swing.JDesktopPane();
         jInternalFrameContas1 = new javax.swing.JInternalFrame();
+        jPanelImagemTelaPrincipal1 = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
         jPanelInternalFrameContas = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
-        jPanelImagemTelaPrincipal = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
-        jPanelDataHoraTelaPrincipal = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         jDesktopPaneRelatorios = new javax.swing.JDesktopPane();
         jInternalFrameRelatorios = new javax.swing.JInternalFrame();
         jPanelInternalFrameRelatorios = new javax.swing.JPanel();
@@ -202,7 +200,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jButtonEntrada = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
+        jPanelImagemTelaPrincipal = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        jPanelDataHoraTelaPrincipal = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu = new javax.swing.JMenu();
         jMenuCadastros = new javax.swing.JMenu();
@@ -343,8 +345,31 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jPanelBotoesTelaPrincipal.add(jButtonTelaPrincipalCadastros, gridBagConstraints);
 
         jInternalFrameContas1.setBackground(new java.awt.Color(51, 153, 255));
+        jInternalFrameContas1.setBorder(null);
         jInternalFrameContas1.setFrameIcon(null);
         jInternalFrameContas1.setVisible(true);
+
+        jPanelImagemTelaPrincipal1.setOpaque(false);
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/agua.jpg"))); // NOI18N
+        jLabel6.setToolTipText("");
+        jLabel6.setMaximumSize(jPanelImagemTelaPrincipal.getMaximumSize());
+        jLabel6.setMinimumSize(jPanelImagemTelaPrincipal.getMinimumSize());
+
+        javax.swing.GroupLayout jPanelImagemTelaPrincipal1Layout = new javax.swing.GroupLayout(jPanelImagemTelaPrincipal1);
+        jPanelImagemTelaPrincipal1.setLayout(jPanelImagemTelaPrincipal1Layout);
+        jPanelImagemTelaPrincipal1Layout.setHorizontalGroup(
+            jPanelImagemTelaPrincipal1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 944, Short.MAX_VALUE)
+            .addGroup(jPanelImagemTelaPrincipal1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 944, Short.MAX_VALUE))
+        );
+        jPanelImagemTelaPrincipal1Layout.setVerticalGroup(
+            jPanelImagemTelaPrincipal1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 768, Short.MAX_VALUE)
+            .addGroup(jPanelImagemTelaPrincipal1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 768, Short.MAX_VALUE))
+        );
 
         jPanelInternalFrameContas.setOpaque(false);
         jPanelInternalFrameContas.setLayout(new java.awt.GridBagLayout());
@@ -414,83 +439,28 @@ public class TelaPrincipal extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(0, 308, 0, 316);
         jPanelInternalFrameContas.add(jPanel3, gridBagConstraints);
 
-        jLabel3.setBackground(new java.awt.Color(51, 255, 255));
-        jLabel3.setMaximumSize(new java.awt.Dimension(2147483647, 2147483647));
-        jLabel3.setMinimumSize(new java.awt.Dimension(683, 10));
-        jLabel3.setPreferredSize(new java.awt.Dimension(920, 585));
-
         javax.swing.GroupLayout jInternalFrameContas1Layout = new javax.swing.GroupLayout(jInternalFrameContas1.getContentPane());
         jInternalFrameContas1.getContentPane().setLayout(jInternalFrameContas1Layout);
         jInternalFrameContas1Layout.setHorizontalGroup(
             jInternalFrameContas1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelInternalFrameContas, javax.swing.GroupLayout.DEFAULT_SIZE, 904, Short.MAX_VALUE)
+            .addComponent(jPanelInternalFrameContas, javax.swing.GroupLayout.DEFAULT_SIZE, 944, Short.MAX_VALUE)
             .addGroup(jInternalFrameContas1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 904, Short.MAX_VALUE))
+                .addComponent(jPanelImagemTelaPrincipal1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jInternalFrameContas1Layout.setVerticalGroup(
             jInternalFrameContas1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelInternalFrameContas, javax.swing.GroupLayout.DEFAULT_SIZE, 524, Short.MAX_VALUE)
+            .addComponent(jPanelInternalFrameContas, javax.swing.GroupLayout.DEFAULT_SIZE, 768, Short.MAX_VALUE)
             .addGroup(jInternalFrameContas1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 524, Short.MAX_VALUE))
+                .addComponent(jPanelImagemTelaPrincipal1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jInternalFrameContas1.setBounds(0, 0, 920, 550);
         jDesktopPaneContas.add(jInternalFrameContas1, javax.swing.JLayeredPane.PALETTE_LAYER);
 
-        jPanelImagemTelaPrincipal.setOpaque(false);
-
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/agua.jpg"))); // NOI18N
-        jLabel4.setMaximumSize(jPanelImagemTelaPrincipal.getMaximumSize());
-        jLabel4.setMinimumSize(jPanelImagemTelaPrincipal.getMinimumSize());
-
-        javax.swing.GroupLayout jPanelImagemTelaPrincipalLayout = new javax.swing.GroupLayout(jPanelImagemTelaPrincipal);
-        jPanelImagemTelaPrincipal.setLayout(jPanelImagemTelaPrincipalLayout);
-        jPanelImagemTelaPrincipalLayout.setHorizontalGroup(
-            jPanelImagemTelaPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 926, Short.MAX_VALUE)
-            .addGroup(jPanelImagemTelaPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 926, Short.MAX_VALUE))
-        );
-        jPanelImagemTelaPrincipalLayout.setVerticalGroup(
-            jPanelImagemTelaPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 746, Short.MAX_VALUE)
-            .addGroup(jPanelImagemTelaPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 742, Short.MAX_VALUE))
-        );
-
-        jPanelDataHoraTelaPrincipal.setOpaque(false);
-
-        jLabel1.setFont(new java.awt.Font("SansSerif", 0, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(51, 51, 255));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-
-        jLabel2.setFont(new java.awt.Font("SansSerif", 0, 36)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(51, 51, 255));
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-
-        javax.swing.GroupLayout jPanelDataHoraTelaPrincipalLayout = new javax.swing.GroupLayout(jPanelDataHoraTelaPrincipal);
-        jPanelDataHoraTelaPrincipal.setLayout(jPanelDataHoraTelaPrincipalLayout);
-        jPanelDataHoraTelaPrincipalLayout.setHorizontalGroup(
-            jPanelDataHoraTelaPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelDataHoraTelaPrincipalLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 405, Short.MAX_VALUE)
-                .addGap(96, 96, 96)
-                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 405, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        jPanelDataHoraTelaPrincipalLayout.setVerticalGroup(
-            jPanelDataHoraTelaPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelDataHoraTelaPrincipalLayout.createSequentialGroup()
-                .addContainerGap(399, Short.MAX_VALUE)
-                .addGroup(jPanelDataHoraTelaPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addGap(145, 145, 145))
-        );
-
-        jInternalFrameRelatorios.setBackground(new java.awt.Color(255, 255, 255));
+        jInternalFrameRelatorios.setBackground(new java.awt.Color(51, 153, 255));
+        jInternalFrameRelatorios.setBorder(null);
         jInternalFrameRelatorios.setFrameIcon(null);
+        jInternalFrameRelatorios.setOpaque(true);
         jInternalFrameRelatorios.setVisible(true);
 
         jPanelInternalFrameRelatorios.setOpaque(false);
@@ -567,7 +537,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                     .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE)
                     .addComponent(jButtonFuncionarioRelatorio, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE)
                     .addComponent(jButtonInternalFrameRelatoriosVoltar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(361, Short.MAX_VALUE))
+                .addContainerGap(414, Short.MAX_VALUE))
         );
 
         jPanel4Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButton5, jButton7, jButton8, jButtonCategoriaSocioRelatorio, jButtonEntrada, jButtonFuncionarioRelatorio, jButtonInternalFrameRelatoriosVoltar1, jButtonTaxasRelatorio});
@@ -591,7 +561,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE)
                     .addComponent(jButtonInternalFrameRelatoriosVoltar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(480, Short.MAX_VALUE))
+                .addContainerGap(597, Short.MAX_VALUE))
         );
 
         jPanel4Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jButton5, jButton7, jButton8, jButtonCategoriaSocioRelatorio, jButtonEntrada, jButtonFuncionarioRelatorio, jButtonInternalFrameRelatoriosVoltar1, jButtonTaxasRelatorio});
@@ -604,29 +574,74 @@ public class TelaPrincipal extends javax.swing.JFrame {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         jPanelInternalFrameRelatorios.add(jPanel4, gridBagConstraints);
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/relatorios.jpg"))); // NOI18N
-        jLabel5.setMaximumSize(jPanelInternalFrameRelatorios.getMaximumSize());
-        jLabel5.setMinimumSize(jPanelInternalFrameRelatorios.getMinimumSize());
-
         javax.swing.GroupLayout jInternalFrameRelatoriosLayout = new javax.swing.GroupLayout(jInternalFrameRelatorios.getContentPane());
         jInternalFrameRelatorios.getContentPane().setLayout(jInternalFrameRelatoriosLayout);
         jInternalFrameRelatoriosLayout.setHorizontalGroup(
             jInternalFrameRelatoriosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelInternalFrameRelatorios, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 914, Short.MAX_VALUE)
-            .addGroup(jInternalFrameRelatoriosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 914, Short.MAX_VALUE))
+            .addComponent(jPanelInternalFrameRelatorios, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1840, Short.MAX_VALUE)
         );
         jInternalFrameRelatoriosLayout.setVerticalGroup(
             jInternalFrameRelatoriosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jInternalFrameRelatoriosLayout.createSequentialGroup()
-                .addComponent(jPanelInternalFrameRelatorios, javax.swing.GroupLayout.DEFAULT_SIZE, 728, Short.MAX_VALUE)
-                .addGap(0, 18, Short.MAX_VALUE))
-            .addGroup(jInternalFrameRelatoriosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 746, Short.MAX_VALUE))
+                .addComponent(jPanelInternalFrameRelatorios, javax.swing.GroupLayout.DEFAULT_SIZE, 1101, Short.MAX_VALUE)
+                .addGap(0, 391, Short.MAX_VALUE))
         );
 
         jInternalFrameRelatorios.setBounds(0, 0, 930, 740);
         jDesktopPaneRelatorios.add(jInternalFrameRelatorios, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        jPanelImagemTelaPrincipal.setOpaque(false);
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/agua.jpg"))); // NOI18N
+        jLabel4.setMaximumSize(jPanelImagemTelaPrincipal.getMaximumSize());
+        jLabel4.setMinimumSize(jPanelImagemTelaPrincipal.getMinimumSize());
+        jLabel4.setOpaque(true);
+
+        javax.swing.GroupLayout jPanelImagemTelaPrincipalLayout = new javax.swing.GroupLayout(jPanelImagemTelaPrincipal);
+        jPanelImagemTelaPrincipal.setLayout(jPanelImagemTelaPrincipalLayout);
+        jPanelImagemTelaPrincipalLayout.setHorizontalGroup(
+            jPanelImagemTelaPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 926, Short.MAX_VALUE)
+            .addGroup(jPanelImagemTelaPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 926, Short.MAX_VALUE))
+        );
+        jPanelImagemTelaPrincipalLayout.setVerticalGroup(
+            jPanelImagemTelaPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 742, Short.MAX_VALUE)
+            .addGroup(jPanelImagemTelaPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 742, Short.MAX_VALUE))
+        );
+
+        jPanelDataHoraTelaPrincipal.setOpaque(false);
+
+        jLabel1.setFont(new java.awt.Font("SansSerif", 0, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(51, 51, 255));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+
+        jLabel2.setFont(new java.awt.Font("SansSerif", 0, 36)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(51, 51, 255));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+
+        javax.swing.GroupLayout jPanelDataHoraTelaPrincipalLayout = new javax.swing.GroupLayout(jPanelDataHoraTelaPrincipal);
+        jPanelDataHoraTelaPrincipal.setLayout(jPanelDataHoraTelaPrincipalLayout);
+        jPanelDataHoraTelaPrincipalLayout.setHorizontalGroup(
+            jPanelDataHoraTelaPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelDataHoraTelaPrincipalLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 5, Short.MAX_VALUE)
+                .addGap(96, 96, 96)
+                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 6, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanelDataHoraTelaPrincipalLayout.setVerticalGroup(
+            jPanelDataHoraTelaPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelDataHoraTelaPrincipalLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanelDataHoraTelaPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addGap(145, 145, 145))
+        );
 
         jMenuBar1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(0, 0, 255), new java.awt.Color(51, 51, 255), new java.awt.Color(51, 0, 255), new java.awt.Color(51, 0, 255)));
 
@@ -812,27 +827,27 @@ public class TelaPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelBotoesTelaPrincipal, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 926, Short.MAX_VALUE)
+            .addComponent(jPanelBotoesTelaPrincipal, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
             .addComponent(jPanelDataHoraTelaPrincipal, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jDesktopPaneContas, javax.swing.GroupLayout.DEFAULT_SIZE, 926, Short.MAX_VALUE))
+                .addComponent(jDesktopPaneContas, javax.swing.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jPanelImagemTelaPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanelImagemTelaPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jDesktopPaneRelatorios, javax.swing.GroupLayout.DEFAULT_SIZE, 926, Short.MAX_VALUE))
+                .addComponent(jDesktopPaneRelatorios, javax.swing.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanelBotoesTelaPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
-                .addComponent(jPanelDataHoraTelaPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanelDataHoraTelaPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jDesktopPaneContas, javax.swing.GroupLayout.DEFAULT_SIZE, 746, Short.MAX_VALUE))
+                .addComponent(jDesktopPaneContas, javax.swing.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jPanelImagemTelaPrincipal, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanelImagemTelaPrincipal, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jDesktopPaneRelatorios, javax.swing.GroupLayout.DEFAULT_SIZE, 746, Short.MAX_VALUE))
+                .addComponent(jDesktopPaneRelatorios, javax.swing.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE))
         );
 
         pack();
@@ -878,9 +893,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
 //            }
 //        }.start();
         
-        jPanelBotoesTelaPrincipal.setVisible(false);
-        jPanelDataHoraTelaPrincipal.setVisible(false);
-        jPanelImagemTelaPrincipal.setVisible(false);
+        
+        //jPanelImagemTelaPrincipal2.setVisible(true);
         jDesktopPaneRelatorios.setVisible(true);
         jInternalFrameRelatorios.setVisible(true);
         try {
@@ -888,6 +902,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
         } catch (PropertyVetoException ex) {
             Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         }
+        jPanelBotoesTelaPrincipal.setVisible(false);
+        jPanelDataHoraTelaPrincipal.setVisible(false);
+        jPanelImagemTelaPrincipal.setVisible(false);
 
     }//GEN-LAST:event_jButtonTelaPrincipalRelatoriosActionPerformed
 
@@ -1087,7 +1104,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void jButtonTelaPrincipalCaixaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTelaPrincipalCaixaActionPerformed
         jDesktopPaneContas.setVisible(true);
         jInternalFrameContas1.setVisible(true);
-       
+       // jPanelImagemTelaPrincipal1.setVisible(true);
         
         try {
         jInternalFrameContas1.setMaximum(true);
@@ -1103,6 +1120,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         
         jDesktopPaneContas.setVisible(false);
         jInternalFrameContas1.setVisible(false);
+        //jPanelImagemTelaPrincipal1.setVisible(false);
         jPanelBotoesTelaPrincipal.setVisible(true);
         jPanelImagemTelaPrincipal.setVisible(true);
         jPanelDataHoraTelaPrincipal.setVisible(true);
@@ -1131,10 +1149,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
        
         jDesktopPaneContas.setVisible(false);
         jInternalFrameRelatorios.setVisible(false);
+       // jPanelImagemTelaPrincipal2.setVisible(false);
         jPanelBotoesTelaPrincipal.setVisible(true);
         jPanelDataHoraTelaPrincipal.setVisible(true);
         jPanelImagemTelaPrincipal.setVisible(true);
-        
+       
        
     }//GEN-LAST:event_jButtonInternalFrameRelatoriosVoltar1ActionPerformed
 
@@ -1460,9 +1479,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JInternalFrame jInternalFrameRelatorios;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JMenu jMenu;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenuAuditoria;
@@ -1494,6 +1512,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelBotoesTelaPrincipal;
     private javax.swing.JPanel jPanelDataHoraTelaPrincipal;
     private javax.swing.JPanel jPanelImagemTelaPrincipal;
+    private javax.swing.JPanel jPanelImagemTelaPrincipal1;
     private javax.swing.JPanel jPanelInternalFrameContas;
     private javax.swing.JPanel jPanelInternalFrameRelatorios;
     private javax.swing.JPopupMenu.Separator jSeparator2;

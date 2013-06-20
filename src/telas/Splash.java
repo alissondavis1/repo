@@ -64,6 +64,7 @@ public class Splash extends JWindow{
                     } catch (Exception ex) {
                   
                         Logger.getLogger(Splash.class.getName()).log(Level.SEVERE, null, ex);
+                        System.out.println("erro aqui");
                         System.exit(1);
                     }
                 }
