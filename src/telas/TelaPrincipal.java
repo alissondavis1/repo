@@ -1004,12 +1004,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
             //Variável que armazena o modelo de nome do arquivo .sql.
             String acal = "acal" + data + ".sql";
             //Variável que armazena o comando do mysqldump que ira ser passado na classe Runtime.
-            String comando = "cmd /c mysqldump -uroot -p123 acal > sql/" + acal;
+            String[] comando = {"cmd.exe", "/c", "mysqldump -uroot -p123 acal > sql/" + acal};
 
             //Aqui utilizo os métodos da classe Runtime para executar o comando. o método exec retorna um Process.
-            Process p = Runtime.getRuntime().exec(comando);
+            Process p;
             //bloco Try/Catch para testar a execução do comando no processo de exportação do banco de dados.
             try {
+                p = Runtime.getRuntime().exec(comando);
                 if (p.waitFor() == 0) {
 
                     System.out.println("mysqldump executado");
