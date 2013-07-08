@@ -123,9 +123,9 @@ public class Splash extends JWindow{
         try {
             Properties p = new Properties();
             p.put("logoString", "ACAL2000");
-            com.jtattoo.plaf.aluminium.AluminiumLookAndFeel.setTheme(p);
+            com.jtattoo.plaf.luna.LunaLookAndFeel.setTheme(p);
            
-            javax.swing.UIManager.setLookAndFeel(new com.jtattoo.plaf.aluminium.AluminiumLookAndFeel());
+            javax.swing.UIManager.setLookAndFeel(new com.jtattoo.plaf.luna.LunaLookAndFeel());
             /* Create and display the form */
         } catch (UnsupportedLookAndFeelException ex) {
             Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);

@@ -272,7 +272,7 @@
                         <Component class="javax.swing.JComboBox" name="jComboBoxLogradouroTipo">
                           <Properties>
                             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                              <Connection code="new javax.swing.DefaultComboBoxModel(&#xa;    new String[] {&#xa;        &quot;&quot;,&#xa;        &quot;AEROPORTO&quot;,&#xa;        &quot;APARTAMENTO&quot;,&#xa;        &quot;AVENIDA&quot;,&#xa;        &quot;BECO&quot;,&#xa;        &quot;BLOCO&quot;,&#xa;        &quot;CAMINHO&quot;,&#xa;        &quot;ESCADINHA&quot;,&#xa;        &quot;ESTA&#xc7;&#xc3;O&quot;,&#xa;        &quot;ESTRADA&quot;,&#xa;        &quot;FAZENDA&quot;,&#xa;        &quot;LADEIRA&quot;,&#xa;        &quot;LARGO&quot;,&#xa;        &quot;PRA&#xc7;A&quot;,&#xa;        &quot;PARQUE&quot;,&#xa;        &quot;QUADRA&quot;,&#xa;        &quot;QUIL&#xd4;METRO&quot;,&#xa;        &quot;QUINTA&quot;,&#xa;        &quot;RODOVIA&quot;,&#xa;        &quot;RUA&quot;,&#xa;        &quot;TRAVESSA&quot;&#xa;    })" type="code"/>
+                              <Connection code="new javax.swing.DefaultComboBoxModel(&#xa;    new String[] {&#xa;        &quot;&quot;,&#xa;        &quot;Aeroporto&quot;,&#xa;        &quot;Apartamento&quot;,&#xa;        &quot;Avenida&quot;,&#xa;        &quot;Beco&quot;,&#xa;        &quot;Bloco&quot;,&#xa;        &quot;Caminhi&quot;,&#xa;        &quot;Escadinha&quot;,&#xa;        &quot;Esta&#xe7;&#xe3;o&quot;,&#xa;        &quot;Estrada&quot;,&#xa;        &quot;Fazenda&quot;,&#xa;        &quot;Ladeira&quot;,&#xa;        &quot;Largo&quot;,&#xa;        &quot;Pra&#xe7;a&quot;,&#xa;        &quot;Parque&quot;,&#xa;        &quot;Quadra&quot;,&#xa;        &quot;Quil&#xf4;metro&quot;,&#xa;        &quot;Quinta&quot;,&#xa;        &quot;Rodovia&quot;,&#xa;        &quot;Rua&quot;,&#xa;        &quot;Travessa&quot;&#xa;    })" type="code"/>
                             </Property>
                           </Properties>
                         </Component>
@@ -4077,7 +4077,7 @@
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="jScrollPane4" pref="577" max="32767" attributes="0"/>
+                      <Component id="jScrollPane4" pref="578" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jPanel19" min="-2" max="-2" attributes="0"/>
                   </Group>

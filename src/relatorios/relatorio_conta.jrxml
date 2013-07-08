@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="relatorio_conta" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a43a4a2b-ec02-4c54-93b3-13f3680f1bf5">
 	<property name="ireport.zoom" value="1.3310000000000008"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="186"/>
+	<property name="ireport.y" value="39"/>
 	<queryString>
 		<![CDATA[select
 
@@ -93,10 +93,6 @@ order by c.id,tc.taxaid]]>
 			<rectangle>
 				<reportElement uuid="bcf69857-12ff-4abf-bb7c-52c50a3eda2f" x="0" y="16" width="555" height="360"/>
 			</rectangle>
-			<image>
-				<reportElement uuid="5641b6ec-5f0f-48ec-918d-c41090aec780" x="11" y="39" width="76" height="85"/>
-				<imageExpression><![CDATA["E:\\Meus Documentos\\Acal\\acallogo.jpg"]]></imageExpression>
-			</image>
 			<staticText>
 				<reportElement uuid="080ffaa5-ad68-4241-a4a9-49e4e3e7faed" x="11" y="123" width="75" height="20"/>
 				<textElement verticalAlignment="Middle"/>

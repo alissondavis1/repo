@@ -503,26 +503,26 @@ public class TelaCadastros extends javax.swing.JFrame {
         jComboBoxLogradouroTipo.setModel(new javax.swing.DefaultComboBoxModel(
             new String[] {
                 "",
-                "AEROPORTO",
-                "APARTAMENTO",
-                "AVENIDA",
-                "BECO",
-                "BLOCO",
-                "CAMINHO",
-                "ESCADINHA",
-                "ESTAÇÃO",
-                "ESTRADA",
-                "FAZENDA",
-                "LADEIRA",
-                "LARGO",
-                "PRAÇA",
-                "PARQUE",
-                "QUADRA",
-                "QUILÔMETRO",
-                "QUINTA",
-                "RODOVIA",
-                "RUA",
-                "TRAVESSA"
+                "Aeroporto",
+                "Apartamento",
+                "Avenida",
+                "Beco",
+                "Bloco",
+                "Caminhi",
+                "Escadinha",
+                "Estação",
+                "Estrada",
+                "Fazenda",
+                "Ladeira",
+                "Largo",
+                "Praça",
+                "Parque",
+                "Quadra",
+                "Quilômetro",
+                "Quinta",
+                "Rodovia",
+                "Rua",
+                "Travessa"
             }));
 
             jLabel2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -3192,7 +3192,7 @@ public class TelaCadastros extends javax.swing.JFrame {
             jInternalFrame1Layout.setVerticalGroup(
                 jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jInternalFrame1Layout.createSequentialGroup()
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 577, Short.MAX_VALUE)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 578, Short.MAX_VALUE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(jPanel19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
             );
