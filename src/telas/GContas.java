@@ -40,6 +40,8 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumnModel;
+import telas.relatorios.TelaRelatoriosCheques;
+import telas.relatorios.TelaRelatoriosContas;
 
 /**
  *
@@ -171,7 +173,7 @@ public class GContas extends javax.swing.JFrame {
         //Calendário que irá definir a data de vencimento da conta...Deixei fixo um valor de 5 dias após a data atual, pretendo deixar esse valor dinâmico para o usuário.
         Calendar c = Calendar.getInstance();
         c.set(Calendar.MONTH, jMonthChooser1.getMonth());
-        c.add(Calendar.DAY_OF_MONTH, 5);
+        c.add(Calendar.DAY_OF_MONTH, Integer.parseInt((String)jComboBox1.getSelectedItem()));
         
         if (jRadioButtonContaFixa.isSelected()) {
             DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
@@ -389,6 +391,8 @@ public class GContas extends javax.swing.JFrame {
         jYearChooser1 = new com.toedter.calendar.JYearChooser();
         jProgressBar1 = new javax.swing.JProgressBar();
         jCheckBox1 = new javax.swing.JCheckBox();
+        jButton2 = new javax.swing.JButton();
+        jComboBox1 = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setIconImage(new ImageIcon(getClass().getResource("/img/ico.png")).getImage());
@@ -458,6 +462,20 @@ public class GContas extends javax.swing.JFrame {
             }
         });
 
+        jButton2.setText("Imprimir");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15" }));
+        jComboBox1.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jComboBox1ItemStateChanged(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -469,17 +487,19 @@ public class GContas extends javax.swing.JFrame {
                     .addComponent(jRadioButtonContaHidrometro))
                 .addGap(55, 55, 55)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jMonthChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jYearChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 170, Short.MAX_VALUE)
+                    .addComponent(jMonthChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jProgressBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jYearChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 166, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jProgressBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 314, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jCheckBox1)
-                        .addGap(0, 221, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 154, Short.MAX_VALUE)
+                        .addComponent(jButton2)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -489,14 +509,17 @@ public class GContas extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jRadioButtonContaFixa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jProgressBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jRadioButtonContaHidrometro)
                     .addComponent(jMonthChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jYearChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jCheckBox1))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jCheckBox1)
+                        .addComponent(jButton2)))
                 .addContainerGap(22, Short.MAX_VALUE))
         );
 
@@ -548,7 +571,8 @@ public class GContas extends javax.swing.JFrame {
         
         //Se tiver pelo menos uma conta selecionada, o bloco if será executado.
         if(existeContaSelecionada){
-         boolean consumoPreenchido = true;
+         boolean consumoPreenchido = false;
+         int cont = 0;
          Pattern p = Pattern.compile("\\d+");
          Matcher m = null;
          //Se as contas de hidrometro estiverem selecionadas...o bloco if irá fazer um teste para verificar se a coluna consumo está preenchida corretamente.
@@ -556,17 +580,17 @@ public class GContas extends javax.swing.JFrame {
             
            for(int i = 0; i<jTable1.getRowCount(); i++){
                if(jTable1.getValueAt(i, 9) != null){
+                   cont++;
                m = p.matcher(String.valueOf(jTable1.getValueAt(i, 9)));
-               if(!m.find()){
-                   consumoPreenchido = false;
+               if(m.find() && (boolean)jTable1.getValueAt(i, 7)){
+                   consumoPreenchido = true;
                }
-           }else{
-                   consumoPreenchido = false;
-               }
+           }
            }
             
         }    
         //se a coluna de consumo estiver preenchida de acordo com a expressão regular, o bloco if será executado.    
+       if(jRadioButtonContaHidrometro.isSelected()){
         if(consumoPreenchido){
         int op = JOptionPane.showConfirmDialog(this, "Tem certeza que deseja registrar as contas desses sócios?", "Atenção", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         
@@ -704,7 +728,147 @@ public class GContas extends javax.swing.JFrame {
         }else{
           JOptionPane.showMessageDialog(this, "Preencha corretamente o campo de consumo com dígitos","Atenção",JOptionPane.ERROR_MESSAGE);  
             
-        }}else{
+        }
+        
+        }else{
+            
+        int op = JOptionPane.showConfirmDialog(this, "Tem certeza que deseja registrar as contas desses sócios?", "Atenção", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        
+        if (op == JOptionPane.YES_OPTION) {
+            Thread t = new Thread() {
+                @Override
+                public void run() {
+                    DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+                    Conta c = null;
+                    jButton1.setEnabled(false);
+                    jRadioButtonContaFixa.setEnabled(false);
+                    jRadioButtonContaHidrometro.setEnabled(false);
+
+                        try {
+
+                            int cont = 0;
+                            //percorre todas as linhas
+                            for (int i = 0; i < model.getRowCount(); i++) {
+
+                                if ((boolean) model.getValueAt(i, 7)) {
+
+                                    cont++;
+                                }
+                            }
+
+                            jProgressBar1.setMaximum(cont - 1);
+                            //percorre todas as linhas
+                            for (int i = 0; i < model.getRowCount(); i++) {
+                                //se o checkbox estiver marcado executa o if.
+                                if ((boolean) model.getValueAt(i, 7)) {
+
+                                    jProgressBar1.setValue(i);
+
+                                    //se tiver selecionado as contas fixas...
+                                    if (jRadioButtonContaFixa.isSelected()) {
+                                        //Cria uma conta vazia.
+                                        c = new Conta();
+                                        //seta a data Gerada como a data atual.
+                                        c.setDataGerada(new Date());
+                                        //data de vencimento da tabela
+                                        c.setDataVence(SimpleDateFormat.getDateInstance().parse((String) model.getValueAt(i, 1)));
+                                        //Pega do banco um endereçoPessoa de acordo com o número do endereço na tabela, que é único
+                                        Enderecopessoa e = new DaoEnderecoPessoa().EnderecopessoaporNumero((int) model.getValueAt(i, 5));
+                                        //seta o enderecoPessoa na conta
+                                        c.setIdEnderecoPessoa(e);
+
+                                        List<Taxasconta> taxas1 = new ArrayList<>();
+                                        if(taxas.containsKey(e.getNumero())){
+                                       for(Taxa aux : taxas.get(e.getNumero())){
+                                        Taxasconta tx = new Taxasconta();
+                                        tx.setContaid(c);
+                                        //seta a taxa em taxas Conta de acordo com a categoria socio do sócio vinculado ao endereço
+                                        tx.setTaxaid(aux);
+                                        //Aqui adiciono todas as taxas de cada endereço...
+                                        taxas1.add(tx);
+                                       } 
+                                       }else{
+                                        Taxasconta tx = new Taxasconta();
+                                        tx.setContaid(c);
+                                        //seta a taxa em taxas Conta de acordo com a categoria socio do sócio vinculado ao endereço
+                                        tx.setTaxaid(e.getIdPessoa().getSocio().getIdCategoriaSocio().getTaxasId());
+                                        //Aqui adiciono todas as taxas de cada endereço...
+                                        taxas1.add(tx);  
+                                        }
+                                        //lista de taxasConta na conta...
+                                        c.setTaxascontaList(taxas1);
+                                        new DaoContasMensais().AdicionarConta(c);
+
+                                    } //se tiver selecionado as contas com hidrometro
+                                    else if (jRadioButtonContaHidrometro.isSelected()) {
+                                        
+                                         //Cria uma conta vazia.
+                                        c = new Conta();
+                                        //seta a data Gerada como a data atual.
+                                        c.setDataGerada(new Date());
+                                        //data de vencimento da tabela
+                                        c.setDataVence(SimpleDateFormat.getDateInstance().parse((String) model.getValueAt(i, 1)));
+                                        //Pega do banco um endereçoPessoa de acordo com o número do endereço na tabela, que é único
+                                        Enderecopessoa e = new DaoEnderecoPessoa().EnderecopessoaporNumero((int) model.getValueAt(i, 5));
+                                        //seta o enderecoPessoa na conta
+                                        c.setIdEnderecoPessoa(e);
+
+                                        List<Taxasconta> taxas1 = new ArrayList<>();
+                                        if(taxas.containsKey(e.getNumero())){
+                                       for(Taxa aux : taxas.get(e.getNumero())){
+                                        Taxasconta tx = new Taxasconta();
+                                        tx.setContaid(c);
+                                        //seta a taxa em taxas Conta de acordo com a categoria socio do sócio vinculado ao endereço
+                                        tx.setTaxaid(aux);
+                                        //Aqui adiciono todas as taxas de cada endereço...
+                                        taxas1.add(tx);
+                                       } 
+                                       }else{
+                                        Taxasconta tx = new Taxasconta();
+                                        tx.setContaid(c);
+                                        //seta a taxa em taxas Conta de acordo com a categoria socio do sócio vinculado ao endereço
+                                        tx.setTaxaid(e.getIdPessoa().getSocio().getIdCategoriaSocio().getTaxasId());
+                                        //Aqui adiciono todas as taxas de cada endereço...
+                                        taxas1.add(tx);  
+                                        }
+                                        
+                                        Hidrometro h = new Hidrometro();
+                                        h.setIdconta(c);
+                                        h.setConsumo((double)model.getValueAt(i, 9));
+                                        //lista de taxasConta na conta...
+                                        c.setTaxascontaList(taxas1);
+                                        c.setHidrometro(h);
+                                        new DaoContasMensais().AdicionarConta(c); 
+                                        
+                                    }
+
+                                }
+                            }
+
+                                jButton1.setEnabled(true);
+                                jRadioButtonContaFixa.setEnabled(true);
+                                jRadioButtonContaHidrometro.setEnabled(true);
+                                JOptionPane.showMessageDialog(GContas.this, "Conta(s) Registrada(s) com sucesso!", "Atenção", JOptionPane.INFORMATION_MESSAGE);
+                                jProgressBar1.setValue(0);
+                                jCheckBox1.setSelected(false);
+                                carregarSocios();
+                                preencherTabela();
+                            
+
+                        } catch (Exception e) {
+
+                            JOptionPane.showMessageDialog(GContas.this, e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+                        }
+                    
+                }
+            };
+
+            t.start();
+        } 
+        }
+        
+        
+        }else{
             
             JOptionPane.showMessageDialog(this, "Nenhum sócio foi selecionado","Atenção",JOptionPane.INFORMATION_MESSAGE);
             
@@ -773,6 +937,25 @@ public class GContas extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jCheckBox1ItemStateChanged
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        TelaRelatoriosContas tc = new TelaRelatoriosContas(this, true);
+        tc.setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jComboBox1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox1ItemStateChanged
+       
+          
+        jCheckBox1.setSelected(false);
+        if (jRadioButtonContaFixa.isSelected()) {
+
+            jRadioButtonContaFixaActionPerformed(null);
+        } else if (jRadioButtonContaHidrometro.isSelected()) {
+
+            jRadioButtonContaHidrometroActionPerformed(null);
+        }
+       
+    }//GEN-LAST:event_jComboBox1ItemStateChanged
+
     /**
      * @param args the command line arguments
      */
@@ -782,22 +965,22 @@ public class GContas extends javax.swing.JFrame {
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GContas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GContas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GContas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GContas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(GContas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(GContas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(GContas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(GContas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
         //</editor-fold>
 
         /* Create and display the form */
@@ -810,7 +993,9 @@ public class GContas extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JCheckBox jCheckBox1;
+    private javax.swing.JComboBox jComboBox1;
     private com.toedter.calendar.JMonthChooser jMonthChooser1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JProgressBar jProgressBar1;

@@ -384,6 +384,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
 
         jButton2.setText("Contas a Pagar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("Voltar");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -578,13 +583,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jInternalFrameRelatorios.getContentPane().setLayout(jInternalFrameRelatoriosLayout);
         jInternalFrameRelatoriosLayout.setHorizontalGroup(
             jInternalFrameRelatoriosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelInternalFrameRelatorios, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1840, Short.MAX_VALUE)
+            .addComponent(jPanelInternalFrameRelatorios, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1021, Short.MAX_VALUE)
         );
         jInternalFrameRelatoriosLayout.setVerticalGroup(
             jInternalFrameRelatoriosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jInternalFrameRelatoriosLayout.createSequentialGroup()
-                .addComponent(jPanelInternalFrameRelatorios, javax.swing.GroupLayout.DEFAULT_SIZE, 1101, Short.MAX_VALUE)
-                .addGap(0, 391, Short.MAX_VALUE))
+                .addComponent(jPanelInternalFrameRelatorios, javax.swing.GroupLayout.DEFAULT_SIZE, 962, Short.MAX_VALUE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         jInternalFrameRelatorios.setBounds(0, 0, 930, 740);
@@ -1416,6 +1421,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
        cu.setVisible(true);
         
     }//GEN-LAST:event_jMenuItemCriarUsuariosActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+         new TelaCadastros(this, evt).setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
  
   
     public static void main(String args[]) {

@@ -103,6 +103,9 @@ public class TelaCadastros extends javax.swing.JFrame {
             case "Receitas":
                 jTabbedPane1.setSelectedComponent(jPanelReceitas);
                 break;
+            case "Contas a Pagar":
+                jTabbedPane1.setSelectedComponent(jPanelReceitas);
+                break;
             case "Categoria Socio":
                 jTabbedPane1.setSelectedComponent(jPanelCategoriaSocio);
                 break;
@@ -503,26 +506,26 @@ public class TelaCadastros extends javax.swing.JFrame {
         jComboBoxLogradouroTipo.setModel(new javax.swing.DefaultComboBoxModel(
             new String[] {
                 "",
-                "AEROPORTO",
-                "APARTAMENTO",
-                "AVENIDA",
-                "BECO",
-                "BLOCO",
-                "CAMINHO",
-                "ESCADINHA",
-                "ESTAÇÃO",
-                "ESTRADA",
-                "FAZENDA",
-                "LADEIRA",
-                "LARGO",
-                "PRAÇA",
-                "PARQUE",
-                "QUADRA",
-                "QUILÔMETRO",
-                "QUINTA",
-                "RODOVIA",
-                "RUA",
-                "TRAVESSA"
+                "Aeroporto",
+                "Apartamento",
+                "Avenida",
+                "Beco",
+                "Bloco",
+                "Caminhi",
+                "Escadinha",
+                "Estação",
+                "Estrada",
+                "Fazenda",
+                "Ladeira",
+                "Largo",
+                "Praça",
+                "Parque",
+                "Quadra",
+                "Quilômetro",
+                "Quinta",
+                "Rodovia",
+                "Rua",
+                "Travessa"
             }));
 
             jLabel2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
