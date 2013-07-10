@@ -60,8 +60,6 @@ public class TelaLogin extends javax.swing.JFrame {
 
         jLabel2.setText("Senha");
 
-        jTextFieldTelaLoginNome.setText("root");
-
         jButtonTelaLoginLogar.setText("Logar");
         jButtonTelaLoginLogar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -69,7 +67,6 @@ public class TelaLogin extends javax.swing.JFrame {
             }
         });
 
-        jPasswordFieldTelaPrincipalSenha.setText("123");
         jPasswordFieldTelaPrincipalSenha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jPasswordFieldTelaPrincipalSenhaActionPerformed(evt);
