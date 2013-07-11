@@ -1159,7 +1159,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jPanelBotoesTelaPrincipal.setVisible(true);
         jPanelDataHoraTelaPrincipal.setVisible(true);
         jPanelImagemTelaPrincipal.setVisible(true);
-       
+        repaint();
        
     }//GEN-LAST:event_jButtonInternalFrameRelatoriosVoltar1ActionPerformed
 
