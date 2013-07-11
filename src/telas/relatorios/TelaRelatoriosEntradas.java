@@ -811,6 +811,7 @@ public class TelaRelatoriosEntradas extends javax.swing.JDialog {
             else if(jCheckFuncionario.isSelected())  {sql += " order by p1.nome";       cont++;}
             else if(jCheckBoxSocio.isSelected())     {sql += " order by p2.nome"; cont++;}
             
+            sql += " group by c.id ";
             System.out.println(sql);
                 try {
                     Connection conn = HibernateUtil.getConnection();

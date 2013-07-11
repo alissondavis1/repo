@@ -52,6 +52,7 @@
         <Menu class="javax.swing.JMenu" name="jMenu">
           <Properties>
             <Property name="text" type="java.lang.String" value="Menu"/>
+            <Property name="toolTipText" type="java.lang.String" value=""/>
           </Properties>
           <SubComponents>
             <Menu class="javax.swing.JMenu" name="jMenuCadastros">
@@ -267,6 +268,7 @@
   <SyntheticProperties>
     <SyntheticProperty name="menuBar" type="java.lang.String" value="jMenuBar1"/>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
   </SyntheticProperties>
   <Events>
     <EventHandler event="windowClosing" listener="java.awt.event.WindowListener" parameters="java.awt.event.WindowEvent" handler="formWindowClosing"/>
@@ -303,17 +305,17 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <Component id="jPanelBotoesTelaPrincipal" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="8" max="32767" attributes="0"/>
               <Component id="jPanelDataHoraTelaPrincipal" min="-2" pref="0" max="-2" attributes="0"/>
           </Group>
           <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-              <Component id="jDesktopPaneContas" alignment="0" pref="105" max="32767" attributes="0"/>
+              <Component id="jDesktopPaneContas" alignment="0" pref="107" max="32767" attributes="0"/>
           </Group>
           <Group type="103" rootIndex="2" groupAlignment="0" attributes="0">
-              <Component id="jPanelImagemTelaPrincipal" alignment="1" pref="105" max="32767" attributes="0"/>
+              <Component id="jPanelImagemTelaPrincipal" alignment="1" pref="107" max="32767" attributes="0"/>
           </Group>
           <Group type="103" rootIndex="3" groupAlignment="0" attributes="0">
-              <Component id="jDesktopPaneRelatorios" alignment="0" pref="105" max="32767" attributes="0"/>
+              <Component id="jDesktopPaneRelatorios" alignment="0" pref="107" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>

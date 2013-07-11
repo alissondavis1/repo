@@ -900,7 +900,6 @@ public class CriadorUsuario extends javax.swing.JDialog {
       jCheckBoxSociosSalvar.setSelected(true);
       jCheckBoxSociosAlterar.setSelected(true);
       jCheckBoxSociosApagar.setSelected(true);
-      //log's
       jCheckBoxEntradasLogConsultar.setSelected(true);
       jCheckBoxSaidasLogConsultar.setSelected(true);
       jCheckBoxChequesLogConsultar.setSelected(true);

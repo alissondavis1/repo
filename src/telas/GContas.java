@@ -938,7 +938,7 @@ public class GContas extends javax.swing.JFrame {
     }//GEN-LAST:event_jCheckBox1ItemStateChanged
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        TelaRelatoriosContas tc = new TelaRelatoriosContas(this, true);
+        TelaRelatoriosContas tc = new TelaRelatoriosContas();
         tc.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 

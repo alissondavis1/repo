@@ -4,7 +4,9 @@
  */
 package telas.relatorios;
 
+import dao.DaoCategoriaSocio;
 import dao.DaoSocio;
+import entidades.Categoriasocio;
 import entidades.Socio;
 import java.sql.Connection;
 import java.util.HashMap;
@@ -14,27 +16,30 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JCheckBox;
 import javax.swing.JOptionPane;
+import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.view.JasperViewer;
+import telas.GContas;
 import telas.TelaPrincipal;
 import util.HibernateUtil;
 
 /**
  *
- * @author Head
+ * @author netservidor
  */
-public class TelaRelatoriosContas extends javax.swing.JDialog {
+public class TelaRelatoriosContas extends javax.swing.JFrame {
 
     /**
      * Creates new form TelaRelatoriosContas
      */
-    public TelaRelatoriosContas(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
+    public TelaRelatoriosContas() {
         initComponents();
         travarComponentes();
     }
 
+ 
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -56,12 +61,9 @@ public class TelaRelatoriosContas extends javax.swing.JDialog {
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
-        jCheckBoxValor = new javax.swing.JCheckBox();
+        jCheckBoxStatus = new javax.swing.JCheckBox();
         jPanel4 = new javax.swing.JPanel();
-        jTextFieldValorMaior = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jTextFieldValorMenor = new javax.swing.JTextField();
+        jComboBoxStatus = new javax.swing.JComboBox();
         jPanel5 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jPanel10 = new javax.swing.JPanel();
@@ -71,6 +73,12 @@ public class TelaRelatoriosContas extends javax.swing.JDialog {
         jLabel12 = new javax.swing.JLabel();
         jFormattedTextFieldDataMenor = new javax.swing.JFormattedTextField();
         jFormattedTextFieldDataMaior = new javax.swing.JFormattedTextField();
+        jPanel7 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        jPanel11 = new javax.swing.JPanel();
+        jCheckBoxCategoria = new javax.swing.JCheckBox();
+        jPanel9 = new javax.swing.JPanel();
+        jComboBoxCategoria = new javax.swing.JComboBox();
         jPanel12 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jPanel13 = new javax.swing.JPanel();
@@ -82,18 +90,17 @@ public class TelaRelatoriosContas extends javax.swing.JDialog {
         jLabel6 = new javax.swing.JLabel();
         jPanel18 = new javax.swing.JPanel();
         jCheckRegristro = new javax.swing.JCheckBox();
-        jCheckOrdernarValor = new javax.swing.JCheckBox();
         jCheckData = new javax.swing.JCheckBox();
-        jCheckFuncionario = new javax.swing.JCheckBox();
+        jCheckCategoria = new javax.swing.JCheckBox();
         jCheckSocio = new javax.swing.JCheckBox();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel15.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
+        jPanel15.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jLabel2.setText("Regristro");
+        jLabel2.setText("Conta");
 
         jCheckBoxId.setText("Filtrar por Regristro");
         jCheckBoxId.setPreferredSize(new java.awt.Dimension(100, 23));
@@ -173,15 +180,15 @@ public class TelaRelatoriosContas extends javax.swing.JDialog {
 
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jLabel1.setText("Valor");
+        jLabel1.setText("Status");
 
-        jCheckBoxValor.setText("Filtrar por Valor");
-        jCheckBoxValor.setMaximumSize(new java.awt.Dimension(100, 23));
-        jCheckBoxValor.setMinimumSize(new java.awt.Dimension(100, 23));
-        jCheckBoxValor.setPreferredSize(new java.awt.Dimension(100, 23));
-        jCheckBoxValor.addActionListener(new java.awt.event.ActionListener() {
+        jCheckBoxStatus.setText("Filtrar por Status");
+        jCheckBoxStatus.setMaximumSize(new java.awt.Dimension(100, 23));
+        jCheckBoxStatus.setMinimumSize(new java.awt.Dimension(100, 23));
+        jCheckBoxStatus.setPreferredSize(new java.awt.Dimension(100, 23));
+        jCheckBoxStatus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBoxValorActionPerformed(evt);
+                jCheckBoxStatusActionPerformed(evt);
             }
         });
 
@@ -191,53 +198,29 @@ public class TelaRelatoriosContas extends javax.swing.JDialog {
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jCheckBoxValor, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jCheckBoxStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jCheckBoxValor, javax.swing.GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE)
+            .addComponent(jCheckBoxStatus, javax.swing.GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE)
         );
 
-        jTextFieldValorMaior.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldValorMaiorActionPerformed(evt);
-            }
-        });
-
-        jLabel9.setText("E");
-
-        jLabel10.setText("Entre");
-
-        jTextFieldValorMenor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldValorMenorActionPerformed(evt);
-            }
-        });
+        jComboBoxStatus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "", "Aberta", "Fechada", "Todas" }));
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(97, Short.MAX_VALUE)
-                .addComponent(jLabel10)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTextFieldValorMenor, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(11, 11, 11)
-                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextFieldValorMaior, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(38, 38, 38))
+                .addContainerGap(162, Short.MAX_VALUE)
+                .addComponent(jComboBoxStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(83, 83, 83))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(13, Short.MAX_VALUE)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextFieldValorMaior, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel10)
-                    .addComponent(jLabel9)
-                    .addComponent(jTextFieldValorMenor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jComboBoxStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -290,7 +273,9 @@ public class TelaRelatoriosContas extends javax.swing.JDialog {
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jCheckBoxData, javax.swing.GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE)
+            .addGroup(jPanel10Layout.createSequentialGroup()
+                .addComponent(jCheckBoxData, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
+                .addGap(0, 0, 0))
         );
 
         jLabel11.setText("E");
@@ -360,6 +345,75 @@ public class TelaRelatoriosContas extends javax.swing.JDialog {
                         .addGap(4, 4, 4)
                         .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+
+        jPanel7.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        jLabel4.setText("Categoria");
+
+        jCheckBoxCategoria.setText("Filtrar por Categoria");
+        jCheckBoxCategoria.setMaximumSize(new java.awt.Dimension(100, 23));
+        jCheckBoxCategoria.setMinimumSize(new java.awt.Dimension(100, 23));
+        jCheckBoxCategoria.setPreferredSize(new java.awt.Dimension(100, 23));
+        jCheckBoxCategoria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBoxCategoriaActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
+        jPanel11.setLayout(jPanel11Layout);
+        jPanel11Layout.setHorizontalGroup(
+            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel11Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jCheckBoxCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        jPanel11Layout.setVerticalGroup(
+            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jCheckBoxCategoria, javax.swing.GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
+        jPanel9.setLayout(jPanel9Layout);
+        jPanel9Layout.setHorizontalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jComboBoxCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(107, Short.MAX_VALUE))
+        );
+        jPanel9Layout.setVerticalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
+                .addContainerGap(13, Short.MAX_VALUE)
+                .addComponent(jComboBoxCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel4)
+                .addGap(54, 54, 54))
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -451,13 +505,6 @@ public class TelaRelatoriosContas extends javax.swing.JDialog {
             }
         });
 
-        jCheckOrdernarValor.setText("Valor");
-        jCheckOrdernarValor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckOrdernarValorActionPerformed(evt);
-            }
-        });
-
         jCheckData.setText("Data");
         jCheckData.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -465,10 +512,10 @@ public class TelaRelatoriosContas extends javax.swing.JDialog {
             }
         });
 
-        jCheckFuncionario.setText("Funcionario");
-        jCheckFuncionario.addActionListener(new java.awt.event.ActionListener() {
+        jCheckCategoria.setText("Categoria");
+        jCheckCategoria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckFuncionarioActionPerformed(evt);
+                jCheckCategoriaActionPerformed(evt);
             }
         });
 
@@ -484,14 +531,12 @@ public class TelaRelatoriosContas extends javax.swing.JDialog {
         jPanel18Layout.setHorizontalGroup(
             jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel18Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(63, 63, 63)
                 .addComponent(jCheckRegristro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(5, 5, 5)
-                .addComponent(jCheckOrdernarValor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
                 .addComponent(jCheckData, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(5, 5, 5)
-                .addComponent(jCheckFuncionario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jCheckCategoria, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(5, 5, 5)
                 .addComponent(jCheckSocio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(64, 64, 64))
@@ -502,9 +547,8 @@ public class TelaRelatoriosContas extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jCheckRegristro)
-                    .addComponent(jCheckOrdernarValor)
                     .addComponent(jCheckData)
-                    .addComponent(jCheckFuncionario)
+                    .addComponent(jCheckCategoria)
                     .addComponent(jCheckSocio))
                 .addContainerGap(16, Short.MAX_VALUE))
         );
@@ -538,6 +582,7 @@ public class TelaRelatoriosContas extends javax.swing.JDialog {
                     .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel15Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -554,13 +599,15 @@ public class TelaRelatoriosContas extends javax.swing.JDialog {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(5, 5, 5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(5, 5, 5))
+                .addGap(10, 10, 10))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -593,35 +640,22 @@ public class TelaRelatoriosContas extends javax.swing.JDialog {
     }//GEN-LAST:event_jCheckBoxIdActionPerformed
 
     private void jTextFieldIdMaiorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldIdMaiorActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jTextFieldIdMaiorActionPerformed
 
     private void jTextFieldIdMenorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldIdMenorActionPerformed
-        // TODO add your handling code here:
+     
     }//GEN-LAST:event_jTextFieldIdMenorActionPerformed
 
-    private void jCheckBoxValorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxValorActionPerformed
-
-        if(jCheckBoxValor.isSelected()){
-            jTextFieldValorMaior.setEditable(true);
-            jTextFieldValorMenor.setEditable(true);
+    private void jCheckBoxStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxStatusActionPerformed
+       if(jCheckBoxStatus.isSelected()){
+         jComboBoxStatus.setEnabled(true);
         }
-        else
-        {
-            jTextFieldValorMaior.setText("");
-            jTextFieldValorMenor.setText("");
-            jTextFieldValorMaior.setEditable(false);
-            jTextFieldValorMenor.setEditable(false);
+        else{
+            jComboBoxStatus.setEnabled(false);
         }
-    }//GEN-LAST:event_jCheckBoxValorActionPerformed
-
-    private void jTextFieldValorMaiorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldValorMaiorActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldValorMaiorActionPerformed
-
-    private void jTextFieldValorMenorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldValorMenorActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldValorMenorActionPerformed
+     
+    }//GEN-LAST:event_jCheckBoxStatusActionPerformed
 
     private void jCheckBoxDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxDataActionPerformed
 
@@ -638,6 +672,26 @@ public class TelaRelatoriosContas extends javax.swing.JDialog {
             jFormattedTextFieldDataMenor.setEditable(false);
         }
     }//GEN-LAST:event_jCheckBoxDataActionPerformed
+
+    private void jCheckBoxCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxCategoriaActionPerformed
+
+        if(jCheckBoxCategoria.isSelected()){
+            jComboBoxCategoria.setEnabled(true);
+
+            if(jComboBoxCategoria.getItemCount()==0){
+                jComboBoxCategoria.addItem("");
+                List<Categoriasocio> f = new DaoCategoriaSocio().BuscarTodasCategorias();
+                for(Categoriasocio funcs: f){
+                    jComboBoxCategoria.addItem(funcs.getNome());
+                }
+            }
+
+        }
+        else{
+            jComboBoxCategoria.setEnabled(false);
+            jComboBoxCategoria.setSelectedIndex(0);
+        }
+    }//GEN-LAST:event_jCheckBoxCategoriaActionPerformed
 
     private void jCheckBoxSocioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxSocioActionPerformed
         if(jCheckBoxSocio.isSelected()){
@@ -663,8 +717,9 @@ public class TelaRelatoriosContas extends javax.swing.JDialog {
         if(
             preencidoCheckBox(jCheckBoxId,jTextFieldIdMenor.getText(),jTextFieldIdMaior.getText())            &&
             preencidoCheckBox(jCheckBoxData,jFormattedTextFieldDataMenor.getText().replaceAll("[\\/\\s]",""),jFormattedTextFieldDataMaior.getText().replaceAll("[\\/\\s]",""))   &&
-            preencidoCheckBox(jCheckBoxValor,jTextFieldValorMenor.getText(),jTextFieldValorMaior.getText())   &&
-            preencidoCombobox(jCheckBoxSocio, (String) jComboBoxSocio.getSelectedItem())                      
+            preencidoCombobox(jCheckBoxStatus, (String) jComboBoxStatus.getSelectedItem())   &&
+            preencidoCombobox(jCheckBoxSocio, (String) jComboBoxSocio.getSelectedItem())                      &&
+            preencidoCombobox(jCheckBoxCategoria, (String) jComboBoxCategoria.getSelectedItem())
         )
         {
             new Thread() {
@@ -676,112 +731,164 @@ public class TelaRelatoriosContas extends javax.swing.JDialog {
                     int and = 0;
 
                     final String where= " where "  ;
-                    String idMenor     = null;
-                    String idMaior     = null;
-                    String valMenor    = null;
-                    String valMaior    = null;
-                    String datMenor    = null;
-                    String funcionario = null;
-                    String socio       = null;
-                    String datMaior    = null;
+                    
+                    String id        = null;
+                    String status    = null;
+                    String valor     = null;
+                    String datMenor  = null;
+                    String datMaior  = null;
+                    String categoria = null;
+                    String socio     = null;
+                   
                     String sql         = "";
 
+                    //ok
                     if(jCheckBoxId.isSelected()){
-                        idMenor =  " ( e.id between " + jTextFieldIdMenor.getText()  ;
-                        idMaior =  " and  "+ jTextFieldIdMaior.getText() +" ) ";
+                        id =  " ( c.id between " + jTextFieldIdMenor.getText() + " and  "+ jTextFieldIdMaior.getText() +" ) ";
                         cont ++;
                     }
-                    if(jCheckBoxValor.isSelected())
-                    {
-                        valMenor =  " ( e.valor between " + jTextFieldValorMenor.getText()  ;
-                        valMaior =  " and  "+ jTextFieldValorMaior.getText() +" ) ";
-
+                    
+                    if(jCheckBoxStatus.isSelected()){
+                        if      (jComboBoxStatus.getSelectedIndex()==1){status = "( c.datapag is null )";}
+                        else if (jComboBoxStatus.getSelectedIndex()==2){status = "( c.datapag is not null )"; }
+                        else if (jComboBoxStatus.getSelectedIndex()==3){cont--;}   
                         cont ++;
                     }
-
+                    
+                    //ok
                     if(jCheckBoxData.isSelected()){
 
                         String[] dataMenor = jFormattedTextFieldDataMenor.getText().split("/");
-
-                        datMenor =  " ( e.data between '" + dataMenor[2]+"/"+dataMenor[1]+"/"+dataMenor[0] +"'";
+                        datMenor =  " ( c.dataGerada between '" + dataMenor[2]+"/"+dataMenor[1]+"/"+dataMenor[0] +"'";
                         String[] dataMaior = jFormattedTextFieldDataMaior.getText().split("/");
                         datMaior =  " and  '"+  dataMaior[2]+"/"+dataMaior[1]+"/"+dataMaior[0] + "' ) ";
                         cont ++;
                     }
+                    
+                    //ok
+                    if(jCheckBoxCategoria.isSelected())
+                    {
+                        categoria="( cs.nome like trim('"+jComboBoxCategoria.getSelectedItem() +"') )";
+                        cont ++;
+                    }
+                    //ok
                     if(jCheckBoxSocio.isSelected())
                     {
-                        socio =  "trim((concat(p1.nome,\" \",p1.sobrenome))) = trim('"+jComboBoxSocio.getSelectedItem() +"')"  ;
+                            //lower(trim(concat(p.nome, p.sobrenome))) = lower(trim(concat(p.nome, p.sobrenome))
+                        socio =  "lower(trim(concat(p.nome,' ', p.sobrenome))) = lower(trim(concat('"+jComboBoxSocio.getSelectedItem() +"')))";
                         cont ++;
                     }
 
                     if(cont>=1){sql = where;}
 
-                    if(jCheckBoxId.isSelected()){
-
-                        if(
-                            (jCheckBoxValor.isSelected()      ||
-                                jCheckBoxData.isSelected()       ||
-                                jCheckBoxSocio.isSelected())
-                            &&(and != 0)  ){
-                            sql += " and ";
+                    if(jCheckBoxId.isSelected())
+                    {
+                        if((
+                          jCheckBoxStatus.isSelected()   ||
+                          jCheckBoxData.isSelected()     ||
+                          jCheckBoxCategoria.isSelected()||
+                          jCheckBoxSocio.isSelected()
+                          )&&(and!=0))
+                          {
+                          sql+=" and ";
+                          }
+                        else
+                        {
+                        and++;
                         }
-                        else{and++;}
-                        sql += idMenor + idMaior;
+                        sql += id;
                     }
-
-                    if(jCheckBoxValor.isSelected())     {
-                        if(
-                            (jCheckBoxId.isSelected()      ||
-                                jCheckBoxData.isSelected()       ||
-                                jCheckBoxSocio.isSelected())
-                            &&(and != 0)  ){
-                            sql += " and ";
+                   
+                    if(jCheckBoxStatus.isSelected())
+                    {
+                        if((
+                          jCheckBoxId.isSelected()   ||
+                          jCheckBoxData.isSelected()     ||
+                          jCheckBoxCategoria.isSelected()||
+                          jCheckBoxSocio.isSelected()
+                          )&&(and!=0))
+                          {
+                          sql+=" and ";
+                          }
+                        else
+                        {
+                        and++;
                         }
-                        else{and++;}
-                        sql += valMenor + valMaior;
+                        sql +=status;
                     }
-
+                    
                     if(jCheckBoxData.isSelected())
                     {
-                        if(
-                            (jCheckBoxValor.isSelected()      ||
-                                jCheckBoxId.isSelected()       ||
-                                jCheckBoxSocio.isSelected())
-                            &&(and != 0)  ){
-                            sql += " and ";
+                        if((
+                          jCheckBoxId.isSelected()   ||
+                          jCheckBoxStatus.isSelected()     ||
+                          jCheckBoxCategoria.isSelected()||
+                          jCheckBoxSocio.isSelected()
+                          )&&(and!=0))
+                          {
+                          sql+=" and ";
+                          }
+                        else
+                        {
+                        and++;
                         }
-                        else{and++;}
                         sql += datMenor + datMaior;
                     }
-                    if(jCheckBoxSocio.isSelected())
+                    
+                     if(jCheckBoxCategoria.isSelected())
                     {
-                        if(
-                            (jCheckBoxValor.isSelected()      ||
-                                jCheckBoxId.isSelected()       ||
-                                jCheckBoxValor.isSelected()
-                                )
-                            &&(and != 0)  ){
-                            sql += " and ";
+                        if((
+                          jCheckBoxId.isSelected()   ||
+                          jCheckBoxStatus.isSelected()     ||
+                          jCheckBoxData.isSelected()||
+                          jCheckBoxSocio.isSelected()
+                          )&&(and!=0))
+                          {
+                          sql+=" and ";
+                          }
+                        else
+                        {
+                        and++;
                         }
-                        else{and++;}
+                        sql +=categoria;
+                    }
+                     
+                      if(jCheckBoxSocio.isSelected())
+                    {
+                        if((
+                          jCheckBoxId.isSelected()   ||
+                          jCheckBoxStatus.isSelected()     ||
+                          jCheckBoxCategoria.isSelected()||
+                          jCheckBoxData.isSelected()
+                          )&&(and!=0))
+                          {
+                          sql+=" and ";
+                          }
+                        else
+                        {
+                        and++;
+                        }
                         sql += socio;
                     }
-
-                    if     (jCheckRegristro.isSelected())    {sql += " order by e.id";         cont++;}
-                    else if(jCheckOrdernarValor.isSelected()){sql += " order by e.valor";      cont++;}
-                    else if(jCheckData.isSelected())         {sql += " order by e.data";       cont++;}
-                    else if(jCheckFuncionario.isSelected())  {sql += " order by p1.nome";       cont++;}
-                    else if(jCheckBoxSocio.isSelected())     {sql += " order by p2.nome"; cont++;}
-
+                    
+                    
+                  
+                    if     (jCheckRegristro.isSelected()){sql += " order by c.id";        cont++;}
+                    else if(jCheckData.isSelected()  )   {sql += " order by c.dataGerada";cont++;}   
+                    else if(jCheckRegristro.isSelected()){sql += " order by cs.nome";     cont++;}
+                    else if(jCheckCategoria.isSelected()){sql += " order by p.sobrenome"; cont++;}
+                 
+                    sql = "group by c.id";
                     System.out.println(sql);
+                    
+                 
                     try {
                         Connection conn = HibernateUtil.getConnection();
-                        // JasperReport report = JasperCompileManager.compileReport(getClass().getResourceAsStream("/relatorios/rc_entrada.jrxml"));
                         Map<String, Object> p = new HashMap<>();
 
                         if(cont==0){p.put("complementos","");}
                         else       {p.put("complementos",sql);}
-                        JasperPrint jasper = JasperFillManager.fillReport(getClass().getResourceAsStream("/relatorios/rc_entradas.jasper"), p, conn);
+                        JasperPrint jasper = JasperFillManager.fillReport(getClass().getResourceAsStream("/relatorios/rc_conta.jasper"), p, conn);
                         JasperViewer.viewReport(jasper, false);
 
                     } catch (Exception ex) {
@@ -802,43 +909,33 @@ public class TelaRelatoriosContas extends javax.swing.JDialog {
 
         jCheckData.setSelected(false);
         jCheckSocio.setSelected(false);
-        jCheckFuncionario.setSelected(false);
-        jCheckOrdernarValor.setSelected(false);
+        jCheckCategoria.setSelected(false);
+       
     }//GEN-LAST:event_jCheckRegristroActionPerformed
-
-    private void jCheckOrdernarValorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckOrdernarValorActionPerformed
-        jCheckRegristro.setSelected(false);
-        jCheckData.setSelected(false);
-        jCheckSocio.setSelected(false);
-        jCheckFuncionario.setSelected(false);
-    }//GEN-LAST:event_jCheckOrdernarValorActionPerformed
 
     private void jCheckDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckDataActionPerformed
 
         jCheckRegristro.setSelected(false);
         jCheckSocio.setSelected(false);
-        jCheckFuncionario.setSelected(false);
-        jCheckOrdernarValor.setSelected(false);
+        jCheckCategoria.setSelected(false);
+   
     }//GEN-LAST:event_jCheckDataActionPerformed
 
-    private void jCheckFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckFuncionarioActionPerformed
+    private void jCheckCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckCategoriaActionPerformed
         jCheckRegristro.setSelected(false);
         jCheckData.setSelected(false);
         jCheckSocio.setSelected(false);
-        jCheckOrdernarValor.setSelected(false);
-    }//GEN-LAST:event_jCheckFuncionarioActionPerformed
+      
+    }//GEN-LAST:event_jCheckCategoriaActionPerformed
 
     private void jCheckSocioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckSocioActionPerformed
         jCheckRegristro.setSelected(false);
         jCheckData.setSelected(false);
-        jCheckFuncionario.setSelected(false);
-        jCheckOrdernarValor.setSelected(false);
+        jCheckCategoria.setSelected(false);
+    
     }//GEN-LAST:event_jCheckSocioActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public boolean preencidoCombobox(JCheckBox check, String string)
+     public boolean preencidoCombobox(JCheckBox check, String string)
     {
       boolean test;
       if(check.isSelected()){
@@ -877,16 +974,20 @@ public class TelaRelatoriosContas extends javax.swing.JDialog {
     
     public void travarComponentes()
     {
-     jTextFieldValorMenor.setEditable(false);
-     jTextFieldValorMaior.setEditable(false);
+     jComboBoxStatus.setEnabled(false);
      jTextFieldIdMenor.setEditable(false);
      jTextFieldIdMaior.setEditable(false);
      jFormattedTextFieldDataMenor.setEditable(false);
      jFormattedTextFieldDataMaior.setEditable(false);
+     jComboBoxCategoria.setEnabled(false);
      jComboBoxSocio.setEnabled(false);
     }
-
     
+    
+    /**
+     * @param args the command line arguments
+     */
+
     
     
     public static void main(String args[]) {
@@ -913,47 +1014,42 @@ public class TelaRelatoriosContas extends javax.swing.JDialog {
         }
         //</editor-fold>
 
-        /* Create and display the dialog */
+        /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                TelaRelatoriosContas dialog = new TelaRelatoriosContas(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
+                new TelaRelatoriosContas().setVisible(true);
             }
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JCheckBox jCheckBoxCategoria;
     private javax.swing.JCheckBox jCheckBoxData;
     private javax.swing.JCheckBox jCheckBoxId;
     private javax.swing.JCheckBox jCheckBoxSocio;
-    private javax.swing.JCheckBox jCheckBoxValor;
+    private javax.swing.JCheckBox jCheckBoxStatus;
+    private javax.swing.JCheckBox jCheckCategoria;
     private javax.swing.JCheckBox jCheckData;
-    private javax.swing.JCheckBox jCheckFuncionario;
-    private javax.swing.JCheckBox jCheckOrdernarValor;
     private javax.swing.JCheckBox jCheckRegristro;
     private javax.swing.JCheckBox jCheckSocio;
+    private javax.swing.JComboBox jComboBoxCategoria;
     private javax.swing.JComboBox jComboBoxSocio;
+    private javax.swing.JComboBox jComboBoxStatus;
     private javax.swing.JFormattedTextField jFormattedTextFieldDataMaior;
     private javax.swing.JFormattedTextField jFormattedTextFieldDataMenor;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
+    private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel14;
@@ -965,10 +1061,10 @@ public class TelaRelatoriosContas extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
     private javax.swing.JTextField jTextFieldIdMaior;
     private javax.swing.JTextField jTextFieldIdMenor;
-    private javax.swing.JTextField jTextFieldValorMaior;
-    private javax.swing.JTextField jTextFieldValorMenor;
     // End of variables declaration//GEN-END:variables
 }
