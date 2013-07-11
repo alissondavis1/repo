@@ -120,7 +120,7 @@ public class TelaLogin extends javax.swing.JFrame {
     private void jButtonTelaLoginLogarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTelaLoginLogarActionPerformed
 
         //codigo para teste
-       
+    
         
         Session session = null;
         try {
@@ -174,6 +174,7 @@ public class TelaLogin extends javax.swing.JFrame {
                 session.close();
             }
         }
+    
 
     }//GEN-LAST:event_jButtonTelaLoginLogarActionPerformed
 
@@ -211,8 +212,7 @@ public class TelaLogin extends javax.swing.JFrame {
                     Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
                     ex.printStackTrace();
                 }
-               
-                  
+                          
                 new TelaPrincipal().setVisible(true);
                
                 
