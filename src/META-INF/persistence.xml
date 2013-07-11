@@ -35,6 +35,7 @@
     <class>entidades.Hidrometro</class>
     <class>entidades.Taxasconta</class>
     <class>dao.Enderecopessoa</class>
+    <class>entidades.TablesPriv</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/acal?zeroDateTimeBehavior=convertToNull"/>
       <property name="javax.persistence.jdbc.password" value="123"/>

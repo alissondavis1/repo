@@ -6,6 +6,7 @@ package dao;
 
 
 import daoInterfaces.UsuarioInterface;
+import entidades.TablesPriv;
 import entidades.User;
 import java.util.List;
 import org.hibernate.HibernateException;
@@ -54,7 +55,9 @@ public class DaoUsuario implements UsuarioInterface{
     sessao = HibernateUtilUser.getSessionFactory().openSession();
     transaction =  sessao.beginTransaction();
     
-    if(!privilegio.equals("0")){sessao.createSQLQuery(privilegio).executeUpdate();}
+    if(!privilegio.equals("")){
+        
+    sessao.createSQLQuery(privilegio).executeUpdate();}
     sessao.getTransaction().commit();
     
        
@@ -69,6 +72,30 @@ public class DaoUsuario implements UsuarioInterface{
      }
     }
    
+     public void dropUsuario(String usuario) {
+       
+    Session sessao =  null;  
+    Transaction transaction = null;
+    
+    try{
+        
+    sessao = HibernateUtilUser.getSessionFactory().openSession();
+    transaction =  sessao.beginTransaction();
+    sessao.createSQLQuery("drop user '"+usuario+"'").executeUpdate();
+    //if(!privilegio.equals("0")){sessao.createSQLQuery(privilegio).executeUpdate();}
+    sessao.getTransaction().commit();
+    
+        System.out.println(usuario);
+        //System.out.println(privilegio);
+    }    
+    catch(HibernateException e)
+    {
+        System.out.println(e);
+    }
+      finally{
+    sessao.close();
+     }
+    }
     
     public void novoUsuario(String usuario) {
        
@@ -171,7 +198,35 @@ public class DaoUsuario implements UsuarioInterface{
     return user;
     }
         
+       public List<TablesPriv> BuscaTodosUsuarios() {
+       
+        List<TablesPriv> user = null;
+        Session sessao = null; 
+        Query query = null;
+        Transaction transacao = null;
         
+        try{
+           sessao = HibernateUtilUser.getSessionFactory().openSession();
+           transacao = sessao.beginTransaction();
+           query = sessao.createQuery("from TablesPriv ");
+         
+          
+           
+           user = query.list();
+           transacao.commit(); 
+           
+        }
+        catch(HibernateException e)
+        {
+            System.out.println(e);
+            transacao.rollback();
+        }
+        finally
+        {
+             sessao.close();
+        }  
+    return user;
+    }  
     
     
     public User BuscaUsuario(String nome, String pass) {

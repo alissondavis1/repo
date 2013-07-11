@@ -9,5 +9,7 @@
     <property name="hibernate.connection.password">123</property>
     <mapping class="entidades.User"/>
     <mapping class="entidades.UserPK"/>
+    <mapping class="entidades.TablesPriv"/>
+    <mapping class="entidades.TablesPrivPK"/>
   </session-factory>
 </hibernate-configuration>

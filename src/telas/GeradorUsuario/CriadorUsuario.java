@@ -43,6 +43,7 @@ public class CriadorUsuario extends javax.swing.JDialog {
         jPasswordFieldSenha = new javax.swing.JPasswordField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jButtonMarcarTodas = new javax.swing.JButton();
         jButtonDesmarcarTodos = new javax.swing.JButton();
@@ -171,6 +172,13 @@ public class CriadorUsuario extends javax.swing.JDialog {
 
         jLabel3.setText("Senha");
 
+        jButton1.setText("Pesquisar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -182,9 +190,14 @@ public class CriadorUsuario extends javax.swing.JDialog {
                     .addComponent(jTextFieldUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addComponent(jPasswordFieldSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jPasswordFieldSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton1)
+                        .addGap(65, 65, 65))))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -198,6 +211,10 @@ public class CriadorUsuario extends javax.swing.JDialog {
                     .addComponent(jTextFieldUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPasswordFieldSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addContainerGap())
         );
 
         jPanel4.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -752,7 +769,7 @@ public class CriadorUsuario extends javax.swing.JDialog {
                 .addGap(0, 0, 0)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 59, Short.MAX_VALUE))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -960,6 +977,7 @@ public class CriadorUsuario extends javax.swing.JDialog {
       jCheckBoxChequesAlterar.setSelected(false);
       jCheckBoxChequesApagar.setSelected(false);
       
+      jCheckBoxContasConsultar.setSelected(false);
       jCheckBoxContasTodos.setSelected(false);
       jCheckBoxContasSalvar.setSelected(false);
       jCheckBoxContasAlterar.setSelected(false);
@@ -1020,38 +1038,38 @@ public class CriadorUsuario extends javax.swing.JDialog {
            
           if(!entradas(jTextFieldUsuario.getText().trim()).equals("0"))
            {
-               privilegios1 += entradas(jTextFieldUsuario.getText().trim())+"\n" ;
+               privilegios1 += entradas(jTextFieldUsuario.getText().trim()) ;
                cont++;
            }
            if(!saidas(jTextFieldUsuario.getText().trim()).equals("0"))
            {
-               privilegios2 += saidas(jTextFieldUsuario.getText().trim())+"\n" ;
+               privilegios2 += saidas(jTextFieldUsuario.getText().trim()) ;
                cont++;
            }
            if(!cheques(jTextFieldUsuario.getText().trim()).equals("0"))
            {
-               privilegios3 += cheques(jTextFieldUsuario.getText().trim())+"\n" ;
+               privilegios3 += cheques(jTextFieldUsuario.getText().trim()) ;
                 cont++;
            }
            if(!contas(jTextFieldUsuario.getText().trim()).equals("0"))
            {
-               privilegios4 += contas(jTextFieldUsuario.getText().trim())+"\n" ;
+               privilegios4 += contas(jTextFieldUsuario.getText().trim()) ;
                 cont++;
            }
            if(!taxas(jTextFieldUsuario.getText().trim()).equals("0"))
            {
-               privilegios5 += taxas(jTextFieldUsuario.getText().trim())+"\n" ;
+               privilegios5 += taxas(jTextFieldUsuario.getText().trim()) ;
                 cont++;
            }
            if(!socios(jTextFieldUsuario.getText().trim()).equals("0"))
            {
-               privilegios6 += socios(jTextFieldUsuario.getText().trim())+"\n" ;
+               privilegios6 += socios(jTextFieldUsuario.getText().trim()) ;
                 cont++;
            }
           //o usuario ja existe no banco?
-           if(new DaoUsuario().BuscaUsuarioBoolean(usuario)==true)
+           if(new DaoUsuario().BuscaUsuarioBoolean(jTextFieldUsuario.getText()))
            {
-            JOptionPane.showMessageDialog(null,"Nome de usuario ja cadastrado, tente novamente");
+            JOptionPane.showMessageDialog(this,"Nome de usuario ja cadastrado, tente novamente");
            }
            else{
                DaoUsuario user = new DaoUsuario();
@@ -1062,12 +1080,23 @@ public class CriadorUsuario extends javax.swing.JDialog {
              user.privilegios(privilegios4);
              user.privilegios(privilegios5);
              user.privilegios(privilegios6);
-             
+             jButtonDesmarcarTodosActionPerformed(evt);
+             jTextFieldUsuario.setText("");
+             jPasswordFieldSenha.setText("");
+             JOptionPane.showMessageDialog(this,"Usuário salvo com sucesso","Atenção",JOptionPane.INFORMATION_MESSAGE);
            }
        }
        
        
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
+        PesquisarUsuario pu = new PesquisarUsuario(null, true);
+        pu.setLocationRelativeTo(null);
+        pu.setVisible(true);
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
     private void travarComponentes()
     {
     jCheckBoxEntradasLogSalvar.setEnabled(false);
@@ -1478,6 +1507,7 @@ public class CriadorUsuario extends javax.swing.JDialog {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButtonDesmarcarTodos;
     private javax.swing.JButton jButtonMarcarTodas;

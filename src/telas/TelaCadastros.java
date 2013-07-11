@@ -3685,6 +3685,13 @@ public class TelaCadastros extends javax.swing.JFrame {
 
     private void preencherTabelaComLike() {
         DefaultTableModel model;
+       
+     try{ 
+        Properties prop = new Properties();
+        prop.load(new FileInputStream("properties/hibernate.properties"));
+        if(!prop.get("hibernate.connection.username").equals("root")){
+            throw new Exception("Você não tem privilégios de Administrador");
+        } 
         if (pesquisarTable.equals("funcionarios") || pesquisarTable.equals("importar funcionário")) {
             ArrayList<Funcionario> f1 = (ArrayList) new DaoFuncionario().BuscarFuncionarioLikeNome(jTextField2.getText());
 
@@ -3876,12 +3883,22 @@ public class TelaCadastros extends javax.swing.JFrame {
             }
             
         }
-
+    }catch(Exception e){
+        
+        JOptionPane.showMessageDialog(this,"Erro: "+e.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE);
+    }
+     
+    
     }
 
     private void preencherTabelaComTodos() {
         DefaultTableModel model;
-
+    try{
+         Properties prop = new Properties();
+        prop.load(new FileInputStream("properties/hibernate.properties"));
+        if(!prop.get("hibernate.connection.username").equals("root")){
+            throw new Exception("Você não tem privilégios de Administrador");
+        }
         if (pesquisarTable.equals("funcionarios") || pesquisarTable.equals("importar funcionário")) {
             ArrayList<Funcionario> funcionarios = (ArrayList) new DaoFuncionario().BuscarFuncionarios();
             model = (DefaultTableModel) jTable1.getModel();
@@ -4080,6 +4097,10 @@ public class TelaCadastros extends javax.swing.JFrame {
             }
             
         }
+    }    catch(Exception e){
+    
+        JOptionPane.showMessageDialog(this,"Erro: "+e.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE);
+}
     }
 
     private void jButtonPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPesquisaActionPerformed
