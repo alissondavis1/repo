@@ -43023,3 +43023,2227 @@ Caused by: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: SELECT com
 14:45:24,971 TRACE StringType:172 - returning 'Y' as column: Super38_40_
 14:45:24,971 TRACE StringType:172 - returning 'Y' as column: Trigger39_40_
 14:45:24,971 TRACE StringType:172 - returning 'Y' as column: Update40_40_
+14:47:21,099  INFO Version:15 - Hibernate Annotations 3.3.1.GA
+14:47:21,162  INFO Environment:514 - Hibernate 3.2.5
+14:47:21,177  INFO Environment:547 - hibernate.properties not found
+14:47:21,177  INFO Environment:681 - Bytecode provider name : cglib
+14:47:21,193  INFO Environment:598 - using JDK 1.4 java.sql.Timestamp handling
+14:47:21,474  INFO Configuration:1426 - configuring from resource: /hibernate.cfg.xml
+14:47:21,474  INFO Configuration:1403 - Configuration resource: /hibernate.cfg.xml
+14:47:21,802  INFO Configuration:1541 - Configured SessionFactory: null
+14:47:21,990  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Categoriasocio
+14:47:22,115  INFO EntityBinder:424 - Bind entity entidades.Categoriasocio on table categoriasocio
+14:47:22,349  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Cheque
+14:47:22,349  INFO EntityBinder:424 - Bind entity entidades.Cheque on table cheque
+14:47:22,365  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Chequeslog
+14:47:22,380  INFO EntityBinder:424 - Bind entity entidades.Chequeslog on table chequeslog
+14:47:22,380  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Conta
+14:47:22,380  INFO EntityBinder:424 - Bind entity entidades.Conta on table conta
+14:47:22,412  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Contaslog
+14:47:22,412  INFO EntityBinder:424 - Bind entity entidades.Contaslog on table contaslog
+14:47:22,427  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Contrato
+14:47:22,427  INFO EntityBinder:424 - Bind entity entidades.Contrato on table contrato
+14:47:22,427  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Endereco
+14:47:22,427  INFO EntityBinder:424 - Bind entity entidades.Endereco on table endereco
+14:47:22,443  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Entrada
+14:47:22,443  INFO EntityBinder:424 - Bind entity entidades.Entrada on table entrada
+14:47:22,459  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Entradaslog
+14:47:22,474  INFO EntityBinder:424 - Bind entity entidades.Entradaslog on table entradaslog
+14:47:22,490  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Funcionario
+14:47:22,490  INFO EntityBinder:424 - Bind entity entidades.Funcionario on table funcionario
+14:47:22,521  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Hidrometro
+14:47:22,521  INFO EntityBinder:424 - Bind entity entidades.Hidrometro on table hidrometro
+14:47:22,521  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Motivodespesa
+14:47:22,521  INFO EntityBinder:424 - Bind entity entidades.Motivodespesa on table motivodespesa
+14:47:22,537  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Motivoentrada
+14:47:22,537  INFO EntityBinder:424 - Bind entity entidades.Motivoentrada on table motivoentrada
+14:47:22,537  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Pessoa
+14:47:22,537  INFO EntityBinder:424 - Bind entity entidades.Pessoa on table pessoa
+14:47:22,568  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Saida
+14:47:22,584  INFO EntityBinder:424 - Bind entity entidades.Saida on table saida
+14:47:22,599  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Saidaslog
+14:47:22,599  INFO EntityBinder:424 - Bind entity entidades.Saidaslog on table saidaslog
+14:47:22,646  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Socio
+14:47:22,646  INFO EntityBinder:424 - Bind entity entidades.Socio on table socio
+14:47:22,662  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Taxa
+14:47:22,662  INFO EntityBinder:424 - Bind entity entidades.Taxa on table taxa
+14:47:22,677  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Taxasconta
+14:47:22,677  INFO EntityBinder:424 - Bind entity entidades.Taxasconta on table taxasconta
+14:47:22,677  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Enderecopessoa
+14:47:22,677  INFO EntityBinder:424 - Bind entity entidades.Enderecopessoa on table enderecopessoa
+14:47:22,834  INFO CollectionBinder:651 - Mapping collection: entidades.Categoriasocio.socioList -> socio
+14:47:22,834  INFO CollectionBinder:651 - Mapping collection: entidades.Conta.taxascontaList -> taxasconta
+14:47:22,834  INFO CollectionBinder:651 - Mapping collection: entidades.Endereco.enderecopessoaList -> enderecopessoa
+14:47:22,834  INFO CollectionBinder:651 - Mapping collection: entidades.Endereco.pessoaList -> pessoa
+14:47:22,834  INFO CollectionBinder:651 - Mapping collection: entidades.Funcionario.chequeList -> cheque
+14:47:22,834  INFO CollectionBinder:651 - Mapping collection: entidades.Funcionario.entradaList -> entrada
+14:47:22,834  INFO CollectionBinder:651 - Mapping collection: entidades.Funcionario.saidaList -> saida
+14:47:22,849  INFO CollectionBinder:651 - Mapping collection: entidades.Motivodespesa.chequeList -> cheque
+14:47:22,849  INFO CollectionBinder:651 - Mapping collection: entidades.Motivodespesa.saidaList -> saida
+14:47:22,849  INFO CollectionBinder:651 - Mapping collection: entidades.Motivoentrada.entradaList -> entrada
+14:47:22,849  INFO CollectionBinder:651 - Mapping collection: entidades.Pessoa.enderecopessoaList -> enderecopessoa
+14:47:22,849  INFO CollectionBinder:651 - Mapping collection: entidades.Socio.entradaList -> entrada
+14:47:22,849  INFO CollectionBinder:651 - Mapping collection: entidades.Taxa.categoriasocioList -> categoriasocio
+14:47:22,865  INFO CollectionBinder:651 - Mapping collection: entidades.Taxa.taxascontaList -> taxasconta
+14:47:22,865  INFO CollectionBinder:651 - Mapping collection: entidades.Enderecopessoa.contaCollection -> conta
+14:47:22,865  INFO AnnotationConfiguration:365 - Hibernate Validator not found: ignoring
+14:47:22,880  INFO DriverManagerConnectionProvider:41 - Using Hibernate built-in connection pool (not for production use!)
+14:47:22,880  INFO DriverManagerConnectionProvider:42 - Hibernate connection pool size: 20
+14:47:22,880  INFO DriverManagerConnectionProvider:45 - autocommit mode: false
+14:47:22,896  INFO DriverManagerConnectionProvider:80 - using driver: com.mysql.jdbc.Driver at URL: jdbc:mysql://localhost:3306/acal?createDatabaseIfNotExist=true
+14:47:22,896  INFO DriverManagerConnectionProvider:86 - connection properties: {user=root, password=****}
+14:47:23,427  INFO SettingsFactory:89 - RDBMS: MySQL, version: 5.5.28
+14:47:23,443  INFO SettingsFactory:90 - JDBC driver: MySQL-AB JDBC Driver, version: mysql-connector-java-5.1.18 ( Revision: tonci.grgin@oracle.com-20110930151701-jfj14ddfq48ifkfq )
+14:47:23,459  INFO Dialect:152 - Using dialect: org.hibernate.dialect.MySQLDialect
+14:47:23,474  INFO TransactionFactoryFactory:31 - Using default transaction strategy (direct JDBC transactions)
+14:47:23,474  INFO TransactionManagerLookupFactory:33 - No TransactionManagerLookup configured (in JTA environment, use of read-write or transactional second-level cache is not recommended)
+14:47:23,474  INFO SettingsFactory:143 - Automatic flush during beforeCompletion(): disabled
+14:47:23,474  INFO SettingsFactory:147 - Automatic session close at end of transaction: disabled
+14:47:23,474  INFO SettingsFactory:154 - JDBC batch size: 15
+14:47:23,474  INFO SettingsFactory:157 - JDBC batch updates for versioned data: disabled
+14:47:23,490  INFO SettingsFactory:162 - Scrollable result sets: enabled
+14:47:23,490  INFO SettingsFactory:170 - JDBC3 getGeneratedKeys(): enabled
+14:47:23,490  INFO SettingsFactory:178 - Connection release mode: auto
+14:47:23,490  INFO SettingsFactory:202 - Maximum outer join fetch depth: 2
+14:47:23,490  INFO SettingsFactory:205 - Default batch fetch size: 1
+14:47:23,490  INFO SettingsFactory:209 - Generate SQL with comments: enabled
+14:47:23,490  INFO SettingsFactory:213 - Order SQL updates by primary key: disabled
+14:47:23,490  INFO SettingsFactory:217 - Order SQL inserts for batching: disabled
+14:47:23,490  INFO SettingsFactory:386 - Query translator: org.hibernate.hql.ast.ASTQueryTranslatorFactory
+14:47:23,490  INFO ASTQueryTranslatorFactory:24 - Using ASTQueryTranslatorFactory
+14:47:23,490  INFO SettingsFactory:225 - Query language substitutions: {}
+14:47:23,490  INFO SettingsFactory:230 - JPA-QL strict compliance: disabled
+14:47:23,505  INFO SettingsFactory:235 - Second-level cache: enabled
+14:47:23,505  INFO SettingsFactory:239 - Query cache: disabled
+14:47:23,505  INFO SettingsFactory:373 - Cache provider: org.hibernate.cache.NoCacheProvider
+14:47:23,505  INFO SettingsFactory:254 - Optimize cache for minimal puts: disabled
+14:47:23,505  INFO SettingsFactory:263 - Structured second-level cache entries: disabled
+14:47:23,521  INFO SettingsFactory:283 - Echoing all SQL to stdout
+14:47:23,521  INFO SettingsFactory:290 - Statistics: disabled
+14:47:23,521  INFO SettingsFactory:294 - Deleted entity synthetic identifier rollback: disabled
+14:47:23,521  INFO SettingsFactory:309 - Default entity-mode: pojo
+14:47:23,521  INFO SettingsFactory:313 - Named query checking : enabled
+14:47:23,568  INFO SessionFactoryImpl:161 - building session factory
+14:47:24,490  INFO SessionFactoryObjectFactory:82 - Not binding factory to JNDI, no JNDI name configured
+14:47:24,506  INFO SchemaUpdate:115 - Running hbm2ddl schema update
+14:47:24,506  INFO SchemaUpdate:126 - fetching database metadata
+14:47:24,506  INFO SchemaUpdate:138 - updating schema
+14:47:24,568  INFO TableMetadata:39 - table found: acal.categoriasocio
+14:47:24,568  INFO TableMetadata:40 - columns: [id, taxasid, nome, descricao]
+14:47:24,568  INFO TableMetadata:42 - foreign keys: [fk271f6b9aa011b865]
+14:47:24,568  INFO TableMetadata:43 - indexes: [primary, fk271f6b9aa011b865]
+14:47:24,631  INFO TableMetadata:39 - table found: acal.cheque
+14:47:24,631  INFO TableMetadata:40 - columns: [id, idfuncionario, valor, datapagamento, idmotivodespesa, datavencimento, observacoes, numero]
+14:47:24,631  INFO TableMetadata:42 - foreign keys: [fkaed8f221ee3fa458, fkaed8f221e196a484]
+14:47:24,631  INFO TableMetadata:43 - indexes: [primary, fkaed8f221ee3fa458, fkaed8f221e196a484]
+14:47:24,693  INFO TableMetadata:39 - table found: acal.chequeslog
+14:47:24,693  INFO TableMetadata:40 - columns: [id, valor, dataalteracao, usuariobanco, datapagamento, tipo, idmotivodepesa, datavencimento, idfuncionarioalteracao, observacoes, numero, idoriginal]
+14:47:24,693  INFO TableMetadata:42 - foreign keys: []
+14:47:24,693  INFO TableMetadata:43 - indexes: [primary]
+14:47:24,771  INFO TableMetadata:39 - table found: acal.conta
+14:47:24,771  INFO TableMetadata:40 - columns: [id, datapag, datagerada, observacoes, datavence, idenderecopessoa]
+14:47:24,771  INFO TableMetadata:42 - foreign keys: [fk5a7376f50a7b5d2]
+14:47:24,771  INFO TableMetadata:43 - indexes: [primary, fk5a7376f50a7b5d2]
+14:47:24,818  INFO TableMetadata:39 - table found: acal.contaslog
+14:47:24,818  INFO TableMetadata:40 - columns: [id, taxarelogio, horaregristro, datapag, tipo, idnumerosocio, usuarioalteracao, observacoes, taxasocio, datavence, idoriginal]
+14:47:24,818  INFO TableMetadata:42 - foreign keys: []
+14:47:24,818  INFO TableMetadata:43 - indexes: [primary]
+14:47:24,849  INFO TableMetadata:39 - table found: acal.contrato
+14:47:24,849  INFO TableMetadata:40 - columns: [id, corpo, nome, descricao]
+14:47:24,849  INFO TableMetadata:42 - foreign keys: []
+14:47:24,849  INFO TableMetadata:43 - indexes: [primary]
+14:47:24,881  INFO TableMetadata:39 - table found: acal.endereco
+14:47:24,881  INFO TableMetadata:40 - columns: [id, tipo, nome, descricao]
+14:47:24,881  INFO TableMetadata:42 - foreign keys: []
+14:47:24,881  INFO TableMetadata:43 - indexes: [primary]
+14:47:24,912  INFO TableMetadata:39 - table found: acal.enderecopessoa
+14:47:24,912  INFO TableMetadata:40 - columns: [id, idendereco, idpessoa, numero]
+14:47:24,912  INFO TableMetadata:42 - foreign keys: [fk80ecbcb0f1e3c984, fk80ecbcb0e2caedc0]
+14:47:24,912  INFO TableMetadata:43 - indexes: [fk80ecbcb0f1e3c984, fk80ecbcb0e2caedc0, primary]
+14:47:24,943  INFO TableMetadata:39 - table found: acal.entrada
+14:47:24,943  INFO TableMetadata:40 - columns: [id, idfuncionario, valor, data, idmotivoentrada, observacao, idcedente]
+14:47:24,943  INFO TableMetadata:42 - foreign keys: [fka122665776e134dc, fka1226657e196a484, fka1226657fda06717]
+14:47:24,943  INFO TableMetadata:43 - indexes: [fka122665776e134dc, fka1226657e196a484, fka1226657fda06717, primary]
+14:47:25,021  INFO TableMetadata:39 - table found: acal.entradaslog
+14:47:25,021  INFO TableMetadata:40 - columns: [id, idfuncionario, dataoriginal, valor, dataalteracao, tipo, idmotivoentrada, usuarioalteracao, observacao, idoriginal, idcedente]
+14:47:25,037  INFO TableMetadata:42 - foreign keys: []
+14:47:25,037  INFO TableMetadata:43 - indexes: [primary]
+14:47:25,068  INFO TableMetadata:39 - table found: acal.funcionario
+14:47:25,068  INFO TableMetadata:40 - columns: [id, salario, idpessoa, datacontratacao, observacao, cargo, matricula]
+14:47:25,068  INFO TableMetadata:42 - foreign keys: [fk50401ddbe2caedc0]
+14:47:25,068  INFO TableMetadata:43 - indexes: [primary, idpessoa, fk50401ddbe2caedc0]
+14:47:25,099  INFO TableMetadata:39 - table found: acal.hidrometro
+14:47:25,099  INFO TableMetadata:40 - columns: [idhidrometro, consumo, idconta]
+14:47:25,099  INFO TableMetadata:42 - foreign keys: [fkf3fd0019d45f0a2c]
+14:47:25,099  INFO TableMetadata:43 - indexes: [fkf3fd0019d45f0a2c, primary, idconta]
+14:47:25,131  INFO TableMetadata:39 - table found: acal.motivodespesa
+14:47:25,131  INFO TableMetadata:40 - columns: [id, nome, observacao, descricao]
+14:47:25,131  INFO TableMetadata:42 - foreign keys: []
+14:47:25,131  INFO TableMetadata:43 - indexes: [primary]
+14:47:25,162  INFO TableMetadata:39 - table found: acal.motivoentrada
+14:47:25,162  INFO TableMetadata:40 - columns: [id, nome, observacao, descricao]
+14:47:25,162  INFO TableMetadata:42 - foreign keys: []
+14:47:25,162  INFO TableMetadata:43 - indexes: [primary]
+14:47:25,209  INFO TableMetadata:39 - table found: acal.pessoa
+14:47:25,209  INFO TableMetadata:40 - columns: [uf, status, datanasc, nomemae, numeromatricula, sexo, observacoes, nomepai, id, bairro, cidade, sobrenome, cep, email, idendereco, telefone, numeroendereco, rgemissao, cpf, nome, rgexpedidor, rgnumero, apelido]
+14:47:25,209  INFO TableMetadata:42 - foreign keys: [fkc4e40fa7f1e3c984]
+14:47:25,209  INFO TableMetadata:43 - indexes: [primary, fkc4e40fa7f1e3c984]
+14:47:25,240  INFO TableMetadata:39 - table found: acal.saida
+14:47:25,240  INFO TableMetadata:40 - columns: [id, idmotivosaida, idfuncionario, valor, data, favorecido, observacao]
+14:47:25,240  INFO TableMetadata:42 - foreign keys: [fk6823d98e196a484, fk6823d98a2d1cd1b]
+14:47:25,240  INFO TableMetadata:43 - indexes: [primary, fk6823d98e196a484, fk6823d98a2d1cd1b]
+14:47:25,302  INFO TableMetadata:39 - table found: acal.saidaslog
+14:47:25,302  INFO TableMetadata:40 - columns: [id, idmotivosaida, idfuncionario, dataoriginal, valor, dataalteracao, tipo, usuarioalteracao, idfuncionarioaltercao, favorecido, observacao, idoriginal]
+14:47:25,302  INFO TableMetadata:42 - foreign keys: []
+14:47:25,302  INFO TableMetadata:43 - indexes: [primary]
+14:47:25,349  INFO TableMetadata:39 - table found: acal.socio
+14:47:25,349  INFO TableMetadata:40 - columns: [id, datamatricula, dataaprovacao, numerosocio, idpessoa, idcategoriasocio, observacao, datavence]
+14:47:25,349  INFO TableMetadata:42 - foreign keys: [fk68884ede2caedc0, fk68884ed9d0d13a6]
+14:47:25,349  INFO TableMetadata:43 - indexes: [fk68884ede2caedc0, fk68884ed9d0d13a6, primary, idpessoa]
+14:47:25,381  INFO TableMetadata:39 - table found: acal.taxa
+14:47:25,381  INFO TableMetadata:40 - columns: [id, valor, nome, observacao, descricao]
+14:47:25,381  INFO TableMetadata:42 - foreign keys: []
+14:47:25,381  INFO TableMetadata:43 - indexes: [primary]
+14:47:25,412  INFO TableMetadata:39 - table found: acal.taxasconta
+14:47:25,412  INFO TableMetadata:40 - columns: [contaid, taxaid, idtaxasconta]
+14:47:25,412  INFO TableMetadata:42 - foreign keys: [fk65e35472c6f1071e, fk65e35472aa5c0bc2]
+14:47:25,427  INFO TableMetadata:43 - indexes: [fk65e35472c6f1071e, primary, fk65e35472aa5c0bc2]
+14:47:25,427  INFO SchemaUpdate:160 - schema update complete
+14:47:28,146  INFO Configuration:1426 - configuring from resource: hibernateUser.cfg.xml
+14:47:28,146  INFO Configuration:1403 - Configuration resource: hibernateUser.cfg.xml
+14:47:28,178  INFO Configuration:1541 - Configured SessionFactory: null
+14:47:28,193  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.User
+14:47:28,193  INFO EntityBinder:424 - Bind entity entidades.User on table user
+14:47:28,224  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.TablesPriv
+14:47:28,224  INFO QueryBinder:64 - Binding Named query: TablesPriv.findAll => SELECT t FROM TablesPriv t
+14:47:28,224  INFO EntityBinder:424 - Bind entity entidades.TablesPriv on table tables_priv
+14:47:28,240  INFO AnnotationConfiguration:365 - Hibernate Validator not found: ignoring
+14:47:28,256  INFO DriverManagerConnectionProvider:41 - Using Hibernate built-in connection pool (not for production use!)
+14:47:28,256  INFO DriverManagerConnectionProvider:42 - Hibernate connection pool size: 20
+14:47:28,256  INFO DriverManagerConnectionProvider:45 - autocommit mode: false
+14:47:28,256  INFO DriverManagerConnectionProvider:80 - using driver: com.mysql.jdbc.Driver at URL: jdbc:mysql://localhost:3306/mysql?zeroDateTimeBehavior=convertToNull
+14:47:28,256  INFO DriverManagerConnectionProvider:86 - connection properties: {user=root, password=****}
+14:47:28,303  INFO SettingsFactory:89 - RDBMS: MySQL, version: 5.5.28
+14:47:28,303  INFO SettingsFactory:90 - JDBC driver: MySQL-AB JDBC Driver, version: mysql-connector-java-5.1.18 ( Revision: tonci.grgin@oracle.com-20110930151701-jfj14ddfq48ifkfq )
+14:47:28,303  INFO Dialect:152 - Using dialect: org.hibernate.dialect.MySQLDialect
+14:47:28,303  INFO TransactionFactoryFactory:31 - Using default transaction strategy (direct JDBC transactions)
+14:47:28,318  INFO TransactionManagerLookupFactory:33 - No TransactionManagerLookup configured (in JTA environment, use of read-write or transactional second-level cache is not recommended)
+14:47:28,318  INFO SettingsFactory:143 - Automatic flush during beforeCompletion(): disabled
+14:47:28,334  INFO SettingsFactory:147 - Automatic session close at end of transaction: disabled
+14:47:28,334  INFO SettingsFactory:154 - JDBC batch size: 15
+14:47:28,334  INFO SettingsFactory:157 - JDBC batch updates for versioned data: disabled
+14:47:28,334  INFO SettingsFactory:162 - Scrollable result sets: enabled
+14:47:28,334  INFO SettingsFactory:170 - JDBC3 getGeneratedKeys(): enabled
+14:47:28,334  INFO SettingsFactory:178 - Connection release mode: auto
+14:47:28,334  INFO SettingsFactory:202 - Maximum outer join fetch depth: 2
+14:47:28,334  INFO SettingsFactory:205 - Default batch fetch size: 1
+14:47:28,334  INFO SettingsFactory:209 - Generate SQL with comments: disabled
+14:47:28,334  INFO SettingsFactory:213 - Order SQL updates by primary key: disabled
+14:47:28,334  INFO SettingsFactory:217 - Order SQL inserts for batching: disabled
+14:47:28,334  INFO SettingsFactory:386 - Query translator: org.hibernate.hql.ast.ASTQueryTranslatorFactory
+14:47:28,334  INFO ASTQueryTranslatorFactory:24 - Using ASTQueryTranslatorFactory
+14:47:28,334  INFO SettingsFactory:225 - Query language substitutions: {}
+14:47:28,334  INFO SettingsFactory:230 - JPA-QL strict compliance: disabled
+14:47:28,334  INFO SettingsFactory:235 - Second-level cache: enabled
+14:47:28,334  INFO SettingsFactory:239 - Query cache: disabled
+14:47:28,349  INFO SettingsFactory:373 - Cache provider: org.hibernate.cache.NoCacheProvider
+14:47:28,349  INFO SettingsFactory:254 - Optimize cache for minimal puts: disabled
+14:47:28,349  INFO SettingsFactory:263 - Structured second-level cache entries: disabled
+14:47:28,349  INFO SettingsFactory:290 - Statistics: disabled
+14:47:28,349  INFO SettingsFactory:294 - Deleted entity synthetic identifier rollback: disabled
+14:47:28,349  INFO SettingsFactory:309 - Default entity-mode: pojo
+14:47:28,349  INFO SettingsFactory:313 - Named query checking : enabled
+14:47:28,365  INFO SessionFactoryImpl:161 - building session factory
+14:47:28,443  INFO SessionFactoryObjectFactory:82 - Not binding factory to JNDI, no JNDI name configured
+14:47:28,771 TRACE StringType:133 - binding 'root' to parameter: 1
+14:47:28,771 TRACE StringType:133 - binding '123' to parameter: 2
+14:47:28,787 TRACE StringType:172 - returning 'localhost' as column: Host40_
+14:47:28,787 TRACE StringType:172 - returning 'root' as column: User40_
+14:47:28,803 TRACE StringType:172 - returning 'Y' as column: Alter3_40_
+14:47:28,803 TRACE StringType:172 - returning 'Y' as column: Alter4_40_
+14:47:28,803 TRACE StringType:172 - returning 'Y' as column: Create6_40_
+14:47:28,803 TRACE StringType:172 - returning 'Y' as column: Create7_40_
+14:47:28,803 TRACE StringType:172 - returning 'Y' as column: Create8_40_
+14:47:28,803 TRACE StringType:172 - returning 'Y' as column: Create9_40_
+14:47:28,803 TRACE StringType:172 - returning 'Y' as column: Create10_40_
+14:47:28,803 TRACE StringType:172 - returning 'Y' as column: Create11_40_
+14:47:28,803 TRACE StringType:172 - returning 'Y' as column: Delete12_40_
+14:47:28,803 TRACE StringType:172 - returning 'Y' as column: Drop13_40_
+14:47:28,803 TRACE StringType:172 - returning 'Y' as column: Event14_40_
+14:47:28,803 TRACE StringType:172 - returning 'Y' as column: Execute15_40_
+14:47:28,803 TRACE StringType:172 - returning 'Y' as column: File16_40_
+14:47:28,818 TRACE StringType:172 - returning 'Y' as column: Grant17_40_
+14:47:28,818 TRACE StringType:172 - returning 'Y' as column: Index18_40_
+14:47:28,818 TRACE StringType:172 - returning 'Y' as column: Insert19_40_
+14:47:28,818 TRACE StringType:172 - returning 'Y' as column: Lock20_40_
+14:47:28,818 TRACE IntegerType:172 - returning '0' as column: max21_40_
+14:47:28,818 TRACE IntegerType:172 - returning '0' as column: max22_40_
+14:47:28,818 TRACE IntegerType:172 - returning '0' as column: max23_40_
+14:47:28,818 TRACE IntegerType:172 - returning '0' as column: max24_40_
+14:47:28,818 TRACE StringType:172 - returning '*23AE809DDACAF96AF0FD78ED04B6A265E05AA257' as column: Password40_
+14:47:28,818 TRACE StringType:172 - returning '' as column: plugin40_
+14:47:28,818 TRACE StringType:172 - returning 'Y' as column: Process27_40_
+14:47:28,818 TRACE StringType:172 - returning 'Y' as column: References28_40_
+14:47:28,818 TRACE StringType:172 - returning 'Y' as column: Reload29_40_
+14:47:28,818 TRACE StringType:172 - returning 'Y' as column: Repl30_40_
+14:47:28,818 TRACE StringType:172 - returning 'Y' as column: Repl31_40_
+14:47:28,818 TRACE StringType:172 - returning 'Y' as column: Select32_40_
+14:47:28,834 TRACE StringType:172 - returning 'Y' as column: Show33_40_
+14:47:28,834 TRACE StringType:172 - returning 'Y' as column: Show34_40_
+14:47:28,834 TRACE StringType:172 - returning 'Y' as column: Shutdown35_40_
+14:47:28,834 TRACE StringType:172 - returning '' as column: ssl37_40_
+14:47:28,834 TRACE StringType:172 - returning 'Y' as column: Super38_40_
+14:47:28,834 TRACE StringType:172 - returning 'Y' as column: Trigger39_40_
+14:47:28,834 TRACE StringType:172 - returning 'Y' as column: Update40_40_
+14:47:53,038  INFO Version:15 - Hibernate Annotations 3.3.1.GA
+14:47:53,069  INFO Environment:514 - Hibernate 3.2.5
+14:47:53,084  INFO Environment:547 - hibernate.properties not found
+14:47:53,084  INFO Environment:681 - Bytecode provider name : cglib
+14:47:53,100  INFO Environment:598 - using JDK 1.4 java.sql.Timestamp handling
+14:47:53,241  INFO Configuration:1426 - configuring from resource: /hibernate.cfg.xml
+14:47:53,241  INFO Configuration:1403 - Configuration resource: /hibernate.cfg.xml
+14:47:53,600  INFO Configuration:1541 - Configured SessionFactory: null
+14:47:53,741  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Categoriasocio
+14:47:53,866  INFO EntityBinder:424 - Bind entity entidades.Categoriasocio on table categoriasocio
+14:47:54,069  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Cheque
+14:47:54,069  INFO EntityBinder:424 - Bind entity entidades.Cheque on table cheque
+14:47:54,100  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Chequeslog
+14:47:54,100  INFO EntityBinder:424 - Bind entity entidades.Chequeslog on table chequeslog
+14:47:54,116  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Conta
+14:47:54,116  INFO EntityBinder:424 - Bind entity entidades.Conta on table conta
+14:47:54,147  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Contaslog
+14:47:54,163  INFO EntityBinder:424 - Bind entity entidades.Contaslog on table contaslog
+14:47:54,178  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Contrato
+14:47:54,178  INFO EntityBinder:424 - Bind entity entidades.Contrato on table contrato
+14:47:54,178  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Endereco
+14:47:54,194  INFO EntityBinder:424 - Bind entity entidades.Endereco on table endereco
+14:47:54,210  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Entrada
+14:47:54,210  INFO EntityBinder:424 - Bind entity entidades.Entrada on table entrada
+14:47:54,241  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Entradaslog
+14:47:54,241  INFO EntityBinder:424 - Bind entity entidades.Entradaslog on table entradaslog
+14:47:54,288  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Funcionario
+14:47:54,303  INFO EntityBinder:424 - Bind entity entidades.Funcionario on table funcionario
+14:47:54,350  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Hidrometro
+14:47:54,350  INFO EntityBinder:424 - Bind entity entidades.Hidrometro on table hidrometro
+14:47:54,350  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Motivodespesa
+14:47:54,366  INFO EntityBinder:424 - Bind entity entidades.Motivodespesa on table motivodespesa
+14:47:54,366  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Motivoentrada
+14:47:54,366  INFO EntityBinder:424 - Bind entity entidades.Motivoentrada on table motivoentrada
+14:47:54,381  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Pessoa
+14:47:54,381  INFO EntityBinder:424 - Bind entity entidades.Pessoa on table pessoa
+14:47:54,397  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Saida
+14:47:54,397  INFO EntityBinder:424 - Bind entity entidades.Saida on table saida
+14:47:54,413  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Saidaslog
+14:47:54,413  INFO EntityBinder:424 - Bind entity entidades.Saidaslog on table saidaslog
+14:47:54,460  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Socio
+14:47:54,460  INFO EntityBinder:424 - Bind entity entidades.Socio on table socio
+14:47:54,475  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Taxa
+14:47:54,475  INFO EntityBinder:424 - Bind entity entidades.Taxa on table taxa
+14:47:54,475  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Taxasconta
+14:47:54,491  INFO EntityBinder:424 - Bind entity entidades.Taxasconta on table taxasconta
+14:47:54,491  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Enderecopessoa
+14:47:54,491  INFO EntityBinder:424 - Bind entity entidades.Enderecopessoa on table enderecopessoa
+14:47:54,616  INFO CollectionBinder:651 - Mapping collection: entidades.Categoriasocio.socioList -> socio
+14:47:54,631  INFO CollectionBinder:651 - Mapping collection: entidades.Conta.taxascontaList -> taxasconta
+14:47:54,631  INFO CollectionBinder:651 - Mapping collection: entidades.Endereco.enderecopessoaList -> enderecopessoa
+14:47:54,631  INFO CollectionBinder:651 - Mapping collection: entidades.Endereco.pessoaList -> pessoa
+14:47:54,631  INFO CollectionBinder:651 - Mapping collection: entidades.Funcionario.chequeList -> cheque
+14:47:54,631  INFO CollectionBinder:651 - Mapping collection: entidades.Funcionario.entradaList -> entrada
+14:47:54,631  INFO CollectionBinder:651 - Mapping collection: entidades.Funcionario.saidaList -> saida
+14:47:54,647  INFO CollectionBinder:651 - Mapping collection: entidades.Motivodespesa.chequeList -> cheque
+14:47:54,647  INFO CollectionBinder:651 - Mapping collection: entidades.Motivodespesa.saidaList -> saida
+14:47:54,647  INFO CollectionBinder:651 - Mapping collection: entidades.Motivoentrada.entradaList -> entrada
+14:47:54,647  INFO CollectionBinder:651 - Mapping collection: entidades.Pessoa.enderecopessoaList -> enderecopessoa
+14:47:54,663  INFO CollectionBinder:651 - Mapping collection: entidades.Socio.entradaList -> entrada
+14:47:54,663  INFO CollectionBinder:651 - Mapping collection: entidades.Taxa.categoriasocioList -> categoriasocio
+14:47:54,663  INFO CollectionBinder:651 - Mapping collection: entidades.Taxa.taxascontaList -> taxasconta
+14:47:54,663  INFO CollectionBinder:651 - Mapping collection: entidades.Enderecopessoa.contaCollection -> conta
+14:47:54,663  INFO AnnotationConfiguration:365 - Hibernate Validator not found: ignoring
+14:47:54,694  INFO DriverManagerConnectionProvider:41 - Using Hibernate built-in connection pool (not for production use!)
+14:47:54,694  INFO DriverManagerConnectionProvider:42 - Hibernate connection pool size: 20
+14:47:54,694  INFO DriverManagerConnectionProvider:45 - autocommit mode: false
+14:47:54,710  INFO DriverManagerConnectionProvider:80 - using driver: com.mysql.jdbc.Driver at URL: jdbc:mysql://localhost:3306/acal?createDatabaseIfNotExist=true
+14:47:54,710  INFO DriverManagerConnectionProvider:86 - connection properties: {user=root, password=****}
+14:47:55,210  INFO SettingsFactory:89 - RDBMS: MySQL, version: 5.5.28
+14:47:55,210  INFO SettingsFactory:90 - JDBC driver: MySQL-AB JDBC Driver, version: mysql-connector-java-5.1.18 ( Revision: tonci.grgin@oracle.com-20110930151701-jfj14ddfq48ifkfq )
+14:47:55,241  INFO Dialect:152 - Using dialect: org.hibernate.dialect.MySQLDialect
+14:47:55,241  INFO TransactionFactoryFactory:31 - Using default transaction strategy (direct JDBC transactions)
+14:47:55,256  INFO TransactionManagerLookupFactory:33 - No TransactionManagerLookup configured (in JTA environment, use of read-write or transactional second-level cache is not recommended)
+14:47:55,256  INFO SettingsFactory:143 - Automatic flush during beforeCompletion(): disabled
+14:47:55,256  INFO SettingsFactory:147 - Automatic session close at end of transaction: disabled
+14:47:55,256  INFO SettingsFactory:154 - JDBC batch size: 15
+14:47:55,256  INFO SettingsFactory:157 - JDBC batch updates for versioned data: disabled
+14:47:55,256  INFO SettingsFactory:162 - Scrollable result sets: enabled
+14:47:55,256  INFO SettingsFactory:170 - JDBC3 getGeneratedKeys(): enabled
+14:47:55,256  INFO SettingsFactory:178 - Connection release mode: auto
+14:47:55,256  INFO SettingsFactory:202 - Maximum outer join fetch depth: 2
+14:47:55,272  INFO SettingsFactory:205 - Default batch fetch size: 1
+14:47:55,272  INFO SettingsFactory:209 - Generate SQL with comments: enabled
+14:47:55,272  INFO SettingsFactory:213 - Order SQL updates by primary key: disabled
+14:47:55,272  INFO SettingsFactory:217 - Order SQL inserts for batching: disabled
+14:47:55,272  INFO SettingsFactory:386 - Query translator: org.hibernate.hql.ast.ASTQueryTranslatorFactory
+14:47:55,272  INFO ASTQueryTranslatorFactory:24 - Using ASTQueryTranslatorFactory
+14:47:55,272  INFO SettingsFactory:225 - Query language substitutions: {}
+14:47:55,272  INFO SettingsFactory:230 - JPA-QL strict compliance: disabled
+14:47:55,272  INFO SettingsFactory:235 - Second-level cache: enabled
+14:47:55,272  INFO SettingsFactory:239 - Query cache: disabled
+14:47:55,272  INFO SettingsFactory:373 - Cache provider: org.hibernate.cache.NoCacheProvider
+14:47:55,272  INFO SettingsFactory:254 - Optimize cache for minimal puts: disabled
+14:47:55,272  INFO SettingsFactory:263 - Structured second-level cache entries: disabled
+14:47:55,288  INFO SettingsFactory:283 - Echoing all SQL to stdout
+14:47:55,288  INFO SettingsFactory:290 - Statistics: disabled
+14:47:55,288  INFO SettingsFactory:294 - Deleted entity synthetic identifier rollback: disabled
+14:47:55,288  INFO SettingsFactory:309 - Default entity-mode: pojo
+14:47:55,288  INFO SettingsFactory:313 - Named query checking : enabled
+14:47:55,350  INFO SessionFactoryImpl:161 - building session factory
+14:47:56,272  INFO SessionFactoryObjectFactory:82 - Not binding factory to JNDI, no JNDI name configured
+14:47:56,288  INFO SchemaUpdate:115 - Running hbm2ddl schema update
+14:47:56,288  INFO SchemaUpdate:126 - fetching database metadata
+14:47:56,288  INFO SchemaUpdate:138 - updating schema
+14:47:56,350  INFO TableMetadata:39 - table found: acal.categoriasocio
+14:47:56,350  INFO TableMetadata:40 - columns: [id, taxasid, nome, descricao]
+14:47:56,350  INFO TableMetadata:42 - foreign keys: [fk271f6b9aa011b865]
+14:47:56,350  INFO TableMetadata:43 - indexes: [primary, fk271f6b9aa011b865]
+14:47:56,397  INFO TableMetadata:39 - table found: acal.cheque
+14:47:56,397  INFO TableMetadata:40 - columns: [id, idfuncionario, valor, datapagamento, idmotivodespesa, datavencimento, observacoes, numero]
+14:47:56,397  INFO TableMetadata:42 - foreign keys: [fkaed8f221ee3fa458, fkaed8f221e196a484]
+14:47:56,397  INFO TableMetadata:43 - indexes: [primary, fkaed8f221ee3fa458, fkaed8f221e196a484]
+14:47:56,460  INFO TableMetadata:39 - table found: acal.chequeslog
+14:47:56,460  INFO TableMetadata:40 - columns: [id, valor, dataalteracao, usuariobanco, datapagamento, tipo, idmotivodepesa, datavencimento, idfuncionarioalteracao, observacoes, numero, idoriginal]
+14:47:56,460  INFO TableMetadata:42 - foreign keys: []
+14:47:56,460  INFO TableMetadata:43 - indexes: [primary]
+14:47:56,506  INFO TableMetadata:39 - table found: acal.conta
+14:47:56,506  INFO TableMetadata:40 - columns: [id, datapag, datagerada, observacoes, datavence, idenderecopessoa]
+14:47:56,506  INFO TableMetadata:42 - foreign keys: [fk5a7376f50a7b5d2]
+14:47:56,506  INFO TableMetadata:43 - indexes: [primary, fk5a7376f50a7b5d2]
+14:47:56,569  INFO TableMetadata:39 - table found: acal.contaslog
+14:47:56,569  INFO TableMetadata:40 - columns: [id, taxarelogio, horaregristro, datapag, tipo, idnumerosocio, usuarioalteracao, observacoes, taxasocio, datavence, idoriginal]
+14:47:56,569  INFO TableMetadata:42 - foreign keys: []
+14:47:56,569  INFO TableMetadata:43 - indexes: [primary]
+14:47:56,600  INFO TableMetadata:39 - table found: acal.contrato
+14:47:56,600  INFO TableMetadata:40 - columns: [id, corpo, nome, descricao]
+14:47:56,600  INFO TableMetadata:42 - foreign keys: []
+14:47:56,600  INFO TableMetadata:43 - indexes: [primary]
+14:47:56,631  INFO TableMetadata:39 - table found: acal.endereco
+14:47:56,631  INFO TableMetadata:40 - columns: [id, tipo, nome, descricao]
+14:47:56,631  INFO TableMetadata:42 - foreign keys: []
+14:47:56,631  INFO TableMetadata:43 - indexes: [primary]
+14:47:56,663  INFO TableMetadata:39 - table found: acal.enderecopessoa
+14:47:56,663  INFO TableMetadata:40 - columns: [id, idendereco, idpessoa, numero]
+14:47:56,663  INFO TableMetadata:42 - foreign keys: [fk80ecbcb0f1e3c984, fk80ecbcb0e2caedc0]
+14:47:56,663  INFO TableMetadata:43 - indexes: [fk80ecbcb0f1e3c984, fk80ecbcb0e2caedc0, primary]
+14:47:56,710  INFO TableMetadata:39 - table found: acal.entrada
+14:47:56,710  INFO TableMetadata:40 - columns: [id, idfuncionario, valor, data, idmotivoentrada, observacao, idcedente]
+14:47:56,710  INFO TableMetadata:42 - foreign keys: [fka122665776e134dc, fka1226657e196a484, fka1226657fda06717]
+14:47:56,710  INFO TableMetadata:43 - indexes: [fka122665776e134dc, fka1226657e196a484, fka1226657fda06717, primary]
+14:47:56,788  INFO TableMetadata:39 - table found: acal.entradaslog
+14:47:56,788  INFO TableMetadata:40 - columns: [id, idfuncionario, dataoriginal, valor, dataalteracao, tipo, idmotivoentrada, usuarioalteracao, observacao, idoriginal, idcedente]
+14:47:56,788  INFO TableMetadata:42 - foreign keys: []
+14:47:56,788  INFO TableMetadata:43 - indexes: [primary]
+14:47:56,819  INFO TableMetadata:39 - table found: acal.funcionario
+14:47:56,819  INFO TableMetadata:40 - columns: [id, salario, idpessoa, datacontratacao, observacao, cargo, matricula]
+14:47:56,819  INFO TableMetadata:42 - foreign keys: [fk50401ddbe2caedc0]
+14:47:56,819  INFO TableMetadata:43 - indexes: [primary, idpessoa, fk50401ddbe2caedc0]
+14:47:56,850  INFO TableMetadata:39 - table found: acal.hidrometro
+14:47:56,850  INFO TableMetadata:40 - columns: [idhidrometro, consumo, idconta]
+14:47:56,850  INFO TableMetadata:42 - foreign keys: [fkf3fd0019d45f0a2c]
+14:47:56,850  INFO TableMetadata:43 - indexes: [fkf3fd0019d45f0a2c, primary, idconta]
+14:47:56,897  INFO TableMetadata:39 - table found: acal.motivodespesa
+14:47:56,897  INFO TableMetadata:40 - columns: [id, nome, observacao, descricao]
+14:47:56,897  INFO TableMetadata:42 - foreign keys: []
+14:47:56,897  INFO TableMetadata:43 - indexes: [primary]
+14:47:56,913  INFO TableMetadata:39 - table found: acal.motivoentrada
+14:47:56,928  INFO TableMetadata:40 - columns: [id, nome, observacao, descricao]
+14:47:56,928  INFO TableMetadata:42 - foreign keys: []
+14:47:56,928  INFO TableMetadata:43 - indexes: [primary]
+14:47:56,960  INFO TableMetadata:39 - table found: acal.pessoa
+14:47:56,960  INFO TableMetadata:40 - columns: [uf, status, datanasc, nomemae, numeromatricula, sexo, observacoes, nomepai, id, bairro, cidade, sobrenome, cep, email, idendereco, telefone, numeroendereco, rgemissao, cpf, nome, rgexpedidor, rgnumero, apelido]
+14:47:56,960  INFO TableMetadata:42 - foreign keys: [fkc4e40fa7f1e3c984]
+14:47:56,960  INFO TableMetadata:43 - indexes: [primary, fkc4e40fa7f1e3c984]
+14:47:56,991  INFO TableMetadata:39 - table found: acal.saida
+14:47:56,991  INFO TableMetadata:40 - columns: [id, idmotivosaida, idfuncionario, valor, data, favorecido, observacao]
+14:47:57,006  INFO TableMetadata:42 - foreign keys: [fk6823d98e196a484, fk6823d98a2d1cd1b]
+14:47:57,006  INFO TableMetadata:43 - indexes: [primary, fk6823d98e196a484, fk6823d98a2d1cd1b]
+14:47:57,069  INFO TableMetadata:39 - table found: acal.saidaslog
+14:47:57,069  INFO TableMetadata:40 - columns: [id, idmotivosaida, idfuncionario, dataoriginal, valor, dataalteracao, tipo, usuarioalteracao, idfuncionarioaltercao, favorecido, observacao, idoriginal]
+14:47:57,069  INFO TableMetadata:42 - foreign keys: []
+14:47:57,069  INFO TableMetadata:43 - indexes: [primary]
+14:47:57,100  INFO TableMetadata:39 - table found: acal.socio
+14:47:57,116  INFO TableMetadata:40 - columns: [id, datamatricula, dataaprovacao, numerosocio, idpessoa, idcategoriasocio, observacao, datavence]
+14:47:57,116  INFO TableMetadata:42 - foreign keys: [fk68884ede2caedc0, fk68884ed9d0d13a6]
+14:47:57,116  INFO TableMetadata:43 - indexes: [fk68884ede2caedc0, fk68884ed9d0d13a6, primary, idpessoa]
+14:47:57,147  INFO TableMetadata:39 - table found: acal.taxa
+14:47:57,147  INFO TableMetadata:40 - columns: [id, valor, nome, observacao, descricao]
+14:47:57,147  INFO TableMetadata:42 - foreign keys: []
+14:47:57,147  INFO TableMetadata:43 - indexes: [primary]
+14:47:57,178  INFO TableMetadata:39 - table found: acal.taxasconta
+14:47:57,178  INFO TableMetadata:40 - columns: [contaid, taxaid, idtaxasconta]
+14:47:57,178  INFO TableMetadata:42 - foreign keys: [fk65e35472c6f1071e, fk65e35472aa5c0bc2]
+14:47:57,178  INFO TableMetadata:43 - indexes: [fk65e35472c6f1071e, primary, fk65e35472aa5c0bc2]
+14:47:57,178  INFO SchemaUpdate:160 - schema update complete
+14:48:00,913  INFO Configuration:1426 - configuring from resource: hibernateUser.cfg.xml
+14:48:00,913  INFO Configuration:1403 - Configuration resource: hibernateUser.cfg.xml
+14:48:00,928  INFO Configuration:1541 - Configured SessionFactory: null
+14:48:00,944  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.User
+14:48:00,944  INFO EntityBinder:424 - Bind entity entidades.User on table user
+14:48:00,991  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.TablesPriv
+14:48:00,991  INFO QueryBinder:64 - Binding Named query: TablesPriv.findAll => SELECT t FROM TablesPriv t
+14:48:00,991  INFO EntityBinder:424 - Bind entity entidades.TablesPriv on table tables_priv
+14:48:01,007  INFO AnnotationConfiguration:365 - Hibernate Validator not found: ignoring
+14:48:01,022  INFO DriverManagerConnectionProvider:41 - Using Hibernate built-in connection pool (not for production use!)
+14:48:01,022  INFO DriverManagerConnectionProvider:42 - Hibernate connection pool size: 20
+14:48:01,022  INFO DriverManagerConnectionProvider:45 - autocommit mode: false
+14:48:01,022  INFO DriverManagerConnectionProvider:80 - using driver: com.mysql.jdbc.Driver at URL: jdbc:mysql://localhost:3306/mysql?zeroDateTimeBehavior=convertToNull
+14:48:01,022  INFO DriverManagerConnectionProvider:86 - connection properties: {user=root, password=****}
+14:48:01,069  INFO SettingsFactory:89 - RDBMS: MySQL, version: 5.5.28
+14:48:01,069  INFO SettingsFactory:90 - JDBC driver: MySQL-AB JDBC Driver, version: mysql-connector-java-5.1.18 ( Revision: tonci.grgin@oracle.com-20110930151701-jfj14ddfq48ifkfq )
+14:48:01,069  INFO Dialect:152 - Using dialect: org.hibernate.dialect.MySQLDialect
+14:48:01,069  INFO TransactionFactoryFactory:31 - Using default transaction strategy (direct JDBC transactions)
+14:48:01,085  INFO TransactionManagerLookupFactory:33 - No TransactionManagerLookup configured (in JTA environment, use of read-write or transactional second-level cache is not recommended)
+14:48:01,100  INFO SettingsFactory:143 - Automatic flush during beforeCompletion(): disabled
+14:48:01,100  INFO SettingsFactory:147 - Automatic session close at end of transaction: disabled
+14:48:01,100  INFO SettingsFactory:154 - JDBC batch size: 15
+14:48:01,100  INFO SettingsFactory:157 - JDBC batch updates for versioned data: disabled
+14:48:01,100  INFO SettingsFactory:162 - Scrollable result sets: enabled
+14:48:01,100  INFO SettingsFactory:170 - JDBC3 getGeneratedKeys(): enabled
+14:48:01,100  INFO SettingsFactory:178 - Connection release mode: auto
+14:48:01,100  INFO SettingsFactory:202 - Maximum outer join fetch depth: 2
+14:48:01,100  INFO SettingsFactory:205 - Default batch fetch size: 1
+14:48:01,100  INFO SettingsFactory:209 - Generate SQL with comments: disabled
+14:48:01,100  INFO SettingsFactory:213 - Order SQL updates by primary key: disabled
+14:48:01,100  INFO SettingsFactory:217 - Order SQL inserts for batching: disabled
+14:48:01,100  INFO SettingsFactory:386 - Query translator: org.hibernate.hql.ast.ASTQueryTranslatorFactory
+14:48:01,100  INFO ASTQueryTranslatorFactory:24 - Using ASTQueryTranslatorFactory
+14:48:01,100  INFO SettingsFactory:225 - Query language substitutions: {}
+14:48:01,100  INFO SettingsFactory:230 - JPA-QL strict compliance: disabled
+14:48:01,100  INFO SettingsFactory:235 - Second-level cache: enabled
+14:48:01,100  INFO SettingsFactory:239 - Query cache: disabled
+14:48:01,100  INFO SettingsFactory:373 - Cache provider: org.hibernate.cache.NoCacheProvider
+14:48:01,116  INFO SettingsFactory:254 - Optimize cache for minimal puts: disabled
+14:48:01,116  INFO SettingsFactory:263 - Structured second-level cache entries: disabled
+14:48:01,116  INFO SettingsFactory:290 - Statistics: disabled
+14:48:01,116  INFO SettingsFactory:294 - Deleted entity synthetic identifier rollback: disabled
+14:48:01,116  INFO SettingsFactory:309 - Default entity-mode: pojo
+14:48:01,116  INFO SettingsFactory:313 - Named query checking : enabled
+14:48:01,132  INFO SessionFactoryImpl:161 - building session factory
+14:48:01,210  INFO SessionFactoryObjectFactory:82 - Not binding factory to JNDI, no JNDI name configured
+14:48:01,553 TRACE StringType:133 - binding 'root' to parameter: 1
+14:48:01,553 TRACE StringType:133 - binding '123' to parameter: 2
+14:48:01,569 TRACE StringType:172 - returning 'localhost' as column: Host40_
+14:48:01,569 TRACE StringType:172 - returning 'root' as column: User40_
+14:48:01,585 TRACE StringType:172 - returning 'Y' as column: Alter3_40_
+14:48:01,585 TRACE StringType:172 - returning 'Y' as column: Alter4_40_
+14:48:01,585 TRACE StringType:172 - returning 'Y' as column: Create6_40_
+14:48:01,585 TRACE StringType:172 - returning 'Y' as column: Create7_40_
+14:48:01,600 TRACE StringType:172 - returning 'Y' as column: Create8_40_
+14:48:01,600 TRACE StringType:172 - returning 'Y' as column: Create9_40_
+14:48:01,600 TRACE StringType:172 - returning 'Y' as column: Create10_40_
+14:48:01,600 TRACE StringType:172 - returning 'Y' as column: Create11_40_
+14:48:01,600 TRACE StringType:172 - returning 'Y' as column: Delete12_40_
+14:48:01,600 TRACE StringType:172 - returning 'Y' as column: Drop13_40_
+14:48:01,600 TRACE StringType:172 - returning 'Y' as column: Event14_40_
+14:48:01,600 TRACE StringType:172 - returning 'Y' as column: Execute15_40_
+14:48:01,600 TRACE StringType:172 - returning 'Y' as column: File16_40_
+14:48:01,600 TRACE StringType:172 - returning 'Y' as column: Grant17_40_
+14:48:01,600 TRACE StringType:172 - returning 'Y' as column: Index18_40_
+14:48:01,600 TRACE StringType:172 - returning 'Y' as column: Insert19_40_
+14:48:01,600 TRACE StringType:172 - returning 'Y' as column: Lock20_40_
+14:48:01,600 TRACE IntegerType:172 - returning '0' as column: max21_40_
+14:48:01,616 TRACE IntegerType:172 - returning '0' as column: max22_40_
+14:48:01,616 TRACE IntegerType:172 - returning '0' as column: max23_40_
+14:48:01,616 TRACE IntegerType:172 - returning '0' as column: max24_40_
+14:48:01,616 TRACE StringType:172 - returning '*23AE809DDACAF96AF0FD78ED04B6A265E05AA257' as column: Password40_
+14:48:01,616 TRACE StringType:172 - returning '' as column: plugin40_
+14:48:01,616 TRACE StringType:172 - returning 'Y' as column: Process27_40_
+14:48:01,616 TRACE StringType:172 - returning 'Y' as column: References28_40_
+14:48:01,616 TRACE StringType:172 - returning 'Y' as column: Reload29_40_
+14:48:01,616 TRACE StringType:172 - returning 'Y' as column: Repl30_40_
+14:48:01,616 TRACE StringType:172 - returning 'Y' as column: Repl31_40_
+14:48:01,616 TRACE StringType:172 - returning 'Y' as column: Select32_40_
+14:48:01,616 TRACE StringType:172 - returning 'Y' as column: Show33_40_
+14:48:01,616 TRACE StringType:172 - returning 'Y' as column: Show34_40_
+14:48:01,616 TRACE StringType:172 - returning 'Y' as column: Shutdown35_40_
+14:48:01,632 TRACE StringType:172 - returning '' as column: ssl37_40_
+14:48:01,632 TRACE StringType:172 - returning 'Y' as column: Super38_40_
+14:48:01,632 TRACE StringType:172 - returning 'Y' as column: Trigger39_40_
+14:48:01,632 TRACE StringType:172 - returning 'Y' as column: Update40_40_
+14:48:40,898  INFO Version:15 - Hibernate Annotations 3.3.1.GA
+14:48:40,945  INFO Environment:514 - Hibernate 3.2.5
+14:48:40,945  INFO Environment:547 - hibernate.properties not found
+14:48:40,945  INFO Environment:681 - Bytecode provider name : cglib
+14:48:40,961  INFO Environment:598 - using JDK 1.4 java.sql.Timestamp handling
+14:48:41,102  INFO Configuration:1426 - configuring from resource: /hibernate.cfg.xml
+14:48:41,102  INFO Configuration:1403 - Configuration resource: /hibernate.cfg.xml
+14:48:41,445  INFO Configuration:1541 - Configured SessionFactory: null
+14:48:41,602  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Categoriasocio
+14:48:41,711  INFO EntityBinder:424 - Bind entity entidades.Categoriasocio on table categoriasocio
+14:48:41,977  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Cheque
+14:48:41,977  INFO EntityBinder:424 - Bind entity entidades.Cheque on table cheque
+14:48:42,008  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Chequeslog
+14:48:42,008  INFO EntityBinder:424 - Bind entity entidades.Chequeslog on table chequeslog
+14:48:42,008  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Conta
+14:48:42,008  INFO EntityBinder:424 - Bind entity entidades.Conta on table conta
+14:48:42,039  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Contaslog
+14:48:42,039  INFO EntityBinder:424 - Bind entity entidades.Contaslog on table contaslog
+14:48:42,055  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Contrato
+14:48:42,055  INFO EntityBinder:424 - Bind entity entidades.Contrato on table contrato
+14:48:42,055  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Endereco
+14:48:42,055  INFO EntityBinder:424 - Bind entity entidades.Endereco on table endereco
+14:48:42,070  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Entrada
+14:48:42,070  INFO EntityBinder:424 - Bind entity entidades.Entrada on table entrada
+14:48:42,086  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Entradaslog
+14:48:42,086  INFO EntityBinder:424 - Bind entity entidades.Entradaslog on table entradaslog
+14:48:42,102  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Funcionario
+14:48:42,102  INFO EntityBinder:424 - Bind entity entidades.Funcionario on table funcionario
+14:48:42,133  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Hidrometro
+14:48:42,133  INFO EntityBinder:424 - Bind entity entidades.Hidrometro on table hidrometro
+14:48:42,148  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Motivodespesa
+14:48:42,148  INFO EntityBinder:424 - Bind entity entidades.Motivodespesa on table motivodespesa
+14:48:42,148  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Motivoentrada
+14:48:42,164  INFO EntityBinder:424 - Bind entity entidades.Motivoentrada on table motivoentrada
+14:48:42,164  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Pessoa
+14:48:42,164  INFO EntityBinder:424 - Bind entity entidades.Pessoa on table pessoa
+14:48:42,180  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Saida
+14:48:42,195  INFO EntityBinder:424 - Bind entity entidades.Saida on table saida
+14:48:42,211  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Saidaslog
+14:48:42,211  INFO EntityBinder:424 - Bind entity entidades.Saidaslog on table saidaslog
+14:48:42,242  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Socio
+14:48:42,258  INFO EntityBinder:424 - Bind entity entidades.Socio on table socio
+14:48:42,289  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Taxa
+14:48:42,289  INFO EntityBinder:424 - Bind entity entidades.Taxa on table taxa
+14:48:42,305  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Taxasconta
+14:48:42,305  INFO EntityBinder:424 - Bind entity entidades.Taxasconta on table taxasconta
+14:48:42,305  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Enderecopessoa
+14:48:42,305  INFO EntityBinder:424 - Bind entity entidades.Enderecopessoa on table enderecopessoa
+14:48:42,461  INFO CollectionBinder:651 - Mapping collection: entidades.Categoriasocio.socioList -> socio
+14:48:42,461  INFO CollectionBinder:651 - Mapping collection: entidades.Conta.taxascontaList -> taxasconta
+14:48:42,477  INFO CollectionBinder:651 - Mapping collection: entidades.Endereco.enderecopessoaList -> enderecopessoa
+14:48:42,477  INFO CollectionBinder:651 - Mapping collection: entidades.Endereco.pessoaList -> pessoa
+14:48:42,477  INFO CollectionBinder:651 - Mapping collection: entidades.Funcionario.chequeList -> cheque
+14:48:42,477  INFO CollectionBinder:651 - Mapping collection: entidades.Funcionario.entradaList -> entrada
+14:48:42,508  INFO CollectionBinder:651 - Mapping collection: entidades.Funcionario.saidaList -> saida
+14:48:42,508  INFO CollectionBinder:651 - Mapping collection: entidades.Motivodespesa.chequeList -> cheque
+14:48:42,508  INFO CollectionBinder:651 - Mapping collection: entidades.Motivodespesa.saidaList -> saida
+14:48:42,523  INFO CollectionBinder:651 - Mapping collection: entidades.Motivoentrada.entradaList -> entrada
+14:48:42,523  INFO CollectionBinder:651 - Mapping collection: entidades.Pessoa.enderecopessoaList -> enderecopessoa
+14:48:42,523  INFO CollectionBinder:651 - Mapping collection: entidades.Socio.entradaList -> entrada
+14:48:42,539  INFO CollectionBinder:651 - Mapping collection: entidades.Taxa.categoriasocioList -> categoriasocio
+14:48:42,539  INFO CollectionBinder:651 - Mapping collection: entidades.Taxa.taxascontaList -> taxasconta
+14:48:42,539  INFO CollectionBinder:651 - Mapping collection: entidades.Enderecopessoa.contaCollection -> conta
+14:48:42,539  INFO AnnotationConfiguration:365 - Hibernate Validator not found: ignoring
+14:48:42,570  INFO DriverManagerConnectionProvider:41 - Using Hibernate built-in connection pool (not for production use!)
+14:48:42,586  INFO DriverManagerConnectionProvider:42 - Hibernate connection pool size: 20
+14:48:42,586  INFO DriverManagerConnectionProvider:45 - autocommit mode: false
+14:48:42,602  INFO DriverManagerConnectionProvider:80 - using driver: com.mysql.jdbc.Driver at URL: jdbc:mysql://localhost:3306/acal?createDatabaseIfNotExist=true
+14:48:42,602  INFO DriverManagerConnectionProvider:86 - connection properties: {user=root, password=****}
+14:48:43,117  INFO SettingsFactory:89 - RDBMS: MySQL, version: 5.5.28
+14:48:43,117  INFO SettingsFactory:90 - JDBC driver: MySQL-AB JDBC Driver, version: mysql-connector-java-5.1.18 ( Revision: tonci.grgin@oracle.com-20110930151701-jfj14ddfq48ifkfq )
+14:48:43,148  INFO Dialect:152 - Using dialect: org.hibernate.dialect.MySQLDialect
+14:48:43,148  INFO TransactionFactoryFactory:31 - Using default transaction strategy (direct JDBC transactions)
+14:48:43,164  INFO TransactionManagerLookupFactory:33 - No TransactionManagerLookup configured (in JTA environment, use of read-write or transactional second-level cache is not recommended)
+14:48:43,164  INFO SettingsFactory:143 - Automatic flush during beforeCompletion(): disabled
+14:48:43,164  INFO SettingsFactory:147 - Automatic session close at end of transaction: disabled
+14:48:43,164  INFO SettingsFactory:154 - JDBC batch size: 15
+14:48:43,164  INFO SettingsFactory:157 - JDBC batch updates for versioned data: disabled
+14:48:43,164  INFO SettingsFactory:162 - Scrollable result sets: enabled
+14:48:43,164  INFO SettingsFactory:170 - JDBC3 getGeneratedKeys(): enabled
+14:48:43,164  INFO SettingsFactory:178 - Connection release mode: auto
+14:48:43,180  INFO SettingsFactory:202 - Maximum outer join fetch depth: 2
+14:48:43,180  INFO SettingsFactory:205 - Default batch fetch size: 1
+14:48:43,180  INFO SettingsFactory:209 - Generate SQL with comments: enabled
+14:48:43,180  INFO SettingsFactory:213 - Order SQL updates by primary key: disabled
+14:48:43,180  INFO SettingsFactory:217 - Order SQL inserts for batching: disabled
+14:48:43,180  INFO SettingsFactory:386 - Query translator: org.hibernate.hql.ast.ASTQueryTranslatorFactory
+14:48:43,180  INFO ASTQueryTranslatorFactory:24 - Using ASTQueryTranslatorFactory
+14:48:43,180  INFO SettingsFactory:225 - Query language substitutions: {}
+14:48:43,180  INFO SettingsFactory:230 - JPA-QL strict compliance: disabled
+14:48:43,180  INFO SettingsFactory:235 - Second-level cache: enabled
+14:48:43,195  INFO SettingsFactory:239 - Query cache: disabled
+14:48:43,195  INFO SettingsFactory:373 - Cache provider: org.hibernate.cache.NoCacheProvider
+14:48:43,195  INFO SettingsFactory:254 - Optimize cache for minimal puts: disabled
+14:48:43,195  INFO SettingsFactory:263 - Structured second-level cache entries: disabled
+14:48:43,195  INFO SettingsFactory:283 - Echoing all SQL to stdout
+14:48:43,195  INFO SettingsFactory:290 - Statistics: disabled
+14:48:43,195  INFO SettingsFactory:294 - Deleted entity synthetic identifier rollback: disabled
+14:48:43,195  INFO SettingsFactory:309 - Default entity-mode: pojo
+14:48:43,195  INFO SettingsFactory:313 - Named query checking : enabled
+14:48:43,258  INFO SessionFactoryImpl:161 - building session factory
+14:48:44,180  INFO SessionFactoryObjectFactory:82 - Not binding factory to JNDI, no JNDI name configured
+14:48:44,195  INFO SchemaUpdate:115 - Running hbm2ddl schema update
+14:48:44,195  INFO SchemaUpdate:126 - fetching database metadata
+14:48:44,195  INFO SchemaUpdate:138 - updating schema
+14:48:44,274  INFO TableMetadata:39 - table found: acal.categoriasocio
+14:48:44,274  INFO TableMetadata:40 - columns: [id, taxasid, nome, descricao]
+14:48:44,274  INFO TableMetadata:42 - foreign keys: [fk271f6b9aa011b865]
+14:48:44,274  INFO TableMetadata:43 - indexes: [primary, fk271f6b9aa011b865]
+14:48:44,320  INFO TableMetadata:39 - table found: acal.cheque
+14:48:44,320  INFO TableMetadata:40 - columns: [id, idfuncionario, valor, datapagamento, idmotivodespesa, datavencimento, observacoes, numero]
+14:48:44,320  INFO TableMetadata:42 - foreign keys: [fkaed8f221ee3fa458, fkaed8f221e196a484]
+14:48:44,320  INFO TableMetadata:43 - indexes: [primary, fkaed8f221ee3fa458, fkaed8f221e196a484]
+14:48:44,367  INFO TableMetadata:39 - table found: acal.chequeslog
+14:48:44,383  INFO TableMetadata:40 - columns: [id, valor, dataalteracao, usuariobanco, datapagamento, tipo, idmotivodepesa, datavencimento, idfuncionarioalteracao, observacoes, numero, idoriginal]
+14:48:44,383  INFO TableMetadata:42 - foreign keys: []
+14:48:44,383  INFO TableMetadata:43 - indexes: [primary]
+14:48:44,430  INFO TableMetadata:39 - table found: acal.conta
+14:48:44,430  INFO TableMetadata:40 - columns: [id, datapag, datagerada, observacoes, datavence, idenderecopessoa]
+14:48:44,430  INFO TableMetadata:42 - foreign keys: [fk5a7376f50a7b5d2]
+14:48:44,430  INFO TableMetadata:43 - indexes: [primary, fk5a7376f50a7b5d2]
+14:48:44,477  INFO TableMetadata:39 - table found: acal.contaslog
+14:48:44,477  INFO TableMetadata:40 - columns: [id, taxarelogio, horaregristro, datapag, tipo, idnumerosocio, usuarioalteracao, observacoes, taxasocio, datavence, idoriginal]
+14:48:44,477  INFO TableMetadata:42 - foreign keys: []
+14:48:44,477  INFO TableMetadata:43 - indexes: [primary]
+14:48:44,524  INFO TableMetadata:39 - table found: acal.contrato
+14:48:44,524  INFO TableMetadata:40 - columns: [id, corpo, nome, descricao]
+14:48:44,524  INFO TableMetadata:42 - foreign keys: []
+14:48:44,524  INFO TableMetadata:43 - indexes: [primary]
+14:48:44,539  INFO TableMetadata:39 - table found: acal.endereco
+14:48:44,555  INFO TableMetadata:40 - columns: [id, tipo, nome, descricao]
+14:48:44,555  INFO TableMetadata:42 - foreign keys: []
+14:48:44,555  INFO TableMetadata:43 - indexes: [primary]
+14:48:44,586  INFO TableMetadata:39 - table found: acal.enderecopessoa
+14:48:44,586  INFO TableMetadata:40 - columns: [id, idendereco, idpessoa, numero]
+14:48:44,586  INFO TableMetadata:42 - foreign keys: [fk80ecbcb0f1e3c984, fk80ecbcb0e2caedc0]
+14:48:44,586  INFO TableMetadata:43 - indexes: [fk80ecbcb0f1e3c984, fk80ecbcb0e2caedc0, primary]
+14:48:44,617  INFO TableMetadata:39 - table found: acal.entrada
+14:48:44,617  INFO TableMetadata:40 - columns: [id, idfuncionario, valor, data, idmotivoentrada, observacao, idcedente]
+14:48:44,617  INFO TableMetadata:42 - foreign keys: [fka122665776e134dc, fka1226657e196a484, fka1226657fda06717]
+14:48:44,617  INFO TableMetadata:43 - indexes: [fka122665776e134dc, fka1226657e196a484, fka1226657fda06717, primary]
+14:48:44,680  INFO TableMetadata:39 - table found: acal.entradaslog
+14:48:44,680  INFO TableMetadata:40 - columns: [id, idfuncionario, dataoriginal, valor, dataalteracao, tipo, idmotivoentrada, usuarioalteracao, observacao, idoriginal, idcedente]
+14:48:44,680  INFO TableMetadata:42 - foreign keys: []
+14:48:44,680  INFO TableMetadata:43 - indexes: [primary]
+14:48:44,727  INFO TableMetadata:39 - table found: acal.funcionario
+14:48:44,727  INFO TableMetadata:40 - columns: [id, salario, idpessoa, datacontratacao, observacao, cargo, matricula]
+14:48:44,727  INFO TableMetadata:42 - foreign keys: [fk50401ddbe2caedc0]
+14:48:44,727  INFO TableMetadata:43 - indexes: [primary, idpessoa, fk50401ddbe2caedc0]
+14:48:44,758  INFO TableMetadata:39 - table found: acal.hidrometro
+14:48:44,758  INFO TableMetadata:40 - columns: [idhidrometro, consumo, idconta]
+14:48:44,758  INFO TableMetadata:42 - foreign keys: [fkf3fd0019d45f0a2c]
+14:48:44,758  INFO TableMetadata:43 - indexes: [fkf3fd0019d45f0a2c, primary, idconta]
+14:48:44,805  INFO TableMetadata:39 - table found: acal.motivodespesa
+14:48:44,805  INFO TableMetadata:40 - columns: [id, nome, observacao, descricao]
+14:48:44,805  INFO TableMetadata:42 - foreign keys: []
+14:48:44,805  INFO TableMetadata:43 - indexes: [primary]
+14:48:44,820  INFO TableMetadata:39 - table found: acal.motivoentrada
+14:48:44,820  INFO TableMetadata:40 - columns: [id, nome, observacao, descricao]
+14:48:44,820  INFO TableMetadata:42 - foreign keys: []
+14:48:44,820  INFO TableMetadata:43 - indexes: [primary]
+14:48:44,867  INFO TableMetadata:39 - table found: acal.pessoa
+14:48:44,867  INFO TableMetadata:40 - columns: [uf, status, datanasc, nomemae, numeromatricula, sexo, observacoes, nomepai, id, bairro, cidade, sobrenome, cep, email, idendereco, telefone, numeroendereco, rgemissao, cpf, nome, rgexpedidor, rgnumero, apelido]
+14:48:44,867  INFO TableMetadata:42 - foreign keys: [fkc4e40fa7f1e3c984]
+14:48:44,867  INFO TableMetadata:43 - indexes: [primary, fkc4e40fa7f1e3c984]
+14:48:44,899  INFO TableMetadata:39 - table found: acal.saida
+14:48:44,899  INFO TableMetadata:40 - columns: [id, idmotivosaida, idfuncionario, valor, data, favorecido, observacao]
+14:48:44,899  INFO TableMetadata:42 - foreign keys: [fk6823d98e196a484, fk6823d98a2d1cd1b]
+14:48:44,899  INFO TableMetadata:43 - indexes: [primary, fk6823d98e196a484, fk6823d98a2d1cd1b]
+14:48:44,961  INFO TableMetadata:39 - table found: acal.saidaslog
+14:48:44,961  INFO TableMetadata:40 - columns: [id, idmotivosaida, idfuncionario, dataoriginal, valor, dataalteracao, tipo, usuarioalteracao, idfuncionarioaltercao, favorecido, observacao, idoriginal]
+14:48:44,961  INFO TableMetadata:42 - foreign keys: []
+14:48:44,961  INFO TableMetadata:43 - indexes: [primary]
+14:48:45,008  INFO TableMetadata:39 - table found: acal.socio
+14:48:45,008  INFO TableMetadata:40 - columns: [id, datamatricula, dataaprovacao, numerosocio, idpessoa, idcategoriasocio, observacao, datavence]
+14:48:45,008  INFO TableMetadata:42 - foreign keys: [fk68884ede2caedc0, fk68884ed9d0d13a6]
+14:48:45,008  INFO TableMetadata:43 - indexes: [fk68884ede2caedc0, fk68884ed9d0d13a6, primary, idpessoa]
+14:48:45,039  INFO TableMetadata:39 - table found: acal.taxa
+14:48:45,039  INFO TableMetadata:40 - columns: [id, valor, nome, observacao, descricao]
+14:48:45,039  INFO TableMetadata:42 - foreign keys: []
+14:48:45,039  INFO TableMetadata:43 - indexes: [primary]
+14:48:45,070  INFO TableMetadata:39 - table found: acal.taxasconta
+14:48:45,070  INFO TableMetadata:40 - columns: [contaid, taxaid, idtaxasconta]
+14:48:45,070  INFO TableMetadata:42 - foreign keys: [fk65e35472c6f1071e, fk65e35472aa5c0bc2]
+14:48:45,070  INFO TableMetadata:43 - indexes: [fk65e35472c6f1071e, primary, fk65e35472aa5c0bc2]
+14:48:45,070  INFO SchemaUpdate:160 - schema update complete
+14:48:48,430  INFO Configuration:1426 - configuring from resource: hibernateUser.cfg.xml
+14:48:48,430  INFO Configuration:1403 - Configuration resource: hibernateUser.cfg.xml
+14:48:48,446  INFO Configuration:1541 - Configured SessionFactory: null
+14:48:48,461  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.User
+14:48:48,461  INFO EntityBinder:424 - Bind entity entidades.User on table user
+14:48:48,508  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.TablesPriv
+14:48:48,508  INFO QueryBinder:64 - Binding Named query: TablesPriv.findAll => SELECT t FROM TablesPriv t
+14:48:48,508  INFO EntityBinder:424 - Bind entity entidades.TablesPriv on table tables_priv
+14:48:48,524  INFO AnnotationConfiguration:365 - Hibernate Validator not found: ignoring
+14:48:48,539  INFO DriverManagerConnectionProvider:41 - Using Hibernate built-in connection pool (not for production use!)
+14:48:48,539  INFO DriverManagerConnectionProvider:42 - Hibernate connection pool size: 20
+14:48:48,539  INFO DriverManagerConnectionProvider:45 - autocommit mode: false
+14:48:48,539  INFO DriverManagerConnectionProvider:80 - using driver: com.mysql.jdbc.Driver at URL: jdbc:mysql://localhost:3306/mysql?zeroDateTimeBehavior=convertToNull
+14:48:48,555  INFO DriverManagerConnectionProvider:86 - connection properties: {user=root, password=****}
+14:48:48,586  INFO SettingsFactory:89 - RDBMS: MySQL, version: 5.5.28
+14:48:48,586  INFO SettingsFactory:90 - JDBC driver: MySQL-AB JDBC Driver, version: mysql-connector-java-5.1.18 ( Revision: tonci.grgin@oracle.com-20110930151701-jfj14ddfq48ifkfq )
+14:48:48,617  INFO Dialect:152 - Using dialect: org.hibernate.dialect.MySQLDialect
+14:48:48,617  INFO TransactionFactoryFactory:31 - Using default transaction strategy (direct JDBC transactions)
+14:48:48,617  INFO TransactionManagerLookupFactory:33 - No TransactionManagerLookup configured (in JTA environment, use of read-write or transactional second-level cache is not recommended)
+14:48:48,617  INFO SettingsFactory:143 - Automatic flush during beforeCompletion(): disabled
+14:48:48,617  INFO SettingsFactory:147 - Automatic session close at end of transaction: disabled
+14:48:48,617  INFO SettingsFactory:154 - JDBC batch size: 15
+14:48:48,617  INFO SettingsFactory:157 - JDBC batch updates for versioned data: disabled
+14:48:48,617  INFO SettingsFactory:162 - Scrollable result sets: enabled
+14:48:48,617  INFO SettingsFactory:170 - JDBC3 getGeneratedKeys(): enabled
+14:48:48,633  INFO SettingsFactory:178 - Connection release mode: auto
+14:48:48,633  INFO SettingsFactory:202 - Maximum outer join fetch depth: 2
+14:48:48,633  INFO SettingsFactory:205 - Default batch fetch size: 1
+14:48:48,633  INFO SettingsFactory:209 - Generate SQL with comments: disabled
+14:48:48,633  INFO SettingsFactory:213 - Order SQL updates by primary key: disabled
+14:48:48,633  INFO SettingsFactory:217 - Order SQL inserts for batching: disabled
+14:48:48,633  INFO SettingsFactory:386 - Query translator: org.hibernate.hql.ast.ASTQueryTranslatorFactory
+14:48:48,633  INFO ASTQueryTranslatorFactory:24 - Using ASTQueryTranslatorFactory
+14:48:48,633  INFO SettingsFactory:225 - Query language substitutions: {}
+14:48:48,633  INFO SettingsFactory:230 - JPA-QL strict compliance: disabled
+14:48:48,633  INFO SettingsFactory:235 - Second-level cache: enabled
+14:48:48,633  INFO SettingsFactory:239 - Query cache: disabled
+14:48:48,633  INFO SettingsFactory:373 - Cache provider: org.hibernate.cache.NoCacheProvider
+14:48:48,649  INFO SettingsFactory:254 - Optimize cache for minimal puts: disabled
+14:48:48,649  INFO SettingsFactory:263 - Structured second-level cache entries: disabled
+14:48:48,649  INFO SettingsFactory:290 - Statistics: disabled
+14:48:48,649  INFO SettingsFactory:294 - Deleted entity synthetic identifier rollback: disabled
+14:48:48,649  INFO SettingsFactory:309 - Default entity-mode: pojo
+14:48:48,649  INFO SettingsFactory:313 - Named query checking : enabled
+14:48:48,664  INFO SessionFactoryImpl:161 - building session factory
+14:48:48,742  INFO SessionFactoryObjectFactory:82 - Not binding factory to JNDI, no JNDI name configured
+14:48:49,086 TRACE StringType:133 - binding 'root' to parameter: 1
+14:48:49,086 TRACE StringType:133 - binding '123' to parameter: 2
+14:48:49,102 TRACE StringType:172 - returning 'localhost' as column: Host40_
+14:48:49,102 TRACE StringType:172 - returning 'root' as column: User40_
+14:48:49,117 TRACE StringType:172 - returning 'Y' as column: Alter3_40_
+14:48:49,117 TRACE StringType:172 - returning 'Y' as column: Alter4_40_
+14:48:49,117 TRACE StringType:172 - returning 'Y' as column: Create6_40_
+14:48:49,117 TRACE StringType:172 - returning 'Y' as column: Create7_40_
+14:48:49,117 TRACE StringType:172 - returning 'Y' as column: Create8_40_
+14:48:49,117 TRACE StringType:172 - returning 'Y' as column: Create9_40_
+14:48:49,117 TRACE StringType:172 - returning 'Y' as column: Create10_40_
+14:48:49,117 TRACE StringType:172 - returning 'Y' as column: Create11_40_
+14:48:49,117 TRACE StringType:172 - returning 'Y' as column: Delete12_40_
+14:48:49,117 TRACE StringType:172 - returning 'Y' as column: Drop13_40_
+14:48:49,133 TRACE StringType:172 - returning 'Y' as column: Event14_40_
+14:48:49,133 TRACE StringType:172 - returning 'Y' as column: Execute15_40_
+14:48:49,133 TRACE StringType:172 - returning 'Y' as column: File16_40_
+14:48:49,133 TRACE StringType:172 - returning 'Y' as column: Grant17_40_
+14:48:49,133 TRACE StringType:172 - returning 'Y' as column: Index18_40_
+14:48:49,133 TRACE StringType:172 - returning 'Y' as column: Insert19_40_
+14:48:49,133 TRACE StringType:172 - returning 'Y' as column: Lock20_40_
+14:48:49,133 TRACE IntegerType:172 - returning '0' as column: max21_40_
+14:48:49,133 TRACE IntegerType:172 - returning '0' as column: max22_40_
+14:48:49,133 TRACE IntegerType:172 - returning '0' as column: max23_40_
+14:48:49,133 TRACE IntegerType:172 - returning '0' as column: max24_40_
+14:48:49,133 TRACE StringType:172 - returning '*23AE809DDACAF96AF0FD78ED04B6A265E05AA257' as column: Password40_
+14:48:49,133 TRACE StringType:172 - returning '' as column: plugin40_
+14:48:49,133 TRACE StringType:172 - returning 'Y' as column: Process27_40_
+14:48:49,133 TRACE StringType:172 - returning 'Y' as column: References28_40_
+14:48:49,133 TRACE StringType:172 - returning 'Y' as column: Reload29_40_
+14:48:49,149 TRACE StringType:172 - returning 'Y' as column: Repl30_40_
+14:48:49,149 TRACE StringType:172 - returning 'Y' as column: Repl31_40_
+14:48:49,149 TRACE StringType:172 - returning 'Y' as column: Select32_40_
+14:48:49,149 TRACE StringType:172 - returning 'Y' as column: Show33_40_
+14:48:49,149 TRACE StringType:172 - returning 'Y' as column: Show34_40_
+14:48:49,149 TRACE StringType:172 - returning 'Y' as column: Shutdown35_40_
+14:48:49,149 TRACE StringType:172 - returning '' as column: ssl37_40_
+14:48:49,149 TRACE StringType:172 - returning 'Y' as column: Super38_40_
+14:48:49,149 TRACE StringType:172 - returning 'Y' as column: Trigger39_40_
+14:48:49,149 TRACE StringType:172 - returning 'Y' as column: Update40_40_
+14:48:53,789 TRACE StringType:172 - returning 'acal' as column: Db41_
+14:48:53,836 TRACE StringType:172 - returning '%' as column: Host41_
+14:48:53,852 TRACE StringType:172 - returning 'taxa' as column: Table3_41_
+14:48:53,852 TRACE StringType:172 - returning 'ali' as column: User41_
+14:48:53,868 TRACE StringType:172 - returning '' as column: Column5_41_
+14:48:53,868 TRACE StringType:172 - returning 'root@localhost' as column: Grantor41_
+14:48:53,868 TRACE StringType:172 - returning 'Select,Insert,Update,Delete' as column: Table7_41_
+14:48:53,883 TRACE TimestampType:172 - returning '2013-07-11 14:21:09' as column: Timestamp41_
+14:48:53,883 TRACE StringType:172 - returning 'acal' as column: Db41_
+14:48:53,883 TRACE StringType:172 - returning '%' as column: Host41_
+14:48:53,883 TRACE StringType:172 - returning 'conta' as column: Table3_41_
+14:48:53,883 TRACE StringType:172 - returning 'ali' as column: User41_
+14:48:53,883 TRACE StringType:172 - returning '' as column: Column5_41_
+14:48:53,883 TRACE StringType:172 - returning 'root@localhost' as column: Grantor41_
+14:48:53,883 TRACE StringType:172 - returning 'Select,Insert,Update,Delete' as column: Table7_41_
+14:48:53,883 TRACE TimestampType:172 - returning '2013-07-11 14:21:09' as column: Timestamp41_
+14:48:53,899 TRACE StringType:172 - returning 'acal' as column: Db41_
+14:48:53,899 TRACE StringType:172 - returning '%' as column: Host41_
+14:48:53,899 TRACE StringType:172 - returning 'cheque' as column: Table3_41_
+14:48:53,899 TRACE StringType:172 - returning 'ali' as column: User41_
+14:48:53,899 TRACE StringType:172 - returning '' as column: Column5_41_
+14:48:53,899 TRACE StringType:172 - returning 'root@localhost' as column: Grantor41_
+14:48:53,899 TRACE StringType:172 - returning 'Select,Insert,Update,Delete' as column: Table7_41_
+14:48:53,930 TRACE TimestampType:172 - returning '2013-07-11 14:21:09' as column: Timestamp41_
+14:48:53,930 TRACE StringType:172 - returning 'acal' as column: Db41_
+14:48:53,946 TRACE StringType:172 - returning '%' as column: Host41_
+14:48:53,946 TRACE StringType:172 - returning 'saida' as column: Table3_41_
+14:48:53,961 TRACE StringType:172 - returning 'ali' as column: User41_
+14:48:53,961 TRACE StringType:172 - returning '' as column: Column5_41_
+14:48:53,961 TRACE StringType:172 - returning 'root@localhost' as column: Grantor41_
+14:48:53,961 TRACE StringType:172 - returning 'Select,Insert,Update,Delete' as column: Table7_41_
+14:48:53,961 TRACE TimestampType:172 - returning '2013-07-11 14:21:09' as column: Timestamp41_
+14:48:53,961 TRACE StringType:172 - returning 'acal' as column: Db41_
+14:48:53,961 TRACE StringType:172 - returning '%' as column: Host41_
+14:48:53,961 TRACE StringType:172 - returning 'entrada' as column: Table3_41_
+14:48:53,961 TRACE StringType:172 - returning 'ali' as column: User41_
+14:48:53,961 TRACE StringType:172 - returning '' as column: Column5_41_
+14:48:53,961 TRACE StringType:172 - returning 'root@localhost' as column: Grantor41_
+14:48:53,961 TRACE StringType:172 - returning 'Select,Insert,Update,Delete' as column: Table7_41_
+14:48:53,961 TRACE TimestampType:172 - returning '2013-07-11 14:21:09' as column: Timestamp41_
+14:48:53,961 TRACE StringType:172 - returning 'acal' as column: Db41_
+14:48:53,961 TRACE StringType:172 - returning '%' as column: Host41_
+14:48:53,977 TRACE StringType:172 - returning 'socio' as column: Table3_41_
+14:48:53,977 TRACE StringType:172 - returning 'ali' as column: User41_
+14:48:53,977 TRACE StringType:172 - returning '' as column: Column5_41_
+14:48:53,977 TRACE StringType:172 - returning 'root@localhost' as column: Grantor41_
+14:48:53,977 TRACE StringType:172 - returning 'Select,Insert,Update,Delete' as column: Table7_41_
+14:48:53,977 TRACE TimestampType:172 - returning '2013-07-11 14:21:09' as column: Timestamp41_
+11:49:18,831  INFO Version:15 - Hibernate Annotations 3.3.1.GA
+11:49:18,876  INFO Environment:514 - Hibernate 3.2.5
+11:49:18,889  INFO Environment:547 - hibernate.properties not found
+11:49:18,897  INFO Environment:681 - Bytecode provider name : cglib
+11:49:18,915  INFO Environment:598 - using JDK 1.4 java.sql.Timestamp handling
+11:49:19,150  INFO Configuration:1426 - configuring from resource: /hibernate.cfg.xml
+11:49:19,153  INFO Configuration:1403 - Configuration resource: /hibernate.cfg.xml
+11:49:19,499  INFO Configuration:1541 - Configured SessionFactory: null
+11:49:19,716  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Categoriasocio
+11:49:19,818  INFO EntityBinder:424 - Bind entity entidades.Categoriasocio on table categoriasocio
+11:49:20,141  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Cheque
+11:49:20,143  INFO EntityBinder:424 - Bind entity entidades.Cheque on table cheque
+11:49:20,164  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Chequeslog
+11:49:20,167  INFO EntityBinder:424 - Bind entity entidades.Chequeslog on table chequeslog
+11:49:20,180  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Conta
+11:49:20,183  INFO EntityBinder:424 - Bind entity entidades.Conta on table conta
+11:49:20,208  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Contaslog
+11:49:20,210  INFO EntityBinder:424 - Bind entity entidades.Contaslog on table contaslog
+11:49:20,221  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Contrato
+11:49:20,222  INFO EntityBinder:424 - Bind entity entidades.Contrato on table contrato
+11:49:20,228  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Endereco
+11:49:20,230  INFO EntityBinder:424 - Bind entity entidades.Endereco on table endereco
+11:49:20,245  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Entrada
+11:49:20,247  INFO EntityBinder:424 - Bind entity entidades.Entrada on table entrada
+11:49:20,257  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Entradaslog
+11:49:20,258  INFO EntityBinder:424 - Bind entity entidades.Entradaslog on table entradaslog
+11:49:20,309  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Funcionario
+11:49:20,310  INFO EntityBinder:424 - Bind entity entidades.Funcionario on table funcionario
+11:49:20,334  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Hidrometro
+11:49:20,336  INFO EntityBinder:424 - Bind entity entidades.Hidrometro on table hidrometro
+11:49:20,343  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Motivodespesa
+11:49:20,345  INFO EntityBinder:424 - Bind entity entidades.Motivodespesa on table motivodespesa
+11:49:20,370  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Motivoentrada
+11:49:20,371  INFO EntityBinder:424 - Bind entity entidades.Motivoentrada on table motivoentrada
+11:49:20,390  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Pessoa
+11:49:20,391  INFO EntityBinder:424 - Bind entity entidades.Pessoa on table pessoa
+11:49:20,419  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Saida
+11:49:20,420  INFO EntityBinder:424 - Bind entity entidades.Saida on table saida
+11:49:20,435  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Saidaslog
+11:49:20,439  INFO EntityBinder:424 - Bind entity entidades.Saidaslog on table saidaslog
+11:49:20,520  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Socio
+11:49:20,521  INFO EntityBinder:424 - Bind entity entidades.Socio on table socio
+11:49:20,539  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Taxa
+11:49:20,541  INFO EntityBinder:424 - Bind entity entidades.Taxa on table taxa
+11:49:20,553  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Taxasconta
+11:49:20,556  INFO EntityBinder:424 - Bind entity entidades.Taxasconta on table taxasconta
+11:49:20,562  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Enderecopessoa
+11:49:20,567  INFO EntityBinder:424 - Bind entity entidades.Enderecopessoa on table enderecopessoa
+11:49:20,716  INFO CollectionBinder:651 - Mapping collection: entidades.Categoriasocio.socioList -> socio
+11:49:20,724  INFO CollectionBinder:651 - Mapping collection: entidades.Conta.taxascontaList -> taxasconta
+11:49:20,726  INFO CollectionBinder:651 - Mapping collection: entidades.Endereco.enderecopessoaList -> enderecopessoa
+11:49:20,727  INFO CollectionBinder:651 - Mapping collection: entidades.Endereco.pessoaList -> pessoa
+11:49:20,729  INFO CollectionBinder:651 - Mapping collection: entidades.Funcionario.chequeList -> cheque
+11:49:20,730  INFO CollectionBinder:651 - Mapping collection: entidades.Funcionario.entradaList -> entrada
+11:49:20,736  INFO CollectionBinder:651 - Mapping collection: entidades.Funcionario.saidaList -> saida
+11:49:20,758  INFO CollectionBinder:651 - Mapping collection: entidades.Motivodespesa.chequeList -> cheque
+11:49:20,766  INFO CollectionBinder:651 - Mapping collection: entidades.Motivodespesa.saidaList -> saida
+11:49:20,772  INFO CollectionBinder:651 - Mapping collection: entidades.Motivoentrada.entradaList -> entrada
+11:49:20,775  INFO CollectionBinder:651 - Mapping collection: entidades.Pessoa.enderecopessoaList -> enderecopessoa
+11:49:20,778  INFO CollectionBinder:651 - Mapping collection: entidades.Socio.entradaList -> entrada
+11:49:20,781  INFO CollectionBinder:651 - Mapping collection: entidades.Taxa.categoriasocioList -> categoriasocio
+11:49:20,784  INFO CollectionBinder:651 - Mapping collection: entidades.Taxa.taxascontaList -> taxasconta
+11:49:20,787  INFO CollectionBinder:651 - Mapping collection: entidades.Enderecopessoa.contaCollection -> conta
+11:49:20,793  INFO AnnotationConfiguration:365 - Hibernate Validator not found: ignoring
+11:49:20,826  INFO DriverManagerConnectionProvider:41 - Using Hibernate built-in connection pool (not for production use!)
+11:49:20,828  INFO DriverManagerConnectionProvider:42 - Hibernate connection pool size: 20
+11:49:20,828  INFO DriverManagerConnectionProvider:45 - autocommit mode: false
+11:49:20,847  INFO DriverManagerConnectionProvider:80 - using driver: com.mysql.jdbc.Driver at URL: jdbc:mysql://localhost:3306/acal?createDatabaseIfNotExist=true
+11:49:20,849  INFO DriverManagerConnectionProvider:86 - connection properties: {user=root, password=****}
+11:49:21,398  INFO SettingsFactory:89 - RDBMS: MySQL, version: 5.5.28
+11:49:21,399  INFO SettingsFactory:90 - JDBC driver: MySQL-AB JDBC Driver, version: mysql-connector-java-5.1.18 ( Revision: tonci.grgin@oracle.com-20110930151701-jfj14ddfq48ifkfq )
+11:49:21,429  INFO Dialect:152 - Using dialect: org.hibernate.dialect.MySQLDialect
+11:49:21,444  INFO TransactionFactoryFactory:31 - Using default transaction strategy (direct JDBC transactions)
+11:49:21,452  INFO TransactionManagerLookupFactory:33 - No TransactionManagerLookup configured (in JTA environment, use of read-write or transactional second-level cache is not recommended)
+11:49:21,455  INFO SettingsFactory:143 - Automatic flush during beforeCompletion(): disabled
+11:49:21,457  INFO SettingsFactory:147 - Automatic session close at end of transaction: disabled
+11:49:21,459  INFO SettingsFactory:154 - JDBC batch size: 15
+11:49:21,461  INFO SettingsFactory:157 - JDBC batch updates for versioned data: disabled
+11:49:21,465  INFO SettingsFactory:162 - Scrollable result sets: enabled
+11:49:21,467  INFO SettingsFactory:170 - JDBC3 getGeneratedKeys(): enabled
+11:49:21,469  INFO SettingsFactory:178 - Connection release mode: auto
+11:49:21,473  INFO SettingsFactory:202 - Maximum outer join fetch depth: 2
+11:49:21,475  INFO SettingsFactory:205 - Default batch fetch size: 1
+11:49:21,477  INFO SettingsFactory:209 - Generate SQL with comments: enabled
+11:49:21,480  INFO SettingsFactory:213 - Order SQL updates by primary key: disabled
+11:49:21,481  INFO SettingsFactory:217 - Order SQL inserts for batching: disabled
+11:49:21,488  INFO SettingsFactory:386 - Query translator: org.hibernate.hql.ast.ASTQueryTranslatorFactory
+11:49:21,517  INFO ASTQueryTranslatorFactory:24 - Using ASTQueryTranslatorFactory
+11:49:21,519  INFO SettingsFactory:225 - Query language substitutions: {}
+11:49:21,521  INFO SettingsFactory:230 - JPA-QL strict compliance: disabled
+11:49:21,523  INFO SettingsFactory:235 - Second-level cache: enabled
+11:49:21,525  INFO SettingsFactory:239 - Query cache: disabled
+11:49:21,527  INFO SettingsFactory:373 - Cache provider: org.hibernate.cache.NoCacheProvider
+11:49:21,533  INFO SettingsFactory:254 - Optimize cache for minimal puts: disabled
+11:49:21,535  INFO SettingsFactory:263 - Structured second-level cache entries: disabled
+11:49:21,551  INFO SettingsFactory:283 - Echoing all SQL to stdout
+11:49:21,552  INFO SettingsFactory:290 - Statistics: disabled
+11:49:21,552  INFO SettingsFactory:294 - Deleted entity synthetic identifier rollback: disabled
+11:49:21,557  INFO SettingsFactory:309 - Default entity-mode: pojo
+11:49:21,558  INFO SettingsFactory:313 - Named query checking : enabled
+11:49:21,630  INFO SessionFactoryImpl:161 - building session factory
+11:49:22,691  INFO SessionFactoryObjectFactory:82 - Not binding factory to JNDI, no JNDI name configured
+11:49:22,700  INFO SchemaUpdate:115 - Running hbm2ddl schema update
+11:49:22,700  INFO SchemaUpdate:126 - fetching database metadata
+11:49:22,703  INFO SchemaUpdate:138 - updating schema
+11:49:22,804  INFO TableMetadata:39 - table found: acal.categoriasocio
+11:49:22,805  INFO TableMetadata:40 - columns: [id, taxasid, nome, descricao]
+11:49:22,806  INFO TableMetadata:42 - foreign keys: [fk271f6b9aa011b865]
+11:49:22,806  INFO TableMetadata:43 - indexes: [primary, fk271f6b9aa011b865]
+11:49:22,891  INFO TableMetadata:39 - table found: acal.cheque
+11:49:22,891  INFO TableMetadata:40 - columns: [id, idfuncionario, valor, datapagamento, idmotivodespesa, datavencimento, observacoes, numero]
+11:49:22,891  INFO TableMetadata:42 - foreign keys: [fkaed8f221ee3fa458, fkaed8f221e196a484]
+11:49:22,892  INFO TableMetadata:43 - indexes: [primary, fkaed8f221ee3fa458, fkaed8f221e196a484]
+11:49:22,983  INFO TableMetadata:39 - table found: acal.chequeslog
+11:49:22,984  INFO TableMetadata:40 - columns: [id, valor, dataalteracao, usuariobanco, datapagamento, tipo, idmotivodepesa, datavencimento, idfuncionarioalteracao, observacoes, numero, idoriginal]
+11:49:22,984  INFO TableMetadata:42 - foreign keys: []
+11:49:22,985  INFO TableMetadata:43 - indexes: [primary]
+11:49:23,058  INFO TableMetadata:39 - table found: acal.conta
+11:49:23,059  INFO TableMetadata:40 - columns: [id, datapag, datagerada, observacoes, datavence, idenderecopessoa]
+11:49:23,061  INFO TableMetadata:42 - foreign keys: [fk5a7376f50a7b5d2]
+11:49:23,062  INFO TableMetadata:43 - indexes: [primary, fk5a7376f50a7b5d2]
+11:49:23,117  INFO TableMetadata:39 - table found: acal.contaslog
+11:49:23,117  INFO TableMetadata:40 - columns: [id, taxarelogio, horaregristro, datapag, tipo, idnumerosocio, usuarioalteracao, observacoes, taxasocio, datavence, idoriginal]
+11:49:23,118  INFO TableMetadata:42 - foreign keys: []
+11:49:23,118  INFO TableMetadata:43 - indexes: [primary]
+11:49:23,188  INFO TableMetadata:39 - table found: acal.contrato
+11:49:23,188  INFO TableMetadata:40 - columns: [id, corpo, nome, descricao]
+11:49:23,189  INFO TableMetadata:42 - foreign keys: []
+11:49:23,189  INFO TableMetadata:43 - indexes: [primary]
+11:49:23,240  INFO TableMetadata:39 - table found: acal.endereco
+11:49:23,241  INFO TableMetadata:40 - columns: [id, tipo, nome, descricao]
+11:49:23,241  INFO TableMetadata:42 - foreign keys: []
+11:49:23,242  INFO TableMetadata:43 - indexes: [primary]
+11:49:23,300  INFO TableMetadata:39 - table found: acal.enderecopessoa
+11:49:23,300  INFO TableMetadata:40 - columns: [id, idendereco, idpessoa, numero]
+11:49:23,301  INFO TableMetadata:42 - foreign keys: [fk80ecbcb0f1e3c984, fk80ecbcb0e2caedc0]
+11:49:23,302  INFO TableMetadata:43 - indexes: [fk80ecbcb0f1e3c984, fk80ecbcb0e2caedc0, primary]
+11:49:23,369  INFO TableMetadata:39 - table found: acal.entrada
+11:49:23,370  INFO TableMetadata:40 - columns: [id, idfuncionario, valor, data, idmotivoentrada, observacao, idcedente]
+11:49:23,370  INFO TableMetadata:42 - foreign keys: [fka122665776e134dc, fka1226657e196a484, fka1226657fda06717]
+11:49:23,371  INFO TableMetadata:43 - indexes: [fka122665776e134dc, fka1226657e196a484, fka1226657fda06717, primary]
+11:49:23,477  INFO TableMetadata:39 - table found: acal.entradaslog
+11:49:23,477  INFO TableMetadata:40 - columns: [id, idfuncionario, dataoriginal, valor, dataalteracao, tipo, idmotivoentrada, usuarioalteracao, observacao, idoriginal, idcedente]
+11:49:23,478  INFO TableMetadata:42 - foreign keys: []
+11:49:23,478  INFO TableMetadata:43 - indexes: [primary]
+11:49:23,540  INFO TableMetadata:39 - table found: acal.funcionario
+11:49:23,541  INFO TableMetadata:40 - columns: [id, salario, idpessoa, datacontratacao, observacao, cargo, matricula]
+11:49:23,541  INFO TableMetadata:42 - foreign keys: [fk50401ddbe2caedc0]
+11:49:23,541  INFO TableMetadata:43 - indexes: [primary, idpessoa, fk50401ddbe2caedc0]
+11:49:23,603  INFO TableMetadata:39 - table found: acal.hidrometro
+11:49:23,604  INFO TableMetadata:40 - columns: [idhidrometro, consumo, idconta]
+11:49:23,605  INFO TableMetadata:42 - foreign keys: [fkf3fd0019d45f0a2c]
+11:49:23,605  INFO TableMetadata:43 - indexes: [fkf3fd0019d45f0a2c, primary, idconta]
+11:49:23,662  INFO TableMetadata:39 - table found: acal.motivodespesa
+11:49:23,663  INFO TableMetadata:40 - columns: [id, nome, observacao, descricao]
+11:49:23,664  INFO TableMetadata:42 - foreign keys: []
+11:49:23,665  INFO TableMetadata:43 - indexes: [primary]
+11:49:23,719  INFO TableMetadata:39 - table found: acal.motivoentrada
+11:49:23,719  INFO TableMetadata:40 - columns: [id, nome, observacao, descricao]
+11:49:23,720  INFO TableMetadata:42 - foreign keys: []
+11:49:23,721  INFO TableMetadata:43 - indexes: [primary]
+11:49:23,799  INFO TableMetadata:39 - table found: acal.pessoa
+11:49:23,799  INFO TableMetadata:40 - columns: [uf, status, datanasc, nomemae, numeromatricula, sexo, observacoes, nomepai, id, bairro, cidade, sobrenome, cep, email, idendereco, telefone, numeroendereco, rgemissao, cpf, nome, rgexpedidor, rgnumero, apelido]
+11:49:23,800  INFO TableMetadata:42 - foreign keys: [fkc4e40fa7f1e3c984]
+11:49:23,800  INFO TableMetadata:43 - indexes: [primary, fkc4e40fa7f1e3c984]
+11:49:23,961  INFO TableMetadata:39 - table found: acal.saida
+11:49:23,962  INFO TableMetadata:40 - columns: [id, idmotivosaida, idfuncionario, valor, data, favorecido, observacao]
+11:49:23,963  INFO TableMetadata:42 - foreign keys: [fk6823d98e196a484, fk6823d98a2d1cd1b]
+11:49:23,963  INFO TableMetadata:43 - indexes: [primary, fk6823d98e196a484, fk6823d98a2d1cd1b]
+11:49:24,050  INFO TableMetadata:39 - table found: acal.saidaslog
+11:49:24,050  INFO TableMetadata:40 - columns: [id, idmotivosaida, idfuncionario, dataoriginal, valor, dataalteracao, tipo, usuarioalteracao, idfuncionarioaltercao, favorecido, observacao, idoriginal]
+11:49:24,051  INFO TableMetadata:42 - foreign keys: []
+11:49:24,052  INFO TableMetadata:43 - indexes: [primary]
+11:49:24,126  INFO TableMetadata:39 - table found: acal.socio
+11:49:24,126  INFO TableMetadata:40 - columns: [id, datamatricula, dataaprovacao, numerosocio, idpessoa, idcategoriasocio, observacao, datavence]
+11:49:24,127  INFO TableMetadata:42 - foreign keys: [fk68884ede2caedc0, fk68884ed9d0d13a6]
+11:49:24,128  INFO TableMetadata:43 - indexes: [fk68884ede2caedc0, fk68884ed9d0d13a6, primary, idpessoa]
+11:49:24,191  INFO TableMetadata:39 - table found: acal.taxa
+11:49:24,192  INFO TableMetadata:40 - columns: [id, valor, nome, observacao, descricao]
+11:49:24,192  INFO TableMetadata:42 - foreign keys: []
+11:49:24,193  INFO TableMetadata:43 - indexes: [primary]
+11:49:24,241  INFO TableMetadata:39 - table found: acal.taxasconta
+11:49:24,242  INFO TableMetadata:40 - columns: [contaid, taxaid, idtaxasconta]
+11:49:24,242  INFO TableMetadata:42 - foreign keys: [fk65e35472c6f1071e, fk65e35472aa5c0bc2]
+11:49:24,243  INFO TableMetadata:43 - indexes: [fk65e35472c6f1071e, primary, fk65e35472aa5c0bc2]
+11:49:24,248  INFO SchemaUpdate:160 - schema update complete
+11:49:27,511  INFO Configuration:1426 - configuring from resource: hibernateUser.cfg.xml
+11:49:27,512  INFO Configuration:1403 - Configuration resource: hibernateUser.cfg.xml
+11:49:27,531  INFO Configuration:1541 - Configured SessionFactory: null
+11:49:27,547  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.User
+11:49:27,548  INFO EntityBinder:424 - Bind entity entidades.User on table user
+11:49:27,593  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.TablesPriv
+11:49:27,595  INFO QueryBinder:64 - Binding Named query: TablesPriv.findAll => SELECT t FROM TablesPriv t
+11:49:27,597  INFO EntityBinder:424 - Bind entity entidades.TablesPriv on table tables_priv
+11:49:27,607  INFO AnnotationConfiguration:365 - Hibernate Validator not found: ignoring
+11:49:27,628  INFO DriverManagerConnectionProvider:41 - Using Hibernate built-in connection pool (not for production use!)
+11:49:27,629  INFO DriverManagerConnectionProvider:42 - Hibernate connection pool size: 20
+11:49:27,631  INFO DriverManagerConnectionProvider:45 - autocommit mode: false
+11:49:27,632  INFO DriverManagerConnectionProvider:80 - using driver: com.mysql.jdbc.Driver at URL: jdbc:mysql://localhost:3306/mysql?zeroDateTimeBehavior=convertToNull
+11:49:27,634  INFO DriverManagerConnectionProvider:86 - connection properties: {user=root, password=****}
+11:49:27,669  INFO SettingsFactory:89 - RDBMS: MySQL, version: 5.5.28
+11:49:27,670  INFO SettingsFactory:90 - JDBC driver: MySQL-AB JDBC Driver, version: mysql-connector-java-5.1.18 ( Revision: tonci.grgin@oracle.com-20110930151701-jfj14ddfq48ifkfq )
+11:49:27,693  INFO Dialect:152 - Using dialect: org.hibernate.dialect.MySQLDialect
+11:49:27,695  INFO TransactionFactoryFactory:31 - Using default transaction strategy (direct JDBC transactions)
+11:49:27,696  INFO TransactionManagerLookupFactory:33 - No TransactionManagerLookup configured (in JTA environment, use of read-write or transactional second-level cache is not recommended)
+11:49:27,697  INFO SettingsFactory:143 - Automatic flush during beforeCompletion(): disabled
+11:49:27,698  INFO SettingsFactory:147 - Automatic session close at end of transaction: disabled
+11:49:27,699  INFO SettingsFactory:154 - JDBC batch size: 15
+11:49:27,700  INFO SettingsFactory:157 - JDBC batch updates for versioned data: disabled
+11:49:27,701  INFO SettingsFactory:162 - Scrollable result sets: enabled
+11:49:27,701  INFO SettingsFactory:170 - JDBC3 getGeneratedKeys(): enabled
+11:49:27,702  INFO SettingsFactory:178 - Connection release mode: auto
+11:49:27,703  INFO SettingsFactory:202 - Maximum outer join fetch depth: 2
+11:49:27,704  INFO SettingsFactory:205 - Default batch fetch size: 1
+11:49:27,705  INFO SettingsFactory:209 - Generate SQL with comments: disabled
+11:49:27,706  INFO SettingsFactory:213 - Order SQL updates by primary key: disabled
+11:49:27,707  INFO SettingsFactory:217 - Order SQL inserts for batching: disabled
+11:49:27,708  INFO SettingsFactory:386 - Query translator: org.hibernate.hql.ast.ASTQueryTranslatorFactory
+11:49:27,708  INFO ASTQueryTranslatorFactory:24 - Using ASTQueryTranslatorFactory
+11:49:27,709  INFO SettingsFactory:225 - Query language substitutions: {}
+11:49:27,710  INFO SettingsFactory:230 - JPA-QL strict compliance: disabled
+11:49:27,711  INFO SettingsFactory:235 - Second-level cache: enabled
+11:49:27,712  INFO SettingsFactory:239 - Query cache: disabled
+11:49:27,713  INFO SettingsFactory:373 - Cache provider: org.hibernate.cache.NoCacheProvider
+11:49:27,714  INFO SettingsFactory:254 - Optimize cache for minimal puts: disabled
+11:49:27,714  INFO SettingsFactory:263 - Structured second-level cache entries: disabled
+11:49:27,715  INFO SettingsFactory:290 - Statistics: disabled
+11:49:27,716  INFO SettingsFactory:294 - Deleted entity synthetic identifier rollback: disabled
+11:49:27,717  INFO SettingsFactory:309 - Default entity-mode: pojo
+11:49:27,718  INFO SettingsFactory:313 - Named query checking : enabled
+11:49:27,732  INFO SessionFactoryImpl:161 - building session factory
+11:49:27,809  INFO SessionFactoryObjectFactory:82 - Not binding factory to JNDI, no JNDI name configured
+11:49:28,156 TRACE StringType:133 - binding 'root' to parameter: 1
+11:49:28,157 TRACE StringType:133 - binding '123' to parameter: 2
+11:49:28,172 TRACE StringType:172 - returning 'localhost' as column: Host40_
+11:49:28,173 TRACE StringType:172 - returning 'root' as column: User40_
+11:49:28,188 TRACE StringType:172 - returning 'Y' as column: Alter3_40_
+11:49:28,188 TRACE StringType:172 - returning 'Y' as column: Alter4_40_
+11:49:28,190 TRACE StringType:172 - returning 'Y' as column: Create6_40_
+11:49:28,191 TRACE StringType:172 - returning 'Y' as column: Create7_40_
+11:49:28,192 TRACE StringType:172 - returning 'Y' as column: Create8_40_
+11:49:28,193 TRACE StringType:172 - returning 'Y' as column: Create9_40_
+11:49:28,194 TRACE StringType:172 - returning 'Y' as column: Create10_40_
+11:49:28,195 TRACE StringType:172 - returning 'Y' as column: Create11_40_
+11:49:28,196 TRACE StringType:172 - returning 'Y' as column: Delete12_40_
+11:49:28,199 TRACE StringType:172 - returning 'Y' as column: Drop13_40_
+11:49:28,200 TRACE StringType:172 - returning 'Y' as column: Event14_40_
+11:49:28,201 TRACE StringType:172 - returning 'Y' as column: Execute15_40_
+11:49:28,203 TRACE StringType:172 - returning 'Y' as column: File16_40_
+11:49:28,204 TRACE StringType:172 - returning 'Y' as column: Grant17_40_
+11:49:28,205 TRACE StringType:172 - returning 'Y' as column: Index18_40_
+11:49:28,206 TRACE StringType:172 - returning 'Y' as column: Insert19_40_
+11:49:28,207 TRACE StringType:172 - returning 'Y' as column: Lock20_40_
+11:49:28,208 TRACE IntegerType:172 - returning '0' as column: max21_40_
+11:49:28,209 TRACE IntegerType:172 - returning '0' as column: max22_40_
+11:49:28,210 TRACE IntegerType:172 - returning '0' as column: max23_40_
+11:49:28,211 TRACE IntegerType:172 - returning '0' as column: max24_40_
+11:49:28,212 TRACE StringType:172 - returning '*23AE809DDACAF96AF0FD78ED04B6A265E05AA257' as column: Password40_
+11:49:28,212 TRACE StringType:172 - returning '' as column: plugin40_
+11:49:28,213 TRACE StringType:172 - returning 'Y' as column: Process27_40_
+11:49:28,214 TRACE StringType:172 - returning 'Y' as column: References28_40_
+11:49:28,215 TRACE StringType:172 - returning 'Y' as column: Reload29_40_
+11:49:28,216 TRACE StringType:172 - returning 'Y' as column: Repl30_40_
+11:49:28,217 TRACE StringType:172 - returning 'Y' as column: Repl31_40_
+11:49:28,218 TRACE StringType:172 - returning 'Y' as column: Select32_40_
+11:49:28,221 TRACE StringType:172 - returning 'Y' as column: Show33_40_
+11:49:28,222 TRACE StringType:172 - returning 'Y' as column: Show34_40_
+11:49:28,223 TRACE StringType:172 - returning 'Y' as column: Shutdown35_40_
+11:49:28,228 TRACE StringType:172 - returning '' as column: ssl37_40_
+11:49:28,229 TRACE StringType:172 - returning 'Y' as column: Super38_40_
+11:49:28,230 TRACE StringType:172 - returning 'Y' as column: Trigger39_40_
+11:49:28,230 TRACE StringType:172 - returning 'Y' as column: Update40_40_
+11:50:42,692  INFO Version:15 - Hibernate Annotations 3.3.1.GA
+11:50:42,730  INFO Environment:514 - Hibernate 3.2.5
+11:50:42,741  INFO Environment:547 - hibernate.properties not found
+11:50:42,748  INFO Environment:681 - Bytecode provider name : cglib
+11:50:42,763  INFO Environment:598 - using JDK 1.4 java.sql.Timestamp handling
+11:50:42,951  INFO Configuration:1426 - configuring from resource: /hibernate.cfg.xml
+11:50:42,957  INFO Configuration:1403 - Configuration resource: /hibernate.cfg.xml
+11:50:43,330  INFO Configuration:1541 - Configured SessionFactory: null
+11:50:43,526  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Categoriasocio
+11:50:43,628  INFO EntityBinder:424 - Bind entity entidades.Categoriasocio on table categoriasocio
+11:50:43,883  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Cheque
+11:50:43,884  INFO EntityBinder:424 - Bind entity entidades.Cheque on table cheque
+11:50:43,906  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Chequeslog
+11:50:43,908  INFO EntityBinder:424 - Bind entity entidades.Chequeslog on table chequeslog
+11:50:43,922  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Conta
+11:50:43,924  INFO EntityBinder:424 - Bind entity entidades.Conta on table conta
+11:50:43,950  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Contaslog
+11:50:43,951  INFO EntityBinder:424 - Bind entity entidades.Contaslog on table contaslog
+11:50:43,962  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Contrato
+11:50:43,963  INFO EntityBinder:424 - Bind entity entidades.Contrato on table contrato
+11:50:43,970  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Endereco
+11:50:43,971  INFO EntityBinder:424 - Bind entity entidades.Endereco on table endereco
+11:50:43,983  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Entrada
+11:50:43,986  INFO EntityBinder:424 - Bind entity entidades.Entrada on table entrada
+11:50:44,044  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Entradaslog
+11:50:44,049  INFO EntityBinder:424 - Bind entity entidades.Entradaslog on table entradaslog
+11:50:44,063  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Funcionario
+11:50:44,076  INFO EntityBinder:424 - Bind entity entidades.Funcionario on table funcionario
+11:50:44,127  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Hidrometro
+11:50:44,128  INFO EntityBinder:424 - Bind entity entidades.Hidrometro on table hidrometro
+11:50:44,134  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Motivodespesa
+11:50:44,136  INFO EntityBinder:424 - Bind entity entidades.Motivodespesa on table motivodespesa
+11:50:44,144  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Motivoentrada
+11:50:44,146  INFO EntityBinder:424 - Bind entity entidades.Motivoentrada on table motivoentrada
+11:50:44,154  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Pessoa
+11:50:44,155  INFO EntityBinder:424 - Bind entity entidades.Pessoa on table pessoa
+11:50:44,176  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Saida
+11:50:44,178  INFO EntityBinder:424 - Bind entity entidades.Saida on table saida
+11:50:44,187  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Saidaslog
+11:50:44,190  INFO EntityBinder:424 - Bind entity entidades.Saidaslog on table saidaslog
+11:50:44,240  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Socio
+11:50:44,242  INFO EntityBinder:424 - Bind entity entidades.Socio on table socio
+11:50:44,255  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Taxa
+11:50:44,256  INFO EntityBinder:424 - Bind entity entidades.Taxa on table taxa
+11:50:44,264  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Taxasconta
+11:50:44,266  INFO EntityBinder:424 - Bind entity entidades.Taxasconta on table taxasconta
+11:50:44,271  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Enderecopessoa
+11:50:44,273  INFO EntityBinder:424 - Bind entity entidades.Enderecopessoa on table enderecopessoa
+11:50:44,407  INFO CollectionBinder:651 - Mapping collection: entidades.Categoriasocio.socioList -> socio
+11:50:44,419  INFO CollectionBinder:651 - Mapping collection: entidades.Conta.taxascontaList -> taxasconta
+11:50:44,420  INFO CollectionBinder:651 - Mapping collection: entidades.Endereco.enderecopessoaList -> enderecopessoa
+11:50:44,420  INFO CollectionBinder:651 - Mapping collection: entidades.Endereco.pessoaList -> pessoa
+11:50:44,421  INFO CollectionBinder:651 - Mapping collection: entidades.Funcionario.chequeList -> cheque
+11:50:44,423  INFO CollectionBinder:651 - Mapping collection: entidades.Funcionario.entradaList -> entrada
+11:50:44,424  INFO CollectionBinder:651 - Mapping collection: entidades.Funcionario.saidaList -> saida
+11:50:44,424  INFO CollectionBinder:651 - Mapping collection: entidades.Motivodespesa.chequeList -> cheque
+11:50:44,425  INFO CollectionBinder:651 - Mapping collection: entidades.Motivodespesa.saidaList -> saida
+11:50:44,432  INFO CollectionBinder:651 - Mapping collection: entidades.Motivoentrada.entradaList -> entrada
+11:50:44,433  INFO CollectionBinder:651 - Mapping collection: entidades.Pessoa.enderecopessoaList -> enderecopessoa
+11:50:44,434  INFO CollectionBinder:651 - Mapping collection: entidades.Socio.entradaList -> entrada
+11:50:44,435  INFO CollectionBinder:651 - Mapping collection: entidades.Taxa.categoriasocioList -> categoriasocio
+11:50:44,435  INFO CollectionBinder:651 - Mapping collection: entidades.Taxa.taxascontaList -> taxasconta
+11:50:44,436  INFO CollectionBinder:651 - Mapping collection: entidades.Enderecopessoa.contaCollection -> conta
+11:50:44,439  INFO AnnotationConfiguration:365 - Hibernate Validator not found: ignoring
+11:50:44,476  INFO DriverManagerConnectionProvider:41 - Using Hibernate built-in connection pool (not for production use!)
+11:50:44,478  INFO DriverManagerConnectionProvider:42 - Hibernate connection pool size: 20
+11:50:44,481  INFO DriverManagerConnectionProvider:45 - autocommit mode: false
+11:50:44,499  INFO DriverManagerConnectionProvider:80 - using driver: com.mysql.jdbc.Driver at URL: jdbc:mysql://localhost:3306/acal?createDatabaseIfNotExist=true
+11:50:44,501  INFO DriverManagerConnectionProvider:86 - connection properties: {user=root, password=****}
+11:50:45,002  INFO SettingsFactory:89 - RDBMS: MySQL, version: 5.5.28
+11:50:45,002  INFO SettingsFactory:90 - JDBC driver: MySQL-AB JDBC Driver, version: mysql-connector-java-5.1.18 ( Revision: tonci.grgin@oracle.com-20110930151701-jfj14ddfq48ifkfq )
+11:50:45,030  INFO Dialect:152 - Using dialect: org.hibernate.dialect.MySQLDialect
+11:50:45,040  INFO TransactionFactoryFactory:31 - Using default transaction strategy (direct JDBC transactions)
+11:50:45,045  INFO TransactionManagerLookupFactory:33 - No TransactionManagerLookup configured (in JTA environment, use of read-write or transactional second-level cache is not recommended)
+11:50:45,046  INFO SettingsFactory:143 - Automatic flush during beforeCompletion(): disabled
+11:50:45,046  INFO SettingsFactory:147 - Automatic session close at end of transaction: disabled
+11:50:45,048  INFO SettingsFactory:154 - JDBC batch size: 15
+11:50:45,048  INFO SettingsFactory:157 - JDBC batch updates for versioned data: disabled
+11:50:45,050  INFO SettingsFactory:162 - Scrollable result sets: enabled
+11:50:45,051  INFO SettingsFactory:170 - JDBC3 getGeneratedKeys(): enabled
+11:50:45,052  INFO SettingsFactory:178 - Connection release mode: auto
+11:50:45,054  INFO SettingsFactory:202 - Maximum outer join fetch depth: 2
+11:50:45,056  INFO SettingsFactory:205 - Default batch fetch size: 1
+11:50:45,057  INFO SettingsFactory:209 - Generate SQL with comments: enabled
+11:50:45,058  INFO SettingsFactory:213 - Order SQL updates by primary key: disabled
+11:50:45,065  INFO SettingsFactory:217 - Order SQL inserts for batching: disabled
+11:50:45,065  INFO SettingsFactory:386 - Query translator: org.hibernate.hql.ast.ASTQueryTranslatorFactory
+11:50:45,074  INFO ASTQueryTranslatorFactory:24 - Using ASTQueryTranslatorFactory
+11:50:45,076  INFO SettingsFactory:225 - Query language substitutions: {}
+11:50:45,076  INFO SettingsFactory:230 - JPA-QL strict compliance: disabled
+11:50:45,077  INFO SettingsFactory:235 - Second-level cache: enabled
+11:50:45,078  INFO SettingsFactory:239 - Query cache: disabled
+11:50:45,081  INFO SettingsFactory:373 - Cache provider: org.hibernate.cache.NoCacheProvider
+11:50:45,081  INFO SettingsFactory:254 - Optimize cache for minimal puts: disabled
+11:50:45,082  INFO SettingsFactory:263 - Structured second-level cache entries: disabled
+11:50:45,093  INFO SettingsFactory:283 - Echoing all SQL to stdout
+11:50:45,094  INFO SettingsFactory:290 - Statistics: disabled
+11:50:45,095  INFO SettingsFactory:294 - Deleted entity synthetic identifier rollback: disabled
+11:50:45,098  INFO SettingsFactory:309 - Default entity-mode: pojo
+11:50:45,100  INFO SettingsFactory:313 - Named query checking : enabled
+11:50:45,162  INFO SessionFactoryImpl:161 - building session factory
+11:50:46,105  INFO SessionFactoryObjectFactory:82 - Not binding factory to JNDI, no JNDI name configured
+11:50:46,113  INFO SchemaUpdate:115 - Running hbm2ddl schema update
+11:50:46,114  INFO SchemaUpdate:126 - fetching database metadata
+11:50:46,119  INFO SchemaUpdate:138 - updating schema
+11:50:46,195  INFO TableMetadata:39 - table found: acal.categoriasocio
+11:50:46,196  INFO TableMetadata:40 - columns: [id, taxasid, nome, descricao]
+11:50:46,197  INFO TableMetadata:42 - foreign keys: [fk271f6b9aa011b865]
+11:50:46,198  INFO TableMetadata:43 - indexes: [primary, fk271f6b9aa011b865]
+11:50:46,252  INFO TableMetadata:39 - table found: acal.cheque
+11:50:46,253  INFO TableMetadata:40 - columns: [id, idfuncionario, valor, datapagamento, idmotivodespesa, datavencimento, observacoes, numero]
+11:50:46,253  INFO TableMetadata:42 - foreign keys: [fkaed8f221ee3fa458, fkaed8f221e196a484]
+11:50:46,257  INFO TableMetadata:43 - indexes: [primary, fkaed8f221ee3fa458, fkaed8f221e196a484]
+11:50:46,312  INFO TableMetadata:39 - table found: acal.chequeslog
+11:50:46,313  INFO TableMetadata:40 - columns: [id, valor, dataalteracao, usuariobanco, datapagamento, tipo, idmotivodepesa, datavencimento, idfuncionarioalteracao, observacoes, numero, idoriginal]
+11:50:46,313  INFO TableMetadata:42 - foreign keys: []
+11:50:46,317  INFO TableMetadata:43 - indexes: [primary]
+11:50:46,371  INFO TableMetadata:39 - table found: acal.conta
+11:50:46,371  INFO TableMetadata:40 - columns: [id, datapag, datagerada, observacoes, datavence, idenderecopessoa]
+11:50:46,374  INFO TableMetadata:42 - foreign keys: [fk5a7376f50a7b5d2]
+11:50:46,375  INFO TableMetadata:43 - indexes: [primary, fk5a7376f50a7b5d2]
+11:50:46,430  INFO TableMetadata:39 - table found: acal.contaslog
+11:50:46,431  INFO TableMetadata:40 - columns: [id, taxarelogio, horaregristro, datapag, tipo, idnumerosocio, usuarioalteracao, observacoes, taxasocio, datavence, idoriginal]
+11:50:46,432  INFO TableMetadata:42 - foreign keys: []
+11:50:46,432  INFO TableMetadata:43 - indexes: [primary]
+11:50:46,470  INFO TableMetadata:39 - table found: acal.contrato
+11:50:46,470  INFO TableMetadata:40 - columns: [id, corpo, nome, descricao]
+11:50:46,471  INFO TableMetadata:42 - foreign keys: []
+11:50:46,471  INFO TableMetadata:43 - indexes: [primary]
+11:50:46,506  INFO TableMetadata:39 - table found: acal.endereco
+11:50:46,507  INFO TableMetadata:40 - columns: [id, tipo, nome, descricao]
+11:50:46,508  INFO TableMetadata:42 - foreign keys: []
+11:50:46,508  INFO TableMetadata:43 - indexes: [primary]
+11:50:46,551  INFO TableMetadata:39 - table found: acal.enderecopessoa
+11:50:46,552  INFO TableMetadata:40 - columns: [id, idendereco, idpessoa, numero]
+11:50:46,555  INFO TableMetadata:42 - foreign keys: [fk80ecbcb0f1e3c984, fk80ecbcb0e2caedc0]
+11:50:46,556  INFO TableMetadata:43 - indexes: [fk80ecbcb0f1e3c984, fk80ecbcb0e2caedc0, primary]
+11:50:46,595  INFO TableMetadata:39 - table found: acal.entrada
+11:50:46,596  INFO TableMetadata:40 - columns: [id, idfuncionario, valor, data, idmotivoentrada, observacao, idcedente]
+11:50:46,596  INFO TableMetadata:42 - foreign keys: [fka122665776e134dc, fka1226657e196a484, fka1226657fda06717]
+11:50:46,597  INFO TableMetadata:43 - indexes: [fka122665776e134dc, fka1226657e196a484, fka1226657fda06717, primary]
+11:50:46,647  INFO TableMetadata:39 - table found: acal.entradaslog
+11:50:46,647  INFO TableMetadata:40 - columns: [id, idfuncionario, dataoriginal, valor, dataalteracao, tipo, idmotivoentrada, usuarioalteracao, observacao, idoriginal, idcedente]
+11:50:46,648  INFO TableMetadata:42 - foreign keys: []
+11:50:46,650  INFO TableMetadata:43 - indexes: [primary]
+11:50:46,686  INFO TableMetadata:39 - table found: acal.funcionario
+11:50:46,687  INFO TableMetadata:40 - columns: [id, salario, idpessoa, datacontratacao, observacao, cargo, matricula]
+11:50:46,687  INFO TableMetadata:42 - foreign keys: [fk50401ddbe2caedc0]
+11:50:46,688  INFO TableMetadata:43 - indexes: [primary, idpessoa, fk50401ddbe2caedc0]
+11:50:46,722  INFO TableMetadata:39 - table found: acal.hidrometro
+11:50:46,722  INFO TableMetadata:40 - columns: [idhidrometro, consumo, idconta]
+11:50:46,722  INFO TableMetadata:42 - foreign keys: [fkf3fd0019d45f0a2c]
+11:50:46,723  INFO TableMetadata:43 - indexes: [fkf3fd0019d45f0a2c, primary, idconta]
+11:50:46,775  INFO TableMetadata:39 - table found: acal.motivodespesa
+11:50:46,776  INFO TableMetadata:40 - columns: [id, nome, observacao, descricao]
+11:50:46,784  INFO TableMetadata:42 - foreign keys: []
+11:50:46,786  INFO TableMetadata:43 - indexes: [primary]
+11:50:46,830  INFO TableMetadata:39 - table found: acal.motivoentrada
+11:50:46,831  INFO TableMetadata:40 - columns: [id, nome, observacao, descricao]
+11:50:46,832  INFO TableMetadata:42 - foreign keys: []
+11:50:46,832  INFO TableMetadata:43 - indexes: [primary]
+11:50:46,875  INFO TableMetadata:39 - table found: acal.pessoa
+11:50:46,875  INFO TableMetadata:40 - columns: [uf, status, datanasc, nomemae, numeromatricula, sexo, observacoes, nomepai, id, bairro, cidade, sobrenome, cep, email, idendereco, telefone, numeroendereco, rgemissao, cpf, nome, rgexpedidor, rgnumero, apelido]
+11:50:46,876  INFO TableMetadata:42 - foreign keys: [fkc4e40fa7f1e3c984]
+11:50:46,878  INFO TableMetadata:43 - indexes: [primary, fkc4e40fa7f1e3c984]
+11:50:46,912  INFO TableMetadata:39 - table found: acal.saida
+11:50:46,912  INFO TableMetadata:40 - columns: [id, idmotivosaida, idfuncionario, valor, data, favorecido, observacao]
+11:50:46,913  INFO TableMetadata:42 - foreign keys: [fk6823d98e196a484, fk6823d98a2d1cd1b]
+11:50:46,914  INFO TableMetadata:43 - indexes: [primary, fk6823d98e196a484, fk6823d98a2d1cd1b]
+11:50:46,960  INFO TableMetadata:39 - table found: acal.saidaslog
+11:50:46,961  INFO TableMetadata:40 - columns: [id, idmotivosaida, idfuncionario, dataoriginal, valor, dataalteracao, tipo, usuarioalteracao, idfuncionarioaltercao, favorecido, observacao, idoriginal]
+11:50:46,961  INFO TableMetadata:42 - foreign keys: []
+11:50:46,964  INFO TableMetadata:43 - indexes: [primary]
+11:50:47,016  INFO TableMetadata:39 - table found: acal.socio
+11:50:47,018  INFO TableMetadata:40 - columns: [id, datamatricula, dataaprovacao, numerosocio, idpessoa, idcategoriasocio, observacao, datavence]
+11:50:47,019  INFO TableMetadata:42 - foreign keys: [fk68884ede2caedc0, fk68884ed9d0d13a6]
+11:50:47,019  INFO TableMetadata:43 - indexes: [fk68884ede2caedc0, fk68884ed9d0d13a6, primary, idpessoa]
+11:50:47,058  INFO TableMetadata:39 - table found: acal.taxa
+11:50:47,058  INFO TableMetadata:40 - columns: [id, valor, nome, observacao, descricao]
+11:50:47,059  INFO TableMetadata:42 - foreign keys: []
+11:50:47,060  INFO TableMetadata:43 - indexes: [primary]
+11:50:47,093  INFO TableMetadata:39 - table found: acal.taxasconta
+11:50:47,094  INFO TableMetadata:40 - columns: [contaid, taxaid, idtaxasconta]
+11:50:47,095  INFO TableMetadata:42 - foreign keys: [fk65e35472c6f1071e, fk65e35472aa5c0bc2]
+11:50:47,096  INFO TableMetadata:43 - indexes: [fk65e35472c6f1071e, primary, fk65e35472aa5c0bc2]
+11:50:47,098  INFO SchemaUpdate:160 - schema update complete
+11:50:50,844  INFO Configuration:1426 - configuring from resource: hibernateUser.cfg.xml
+11:50:50,845  INFO Configuration:1403 - Configuration resource: hibernateUser.cfg.xml
+11:50:50,862  INFO Configuration:1541 - Configured SessionFactory: null
+11:50:50,877  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.User
+11:50:50,879  INFO EntityBinder:424 - Bind entity entidades.User on table user
+11:50:50,918  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.TablesPriv
+11:50:50,920  INFO QueryBinder:64 - Binding Named query: TablesPriv.findAll => SELECT t FROM TablesPriv t
+11:50:50,922  INFO EntityBinder:424 - Bind entity entidades.TablesPriv on table tables_priv
+11:50:50,931  INFO AnnotationConfiguration:365 - Hibernate Validator not found: ignoring
+11:50:50,953  INFO DriverManagerConnectionProvider:41 - Using Hibernate built-in connection pool (not for production use!)
+11:50:50,954  INFO DriverManagerConnectionProvider:42 - Hibernate connection pool size: 20
+11:50:50,955  INFO DriverManagerConnectionProvider:45 - autocommit mode: false
+11:50:50,957  INFO DriverManagerConnectionProvider:80 - using driver: com.mysql.jdbc.Driver at URL: jdbc:mysql://localhost:3306/mysql?zeroDateTimeBehavior=convertToNull
+11:50:50,959  INFO DriverManagerConnectionProvider:86 - connection properties: {user=root, password=****}
+11:50:50,993  INFO SettingsFactory:89 - RDBMS: MySQL, version: 5.5.28
+11:50:50,994  INFO SettingsFactory:90 - JDBC driver: MySQL-AB JDBC Driver, version: mysql-connector-java-5.1.18 ( Revision: tonci.grgin@oracle.com-20110930151701-jfj14ddfq48ifkfq )
+11:50:50,995  INFO Dialect:152 - Using dialect: org.hibernate.dialect.MySQLDialect
+11:50:51,021  INFO TransactionFactoryFactory:31 - Using default transaction strategy (direct JDBC transactions)
+11:50:51,022  INFO TransactionManagerLookupFactory:33 - No TransactionManagerLookup configured (in JTA environment, use of read-write or transactional second-level cache is not recommended)
+11:50:51,023  INFO SettingsFactory:143 - Automatic flush during beforeCompletion(): disabled
+11:50:51,024  INFO SettingsFactory:147 - Automatic session close at end of transaction: disabled
+11:50:51,025  INFO SettingsFactory:154 - JDBC batch size: 15
+11:50:51,026  INFO SettingsFactory:157 - JDBC batch updates for versioned data: disabled
+11:50:51,027  INFO SettingsFactory:162 - Scrollable result sets: enabled
+11:50:51,028  INFO SettingsFactory:170 - JDBC3 getGeneratedKeys(): enabled
+11:50:51,029  INFO SettingsFactory:178 - Connection release mode: auto
+11:50:51,029  INFO SettingsFactory:202 - Maximum outer join fetch depth: 2
+11:50:51,030  INFO SettingsFactory:205 - Default batch fetch size: 1
+11:50:51,031  INFO SettingsFactory:209 - Generate SQL with comments: disabled
+11:50:51,032  INFO SettingsFactory:213 - Order SQL updates by primary key: disabled
+11:50:51,033  INFO SettingsFactory:217 - Order SQL inserts for batching: disabled
+11:50:51,034  INFO SettingsFactory:386 - Query translator: org.hibernate.hql.ast.ASTQueryTranslatorFactory
+11:50:51,035  INFO ASTQueryTranslatorFactory:24 - Using ASTQueryTranslatorFactory
+11:50:51,035  INFO SettingsFactory:225 - Query language substitutions: {}
+11:50:51,036  INFO SettingsFactory:230 - JPA-QL strict compliance: disabled
+11:50:51,037  INFO SettingsFactory:235 - Second-level cache: enabled
+11:50:51,038  INFO SettingsFactory:239 - Query cache: disabled
+11:50:51,039  INFO SettingsFactory:373 - Cache provider: org.hibernate.cache.NoCacheProvider
+11:50:51,040  INFO SettingsFactory:254 - Optimize cache for minimal puts: disabled
+11:50:51,040  INFO SettingsFactory:263 - Structured second-level cache entries: disabled
+11:50:51,041  INFO SettingsFactory:290 - Statistics: disabled
+11:50:51,042  INFO SettingsFactory:294 - Deleted entity synthetic identifier rollback: disabled
+11:50:51,043  INFO SettingsFactory:309 - Default entity-mode: pojo
+11:50:51,044  INFO SettingsFactory:313 - Named query checking : enabled
+11:50:51,060  INFO SessionFactoryImpl:161 - building session factory
+11:50:51,145  INFO SessionFactoryObjectFactory:82 - Not binding factory to JNDI, no JNDI name configured
+11:50:51,644 TRACE StringType:133 - binding 'root' to parameter: 1
+11:50:51,644 TRACE StringType:133 - binding '123' to parameter: 2
+11:50:51,661 TRACE StringType:172 - returning 'localhost' as column: Host40_
+11:50:51,662 TRACE StringType:172 - returning 'root' as column: User40_
+11:50:51,676 TRACE StringType:172 - returning 'Y' as column: Alter3_40_
+11:50:51,678 TRACE StringType:172 - returning 'Y' as column: Alter4_40_
+11:50:51,679 TRACE StringType:172 - returning 'Y' as column: Create6_40_
+11:50:51,680 TRACE StringType:172 - returning 'Y' as column: Create7_40_
+11:50:51,681 TRACE StringType:172 - returning 'Y' as column: Create8_40_
+11:50:51,682 TRACE StringType:172 - returning 'Y' as column: Create9_40_
+11:50:51,683 TRACE StringType:172 - returning 'Y' as column: Create10_40_
+11:50:51,684 TRACE StringType:172 - returning 'Y' as column: Create11_40_
+11:50:51,685 TRACE StringType:172 - returning 'Y' as column: Delete12_40_
+11:50:51,686 TRACE StringType:172 - returning 'Y' as column: Drop13_40_
+11:50:51,686 TRACE StringType:172 - returning 'Y' as column: Event14_40_
+11:50:51,687 TRACE StringType:172 - returning 'Y' as column: Execute15_40_
+11:50:51,688 TRACE StringType:172 - returning 'Y' as column: File16_40_
+11:50:51,690 TRACE StringType:172 - returning 'Y' as column: Grant17_40_
+11:50:51,692 TRACE StringType:172 - returning 'Y' as column: Index18_40_
+11:50:51,693 TRACE StringType:172 - returning 'Y' as column: Insert19_40_
+11:50:51,694 TRACE StringType:172 - returning 'Y' as column: Lock20_40_
+11:50:51,695 TRACE IntegerType:172 - returning '0' as column: max21_40_
+11:50:51,696 TRACE IntegerType:172 - returning '0' as column: max22_40_
+11:50:51,697 TRACE IntegerType:172 - returning '0' as column: max23_40_
+11:50:51,698 TRACE IntegerType:172 - returning '0' as column: max24_40_
+11:50:51,699 TRACE StringType:172 - returning '*23AE809DDACAF96AF0FD78ED04B6A265E05AA257' as column: Password40_
+11:50:51,700 TRACE StringType:172 - returning '' as column: plugin40_
+11:50:51,701 TRACE StringType:172 - returning 'Y' as column: Process27_40_
+11:50:51,702 TRACE StringType:172 - returning 'Y' as column: References28_40_
+11:50:51,703 TRACE StringType:172 - returning 'Y' as column: Reload29_40_
+11:50:51,704 TRACE StringType:172 - returning 'Y' as column: Repl30_40_
+11:50:51,705 TRACE StringType:172 - returning 'Y' as column: Repl31_40_
+11:50:51,706 TRACE StringType:172 - returning 'Y' as column: Select32_40_
+11:50:51,707 TRACE StringType:172 - returning 'Y' as column: Show33_40_
+11:50:51,708 TRACE StringType:172 - returning 'Y' as column: Show34_40_
+11:50:51,709 TRACE StringType:172 - returning 'Y' as column: Shutdown35_40_
+11:50:51,714 TRACE StringType:172 - returning '' as column: ssl37_40_
+11:50:51,715 TRACE StringType:172 - returning 'Y' as column: Super38_40_
+11:50:51,716 TRACE StringType:172 - returning 'Y' as column: Trigger39_40_
+11:50:51,717 TRACE StringType:172 - returning 'Y' as column: Update40_40_
+11:51:31,830  INFO Version:15 - Hibernate Annotations 3.3.1.GA
+11:51:31,873  INFO Environment:514 - Hibernate 3.2.5
+11:51:31,882  INFO Environment:547 - hibernate.properties not found
+11:51:31,891  INFO Environment:681 - Bytecode provider name : cglib
+11:51:31,909  INFO Environment:598 - using JDK 1.4 java.sql.Timestamp handling
+11:51:32,111  INFO Configuration:1426 - configuring from resource: /hibernate.cfg.xml
+11:51:32,112  INFO Configuration:1403 - Configuration resource: /hibernate.cfg.xml
+11:51:32,501  INFO Configuration:1541 - Configured SessionFactory: null
+11:51:32,759  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Categoriasocio
+11:51:32,871  INFO EntityBinder:424 - Bind entity entidades.Categoriasocio on table categoriasocio
+11:51:33,151  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Cheque
+11:51:33,153  INFO EntityBinder:424 - Bind entity entidades.Cheque on table cheque
+11:51:33,176  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Chequeslog
+11:51:33,177  INFO EntityBinder:424 - Bind entity entidades.Chequeslog on table chequeslog
+11:51:33,190  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Conta
+11:51:33,192  INFO EntityBinder:424 - Bind entity entidades.Conta on table conta
+11:51:33,217  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Contaslog
+11:51:33,218  INFO EntityBinder:424 - Bind entity entidades.Contaslog on table contaslog
+11:51:33,242  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Contrato
+11:51:33,244  INFO EntityBinder:424 - Bind entity entidades.Contrato on table contrato
+11:51:33,257  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Endereco
+11:51:33,258  INFO EntityBinder:424 - Bind entity entidades.Endereco on table endereco
+11:51:33,319  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Entrada
+11:51:33,340  INFO EntityBinder:424 - Bind entity entidades.Entrada on table entrada
+11:51:33,401  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Entradaslog
+11:51:33,404  INFO EntityBinder:424 - Bind entity entidades.Entradaslog on table entradaslog
+11:51:33,419  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Funcionario
+11:51:33,421  INFO EntityBinder:424 - Bind entity entidades.Funcionario on table funcionario
+11:51:33,460  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Hidrometro
+11:51:33,470  INFO EntityBinder:424 - Bind entity entidades.Hidrometro on table hidrometro
+11:51:33,477  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Motivodespesa
+11:51:33,487  INFO EntityBinder:424 - Bind entity entidades.Motivodespesa on table motivodespesa
+11:51:33,505  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Motivoentrada
+11:51:33,508  INFO EntityBinder:424 - Bind entity entidades.Motivoentrada on table motivoentrada
+11:51:33,524  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Pessoa
+11:51:33,527  INFO EntityBinder:424 - Bind entity entidades.Pessoa on table pessoa
+11:51:33,578  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Saida
+11:51:33,581  INFO EntityBinder:424 - Bind entity entidades.Saida on table saida
+11:51:33,604  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Saidaslog
+11:51:33,634  INFO EntityBinder:424 - Bind entity entidades.Saidaslog on table saidaslog
+11:51:33,695  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Socio
+11:51:33,696  INFO EntityBinder:424 - Bind entity entidades.Socio on table socio
+11:51:33,720  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Taxa
+11:51:33,722  INFO EntityBinder:424 - Bind entity entidades.Taxa on table taxa
+11:51:33,730  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Taxasconta
+11:51:33,731  INFO EntityBinder:424 - Bind entity entidades.Taxasconta on table taxasconta
+11:51:33,736  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Enderecopessoa
+11:51:33,737  INFO EntityBinder:424 - Bind entity entidades.Enderecopessoa on table enderecopessoa
+11:51:33,876  INFO CollectionBinder:651 - Mapping collection: entidades.Categoriasocio.socioList -> socio
+11:51:33,885  INFO CollectionBinder:651 - Mapping collection: entidades.Conta.taxascontaList -> taxasconta
+11:51:33,887  INFO CollectionBinder:651 - Mapping collection: entidades.Endereco.enderecopessoaList -> enderecopessoa
+11:51:33,888  INFO CollectionBinder:651 - Mapping collection: entidades.Endereco.pessoaList -> pessoa
+11:51:33,889  INFO CollectionBinder:651 - Mapping collection: entidades.Funcionario.chequeList -> cheque
+11:51:33,890  INFO CollectionBinder:651 - Mapping collection: entidades.Funcionario.entradaList -> entrada
+11:51:33,894  INFO CollectionBinder:651 - Mapping collection: entidades.Funcionario.saidaList -> saida
+11:51:33,895  INFO CollectionBinder:651 - Mapping collection: entidades.Motivodespesa.chequeList -> cheque
+11:51:33,905  INFO CollectionBinder:651 - Mapping collection: entidades.Motivodespesa.saidaList -> saida
+11:51:33,907  INFO CollectionBinder:651 - Mapping collection: entidades.Motivoentrada.entradaList -> entrada
+11:51:33,910  INFO CollectionBinder:651 - Mapping collection: entidades.Pessoa.enderecopessoaList -> enderecopessoa
+11:51:33,913  INFO CollectionBinder:651 - Mapping collection: entidades.Socio.entradaList -> entrada
+11:51:33,914  INFO CollectionBinder:651 - Mapping collection: entidades.Taxa.categoriasocioList -> categoriasocio
+11:51:33,916  INFO CollectionBinder:651 - Mapping collection: entidades.Taxa.taxascontaList -> taxasconta
+11:51:33,916  INFO CollectionBinder:651 - Mapping collection: entidades.Enderecopessoa.contaCollection -> conta
+11:51:33,920  INFO AnnotationConfiguration:365 - Hibernate Validator not found: ignoring
+11:51:33,942  INFO DriverManagerConnectionProvider:41 - Using Hibernate built-in connection pool (not for production use!)
+11:51:33,943  INFO DriverManagerConnectionProvider:42 - Hibernate connection pool size: 20
+11:51:33,944  INFO DriverManagerConnectionProvider:45 - autocommit mode: false
+11:51:33,959  INFO DriverManagerConnectionProvider:80 - using driver: com.mysql.jdbc.Driver at URL: jdbc:mysql://localhost:3306/acal?createDatabaseIfNotExist=true
+11:51:33,960  INFO DriverManagerConnectionProvider:86 - connection properties: {user=root, password=****}
+11:51:34,652  INFO SettingsFactory:89 - RDBMS: MySQL, version: 5.5.28
+11:51:34,654  INFO SettingsFactory:90 - JDBC driver: MySQL-AB JDBC Driver, version: mysql-connector-java-5.1.18 ( Revision: tonci.grgin@oracle.com-20110930151701-jfj14ddfq48ifkfq )
+11:51:34,688  INFO Dialect:152 - Using dialect: org.hibernate.dialect.MySQLDialect
+11:51:34,698  INFO TransactionFactoryFactory:31 - Using default transaction strategy (direct JDBC transactions)
+11:51:34,703  INFO TransactionManagerLookupFactory:33 - No TransactionManagerLookup configured (in JTA environment, use of read-write or transactional second-level cache is not recommended)
+11:51:34,704  INFO SettingsFactory:143 - Automatic flush during beforeCompletion(): disabled
+11:51:34,704  INFO SettingsFactory:147 - Automatic session close at end of transaction: disabled
+11:51:34,705  INFO SettingsFactory:154 - JDBC batch size: 15
+11:51:34,705  INFO SettingsFactory:157 - JDBC batch updates for versioned data: disabled
+11:51:34,707  INFO SettingsFactory:162 - Scrollable result sets: enabled
+11:51:34,708  INFO SettingsFactory:170 - JDBC3 getGeneratedKeys(): enabled
+11:51:34,708  INFO SettingsFactory:178 - Connection release mode: auto
+11:51:34,710  INFO SettingsFactory:202 - Maximum outer join fetch depth: 2
+11:51:34,711  INFO SettingsFactory:205 - Default batch fetch size: 1
+11:51:34,712  INFO SettingsFactory:209 - Generate SQL with comments: enabled
+11:51:34,712  INFO SettingsFactory:213 - Order SQL updates by primary key: disabled
+11:51:34,720  INFO SettingsFactory:217 - Order SQL inserts for batching: disabled
+11:51:34,725  INFO SettingsFactory:386 - Query translator: org.hibernate.hql.ast.ASTQueryTranslatorFactory
+11:51:34,750  INFO ASTQueryTranslatorFactory:24 - Using ASTQueryTranslatorFactory
+11:51:34,751  INFO SettingsFactory:225 - Query language substitutions: {}
+11:51:34,752  INFO SettingsFactory:230 - JPA-QL strict compliance: disabled
+11:51:34,752  INFO SettingsFactory:235 - Second-level cache: enabled
+11:51:34,753  INFO SettingsFactory:239 - Query cache: disabled
+11:51:34,753  INFO SettingsFactory:373 - Cache provider: org.hibernate.cache.NoCacheProvider
+11:51:34,754  INFO SettingsFactory:254 - Optimize cache for minimal puts: disabled
+11:51:34,754  INFO SettingsFactory:263 - Structured second-level cache entries: disabled
+11:51:34,782  INFO SettingsFactory:283 - Echoing all SQL to stdout
+11:51:34,783  INFO SettingsFactory:290 - Statistics: disabled
+11:51:34,784  INFO SettingsFactory:294 - Deleted entity synthetic identifier rollback: disabled
+11:51:34,787  INFO SettingsFactory:309 - Default entity-mode: pojo
+11:51:34,790  INFO SettingsFactory:313 - Named query checking : enabled
+11:51:34,871  INFO SessionFactoryImpl:161 - building session factory
+11:51:35,938  INFO SessionFactoryObjectFactory:82 - Not binding factory to JNDI, no JNDI name configured
+11:51:35,947  INFO SchemaUpdate:115 - Running hbm2ddl schema update
+11:51:35,948  INFO SchemaUpdate:126 - fetching database metadata
+11:51:35,951  INFO SchemaUpdate:138 - updating schema
+11:51:36,032  INFO TableMetadata:39 - table found: acal.categoriasocio
+11:51:36,033  INFO TableMetadata:40 - columns: [id, taxasid, nome, descricao]
+11:51:36,033  INFO TableMetadata:42 - foreign keys: [fk271f6b9aa011b865]
+11:51:36,034  INFO TableMetadata:43 - indexes: [primary, fk271f6b9aa011b865]
+11:51:36,100  INFO TableMetadata:39 - table found: acal.cheque
+11:51:36,101  INFO TableMetadata:40 - columns: [id, idfuncionario, valor, datapagamento, idmotivodespesa, datavencimento, observacoes, numero]
+11:51:36,101  INFO TableMetadata:42 - foreign keys: [fkaed8f221ee3fa458, fkaed8f221e196a484]
+11:51:36,101  INFO TableMetadata:43 - indexes: [primary, fkaed8f221ee3fa458, fkaed8f221e196a484]
+11:51:36,165  INFO TableMetadata:39 - table found: acal.chequeslog
+11:51:36,165  INFO TableMetadata:40 - columns: [id, valor, dataalteracao, usuariobanco, datapagamento, tipo, idmotivodepesa, datavencimento, idfuncionarioalteracao, observacoes, numero, idoriginal]
+11:51:36,166  INFO TableMetadata:42 - foreign keys: []
+11:51:36,166  INFO TableMetadata:43 - indexes: [primary]
+11:51:36,225  INFO TableMetadata:39 - table found: acal.conta
+11:51:36,226  INFO TableMetadata:40 - columns: [id, datapag, datagerada, observacoes, datavence, idenderecopessoa]
+11:51:36,227  INFO TableMetadata:42 - foreign keys: [fk5a7376f50a7b5d2]
+11:51:36,228  INFO TableMetadata:43 - indexes: [primary, fk5a7376f50a7b5d2]
+11:51:36,283  INFO TableMetadata:39 - table found: acal.contaslog
+11:51:36,284  INFO TableMetadata:40 - columns: [id, taxarelogio, horaregristro, datapag, tipo, idnumerosocio, usuarioalteracao, observacoes, taxasocio, datavence, idoriginal]
+11:51:36,284  INFO TableMetadata:42 - foreign keys: []
+11:51:36,285  INFO TableMetadata:43 - indexes: [primary]
+11:51:36,322  INFO TableMetadata:39 - table found: acal.contrato
+11:51:36,323  INFO TableMetadata:40 - columns: [id, corpo, nome, descricao]
+11:51:36,324  INFO TableMetadata:42 - foreign keys: []
+11:51:36,325  INFO TableMetadata:43 - indexes: [primary]
+11:51:36,358  INFO TableMetadata:39 - table found: acal.endereco
+11:51:36,359  INFO TableMetadata:40 - columns: [id, tipo, nome, descricao]
+11:51:36,359  INFO TableMetadata:42 - foreign keys: []
+11:51:36,359  INFO TableMetadata:43 - indexes: [primary]
+11:51:36,400  INFO TableMetadata:39 - table found: acal.enderecopessoa
+11:51:36,401  INFO TableMetadata:40 - columns: [id, idendereco, idpessoa, numero]
+11:51:36,402  INFO TableMetadata:42 - foreign keys: [fk80ecbcb0f1e3c984, fk80ecbcb0e2caedc0]
+11:51:36,402  INFO TableMetadata:43 - indexes: [fk80ecbcb0f1e3c984, fk80ecbcb0e2caedc0, primary]
+11:51:36,440  INFO TableMetadata:39 - table found: acal.entrada
+11:51:36,441  INFO TableMetadata:40 - columns: [id, idfuncionario, valor, data, idmotivoentrada, observacao, idcedente]
+11:51:36,442  INFO TableMetadata:42 - foreign keys: [fka122665776e134dc, fka1226657e196a484, fka1226657fda06717]
+11:51:36,442  INFO TableMetadata:43 - indexes: [fka122665776e134dc, fka1226657e196a484, fka1226657fda06717, primary]
+11:51:36,497  INFO TableMetadata:39 - table found: acal.entradaslog
+11:51:36,498  INFO TableMetadata:40 - columns: [id, idfuncionario, dataoriginal, valor, dataalteracao, tipo, idmotivoentrada, usuarioalteracao, observacao, idoriginal, idcedente]
+11:51:36,498  INFO TableMetadata:42 - foreign keys: []
+11:51:36,499  INFO TableMetadata:43 - indexes: [primary]
+11:51:36,541  INFO TableMetadata:39 - table found: acal.funcionario
+11:51:36,541  INFO TableMetadata:40 - columns: [id, salario, idpessoa, datacontratacao, observacao, cargo, matricula]
+11:51:36,542  INFO TableMetadata:42 - foreign keys: [fk50401ddbe2caedc0]
+11:51:36,542  INFO TableMetadata:43 - indexes: [primary, idpessoa, fk50401ddbe2caedc0]
+11:51:36,578  INFO TableMetadata:39 - table found: acal.hidrometro
+11:51:36,579  INFO TableMetadata:40 - columns: [idhidrometro, consumo, idconta]
+11:51:36,579  INFO TableMetadata:42 - foreign keys: [fkf3fd0019d45f0a2c]
+11:51:36,580  INFO TableMetadata:43 - indexes: [fkf3fd0019d45f0a2c, primary, idconta]
+11:51:36,622  INFO TableMetadata:39 - table found: acal.motivodespesa
+11:51:36,623  INFO TableMetadata:40 - columns: [id, nome, observacao, descricao]
+11:51:36,624  INFO TableMetadata:42 - foreign keys: []
+11:51:36,633  INFO TableMetadata:43 - indexes: [primary]
+11:51:36,677  INFO TableMetadata:39 - table found: acal.motivoentrada
+11:51:36,678  INFO TableMetadata:40 - columns: [id, nome, observacao, descricao]
+11:51:36,678  INFO TableMetadata:42 - foreign keys: []
+11:51:36,679  INFO TableMetadata:43 - indexes: [primary]
+11:51:36,723  INFO TableMetadata:39 - table found: acal.pessoa
+11:51:36,724  INFO TableMetadata:40 - columns: [uf, status, datanasc, nomemae, numeromatricula, sexo, observacoes, nomepai, id, bairro, cidade, sobrenome, cep, email, idendereco, telefone, numeroendereco, rgemissao, cpf, nome, rgexpedidor, rgnumero, apelido]
+11:51:36,724  INFO TableMetadata:42 - foreign keys: [fkc4e40fa7f1e3c984]
+11:51:36,725  INFO TableMetadata:43 - indexes: [primary, fkc4e40fa7f1e3c984]
+11:51:36,761  INFO TableMetadata:39 - table found: acal.saida
+11:51:36,762  INFO TableMetadata:40 - columns: [id, idmotivosaida, idfuncionario, valor, data, favorecido, observacao]
+11:51:36,762  INFO TableMetadata:42 - foreign keys: [fk6823d98e196a484, fk6823d98a2d1cd1b]
+11:51:36,763  INFO TableMetadata:43 - indexes: [primary, fk6823d98e196a484, fk6823d98a2d1cd1b]
+11:51:36,811  INFO TableMetadata:39 - table found: acal.saidaslog
+11:51:36,811  INFO TableMetadata:40 - columns: [id, idmotivosaida, idfuncionario, dataoriginal, valor, dataalteracao, tipo, usuarioalteracao, idfuncionarioaltercao, favorecido, observacao, idoriginal]
+11:51:36,812  INFO TableMetadata:42 - foreign keys: []
+11:51:36,812  INFO TableMetadata:43 - indexes: [primary]
+11:51:36,866  INFO TableMetadata:39 - table found: acal.socio
+11:51:36,866  INFO TableMetadata:40 - columns: [id, datamatricula, dataaprovacao, numerosocio, idpessoa, idcategoriasocio, observacao, datavence]
+11:51:36,867  INFO TableMetadata:42 - foreign keys: [fk68884ede2caedc0, fk68884ed9d0d13a6]
+11:51:36,867  INFO TableMetadata:43 - indexes: [fk68884ede2caedc0, fk68884ed9d0d13a6, primary, idpessoa]
+11:51:36,924  INFO TableMetadata:39 - table found: acal.taxa
+11:51:36,925  INFO TableMetadata:40 - columns: [id, valor, nome, observacao, descricao]
+11:51:36,926  INFO TableMetadata:42 - foreign keys: []
+11:51:36,926  INFO TableMetadata:43 - indexes: [primary]
+11:51:36,960  INFO TableMetadata:39 - table found: acal.taxasconta
+11:51:36,960  INFO TableMetadata:40 - columns: [contaid, taxaid, idtaxasconta]
+11:51:36,961  INFO TableMetadata:42 - foreign keys: [fk65e35472c6f1071e, fk65e35472aa5c0bc2]
+11:51:36,961  INFO TableMetadata:43 - indexes: [fk65e35472c6f1071e, primary, fk65e35472aa5c0bc2]
+11:51:36,964  INFO SchemaUpdate:160 - schema update complete
+11:51:41,790  INFO Configuration:1426 - configuring from resource: hibernateUser.cfg.xml
+11:51:41,791  INFO Configuration:1403 - Configuration resource: hibernateUser.cfg.xml
+11:51:41,811  INFO Configuration:1541 - Configured SessionFactory: null
+11:51:41,826  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.User
+11:51:41,827  INFO EntityBinder:424 - Bind entity entidades.User on table user
+11:51:41,871  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.TablesPriv
+11:51:41,873  INFO QueryBinder:64 - Binding Named query: TablesPriv.findAll => SELECT t FROM TablesPriv t
+11:51:41,875  INFO EntityBinder:424 - Bind entity entidades.TablesPriv on table tables_priv
+11:51:41,884  INFO AnnotationConfiguration:365 - Hibernate Validator not found: ignoring
+11:51:41,904  INFO DriverManagerConnectionProvider:41 - Using Hibernate built-in connection pool (not for production use!)
+11:51:41,905  INFO DriverManagerConnectionProvider:42 - Hibernate connection pool size: 20
+11:51:41,906  INFO DriverManagerConnectionProvider:45 - autocommit mode: false
+11:51:41,907  INFO DriverManagerConnectionProvider:80 - using driver: com.mysql.jdbc.Driver at URL: jdbc:mysql://localhost:3306/mysql?zeroDateTimeBehavior=convertToNull
+11:51:41,909  INFO DriverManagerConnectionProvider:86 - connection properties: {user=root, password=****}
+11:51:41,946  INFO SettingsFactory:89 - RDBMS: MySQL, version: 5.5.28
+11:51:41,947  INFO SettingsFactory:90 - JDBC driver: MySQL-AB JDBC Driver, version: mysql-connector-java-5.1.18 ( Revision: tonci.grgin@oracle.com-20110930151701-jfj14ddfq48ifkfq )
+11:51:41,948  INFO Dialect:152 - Using dialect: org.hibernate.dialect.MySQLDialect
+11:51:41,974  INFO TransactionFactoryFactory:31 - Using default transaction strategy (direct JDBC transactions)
+11:51:41,976  INFO TransactionManagerLookupFactory:33 - No TransactionManagerLookup configured (in JTA environment, use of read-write or transactional second-level cache is not recommended)
+11:51:41,978  INFO SettingsFactory:143 - Automatic flush during beforeCompletion(): disabled
+11:51:41,979  INFO SettingsFactory:147 - Automatic session close at end of transaction: disabled
+11:51:41,979  INFO SettingsFactory:154 - JDBC batch size: 15
+11:51:41,980  INFO SettingsFactory:157 - JDBC batch updates for versioned data: disabled
+11:51:41,981  INFO SettingsFactory:162 - Scrollable result sets: enabled
+11:51:41,982  INFO SettingsFactory:170 - JDBC3 getGeneratedKeys(): enabled
+11:51:41,983  INFO SettingsFactory:178 - Connection release mode: auto
+11:51:41,984  INFO SettingsFactory:202 - Maximum outer join fetch depth: 2
+11:51:41,985  INFO SettingsFactory:205 - Default batch fetch size: 1
+11:51:41,985  INFO SettingsFactory:209 - Generate SQL with comments: disabled
+11:51:41,985  INFO SettingsFactory:213 - Order SQL updates by primary key: disabled
+11:51:41,986  INFO SettingsFactory:217 - Order SQL inserts for batching: disabled
+11:51:41,987  INFO SettingsFactory:386 - Query translator: org.hibernate.hql.ast.ASTQueryTranslatorFactory
+11:51:41,988  INFO ASTQueryTranslatorFactory:24 - Using ASTQueryTranslatorFactory
+11:51:41,989  INFO SettingsFactory:225 - Query language substitutions: {}
+11:51:41,990  INFO SettingsFactory:230 - JPA-QL strict compliance: disabled
+11:51:41,991  INFO SettingsFactory:235 - Second-level cache: enabled
+11:51:41,992  INFO SettingsFactory:239 - Query cache: disabled
+11:51:41,993  INFO SettingsFactory:373 - Cache provider: org.hibernate.cache.NoCacheProvider
+11:51:41,994  INFO SettingsFactory:254 - Optimize cache for minimal puts: disabled
+11:51:41,994  INFO SettingsFactory:263 - Structured second-level cache entries: disabled
+11:51:41,995  INFO SettingsFactory:290 - Statistics: disabled
+11:51:41,996  INFO SettingsFactory:294 - Deleted entity synthetic identifier rollback: disabled
+11:51:41,997  INFO SettingsFactory:309 - Default entity-mode: pojo
+11:51:41,998  INFO SettingsFactory:313 - Named query checking : enabled
+11:51:42,012  INFO SessionFactoryImpl:161 - building session factory
+11:51:42,082  INFO SessionFactoryObjectFactory:82 - Not binding factory to JNDI, no JNDI name configured
+11:51:42,429 TRACE StringType:133 - binding 'root' to parameter: 1
+11:51:42,431 TRACE StringType:133 - binding '123' to parameter: 2
+11:51:42,445 TRACE StringType:172 - returning 'localhost' as column: Host40_
+11:51:42,446 TRACE StringType:172 - returning 'root' as column: User40_
+11:51:42,460 TRACE StringType:172 - returning 'Y' as column: Alter3_40_
+11:51:42,462 TRACE StringType:172 - returning 'Y' as column: Alter4_40_
+11:51:42,463 TRACE StringType:172 - returning 'Y' as column: Create6_40_
+11:51:42,464 TRACE StringType:172 - returning 'Y' as column: Create7_40_
+11:51:42,465 TRACE StringType:172 - returning 'Y' as column: Create8_40_
+11:51:42,466 TRACE StringType:172 - returning 'Y' as column: Create9_40_
+11:51:42,467 TRACE StringType:172 - returning 'Y' as column: Create10_40_
+11:51:42,468 TRACE StringType:172 - returning 'Y' as column: Create11_40_
+11:51:42,469 TRACE StringType:172 - returning 'Y' as column: Delete12_40_
+11:51:42,470 TRACE StringType:172 - returning 'Y' as column: Drop13_40_
+11:51:42,471 TRACE StringType:172 - returning 'Y' as column: Event14_40_
+11:51:42,472 TRACE StringType:172 - returning 'Y' as column: Execute15_40_
+11:51:42,473 TRACE StringType:172 - returning 'Y' as column: File16_40_
+11:51:42,474 TRACE StringType:172 - returning 'Y' as column: Grant17_40_
+11:51:42,475 TRACE StringType:172 - returning 'Y' as column: Index18_40_
+11:51:42,476 TRACE StringType:172 - returning 'Y' as column: Insert19_40_
+11:51:42,477 TRACE StringType:172 - returning 'Y' as column: Lock20_40_
+11:51:42,478 TRACE IntegerType:172 - returning '0' as column: max21_40_
+11:51:42,480 TRACE IntegerType:172 - returning '0' as column: max22_40_
+11:51:42,481 TRACE IntegerType:172 - returning '0' as column: max23_40_
+11:51:42,482 TRACE IntegerType:172 - returning '0' as column: max24_40_
+11:51:42,483 TRACE StringType:172 - returning '*23AE809DDACAF96AF0FD78ED04B6A265E05AA257' as column: Password40_
+11:51:42,484 TRACE StringType:172 - returning '' as column: plugin40_
+11:51:42,485 TRACE StringType:172 - returning 'Y' as column: Process27_40_
+11:51:42,486 TRACE StringType:172 - returning 'Y' as column: References28_40_
+11:51:42,486 TRACE StringType:172 - returning 'Y' as column: Reload29_40_
+11:51:42,487 TRACE StringType:172 - returning 'Y' as column: Repl30_40_
+11:51:42,488 TRACE StringType:172 - returning 'Y' as column: Repl31_40_
+11:51:42,489 TRACE StringType:172 - returning 'Y' as column: Select32_40_
+11:51:42,490 TRACE StringType:172 - returning 'Y' as column: Show33_40_
+11:51:42,490 TRACE StringType:172 - returning 'Y' as column: Show34_40_
+11:51:42,491 TRACE StringType:172 - returning 'Y' as column: Shutdown35_40_
+11:51:42,497 TRACE StringType:172 - returning '' as column: ssl37_40_
+11:51:42,498 TRACE StringType:172 - returning 'Y' as column: Super38_40_
+11:51:42,499 TRACE StringType:172 - returning 'Y' as column: Trigger39_40_
+11:51:42,500 TRACE StringType:172 - returning 'Y' as column: Update40_40_
+11:52:15,260  INFO Version:15 - Hibernate Annotations 3.3.1.GA
+11:52:15,298  INFO Environment:514 - Hibernate 3.2.5
+11:52:15,310  INFO Environment:547 - hibernate.properties not found
+11:52:15,315  INFO Environment:681 - Bytecode provider name : cglib
+11:52:15,332  INFO Environment:598 - using JDK 1.4 java.sql.Timestamp handling
+11:52:15,518  INFO Configuration:1426 - configuring from resource: /hibernate.cfg.xml
+11:52:15,519  INFO Configuration:1403 - Configuration resource: /hibernate.cfg.xml
+11:52:15,899  INFO Configuration:1541 - Configured SessionFactory: null
+11:52:16,095  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Categoriasocio
+11:52:16,228  INFO EntityBinder:424 - Bind entity entidades.Categoriasocio on table categoriasocio
+11:52:16,464  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Cheque
+11:52:16,466  INFO EntityBinder:424 - Bind entity entidades.Cheque on table cheque
+11:52:16,485  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Chequeslog
+11:52:16,487  INFO EntityBinder:424 - Bind entity entidades.Chequeslog on table chequeslog
+11:52:16,500  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Conta
+11:52:16,502  INFO EntityBinder:424 - Bind entity entidades.Conta on table conta
+11:52:16,525  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Contaslog
+11:52:16,526  INFO EntityBinder:424 - Bind entity entidades.Contaslog on table contaslog
+11:52:16,536  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Contrato
+11:52:16,538  INFO EntityBinder:424 - Bind entity entidades.Contrato on table contrato
+11:52:16,544  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Endereco
+11:52:16,545  INFO EntityBinder:424 - Bind entity entidades.Endereco on table endereco
+11:52:16,557  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Entrada
+11:52:16,559  INFO EntityBinder:424 - Bind entity entidades.Entrada on table entrada
+11:52:16,589  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Entradaslog
+11:52:16,593  INFO EntityBinder:424 - Bind entity entidades.Entradaslog on table entradaslog
+11:52:16,607  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Funcionario
+11:52:16,608  INFO EntityBinder:424 - Bind entity entidades.Funcionario on table funcionario
+11:52:16,631  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Hidrometro
+11:52:16,633  INFO EntityBinder:424 - Bind entity entidades.Hidrometro on table hidrometro
+11:52:16,639  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Motivodespesa
+11:52:16,640  INFO EntityBinder:424 - Bind entity entidades.Motivodespesa on table motivodespesa
+11:52:16,650  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Motivoentrada
+11:52:16,654  INFO EntityBinder:424 - Bind entity entidades.Motivoentrada on table motivoentrada
+11:52:16,662  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Pessoa
+11:52:16,663  INFO EntityBinder:424 - Bind entity entidades.Pessoa on table pessoa
+11:52:16,684  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Saida
+11:52:16,685  INFO EntityBinder:424 - Bind entity entidades.Saida on table saida
+11:52:16,696  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Saidaslog
+11:52:16,699  INFO EntityBinder:424 - Bind entity entidades.Saidaslog on table saidaslog
+11:52:16,774  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Socio
+11:52:16,775  INFO EntityBinder:424 - Bind entity entidades.Socio on table socio
+11:52:16,791  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Taxa
+11:52:16,792  INFO EntityBinder:424 - Bind entity entidades.Taxa on table taxa
+11:52:16,801  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Taxasconta
+11:52:16,803  INFO EntityBinder:424 - Bind entity entidades.Taxasconta on table taxasconta
+11:52:16,808  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Enderecopessoa
+11:52:16,809  INFO EntityBinder:424 - Bind entity entidades.Enderecopessoa on table enderecopessoa
+11:52:16,981  INFO CollectionBinder:651 - Mapping collection: entidades.Categoriasocio.socioList -> socio
+11:52:16,989  INFO CollectionBinder:651 - Mapping collection: entidades.Conta.taxascontaList -> taxasconta
+11:52:16,990  INFO CollectionBinder:651 - Mapping collection: entidades.Endereco.enderecopessoaList -> enderecopessoa
+11:52:16,991  INFO CollectionBinder:651 - Mapping collection: entidades.Endereco.pessoaList -> pessoa
+11:52:16,993  INFO CollectionBinder:651 - Mapping collection: entidades.Funcionario.chequeList -> cheque
+11:52:16,995  INFO CollectionBinder:651 - Mapping collection: entidades.Funcionario.entradaList -> entrada
+11:52:16,996  INFO CollectionBinder:651 - Mapping collection: entidades.Funcionario.saidaList -> saida
+11:52:17,004  INFO CollectionBinder:651 - Mapping collection: entidades.Motivodespesa.chequeList -> cheque
+11:52:17,006  INFO CollectionBinder:651 - Mapping collection: entidades.Motivodespesa.saidaList -> saida
+11:52:17,009  INFO CollectionBinder:651 - Mapping collection: entidades.Motivoentrada.entradaList -> entrada
+11:52:17,011  INFO CollectionBinder:651 - Mapping collection: entidades.Pessoa.enderecopessoaList -> enderecopessoa
+11:52:17,013  INFO CollectionBinder:651 - Mapping collection: entidades.Socio.entradaList -> entrada
+11:52:17,016  INFO CollectionBinder:651 - Mapping collection: entidades.Taxa.categoriasocioList -> categoriasocio
+11:52:17,018  INFO CollectionBinder:651 - Mapping collection: entidades.Taxa.taxascontaList -> taxasconta
+11:52:17,020  INFO CollectionBinder:651 - Mapping collection: entidades.Enderecopessoa.contaCollection -> conta
+11:52:17,022  INFO AnnotationConfiguration:365 - Hibernate Validator not found: ignoring
+11:52:17,048  INFO DriverManagerConnectionProvider:41 - Using Hibernate built-in connection pool (not for production use!)
+11:52:17,048  INFO DriverManagerConnectionProvider:42 - Hibernate connection pool size: 20
+11:52:17,049  INFO DriverManagerConnectionProvider:45 - autocommit mode: false
+11:52:17,065  INFO DriverManagerConnectionProvider:80 - using driver: com.mysql.jdbc.Driver at URL: jdbc:mysql://localhost:3306/acal?createDatabaseIfNotExist=true
+11:52:17,068  INFO DriverManagerConnectionProvider:86 - connection properties: {user=root, password=****}
+11:52:17,594  INFO SettingsFactory:89 - RDBMS: MySQL, version: 5.5.28
+11:52:17,595  INFO SettingsFactory:90 - JDBC driver: MySQL-AB JDBC Driver, version: mysql-connector-java-5.1.18 ( Revision: tonci.grgin@oracle.com-20110930151701-jfj14ddfq48ifkfq )
+11:52:17,622  INFO Dialect:152 - Using dialect: org.hibernate.dialect.MySQLDialect
+11:52:17,631  INFO TransactionFactoryFactory:31 - Using default transaction strategy (direct JDBC transactions)
+11:52:17,636  INFO TransactionManagerLookupFactory:33 - No TransactionManagerLookup configured (in JTA environment, use of read-write or transactional second-level cache is not recommended)
+11:52:17,637  INFO SettingsFactory:143 - Automatic flush during beforeCompletion(): disabled
+11:52:17,637  INFO SettingsFactory:147 - Automatic session close at end of transaction: disabled
+11:52:17,638  INFO SettingsFactory:154 - JDBC batch size: 15
+11:52:17,639  INFO SettingsFactory:157 - JDBC batch updates for versioned data: disabled
+11:52:17,642  INFO SettingsFactory:162 - Scrollable result sets: enabled
+11:52:17,643  INFO SettingsFactory:170 - JDBC3 getGeneratedKeys(): enabled
+11:52:17,644  INFO SettingsFactory:178 - Connection release mode: auto
+11:52:17,646  INFO SettingsFactory:202 - Maximum outer join fetch depth: 2
+11:52:17,646  INFO SettingsFactory:205 - Default batch fetch size: 1
+11:52:17,647  INFO SettingsFactory:209 - Generate SQL with comments: enabled
+11:52:17,648  INFO SettingsFactory:213 - Order SQL updates by primary key: disabled
+11:52:17,651  INFO SettingsFactory:217 - Order SQL inserts for batching: disabled
+11:52:17,652  INFO SettingsFactory:386 - Query translator: org.hibernate.hql.ast.ASTQueryTranslatorFactory
+11:52:17,659  INFO ASTQueryTranslatorFactory:24 - Using ASTQueryTranslatorFactory
+11:52:17,661  INFO SettingsFactory:225 - Query language substitutions: {}
+11:52:17,662  INFO SettingsFactory:230 - JPA-QL strict compliance: disabled
+11:52:17,662  INFO SettingsFactory:235 - Second-level cache: enabled
+11:52:17,662  INFO SettingsFactory:239 - Query cache: disabled
+11:52:17,663  INFO SettingsFactory:373 - Cache provider: org.hibernate.cache.NoCacheProvider
+11:52:17,665  INFO SettingsFactory:254 - Optimize cache for minimal puts: disabled
+11:52:17,666  INFO SettingsFactory:263 - Structured second-level cache entries: disabled
+11:52:17,676  INFO SettingsFactory:283 - Echoing all SQL to stdout
+11:52:17,677  INFO SettingsFactory:290 - Statistics: disabled
+11:52:17,678  INFO SettingsFactory:294 - Deleted entity synthetic identifier rollback: disabled
+11:52:17,681  INFO SettingsFactory:309 - Default entity-mode: pojo
+11:52:17,681  INFO SettingsFactory:313 - Named query checking : enabled
+11:52:17,740  INFO SessionFactoryImpl:161 - building session factory
+11:52:18,680  INFO SessionFactoryObjectFactory:82 - Not binding factory to JNDI, no JNDI name configured
+11:52:18,686  INFO SchemaUpdate:115 - Running hbm2ddl schema update
+11:52:18,687  INFO SchemaUpdate:126 - fetching database metadata
+11:52:18,689  INFO SchemaUpdate:138 - updating schema
+11:52:18,800  INFO TableMetadata:39 - table found: acal.categoriasocio
+11:52:18,801  INFO TableMetadata:40 - columns: [id, taxasid, nome, descricao]
+11:52:18,802  INFO TableMetadata:42 - foreign keys: [fk271f6b9aa011b865]
+11:52:18,802  INFO TableMetadata:43 - indexes: [primary, fk271f6b9aa011b865]
+11:52:18,856  INFO TableMetadata:39 - table found: acal.cheque
+11:52:18,857  INFO TableMetadata:40 - columns: [id, idfuncionario, valor, datapagamento, idmotivodespesa, datavencimento, observacoes, numero]
+11:52:18,857  INFO TableMetadata:42 - foreign keys: [fkaed8f221ee3fa458, fkaed8f221e196a484]
+11:52:18,858  INFO TableMetadata:43 - indexes: [primary, fkaed8f221ee3fa458, fkaed8f221e196a484]
+11:52:18,925  INFO TableMetadata:39 - table found: acal.chequeslog
+11:52:18,925  INFO TableMetadata:40 - columns: [id, valor, dataalteracao, usuariobanco, datapagamento, tipo, idmotivodepesa, datavencimento, idfuncionarioalteracao, observacoes, numero, idoriginal]
+11:52:18,926  INFO TableMetadata:42 - foreign keys: []
+11:52:18,926  INFO TableMetadata:43 - indexes: [primary]
+11:52:18,979  INFO TableMetadata:39 - table found: acal.conta
+11:52:18,979  INFO TableMetadata:40 - columns: [id, datapag, datagerada, observacoes, datavence, idenderecopessoa]
+11:52:18,980  INFO TableMetadata:42 - foreign keys: [fk5a7376f50a7b5d2]
+11:52:18,980  INFO TableMetadata:43 - indexes: [primary, fk5a7376f50a7b5d2]
+11:52:19,023  INFO TableMetadata:39 - table found: acal.contaslog
+11:52:19,024  INFO TableMetadata:40 - columns: [id, taxarelogio, horaregristro, datapag, tipo, idnumerosocio, usuarioalteracao, observacoes, taxasocio, datavence, idoriginal]
+11:52:19,024  INFO TableMetadata:42 - foreign keys: []
+11:52:19,025  INFO TableMetadata:43 - indexes: [primary]
+11:52:19,063  INFO TableMetadata:39 - table found: acal.contrato
+11:52:19,064  INFO TableMetadata:40 - columns: [id, corpo, nome, descricao]
+11:52:19,064  INFO TableMetadata:42 - foreign keys: []
+11:52:19,064  INFO TableMetadata:43 - indexes: [primary]
+11:52:19,095  INFO TableMetadata:39 - table found: acal.endereco
+11:52:19,095  INFO TableMetadata:40 - columns: [id, tipo, nome, descricao]
+11:52:19,096  INFO TableMetadata:42 - foreign keys: []
+11:52:19,097  INFO TableMetadata:43 - indexes: [primary]
+11:52:19,135  INFO TableMetadata:39 - table found: acal.enderecopessoa
+11:52:19,136  INFO TableMetadata:40 - columns: [id, idendereco, idpessoa, numero]
+11:52:19,136  INFO TableMetadata:42 - foreign keys: [fk80ecbcb0f1e3c984, fk80ecbcb0e2caedc0]
+11:52:19,145  INFO TableMetadata:43 - indexes: [fk80ecbcb0f1e3c984, fk80ecbcb0e2caedc0, primary]
+11:52:19,196  INFO TableMetadata:39 - table found: acal.entrada
+11:52:19,197  INFO TableMetadata:40 - columns: [id, idfuncionario, valor, data, idmotivoentrada, observacao, idcedente]
+11:52:19,198  INFO TableMetadata:42 - foreign keys: [fka122665776e134dc, fka1226657e196a484, fka1226657fda06717]
+11:52:19,199  INFO TableMetadata:43 - indexes: [fka122665776e134dc, fka1226657e196a484, fka1226657fda06717, primary]
+11:52:19,246  INFO TableMetadata:39 - table found: acal.entradaslog
+11:52:19,247  INFO TableMetadata:40 - columns: [id, idfuncionario, dataoriginal, valor, dataalteracao, tipo, idmotivoentrada, usuarioalteracao, observacao, idoriginal, idcedente]
+11:52:19,247  INFO TableMetadata:42 - foreign keys: []
+11:52:19,249  INFO TableMetadata:43 - indexes: [primary]
+11:52:19,302  INFO TableMetadata:39 - table found: acal.funcionario
+11:52:19,302  INFO TableMetadata:40 - columns: [id, salario, idpessoa, datacontratacao, observacao, cargo, matricula]
+11:52:19,303  INFO TableMetadata:42 - foreign keys: [fk50401ddbe2caedc0]
+11:52:19,304  INFO TableMetadata:43 - indexes: [primary, idpessoa, fk50401ddbe2caedc0]
+11:52:19,336  INFO TableMetadata:39 - table found: acal.hidrometro
+11:52:19,337  INFO TableMetadata:40 - columns: [idhidrometro, consumo, idconta]
+11:52:19,337  INFO TableMetadata:42 - foreign keys: [fkf3fd0019d45f0a2c]
+11:52:19,338  INFO TableMetadata:43 - indexes: [fkf3fd0019d45f0a2c, primary, idconta]
+11:52:19,402  INFO TableMetadata:39 - table found: acal.motivodespesa
+11:52:19,403  INFO TableMetadata:40 - columns: [id, nome, observacao, descricao]
+11:52:19,404  INFO TableMetadata:42 - foreign keys: []
+11:52:19,406  INFO TableMetadata:43 - indexes: [primary]
+11:52:19,432  INFO TableMetadata:39 - table found: acal.motivoentrada
+11:52:19,433  INFO TableMetadata:40 - columns: [id, nome, observacao, descricao]
+11:52:19,433  INFO TableMetadata:42 - foreign keys: []
+11:52:19,434  INFO TableMetadata:43 - indexes: [primary]
+11:52:19,474  INFO TableMetadata:39 - table found: acal.pessoa
+11:52:19,475  INFO TableMetadata:40 - columns: [uf, status, datanasc, nomemae, numeromatricula, sexo, observacoes, nomepai, id, bairro, cidade, sobrenome, cep, email, idendereco, telefone, numeroendereco, rgemissao, cpf, nome, rgexpedidor, rgnumero, apelido]
+11:52:19,475  INFO TableMetadata:42 - foreign keys: [fkc4e40fa7f1e3c984]
+11:52:19,477  INFO TableMetadata:43 - indexes: [primary, fkc4e40fa7f1e3c984]
+11:52:19,511  INFO TableMetadata:39 - table found: acal.saida
+11:52:19,511  INFO TableMetadata:40 - columns: [id, idmotivosaida, idfuncionario, valor, data, favorecido, observacao]
+11:52:19,512  INFO TableMetadata:42 - foreign keys: [fk6823d98e196a484, fk6823d98a2d1cd1b]
+11:52:19,513  INFO TableMetadata:43 - indexes: [primary, fk6823d98e196a484, fk6823d98a2d1cd1b]
+11:52:19,582  INFO TableMetadata:39 - table found: acal.saidaslog
+11:52:19,584  INFO TableMetadata:40 - columns: [id, idmotivosaida, idfuncionario, dataoriginal, valor, dataalteracao, tipo, usuarioalteracao, idfuncionarioaltercao, favorecido, observacao, idoriginal]
+11:52:19,585  INFO TableMetadata:42 - foreign keys: []
+11:52:19,586  INFO TableMetadata:43 - indexes: [primary]
+11:52:19,627  INFO TableMetadata:39 - table found: acal.socio
+11:52:19,628  INFO TableMetadata:40 - columns: [id, datamatricula, dataaprovacao, numerosocio, idpessoa, idcategoriasocio, observacao, datavence]
+11:52:19,628  INFO TableMetadata:42 - foreign keys: [fk68884ede2caedc0, fk68884ed9d0d13a6]
+11:52:19,629  INFO TableMetadata:43 - indexes: [fk68884ede2caedc0, fk68884ed9d0d13a6, primary, idpessoa]
+11:52:19,664  INFO TableMetadata:39 - table found: acal.taxa
+11:52:19,666  INFO TableMetadata:40 - columns: [id, valor, nome, observacao, descricao]
+11:52:19,668  INFO TableMetadata:42 - foreign keys: []
+11:52:19,669  INFO TableMetadata:43 - indexes: [primary]
+11:52:19,703  INFO TableMetadata:39 - table found: acal.taxasconta
+11:52:19,703  INFO TableMetadata:40 - columns: [contaid, taxaid, idtaxasconta]
+11:52:19,704  INFO TableMetadata:42 - foreign keys: [fk65e35472c6f1071e, fk65e35472aa5c0bc2]
+11:52:19,705  INFO TableMetadata:43 - indexes: [fk65e35472c6f1071e, primary, fk65e35472aa5c0bc2]
+11:52:19,708  INFO SchemaUpdate:160 - schema update complete
+11:52:23,011  INFO Configuration:1426 - configuring from resource: hibernateUser.cfg.xml
+11:52:23,012  INFO Configuration:1403 - Configuration resource: hibernateUser.cfg.xml
+11:52:23,029  INFO Configuration:1541 - Configured SessionFactory: null
+11:52:23,045  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.User
+11:52:23,046  INFO EntityBinder:424 - Bind entity entidades.User on table user
+11:52:23,088  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.TablesPriv
+11:52:23,090  INFO QueryBinder:64 - Binding Named query: TablesPriv.findAll => SELECT t FROM TablesPriv t
+11:52:23,091  INFO EntityBinder:424 - Bind entity entidades.TablesPriv on table tables_priv
+11:52:23,101  INFO AnnotationConfiguration:365 - Hibernate Validator not found: ignoring
+11:52:23,121  INFO DriverManagerConnectionProvider:41 - Using Hibernate built-in connection pool (not for production use!)
+11:52:23,122  INFO DriverManagerConnectionProvider:42 - Hibernate connection pool size: 20
+11:52:23,124  INFO DriverManagerConnectionProvider:45 - autocommit mode: false
+11:52:23,126  INFO DriverManagerConnectionProvider:80 - using driver: com.mysql.jdbc.Driver at URL: jdbc:mysql://localhost:3306/mysql?zeroDateTimeBehavior=convertToNull
+11:52:23,127  INFO DriverManagerConnectionProvider:86 - connection properties: {user=root, password=****}
+11:52:23,162  INFO SettingsFactory:89 - RDBMS: MySQL, version: 5.5.28
+11:52:23,163  INFO SettingsFactory:90 - JDBC driver: MySQL-AB JDBC Driver, version: mysql-connector-java-5.1.18 ( Revision: tonci.grgin@oracle.com-20110930151701-jfj14ddfq48ifkfq )
+11:52:23,164  INFO Dialect:152 - Using dialect: org.hibernate.dialect.MySQLDialect
+11:52:23,166  INFO TransactionFactoryFactory:31 - Using default transaction strategy (direct JDBC transactions)
+11:52:23,188  INFO TransactionManagerLookupFactory:33 - No TransactionManagerLookup configured (in JTA environment, use of read-write or transactional second-level cache is not recommended)
+11:52:23,189  INFO SettingsFactory:143 - Automatic flush during beforeCompletion(): disabled
+11:52:23,190  INFO SettingsFactory:147 - Automatic session close at end of transaction: disabled
+11:52:23,191  INFO SettingsFactory:154 - JDBC batch size: 15
+11:52:23,192  INFO SettingsFactory:157 - JDBC batch updates for versioned data: disabled
+11:52:23,193  INFO SettingsFactory:162 - Scrollable result sets: enabled
+11:52:23,193  INFO SettingsFactory:170 - JDBC3 getGeneratedKeys(): enabled
+11:52:23,193  INFO SettingsFactory:178 - Connection release mode: auto
+11:52:23,194  INFO SettingsFactory:202 - Maximum outer join fetch depth: 2
+11:52:23,195  INFO SettingsFactory:205 - Default batch fetch size: 1
+11:52:23,196  INFO SettingsFactory:209 - Generate SQL with comments: disabled
+11:52:23,197  INFO SettingsFactory:213 - Order SQL updates by primary key: disabled
+11:52:23,198  INFO SettingsFactory:217 - Order SQL inserts for batching: disabled
+11:52:23,198  INFO SettingsFactory:386 - Query translator: org.hibernate.hql.ast.ASTQueryTranslatorFactory
+11:52:23,199  INFO ASTQueryTranslatorFactory:24 - Using ASTQueryTranslatorFactory
+11:52:23,200  INFO SettingsFactory:225 - Query language substitutions: {}
+11:52:23,201  INFO SettingsFactory:230 - JPA-QL strict compliance: disabled
+11:52:23,202  INFO SettingsFactory:235 - Second-level cache: enabled
+11:52:23,203  INFO SettingsFactory:239 - Query cache: disabled
+11:52:23,204  INFO SettingsFactory:373 - Cache provider: org.hibernate.cache.NoCacheProvider
+11:52:23,205  INFO SettingsFactory:254 - Optimize cache for minimal puts: disabled
+11:52:23,206  INFO SettingsFactory:263 - Structured second-level cache entries: disabled
+11:52:23,212  INFO SettingsFactory:290 - Statistics: disabled
+11:52:23,214  INFO SettingsFactory:294 - Deleted entity synthetic identifier rollback: disabled
+11:52:23,216  INFO SettingsFactory:309 - Default entity-mode: pojo
+11:52:23,218  INFO SettingsFactory:313 - Named query checking : enabled
+11:52:23,231  INFO SessionFactoryImpl:161 - building session factory
+11:52:23,344  INFO SessionFactoryObjectFactory:82 - Not binding factory to JNDI, no JNDI name configured
+11:52:23,688 TRACE StringType:133 - binding 'root' to parameter: 1
+11:52:23,690 TRACE StringType:133 - binding '123' to parameter: 2
+11:52:23,704 TRACE StringType:172 - returning 'localhost' as column: Host40_
+11:52:23,705 TRACE StringType:172 - returning 'root' as column: User40_
+11:52:23,721 TRACE StringType:172 - returning 'Y' as column: Alter3_40_
+11:52:23,722 TRACE StringType:172 - returning 'Y' as column: Alter4_40_
+11:52:23,723 TRACE StringType:172 - returning 'Y' as column: Create6_40_
+11:52:23,724 TRACE StringType:172 - returning 'Y' as column: Create7_40_
+11:52:23,726 TRACE StringType:172 - returning 'Y' as column: Create8_40_
+11:52:23,727 TRACE StringType:172 - returning 'Y' as column: Create9_40_
+11:52:23,728 TRACE StringType:172 - returning 'Y' as column: Create10_40_
+11:52:23,729 TRACE StringType:172 - returning 'Y' as column: Create11_40_
+11:52:23,730 TRACE StringType:172 - returning 'Y' as column: Delete12_40_
+11:52:23,731 TRACE StringType:172 - returning 'Y' as column: Drop13_40_
+11:52:23,732 TRACE StringType:172 - returning 'Y' as column: Event14_40_
+11:52:23,733 TRACE StringType:172 - returning 'Y' as column: Execute15_40_
+11:52:23,734 TRACE StringType:172 - returning 'Y' as column: File16_40_
+11:52:23,735 TRACE StringType:172 - returning 'Y' as column: Grant17_40_
+11:52:23,735 TRACE StringType:172 - returning 'Y' as column: Index18_40_
+11:52:23,736 TRACE StringType:172 - returning 'Y' as column: Insert19_40_
+11:52:23,737 TRACE StringType:172 - returning 'Y' as column: Lock20_40_
+11:52:23,738 TRACE IntegerType:172 - returning '0' as column: max21_40_
+11:52:23,739 TRACE IntegerType:172 - returning '0' as column: max22_40_
+11:52:23,740 TRACE IntegerType:172 - returning '0' as column: max23_40_
+11:52:23,741 TRACE IntegerType:172 - returning '0' as column: max24_40_
+11:52:23,742 TRACE StringType:172 - returning '*23AE809DDACAF96AF0FD78ED04B6A265E05AA257' as column: Password40_
+11:52:23,743 TRACE StringType:172 - returning '' as column: plugin40_
+11:52:23,744 TRACE StringType:172 - returning 'Y' as column: Process27_40_
+11:52:23,745 TRACE StringType:172 - returning 'Y' as column: References28_40_
+11:52:23,746 TRACE StringType:172 - returning 'Y' as column: Reload29_40_
+11:52:23,747 TRACE StringType:172 - returning 'Y' as column: Repl30_40_
+11:52:23,748 TRACE StringType:172 - returning 'Y' as column: Repl31_40_
+11:52:23,749 TRACE StringType:172 - returning 'Y' as column: Select32_40_
+11:52:23,750 TRACE StringType:172 - returning 'Y' as column: Show33_40_
+11:52:23,751 TRACE StringType:172 - returning 'Y' as column: Show34_40_
+11:52:23,752 TRACE StringType:172 - returning 'Y' as column: Shutdown35_40_
+11:52:23,758 TRACE StringType:172 - returning '' as column: ssl37_40_
+11:52:23,759 TRACE StringType:172 - returning 'Y' as column: Super38_40_
+11:52:23,760 TRACE StringType:172 - returning 'Y' as column: Trigger39_40_
+11:52:23,761 TRACE StringType:172 - returning 'Y' as column: Update40_40_
+11:53:58,122  INFO Version:15 - Hibernate Annotations 3.3.1.GA
+11:53:58,160  INFO Environment:514 - Hibernate 3.2.5
+11:53:58,168  INFO Environment:547 - hibernate.properties not found
+11:53:58,173  INFO Environment:681 - Bytecode provider name : cglib
+11:53:58,189  INFO Environment:598 - using JDK 1.4 java.sql.Timestamp handling
+11:53:58,374  INFO Configuration:1426 - configuring from resource: /hibernate.cfg.xml
+11:53:58,375  INFO Configuration:1403 - Configuration resource: /hibernate.cfg.xml
+11:53:58,707  INFO Configuration:1541 - Configured SessionFactory: null
+11:53:58,919  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Categoriasocio
+11:53:59,019  INFO EntityBinder:424 - Bind entity entidades.Categoriasocio on table categoriasocio
+11:53:59,244  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Cheque
+11:53:59,245  INFO EntityBinder:424 - Bind entity entidades.Cheque on table cheque
+11:53:59,264  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Chequeslog
+11:53:59,266  INFO EntityBinder:424 - Bind entity entidades.Chequeslog on table chequeslog
+11:53:59,278  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Conta
+11:53:59,279  INFO EntityBinder:424 - Bind entity entidades.Conta on table conta
+11:53:59,304  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Contaslog
+11:53:59,306  INFO EntityBinder:424 - Bind entity entidades.Contaslog on table contaslog
+11:53:59,316  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Contrato
+11:53:59,318  INFO EntityBinder:424 - Bind entity entidades.Contrato on table contrato
+11:53:59,323  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Endereco
+11:53:59,324  INFO EntityBinder:424 - Bind entity entidades.Endereco on table endereco
+11:53:59,339  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Entrada
+11:53:59,340  INFO EntityBinder:424 - Bind entity entidades.Entrada on table entrada
+11:53:59,379  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Entradaslog
+11:53:59,381  INFO EntityBinder:424 - Bind entity entidades.Entradaslog on table entradaslog
+11:53:59,397  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Funcionario
+11:53:59,398  INFO EntityBinder:424 - Bind entity entidades.Funcionario on table funcionario
+11:53:59,419  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Hidrometro
+11:53:59,421  INFO EntityBinder:424 - Bind entity entidades.Hidrometro on table hidrometro
+11:53:59,426  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Motivodespesa
+11:53:59,428  INFO EntityBinder:424 - Bind entity entidades.Motivodespesa on table motivodespesa
+11:53:59,438  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Motivoentrada
+11:53:59,440  INFO EntityBinder:424 - Bind entity entidades.Motivoentrada on table motivoentrada
+11:53:59,458  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Pessoa
+11:53:59,460  INFO EntityBinder:424 - Bind entity entidades.Pessoa on table pessoa
+11:53:59,489  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Saida
+11:53:59,490  INFO EntityBinder:424 - Bind entity entidades.Saida on table saida
+11:53:59,505  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Saidaslog
+11:53:59,506  INFO EntityBinder:424 - Bind entity entidades.Saidaslog on table saidaslog
+11:53:59,583  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Socio
+11:53:59,585  INFO EntityBinder:424 - Bind entity entidades.Socio on table socio
+11:53:59,602  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Taxa
+11:53:59,605  INFO EntityBinder:424 - Bind entity entidades.Taxa on table taxa
+11:53:59,613  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Taxasconta
+11:53:59,617  INFO EntityBinder:424 - Bind entity entidades.Taxasconta on table taxasconta
+11:53:59,623  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.Enderecopessoa
+11:53:59,624  INFO EntityBinder:424 - Bind entity entidades.Enderecopessoa on table enderecopessoa
+11:53:59,778  INFO CollectionBinder:651 - Mapping collection: entidades.Categoriasocio.socioList -> socio
+11:53:59,790  INFO CollectionBinder:651 - Mapping collection: entidades.Conta.taxascontaList -> taxasconta
+11:53:59,791  INFO CollectionBinder:651 - Mapping collection: entidades.Endereco.enderecopessoaList -> enderecopessoa
+11:53:59,792  INFO CollectionBinder:651 - Mapping collection: entidades.Endereco.pessoaList -> pessoa
+11:53:59,793  INFO CollectionBinder:651 - Mapping collection: entidades.Funcionario.chequeList -> cheque
+11:53:59,794  INFO CollectionBinder:651 - Mapping collection: entidades.Funcionario.entradaList -> entrada
+11:53:59,798  INFO CollectionBinder:651 - Mapping collection: entidades.Funcionario.saidaList -> saida
+11:53:59,807  INFO CollectionBinder:651 - Mapping collection: entidades.Motivodespesa.chequeList -> cheque
+11:53:59,809  INFO CollectionBinder:651 - Mapping collection: entidades.Motivodespesa.saidaList -> saida
+11:53:59,811  INFO CollectionBinder:651 - Mapping collection: entidades.Motivoentrada.entradaList -> entrada
+11:53:59,814  INFO CollectionBinder:651 - Mapping collection: entidades.Pessoa.enderecopessoaList -> enderecopessoa
+11:53:59,816  INFO CollectionBinder:651 - Mapping collection: entidades.Socio.entradaList -> entrada
+11:53:59,818  INFO CollectionBinder:651 - Mapping collection: entidades.Taxa.categoriasocioList -> categoriasocio
+11:53:59,820  INFO CollectionBinder:651 - Mapping collection: entidades.Taxa.taxascontaList -> taxasconta
+11:53:59,821  INFO CollectionBinder:651 - Mapping collection: entidades.Enderecopessoa.contaCollection -> conta
+11:53:59,824  INFO AnnotationConfiguration:365 - Hibernate Validator not found: ignoring
+11:53:59,848  INFO DriverManagerConnectionProvider:41 - Using Hibernate built-in connection pool (not for production use!)
+11:53:59,849  INFO DriverManagerConnectionProvider:42 - Hibernate connection pool size: 20
+11:53:59,849  INFO DriverManagerConnectionProvider:45 - autocommit mode: false
+11:53:59,864  INFO DriverManagerConnectionProvider:80 - using driver: com.mysql.jdbc.Driver at URL: jdbc:mysql://localhost:3306/acal?createDatabaseIfNotExist=true
+11:53:59,865  INFO DriverManagerConnectionProvider:86 - connection properties: {user=root, password=****}
+11:54:00,412  INFO SettingsFactory:89 - RDBMS: MySQL, version: 5.5.28
+11:54:00,413  INFO SettingsFactory:90 - JDBC driver: MySQL-AB JDBC Driver, version: mysql-connector-java-5.1.18 ( Revision: tonci.grgin@oracle.com-20110930151701-jfj14ddfq48ifkfq )
+11:54:00,441  INFO Dialect:152 - Using dialect: org.hibernate.dialect.MySQLDialect
+11:54:00,451  INFO TransactionFactoryFactory:31 - Using default transaction strategy (direct JDBC transactions)
+11:54:00,456  INFO TransactionManagerLookupFactory:33 - No TransactionManagerLookup configured (in JTA environment, use of read-write or transactional second-level cache is not recommended)
+11:54:00,457  INFO SettingsFactory:143 - Automatic flush during beforeCompletion(): disabled
+11:54:00,459  INFO SettingsFactory:147 - Automatic session close at end of transaction: disabled
+11:54:00,459  INFO SettingsFactory:154 - JDBC batch size: 15
+11:54:00,460  INFO SettingsFactory:157 - JDBC batch updates for versioned data: disabled
+11:54:00,462  INFO SettingsFactory:162 - Scrollable result sets: enabled
+11:54:00,463  INFO SettingsFactory:170 - JDBC3 getGeneratedKeys(): enabled
+11:54:00,464  INFO SettingsFactory:178 - Connection release mode: auto
+11:54:00,466  INFO SettingsFactory:202 - Maximum outer join fetch depth: 2
+11:54:00,467  INFO SettingsFactory:205 - Default batch fetch size: 1
+11:54:00,468  INFO SettingsFactory:209 - Generate SQL with comments: enabled
+11:54:00,468  INFO SettingsFactory:213 - Order SQL updates by primary key: disabled
+11:54:00,470  INFO SettingsFactory:217 - Order SQL inserts for batching: disabled
+11:54:00,472  INFO SettingsFactory:386 - Query translator: org.hibernate.hql.ast.ASTQueryTranslatorFactory
+11:54:00,478  INFO ASTQueryTranslatorFactory:24 - Using ASTQueryTranslatorFactory
+11:54:00,479  INFO SettingsFactory:225 - Query language substitutions: {}
+11:54:00,480  INFO SettingsFactory:230 - JPA-QL strict compliance: disabled
+11:54:00,481  INFO SettingsFactory:235 - Second-level cache: enabled
+11:54:00,481  INFO SettingsFactory:239 - Query cache: disabled
+11:54:00,482  INFO SettingsFactory:373 - Cache provider: org.hibernate.cache.NoCacheProvider
+11:54:00,483  INFO SettingsFactory:254 - Optimize cache for minimal puts: disabled
+11:54:00,487  INFO SettingsFactory:263 - Structured second-level cache entries: disabled
+11:54:00,498  INFO SettingsFactory:283 - Echoing all SQL to stdout
+11:54:00,499  INFO SettingsFactory:290 - Statistics: disabled
+11:54:00,500  INFO SettingsFactory:294 - Deleted entity synthetic identifier rollback: disabled
+11:54:00,501  INFO SettingsFactory:309 - Default entity-mode: pojo
+11:54:00,502  INFO SettingsFactory:313 - Named query checking : enabled
+11:54:00,564  INFO SessionFactoryImpl:161 - building session factory
+11:54:01,521  INFO SessionFactoryObjectFactory:82 - Not binding factory to JNDI, no JNDI name configured
+11:54:01,528  INFO SchemaUpdate:115 - Running hbm2ddl schema update
+11:54:01,529  INFO SchemaUpdate:126 - fetching database metadata
+11:54:01,532  INFO SchemaUpdate:138 - updating schema
+11:54:01,592  INFO TableMetadata:39 - table found: acal.categoriasocio
+11:54:01,592  INFO TableMetadata:40 - columns: [id, taxasid, nome, descricao]
+11:54:01,593  INFO TableMetadata:42 - foreign keys: [fk271f6b9aa011b865]
+11:54:01,594  INFO TableMetadata:43 - indexes: [primary, fk271f6b9aa011b865]
+11:54:01,646  INFO TableMetadata:39 - table found: acal.cheque
+11:54:01,648  INFO TableMetadata:40 - columns: [id, idfuncionario, valor, datapagamento, idmotivodespesa, datavencimento, observacoes, numero]
+11:54:01,650  INFO TableMetadata:42 - foreign keys: [fkaed8f221ee3fa458, fkaed8f221e196a484]
+11:54:01,651  INFO TableMetadata:43 - indexes: [primary, fkaed8f221ee3fa458, fkaed8f221e196a484]
+11:54:01,705  INFO TableMetadata:39 - table found: acal.chequeslog
+11:54:01,707  INFO TableMetadata:40 - columns: [id, valor, dataalteracao, usuariobanco, datapagamento, tipo, idmotivodepesa, datavencimento, idfuncionarioalteracao, observacoes, numero, idoriginal]
+11:54:01,708  INFO TableMetadata:42 - foreign keys: []
+11:54:01,710  INFO TableMetadata:43 - indexes: [primary]
+11:54:01,765  INFO TableMetadata:39 - table found: acal.conta
+11:54:01,766  INFO TableMetadata:40 - columns: [id, datapag, datagerada, observacoes, datavence, idenderecopessoa]
+11:54:01,767  INFO TableMetadata:42 - foreign keys: [fk5a7376f50a7b5d2]
+11:54:01,768  INFO TableMetadata:43 - indexes: [primary, fk5a7376f50a7b5d2]
+11:54:01,817  INFO TableMetadata:39 - table found: acal.contaslog
+11:54:01,818  INFO TableMetadata:40 - columns: [id, taxarelogio, horaregristro, datapag, tipo, idnumerosocio, usuarioalteracao, observacoes, taxasocio, datavence, idoriginal]
+11:54:01,818  INFO TableMetadata:42 - foreign keys: []
+11:54:01,819  INFO TableMetadata:43 - indexes: [primary]
+11:54:01,855  INFO TableMetadata:39 - table found: acal.contrato
+11:54:01,856  INFO TableMetadata:40 - columns: [id, corpo, nome, descricao]
+11:54:01,857  INFO TableMetadata:42 - foreign keys: []
+11:54:01,857  INFO TableMetadata:43 - indexes: [primary]
+11:54:01,885  INFO TableMetadata:39 - table found: acal.endereco
+11:54:01,887  INFO TableMetadata:40 - columns: [id, tipo, nome, descricao]
+11:54:01,887  INFO TableMetadata:42 - foreign keys: []
+11:54:01,888  INFO TableMetadata:43 - indexes: [primary]
+11:54:01,921  INFO TableMetadata:39 - table found: acal.enderecopessoa
+11:54:01,922  INFO TableMetadata:40 - columns: [id, idendereco, idpessoa, numero]
+11:54:01,923  INFO TableMetadata:42 - foreign keys: [fk80ecbcb0f1e3c984, fk80ecbcb0e2caedc0]
+11:54:01,924  INFO TableMetadata:43 - indexes: [fk80ecbcb0f1e3c984, fk80ecbcb0e2caedc0, primary]
+11:54:01,961  INFO TableMetadata:39 - table found: acal.entrada
+11:54:01,961  INFO TableMetadata:40 - columns: [id, idfuncionario, valor, data, idmotivoentrada, observacao, idcedente]
+11:54:01,962  INFO TableMetadata:42 - foreign keys: [fka122665776e134dc, fka1226657e196a484, fka1226657fda06717]
+11:54:01,963  INFO TableMetadata:43 - indexes: [fka122665776e134dc, fka1226657e196a484, fka1226657fda06717, primary]
+11:54:02,044  INFO TableMetadata:39 - table found: acal.entradaslog
+11:54:02,044  INFO TableMetadata:40 - columns: [id, idfuncionario, dataoriginal, valor, dataalteracao, tipo, idmotivoentrada, usuarioalteracao, observacao, idoriginal, idcedente]
+11:54:02,045  INFO TableMetadata:42 - foreign keys: []
+11:54:02,046  INFO TableMetadata:43 - indexes: [primary]
+11:54:02,084  INFO TableMetadata:39 - table found: acal.funcionario
+11:54:02,085  INFO TableMetadata:40 - columns: [id, salario, idpessoa, datacontratacao, observacao, cargo, matricula]
+11:54:02,086  INFO TableMetadata:42 - foreign keys: [fk50401ddbe2caedc0]
+11:54:02,087  INFO TableMetadata:43 - indexes: [primary, idpessoa, fk50401ddbe2caedc0]
+11:54:02,124  INFO TableMetadata:39 - table found: acal.hidrometro
+11:54:02,125  INFO TableMetadata:40 - columns: [idhidrometro, consumo, idconta]
+11:54:02,126  INFO TableMetadata:42 - foreign keys: [fkf3fd0019d45f0a2c]
+11:54:02,126  INFO TableMetadata:43 - indexes: [fkf3fd0019d45f0a2c, primary, idconta]
+11:54:02,163  INFO TableMetadata:39 - table found: acal.motivodespesa
+11:54:02,165  INFO TableMetadata:40 - columns: [id, nome, observacao, descricao]
+11:54:02,166  INFO TableMetadata:42 - foreign keys: []
+11:54:02,168  INFO TableMetadata:43 - indexes: [primary]
+11:54:02,193  INFO TableMetadata:39 - table found: acal.motivoentrada
+11:54:02,194  INFO TableMetadata:40 - columns: [id, nome, observacao, descricao]
+11:54:02,194  INFO TableMetadata:42 - foreign keys: []
+11:54:02,195  INFO TableMetadata:43 - indexes: [primary]
+11:54:02,234  INFO TableMetadata:39 - table found: acal.pessoa
+11:54:02,235  INFO TableMetadata:40 - columns: [uf, status, datanasc, nomemae, numeromatricula, sexo, observacoes, nomepai, id, bairro, cidade, sobrenome, cep, email, idendereco, telefone, numeroendereco, rgemissao, cpf, nome, rgexpedidor, rgnumero, apelido]
+11:54:02,235  INFO TableMetadata:42 - foreign keys: [fkc4e40fa7f1e3c984]
+11:54:02,239  INFO TableMetadata:43 - indexes: [primary, fkc4e40fa7f1e3c984]
+11:54:02,281  INFO TableMetadata:39 - table found: acal.saida
+11:54:02,282  INFO TableMetadata:40 - columns: [id, idmotivosaida, idfuncionario, valor, data, favorecido, observacao]
+11:54:02,282  INFO TableMetadata:42 - foreign keys: [fk6823d98e196a484, fk6823d98a2d1cd1b]
+11:54:02,283  INFO TableMetadata:43 - indexes: [primary, fk6823d98e196a484, fk6823d98a2d1cd1b]
+11:54:02,335  INFO TableMetadata:39 - table found: acal.saidaslog
+11:54:02,336  INFO TableMetadata:40 - columns: [id, idmotivosaida, idfuncionario, dataoriginal, valor, dataalteracao, tipo, usuarioalteracao, idfuncionarioaltercao, favorecido, observacao, idoriginal]
+11:54:02,336  INFO TableMetadata:42 - foreign keys: []
+11:54:02,338  INFO TableMetadata:43 - indexes: [primary]
+11:54:02,381  INFO TableMetadata:39 - table found: acal.socio
+11:54:02,382  INFO TableMetadata:40 - columns: [id, datamatricula, dataaprovacao, numerosocio, idpessoa, idcategoriasocio, observacao, datavence]
+11:54:02,383  INFO TableMetadata:42 - foreign keys: [fk68884ede2caedc0, fk68884ed9d0d13a6]
+11:54:02,384  INFO TableMetadata:43 - indexes: [fk68884ede2caedc0, fk68884ed9d0d13a6, primary, idpessoa]
+11:54:02,417  INFO TableMetadata:39 - table found: acal.taxa
+11:54:02,417  INFO TableMetadata:40 - columns: [id, valor, nome, observacao, descricao]
+11:54:02,418  INFO TableMetadata:42 - foreign keys: []
+11:54:02,418  INFO TableMetadata:43 - indexes: [primary]
+11:54:02,449  INFO TableMetadata:39 - table found: acal.taxasconta
+11:54:02,450  INFO TableMetadata:40 - columns: [contaid, taxaid, idtaxasconta]
+11:54:02,450  INFO TableMetadata:42 - foreign keys: [fk65e35472c6f1071e, fk65e35472aa5c0bc2]
+11:54:02,451  INFO TableMetadata:43 - indexes: [fk65e35472c6f1071e, primary, fk65e35472aa5c0bc2]
+11:54:02,454  INFO SchemaUpdate:160 - schema update complete
+11:54:06,076  INFO Configuration:1426 - configuring from resource: hibernateUser.cfg.xml
+11:54:06,077  INFO Configuration:1403 - Configuration resource: hibernateUser.cfg.xml
+11:54:06,095  INFO Configuration:1541 - Configured SessionFactory: null
+11:54:06,110  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.User
+11:54:06,112  INFO EntityBinder:424 - Bind entity entidades.User on table user
+11:54:06,152  INFO AnnotationBinder:418 - Binding entity from annotated class: entidades.TablesPriv
+11:54:06,154  INFO QueryBinder:64 - Binding Named query: TablesPriv.findAll => SELECT t FROM TablesPriv t
+11:54:06,155  INFO EntityBinder:424 - Bind entity entidades.TablesPriv on table tables_priv
+11:54:06,164  INFO AnnotationConfiguration:365 - Hibernate Validator not found: ignoring
+11:54:06,184  INFO DriverManagerConnectionProvider:41 - Using Hibernate built-in connection pool (not for production use!)
+11:54:06,185  INFO DriverManagerConnectionProvider:42 - Hibernate connection pool size: 20
+11:54:06,186  INFO DriverManagerConnectionProvider:45 - autocommit mode: false
+11:54:06,187  INFO DriverManagerConnectionProvider:80 - using driver: com.mysql.jdbc.Driver at URL: jdbc:mysql://localhost:3306/mysql?zeroDateTimeBehavior=convertToNull
+11:54:06,188  INFO DriverManagerConnectionProvider:86 - connection properties: {user=root, password=****}
+11:54:06,224  INFO SettingsFactory:89 - RDBMS: MySQL, version: 5.5.28
+11:54:06,253  INFO SettingsFactory:90 - JDBC driver: MySQL-AB JDBC Driver, version: mysql-connector-java-5.1.18 ( Revision: tonci.grgin@oracle.com-20110930151701-jfj14ddfq48ifkfq )
+11:54:06,254  INFO Dialect:152 - Using dialect: org.hibernate.dialect.MySQLDialect
+11:54:06,256  INFO TransactionFactoryFactory:31 - Using default transaction strategy (direct JDBC transactions)
+11:54:06,257  INFO TransactionManagerLookupFactory:33 - No TransactionManagerLookup configured (in JTA environment, use of read-write or transactional second-level cache is not recommended)
+11:54:06,258  INFO SettingsFactory:143 - Automatic flush during beforeCompletion(): disabled
+11:54:06,259  INFO SettingsFactory:147 - Automatic session close at end of transaction: disabled
+11:54:06,260  INFO SettingsFactory:154 - JDBC batch size: 15
+11:54:06,260  INFO SettingsFactory:157 - JDBC batch updates for versioned data: disabled
+11:54:06,261  INFO SettingsFactory:162 - Scrollable result sets: enabled
+11:54:06,262  INFO SettingsFactory:170 - JDBC3 getGeneratedKeys(): enabled
+11:54:06,263  INFO SettingsFactory:178 - Connection release mode: auto
+11:54:06,264  INFO SettingsFactory:202 - Maximum outer join fetch depth: 2
+11:54:06,264  INFO SettingsFactory:205 - Default batch fetch size: 1
+11:54:06,265  INFO SettingsFactory:209 - Generate SQL with comments: disabled
+11:54:06,266  INFO SettingsFactory:213 - Order SQL updates by primary key: disabled
+11:54:06,267  INFO SettingsFactory:217 - Order SQL inserts for batching: disabled
+11:54:06,268  INFO SettingsFactory:386 - Query translator: org.hibernate.hql.ast.ASTQueryTranslatorFactory
+11:54:06,269  INFO ASTQueryTranslatorFactory:24 - Using ASTQueryTranslatorFactory
+11:54:06,270  INFO SettingsFactory:225 - Query language substitutions: {}
+11:54:06,271  INFO SettingsFactory:230 - JPA-QL strict compliance: disabled
+11:54:06,271  INFO SettingsFactory:235 - Second-level cache: enabled
+11:54:06,272  INFO SettingsFactory:239 - Query cache: disabled
+11:54:06,273  INFO SettingsFactory:373 - Cache provider: org.hibernate.cache.NoCacheProvider
+11:54:06,274  INFO SettingsFactory:254 - Optimize cache for minimal puts: disabled
+11:54:06,275  INFO SettingsFactory:263 - Structured second-level cache entries: disabled
+11:54:06,275  INFO SettingsFactory:290 - Statistics: disabled
+11:54:06,276  INFO SettingsFactory:294 - Deleted entity synthetic identifier rollback: disabled
+11:54:06,277  INFO SettingsFactory:309 - Default entity-mode: pojo
+11:54:06,278  INFO SettingsFactory:313 - Named query checking : enabled
+11:54:06,290  INFO SessionFactoryImpl:161 - building session factory
+11:54:06,370  INFO SessionFactoryObjectFactory:82 - Not binding factory to JNDI, no JNDI name configured
+11:54:06,702 TRACE StringType:133 - binding 'root' to parameter: 1
+11:54:06,704 TRACE StringType:133 - binding '123' to parameter: 2
+11:54:06,718 TRACE StringType:172 - returning 'localhost' as column: Host40_
+11:54:06,719 TRACE StringType:172 - returning 'root' as column: User40_
+11:54:06,733 TRACE StringType:172 - returning 'Y' as column: Alter3_40_
+11:54:06,734 TRACE StringType:172 - returning 'Y' as column: Alter4_40_
+11:54:06,735 TRACE StringType:172 - returning 'Y' as column: Create6_40_
+11:54:06,736 TRACE StringType:172 - returning 'Y' as column: Create7_40_
+11:54:06,737 TRACE StringType:172 - returning 'Y' as column: Create8_40_
+11:54:06,738 TRACE StringType:172 - returning 'Y' as column: Create9_40_
+11:54:06,739 TRACE StringType:172 - returning 'Y' as column: Create10_40_
+11:54:06,740 TRACE StringType:172 - returning 'Y' as column: Create11_40_
+11:54:06,742 TRACE StringType:172 - returning 'Y' as column: Delete12_40_
+11:54:06,743 TRACE StringType:172 - returning 'Y' as column: Drop13_40_
+11:54:06,744 TRACE StringType:172 - returning 'Y' as column: Event14_40_
+11:54:06,745 TRACE StringType:172 - returning 'Y' as column: Execute15_40_
+11:54:06,746 TRACE StringType:172 - returning 'Y' as column: File16_40_
+11:54:06,747 TRACE StringType:172 - returning 'Y' as column: Grant17_40_
+11:54:06,748 TRACE StringType:172 - returning 'Y' as column: Index18_40_
+11:54:06,749 TRACE StringType:172 - returning 'Y' as column: Insert19_40_
+11:54:06,750 TRACE StringType:172 - returning 'Y' as column: Lock20_40_
+11:54:06,752 TRACE IntegerType:172 - returning '0' as column: max21_40_
+11:54:06,753 TRACE IntegerType:172 - returning '0' as column: max22_40_
+11:54:06,753 TRACE IntegerType:172 - returning '0' as column: max23_40_
+11:54:06,754 TRACE IntegerType:172 - returning '0' as column: max24_40_
+11:54:06,755 TRACE StringType:172 - returning '*23AE809DDACAF96AF0FD78ED04B6A265E05AA257' as column: Password40_
+11:54:06,756 TRACE StringType:172 - returning '' as column: plugin40_
+11:54:06,757 TRACE StringType:172 - returning 'Y' as column: Process27_40_
+11:54:06,757 TRACE StringType:172 - returning 'Y' as column: References28_40_
+11:54:06,758 TRACE StringType:172 - returning 'Y' as column: Reload29_40_
+11:54:06,759 TRACE StringType:172 - returning 'Y' as column: Repl30_40_
+11:54:06,760 TRACE StringType:172 - returning 'Y' as column: Repl31_40_
+11:54:06,761 TRACE StringType:172 - returning 'Y' as column: Select32_40_
+11:54:06,762 TRACE StringType:172 - returning 'Y' as column: Show33_40_
+11:54:06,763 TRACE StringType:172 - returning 'Y' as column: Show34_40_
+11:54:06,764 TRACE StringType:172 - returning 'Y' as column: Shutdown35_40_
+11:54:06,770 TRACE StringType:172 - returning '' as column: ssl37_40_
+11:54:06,771 TRACE StringType:172 - returning 'Y' as column: Super38_40_
+11:54:06,772 TRACE StringType:172 - returning 'Y' as column: Trigger39_40_
+11:54:06,773 TRACE StringType:172 - returning 'Y' as column: Update40_40_

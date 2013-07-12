@@ -268,7 +268,6 @@
   <SyntheticProperties>
     <SyntheticProperty name="menuBar" type="java.lang.String" value="jMenuBar1"/>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
-    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
   </SyntheticProperties>
   <Events>
     <EventHandler event="windowClosing" listener="java.awt.event.WindowListener" parameters="java.awt.event.WindowEvent" handler="formWindowClosing"/>
@@ -598,7 +597,10 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jPanelInternalFrameRelatorios" alignment="1" pref="1021" max="32767" attributes="0"/>
+                  <Component id="jPanelInternalFrameRelatorios" alignment="1" pref="1024" max="32767" attributes="0"/>
+                  <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
+                      <Component id="jPanelImagemTelaPrincipal2" alignment="1" max="32767" attributes="0"/>
+                  </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
@@ -606,6 +608,9 @@
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="jPanelInternalFrameRelatorios" pref="962" max="32767" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
+                      <Component id="jPanelImagemTelaPrincipal2" alignment="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -634,17 +639,17 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="307" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="jButtonEntrada" linkSize="1" alignment="0" min="-2" pref="147" max="-2" attributes="0"/>
+                                  <Component id="jButtonEntradaRelatorio" linkSize="1" alignment="0" min="-2" pref="147" max="-2" attributes="0"/>
                                   <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="jButton5" linkSize="1" max="32767" attributes="0"/>
+                                      <Component id="jButtonChequeRelatorio" linkSize="1" max="32767" attributes="0"/>
                                       <Component id="jButtonCategoriaSocioRelatorio" linkSize="1" max="32767" attributes="0"/>
                                       <Component id="jButtonTaxasRelatorio" linkSize="1" min="-2" pref="147" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="jButton8" linkSize="1" max="32767" attributes="0"/>
-                                  <Component id="jButton7" linkSize="1" pref="147" max="32767" attributes="0"/>
+                                  <Component id="jButtonSocioRelatorio" linkSize="1" max="32767" attributes="0"/>
+                                  <Component id="jButtonSaidaRelatorio" linkSize="1" pref="147" max="32767" attributes="0"/>
                                   <Component id="jButtonFuncionarioRelatorio" linkSize="1" pref="147" max="32767" attributes="0"/>
                                   <Component id="jButtonInternalFrameRelatoriosVoltar1" linkSize="1" max="32767" attributes="0"/>
                               </Group>
@@ -663,16 +668,16 @@
                               <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jButtonCategoriaSocioRelatorio" linkSize="2" alignment="3" min="-2" pref="81" max="-2" attributes="0"/>
-                                  <Component id="jButton8" linkSize="2" alignment="3" min="-2" pref="80" max="-2" attributes="0"/>
+                                  <Component id="jButtonSocioRelatorio" linkSize="2" alignment="3" min="-2" pref="80" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jButtonEntrada" linkSize="2" alignment="3" min="-2" pref="80" max="-2" attributes="0"/>
-                                  <Component id="jButton7" linkSize="2" alignment="3" min="-2" pref="77" max="-2" attributes="0"/>
+                                  <Component id="jButtonEntradaRelatorio" linkSize="2" alignment="3" min="-2" pref="80" max="-2" attributes="0"/>
+                                  <Component id="jButtonSaidaRelatorio" linkSize="2" alignment="3" min="-2" pref="77" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="jButton5" linkSize="2" pref="81" max="32767" attributes="0"/>
+                                  <Component id="jButtonChequeRelatorio" linkSize="2" pref="81" max="32767" attributes="0"/>
                                   <Component id="jButtonInternalFrameRelatoriosVoltar1" linkSize="2" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace pref="597" max="32767" attributes="0"/>
@@ -710,40 +715,74 @@
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonCategoriaSocioRelatorioActionPerformed"/>
                       </Events>
                     </Component>
-                    <Component class="javax.swing.JButton" name="jButton5">
+                    <Component class="javax.swing.JButton" name="jButtonChequeRelatorio">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Cheques"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton5ActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonChequeRelatorioActionPerformed"/>
                       </Events>
                     </Component>
-                    <Component class="javax.swing.JButton" name="jButtonEntrada">
+                    <Component class="javax.swing.JButton" name="jButtonEntradaRelatorio">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Entradas"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonEntradaActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonEntradaRelatorioActionPerformed"/>
                       </Events>
                     </Component>
-                    <Component class="javax.swing.JButton" name="jButton7">
+                    <Component class="javax.swing.JButton" name="jButtonSaidaRelatorio">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Saidas"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton7ActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonSaidaRelatorioActionPerformed"/>
                       </Events>
                     </Component>
-                    <Component class="javax.swing.JButton" name="jButton8">
+                    <Component class="javax.swing.JButton" name="jButtonSocioRelatorio">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Socios"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton8ActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonSocioRelatorioActionPerformed"/>
                       </Events>
                     </Component>
                   </SubComponents>
                 </Container>
+              </SubComponents>
+            </Container>
+            <Container class="javax.swing.JPanel" name="jPanelImagemTelaPrincipal2">
+              <Properties>
+                <Property name="opaque" type="boolean" value="false"/>
+              </Properties>
+
+              <Layout>
+                <DimensionLayout dim="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="jLabel5" alignment="1" pref="1024" max="32767" attributes="0"/>
+                  </Group>
+                </DimensionLayout>
+                <DimensionLayout dim="1">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="jLabel5" alignment="0" pref="962" max="32767" attributes="0"/>
+                  </Group>
+                </DimensionLayout>
+              </Layout>
+              <SubComponents>
+                <Component class="javax.swing.JLabel" name="jLabel5">
+                  <Properties>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/img/agua.jpg"/>
+                    </Property>
+                    <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                      <Connection component="jPanelImagemTelaPrincipal" name="getMaximumSize" type="method"/>
+                    </Property>
+                    <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                      <Connection component="jPanelImagemTelaPrincipal" name="getMinimumSize" type="method"/>
+                    </Property>
+                    <Property name="opaque" type="boolean" value="true"/>
+                  </Properties>
+                </Component>
               </SubComponents>
             </Container>
           </SubComponents>
@@ -758,7 +797,7 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="926" max="32767" attributes="0"/>
               <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                   <Component id="jLabel4" alignment="0" pref="926" max="32767" attributes="0"/>
               </Group>
@@ -766,7 +805,7 @@
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="742" max="32767" attributes="0"/>
               <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                   <Component id="jLabel4" alignment="0" pref="742" max="32767" attributes="0"/>
               </Group>
