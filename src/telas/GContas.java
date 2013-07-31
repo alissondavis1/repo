@@ -8,15 +8,16 @@ import dao.DaoContasMensais;
 import dao.DaoEnderecoPessoa;
 import entidades.Conta;
 import entidades.Enderecopessoa;
+import entidades.Geracaocontas;
 import entidades.Hidrometro;
 import entidades.Taxa;
 import entidades.Taxasconta;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.AdjustmentEvent;
+import java.awt.event.AdjustmentListener;
 import java.awt.event.ItemEvent;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -32,6 +33,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JScrollBar;
 import javax.swing.JTable;
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
@@ -40,7 +42,6 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumnModel;
-import telas.relatorios.TelaRelatoriosCheques;
 import telas.relatorios.TelaRelatoriosContas;
 
 /**
@@ -53,7 +54,8 @@ public class GContas extends javax.swing.JFrame {
      * Creates new form NewJFrame
      */
     //variavel que armazena uma lista de enderecospessoa....é através dessa tabela que acesso todos os endereços cadastrados dos sócios.
-    private List<Enderecopessoa> socios;
+   // private List<Enderecopessoa> socios;
+    private List<Geracaocontas> socios;
     //mapa que irá armazenar todas as taxas referentes a uma conta de um endereço...logo depois será adicionada na tabela taxasConta.
     private Map<Integer, List<Taxa>> taxas;
     private JFrame telaPrincipal;
@@ -63,6 +65,8 @@ public class GContas extends javax.swing.JFrame {
         initComponents();
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         carregarSocios();
+        
+        
     }
 //Construtor que recebe como parâmetro o frame da tela principal.
     public GContas(JFrame telaPrincipal) {
@@ -76,8 +80,9 @@ public class GContas extends javax.swing.JFrame {
 
     //Aqui são carregados todos os endereços para preencher a tabela.
     private void carregarSocios() {
-
-        this.socios = new DaoEnderecoPessoa().TodosOsSocios();
+        socios = new DaoEnderecoPessoa().TodosOsSocios();
+        //this.socios = new ArrayList<Enderecopessoa>();
+       // this.socios = new DaoEnderecoPessoa().TodosOsSocios(0);
     }
 
     //Método responsável por editar as colunas da tabela, de acordo com o tipo de conta selecionada, que pode ser fixa ou hidrometro.
@@ -173,30 +178,32 @@ public class GContas extends javax.swing.JFrame {
         //Calendário que irá definir a data de vencimento da conta...Deixei fixo um valor de 5 dias após a data atual, pretendo deixar esse valor dinâmico para o usuário.
         Calendar c = Calendar.getInstance();
         c.set(Calendar.MONTH, jMonthChooser1.getMonth());
+        c.set(Calendar.YEAR, jYearChooser1.getYear());
         c.add(Calendar.DAY_OF_MONTH, Integer.parseInt((String)jComboBox1.getSelectedItem()));
-        
+        try{
         if (jRadioButtonContaFixa.isSelected()) {
             DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
             model.setRowCount(0);
-            //  List<Enderecopessoa> socios = new DaoEnderecoPessoa().TodosOsSocios();
-
+            
+           
             if (!socios.isEmpty()) {
 
-
-                for (Enderecopessoa s : socios) {
-                    List<Conta> contas = (List) s.getContaCollection();
-                    if (contas.isEmpty()) {
-                        if (!s.getIdPessoa().getSocio().getIdCategoriaSocio().getNome().equals("hidrometro")) {
-                            if(s.getIdPessoa().getStatus()){
-                            model.addRow(new Object[]{s.getIdPessoa().getSocio().getId(), SimpleDateFormat.getDateInstance().format(c.getTime()), s.getIdPessoa().getNome() + " " + s.getIdPessoa().getSobrenome(), s.getIdPessoa().getSocio().getNumeroSocio(), s.getIdPessoa().getCpf(), s.getNumero(), s.getIdPessoa().getSocio().getIdCategoriaSocio().getTaxasId().getValor(), false});
-                            }
+                
+                for (Geracaocontas s1 : socios) {
+                   
+                    List<Date> datas = new DaoContasMensais().datasContas(s1.getNumero());
+                    if (datas.isEmpty()) {
+                        if (!s1.getCategoria().equals("hidrometro")) {
+                          //  if(s.getIdPessoa().getStatus()){
+                            model.addRow(new Object[]{s1.getId(), SimpleDateFormat.getDateInstance().format(c.getTime()), s1.getNome() + " " + s1.getSobrenome(), s1.getNumerosocio(), s1.getCpf(), s1.getNumero(), s1.getValor(), false});
+                           // }
                             }
                     } else {
                         boolean existeContaNoMes = false;
-                        for (Conta conta : contas) {
+                        for (Date data : datas) {
 
                             Calendar c1 = Calendar.getInstance();
-                            c1.setTime(conta.getDataVence());
+                            c1.setTime(data);
                             if (c1.get(Calendar.MONTH) == jMonthChooser1.getMonth() && c1.get(Calendar.YEAR) == jYearChooser1.getYear()) {
 
                                 existeContaNoMes = true;
@@ -207,10 +214,10 @@ public class GContas extends javax.swing.JFrame {
 
                         if (!existeContaNoMes) {
 
-                            if (!s.getIdPessoa().getSocio().getIdCategoriaSocio().getNome().equals("hidrometro")) {
-                                if(s.getIdPessoa().getStatus()){
-                                model.addRow(new Object[]{s.getIdPessoa().getSocio().getId(), SimpleDateFormat.getDateInstance().format(c.getTime()), s.getIdPessoa().getNome() + " " + s.getIdPessoa().getSobrenome(), s.getIdPessoa().getSocio().getNumeroSocio(), s.getIdPessoa().getCpf(), s.getNumero(), s.getIdPessoa().getSocio().getIdCategoriaSocio().getTaxasId().getValor(), false});
-                                }
+                            if (!s1.getCategoria().equals("hidrometro")) {
+                               // if(s.getIdPessoa().getStatus()){
+                                model.addRow(new Object[]{s1.getId(), SimpleDateFormat.getDateInstance().format(c.getTime()), s1.getNome() + " " + s1.getSobrenome(), s1.getNumerosocio(), s1.getCpf(), s1.getNumero(), s1.getValor(), false});
+                               // }
                                 }
                         }
                     }
@@ -231,20 +238,21 @@ public class GContas extends javax.swing.JFrame {
 
             if (!socios.isEmpty()) {
 
-                for (Enderecopessoa s : socios) {
-                    List<Conta> contas = (List) s.getContaCollection();
-                    if (contas.isEmpty()) {
-                        if (s.getIdPessoa().getSocio().getIdCategoriaSocio().getNome().equals("hidrometro")) {
-                        if(s.getIdPessoa().getStatus()){
-                            model.addRow(new Object[]{s.getIdPessoa().getSocio().getId(), SimpleDateFormat.getDateInstance().format(c.getTime()), s.getIdPessoa().getNome() + " " + s.getIdPessoa().getSobrenome(), s.getIdPessoa().getSocio().getNumeroSocio(), s.getIdPessoa().getCpf(), s.getNumero(), s.getIdPessoa().getSocio().getIdCategoriaSocio().getTaxasId().getValor(), false});
-                        }
+                for (Geracaocontas s1 : socios) {
+                    
+                    List<Date> datas = new DaoContasMensais().datasContas(s1.getNumero());
+                    if (datas.isEmpty()) {
+                        if (s1.getCategoria().equals("hidrometro")) {
+                       // if(s.getIdPessoa().getStatus()){
+                            model.addRow(new Object[]{s1.getId(), SimpleDateFormat.getDateInstance().format(c.getTime()), s1.getNome() + " " + s1.getSobrenome(), s1.getNumerosocio(), s1.getCpf(), s1.getNumero(), s1.getValor(), false});
+                        //}
                         }
                     } else {
                         boolean existeContaNoMes = false;
-                        for (Conta conta : contas) {
+                        for (Date data : datas) {
 
                             Calendar c1 = Calendar.getInstance();
-                            c1.setTime(conta.getDataVence());
+                            c1.setTime(data);
                             if (c1.get(Calendar.MONTH) == jMonthChooser1.getMonth() && c1.get(Calendar.YEAR) == jYearChooser1.getYear()) {
 
                                 existeContaNoMes = true;
@@ -255,10 +263,10 @@ public class GContas extends javax.swing.JFrame {
 
                         if (!existeContaNoMes) {
 
-                            if (s.getIdPessoa().getSocio().getIdCategoriaSocio().getNome().equals("hidrometro")) {
-                               if(s.getIdPessoa().getStatus()){
-                                model.addRow(new Object[]{s.getIdPessoa().getSocio().getId(), SimpleDateFormat.getDateInstance().format(c.getTime()), s.getIdPessoa().getNome() + " " + s.getIdPessoa().getSobrenome(), s.getIdPessoa().getSocio().getNumeroSocio(), s.getIdPessoa().getCpf(), s.getNumero(), s.getIdPessoa().getSocio().getIdCategoriaSocio().getTaxasId().getValor(), false});
-                               }
+                            if (s1.getCategoria().equals("hidrometro")) {
+                              // if(s.getIdPessoa().getStatus()){
+                                model.addRow(new Object[]{s1.getId(), SimpleDateFormat.getDateInstance().format(c.getTime()), s1.getNome() + " " + s1.getSobrenome(), s1.getNumerosocio(), s1.getCpf(), s1.getNumero(), s1.getValor(), false});
+                             //  }
                                }
                         }
 
@@ -269,6 +277,9 @@ public class GContas extends javax.swing.JFrame {
 
 
 
+        } }catch(Exception e){
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this,"Erro:"+e.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -393,6 +404,8 @@ public class GContas extends javax.swing.JFrame {
         jCheckBox1 = new javax.swing.JCheckBox();
         jButton2 = new javax.swing.JButton();
         jComboBox1 = new javax.swing.JComboBox();
+        jButton3 = new javax.swing.JButton();
+        jTextField1 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setIconImage(new ImageIcon(getClass().getResource("/img/ico.png")).getImage());
@@ -476,6 +489,13 @@ public class GContas extends javax.swing.JFrame {
             }
         });
 
+        jButton3.setText("Carregar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -493,12 +513,16 @@ public class GContas extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jYearChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 166, Short.MAX_VALUE)
+                .addGap(39, 39, 39)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jTextField1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jProgressBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 314, Short.MAX_VALUE)
+                    .addComponent(jProgressBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 313, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jCheckBox1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 154, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 153, Short.MAX_VALUE)
                         .addComponent(jButton2)))
                 .addContainerGap())
         );
@@ -511,7 +535,9 @@ public class GContas extends javax.swing.JFrame {
                         .addComponent(jRadioButtonContaFixa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jProgressBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton3)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jRadioButtonContaHidrometro)
@@ -519,7 +545,8 @@ public class GContas extends javax.swing.JFrame {
                     .addComponent(jYearChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jCheckBox1)
-                        .addComponent(jButton2)))
+                        .addComponent(jButton2))
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(22, Short.MAX_VALUE))
         );
 
@@ -956,6 +983,35 @@ public class GContas extends javax.swing.JFrame {
        
     }//GEN-LAST:event_jComboBox1ItemStateChanged
 
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+//       Pattern p = Pattern.compile("\\d+");
+//       Matcher m = p.matcher(jTextField1.getText());
+//        if(m.find()){
+//        if(!(socios.size() >= new DaoEnderecoPessoa().qtdRegistros())){
+//                    
+//                    List<Enderecopessoa> aux = new DaoEnderecoPessoa().TodosOsSocios(socios.size(),Integer.parseInt(jTextField1.getText()));
+//                    if(!aux.isEmpty()){
+//                        
+//                        for(Enderecopessoa end : aux){
+//                           
+//                            socios.add(end);
+//                        }
+//                        
+//                       if(jRadioButtonContaFixa.isSelected()){
+//                           
+//                           jRadioButtonContaFixaActionPerformed(null);
+//                       }else if(jRadioButtonContaHidrometro.isSelected()){
+//                           
+//                           jRadioButtonContaHidrometroActionPerformed(null);
+//                       } 
+//                    }
+//                }else{
+//             JOptionPane.showMessageDialog(this, "Todos os sócios ja foram carregados!");
+//         }}else{
+//            JOptionPane.showMessageDialog(this,"Por favor, preencha corretamente o campo com digitos numéricos","Erro",JOptionPane.ERROR_MESSAGE);
+//        }
+    }//GEN-LAST:event_jButton3ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -994,6 +1050,7 @@ public class GContas extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JComboBox jComboBox1;
     private com.toedter.calendar.JMonthChooser jMonthChooser1;
@@ -1003,6 +1060,7 @@ public class GContas extends javax.swing.JFrame {
     private javax.swing.JRadioButton jRadioButtonContaHidrometro;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTextField jTextField1;
     private com.toedter.calendar.JYearChooser jYearChooser1;
     // End of variables declaration//GEN-END:variables
 }

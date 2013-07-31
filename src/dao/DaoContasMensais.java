@@ -91,6 +91,35 @@ public class DaoContasMensais implements ContasInterface {
         } 
     }
     
+    public List<Date> datasContas(int numero){
+        
+            
+        List<Date> datas = null;
+        Session sessao = null; 
+        Query query = null;
+        Transaction tx = null;
+        
+        try{
+           sessao = HibernateUtil.getSessionFactory().openSession();
+           tx = sessao.beginTransaction();
+          query = sessao.createSQLQuery("select c.dataVence from Conta c inner join enderecopessoa e on c.idenderecopessoa = e.id where e.numero =:numero" );
+           query.setParameter("numero",numero);
+           datas =  query.list();
+           tx.commit(); 
+           
+        }
+        catch(HibernateException e)
+        {
+            System.out.println(e);
+            tx.rollback();
+        }
+        finally
+        {
+             sessao.close();
+        }  
+    return datas;
+        
+    }
 
     @Override
     public Conta ContasPorId(int id) {
