@@ -49,6 +49,7 @@ import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.view.JasperViewer;
 import telas.GeradorUsuario.CriadorUsuario;
 import telas.relatorios.TelaRelatoriosCheques;
+import telas.relatorios.TelaRelatoriosContas;
 import telas.relatorios.TelaRelatoriosEntradas;
 import telas.relatorios.TelaRelatoriosSaidas;
 import telas.relatorios.TelaRelatoriosSocios;
@@ -221,6 +222,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenuItemReceita = new javax.swing.JMenuItem();
         jMenuItemContrato = new javax.swing.JMenuItem();
         jMenuItemTaxas = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItemAgua = new javax.swing.JMenuItem();
         jMenuItemSolicita_Socio = new javax.swing.JMenuItem();
@@ -672,7 +674,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addGap(145, 145, 145))
         );
 
-        jMenuBar1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(0, 0, 255), new java.awt.Color(51, 51, 255), new java.awt.Color(51, 0, 255), new java.awt.Color(51, 0, 255)));
+        jMenuBar1.setBorder(javax.swing.BorderFactory.createBevelBorder(0, new java.awt.Color(0, 0, 255), new java.awt.Color(51, 51, 255), new java.awt.Color(51, 0, 255), new java.awt.Color(51, 0, 255)));
 
         jMenu.setText("Menu");
         jMenu.setToolTipText("");
@@ -768,6 +770,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenuCadastros.add(jMenuItemTaxas);
 
         jMenu.add(jMenuCadastros);
+
+        jMenuItem1.setText("Imprimir Contas");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu.add(jMenuItem1);
 
         jMenu2.setText("Solicitações");
 
@@ -1450,6 +1460,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
          new TelaCadastros(this, evt).setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+          TelaRelatoriosContas tc = new TelaRelatoriosContas();
+        tc.setVisible(true);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
  
   
     public static void main(String args[]) {
@@ -1522,6 +1537,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenuAuditoria;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu jMenuCadastros;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItemAgua;
     private javax.swing.JMenuItem jMenuItemAuditoriaCheques;
     private javax.swing.JMenuItem jMenuItemAuditoriaContas;

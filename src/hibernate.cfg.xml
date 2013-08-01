@@ -8,6 +8,7 @@
    
     <property name="hibernate.hbm2ddl.auto">update</property>
     
+    
     <mapping class="entidades.Categoriasocio"/>
     <mapping class="entidades.Cheque"/>
     <mapping class="entidades.Chequeslog"/>
@@ -29,5 +30,11 @@
     <mapping class="entidades.Taxasconta"/>
     <mapping class="entidades.Enderecopessoa"/>
     <mapping class="entidades.Geracaocontas"/>
+    
+    <mapping class="entidades.view.CategoriasocioView"/>
+    <mapping class="entidades.view.EnderecoView"/>
+    <mapping class="entidades.view.SociosView"/>
+    
+    
   </session-factory>
 </hibernate-configuration>

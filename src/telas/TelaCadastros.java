@@ -76,8 +76,7 @@ public class TelaCadastros extends javax.swing.JFrame {
         jDesktopPane1.setVisible(false);
         jInternalFrame1.setVisible(false);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
-
-
+      
     }
 
     public TelaCadastros(JFrame telaPrincipal) {
@@ -270,6 +269,9 @@ public class TelaCadastros extends javax.swing.JFrame {
         jFormattedTextFieldSocioCPF = new javax.swing.JFormattedTextField();
         jFormattedTextFieldSocioDataNascimento = new javax.swing.JFormattedTextField();
         jFormattedTextFieldSocioDataEmissao = new javax.swing.JFormattedTextField();
+        jLabel41 = new javax.swing.JLabel();
+        jFormattedTextFieldSocioCNPJ = new javax.swing.JFormattedTextField();
+        jRadioButtonCpfCnpj = new javax.swing.JRadioButton();
         jPanel28 = new javax.swing.JPanel();
         jComboBoxSocioLogradouro = new javax.swing.JComboBox();
         jLabel80 = new javax.swing.JLabel();
@@ -487,7 +489,7 @@ public class TelaCadastros extends javax.swing.JFrame {
             }
         });
 
-        jPanelLog.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanelLog.setBorder(new javax.swing.border.SoftBevelBorder(0));
         jPanelLog.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jPanelLog.setPreferredSize(new java.awt.Dimension(800, 600));
         jPanelLog.setLayout(new java.awt.GridBagLayout());
@@ -724,11 +726,11 @@ public class TelaCadastros extends javax.swing.JFrame {
                                     .addComponent(Logradouro7, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(10, 10, 10))
                                 .addGroup(jPanel5Layout.createSequentialGroup()
-                                    .addComponent(jTextFieldFuncionarioSalario, javax.swing.GroupLayout.DEFAULT_SIZE, 271, Short.MAX_VALUE)
+                                    .addComponent(jTextFieldFuncionarioSalario, javax.swing.GroupLayout.DEFAULT_SIZE, 275, Short.MAX_VALUE)
                                     .addGap(194, 194, 194))))
                         .addGroup(jPanel5Layout.createSequentialGroup()
                             .addComponent(jFormattedTextFieldFuncionarioDataContratacao, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 393, Short.MAX_VALUE)))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 397, Short.MAX_VALUE)))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(99, 99, 99))
                 .addGroup(jPanel5Layout.createSequentialGroup()
@@ -757,7 +759,7 @@ public class TelaCadastros extends javax.swing.JFrame {
                     .addContainerGap(17, Short.MAX_VALUE))
             );
 
-            jPanel4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+            jPanel4.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
 
             Logradouro1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
             Logradouro1.setText("Status");
@@ -810,7 +812,7 @@ public class TelaCadastros extends javax.swing.JFrame {
                     .addContainerGap()
                     .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(jPanel4Layout.createSequentialGroup()
-                            .addGap(0, 237, Short.MAX_VALUE)
+                            .addGap(0, 241, Short.MAX_VALUE)
                             .addComponent(jButtonFuncionarioNovo)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(jButtonFuncionarioEditar)
@@ -824,7 +826,7 @@ public class TelaCadastros extends javax.swing.JFrame {
                             .addComponent(Logradouro1)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(jComboBoxFuncionarioStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 382, Short.MAX_VALUE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 386, Short.MAX_VALUE)
                             .addComponent(Logradouro3)))
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(jTextFieldFuncionarioNumeroDaMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -931,7 +933,7 @@ public class TelaCadastros extends javax.swing.JFrame {
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                             .addComponent(jTextFieldFuncionarioCep, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(jTextFieldFuncionarioCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addContainerGap(268, Short.MAX_VALUE))
+                    .addContainerGap(299, Short.MAX_VALUE))
             );
             jPanel3Layout.setVerticalGroup(
                 jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1037,7 +1039,7 @@ public class TelaCadastros extends javax.swing.JFrame {
                     .addGap(18, 18, 18)
                     .addComponent(jLabel13)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addComponent(jTextFieldFuncionarioEmail, javax.swing.GroupLayout.DEFAULT_SIZE, 393, Short.MAX_VALUE)
+                    .addComponent(jTextFieldFuncionarioEmail, javax.swing.GroupLayout.DEFAULT_SIZE, 424, Short.MAX_VALUE)
                     .addGap(186, 186, 186))
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1049,7 +1051,7 @@ public class TelaCadastros extends javax.swing.JFrame {
                         .addComponent(jTextFieldFuncionarioSobrenome))
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                     .addComponent(jButtonFuncionarioPesquisar)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 302, Short.MAX_VALUE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 333, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(jLabel7)
                         .addComponent(jLabel18))
@@ -1058,17 +1060,17 @@ public class TelaCadastros extends javax.swing.JFrame {
                         .addComponent(jTextFieldFuncionarioApelido, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jTextFieldFuncionarioID, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGap(24, 24, 24))
-                .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, 915, Short.MAX_VALUE)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, 946, Short.MAX_VALUE)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                     .addComponent(jLabel16)
                     .addGap(18, 18, 18)
-                    .addComponent(jTextFieldFuncionarioNomedame, javax.swing.GroupLayout.DEFAULT_SIZE, 369, Short.MAX_VALUE)
+                    .addComponent(jTextFieldFuncionarioNomedame, javax.swing.GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                     .addComponent(jLabel27)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addComponent(jTextFieldFuncionarioNomedopai, javax.swing.GroupLayout.DEFAULT_SIZE, 369, Short.MAX_VALUE)
+                    .addComponent(jTextFieldFuncionarioNomedopai, javax.swing.GroupLayout.DEFAULT_SIZE, 385, Short.MAX_VALUE)
                     .addGap(15, 15, 15))
-                .addComponent(jSeparator2, javax.swing.GroupLayout.DEFAULT_SIZE, 915, Short.MAX_VALUE)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.DEFAULT_SIZE, 946, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createSequentialGroup()
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel2Layout.createSequentialGroup()
@@ -1096,7 +1098,7 @@ public class TelaCadastros extends javax.swing.JFrame {
                             .addComponent(jLabel19)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                             .addComponent(jComboBoxFuncionarioSexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addContainerGap(277, Short.MAX_VALUE))
+                    .addContainerGap(308, Short.MAX_VALUE))
             );
             jPanel2Layout.setVerticalGroup(
                 jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1224,7 +1226,7 @@ public class TelaCadastros extends javax.swing.JFrame {
             jLabel74.setText("Sexo");
 
             jLabel75.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-            jLabel75.setText("Cpf");
+            jLabel75.setText("CPF");
 
             jLabel76.setText("Rg Numero");
 
@@ -1258,6 +1260,22 @@ public class TelaCadastros extends javax.swing.JFrame {
             } catch (java.text.ParseException ex) {
                 ex.printStackTrace();
             }
+
+            jLabel41.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+            jLabel41.setText("CNPJ");
+
+            try {
+                jFormattedTextFieldSocioCNPJ.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##.###.###.####-##")));
+            } catch (java.text.ParseException ex) {
+                ex.printStackTrace();
+            }
+
+            jRadioButtonCpfCnpj.setText("CPF/CNPJ");
+            jRadioButtonCpfCnpj.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    jRadioButtonCpfCnpjActionPerformed(evt);
+                }
+            });
 
             javax.swing.GroupLayout jPanel23Layout = new javax.swing.GroupLayout(jPanel23);
             jPanel23.setLayout(jPanel23Layout);
@@ -1314,17 +1332,24 @@ public class TelaCadastros extends javax.swing.JFrame {
                                 .addComponent(jLabel75))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jFormattedTextFieldSocioCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(jPanel23Layout.createSequentialGroup()
+                                    .addComponent(jFormattedTextFieldSocioCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel41, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(jPanel23Layout.createSequentialGroup()
                                     .addComponent(jTextFieldSocioRgNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(31, 31, 31)
-                                    .addComponent(jLabel77)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(jTextFieldSocioOrgaoExpedidor, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(jLabel78)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jFormattedTextFieldSocioDataEmissao, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(jLabel77)))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jTextFieldSocioOrgaoExpedidor, javax.swing.GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE)
+                                .addComponent(jFormattedTextFieldSocioCNPJ))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(jLabel78)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jFormattedTextFieldSocioDataEmissao, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jRadioButtonCpfCnpj)))
                         .addGroup(jPanel23Layout.createSequentialGroup()
                             .addComponent(jLabel71)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1376,7 +1401,10 @@ public class TelaCadastros extends javax.swing.JFrame {
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel75)
-                        .addComponent(jFormattedTextFieldSocioCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jFormattedTextFieldSocioCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel41)
+                        .addComponent(jFormattedTextFieldSocioCNPJ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jRadioButtonCpfCnpj))
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel76)
@@ -1598,7 +1626,7 @@ public class TelaCadastros extends javax.swing.JFrame {
                     .addContainerGap(78, Short.MAX_VALUE))
             );
 
-            jPanel9.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+            jPanel9.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
 
             jButtonSocioNovo.setText("Novo");
             jButtonSocioNovo.addActionListener(new java.awt.event.ActionListener() {
@@ -1793,7 +1821,7 @@ public class TelaCadastros extends javax.swing.JFrame {
                     .addContainerGap(79, Short.MAX_VALUE))
             );
 
-            jPanel10.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+            jPanel10.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
 
             jButtonCategoriaSocioNovo.setText("Novo");
             jButtonCategoriaSocioNovo.addActionListener(new java.awt.event.ActionListener() {
@@ -1888,7 +1916,7 @@ public class TelaCadastros extends javax.swing.JFrame {
 
             jPanelTipoDespesa.setLayout(new java.awt.GridBagLayout());
 
-            jPanel11.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+            jPanel11.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
 
             jButtonTipoDespesaNovo.setText("Novo");
             jButtonTipoDespesaNovo.addActionListener(new java.awt.event.ActionListener() {
@@ -1940,7 +1968,7 @@ public class TelaCadastros extends javax.swing.JFrame {
                     .addComponent(jButtonTipoDespesaSalvar)
                     .addGap(10, 10, 10)
                     .addComponent(jButtonTipoDespesaCancelar)
-                    .addContainerGap(305, Short.MAX_VALUE))
+                    .addContainerGap(304, Short.MAX_VALUE))
             );
 
             jPanel11Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButtonTipoDespesaApagar, jButtonTipoDespesaCancelar, jButtonTipoDespesaEditar, jButtonTipoDespesaNovo, jButtonTipoDespesaSalvar});
@@ -2007,13 +2035,13 @@ public class TelaCadastros extends javax.swing.JFrame {
                             .addComponent(jTextFieldTipoDespesaNome, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(18, 18, 18)
                             .addComponent(jButtonTipoDespesaPesquisar)
-                            .addContainerGap(630, Short.MAX_VALUE))
+                            .addContainerGap(629, Short.MAX_VALUE))
                         .addGroup(jPanel24Layout.createSequentialGroup()
                             .addGap(366, 366, 366)
                             .addComponent(jLabel40)
                             .addGap(18, 18, 18)
                             .addComponent(jTextFieldTIpoDespesaID, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(0, 363, Short.MAX_VALUE))
+                            .addGap(0, 362, Short.MAX_VALUE))
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel24Layout.createSequentialGroup()
                             .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
@@ -2185,7 +2213,7 @@ public class TelaCadastros extends javax.swing.JFrame {
                     .addContainerGap(30, Short.MAX_VALUE))
             );
 
-            jPanel12.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+            jPanel12.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
 
             jButtonDespesaNovo.setText("Novo");
             jButtonDespesaNovo.addActionListener(new java.awt.event.ActionListener() {
@@ -2364,7 +2392,7 @@ public class TelaCadastros extends javax.swing.JFrame {
                     .addContainerGap(74, Short.MAX_VALUE))
             );
 
-            jPanel14.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+            jPanel14.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
 
             jButtonTipoReceitaNovo.setText("Novo");
             jButtonTipoReceitaNovo.addActionListener(new java.awt.event.ActionListener() {
@@ -2416,7 +2444,7 @@ public class TelaCadastros extends javax.swing.JFrame {
                     .addComponent(jButtonTipoReceitaSalvar)
                     .addGap(10, 10, 10)
                     .addComponent(jButtonTipoReceitaCancelar)
-                    .addContainerGap(289, Short.MAX_VALUE))
+                    .addContainerGap(287, Short.MAX_VALUE))
             );
 
             jPanel14Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButtonTipoReceitaApagar, jButtonTipoReceitaCancelar, jButtonTipoReceitaEditar, jButtonTipoReceitaNovo, jButtonTipoReceitaSalvar});
@@ -2584,7 +2612,7 @@ public class TelaCadastros extends javax.swing.JFrame {
                     .addContainerGap(49, Short.MAX_VALUE))
             );
 
-            jPanel8.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+            jPanel8.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
 
             jButtonReceitaNovo.setText("Novo");
             jButtonReceitaNovo.addActionListener(new java.awt.event.ActionListener() {
@@ -2819,7 +2847,7 @@ public class TelaCadastros extends javax.swing.JFrame {
                             .addGap(0, 0, Short.MAX_VALUE))))
             );
 
-            jPanel16.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+            jPanel16.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
 
             jButtonChequeNovo.setText("Novo");
             jButtonChequeNovo.addActionListener(new java.awt.event.ActionListener() {
@@ -2919,7 +2947,7 @@ public class TelaCadastros extends javax.swing.JFrame {
 
             jPanelTaxas.setLayout(new java.awt.GridBagLayout());
 
-            jPanel18.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+            jPanel18.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
 
             jButtonTaxaNovo.setText("Novo");
             jButtonTaxaNovo.addActionListener(new java.awt.event.ActionListener() {
@@ -3095,7 +3123,7 @@ public class TelaCadastros extends javax.swing.JFrame {
                 jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(13, 13, 13)
-                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 969, Short.MAX_VALUE)
+                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 969, Short.MAX_VALUE)
                     .addGap(13, 13, 13))
             );
             jPanel1Layout.setVerticalGroup(
@@ -3142,7 +3170,7 @@ public class TelaCadastros extends javax.swing.JFrame {
             });
 
             jButtonPesquisa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/pesquisar.gif"))); // NOI18N
-            jButtonPesquisa.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+            jButtonPesquisa.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
             jButtonPesquisa.addActionListener(new java.awt.event.ActionListener() {
                 public void actionPerformed(java.awt.event.ActionEvent evt) {
                     jButtonPesquisaActionPerformed(evt);
@@ -3195,7 +3223,7 @@ public class TelaCadastros extends javax.swing.JFrame {
             jInternalFrame1Layout.setVerticalGroup(
                 jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jInternalFrame1Layout.createSequentialGroup()
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 581, Short.MAX_VALUE)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 578, Short.MAX_VALUE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(jPanel19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
             );
@@ -4504,6 +4532,7 @@ public class TelaCadastros extends javax.swing.JFrame {
 
         limparCamposSocio();
         setEditableComponentesSocio(true);
+        
         jButtonSocioApagar.setEnabled(false);
         jButtonSocioEditar.setEnabled(false);
         jButtonSocioNovo.setEnabled(false);
@@ -5897,6 +5926,25 @@ public class TelaCadastros extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jRadioButtonCpfCnpjActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonCpfCnpjActionPerformed
+       if(jRadioButtonCpfCnpj.isSelected())
+       {
+       jFormattedTextFieldSocioCPF.setEditable(false);
+       jFormattedTextFieldSocioCPF.setText("");
+       jFormattedTextFieldSocioCNPJ.setEditable(true);
+       
+       }
+       else
+       {
+       jFormattedTextFieldSocioCPF.setEditable(true);
+       jFormattedTextFieldSocioCNPJ.setEditable(false);
+       jFormattedTextFieldSocioCNPJ.setText("");
+       
+       }
+        
+        
+    }//GEN-LAST:event_jRadioButtonCpfCnpjActionPerformed
+
     private void editableTextFields(boolean editable) {
 
         jTextFieldFuncionarioApelido.setEditable(editable);
@@ -5927,7 +5975,8 @@ public class TelaCadastros extends javax.swing.JFrame {
         jButtonFuncionarioCancelar.setEnabled(editable);
         jButtonFuncionarioEditar.setEnabled(editable);
         jButtonFuncionarioSalvar.setEnabled(editable);
-
+        jFormattedTextFieldSocioCNPJ.setEditable(editable);
+        jRadioButtonCpfCnpj.setEnabled(editable);
     }
 
     private void limparCampos() {
@@ -6307,6 +6356,10 @@ public class TelaCadastros extends javax.swing.JFrame {
     private void setEditableComponentesSocio(boolean edit) {
 
 
+        if(edit== false)
+        {
+            jRadioButtonCpfCnpj.setSelected(false);
+        }
         if(pesquisarTable.equals("importar funcionário")){
           
         jTextFieldSocioNome.setEditable(edit);
@@ -6340,9 +6393,14 @@ public class TelaCadastros extends javax.swing.JFrame {
         jButtonSocioEditar.setEnabled(false);
         jButtonSocioSalvar.setEnabled(edit);
        jButtonSocioAdicionarLogradouro.setEnabled(edit);
+       
         }
         
         else{
+        jRadioButtonCpfCnpj.setEnabled(edit);
+        
+        
+        
         jTextFieldSocioNome.setEditable(edit);
         jTextFieldSocioSobrenome.setEditable(edit);
         jTextFieldSocioApelido.setEditable(edit);
@@ -7436,6 +7494,7 @@ public class TelaCadastros extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField jFormattedTextFieldFuncionarioDataEmissao;
     private javax.swing.JFormattedTextField jFormattedTextFieldFuncionarioDataNascimento;
     private javax.swing.JFormattedTextField jFormattedTextFieldReceitaData;
+    private javax.swing.JFormattedTextField jFormattedTextFieldSocioCNPJ;
     private javax.swing.JFormattedTextField jFormattedTextFieldSocioCPF;
     private javax.swing.JFormattedTextField jFormattedTextFieldSocioDataEmissao;
     private javax.swing.JFormattedTextField jFormattedTextFieldSocioDataMatricula;
@@ -7477,6 +7536,7 @@ public class TelaCadastros extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel40;
+    private javax.swing.JLabel jLabel41;
     private javax.swing.JLabel jLabel42;
     private javax.swing.JLabel jLabel43;
     private javax.swing.JLabel jLabel44;
@@ -7573,6 +7633,7 @@ public class TelaCadastros extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelTaxas;
     private javax.swing.JPanel jPanelTipoDespesa;
     private javax.swing.JPanel jPanelTipoReceita;
+    private javax.swing.JRadioButton jRadioButtonCpfCnpj;
     private javax.swing.JRadioButton jRadioButtonSocioAtivo;
     private javax.swing.JRadioButton jRadioButtonSocioInativo;
     private javax.swing.JScrollPane jScrollPane1;
