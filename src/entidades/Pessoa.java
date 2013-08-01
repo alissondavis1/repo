@@ -35,6 +35,8 @@ import javax.xml.bind.annotation.XmlTransient;
 @XmlRootElement
 
 public class Pessoa implements Serializable {
+    @Column(name = "cnpj")
+    private String cnpj;
    
     private static final long serialVersionUID = 1L;
     @Id
@@ -346,6 +348,14 @@ public class Pessoa implements Serializable {
     public void setRgEmissao(Date rgEmissao) {
         this.rgEmissao = rgEmissao;
 
+    }
+
+    public String getCnpj() {
+        return cnpj;
+    }
+
+    public void setCnpj(String cnpj) {
+        this.cnpj = cnpj;
     }
     
 }
