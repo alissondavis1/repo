@@ -47,7 +47,7 @@ public class Endereco implements Serializable {
     private String descricao;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idEndereco")
     private List<Pessoa> pessoaList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idEndereco", fetch= FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idEndereco")
     private List<Enderecopessoa> enderecopessoaList;
     
     public Endereco() {

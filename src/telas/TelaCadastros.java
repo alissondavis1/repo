@@ -3195,7 +3195,7 @@ public class TelaCadastros extends javax.swing.JFrame {
             jInternalFrame1Layout.setVerticalGroup(
                 jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jInternalFrame1Layout.createSequentialGroup()
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 577, Short.MAX_VALUE)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 581, Short.MAX_VALUE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(jPanel19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
             );
@@ -3955,7 +3955,7 @@ public class TelaCadastros extends javax.swing.JFrame {
         } else if (pesquisarTable.equals("socios")) {
 
 
-            List<Socio> socios = new DaoSocio().TodosOsSocios();
+            List<Socio> socios = new DaoSocio().TodosOsSociosJDBC();
             model = (DefaultTableModel) jTable1.getModel();
             model.setRowCount(0);
 
@@ -3963,10 +3963,13 @@ public class TelaCadastros extends javax.swing.JFrame {
 
                 for (Socio s : socios) {
 
-                    List<Enderecopessoa> ends = s.getIdPessoa().getEnderecopessoaList();
-                    
+                    //List<Enderecopessoa> ends = s.getIdPessoa().getEnderecopessoaList();
+                    List<Enderecopessoa> ends = new DaoSocio().TodosOsEnderecosPessoasJDBC(s.getId());
+                    Pessoa p = new DaoSocio().fromSocioJDBC(s.getId());
+                    Categoriasocio c = new DaoSocio().fromCategoriaSocioJDBC(s.getId());
                     for(Enderecopessoa e : ends){
-                    model.addRow(new Object[]{s.getId(), s.getIdPessoa().getNome(), s.getIdPessoa().getSobrenome(), s.getIdPessoa().getCpf(), s.getIdCategoriaSocio().getNome(), e.getIdEndereco().getTipo()+" "+e.getIdEndereco().getNome(), s.getNumeroSocio()});
+                    Endereco endereco = new DaoSocio().fromEnderecoPessoaJDBC(e.getId());
+                    model.addRow(new Object[]{s.getId(), p.getNome(), p.getSobrenome(), p.getCpf(), c.getNome(), endereco.getTipo()+" "+endereco.getNome(),e.getNumero()});
 
                     }
                 }

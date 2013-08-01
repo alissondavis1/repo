@@ -204,7 +204,10 @@ public class GContas extends javax.swing.JFrame {
 
                             Calendar c1 = Calendar.getInstance();
                             c1.setTime(data);
-                            if (c1.get(Calendar.MONTH) == jMonthChooser1.getMonth() && c1.get(Calendar.YEAR) == jYearChooser1.getYear()) {
+                            Calendar c2 = Calendar.getInstance();
+                            c2.set(Calendar.MONTH, jMonthChooser1.getMonth());
+                            c2.add(Calendar.DAY_OF_MONTH, Integer.parseInt((String)jComboBox1.getSelectedItem()));
+                            if (c1.get(Calendar.MONTH) == c2.get(Calendar.MONTH) && c1.get(Calendar.YEAR) == jYearChooser1.getYear()) {
 
                                 existeContaNoMes = true;
 
@@ -580,6 +583,7 @@ public class GContas extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
+        
         //se a tabela estiver vazia nada não entrará no if.
        if(jTable1.getRowCount() >0){
           

@@ -5,8 +5,19 @@
 package dao;
 
 import daoInterfaces.SocioInterface;
+import entidades.Categoriasocio;
+import entidades.Endereco;
+import entidades.Enderecopessoa;
+import entidades.Pessoa;
 import entidades.Socio;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
@@ -213,5 +224,230 @@ public class DaoSocio implements SocioInterface{
     return socio;
     }
     
+    public List<Socio> TodosOsSociosJDBC(){
+        
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        List<Socio> socios = new ArrayList<Socio>();
+        try{
+            
+            conn = HibernateUtil.getConnection();
+            ps = conn.prepareStatement("select * from socio");
+            rs = ps.executeQuery();
+            while(rs.next()){
+                
+                Socio s = new Socio();
+                s.setId(rs.getInt("id"));
+                s.setDataAprovacao(rs.getDate("dataAprovacao"));
+                s.setDataMatricula(rs.getDate("dataMatricula"));
+                s.setDataVence(rs.getDate("dataVence"));
+                s.setNumeroSocio(rs.getInt("numeroSocio"));
+                s.setObservacao(rs.getString("observacao"));
+                socios.add(s);
+            }
+            
+        }catch(Exception e){
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null,"Erro:"+e.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE);
+        }finally{
+            try {
+                conn.close();
+                
+            } catch (SQLException ex) {
+                Logger.getLogger(DaoSocio.class.getName()).log(Level.SEVERE, null, ex);
+            }
+           
+        }
+        return socios;
+        
+    }
     
+    public List<Enderecopessoa> TodosOsEnderecosPessoasJDBC(int idSocio){
+        
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        List<Enderecopessoa> enderecopessoa = new ArrayList<Enderecopessoa>();
+        try{
+            
+            conn = HibernateUtil.getConnection();
+            ps = conn.prepareStatement("select e.id, e.numero from  enderecopessoa e inner join pessoa p on e.idPessoa = p.id inner join socio s on s.idPessoa = p.id where s.id = ?");
+            ps.setInt(1, idSocio);
+            rs = ps.executeQuery();
+            while(rs.next()){
+                
+                Enderecopessoa s = new Enderecopessoa();
+                s.setId(rs.getInt("id"));
+                s.setNumero(rs.getInt("Numero"));
+                
+                enderecopessoa.add(s);
+            }
+            
+        }catch(Exception e){
+            
+            JOptionPane.showMessageDialog(null,"Erro:"+e.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE);
+        }finally{
+            try {
+                conn.close();
+                
+            } catch (SQLException ex) {
+                Logger.getLogger(DaoSocio.class.getName()).log(Level.SEVERE, null, ex);
+            }
+           
+        }
+        return enderecopessoa; 
+        
+        
+    }
+    
+    public Endereco fromEnderecoPessoaJDBC(int idEnderecoPessoa){
+        
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        Endereco endereco = null;
+        try{
+            
+            conn = HibernateUtil.getConnection();
+            ps = conn.prepareStatement("select e.id, e.descricao, e.nome, e.tipo from endereco e inner join enderecopessoa ep on e.id = ep.idEndereco where ep.id = ?");
+            ps.setInt(1, idEnderecoPessoa);
+            rs = ps.executeQuery();
+            while(rs.next()){
+                
+               endereco = new Endereco();
+               endereco.setId(rs.getInt("id"));
+               endereco.setDescricao(rs.getString("descricao"));
+               endereco.setNome(rs.getString("nome"));
+               endereco.setTipo(rs.getString("tipo"));
+            }
+            
+        }catch(Exception e){
+            
+            JOptionPane.showMessageDialog(null,"Erro:"+e.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE);
+        }finally{
+            try {
+                conn.close();
+              
+            } catch (SQLException ex) {
+                Logger.getLogger(DaoSocio.class.getName()).log(Level.SEVERE, null, ex);
+            }
+           
+        }
+        return endereco; 
+        
+  
+    }
+    
+    public Pessoa fromSocioJDBC(int idSocio){
+        
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        Pessoa pessoa = null;
+        try{
+            
+            conn = HibernateUtil.getConnection();
+            ps = conn.prepareStatement("select p.nome, p.sobrenome, p.cpf from pessoa p inner join socio s on s.idPessoa = p.id where s.id = ?");
+            ps.setInt(1, idSocio);
+            rs = ps.executeQuery();
+            while(rs.next()){
+                
+               pessoa = new Pessoa();
+               pessoa.setNome(rs.getString("nome"));
+               pessoa.setSobrenome(rs.getString("sobrenome"));
+               pessoa.setCpf(rs.getString("cpf"));
+            }
+            
+        }catch(Exception e){
+            
+            JOptionPane.showMessageDialog(null,"Erro:"+e.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE);
+        }finally{
+            try {
+                conn.close();
+               ;
+            } catch (SQLException ex) {
+                Logger.getLogger(DaoSocio.class.getName()).log(Level.SEVERE, null, ex);
+            }
+           
+        }
+        return pessoa; 
+        
+        
+        
+        
+    }
+    
+    public Categoriasocio fromCategoriaSocioJDBC(int idSocio){
+        
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        Categoriasocio categoria = null;
+        try{
+            
+            conn = HibernateUtil.getConnection();
+            ps = conn.prepareStatement("select c.nome from categoriasocio c inner join socio s on c.id = s.idCategoriaSocio where s.id = ?");
+            ps.setInt(1, idSocio);
+            rs = ps.executeQuery();
+            while(rs.next()){
+                
+               categoria = new Categoriasocio();
+               categoria.setNome(rs.getString("nome"));
+            }
+            
+        }catch(Exception e){
+            
+            JOptionPane.showMessageDialog(null,"Erro:"+e.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE);
+        }finally{
+            try {
+                conn.close();
+                
+            } catch (SQLException ex) {
+                Logger.getLogger(DaoSocio.class.getName()).log(Level.SEVERE, null, ex);
+            }
+           
+        }
+        return categoria;   
+        
+    }
+
+    public List<Object> fromSocioTodosOsMetodosJDBC(int idSocio){
+        
+        
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        List<Object> lista = new ArrayList<>();
+        List<Enderecopessoa> enderecopessoa = new ArrayList<>();
+        Pessoa p = null;
+        Categoriasocio c = null;
+        try{
+            
+            conn = HibernateUtil.getConnection();
+            ps = conn.prepareStatement("select * from enderecopessoa e inner join pessoa p on p.id = e.idpessoa inner join socio s on s.idpessoa = p.id inner join categoriasocio cs on cs.id = s.idcategoriasocio where s.id = ?");
+            ps.setInt(1, idSocio);
+            rs = ps.executeQuery();
+            while(rs.next()){
+               
+                Enderecopessoa e = new Enderecopessoa();
+                
+               
+            }
+            
+        }catch(Exception e){
+            
+            JOptionPane.showMessageDialog(null,"Erro:"+e.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE);
+        }finally{
+            try {
+                conn.close();
+                
+            } catch (SQLException ex) {
+                Logger.getLogger(DaoSocio.class.getName()).log(Level.SEVERE, null, ex);
+            }
+           
+        }
+        return lista;    
+        
+    }
 }

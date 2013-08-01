@@ -162,7 +162,7 @@ public class DaoEndereco implements EnderecosInterface{
         try{
            sessao = HibernateUtil.getSessionFactory().openSession();
            transacao = sessao.beginTransaction();
-           query = sessao.createQuery("from Endereco ");
+           query = sessao.createQuery("from Endereco order by tipo,nome ");
           // query.setString("nome","%"+nome+"%");
            //query.setParameter("nome",nome);
            endereco = query.list();
