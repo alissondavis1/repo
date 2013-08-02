@@ -91,7 +91,7 @@ public class DaoContasMensais implements ContasInterface {
         } 
     }
     
-    public List<Date> datasContas(int numero){
+    public List<Date> datasContas(String numero){
         
             
         List<Date> datas = null;

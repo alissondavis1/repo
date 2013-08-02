@@ -27,7 +27,7 @@ import javax.swing.JTextField;
 public class Taxas extends javax.swing.JDialog {
 
  
- private Map<Integer,Taxa> taxas;
+// private Map<Integer,Taxa> taxas;
  private List<Taxa> valoresTaxas;
     /** Creates new form Logradouros */
     public Taxas(java.awt.Frame parent, boolean modal) {
@@ -556,7 +556,7 @@ public class Taxas extends javax.swing.JDialog {
                 
                 try{
                     
-                    Taxa t = new DaoTaxa().TaxasPorNome((String)comboAtual.getSelectedItem());
+                   Taxa t = new DaoTaxa().TaxasPorNome((String)comboAtual.getSelectedItem());
                    boolean existeTaxa = false;
                     for(Taxa aux : valoresTaxas){
                         

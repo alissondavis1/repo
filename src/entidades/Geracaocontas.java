@@ -26,6 +26,9 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Geracaocontas.findAll", query = "SELECT g FROM Geracaocontas g")})
 public class Geracaocontas implements Serializable {
     @Basic(optional = false)
+    @Column(name = "numero")
+    private String numero;
+    @Basic(optional = false)
     @Column(name = "categoria")
     private String categoria;
     private static final long serialVersionUID = 1L;
@@ -44,8 +47,6 @@ public class Geracaocontas implements Serializable {
     private int numerosocio;
     @Column(name = "cpf")
     private String cpf;
-    @Column(name = "numero")
-    private Integer numero;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Basic(optional = false)
     @Column(name = "valor")
@@ -94,14 +95,6 @@ public class Geracaocontas implements Serializable {
         this.cpf = cpf;
     }
 
-    public Integer getNumero() {
-        return numero;
-    }
-
-    public void setNumero(Integer numero) {
-        this.numero = numero;
-    }
-
     public BigDecimal getValor() {
         return valor;
     }
@@ -116,6 +109,14 @@ public class Geracaocontas implements Serializable {
 
     public void setCategoria(String categoria) {
         this.categoria = categoria;
+    }
+
+    public String getNumero() {
+        return numero;
+    }
+
+    public void setNumero(String numero) {
+        this.numero = numero;
     }
     
 }

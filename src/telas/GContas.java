@@ -98,7 +98,7 @@ public class GContas extends javax.swing.JFrame {
             jTable1.setModel(new javax.swing.table.DefaultTableModel(
                     new Object[][]{},
                     new String[]{"id", "dataVencimento", "Sócio", "Numero Socio", "CPF", "Numero Endereço", "Valor", "Gerar", "Taxa"}) {
-                Class[] types = new Class[]{Integer.class, String.class, String.class, Integer.class, String.class, Integer.class,
+                Class[] types = new Class[]{Integer.class, String.class, String.class, Integer.class, String.class, String.class,
                     BigDecimal.class, Boolean.class, JButton.class};
                 
                 @Override
@@ -135,7 +135,7 @@ public class GContas extends javax.swing.JFrame {
             jTable1.setModel(new javax.swing.table.DefaultTableModel(
                     new Object[][]{},
                     new String[]{"id", "dataVencimento", "Sócio", "Numero Socio", "CPF", "Numero Endereço", "Valor", "Gerar", "Taxa", "Consumo"}) {
-                Class[] types = new Class[]{Integer.class, String.class, String.class, Integer.class, String.class, Integer.class,
+                Class[] types = new Class[]{Integer.class, String.class, String.class, Integer.class, String.class, String.class,
                     BigDecimal.class, Boolean.class, JButton.class, Double.class};
 
                 @Override
@@ -294,7 +294,7 @@ public class GContas extends javax.swing.JFrame {
         //se o mapa não tiver essa chave , ele adiciona e coloca um único valor...que é a taxa principal
         if (!taxas.containsKey(e1.getNumero())) {
             List<Taxa> inicial = new ArrayList<>();
-            inicial.add(e1.getIdPessoa().getSocio().getIdCategoriaSocio().getTaxasId());
+            inicial.add(e1.getIdCategoriaSocio().getTaxasId());
             taxas.put(e1.getNumero(), inicial);
         }
 
@@ -702,7 +702,7 @@ public class GContas extends javax.swing.JFrame {
                                         Taxasconta tx = new Taxasconta();
                                         tx.setContaid(c);
                                         //seta a taxa em taxas Conta de acordo com a categoria socio do sócio vinculado ao endereço
-                                        tx.setTaxaid(e.getIdPessoa().getSocio().getIdCategoriaSocio().getTaxasId());
+                                        tx.setTaxaid(e.getIdCategoriaSocio().getTaxasId());
                                         //Aqui adiciono todas as taxas de cada endereço...
                                         taxas1.add(tx);  
                                         }
@@ -806,7 +806,7 @@ public class GContas extends javax.swing.JFrame {
                                         Taxasconta tx = new Taxasconta();
                                         tx.setContaid(c);
                                         //seta a taxa em taxas Conta de acordo com a categoria socio do sócio vinculado ao endereço
-                                        tx.setTaxaid(e.getIdPessoa().getSocio().getIdCategoriaSocio().getTaxasId());
+                                        tx.setTaxaid(e.getIdCategoriaSocio().getTaxasId());
                                         //Aqui adiciono todas as taxas de cada endereço...
                                         taxas1.add(tx);  
                                         }
@@ -958,8 +958,8 @@ public class GContas extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jComboBox1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox1ItemStateChanged
-       
-          
+        
+         taxas.clear(); 
         jCheckBox1.setSelected(false);
         if (jRadioButtonContaFixa.isSelected()) {
 
