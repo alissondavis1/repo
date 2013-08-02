@@ -3195,7 +3195,7 @@ public class TelaCadastros extends javax.swing.JFrame {
             jInternalFrame1Layout.setVerticalGroup(
                 jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jInternalFrame1Layout.createSequentialGroup()
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 581, Short.MAX_VALUE)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 577, Short.MAX_VALUE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(jPanel19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
             );
@@ -3955,21 +3955,22 @@ public class TelaCadastros extends javax.swing.JFrame {
         } else if (pesquisarTable.equals("socios")) {
 
 
-            List<Socio> socios = new DaoSocio().TodosOsSociosJDBC();
+            List<Integer> socios = new DaoSocio().TodosOsSociosPorId();
             model = (DefaultTableModel) jTable1.getModel();
             model.setRowCount(0);
 
             if (!socios.isEmpty()) {
 
-                for (Socio s : socios) {
+                for (int s : socios) {
 
                     //List<Enderecopessoa> ends = s.getIdPessoa().getEnderecopessoaList();
-                    List<Enderecopessoa> ends = new DaoSocio().TodosOsEnderecosPessoasJDBC(s.getId());
-                    Pessoa p = new DaoSocio().fromSocioJDBC(s.getId());
-                    Categoriasocio c = new DaoSocio().fromCategoriaSocioJDBC(s.getId());
+                    List<Enderecopessoa> ends = new DaoSocio().TodosOsEnderecosPessoasJDBC(s);
+                    Pessoa p = new DaoSocio().fromSocioJDBC(s);
+                    //Categoriasocio c = new DaoSocio().fromCategoriaSocioJDBC(s);
                     for(Enderecopessoa e : ends){
+                    Categoriasocio c = new DaoSocio().fromCategoriaSocioJDBC(e.getId());
                     Endereco endereco = new DaoSocio().fromEnderecoPessoaJDBC(e.getId());
-                    model.addRow(new Object[]{s.getId(), p.getNome(), p.getSobrenome(), p.getCpf(), c.getNome(), endereco.getTipo()+" "+endereco.getNome(),e.getNumero()});
+                    model.addRow(new Object[]{s, p.getNome(), p.getSobrenome(), p.getCpf(), c.getNome(), endereco.getTipo()+" "+endereco.getNome(),e.getNumero()});
 
                     }
                 }
@@ -4101,7 +4102,7 @@ public class TelaCadastros extends javax.swing.JFrame {
             
         }
     }    catch(Exception e){
-    
+        e.printStackTrace();
         JOptionPane.showMessageDialog(this,"Erro: "+e.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE);
 }
     }
@@ -4624,7 +4625,7 @@ public class TelaCadastros extends javax.swing.JFrame {
                              
                               ep.setIdEndereco(e);
                               ep.setIdPessoa(p);
-                              ep.setNumero(Integer.parseInt(jTextFieldSocioNumero.getText()));
+                              ep.setNumero(jTextFieldSocioNumero.getText());
                               List<Enderecopessoa> enderecos1 = new ArrayList<>();
                               enderecos1.add(ep);
                               p.setEnderecopessoaList(enderecos1);
@@ -4725,7 +4726,7 @@ public class TelaCadastros extends javax.swing.JFrame {
                              
                               ep.setIdEndereco(e);
                               ep.setIdPessoa(p);
-                              ep.setNumero(Integer.parseInt(jTextFieldSocioNumero.getText()));
+                              ep.setNumero(jTextFieldSocioNumero.getText());
                               List<Enderecopessoa> enderecos1 = new ArrayList<>();
                               enderecos1.add(ep);
                               p.setEnderecopessoaList(enderecos1);
@@ -4834,7 +4835,7 @@ public class TelaCadastros extends javax.swing.JFrame {
                                 
                                 p.setIdEndereco(e);
                                 p.getEnderecopessoaList().get(0).setIdEndereco(e);
-                                p.getEnderecopessoaList().get(0).setNumero(Integer.parseInt(p.getNumeroEndereco()));
+                                p.getEnderecopessoaList().get(0).setNumero(p.getNumeroEndereco());
                                 
                             }
 //                              ep.setIdEndereco(p.getIdEndereco());
@@ -5551,6 +5552,7 @@ public class TelaCadastros extends javax.swing.JFrame {
       
        Logradouros l = new Logradouros(this, true, enderecos, s);
        l.setLocationRelativeTo(null);
+      
        l.setVisible(true);
       
        

@@ -6,6 +6,7 @@ package entidades;
 
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -20,6 +21,8 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 import org.hibernate.annotations.Fetch;
@@ -35,11 +38,18 @@ import org.hibernate.annotations.FetchMode;
 @NamedQueries({
     @NamedQuery(name = "Enderecopessoa.findAll", query = "SELECT e FROM Enderecopessoa e")})
 public class Enderecopessoa implements Serializable {
+    @Basic(optional = false)
+    @Column(name = "Numero")
+    private String numero;
+    @Column(name = "dataMatricula")
+    @Temporal(TemporalType.DATE)
+    private Date dataMatricula;
+    @JoinColumn(name = "idCategoriaSocio", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private Categoriasocio idCategoriaSocio;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idEnderecoPessoa", fetch= FetchType.EAGER)
     @Fetch(FetchMode.SUBSELECT)
     private Collection<Conta> contaCollection;
-    @Column(name = "Numero")
-    private Integer numero;
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -108,15 +118,6 @@ public class Enderecopessoa implements Serializable {
     public String toString() {
         return "dao.Enderecopessoa[ id=" + id + " ]";    }
 
-    public Integer getNumero() {
-        return numero;
-    }
-
-    public void setNumero(Integer numero) {
-        this.numero = numero;
-
-    }
-
     @XmlTransient
     public Collection<Conta> getContaCollection() {
         return contaCollection;
@@ -124,6 +125,30 @@ public class Enderecopessoa implements Serializable {
 
     public void setContaCollection(Collection<Conta> contaCollection) {
         this.contaCollection = contaCollection;
+    }
+
+    public String getNumero() {
+        return numero;
+    }
+
+    public void setNumero(String numero) {
+        this.numero = numero;
+    }
+
+    public Date getDataMatricula() {
+        return dataMatricula;
+    }
+
+    public void setDataMatricula(Date dataMatricula) {
+        this.dataMatricula = dataMatricula;
+    }
+
+    public Categoriasocio getIdCategoriaSocio() {
+        return idCategoriaSocio;
+    }
+
+    public void setIdCategoriaSocio(Categoriasocio idCategoriaSocio) {
+        this.idCategoriaSocio = idCategoriaSocio;
     }
     
 }

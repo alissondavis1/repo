@@ -30,6 +30,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @XmlRootElement
 
 public class Categoriasocio implements Serializable {
+   
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -47,7 +48,10 @@ public class Categoriasocio implements Serializable {
     private Taxa taxasId;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idCategoriaSocio")
     private List<Socio> socioList;
-
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idCategoriaSocio")
+    private List<Enderecopessoa> enderecopessoaList;
+    
+    
     public Categoriasocio() {
     }
 
@@ -124,6 +128,15 @@ public class Categoriasocio implements Serializable {
     @Override
     public String toString() {
         return "entidades.CategoriaSocio[ id=" + id + " ]";
+    }
+
+    @XmlTransient
+    public List<Enderecopessoa> getEnderecopessoaList() {
+        return enderecopessoaList;
+    }
+
+    public void setEnderecopessoaList(List<Enderecopessoa> enderecopessoaList) {
+        this.enderecopessoaList = enderecopessoaList;
     }
     
 }

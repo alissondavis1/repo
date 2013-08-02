@@ -20,6 +20,7 @@ public interface SocioInterface {
    
     public List<Socio> SociosPorNomeLike(String nome);
     public List<Socio> SocioPorRua(String Rua);
+    public List<Integer> TodosOsSociosPorId();
     public List<Socio> TodosOsSocios();
  public Socio BuscarSocioId(int id);
 }

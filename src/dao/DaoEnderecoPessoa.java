@@ -22,7 +22,7 @@ import util.HibernateUtil;
  */
 public class DaoEnderecoPessoa {
     
-    public Enderecopessoa EnderecopessoaporNumero (int numero) {
+    public Enderecopessoa EnderecopessoaporNumero (String numero) {
       
         Enderecopessoa end = null;
         Session sessao = null; 

@@ -197,6 +197,35 @@ public class DaoSocio implements SocioInterface{
     }
 
     @Override
+    public List<Integer> TodosOsSociosPorId() {
+        
+        List<Integer> socio = null;
+        Session sessao = null; 
+        Query query = null;
+        Transaction transacao = null;
+        
+        try{
+           sessao = HibernateUtil.getSessionFactory().openSession();
+           transacao = sessao.beginTransaction();
+           query = sessao.createSQLQuery("select id from Socio ");
+           socio = query.list();
+           transacao.commit(); 
+           
+        }
+        catch(HibernateException e)
+        {
+            e.printStackTrace();
+            System.out.println(e);
+            transacao.rollback();
+        }
+        finally
+        {
+             sessao.close();
+        }  
+    return socio;
+    }
+    
+    @Override
     public List<Socio> TodosOsSocios() {
         
         List<Socio> socio = null;
@@ -224,26 +253,28 @@ public class DaoSocio implements SocioInterface{
     return socio;
     }
     
+    
     public List<Socio> TodosOsSociosJDBC(){
         
         Connection conn = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
         List<Socio> socios = new ArrayList<Socio>();
+        Socio s = null;
         try{
             
             conn = HibernateUtil.getConnection();
-            ps = conn.prepareStatement("select * from socio");
+            ps = conn.prepareStatement("select id from socio");
             rs = ps.executeQuery();
             while(rs.next()){
                 
-                Socio s = new Socio();
+                s = new Socio();
                 s.setId(rs.getInt("id"));
-                s.setDataAprovacao(rs.getDate("dataAprovacao"));
-                s.setDataMatricula(rs.getDate("dataMatricula"));
-                s.setDataVence(rs.getDate("dataVence"));
-                s.setNumeroSocio(rs.getInt("numeroSocio"));
-                s.setObservacao(rs.getString("observacao"));
+//                s.setDataAprovacao(rs.getDate("dataAprovacao"));
+//                s.setDataMatricula(rs.getDate("dataMatricula"));
+//                s.setDataVence(rs.getDate("dataVence"));
+//                s.setNumeroSocio(rs.getInt("numeroSocio"));
+//                s.setObservacao(rs.getString("observacao"));
                 socios.add(s);
             }
             
@@ -269,6 +300,7 @@ public class DaoSocio implements SocioInterface{
         PreparedStatement ps = null;
         ResultSet rs = null;
         List<Enderecopessoa> enderecopessoa = new ArrayList<Enderecopessoa>();
+        Enderecopessoa s = null;
         try{
             
             conn = HibernateUtil.getConnection();
@@ -277,9 +309,9 @@ public class DaoSocio implements SocioInterface{
             rs = ps.executeQuery();
             while(rs.next()){
                 
-                Enderecopessoa s = new Enderecopessoa();
+                s = new Enderecopessoa();
                 s.setId(rs.getInt("id"));
-                s.setNumero(rs.getInt("Numero"));
+                s.setNumero(rs.getString("Numero"));
                 
                 enderecopessoa.add(s);
             }
@@ -310,14 +342,14 @@ public class DaoSocio implements SocioInterface{
         try{
             
             conn = HibernateUtil.getConnection();
-            ps = conn.prepareStatement("select e.id, e.descricao, e.nome, e.tipo from endereco e inner join enderecopessoa ep on e.id = ep.idEndereco where ep.id = ?");
+            ps = conn.prepareStatement("select e.nome, e.tipo from endereco e inner join enderecopessoa ep on e.id = ep.idEndereco where ep.id = ?");
             ps.setInt(1, idEnderecoPessoa);
             rs = ps.executeQuery();
             while(rs.next()){
                 
                endereco = new Endereco();
-               endereco.setId(rs.getInt("id"));
-               endereco.setDescricao(rs.getString("descricao"));
+               //endereco.setId(rs.getInt("id"));
+               //endereco.setDescricao(rs.getString("descricao"));
                endereco.setNome(rs.getString("nome"));
                endereco.setTipo(rs.getString("tipo"));
             }
@@ -378,7 +410,7 @@ public class DaoSocio implements SocioInterface{
         
     }
     
-    public Categoriasocio fromCategoriaSocioJDBC(int idSocio){
+    public Categoriasocio fromCategoriaSocioJDBC(int idEnderecoPessoa){
         
         Connection conn = null;
         PreparedStatement ps = null;
@@ -387,8 +419,8 @@ public class DaoSocio implements SocioInterface{
         try{
             
             conn = HibernateUtil.getConnection();
-            ps = conn.prepareStatement("select c.nome from categoriasocio c inner join socio s on c.id = s.idCategoriaSocio where s.id = ?");
-            ps.setInt(1, idSocio);
+            ps = conn.prepareStatement("select c.nome from categoriasocio c inner join enderecopessoa e on c.id = e.idCategoriaSocio inner join pessoa p on e.idpessoa = p.id inner join socio s on s.idpessoa = p.id where e.id = ?");
+            ps.setInt(1, idEnderecoPessoa);
             rs = ps.executeQuery();
             while(rs.next()){
                 
