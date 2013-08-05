@@ -7,6 +7,7 @@ package telas;
 import dao.DaoCategoriaSocio;
 import dao.DaoCheque;
 import dao.DaoEndereco;
+import dao.DaoEnderecoPessoa;
 import dao.DaoEntradas;
 import dao.DaoFuncionario;
 import dao.DaoMotivoDespesa;
@@ -26,6 +27,7 @@ import entidades.Motivoentrada;
 import entidades.Pessoa;
 import entidades.Saida;
 import entidades.Socio;
+import entidades.Sociotabela;
 import entidades.Taxa;
 import java.awt.event.ActionEvent;
 import java.beans.PropertyVetoException;
@@ -3114,6 +3116,7 @@ public class TelaCadastros extends javax.swing.JFrame {
 
             jScrollPane4.setAutoscrolls(true);
 
+            jTable1.setAutoCreateRowSorter(true);
             jTable1.setModel(new javax.swing.table.DefaultTableModel(
                 new Object [][] {
 
@@ -3955,24 +3958,24 @@ public class TelaCadastros extends javax.swing.JFrame {
         } else if (pesquisarTable.equals("socios")) {
 
 
-            List<Integer> socios = new DaoSocio().TodosOsSociosPorId();
+            List<Sociotabela> socios = new DaoSocio().TodosOsSociosView();
             model = (DefaultTableModel) jTable1.getModel();
             model.setRowCount(0);
 
             if (!socios.isEmpty()) {
 
-                for (int s : socios) {
+                for (Sociotabela s : socios) {
 
                     //List<Enderecopessoa> ends = s.getIdPessoa().getEnderecopessoaList();
-                    List<Enderecopessoa> ends = new DaoSocio().TodosOsEnderecosPessoasJDBC(s);
-                    Pessoa p = new DaoSocio().fromSocioJDBC(s);
+                    //List<Enderecopessoa> ends = new DaoSocio().TodosOsEnderecosPessoasJDBC(s);
+                   // Pessoa p = new DaoSocio().fromSocioJDBC(s);
                     //Categoriasocio c = new DaoSocio().fromCategoriaSocioJDBC(s);
-                    for(Enderecopessoa e : ends){
-                    Categoriasocio c = new DaoSocio().fromCategoriaSocioJDBC(e.getId());
-                    Endereco endereco = new DaoSocio().fromEnderecoPessoaJDBC(e.getId());
-                    model.addRow(new Object[]{s, p.getNome(), p.getSobrenome(), p.getCpf(), c.getNome(), endereco.getTipo()+" "+endereco.getNome(),e.getNumero()});
+                   // for(Enderecopessoa e : ends){
+                   // Categoriasocio c = new DaoSocio().fromCategoriaSocioJDBC(e.getId());
+                    //Endereco endereco = new DaoSocio().fromEnderecoPessoaJDBC(e.getId());
+                    model.addRow(new Object[]{s.getIdSocio(), s.getNomeCompleto(), s.getCpf(), s.getNome(), s.getEndereco(),s.getNumero()});
 
-                    }
+                    //}
                 }
 
 
@@ -4596,6 +4599,9 @@ public class TelaCadastros extends javax.swing.JFrame {
                         p.setNomePai(jTextFieldSocioNomePai.getText());
                         p.setRgNumero(jTextFieldSocioRgNumero.getText());
                         p.setRgExpedidor(jTextFieldSocioOrgaoExpedidor.getText());
+                        if(new DaoEnderecoPessoa().EnderecopessoaporNumero(jTextFieldSocioNumero.getText()) != null){
+                            throw new Exception("Número de Endereço já cadastrado");
+                        }
                         p.setNumeroEndereco(jTextFieldSocioNumero.getText());
                         p.setCidade(jTextFieldSocioCidade.getText());
                         p.setBairro(jTextFieldSocioBairro.getText());
@@ -4668,7 +4674,7 @@ public class TelaCadastros extends javax.swing.JFrame {
 
                     } catch (Exception e) {
 
-                        JOptionPane.showMessageDialog(this, "Erro para gravar os dados, verifique se todos os campos estão preenchidos corretamente", "ERRO", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(this, "Erro:"+e.getMessage(), "ERRO", JOptionPane.ERROR_MESSAGE);
                         e.printStackTrace();
 
                     }
@@ -4693,6 +4699,9 @@ public class TelaCadastros extends javax.swing.JFrame {
                         p.setNomePai(jTextFieldSocioNomePai.getText());
                         p.setRgNumero(jTextFieldSocioRgNumero.getText());
                         p.setRgExpedidor(jTextFieldSocioOrgaoExpedidor.getText());
+                        if(new DaoEnderecoPessoa().EnderecopessoaporNumero(jTextFieldSocioNumero.getText()) != null){
+                            throw new Exception("Número de Endereço já cadastrado");
+                        }
                         p.setNumeroEndereco(jTextFieldSocioNumero.getText());
                         p.setCidade(jTextFieldSocioCidade.getText());
                         p.setBairro(jTextFieldSocioBairro.getText());
@@ -4774,7 +4783,7 @@ public class TelaCadastros extends javax.swing.JFrame {
 
                     } catch (Exception e) {
 
-                        JOptionPane.showMessageDialog(this, "Erro para gravar os dados, verifique se todos os campos estão preenchidos corretamente", "ERRO", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(this, "Erro:"+e.getMessage(), "ERRO", JOptionPane.ERROR_MESSAGE);
                         e.printStackTrace();
 
                     }
@@ -4798,6 +4807,9 @@ public class TelaCadastros extends javax.swing.JFrame {
                         p.setNomePai(jTextFieldSocioNomePai.getText());
                         p.setRgNumero(jTextFieldSocioRgNumero.getText());
                         p.setRgExpedidor(jTextFieldSocioOrgaoExpedidor.getText());
+                        if(new DaoEnderecoPessoa().EnderecopessoaporNumero(jTextFieldSocioNumero.getText()) != null){
+                            throw new Exception("Número de Endereço já cadastrado");
+                        }
                         p.setNumeroEndereco(jTextFieldSocioNumero.getText());
                         p.setCidade(jTextFieldSocioCidade.getText());
                         p.setBairro(jTextFieldSocioBairro.getText());
@@ -4894,7 +4906,7 @@ public class TelaCadastros extends javax.swing.JFrame {
 
                     } catch (Exception e) {
 
-                        JOptionPane.showMessageDialog(this, "Erro ao gravar os dados", "Erro", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(this, "Erro :"+e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
 
                     }
 
@@ -7089,8 +7101,8 @@ public class TelaCadastros extends javax.swing.JFrame {
         } else if (pesquisarTable.equals("socios")) {
 
             jTable1.setModel(new DefaultTableModel(
-                    new Object[][]{}, new String[]{"ID", "Nome", "Sobrenome", "CPF", "Categoria Socio", "Logradouro", "Numero"}) {
-                Class[] types = new Class[]{Integer.class, String.class, String.class, String.class, String.class, String.class, String.class};
+                    new Object[][]{}, new String[]{"ID", "Nome", "CPF", "Categoria Socio", "Logradouro", "Numero"}) {
+                Class[] types = new Class[]{Integer.class, String.class, String.class, String.class, String.class, String.class};
 
                 @Override
                 public Class getColumnClass(int columnIndex) {
@@ -7098,7 +7110,7 @@ public class TelaCadastros extends javax.swing.JFrame {
                     return types[columnIndex];
 
                 }
-                boolean[] canEdit = new boolean[]{false, false, false, false, false, false, false};
+                boolean[] canEdit = new boolean[]{false, false, false, false, false, false};
 
                 @Override
                 public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -7110,7 +7122,7 @@ public class TelaCadastros extends javax.swing.JFrame {
 
             jTable1.getColumn("ID").setCellRenderer(centralizar);
             jTable1.getColumn("Nome").setCellRenderer(centralizar);
-            jTable1.getColumn("Sobrenome").setCellRenderer(centralizar);
+            //jTable1.getColumn("Sobrenome").setCellRenderer(centralizar);
             jTable1.getColumn("CPF").setCellRenderer(centralizar);
             jTable1.getColumn("Categoria Socio").setCellRenderer(centralizar);
             jTable1.getColumn("Logradouro").setCellRenderer(centralizar);

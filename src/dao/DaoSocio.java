@@ -10,6 +10,7 @@ import entidades.Endereco;
 import entidades.Enderecopessoa;
 import entidades.Pessoa;
 import entidades.Socio;
+import entidades.Sociotabela;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -253,6 +254,35 @@ public class DaoSocio implements SocioInterface{
     return socio;
     }
     
+    public List<Sociotabela> TodosOsSociosView(){
+        
+        List<Sociotabela> socio = null;
+        Session sessao = null; 
+        Query query = null;
+        Transaction transacao = null;
+        
+        try{
+           sessao = HibernateUtil.getSessionFactory().openSession();
+           transacao = sessao.beginTransaction();
+           query = sessao.createQuery("from Sociotabela ");
+           socio = query.list();
+           transacao.commit(); 
+           
+        }
+        catch(HibernateException e)
+        {
+            System.out.println(e);
+            transacao.rollback();
+        }
+        finally
+        {
+             sessao.close();
+        }  
+    return socio; 
+        
+        
+        
+    }
     
     public List<Socio> TodosOsSociosJDBC(){
         
