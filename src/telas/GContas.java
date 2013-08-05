@@ -666,7 +666,7 @@ public class GContas extends javax.swing.JFrame {
                                         Taxasconta tx = new Taxasconta();
                                         tx.setContaid(c);
                                         //seta a taxa em taxas Conta de acordo com a categoria socio do sócio vinculado ao endereço
-                                        tx.setTaxaid(e.getIdPessoa().getSocio().getIdCategoriaSocio().getTaxasId());
+                                        tx.setTaxaid(e.getIdCategoriaSocio().getTaxasId());
                                         //Aqui adiciono todas as taxas de cada endereço...
                                         taxas1.add(tx);  
                                         }
@@ -842,7 +842,7 @@ public class GContas extends javax.swing.JFrame {
                                         Taxasconta tx = new Taxasconta();
                                         tx.setContaid(c);
                                         //seta a taxa em taxas Conta de acordo com a categoria socio do sócio vinculado ao endereço
-                                        tx.setTaxaid(e.getIdPessoa().getSocio().getIdCategoriaSocio().getTaxasId());
+                                        tx.setTaxaid(e.getIdCategoriaSocio().getTaxasId());
                                         //Aqui adiciono todas as taxas de cada endereço...
                                         taxas1.add(tx);  
                                         }

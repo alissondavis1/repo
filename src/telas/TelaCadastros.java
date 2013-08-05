@@ -4620,6 +4620,11 @@ public class TelaCadastros extends javax.swing.JFrame {
                         
                         Enderecopessoa ep = new Enderecopessoa();
                         Endereco e = new DaoEndereco().BuscarEnderecoCompleto((String)jComboBoxSocioLogradouro.getSelectedItem());
+                        List<Categoriasocio> cs = new DaoCategoriaSocio().BuscarCategoriaPorNomeLike((String) jComboBoxSocioCategoriaSocio.getSelectedItem());
+                        if (!cs.isEmpty()) {
+                       
+                            ep.setIdCategoriaSocio(cs.get(0));
+                        }
                         if (e != null) {
                             p.setIdEndereco(e);
                              
@@ -4643,18 +4648,14 @@ public class TelaCadastros extends javax.swing.JFrame {
 
                       
 
-
+                        s.setIdCategoriaSocio(cs.get(0));
                         s.setDataVence(SimpleDateFormat.getDateInstance().parse(jFormattedTextFieldSocioDiaVencimento.getText()));
 
 
                         s.setDataMatricula(SimpleDateFormat.getDateInstance().parse(jFormattedTextFieldSocioDataMatricula.getText()));
 
                         s.setNumeroSocio(Integer.parseInt(jTextFieldSocioNumeroSocio.getText()));
-                        List<Categoriasocio> cs = new DaoCategoriaSocio().BuscarCategoriaPorNomeLike((String) jComboBoxSocioCategoriaSocio.getSelectedItem());
-                        if (!cs.isEmpty()) {
-
-                            s.setIdCategoriaSocio(cs.get(0));
-                        }
+                       
 
                         s.setIdPessoa(p);
                         p.setSocio(s);
@@ -4721,6 +4722,11 @@ public class TelaCadastros extends javax.swing.JFrame {
                         
                         Enderecopessoa ep = new Enderecopessoa();
                         Endereco e = new DaoEndereco().BuscarEnderecoCompleto((String)jComboBoxSocioLogradouro.getSelectedItem());
+                        List<Categoriasocio> cs = new DaoCategoriaSocio().BuscarCategoriaPorNomeLike((String) jComboBoxSocioCategoriaSocio.getSelectedItem());
+                        if (!cs.isEmpty()) {
+                       
+                            ep.setIdCategoriaSocio(cs.get(0));
+                        }
                         if (e != null) {
                             p.setIdEndereco(e);
                              
@@ -4751,11 +4757,11 @@ public class TelaCadastros extends javax.swing.JFrame {
                         s.setDataMatricula(SimpleDateFormat.getDateInstance().parse(jFormattedTextFieldSocioDataMatricula.getText()));
 
                         s.setNumeroSocio(Integer.parseInt(jTextFieldSocioNumeroSocio.getText()));
-                        List<Categoriasocio> cs = new DaoCategoriaSocio().BuscarCategoriaPorNomeLike((String) jComboBoxSocioCategoriaSocio.getSelectedItem());
-                        if (!cs.isEmpty()) {
+                        
+                       
 
                             s.setIdCategoriaSocio(cs.get(0));
-                        }
+                        
 
                         s.setIdPessoa(p);
                         p.setSocio(s);
@@ -4828,6 +4834,8 @@ public class TelaCadastros extends javax.swing.JFrame {
 
                          //Enderecopessoa ep = new Enderecopessoa();
                         Endereco e = new DaoEndereco().BuscarEnderecoCompleto((String)jComboBoxSocioLogradouro.getSelectedItem());
+                        List<Categoriasocio> cs = new DaoCategoriaSocio().BuscarCategoriaPorNomeLike((String) jComboBoxSocioCategoriaSocio.getSelectedItem());
+                        p.getEnderecopessoaList().get(0).setIdCategoriaSocio(cs.get(0));
                         if (e != null) {
                             if(p.getIdEndereco() == e){
                             p.setIdEndereco(e);
@@ -4836,7 +4844,7 @@ public class TelaCadastros extends javax.swing.JFrame {
                                 p.setIdEndereco(e);
                                 p.getEnderecopessoaList().get(0).setIdEndereco(e);
                                 p.getEnderecopessoaList().get(0).setNumero(p.getNumeroEndereco());
-                                
+                                 
                             }
 //                              ep.setIdEndereco(p.getIdEndereco());
 //                              ep.setIdPessoa(p);
@@ -4869,11 +4877,11 @@ public class TelaCadastros extends javax.swing.JFrame {
                         p.getSocio().setDataMatricula(SimpleDateFormat.getDateInstance().parse(jFormattedTextFieldSocioDataMatricula.getText()));
 
                         p.getSocio().setNumeroSocio(Integer.parseInt(jTextFieldSocioNumeroSocio.getText()));
-                        List<Categoriasocio> cs = new DaoCategoriaSocio().BuscarCategoriaPorNomeLike((String) jComboBoxSocioCategoriaSocio.getSelectedItem());
-                        if (!cs.isEmpty()) {
+                        
+                      
 
                             p.getSocio().setIdCategoriaSocio(cs.get(0));
-                        }
+                         
 
 
 
