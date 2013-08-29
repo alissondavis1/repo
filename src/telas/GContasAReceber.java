@@ -252,8 +252,8 @@ public class GContasAReceber extends javax.swing.JFrame {
                     .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel9)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextFieldPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, 18)
+                        .addComponent(jTextFieldPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(74, 74, 74)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -339,7 +339,7 @@ public class GContasAReceber extends javax.swing.JFrame {
        
         this.telaPrincipal.setEnabled(true);
         this.telaPrincipal.toFront();
-      //  this.telaPrincipal.setVisible(true);
+     
         
     }//GEN-LAST:event_formWindowClosed
 
@@ -382,16 +382,11 @@ public class GContasAReceber extends javax.swing.JFrame {
                double soma = 0;
                
                for(Taxasconta tx : c.getTaxascontaList()){
-                   
                    soma += tx.getTaxaid().getValor().doubleValue();
-                   
                }
-               
                jFormattedTextFieldValor.setText(String.valueOf(soma));
-               
-               
             }else{
-                
+  
                 JOptionPane.showMessageDialog(this,"Conta não encontrada","Atenção",JOptionPane.INFORMATION_MESSAGE);
                 
             }

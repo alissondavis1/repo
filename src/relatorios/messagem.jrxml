@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="messagem" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="06f79c89-68e5-4fdb-9b25-7d0d467d78af">
+	<property name="ireport.zoom" value="1.4641000000000006"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="79"/>
+	<queryString>
+		<![CDATA[SELECT
+concat(p.nome," ",p.sobrenome) as nome,
+concat(e.tipo," ",e.nome) as endereco
+,p.numeroEndereco
+
+ from socio s
+inner join pessoa   p on p.id = s.idPessoa
+inner join endereco e on e.id = p.idEndereco
+where s.numeroSocio != 0]]>
+	</queryString>
+	<field name="nome" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="endereco" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="numeroEndereco" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<detail>
+		<band height="380" splitType="Stretch">
+			<rectangle>
+				<reportElement uuid="1d445172-5416-4798-8245-ec9a70869c9f" x="0" y="10" width="555" height="349"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="76c5dbf3-abf5-4ab9-b77d-ae502596c935" x="108" y="10" width="327" height="64"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[CNPJ - 13.228.119/0001-68
+Publicaçao do estatuto no Diário Oficial de 22-06-1983
+Reconhecido como Órgão de utilidade publica Municipal - conf.lei N 7 de 27-10-1983
+Reconhecido como Órgão de utilidade publica Estadual - conf.lei N 7049 de 16-04-1997
+Rua Morro do Chapéu, S/N - Tel 0(xx74) 3674-2165  -Lages do Batata - Jacobina Ba
+Email : Acallages@hotmail.com]]></text>
+			</staticText>
+			<image>
+				<reportElement uuid="2ea1f5f1-5fc9-4177-8ab5-1f6a7c6aa6bc" x="21" y="20" width="87" height="54"/>
+				<imageExpression><![CDATA["I:\\alexandre\\repoFinal3\\src\\relatorios\\acal.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement uuid="b97caaf2-b8dc-4d5c-a7da-26b4a15188c6" x="0" y="74" width="62" height="20"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[Nome:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="681b45af-3902-4275-a433-37d5bf9e697c" x="0" y="94" width="62" height="20"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[Endereço:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="fd5263ab-7d48-4347-b601-fcf708d181fd" x="0" y="114" width="555" height="32"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Convite]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="1e73621a-2501-427a-80f2-ef5ef922317e" x="0" y="146" width="555" height="35"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[ACAL - Associação Comunitária e Assistencial de Lages]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="94aaffaf-0a63-48a3-bacd-126e0e739545" x="344" y="339" width="188" height="20"/>
+				<textElement/>
+				<text><![CDATA[Lages do Batata, 01 de Agosto  de 2013.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="1eeaf344-953e-44d6-886d-1ded91e44123" x="21" y="339" width="244" height="20"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Presidente: José de Souza Silva
+]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="ef52a2a1-d22e-4041-8fcd-3454e8e769fe" x="62" y="74" width="230" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{nome}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="ef629163-f434-4694-bc3c-a18e5d08c3d8" x="62" y="94" width="230" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{endereco}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="979c0613-dbd7-44ea-a153-7188f2fe0961" x="21" y="274" width="271" height="65"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[Na oportunidade será discutida a seguinte pauta:
+.  Prestação de Contas da Atual Diretoria;
+.  Formação da Comissão Eleitoral para Eleição da ACAL;
+.  O que ocorrer.
+
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a36debec-5f04-4384-81ea-67d27a086776" x="21" y="181" width="511" height="93"/>
+				<textElement textAlignment="Justified">
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[	A Associação Comunitária e Assistencial de Lages – ACAL, com sede na rua morro do chapéu s/nº. Povoado de Lages do Batata,  Município de Jacobina/BA, vem através de sua Diretoria, devidamente representada por seu presidente José de Souza Silva, CONVOCAR  através do presente edital os sócios contribuintes efetivo ,  para participar da Assembléia Geral Extraordinária, que será realizada no dia 10/08/2013, a partir das 19h30min, no auditório do Colégio Municipal José Prado Alves, situado a Rua Quintino Alves S/Nº. Lages do Batata - Jacobina-BA . ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="80a5d151-18d6-4b68-84d0-7ff1af58c3d9" x="355" y="94" width="100" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<text><![CDATA[Numero Endereco:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="0aa2e4ac-b981-4f76-83d6-06e73d56f75f" x="455" y="94" width="100" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{numeroEndereco}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

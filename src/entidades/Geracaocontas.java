@@ -25,6 +25,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "Geracaocontas.findAll", query = "SELECT g FROM Geracaocontas g")})
 public class Geracaocontas implements Serializable {
+    @Column(name = "endereco")
+    private String endereco;
     @Basic(optional = false)
     @Column(name = "numero")
     private String numero;
@@ -117,6 +119,14 @@ public class Geracaocontas implements Serializable {
 
     public void setNumero(String numero) {
         this.numero = numero;
+    }
+
+    public String getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
     }
     
 }

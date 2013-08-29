@@ -30,7 +30,7 @@ public class DaoContasMensais implements ContasInterface {
             transacao = sessao.beginTransaction();
             sessao.save(conta); 
             transacao.commit();
-            System.out.println("Salvo com sucesso");  
+            System.out.println("Conta salva com sucesso");  
         }
         catch(HibernateException e)
         {

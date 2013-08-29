@@ -37,6 +37,9 @@ import javax.xml.bind.annotation.XmlTransient;
 @XmlRootElement
 
 public class Socio implements Serializable {
+    @Basic(optional = false)
+    @Column(name = "numeroSocio")
+    private int numeroSocio;
     @Transient
     private PropertyChangeSupport changeSupport = new PropertyChangeSupport(this);
     private static final long serialVersionUID = 1L;
@@ -55,9 +58,6 @@ public class Socio implements Serializable {
     @Column(name = "dataMatricula")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dataMatricula;
-    @Basic(optional = false)
-    @Column(name = "numeroSocio")
-    private int numeroSocio;
     @Lob
     @Column(name = "observacao")
     private String observacao;
@@ -122,16 +122,6 @@ public class Socio implements Serializable {
         Date oldDataMatricula = this.dataMatricula;
         this.dataMatricula = dataMatricula;
         changeSupport.firePropertyChange("dataMatricula", oldDataMatricula, dataMatricula);
-    }
-
-    public int getNumeroSocio() {
-        return numeroSocio;
-    }
-
-    public void setNumeroSocio(int numeroSocio) {
-        int oldNumeroSocio = this.numeroSocio;
-        this.numeroSocio = numeroSocio;
-        changeSupport.firePropertyChange("numeroSocio", oldNumeroSocio, numeroSocio);
     }
 
     public String getObservacao() {
@@ -204,6 +194,14 @@ public class Socio implements Serializable {
 
     public void removePropertyChangeListener(PropertyChangeListener listener) {
         changeSupport.removePropertyChangeListener(listener);
+    }
+
+    public int getNumeroSocio() {
+        return numeroSocio;
+    }
+
+    public void setNumeroSocio(int numeroSocio) {
+        this.numeroSocio = numeroSocio;
     }
     
 }

@@ -38,6 +38,8 @@
     <class>entidades.TablesPriv</class>
     <class>entidades.Geracaocontas</class>
     <class>entidades.Sociotabela</class>
+    <class>entidades.view.CaixaView</class>
+    <class>entidades.view.ContasView</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/acal?zeroDateTimeBehavior=convertToNull"/>
       <property name="javax.persistence.jdbc.password" value="123"/>

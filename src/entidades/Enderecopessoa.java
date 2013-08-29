@@ -38,6 +38,9 @@ import org.hibernate.annotations.FetchMode;
 @NamedQueries({
     @NamedQuery(name = "Enderecopessoa.findAll", query = "SELECT e FROM Enderecopessoa e")})
 public class Enderecopessoa implements Serializable {
+    @Column(name = "datamatricula")
+    private String datamatricula;
+    
     @Basic(optional = false)
     @Column(name = "Numero")
     private String numero;
@@ -149,6 +152,14 @@ public class Enderecopessoa implements Serializable {
 
     public void setIdCategoriaSocio(Categoriasocio idCategoriaSocio) {
         this.idCategoriaSocio = idCategoriaSocio;
+    }
+
+    public String getDatamatricula() {
+        return datamatricula;
+    }
+
+    public void setDatamatricula(String datamatricula) {
+        this.datamatricula = datamatricula;
     }
     
 }

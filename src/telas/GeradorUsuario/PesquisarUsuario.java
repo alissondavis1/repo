@@ -33,12 +33,14 @@ public class PesquisarUsuario extends javax.swing.JDialog {
         
          DefaultTableCellRenderer centralizar = new DefaultTableCellRenderer();
          centralizar.setHorizontalAlignment(SwingConstants.CENTER);
-        jTable1.setModel(new DefaultTableModel(
+        
+         jTable1.setModel(new DefaultTableModel(
                 new Object[][]{}, new String[]{"Usuário","Tabela","Privilégios"}){
                 
                 Class[] types = new Class[]{String.class, String.class, String.class};
                 
-                    @Override
+                
+                @Override
                 public Class getColumnClass(int columnIndex){
                     return types[columnIndex];
                     
@@ -46,7 +48,7 @@ public class PesquisarUsuario extends javax.swing.JDialog {
                 
                 boolean[] canEdit =  new boolean[]{false, false, false};
         
-                    @Override
+                @Override
                 public boolean isCellEditable(int rowIndex, int columnIndex){
                     
                     return canEdit[columnIndex];

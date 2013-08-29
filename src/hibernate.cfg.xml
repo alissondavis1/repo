@@ -7,7 +7,6 @@
     <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/acal?createDatabaseIfNotExist=true</property>
    
     <property name="hibernate.hbm2ddl.auto">update</property>
-    
     <mapping class="entidades.Categoriasocio"/>
     <mapping class="entidades.Cheque"/>
     <mapping class="entidades.Chequeslog"/>
@@ -30,5 +29,9 @@
     <mapping class="entidades.Enderecopessoa"/>
     <mapping class="entidades.Geracaocontas"/>
     <mapping class="entidades.Sociotabela"/>
+    
+    <mapping class="entidades.view.SociosView"/>
+    <mapping class="entidades.view.CaixaView"/>
+    
   </session-factory>
 </hibernate-configuration>

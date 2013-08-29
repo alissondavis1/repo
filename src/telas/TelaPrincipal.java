@@ -49,9 +49,11 @@ import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.view.JasperViewer;
 import telas.GeradorUsuario.CriadorUsuario;
 import telas.relatorios.TelaRelatoriosCheques;
+import telas.relatorios.TelaRelatoriosContas;
 import telas.relatorios.TelaRelatoriosEntradas;
 import telas.relatorios.TelaRelatoriosSaidas;
 import telas.relatorios.TelaRelatoriosSocios;
+import telas.relatorios.tabelas.TelaTabelaCaixa;
 
 import util.HibernateUtil;
 
@@ -173,6 +175,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
         popupMenu1 = new java.awt.PopupMenu();
         menuItemPopupSair = new java.awt.MenuItem();
         menuItemPopupCadastros = new java.awt.MenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuItem4 = new javax.swing.JMenuItem();
         jPanelBotoesTelaPrincipal = new javax.swing.JPanel();
         jButtonTelaPrincipalLogoff = new javax.swing.JButton();
         jButtonTelaPrincipalRelatorios = new javax.swing.JButton();
@@ -224,6 +229,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
         jMenuItemAgua = new javax.swing.JMenuItem();
         jMenuItemSolicita_Socio = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem5 = new javax.swing.JMenuItem();
         jMenuItemCriarUsuarios = new javax.swing.JMenuItem();
         jMenuItemTelaPrincipalBackup = new javax.swing.JMenuItem();
         jSeparator2 = new javax.swing.JPopupMenu.Separator();
@@ -259,6 +266,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
         popupMenu1.add(menuItemPopupCadastros);
+
+        jMenuItem2.setText("jMenuItem2");
+
+        jMenuItem3.setText("jMenuItem3");
+
+        jMenuItem4.setText("jMenuItem4");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("ACAL2000");
@@ -672,7 +685,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addGap(145, 145, 145))
         );
 
-        jMenuBar1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(0, 0, 255), new java.awt.Color(51, 51, 255), new java.awt.Color(51, 0, 255), new java.awt.Color(51, 0, 255)));
+        jMenuBar1.setBorder(javax.swing.BorderFactory.createBevelBorder(0, new java.awt.Color(0, 0, 255), new java.awt.Color(51, 51, 255), new java.awt.Color(51, 0, 255), new java.awt.Color(51, 0, 255)));
 
         jMenu.setText("Menu");
         jMenu.setToolTipText("");
@@ -778,6 +791,22 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenu2.add(jMenuItemSolicita_Socio);
 
         jMenu.add(jMenu2);
+
+        jMenuItem1.setText("Imprimir Contas");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu.add(jMenuItem1);
+
+        jMenuItem5.setText("Visualizar Caixa");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
+        jMenu.add(jMenuItem5);
 
         jMenuItemCriarUsuarios.setText("Criar Usuarios");
         jMenuItemCriarUsuarios.addActionListener(new java.awt.event.ActionListener() {
@@ -1034,7 +1063,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             //Variável que armazena o modelo de nome do arquivo .sql.
             String acal = "acal" + data + ".sql";
             //Variável que armazena o comando do mysqldump que ira ser passado na classe Runtime.
-            String[] comando = {"cmd.exe", "/c", "mysqldump -uroot -p123 acal > sql/" + acal};
+            String[] comando = {"cmd.exe", "/c", "mysqldump -u root -p123 acal > sql/" + acal};
 
             //Aqui utilizo os métodos da classe Runtime para executar o comando. o método exec retorna um Process.
             Process p;
@@ -1042,9 +1071,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             try {
                 p = Runtime.getRuntime().exec(comando);
                 if (p.waitFor() == 0) {
-
                     System.out.println("mysqldump executado");
-
                 } else {
                     System.out.println("erro no mysqldump");
                 }
@@ -1135,8 +1162,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void jButtonTelaPrincipalCaixaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTelaPrincipalCaixaActionPerformed
         jDesktopPaneContas.setVisible(true);
         jInternalFrameContas1.setVisible(true);
-       // jPanelImagemTelaPrincipal1.setVisible(true);
-        
+       
         try {
         jInternalFrameContas1.setMaximum(true);
         } catch (PropertyVetoException ex) {
@@ -1450,6 +1476,17 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
          new TelaCadastros(this, evt).setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+       TelaRelatoriosContas tc = new TelaRelatoriosContas();
+       tc.setVisible(true);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+       TelaTabelaCaixa tbc = new TelaTabelaCaixa();
+       tbc.setVisible(true);
+       tbc.setExtendedState(JFrame.MAXIMIZED_BOTH);
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
  
   
     public static void main(String args[]) {
@@ -1522,6 +1559,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenuAuditoria;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu jMenuCadastros;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItemAgua;
     private javax.swing.JMenuItem jMenuItemAuditoriaCheques;
     private javax.swing.JMenuItem jMenuItemAuditoriaContas;

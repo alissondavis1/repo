@@ -2,72 +2,39 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="relatorio_conta" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a43a4a2b-ec02-4c54-93b3-13f3680f1bf5">
 	<property name="ireport.zoom" value="1.3310000000000008"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="65"/>
+	<property name="ireport.y" value="39"/>
 	<queryString>
-		<![CDATA[select
-
-c.id as numeroConta
-,COALESCE(c.dataPag,"NÃO CONSTA") AS dataPag
-,c.dataVence
-,concat(p.nome," ",p.sobrenome) as Socio
-,lower(concat(e.tipo," ",e.nome)) as endereco
-,cs.nome
-,t1.valor
-,COALESCE(h.Consumo,0) AS consumo
-
-,
-COALESCE(
-(CASE
-WHEN ((h.Consumo-15000) < 0 ) THEN 0
-ELSE (h.Consumo-15000)
-END ) ,0)as excessoLTd
-
-,(CASE
-WHEN ((h.Consumo is null)  ) THEN 0
-ELSE  (select valor from taxa where id =1)
-END) AS ValorHidrometro
-
-,(CASE
-WHEN ((h.Consumo > 1500)  ) THEN ((h.consumo - 1500)*(select valor from taxa where id = 2))
-ELSE  ( 0 )
-END) AS valorExcesso
-
-,COALESCE(sum(t2.Valor), 0) as outraTaxas
-,(
-
-t1.valor +
-
-(CASE
-WHEN ((h.Consumo is null)  ) THEN 0
-ELSE  (select valor from taxa where id =1)
-END) +
-
-(CASE
-WHEN ((h.Consumo > 1500)  ) THEN ((h.consumo - 1500)*(select valor from taxa where id = 2))
-ELSE  ( 0 )
-END) +
-COALESCE(sum(t2.Valor), 0)
-
-) as ValorTotal
-
-from conta c
-
-inner join socio           s on  s.id = c.idNumeroSocio
-inner join pessoa          p on  p.id = s.idPessoa
-inner join categoriasocio cs on cs.id = s.idCategoriaSocio
-inner join taxa           t1 on t1.id = cs.taxasId
-inner join endereco        e on  e.id = p.idEndereco
-left  join hidrometro      h on  c.id = h.idconta
-left  join taxasconta     tc on  c.id = tc.contaid
-left  join taxa           t2 on t2.id = tc.taxaid
-
-
-where
-(
-c.dataPag is null
-)
-group by c.id
-order by c.id,tc.taxaid]]>
+		<![CDATA[SELECT
+     COALESCE(c.dataPag,"NÃO CONSTA") AS dataPag,
+     concat(p.nome," ",p.sobrenome) AS Socio,
+     lower(concat(e.tipo," ",e.nome)) AS endereco,
+     COALESCE(h.Consumo,0) AS consumo,
+     COALESCE((CASE WHEN((h.Consumo-15000)<0)THEN0ELSE(h.Consumo-15000)END),0) AS excessoLTd,
+     ( SELECT valor FROM `taxa` WHERE id = 1 ),
+     ( SELECT valor FROM `taxa` WHERE id = 2 ),
+     ( SELECT valor FROM `taxa` WHERE id = 1 ),
+     ( SELECT valor FROM `taxa` WHERE id = 2 ),
+     )ELSE(0)END)+COALESCE(sum(t2.Valor),0)) AS ValorTotal,
+     c.`id` AS numeroConta,
+     c.`dataVence` AS dataPag,
+     cs.`nome` AS endereco,
+     t1.`valor` AS endereco
+FROM
+     `socio` s INNER JOIN `conta` c ON s.`id` = c.`idNumeroSocio`
+     INNER JOIN `pessoa` p ON s.`idPessoa` = p.`id`
+     INNER JOIN `categoriasocio` cs ON s.`idCategoriaSocio` = cs.`id`
+     INNER JOIN `taxa` t1 ON cs.`taxasId` = t1.`id`
+     INNER JOIN `endereco` e ON p.`idEndereco` = e.`id`
+     INNER JOIN `left` h ON c.`id` = h.`idconta`
+     INNER JOIN `left` tc ON c.`id` = tc.`contaid`
+     INNER JOIN `left` t2 ON tc.`taxaid` = t2.`id`
+WHERE
+     (c.dataPag IS null)
+GROUP BY
+     c.id
+ORDER BY
+     c.id ASC,
+     tc.taxaid ASC]]>
 	</queryString>
 	<field name="numeroConta" class="java.lang.Long"/>
 	<field name="dataPag" class="java.lang.String"/>
