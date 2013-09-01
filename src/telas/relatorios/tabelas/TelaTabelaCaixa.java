@@ -228,7 +228,7 @@ public class TelaTabelaCaixa extends javax.swing.JFrame {
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jTextFieldfinal, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 72, Short.MAX_VALUE))
+                        .addGap(0, 104, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -347,7 +347,7 @@ public class TelaTabelaCaixa extends javax.swing.JFrame {
             
             pModel.limpar();
             pModel.addListaDeCaixa(new DaoCaixaView()
-            .BuscarTodosCaixaViewDate(f1.format(jDateInicio.getDate()),f1.format(jDateFim.getDate())));
+            .BuscarTodosCaixaViewDatePagamento((jDateInicio.getDate()),(jDateFim.getDate())));
             AtualizarAjuda(f2.format(jDateInicio.getDate()), f2.format(jDateFim.getDate()));
         }
     }//GEN-LAST:event_jButtonAtualizarActionPerformed
@@ -357,10 +357,10 @@ public class TelaTabelaCaixa extends javax.swing.JFrame {
         System.out.println(sdf.format(new Date()));
         pModel.limpar();
                 
-        pModel.addListaDeCaixa(new DaoCaixaView().BuscarTodosCaixaViewDate(sdf.format(new Date()),sdf.format(new Date())));
+        pModel.addListaDeCaixa(new DaoCaixaView().BuscarTodosCaixaViewDatePagamento((new Date()),(new Date())));
         AtualizarAjuda(null, null);
         
-        if(new DaoCaixaView().BuscarTodosCaixaViewDate(sdf.format(new Date()),sdf.format(new Date())).isEmpty())
+        if(new DaoCaixaView().BuscarTodosCaixaViewDatePagamento((new Date()),(new Date())).isEmpty())
         {
             JOptionPane.showMessageDialog(null, "A busca não encontrou Resultados");
         }

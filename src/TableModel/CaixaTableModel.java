@@ -41,26 +41,27 @@ public class CaixaTableModel extends AbstractTableModel{
     }
     
     private String[] colunas = new String[] 
-    {"numeroconta",
-     "data", 
-     "pagamento", 
-     "vencimento",
-     "socio",
-     "endereco", 
-     "numero", 
-     "categoriaSocio", 
-     "taxaSocio", 
-     "consumo", 
-     "excessoValor", 
-     "totalconta"
+    {"Conta",
+     "Data", 
+     "Pagamento", 
+     "Vencimento",
+     "Socio",
+     "Endereco", 
+     "Numero", 
+     "CategoriaSocio", 
+     "TaxaSocio", 
+     "Consumo", 
+     "ExcessoValor", 
+     "Total"
     };
 
     
     @Override
     public int getRowCount(){
-       return linhas.size();
+       return linhas.size();  
     }
-
+    
+    
     @Override
     public int getColumnCount() {
       return colunas.length;
@@ -220,4 +221,6 @@ public class CaixaTableModel extends AbstractTableModel{
         // Notifica a mudança.
         fireTableDataChanged();
     }   
+
+    
 }

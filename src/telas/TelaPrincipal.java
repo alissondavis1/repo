@@ -54,6 +54,7 @@ import telas.relatorios.TelaRelatoriosEntradas;
 import telas.relatorios.TelaRelatoriosSaidas;
 import telas.relatorios.TelaRelatoriosSocios;
 import telas.relatorios.tabelas.TelaTabelaCaixa;
+import telas.relatorios.tabelas.TelaTabelaConta;
 
 import util.HibernateUtil;
 
@@ -178,6 +179,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+        jMenu3 = new javax.swing.JMenu();
         jPanelBotoesTelaPrincipal = new javax.swing.JPanel();
         jButtonTelaPrincipalLogoff = new javax.swing.JButton();
         jButtonTelaPrincipalRelatorios = new javax.swing.JButton();
@@ -229,7 +232,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
         jMenuItemAgua = new javax.swing.JMenuItem();
         jMenuItemSolicita_Socio = new javax.swing.JMenuItem();
+        jMenu4 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem6 = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenuItemCriarUsuarios = new javax.swing.JMenuItem();
         jMenuItemTelaPrincipalBackup = new javax.swing.JMenuItem();
@@ -272,6 +277,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenuItem3.setText("jMenuItem3");
 
         jMenuItem4.setText("jMenuItem4");
+
+        jMenu1.setText("jMenu1");
+
+        jMenu3.setText("jMenu3");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("ACAL2000");
@@ -792,13 +801,25 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jMenu.add(jMenu2);
 
-        jMenuItem1.setText("Imprimir Contas");
+        jMenu4.setText("Contas");
+
+        jMenuItem1.setText("Contas(Simplificado)");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem1ActionPerformed(evt);
             }
         });
-        jMenu.add(jMenuItem1);
+        jMenu4.add(jMenuItem1);
+
+        jMenuItem6.setText("Contas(Avançado)");
+        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem6ActionPerformed(evt);
+            }
+        });
+        jMenu4.add(jMenuItem6);
+
+        jMenu.add(jMenu4);
 
         jMenuItem5.setText("Visualizar Caixa");
         jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
@@ -1487,6 +1508,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
        tbc.setVisible(true);
        tbc.setExtendedState(JFrame.MAXIMIZED_BOTH);
     }//GEN-LAST:event_jMenuItem5ActionPerformed
+
+    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+       TelaTabelaConta tbc = new TelaTabelaConta();
+       tbc.setVisible(true);
+       tbc.setExtendedState(JFrame.MAXIMIZED_BOTH);
+    }//GEN-LAST:event_jMenuItem6ActionPerformed
  
   
     public static void main(String args[]) {
@@ -1555,7 +1582,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JMenu jMenu;
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenuAuditoria;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu jMenuCadastros;
@@ -1564,6 +1594,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItemAgua;
     private javax.swing.JMenuItem jMenuItemAuditoriaCheques;
     private javax.swing.JMenuItem jMenuItemAuditoriaContas;

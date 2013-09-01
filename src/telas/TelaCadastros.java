@@ -57,8 +57,10 @@ public class TelaCadastros extends javax.swing.JFrame {
 
     private JFrame telaPrincipal;
     private String pesquisarTable = "";
-   
     
+    private boolean flagEditar = false;
+    private String socioNumero= "";
+
     /**
      * Creates new form TelaCadastros
      */
@@ -4968,7 +4970,9 @@ public class TelaCadastros extends javax.swing.JFrame {
 
     private void jButtonSocioEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSocioEditarActionPerformed
 
-
+        flagEditar = true;
+        socioNumero = (String)jTextFieldSocioNumero.getText();
+        
         setEditableComponentesSocio(true);
         jButtonSocioEditar.setEnabled(false);
         jButtonSocioApagar.setEnabled(false);
@@ -4991,6 +4995,7 @@ public class TelaCadastros extends javax.swing.JFrame {
 
     private void jButtonSocioSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSocioSalvarActionPerformed
 
+        
         if (isCamposSocioPreenchidos()) {
 
             Pattern p1 = Pattern.compile("\\d{2}\\/\\d{2}\\/\\d{4}");;
@@ -5014,9 +5019,20 @@ public class TelaCadastros extends javax.swing.JFrame {
                         p.setNomePai(jTextFieldSocioNomePai.getText());
                         p.setRgNumero(jTextFieldSocioRgNumero.getText());
                         p.setRgExpedidor(jTextFieldSocioOrgaoExpedidor.getText());
-                        if(new DaoEnderecoPessoa().EnderecopessoaporNumero(jTextFieldSocioNumero.getText()) != null){
-                            throw new Exception("Número de Endereço já cadastrado");
+                        
+                        if(flagEditar== false){
+                            if(new DaoEnderecoPessoa().EnderecopessoaporNumero(jTextFieldSocioNumero.getText()) != null){
+                            throw new Exception("Número de Endereço já cadastrado -1");
+                            }
                         }
+                        else {
+                            if(!new DaoEnderecoPessoa().EnderecopessoaporNumero(jTextFieldSocioNumero.getText()).equals(socioNumero)){
+                            if(new DaoEnderecoPessoa().EnderecopessoaporNumero(jTextFieldSocioNumero.getText()) != null){
+                            throw new Exception("Número de Endereço já cadastrado -2"); }
+                            }
+                           
+                        }
+                        
                         p.setNumeroEndereco(jTextFieldSocioNumero.getText());
                         p.setCidade(jTextFieldSocioCidade.getText());
                         p.setBairro(jTextFieldSocioBairro.getText());
@@ -5114,9 +5130,21 @@ public class TelaCadastros extends javax.swing.JFrame {
                         p.setNomePai(jTextFieldSocioNomePai.getText());
                         p.setRgNumero(jTextFieldSocioRgNumero.getText());
                         p.setRgExpedidor(jTextFieldSocioOrgaoExpedidor.getText());
-                        if(new DaoEnderecoPessoa().EnderecopessoaporNumero(jTextFieldSocioNumero.getText()) != null){
-                            throw new Exception("Número de Endereço já cadastrado");
+                        
+                        if(flagEditar== false){
+                            if(new DaoEnderecoPessoa().EnderecopessoaporNumero(jTextFieldSocioNumero.getText()) != null){
+                            throw new Exception("Número de Endereço já cadastrado 1");
+                            }
                         }
+                        else {
+                            if(!new DaoEnderecoPessoa().EnderecopessoaporNumero(jTextFieldSocioNumero.getText()).equals(socioNumero)){
+                            if(new DaoEnderecoPessoa().EnderecopessoaporNumero(jTextFieldSocioNumero.getText()) != null){
+                            throw new Exception("Número de Endereço já cadastrado 2"); }
+                            }
+                           
+                        }
+                        
+                        
                         p.setNumeroEndereco(jTextFieldSocioNumero.getText());
                         p.setCidade(jTextFieldSocioCidade.getText());
                         p.setBairro(jTextFieldSocioBairro.getText());
@@ -5221,10 +5249,21 @@ public class TelaCadastros extends javax.swing.JFrame {
                         p.setNomeMae(jTextFieldSocioNomeMae.getText());
                         p.setNomePai(jTextFieldSocioNomePai.getText());
                         p.setRgNumero(jTextFieldSocioRgNumero.getText());
+                        
                         p.setRgExpedidor(jTextFieldSocioOrgaoExpedidor.getText());
-                        if(new DaoEnderecoPessoa().EnderecopessoaporNumero(jTextFieldSocioNumero.getText()) != null){
-                            throw new Exception("Número de Endereço já cadastrado");
-                        }
+                        
+    if((flagEditar==true)&& (socioNumero.equals(jTextFieldSocioNumero.getText()) )) 
+       {
+       }
+   else {
+              
+       if(new DaoEnderecoPessoa().EnderecopessoaporNumero(jTextFieldSocioNumero.getText())!=null)  {
+       JOptionPane.showMessageDialog(null, "ja existe");
+       throw new Exception("Número de Endereço já cadastrado: Erro 3");
+       }    
+       
+    }
+   
                         p.setNumeroEndereco(jTextFieldSocioNumero.getText());
                         p.setCidade(jTextFieldSocioCidade.getText());
                         p.setBairro(jTextFieldSocioBairro.getText());
@@ -5304,11 +5343,6 @@ public class TelaCadastros extends javax.swing.JFrame {
                         JOptionPane.showMessageDialog(this, "Erro :"+e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
 
                     }
-
-
-
-
-
                 }
 
 

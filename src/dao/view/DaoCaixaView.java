@@ -47,7 +47,7 @@ public class DaoCaixaView {
     return endereco;
     }
     
-    public List<CaixaView> BuscarTodosCaixaViewDate(String ini, String fim) {
+    public List<CaixaView> BuscarTodosCaixaViewDatePagamento(Date ini, Date fim) {
         
         List<CaixaView> endereco = null;
         Session sessao = null; 
@@ -75,4 +75,33 @@ public class DaoCaixaView {
         }  
     return endereco;
     }
+    public List<CaixaView> BuscarTodosCaixaViewDateVencimento(Date ini, Date fim) {
+        
+        List<CaixaView> endereco = null;
+        Session sessao = null; 
+        Query query = null;
+        Transaction transacao = null;
+        
+        try{
+           sessao = HibernateUtil.getSessionFactory().openSession();
+           transacao = sessao.beginTransaction();
+           query = sessao.createQuery("from CaixaView where vencimento between :ini and :fim");
+           query.setParameter("ini",ini);
+           query.setParameter("fim",fim);
+           endereco = query.list();
+           transacao.commit(); 
+           
+        }
+        catch(HibernateException e)
+        {
+            System.out.println(e);
+            transacao.rollback();
+        }
+        finally
+        {
+             sessao.close();
+        }  
+    return endereco;
+    }
 }
+

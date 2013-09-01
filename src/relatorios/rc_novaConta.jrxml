@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rc_novaConta" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="63fa3ee1-3841-434e-bbd2-bd4e9547e776">
 	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="45"/>
+	<property name="ireport.y" value="62"/>
 	<parameter name="complementos" class="java.lang.String">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
@@ -96,9 +96,7 @@ left  join hidrometro      h on  c.id = h.idconta
 left  join taxasconta     tc on  c.id = tc.contaid
 left  join taxa           t2 on  t2.id = tc.taxaid
 
-$P!{complementos}
-
-group by c.id]]>
+$P!{complementos}]]>
 	</queryString>
 	<field name="numeroconta" class="java.lang.Integer"/>
 	<field name="data" class="java.sql.Timestamp"/>
@@ -140,7 +138,7 @@ group by c.id]]>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<detail>
-		<band height="401" splitType="Stretch">
+		<band height="395" splitType="Stretch">
 			<rectangle>
 				<reportElement uuid="e798bfbd-69ad-4cb1-83a2-d6456033bf5e" x="-1" y="0" width="555" height="382"/>
 			</rectangle>
@@ -183,7 +181,7 @@ Email : Acallages@hotmail.com]]></text>
 				</textElement>
 				<text><![CDATA[   Socio]]></text>
 			</staticText>
-			<textField>
+			<textField isStretchWithOverflow="true">
 				<reportElement uuid="e66ebd95-5c86-4544-acab-531be3e800ae" x="67" y="124" width="145" height="20"/>
 				<textElement verticalAlignment="Middle">
 					<font isBold="true"/>
@@ -437,7 +435,7 @@ Email : Acallages@hotmail.com]]></text>
 				<textElement textAlignment="Right" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{AnoReferente}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField isStretchWithOverflow="true">
 				<reportElement uuid="ad4785d2-2565-47fb-b9ca-a65e085a86b0" x="67" y="275" width="145" height="20"/>
 				<textElement verticalAlignment="Middle">
 					<font isBold="true"/>
@@ -553,6 +551,11 @@ Email : Acallages@hotmail.com]]></text>
 					<font size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{numeroconta}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd MMMMM yyyy" isBlankWhenNull="true">
+				<reportElement uuid="001a3297-bb01-4cc9-92b7-9375a00d24c8" x="212" y="204" width="133" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{pagamento}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

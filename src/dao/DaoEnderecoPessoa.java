@@ -33,7 +33,6 @@ public class DaoEnderecoPessoa {
            sessao = HibernateUtil.getSessionFactory().openSession();
            transacao = sessao.beginTransaction();
            query = sessao.createQuery("from Enderecopessoa t where t.numero = :numero");
-           //query.setString("nome","%"+nome+"%");
            query.setParameter("numero",numero);
            end  = (Enderecopessoa) query.uniqueResult();
            transacao.commit(); 

@@ -352,13 +352,10 @@ public class GContasAReceber extends javax.swing.JFrame {
             if(c!=null){
                 
                jFormattedTextFieldDataVencimento.setText(SimpleDateFormat.getDateInstance().format(c.getDataVence()));
-               
                jTextFieldNumeroConta.setText(String.valueOf(c.getId()));
                
                if(c.getDataVence().before(new Date())){
-                   
                    jFormattedTextFieldDataVencimento.setBackground(Color.red);
-                   
                }else{
                    jFormattedTextFieldDataVencimento.setBackground(Color.WHITE);
                }
@@ -370,7 +367,7 @@ public class GContasAReceber extends javax.swing.JFrame {
                
                if(c.getDataPag() != null)
                {
-                   
+                  
                    jFormattedTextFieldDataPagamento.setEditable(false);
                    jFormattedTextFieldDataPagamento.setText(SimpleDateFormat.getDateInstance().format(c.getDataPag()));
                    jButtonPagar.setEnabled(false);
