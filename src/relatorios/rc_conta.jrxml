@@ -14,6 +14,7 @@ c.id         as numeroconta,
 c.dataGerada as data,
 c.dataPag    as pagamento,
 c.dataVence  as vencimento,
+cs.nome as categoria 
 -- dados de pessoa
 concat(p.nome," ",p.sobrenome) as socio,
 
@@ -80,7 +81,6 @@ inner join taxa            t on  t.id = cs.taxasId
 left  join hidrometro      h on  c.id = h.idconta
 left  join taxasconta     tc on  c.id = tc.contaid
 left  join taxa           t2 on  t2.id = tc.taxaid
-
 $P!{complementos}]]>
 	</queryString>
 	<field name="numeroconta" class="java.lang.Integer"/>

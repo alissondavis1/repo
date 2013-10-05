@@ -60,7 +60,7 @@ public class TelaCadastros extends javax.swing.JFrame {
     
     private boolean flagEditar = false;
     private String socioNumero= "";
-
+    private boolean cadastrar;
     /**
      * Creates new form TelaCadastros
      */
@@ -211,6 +211,7 @@ public class TelaCadastros extends javax.swing.JFrame {
         jTextFieldFuncionarioCep = new javax.swing.JTextField();
         Logradouro = new javax.swing.JLabel();
         jComboBoxFuncionarioUf = new javax.swing.JComboBox();
+        jButton2 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -511,14 +512,14 @@ public class TelaCadastros extends javax.swing.JFrame {
             }
         });
 
-        jPanelLog.setBorder(new javax.swing.border.SoftBevelBorder(0));
+        jPanelLog.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanelLog.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jPanelLog.setPreferredSize(new java.awt.Dimension(800, 600));
         jPanelLog.setLayout(new java.awt.GridBagLayout());
 
         jPanel41.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jPanel40.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
+        jPanel40.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jButtonLogradouroNovo.setText("Novo");
         jButtonLogradouroNovo.addActionListener(new java.awt.event.ActionListener() {
@@ -827,7 +828,7 @@ public class TelaCadastros extends javax.swing.JFrame {
                     .addContainerGap(27, Short.MAX_VALUE))
             );
 
-            jPanel4.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
+            jPanel4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
             Logradouro1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
             Logradouro1.setText("Status");
@@ -967,6 +968,13 @@ public class TelaCadastros extends javax.swing.JFrame {
                 "TO"
             }));
 
+            jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Cadastros.png"))); // NOI18N
+            jButton2.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    jButton2ActionPerformed(evt);
+                }
+            });
+
             javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
             jPanel3.setLayout(jPanel3Layout);
             jPanel3Layout.setHorizontalGroup(
@@ -976,12 +984,16 @@ public class TelaCadastros extends javax.swing.JFrame {
                         .addGroup(jPanel3Layout.createSequentialGroup()
                             .addComponent(Logradouro)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jComboBoxFuncionarioLograduro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(jPanel3Layout.createSequentialGroup()
+                                        .addGap(1, 1, 1)
+                                        .addComponent(jTextFieldFuncionarioNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jTextFieldFuncionarioBairro))
                                 .addGroup(jPanel3Layout.createSequentialGroup()
-                                    .addGap(1, 1, 1)
-                                    .addComponent(jTextFieldFuncionarioNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(jTextFieldFuncionarioBairro)))
+                                    .addComponent(jComboBoxFuncionarioLograduro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addComponent(jLabel8)
                         .addComponent(jLabel9))
                     .addGap(159, 159, 159)
@@ -994,7 +1006,7 @@ public class TelaCadastros extends javax.swing.JFrame {
                         .addComponent(jComboBoxFuncionarioUf, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jTextFieldFuncionarioCidade, javax.swing.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)
                         .addComponent(jTextFieldFuncionarioCep))
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addContainerGap(214, Short.MAX_VALUE))
             );
             jPanel3Layout.setVerticalGroup(
                 jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1016,8 +1028,9 @@ public class TelaCadastros extends javax.swing.JFrame {
                         .addComponent(Logradouro)
                         .addComponent(jComboBoxFuncionarioLograduro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel12)
-                        .addComponent(jTextFieldFuncionarioCep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jTextFieldFuncionarioCep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addContainerGap(47, Short.MAX_VALUE))
             );
 
             jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Informações Pessoais"));
@@ -1300,7 +1313,7 @@ public class TelaCadastros extends javax.swing.JFrame {
 
             jPanelCategoriaSocio.setLayout(new java.awt.GridBagLayout());
 
-            jPanel10.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
+            jPanel10.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
             jButtonCategoriaSocioNovo.setText("Novo");
             jButtonCategoriaSocioNovo.addActionListener(new java.awt.event.ActionListener() {
@@ -1610,7 +1623,7 @@ public class TelaCadastros extends javax.swing.JFrame {
                             .addGap(10, 10, 10))))
             );
 
-            jPanel11.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
+            jPanel11.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
             jButtonTipoDespesaNovo.setText("Novo");
             jButtonTipoDespesaNovo.addActionListener(new java.awt.event.ActionListener() {
@@ -1714,7 +1727,7 @@ public class TelaCadastros extends javax.swing.JFrame {
 
             jPanelDespesa.setLayout(new java.awt.GridBagLayout());
 
-            jPanel12.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
+            jPanel12.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
             jButtonDespesaNovo.setText("Novo");
             jButtonDespesaNovo.addActionListener(new java.awt.event.ActionListener() {
@@ -1970,7 +1983,7 @@ public class TelaCadastros extends javax.swing.JFrame {
             jPanel49.setBorder(javax.swing.BorderFactory.createEtchedBorder());
             jPanel49.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-            jPanel14.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
+            jPanel14.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
             jButtonTipoReceitaNovo.setText("Novo");
             jButtonTipoReceitaNovo.addActionListener(new java.awt.event.ActionListener() {
@@ -2157,7 +2170,7 @@ public class TelaCadastros extends javax.swing.JFrame {
 
             jPanelReceitas.setLayout(new java.awt.GridBagLayout());
 
-            jPanel8.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
+            jPanel8.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
             jButtonReceitaNovo.setText("Novo");
             jButtonReceitaNovo.addActionListener(new java.awt.event.ActionListener() {
@@ -2417,7 +2430,7 @@ public class TelaCadastros extends javax.swing.JFrame {
 
             jPanelCheques.setLayout(new java.awt.GridBagLayout());
 
-            jPanel16.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
+            jPanel16.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
             jButtonChequeNovo.setText("Novo");
             jButtonChequeNovo.addActionListener(new java.awt.event.ActionListener() {
@@ -2694,7 +2707,7 @@ public class TelaCadastros extends javax.swing.JFrame {
 
             jPanelTaxas.add(jPanel22, new java.awt.GridBagConstraints());
 
-            jPanel18.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
+            jPanel18.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
             jButtonTaxaNovo.setText("Novo");
             jButtonTaxaNovo.addActionListener(new java.awt.event.ActionListener() {
@@ -2883,7 +2896,7 @@ public class TelaCadastros extends javax.swing.JFrame {
 
             jPanel56.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
-            jPanel9.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
+            jPanel9.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
             jButtonSocioNovo.setText("Novo");
             jButtonSocioNovo.addActionListener(new java.awt.event.ActionListener() {
@@ -3574,7 +3587,7 @@ public class TelaCadastros extends javax.swing.JFrame {
             });
 
             jButtonPesquisa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/pesquisar.gif"))); // NOI18N
-            jButtonPesquisa.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
+            jButtonPesquisa.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
             jButtonPesquisa.addActionListener(new java.awt.event.ActionListener() {
                 public void actionPerformed(java.awt.event.ActionEvent evt) {
                     jButtonPesquisaActionPerformed(evt);
@@ -3627,7 +3640,7 @@ public class TelaCadastros extends javax.swing.JFrame {
             jInternalFrame1Layout.setVerticalGroup(
                 jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jInternalFrame1Layout.createSequentialGroup()
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 611, Short.MAX_VALUE)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 610, Short.MAX_VALUE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(jPanel19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
             );
@@ -3669,7 +3682,9 @@ public class TelaCadastros extends javax.swing.JFrame {
 
        
         editableTextFields(true);
+        if(!this.cadastrar){
         limparCampos();
+        }
         jButtonFuncionarioApagar.setEnabled(false);
         jButtonFuncionarioEditar.setEnabled(false);
         jButtonFuncionarioNovo.setEnabled(false);
@@ -3684,6 +3699,7 @@ public class TelaCadastros extends javax.swing.JFrame {
             }
         }
         jComboBoxFuncionarioLograduro.setSelectedItem("");
+        this.cadastrar = false;
     }//GEN-LAST:event_jButtonFuncionarioNovoActionPerformed
 
     private void jTextFieldFuncionarioNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldFuncionarioNomeActionPerformed
@@ -4600,7 +4616,12 @@ public class TelaCadastros extends javax.swing.JFrame {
         limparCamposLogradouro();
         setEditableComponentesLogradouros(false);
         jButtonLogradouroNovo.setEnabled(true);
-
+        if(this.cadastrar){
+            
+            this.cadastrar = false;
+            jTabbedPane1.setSelectedComponent(jPanelFunc);
+            
+        }
     }//GEN-LAST:event_jButtonLogradouroCancelarActionPerformed
 
     private void jButtonLogradouroEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLogradouroEditarActionPerformed
@@ -4649,10 +4670,13 @@ public class TelaCadastros extends javax.swing.JFrame {
 
                     JOptionPane.showMessageDialog(this, "Dados gravados com sucesso!", "", JOptionPane.INFORMATION_MESSAGE);
                     jButtonLogradouroCancelarActionPerformed(evt);
-
+                   
                 }
 
             }
+            
+            jTabbedPane1.setSelectedComponent(jPanelFunc);
+            jButtonFuncionarioNovoActionPerformed(evt);
         } else {
 
             JOptionPane.showMessageDialog(this, "Os campos em negrito são obrigatórios", "Atenção", JOptionPane.INFORMATION_MESSAGE);
@@ -4665,13 +4689,13 @@ public class TelaCadastros extends javax.swing.JFrame {
 
         
         
-        if (!jButtonFuncionarioNovo.isEnabled() || !jTextFieldFuncionarioID.getText().equals("")) {
+        if ((!jButtonFuncionarioNovo.isEnabled() || !jTextFieldFuncionarioID.getText().equals("")) && this.cadastrar == false) {
             if (jTabbedPane1.getSelectedComponent() != jPanelFunc) {
                 JOptionPane.showMessageDialog(this, "Cancele a operação ", "Atenção", JOptionPane.INFORMATION_MESSAGE);
             }
             jTabbedPane1.setSelectedComponent(jPanelFunc);
 
-        } else if (!jButtonLogradouroNovo.isEnabled() || !jTextFieldLogradouroID.getText().equals("")) {
+        } else if ((!jButtonLogradouroNovo.isEnabled() || !jTextFieldLogradouroID.getText().equals(""))|| this.cadastrar) {
 
             if (jTabbedPane1.getSelectedComponent() != jPanelLog) {
 
@@ -6392,12 +6416,18 @@ public class TelaCadastros extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldFuncionarioEmailActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        this.cadastrar = true;
+        jButtonLogradouroCancelar.setEnabled(true);
+        jTabbedPane1.setSelectedComponent(jPanelLog);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     private void editableTextFields(boolean editable) {
 
         jTextFieldFuncionarioApelido.setEditable(editable);
         jTextFieldFuncionarioBairro.setEditable(editable);
         jTextFieldFuncionarioCargo.setEditable(editable);
-
+        jButton2.setEnabled(editable);
         jTextFieldFuncionarioCep.setEditable(editable);
         jTextFieldFuncionarioCidade.setEditable(editable);
         jFormattedTextFieldFuncionarioCpf.setEditable(editable);
@@ -7831,6 +7861,7 @@ public class TelaCadastros extends javax.swing.JFrame {
     private javax.swing.JLabel Logradouro7;
     private javax.swing.ButtonGroup buttonGroupSocioAprovacao;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButtonCategoriaSocioApagar;
     private javax.swing.JButton jButtonCategoriaSocioCancelar;
     private javax.swing.JButton jButtonCategoriaSocioEditar;

@@ -245,7 +245,9 @@ public class GContas extends javax.swing.JFrame {
                     
                     List<Date> datas = new DaoContasMensais().datasContas(s1.getNumero());
                     if (datas.isEmpty()) {
-                        if (s1.getCategoria().equals("hidrometro")) {
+                        Pattern p = Pattern.compile("hidrometro");
+                        Matcher m = p.matcher(s1.getCategoria());
+                        if (m.find()) {
                        // if(s.getIdPessoa().getStatus()){
                             model.addRow(new Object[]{s1.getId(), SimpleDateFormat.getDateInstance().format(c.getTime()), s1.getNome() + " " + s1.getSobrenome(), s1.getNumerosocio(), s1.getCpf(), s1.getNumero(), s1.getValor(), false});
                         //}
@@ -265,8 +267,9 @@ public class GContas extends javax.swing.JFrame {
                         }
 
                         if (!existeContaNoMes) {
-
-                            if (s1.getCategoria().equals("hidrometro")) {
+                        Pattern p = Pattern.compile("hidrometro");
+                        Matcher m = p.matcher(s1.getCategoria());
+                        if (m.find()) {
                               // if(s.getIdPessoa().getStatus()){
                                 model.addRow(new Object[]{s1.getId(), SimpleDateFormat.getDateInstance().format(c.getTime()), s1.getNome() + " " + s1.getSobrenome(), s1.getNumerosocio(), s1.getCpf(), s1.getNumero(), s1.getValor(), false});
                              //  }
@@ -798,7 +801,9 @@ public class GContas extends javax.swing.JFrame {
                                         Taxasconta tx = new Taxasconta();
                                         tx.setContaid(c);
                                         //seta a taxa em taxas Conta de acordo com a categoria socio do sócio vinculado ao endereço
+                                        
                                         tx.setTaxaid(aux);
+                                        
                                         //Aqui adiciono todas as taxas de cada endereço...
                                         taxas1.add(tx);
                                        } 
