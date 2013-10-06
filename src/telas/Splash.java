@@ -3,7 +3,7 @@
  * and open the template in the editor.
  */
 package telas;
-
+//importação das classes necessárias para rodar o splashScreen
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -21,9 +21,10 @@ import org.hibernate.cfg.AnnotationConfiguration;
 import org.netbeans.lib.awtextra.AbsoluteConstraints;
 import org.netbeans.lib.awtextra.AbsoluteLayout;
 
-
+//Para que a imagem apareça na tela, é preciso estender a classe JWindow.
 public class Splash extends JWindow{
     
+     
      AbsoluteConstraints absBarra, absImage;
      AbsoluteLayout absl;
      ImageIcon image;
@@ -40,9 +41,10 @@ public class Splash extends JWindow{
         label.setIcon(image);
         progress = new JProgressBar();
         progress.setPreferredSize(new Dimension(640,20));
-        progress.setBackground(Color.GREEN);
+        progress.setBackground(Color.WHITE);
         progress.setString("Carregando");
         progress.setStringPainted(true);
+        progress.setForeground(Color.ORANGE);
         setLayout(absl);
         getContentPane().add(label,absImage);
         getContentPane().add(progress,absBarra);
@@ -60,7 +62,7 @@ public class Splash extends JWindow{
                    
                     try {   
                             
-                        sleep(40);
+                        sleep(20);
                     } catch (Exception ex) {
                   
                         Logger.getLogger(Splash.class.getName()).log(Level.SEVERE, null, ex);

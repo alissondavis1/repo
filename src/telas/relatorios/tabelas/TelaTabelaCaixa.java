@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import net.sf.jasperreports.engine.JasperFillManager;
@@ -131,7 +132,8 @@ public class TelaTabelaCaixa extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableCaixa = new javax.swing.JTable();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setIconImage(new ImageIcon(getClass().getResource("/img/ico.png")).getImage());
 
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 

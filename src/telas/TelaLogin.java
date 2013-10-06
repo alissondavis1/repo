@@ -26,7 +26,7 @@ public class TelaLogin extends javax.swing.JFrame {
     /**
      * Creates new form TelaLogin
      */
-    private TelaPrincipal telaPrincipal;
+    //private TelaPrincipal telaPrincipal;
     public TelaLogin() {
         initComponents();
         setLocationRelativeTo(null);

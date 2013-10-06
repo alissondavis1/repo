@@ -5,13 +5,13 @@
 package telas;
 
 import dao.DaoChequeslog;
+import dao.DaoContasMensais;
 import dao.DaoContaslog;
 import dao.DaoEntradaslog;
-import dao.DaoUsuario;
 import entidades.Chequeslog;
+import entidades.Conta;
 import entidades.Contaslog;
 import entidades.Entradaslog;
-import entidades.User;
 import java.awt.AWTException;
 import java.awt.Desktop;
 import java.awt.SystemTray;
@@ -28,6 +28,7 @@ import java.sql.Connection;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import java.util.Properties;
@@ -107,7 +108,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         //  Start do TimerBean para atualizar a hora no sistema
 
         timer1.start();
-
+        timer2.start();
         // redimensionamento e posicionamento da tela principal, para que fique alinhada na parte de cima do monitor.
 
         //Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
@@ -176,11 +177,18 @@ public class TelaPrincipal extends javax.swing.JFrame {
         popupMenu1 = new java.awt.PopupMenu();
         menuItemPopupSair = new java.awt.MenuItem();
         menuItemPopupCadastros = new java.awt.MenuItem();
+        desativaMensagens = new java.awt.MenuItem();
+        ativaMensagens = new java.awt.MenuItem();
+        menu1 = new java.awt.Menu();
+        menuItem1 = new java.awt.MenuItem();
+        menuItem2 = new java.awt.MenuItem();
+        menuItem3 = new java.awt.MenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
+        timer2 = new org.netbeans.examples.lib.timerbean.Timer();
         jPanelBotoesTelaPrincipal = new javax.swing.JPanel();
         jButtonTelaPrincipalLogoff = new javax.swing.JButton();
         jButtonTelaPrincipalRelatorios = new javax.swing.JButton();
@@ -229,9 +237,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenuItemReceita = new javax.swing.JMenuItem();
         jMenuItemContrato = new javax.swing.JMenuItem();
         jMenuItemTaxas = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
-        jMenuItemAgua = new javax.swing.JMenuItem();
-        jMenuItemSolicita_Socio = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
@@ -272,6 +277,50 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
         popupMenu1.add(menuItemPopupCadastros);
 
+        desativaMensagens.setLabel("Desativar Mensagens");
+        desativaMensagens.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                desativaMensagensActionPerformed(evt);
+            }
+        });
+        popupMenu1.add(desativaMensagens);
+
+        ativaMensagens.setLabel("Ativar Mensagens");
+        ativaMensagens.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ativaMensagensActionPerformed(evt);
+            }
+        });
+        popupMenu1.add(ativaMensagens);
+
+        menu1.setLabel("Tempo Mensagens");
+
+        menuItem1.setLabel("5 minutos");
+        menuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItem1ActionPerformed(evt);
+            }
+        });
+        menu1.add(menuItem1);
+
+        menuItem2.setLabel("10 minutos");
+        menuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItem2ActionPerformed(evt);
+            }
+        });
+        menu1.add(menuItem2);
+
+        menuItem3.setLabel("30 minutos");
+        menuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItem3ActionPerformed(evt);
+            }
+        });
+        menu1.add(menuItem3);
+
+        popupMenu1.add(menu1);
+
         jMenuItem2.setText("jMenuItem2");
 
         jMenuItem3.setText("jMenuItem3");
@@ -281,6 +330,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenu1.setText("jMenu1");
 
         jMenu3.setText("jMenu3");
+
+        timer2.setDelay(300000L);
+        timer2.addTimerListener(new org.netbeans.examples.lib.timerbean.TimerListener() {
+            public void onTime(java.awt.event.ActionEvent evt) {
+                timer2OnTime(evt);
+            }
+        });
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("ACAL2000");
@@ -694,7 +750,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addGap(145, 145, 145))
         );
 
-        jMenuBar1.setBorder(javax.swing.BorderFactory.createBevelBorder(0, new java.awt.Color(0, 0, 255), new java.awt.Color(51, 51, 255), new java.awt.Color(51, 0, 255), new java.awt.Color(51, 0, 255)));
+        jMenuBar1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(0, 0, 255), new java.awt.Color(51, 51, 255), new java.awt.Color(51, 0, 255), new java.awt.Color(51, 0, 255)));
 
         jMenu.setText("Menu");
         jMenu.setToolTipText("");
@@ -790,16 +846,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenuCadastros.add(jMenuItemTaxas);
 
         jMenu.add(jMenuCadastros);
-
-        jMenu2.setText("Solicitações");
-
-        jMenuItemAgua.setText("Ligação de Água");
-        jMenu2.add(jMenuItemAgua);
-
-        jMenuItemSolicita_Socio.setText("Filiação de Sócio");
-        jMenu2.add(jMenuItemSolicita_Socio);
-
-        jMenu.add(jMenu2);
 
         jMenu4.setText("Contas");
 
@@ -1514,6 +1560,59 @@ public class TelaPrincipal extends javax.swing.JFrame {
        tbc.setVisible(true);
        tbc.setExtendedState(JFrame.MAXIMIZED_BOTH);
     }//GEN-LAST:event_jMenuItem6ActionPerformed
+
+    private void timer2OnTime(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_timer2OnTime
+       
+        new Thread(){
+            
+            public void run(){
+                
+              List<Conta> contas = new DaoContasMensais().ContasVencidas(new Date(System.currentTimeMillis()));
+              if(!contas.isEmpty()){
+                  
+                  trayIcon.displayMessage("Contas Vencidas", "Existem contas vencidas, consulte o relatório de contas!", TrayIcon.MessageType.INFO);
+                  
+              }
+              
+            }
+            
+        }.start();
+        
+        
+    }//GEN-LAST:event_timer2OnTime
+
+    private void desativaMensagensActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_desativaMensagensActionPerformed
+        
+        int op = JOptionPane.showConfirmDialog(this, "Tem certeza que deseja desativar as mensagens?","Atenção", JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+        if(op == JOptionPane.YES_OPTION){
+            
+            timer2.stop();
+            
+        }
+    }//GEN-LAST:event_desativaMensagensActionPerformed
+
+    private void ativaMensagensActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ativaMensagensActionPerformed
+        
+           int op = JOptionPane.showConfirmDialog(this, "Tem certeza que deseja ativar as mensagens?","Atenção", JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+        if(op == JOptionPane.YES_OPTION){
+            
+            timer2.start();
+            
+        }
+        
+    }//GEN-LAST:event_ativaMensagensActionPerformed
+
+    private void menuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItem1ActionPerformed
+        timer2.setDelay(300000);
+    }//GEN-LAST:event_menuItem1ActionPerformed
+
+    private void menuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItem2ActionPerformed
+       timer2.setDelay(600000);
+    }//GEN-LAST:event_menuItem2ActionPerformed
+
+    private void menuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItem3ActionPerformed
+        timer2.setDelay(1800000);
+    }//GEN-LAST:event_menuItem3ActionPerformed
  
   
     public static void main(String args[]) {
@@ -1556,6 +1655,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private java.awt.MenuItem ativaMensagens;
+    private java.awt.MenuItem desativaMensagens;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -1583,7 +1684,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JMenu jMenu;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenuAuditoria;
@@ -1595,7 +1695,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
-    private javax.swing.JMenuItem jMenuItemAgua;
     private javax.swing.JMenuItem jMenuItemAuditoriaCheques;
     private javax.swing.JMenuItem jMenuItemAuditoriaContas;
     private javax.swing.JMenuItem jMenuItemAuditoriaEntradas;
@@ -1610,7 +1709,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItemReceitas;
     private javax.swing.JMenuItem jMenuItemSair;
     private javax.swing.JMenuItem jMenuItemSocio;
-    private javax.swing.JMenuItem jMenuItemSolicita_Socio;
     private javax.swing.JMenuItem jMenuItemTaxas;
     private javax.swing.JMenuItem jMenuItemTelaPrincipalBackup;
     private javax.swing.JMenuItem jMenuItemTipoDespesa;
@@ -1626,9 +1724,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelInternalFrameContas;
     private javax.swing.JPanel jPanelInternalFrameRelatorios;
     private javax.swing.JPopupMenu.Separator jSeparator2;
+    private java.awt.Menu menu1;
+    private java.awt.MenuItem menuItem1;
+    private java.awt.MenuItem menuItem2;
+    private java.awt.MenuItem menuItem3;
     private java.awt.MenuItem menuItemPopupCadastros;
     private java.awt.MenuItem menuItemPopupSair;
     private java.awt.PopupMenu popupMenu1;
     private org.netbeans.examples.lib.timerbean.Timer timer1;
+    private org.netbeans.examples.lib.timerbean.Timer timer2;
     // End of variables declaration//GEN-END:variables
 }

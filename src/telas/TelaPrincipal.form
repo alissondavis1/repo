@@ -33,6 +33,53 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuItemPopupCadastrosActionPerformed"/>
           </Events>
         </MenuItem>
+        <MenuItem class="java.awt.MenuItem" name="desativaMensagens">
+          <Properties>
+            <Property name="label" type="java.lang.String" value="Desativar Mensagens"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="desativaMensagensActionPerformed"/>
+          </Events>
+        </MenuItem>
+        <MenuItem class="java.awt.MenuItem" name="ativaMensagens">
+          <Properties>
+            <Property name="label" type="java.lang.String" value="Ativar Mensagens"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ativaMensagensActionPerformed"/>
+          </Events>
+        </MenuItem>
+        <Menu class="java.awt.Menu" name="menu1">
+          <Properties>
+            <Property name="label" type="java.lang.String" value="Tempo Mensagens"/>
+          </Properties>
+          <SubComponents>
+            <MenuItem class="java.awt.MenuItem" name="menuItem1">
+              <Properties>
+                <Property name="label" type="java.lang.String" value="5 minutos"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuItem1ActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="java.awt.MenuItem" name="menuItem2">
+              <Properties>
+                <Property name="label" type="java.lang.String" value="10 minutos"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuItem2ActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="java.awt.MenuItem" name="menuItem3">
+              <Properties>
+                <Property name="label" type="java.lang.String" value="30 minutos"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuItem3ActionPerformed"/>
+              </Events>
+            </MenuItem>
+          </SubComponents>
+        </Menu>
       </SubComponents>
     </Menu>
     <Component class="javax.swing.JMenuItem" name="jMenuItem2">
@@ -68,6 +115,14 @@
         <Property name="useNullLayout" type="boolean" value="true"/>
       </Layout>
     </Container>
+    <Component class="org.netbeans.examples.lib.timerbean.Timer" name="timer2">
+      <Properties>
+        <Property name="Delay" type="long" value="300000"/>
+      </Properties>
+      <Events>
+        <EventHandler event="onTime" listener="org.netbeans.examples.lib.timerbean.TimerListener" parameters="java.awt.event.ActionEvent" handler="timer2OnTime"/>
+      </Events>
+    </Component>
     <Menu class="javax.swing.JMenuBar" name="jMenuBar1">
       <Properties>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -180,23 +235,6 @@
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemTaxasActionPerformed"/>
                   </Events>
-                </MenuItem>
-              </SubComponents>
-            </Menu>
-            <Menu class="javax.swing.JMenu" name="jMenu2">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Solicita&#xe7;&#xf5;es"/>
-              </Properties>
-              <SubComponents>
-                <MenuItem class="javax.swing.JMenuItem" name="jMenuItemAgua">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Liga&#xe7;&#xe3;o de &#xc1;gua"/>
-                  </Properties>
-                </MenuItem>
-                <MenuItem class="javax.swing.JMenuItem" name="jMenuItemSolicita_Socio">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Filia&#xe7;&#xe3;o de S&#xf3;cio"/>
-                  </Properties>
                 </MenuItem>
               </SubComponents>
             </Menu>
