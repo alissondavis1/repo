@@ -6,6 +6,7 @@ package dao.view;
 
 import entidades.view.CaixaView;
 import entidades.view.SociosView;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import org.hibernate.HibernateException;
@@ -54,12 +55,19 @@ public class DaoCaixaView {
         Query query = null;
         Transaction transacao = null;
         
+      
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        
+        //transformar em string para evitar passar o horario.
+        String inis = sdf.format(ini);
+        String fims = sdf.format(fim);
+        
         try{
            sessao = HibernateUtil.getSessionFactory().openSession();
            transacao = sessao.beginTransaction();
            query = sessao.createQuery("from CaixaView where Pagamento between :ini and :fim");
-           query.setParameter("ini",ini);
-           query.setParameter("fim",fim);
+           query.setParameter("ini",inis);
+           query.setParameter("fim",fims);
            endereco = query.list();
            transacao.commit(); 
            

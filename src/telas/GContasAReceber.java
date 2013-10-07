@@ -32,20 +32,12 @@ public class GContasAReceber extends javax.swing.JFrame {
         //setExtendedState(JFrame.MAXIMIZED_BOTH);
         setLocationRelativeTo(null);
     }
-
-    public GContasAReceber(JFrame telaPrincipal){
-        
+    public GContasAReceber(JFrame telaPrincipal){   
         this();
         jButtonPagar.setEnabled(false);
         this.telaPrincipal = telaPrincipal;
-       // this.telaPrincipal.setVisible(false);
         this.telaPrincipal.setEnabled(false);
-        
-    }
-    
-    
-    
-    
+    }  
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -68,6 +60,7 @@ public class GContasAReceber extends javax.swing.JFrame {
         jTextFieldSocio = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jFormattedTextFieldValor = new javax.swing.JFormattedTextField();
+        jCheckBoxHoje = new javax.swing.JCheckBox();
         jPanel5 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jTextFieldNumeroConta = new javax.swing.JTextField();
@@ -122,6 +115,13 @@ public class GContasAReceber extends javax.swing.JFrame {
         jFormattedTextFieldValor.setEditable(false);
         jFormattedTextFieldValor.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(java.text.NumberFormat.getCurrencyInstance())));
 
+        jCheckBoxHoje.setText("Hoje");
+        jCheckBoxHoje.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBoxHojeActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -140,8 +140,11 @@ public class GContasAReceber extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel6)
-                            .addComponent(jLabel2))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jCheckBoxHoje)))
+                        .addGap(6, 6, Short.MAX_VALUE)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jFormattedTextFieldDataPagamento)
                             .addComponent(jFormattedTextFieldDataGerada, javax.swing.GroupLayout.DEFAULT_SIZE, 124, Short.MAX_VALUE)))))
@@ -155,7 +158,8 @@ public class GContasAReceber extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jFormattedTextFieldDataPagamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jFormattedTextFieldDataPagamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jCheckBoxHoje))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
@@ -181,7 +185,7 @@ public class GContasAReceber extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jLabel4.setText("Número do Endereço.:");
@@ -309,14 +313,12 @@ public class GContasAReceber extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButtonPagar, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(40, 40, 40))
+                    .addComponent(jButtonPagar, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel8)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 587, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(21, 21, 21))))
+                        .addGap(37, 37, 37)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 560, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(21, 21, 21))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -326,21 +328,18 @@ public class GContasAReceber extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButtonPagar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(5, 5, 5))
+                .addGap(10, 10, 10)
+                .addComponent(jButtonPagar)
+                .addGap(10, 10, 10))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
-       
-       
+  
         this.telaPrincipal.setEnabled(true);
         this.telaPrincipal.toFront();
-     
-        
     }//GEN-LAST:event_formWindowClosed
 
     private void jTextFieldPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldPesquisaActionPerformed
@@ -367,13 +366,13 @@ public class GContasAReceber extends javax.swing.JFrame {
                
                if(c.getDataPag() != null)
                {
-                  
                    jFormattedTextFieldDataPagamento.setEditable(false);
                    jFormattedTextFieldDataPagamento.setText(SimpleDateFormat.getDateInstance().format(c.getDataPag()));
                    jButtonPagar.setEnabled(false);
+                  
                }else{
-                 jFormattedTextFieldDataPagamento.setEditable(true);
-                   jButtonPagar.setEnabled(true);
+                 //jFormattedTextFieldDataPagamento.setEditable(true);
+                 jButtonPagar.setEnabled(true);
                }
                
                double soma = 0;
@@ -385,7 +384,6 @@ public class GContasAReceber extends javax.swing.JFrame {
             }else{
   
                 JOptionPane.showMessageDialog(this,"Conta não encontrada","Atenção",JOptionPane.INFORMATION_MESSAGE);
-                
             }
             
             
@@ -417,14 +415,27 @@ public class GContasAReceber extends javax.swing.JFrame {
         }
     }
     }else{
-    
             JOptionPane.showMessageDialog(this,"Data de pagamento é obrigatório","Erro",JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jButtonPagarActionPerformed
 
+    private void jCheckBoxHojeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxHojeActionPerformed
+        
+        String data = new SimpleDateFormat("ddMMyyyy").format(new Date());
+        
+        if(jCheckBoxHoje.isSelected()){      
+            jFormattedTextFieldDataPagamento.setText(data);
+            jFormattedTextFieldDataPagamento.setEditable(false);
+        }
+        else{
+            jFormattedTextFieldDataPagamento.setText(null);
+            jFormattedTextFieldDataPagamento.setEditable(true);
+        }
+    }//GEN-LAST:event_jCheckBoxHojeActionPerformed
+
     private void limparCampos(){
         
-        
+        jCheckBoxHoje.setSelected(false);
         jTextFieldNumeroConta.setText("");
         jTextFieldNumeroEndereco.setText("");
         jTextFieldSocio.setText("");
@@ -475,6 +486,7 @@ public class GContasAReceber extends javax.swing.JFrame {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonPagar;
+    private javax.swing.JCheckBox jCheckBoxHoje;
     private javax.swing.JFormattedTextField jFormattedTextFieldDataGerada;
     private javax.swing.JFormattedTextField jFormattedTextFieldDataPagamento;
     private javax.swing.JFormattedTextField jFormattedTextFieldDataVencimento;

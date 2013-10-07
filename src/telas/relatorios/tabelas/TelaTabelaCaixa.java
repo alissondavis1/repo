@@ -345,12 +345,14 @@ public class TelaTabelaCaixa extends javax.swing.JFrame {
         }
         else {
             SimpleDateFormat f1 = new SimpleDateFormat("yyyy-MM-dd");
-            SimpleDateFormat f2 = new SimpleDateFormat("dd/MM/yyyy");
+            SimpleDateFormat f2 = new SimpleDateFormat("dd-MM-yyyy");
+            
             
             pModel.limpar();
             pModel.addListaDeCaixa(new DaoCaixaView()
             .BuscarTodosCaixaViewDatePagamento((jDateInicio.getDate()),(jDateFim.getDate())));
             AtualizarAjuda(f2.format(jDateInicio.getDate()), f2.format(jDateFim.getDate()));
+  
         }
     }//GEN-LAST:event_jButtonAtualizarActionPerformed
 

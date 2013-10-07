@@ -84,8 +84,7 @@ left  join hidrometro      h on  c.id = h.idconta
 left  join taxasconta     tc on  c.id = tc.contaid
 left  join taxa           t2 on  t2.id = tc.taxaid
 
-where c.datapag is not null and c.datapag
- between $P{datainicio} and $P{datafim}
+where c.datapag is not null and c.datapag between $P{datainicio} and $P{datafim}
 group by c.id
 order by c.dataPag]]>
 	</queryString>

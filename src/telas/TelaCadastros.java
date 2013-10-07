@@ -80,7 +80,8 @@ public class TelaCadastros extends javax.swing.JFrame {
         jDesktopPane1.setVisible(false);
         jInternalFrame1.setVisible(false);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
-
+        jFormattedCNPJ.setEditable(false);
+        jRadioCPFCNPJ.setEnabled(false);
 
     }
 
@@ -481,6 +482,9 @@ public class TelaCadastros extends javax.swing.JFrame {
         jLabel75 = new javax.swing.JLabel();
         jLabel78 = new javax.swing.JLabel();
         jFormattedTextFieldSocioDataEmissao = new javax.swing.JFormattedTextField();
+        jLabel90 = new javax.swing.JLabel();
+        jFormattedCNPJ = new javax.swing.JFormattedTextField();
+        jRadioCPFCNPJ = new javax.swing.JCheckBox();
         jLabel77 = new javax.swing.JLabel();
         jTextFieldSocioOrgaoExpedidor = new javax.swing.JTextField();
         jDesktopPane1 = new javax.swing.JDesktopPane();
@@ -3401,7 +3405,7 @@ public class TelaCadastros extends javax.swing.JFrame {
             jLabel76.setText("Rg Numero");
 
             jLabel75.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-            jLabel75.setText("Cpf");
+            jLabel75.setText("CPF");
 
             jLabel78.setText("Data de Emissao");
 
@@ -3410,6 +3414,22 @@ public class TelaCadastros extends javax.swing.JFrame {
             } catch (java.text.ParseException ex) {
                 ex.printStackTrace();
             }
+
+            jLabel90.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+            jLabel90.setText("CNPJ");
+
+            try {
+                jFormattedCNPJ.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###/####-##")));
+            } catch (java.text.ParseException ex) {
+                ex.printStackTrace();
+            }
+
+            jRadioCPFCNPJ.setText("Alternar");
+            jRadioCPFCNPJ.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    jRadioCPFCNPJActionPerformed(evt);
+                }
+            });
 
             javax.swing.GroupLayout jPanel39Layout = new javax.swing.GroupLayout(jPanel39);
             jPanel39.setLayout(jPanel39Layout);
@@ -3430,6 +3450,12 @@ public class TelaCadastros extends javax.swing.JFrame {
                             .addGroup(jPanel39Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(jTextFieldSocioRgNumero)
                                 .addComponent(jFormattedTextFieldSocioCPF, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE))))
+                    .addGap(10, 10, 10)
+                    .addComponent(jLabel90)
+                    .addGap(14, 14, 14)
+                    .addComponent(jFormattedCNPJ, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(jRadioCPFCNPJ)
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             );
             jPanel39Layout.setVerticalGroup(
@@ -3437,8 +3463,11 @@ public class TelaCadastros extends javax.swing.JFrame {
                 .addGroup(jPanel39Layout.createSequentialGroup()
                     .addGroup(jPanel39Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel75)
-                        .addComponent(jFormattedTextFieldSocioCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(10, 10, 10)
+                        .addComponent(jFormattedTextFieldSocioCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel90)
+                        .addComponent(jFormattedCNPJ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jRadioCPFCNPJ))
+                    .addGap(8, 8, 8)
                     .addGroup(jPanel39Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel76)
                         .addComponent(jTextFieldSocioRgNumero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -3640,7 +3669,7 @@ public class TelaCadastros extends javax.swing.JFrame {
             jInternalFrame1Layout.setVerticalGroup(
                 jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jInternalFrame1Layout.createSequentialGroup()
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 610, Short.MAX_VALUE)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 611, Short.MAX_VALUE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(jPanel19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
             );
@@ -4953,19 +4982,15 @@ public class TelaCadastros extends javax.swing.JFrame {
         jButtonSocioEditar.setEnabled(false);
         jButtonSocioNovo.setEnabled(false);
 
+        jRadioCPFCNPJ.setEnabled(true);
         jButtonSocioAdicionarLogradouro.setEnabled(false);
         if (jComboBoxSocioLogradouro.getItemCount() == 0) {
 
             jComboBoxSocioLogradouro.addItem("");
             List<Endereco> end = new DaoEndereco().BuscarTodosEnderecos();
             for (Endereco e : end) {
-
                 jComboBoxSocioLogradouro.addItem(e.getTipo()+" "+e.getNome());
-
-
             }
-
-
         }
         if (jComboBoxSocioCategoriaSocio.getItemCount() == 0) {
 
@@ -4996,7 +5021,7 @@ public class TelaCadastros extends javax.swing.JFrame {
 
         flagEditar = true;
         socioNumero = (String)jTextFieldSocioNumero.getText();
-        
+        jRadioCPFCNPJ.setEnabled(true);
         setEditableComponentesSocio(true);
         jButtonSocioEditar.setEnabled(false);
         jButtonSocioApagar.setEnabled(false);
@@ -5019,13 +5044,10 @@ public class TelaCadastros extends javax.swing.JFrame {
 
     private void jButtonSocioSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSocioSalvarActionPerformed
 
-        
         if (isCamposSocioPreenchidos()) {
-
             Pattern p1 = Pattern.compile("\\d{2}\\/\\d{2}\\/\\d{4}");;
             Matcher m;
-            if (jTextFieldSocioID.getText().equals("")) {
-                
+            if (jTextFieldSocioID.getText().equals("")) {           
                 if(pesquisarTable.equals("importar funcionário")){
                     
                 int op = JOptionPane.showConfirmDialog(this, "Tem certeza que deseja gravar esse funcionario como sócio?", "Salvar", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
@@ -5044,7 +5066,9 @@ public class TelaCadastros extends javax.swing.JFrame {
                         p.setRgNumero(jTextFieldSocioRgNumero.getText());
                         p.setRgExpedidor(jTextFieldSocioOrgaoExpedidor.getText());
                         
-                        if(flagEditar== false){
+                        if(jFormattedCNPJ.isEditable()){}
+                        else{}
+                        if(flagEditar==false){
                             if(new DaoEnderecoPessoa().EnderecopessoaporNumero(jTextFieldSocioNumero.getText()) != null){
                             throw new Exception("Número de Endereço já cadastrado -1");
                             }
@@ -5154,20 +5178,34 @@ public class TelaCadastros extends javax.swing.JFrame {
                         p.setNomePai(jTextFieldSocioNomePai.getText());
                         p.setRgNumero(jTextFieldSocioRgNumero.getText());
                         p.setRgExpedidor(jTextFieldSocioOrgaoExpedidor.getText());
-                        
-                        if(flagEditar== false){
-                            if(new DaoEnderecoPessoa().EnderecopessoaporNumero(jTextFieldSocioNumero.getText()) != null){
-                            throw new Exception("Número de Endereço já cadastrado 1");
+                        if(jFormattedCNPJ.isEditable()){
+                            //aqui estamos editando
+                            if(flagEditar==false){
+                                if(new DaoEnderecoPessoa().BuscaCnpj(jFormattedCNPJ.getText())){
+                                throw new Exception("Número de Endereço já cadastrado: erro1");
+                                }
+                            }
+                            //aqui estamos salvando
+                            else {                  
+                                if(!new DaoEnderecoPessoa().EnderecopessoaporNumero(jTextFieldSocioNumero.getText()).equals(socioNumero)){
+                                if(new DaoEnderecoPessoa().EnderecopessoaporNumero(jTextFieldSocioNumero.getText()) != null){
+                                throw new Exception("Número de Endereço já cadastrado 2"); }
+                                }
                             }
                         }
-                        else {
-                            if(!new DaoEnderecoPessoa().EnderecopessoaporNumero(jTextFieldSocioNumero.getText()).equals(socioNumero)){
-                            if(new DaoEnderecoPessoa().EnderecopessoaporNumero(jTextFieldSocioNumero.getText()) != null){
-                            throw new Exception("Número de Endereço já cadastrado 2"); }
+                        else{
+                            if(flagEditar==false){
+                                if(new DaoEnderecoPessoa().EnderecopessoaporNumero(jTextFieldSocioNumero.getText()) != null){
+                                throw new Exception("Número de Endereço já cadastrado 1");
+                                }
                             }
-                           
+                            else {
+                                if(!new DaoEnderecoPessoa().EnderecopessoaporNumero(jTextFieldSocioNumero.getText()).equals(socioNumero)){
+                                if(new DaoEnderecoPessoa().EnderecopessoaporNumero(jTextFieldSocioNumero.getText()) != null){
+                                throw new Exception("Número de Endereço já cadastrado 2"); }
+                                }
+                            }
                         }
-                        
                         
                         p.setNumeroEndereco(jTextFieldSocioNumero.getText());
                         p.setCidade(jTextFieldSocioCidade.getText());
@@ -6421,6 +6459,19 @@ public class TelaCadastros extends javax.swing.JFrame {
         jButtonLogradouroCancelar.setEnabled(true);
         jTabbedPane1.setSelectedComponent(jPanelLog);
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jRadioCPFCNPJActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioCPFCNPJActionPerformed
+      if(jRadioCPFCNPJ.isSelected()){
+          jFormattedCNPJ.setEditable(true);
+          jFormattedTextFieldSocioCPF.setEditable(false);
+          jFormattedTextFieldSocioCPF.setText(null);
+      }
+      else{
+          jFormattedCNPJ.setEditable(false);
+          jFormattedTextFieldSocioCPF.setEditable(true);
+          jFormattedCNPJ.setText(null);
+      }
+    }//GEN-LAST:event_jRadioCPFCNPJActionPerformed
 
     private void editableTextFields(boolean editable) {
 
@@ -7943,6 +7994,7 @@ public class TelaCadastros extends javax.swing.JFrame {
     private javax.swing.JComboBox jComboBoxSocioSexo;
     private javax.swing.JComboBox jComboBoxSocioUF;
     private javax.swing.JDesktopPane jDesktopPane1;
+    private javax.swing.JFormattedTextField jFormattedCNPJ;
     private javax.swing.JFormattedTextField jFormattedTextFieldChequeDataPagamento;
     private javax.swing.JFormattedTextField jFormattedTextFieldChequeDataVencimento;
     private javax.swing.JFormattedTextField jFormattedTextFieldDespesaData;
@@ -8043,6 +8095,7 @@ public class TelaCadastros extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel88;
     private javax.swing.JLabel jLabel89;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabel90;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
@@ -8112,6 +8165,7 @@ public class TelaCadastros extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelTipoReceita;
     private javax.swing.JRadioButton jRadioButtonSocioAtivo;
     private javax.swing.JRadioButton jRadioButtonSocioInativo;
+    private javax.swing.JCheckBox jRadioCPFCNPJ;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane10;
     private javax.swing.JScrollPane jScrollPane11;

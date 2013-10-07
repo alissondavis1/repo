@@ -6,6 +6,7 @@ package dao;
 
 import entidades.Enderecopessoa;
 import entidades.Geracaocontas;
+import entidades.Pessoa;
 import java.math.BigInteger;
 import java.util.List;
 import org.hibernate.Criteria;
@@ -48,6 +49,36 @@ public class DaoEnderecoPessoa {
              sessao.close();
         }  
     return end;
+    }
+    
+    public boolean BuscaCnpj (String cnpj) {
+      
+        boolean teste = false;
+        Pessoa p = null;
+        Session sessao = null; 
+        Query query = null;
+        Transaction transacao = null;
+        
+        try{
+           sessao = HibernateUtil.getSessionFactory().openSession();
+           transacao = sessao.beginTransaction();
+           query = sessao.createQuery("from Pessoa p where p.cnpj = :cnpj");
+           query.setParameter("cnpj",cnpj);
+           p  = (Pessoa) query.uniqueResult();
+           transacao.commit(); 
+           
+        }
+        catch(HibernateException e)
+        {
+            System.out.println(e);
+            transacao.rollback();
+        }
+        finally
+        {
+             sessao.close();
+        }  
+        if(p.getCnpj().isEmpty()){return false;}
+        else                     {return true; }
     }
     
     public int qtdRegistros(){
